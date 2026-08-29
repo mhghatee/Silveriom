@@ -5560,6 +5560,304 @@ section {
       </div>
     </section>
 
+    <!-- ==================== EVENT NETWORK MAP ==================== -->
+    <section id="network-map" class="section network-section" style="padding: 100px 0; position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); background: radial-gradient(circle at 50% 50%, rgba(0,240,255,0.03) 0%, transparent 60%);">
+      <div class="editorial-wide-container">
+        <div style="text-align: center; margin-bottom: 60px;">
+          <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: 2px; font-family: 'Cinzel', serif;">ONE NETWORK. SIX LOCATIONS. ONE SPORTS CALENDAR.</h2>
+          <p style="color: #94A3B8; margin-top: 10px; font-size: 1.1rem;">گستره جغرافیایی شبکه‌ی رویدادهای سیلوریوم</p>
+        </div>
+        
+        <div class="network-container" style="position: relative; height: 450px; background: rgba(2,6,18,0.5); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; overflow: hidden; box-shadow: inset 0 0 50px rgba(0,0,0,0.8);">
+          <!-- Interactive Nodes & Connections -->
+          <div id="network-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+
+          <!-- Info Panel -->
+          <div id="network-info-panel" style="position: absolute; bottom: 30px; right: 30px; background: rgba(6,18,40,0.85); backdrop-filter: blur(15px); border: 1px solid rgba(0,240,255,0.3); border-radius: 20px; padding: 24px; width: 300px; opacity: 0; pointer-events: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(20px); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <h3 id="ni-title" style="color: #fff; font-size: 1.2rem; margin-bottom: 8px; font-weight: 800;">نام مجموعه</h3>
+            <p id="ni-stats" style="color: #00F0FF; font-size: 0.9rem; margin-bottom: 16px; font-weight: 600;">تعداد رویدادها: ۰</p>
+            <div style="margin-bottom: 12px;">
+              <span style="display: block; font-size: 0.8rem; color: #94A3B8; margin-bottom: 4px;">نوع رویدادها:</span>
+              <span id="ni-types" style="color: #fff; font-size: 0.9rem;">-</span>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.8rem; color: #94A3B8; margin-bottom: 4px;">ماه‌های فعال:</span>
+              <span id="ni-months" style="color: #fff; font-size: 0.9rem; line-height: 1.5;">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ANNUAL TIMELINE & FILTERS ==================== -->
+    <section id="timeline-section" class="section timeline-section" style="padding: 60px 0 120px; position: relative; z-index: 10;">
+      <div class="editorial-wide-container">
+        
+        <!-- Filters -->
+        <div class="calendar-filters" style="background: rgba(6,18,40,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px; margin-bottom: 60px;">
+          <div style="margin-bottom: 24px;">
+            <span style="display: block; color: #94A3B8; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">فیلتر مجموعه‌ها (Locations)</span>
+            <div class="filter-group" id="loc-filters" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+          </div>
+          <div>
+            <span style="display: block; color: #94A3B8; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">نوع رویداد (Event Types)</span>
+            <div class="filter-group" id="type-filters" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+          </div>
+        </div>
+
+        <!-- Timeline Render Area -->
+        <div id="timeline-render-area" style="position: relative;">
+          <div id="timeline-content" style="display: flex; flex-direction: column; gap: 60px;"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <style>
+      .cal-filter-btn {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #E2E8F0;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .cal-filter-btn:hover { background: rgba(255,255,255,0.1); }
+      .cal-filter-btn.active { background: rgba(204,255,0,0.15); border-color: #CCFF00; color: #CCFF00; box-shadow: 0 0 15px rgba(204,255,0,0.2); }
+
+      .timeline-month-block { position: relative; width: 100%; }
+      .month-header { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
+      .month-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+      
+      .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+      
+      .event-card {
+        background: rgba(6,18,40,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px; padding: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); animation: fadeUpIn 0.5s forwards;
+      }
+      .event-card:hover { transform: translateY(-5px); border-color: rgba(0,240,255,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0,240,255,0.1); }
+      .event-card.featured { border-color: rgba(204,255,0,0.3); background: linear-gradient(135deg, rgba(6,18,40,0.8) 0%, rgba(20,30,10,0.6) 100%); }
+      .event-card.featured:hover { border-color: #CCFF00; box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 25px rgba(204,255,0,0.15); }
+      
+      .event-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; margin-left: 8px; }
+      .bg-padel { background: rgba(0,240,255,0.1); color: #00F0FF; border: 1px solid rgba(0,240,255,0.3); }
+      .bg-tennis { background: rgba(204,255,0,0.1); color: #CCFF00; border: 1px solid rgba(204,255,0,0.3); }
+      .bg-vip { background: rgba(212,175,55,0.1); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
+      
+      .event-date { font-size: 0.85rem; color: #00F0FF; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+      .event-title { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.4; }
+      .event-loc { font-size: 0.9rem; color: #94A3B8; display: flex; align-items: center; gap: 6px; }
+      
+      @keyframes fadeUpIn { to { opacity: 1; transform: translateY(0); } }
+
+      .net-node { position: absolute; width: 20px; height: 20px; background: #00F0FF; border-radius: 50%; transform: translate(-50%, -50%); cursor: pointer; box-shadow: 0 0 20px #00F0FF, 0 0 40px #00F0FF; transition: all 0.3s ease; z-index: 5; }
+      .net-node::after { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border: 1px solid rgba(0,240,255,0.5); border-radius: 50%; animation: pulseRing 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1); }
+      .net-node:hover, .net-node.active { background: #CCFF00; box-shadow: 0 0 20px #CCFF00, 0 0 40px #CCFF00; }
+      .net-node:hover::after, .net-node.active::after { border-color: rgba(204,255,0,0.6); }
+      
+      @keyframes pulseRing { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+      .net-line { stroke: rgba(0,240,255,0.3); stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: dashMove 20s linear infinite; }
+      @keyframes dashMove { to { stroke-dashoffset: -1000; } }
+
+      @media (max-width: 768px) {
+        .events-grid { grid-template-columns: 1fr; }
+        .network-container { height: 350px !important; }
+        #network-info-panel { bottom: 10px !important; right: 10px !important; left: 10px !important; width: auto !important; padding: 15px !important; }
+      }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const locations = [
+        { id: 't10', name: 'T10 آجودانیه', x: 20, y: 30, eventsCount: 4, types: 'پدل، تنیس', months: 'اردیبهشت، شهریور، دی' },
+        { id: 'arena', name: 'Arena آزادی', x: 50, y: 20, eventsCount: 6, types: 'پدل مسابقاتی', months: 'خرداد، مهر، بهمن' },
+        { id: 'iranzamin', name: 'Iran Zamin شهرک غرب', x: 75, y: 40, eventsCount: 3, types: 'پدل', months: 'تیر، آبان' },
+        { id: 'netra', name: 'Netra لواسان', x: 80, y: 70, eventsCount: 2, types: 'پدل VIP', months: 'مرداد، اسفند' },
+        { id: 'asayesh', name: 'Asayesh مازندران', x: 50, y: 85, eventsCount: 5, types: 'پدل، تنیس', months: 'فروردین، شهریور' },
+        { id: 'enghelab', name: 'Enghelab ونک', x: 25, y: 65, eventsCount: 4, types: 'تنیس', months: 'خرداد، آذر' }
+      ];
+
+      const events = [
+        { id: 1, name: 'جام بهاره سیلوریوم', month: 'فروردین', monthIdx: 1, date: '۱۵ تا ۲۰ فروردین ۱۴۰۵', locId: 'asayesh', sport: 'tennis', type: 'tournament', featured: true },
+        { id: 2, name: 'لیگ پدل ستارگان', month: 'اردیبهشت', monthIdx: 2, date: '۵ تا ۱۲ اردیبهشت ۱۴۰۵', locId: 't10', sport: 'padel', type: 'league', featured: false },
+        { id: 3, name: 'مسابقات جایزه بزرگ آزادی', month: 'خرداد', monthIdx: 3, date: '۱۰ خرداد ۱۴۰۵', locId: 'arena', sport: 'padel', type: 'tournament', featured: true },
+        { id: 4, name: 'جام تنیس ونک', month: 'خرداد', monthIdx: 3, date: '۲۵ خرداد ۱۴۰۵', locId: 'enghelab', sport: 'tennis', type: 'tournament', featured: false },
+        { id: 5, name: 'تورنمنت تابستانه پانورامیک', month: 'تیر', monthIdx: 4, date: '۱ تا ۵ تیر ۱۴۰۵', locId: 'iranzamin', sport: 'padel', type: 'tournament', featured: false },
+        { id: 6, name: 'رویداد VIP مدیران (Netra)', month: 'مرداد', monthIdx: 5, date: '۲۰ مرداد ۱۴۰۵', locId: 'netra', sport: 'padel', type: 'vip', featured: true },
+        { id: 7, name: 'فینال لیگ پدل ساحلی', month: 'شهریور', monthIdx: 6, date: '۱۵ شهریور ۱۴۰۵', locId: 'asayesh', sport: 'padel', type: 'league', featured: true },
+        { id: 8, name: 'کاپ پاییزی T10', month: 'مهر', monthIdx: 7, date: '۱۰ مهر ۱۴۰۵', locId: 't10', sport: 'padel', type: 'tournament', featured: false },
+        { id: 9, name: 'مسابقات آزاد شهرک غرب', month: 'آبان', monthIdx: 8, date: '۵ تا ۸ آبان ۱۴۰۵', locId: 'iranzamin', sport: 'padel', type: 'tournament', featured: false },
+        { id: 10, name: 'مسابقات قهرمانی زمستان', month: 'دی', monthIdx: 10, date: '۲۰ دی ۱۴۰۵', locId: 't10', sport: 'tennis', type: 'tournament', featured: true },
+        { id: 11, name: 'گرند اسلم آرنا', month: 'بهمن', monthIdx: 11, date: '۱۵ بهمن ۱۴۰۵', locId: 'arena', sport: 'padel', type: 'tournament', featured: true },
+        { id: 12, name: 'جشنواره پایان سال لواسان', month: 'اسفند', monthIdx: 12, date: '۲۰ اسفند ۱۴۰۵', locId: 'netra', sport: 'padel', type: 'vip', featured: false }
+      ];
+
+      const netCanvas = document.getElementById('network-canvas');
+      if (netCanvas) {
+        let svgHtml = '<svg style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">';
+        const connections = [[0,1], [1,2], [2,3], [3,4], [4,5], [5,0], [1,4], [0,3]];
+        connections.forEach(pair => {
+          const p1 = locations[pair[0]];
+          const p2 = locations[pair[1]];
+          svgHtml += `<line x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" class="net-line" />`;
+        });
+        svgHtml += '</svg>';
+        netCanvas.innerHTML += svgHtml;
+
+        const infoPanel = document.getElementById('network-info-panel');
+        locations.forEach(loc => {
+          const node = document.createElement('div');
+          node.className = 'net-node';
+          node.style.left = loc.x + '%';
+          node.style.top = loc.y + '%';
+          
+          node.addEventListener('mouseenter', () => showNetInfo(loc, node));
+          node.addEventListener('click', () => showNetInfo(loc, node));
+          netCanvas.appendChild(node);
+        });
+
+        function showNetInfo(loc, nodeElement) {
+          document.querySelectorAll('.net-node').forEach(n => n.classList.remove('active'));
+          nodeElement.classList.add('active');
+          document.getElementById('ni-title').innerText = loc.name;
+          document.getElementById('ni-stats').innerText = `تعداد رویدادها: ${loc.eventsCount} رویداد سالانه`;
+          document.getElementById('ni-types').innerText = loc.types;
+          document.getElementById('ni-months').innerText = loc.months;
+          infoPanel.style.opacity = '1';
+          infoPanel.style.transform = 'translateY(0)';
+          infoPanel.style.pointerEvents = 'auto';
+        }
+        
+        setTimeout(() => {
+          if(netCanvas.querySelector('.net-node')) {
+            showNetInfo(locations[0], netCanvas.querySelector('.net-node'));
+          }
+        }, 1000);
+      }
+
+      const locFiltersContainer = document.getElementById('loc-filters');
+      const typeFiltersContainer = document.getElementById('type-filters');
+      const timelineContent = document.getElementById('timeline-content');
+      
+      let currentLocFilter = 'all';
+      let currentTypeFilter = 'all';
+
+      const typeMap = {
+        'all': 'همه رویدادها',
+        'padel': 'Padel (پدل)',
+        'tennis': 'Tennis (تنیس)',
+        'tournament': 'Tournament (تورنمنت)',
+        'league': 'League (لیگ)',
+        'vip': 'VIP Event (ویژه)'
+      };
+
+      function buildFilters() {
+        locFiltersContainer.innerHTML = `<button class="cal-filter-btn active" data-loc="all">تمام مجموعه‌ها</button>`;
+        locations.forEach(loc => {
+          locFiltersContainer.innerHTML += `<button class="cal-filter-btn" data-loc="${loc.id}">${loc.name}</button>`;
+        });
+
+        for (const [key, label] of Object.entries(typeMap)) {
+          const activeClass = key === 'all' ? 'active' : '';
+          typeFiltersContainer.innerHTML += `<button class="cal-filter-btn ${activeClass}" data-type="${key}">${label}</button>`;
+        }
+
+        document.querySelectorAll('#loc-filters .cal-filter-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('#loc-filters .cal-filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentLocFilter = e.target.getAttribute('data-loc');
+            renderTimeline();
+          });
+        });
+
+        document.querySelectorAll('#type-filters .cal-filter-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('#type-filters .cal-filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentTypeFilter = e.target.getAttribute('data-type');
+            renderTimeline();
+          });
+        });
+      }
+
+      function renderTimeline() {
+        timelineContent.innerHTML = '';
+        const filteredEvents = events.filter(ev => {
+          const matchLoc = currentLocFilter === 'all' || ev.locId === currentLocFilter;
+          const matchType = currentTypeFilter === 'all' || ev.sport === currentTypeFilter || ev.type === currentTypeFilter;
+          return matchLoc && matchType;
+        });
+
+        if (filteredEvents.length === 0) {
+          timelineContent.innerHTML = `<div style="text-align:center; color:#94A3B8; padding: 40px; border:1px dashed rgba(255,255,255,0.1); border-radius:20px;">رویدادی با این فیلترها یافت نشد.</div>`;
+          return;
+        }
+
+        const grouped = {};
+        filteredEvents.forEach(ev => {
+          if(!grouped[ev.monthIdx]) grouped[ev.monthIdx] = { name: ev.month, events: [] };
+          grouped[ev.monthIdx].events.push(ev);
+        });
+
+        const sortedMonths = Object.keys(grouped).sort((a,b) => parseInt(a) - parseInt(b));
+        let delayCounter = 0;
+
+        sortedMonths.forEach(mIdx => {
+          const monthData = grouped[mIdx];
+          const monthHtml = document.createElement('div');
+          monthHtml.className = 'timeline-month-block';
+          
+          let cardsHtml = '';
+          monthData.events.forEach(ev => {
+            const locName = locations.find(l => l.id === ev.locId)?.name || '';
+            const sportBadge = ev.sport === 'padel' ? '<span class="event-badge bg-padel">Padel</span>' : '<span class="event-badge bg-tennis">Tennis</span>';
+            const typeBadge = ev.type === 'tournament' ? '<span class="event-badge bg-tennis" style="border-color:rgba(255,255,255,0.3); color:#fff;">Tournament</span>' :
+                              ev.type === 'vip' ? '<span class="event-badge bg-vip">VIP</span>' : '<span class="event-badge" style="background:rgba(255,255,255,0.1); color:#fff;">League</span>';
+            
+            const featClass = ev.featured ? 'featured' : '';
+            const iconSvg = ev.sport === 'padel' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20M2 12h20"></path></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 0 1 8 0"></path></svg>';
+
+            cardsHtml += `
+              <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s">
+                <div class="event-date">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  ${ev.date}
+                </div>
+                <h4 class="event-title">${ev.name}</h4>
+                <div class="event-loc" style="margin-bottom: 16px;">
+                  ${iconSvg}
+                  مجموعه ${locName}
+                </div>
+                <div>
+                  ${sportBadge}
+                  ${typeBadge}
+                </div>
+              </div>
+            `;
+            delayCounter++;
+          });
+
+          monthHtml.innerHTML = `
+            <h3 class="month-header">${monthData.name}</h3>
+            <div class="events-grid">
+              ${cardsHtml}
+            </div>
+          `;
+          timelineContent.appendChild(monthHtml);
+        });
+      }
+
+      buildFilters();
+      renderTimeline();
+    });
+    </script>
+
+
   </main>
 
 
