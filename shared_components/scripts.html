@@ -1,0 +1,683 @@
+</main>
+
+  <!-- ==================== MEDIA KIT MODAL ==================== -->
+  <div id="kit-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="close-kit-btn" class="modal-close">&times;</button>
+      
+      <span class="section-tag">درخواست دریافت مدیا کیت</span>
+      <h3 class="modal-title">دریافت تعرفه‌ها و پلن‌های رسانه‌ای</h3>
+      <p class="modal-desc">فرم زیر را تکمیل نمایید تا کاتالوگ جامع فضاهای تبلیغاتی، آمار مخاطبان و جدول قیمت‌گذاری ظرف ۲۴ ساعت کاری برای شما ارسال گردد.</p>
+
+      <form id="kit-form" class="modal-form">
+        <div class="form-grid">
+          <div class="field-group">
+            <label>نام شرکت یا برند *</label>
+            <input type="text" required placeholder="مثال: سان استار، رولکس">
+          </div>
+          <div class="field-group">
+            <label>نام و نام خانوادگی مسئول *</label>
+            <input type="text" required placeholder="مثال: علی احمدی، مدیر مارکتینگ">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label>ایمیل سازمانی *</label>
+            <input type="email" required placeholder="name@company.com">
+          </div>
+          <div class="field-group">
+            <label>شماره تماس / واتس‌اپ *</label>
+            <input type="tel" required placeholder="۰۹۱۲ ...">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>حوزه ورزشی مدنظر</label>
+          <div class="radio-group">
+            <label class="radio-pill">
+              <input type="radio" name="sport" value="tennis" checked>
+              <span>تنیس</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="sport" value="padel">
+              <span>پدل</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="sport" value="both">
+              <span>هر دو حوزه (۳۶۰)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>توضیحات یا اهداف کمپین</label>
+          <textarea rows="3" placeholder="مختصری از زمان‌بندی مدنظر، بودجه تقریبی یا اهداف کلیدی برند خود را بنویسید..."></textarea>
+        </div>
+
+        <button type="submit" class="luxury-btn-solid" style="width:100%; margin-top:0.5rem;">
+          <span>ارسال درخواست و دریافت مدیا کیت</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+/**
+ * ==========================================================================
+ * SILVERIOM — CINEMATIC SCROLL-DRIVEN 3D BACKGROUND MOTION ENGINE
+ * Pure Background Ball & Racket Kinematics (Zero Foreground Clutter)
+ * ==========================================================================
+ */
+(function() {
+  // 1. Ambient WebGL Particle Lighting Canvas (No foreground meshes)
+  const canvas = document.getElementById("webgl-canvas");
+  if (canvas && typeof THREE !== "undefined") {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 10;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance"
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particleCount = 160;
+    const particleGeo = new THREE.BufferGeometry();
+    const particlePos = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      particlePos[i] = (Math.random() - 0.5) * 24;
+      particlePos[i+1] = (Math.random() - 0.5) * 18;
+      particlePos[i+2] = (Math.random() - 0.5) * 12;
+    }
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePos, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0x00F0FF,
+      size: 0.04,
+      transparent: true,
+      opacity: 0.35
+    });
+    const dustParticles = new THREE.Points(particleGeo, particleMat);
+    scene.add(dustParticles);
+
+    const cursorGlow = new THREE.PointLight(0x00F0FF, 1.8, 10);
+    cursorGlow.position.set(0, 0, 4);
+    scene.add(cursorGlow);
+
+    const particleMouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    window.addEventListener("mousemove", (e) => {
+      particleMouse.targetX = (e.clientX / window.innerWidth) * 2 - 1;
+      particleMouse.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    const clock = new THREE.Clock();
+    function animateParticles() {
+      requestAnimationFrame(animateParticles);
+      const time = clock.getElapsedTime();
+      particleMouse.x += (particleMouse.targetX - particleMouse.x) * 0.05;
+      particleMouse.y += (particleMouse.targetY - particleMouse.y) * 0.05;
+
+      dustParticles.rotation.y = time * 0.02;
+      dustParticles.rotation.x = time * 0.01;
+      cursorGlow.position.x = particleMouse.x * 6;
+      cursorGlow.position.y = particleMouse.y * 4.5;
+
+      renderer.render(scene, camera);
+    }
+    animateParticles();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  }
+
+  // 2. High-Performance Scroll-Driven & Mouse 3D Kinetic Motion for Background Racket & Ball
+  const bgImg = document.getElementById("cinematic-bg-img");
+  const bgGlow = document.querySelector(".bg-energy-glow");
+
+  let currentScrollProgress = 0;
+  let targetScrollProgress = 0;
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+  window.addEventListener("scroll", () => {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    targetScrollProgress = totalScroll > 0 ? window.scrollY / totalScroll : 0;
+  }, { passive: true });
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouse.targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  // Kinematic Keyframes: Giving dramatic 3D transformation to the ball and racket in the photo
+  function getBgKeyframe(p) {
+    let x = 0, y = 0, scale = 1.05, rotX = 0, rotY = 0, rotZ = 0, glowOpacity = 0.85;
+
+    if (p <= 0.25) {
+      // Venues Map: Shifts left and tilts upward to focus on racket core and let map shine
+      const t = p / 0.25;
+      const easeT = t * t * (3 - 2 * t);
+      x = 0 + (-65 * easeT);
+      y = 0 + (-35 * easeT);
+      scale = 1.05 + (0.08 * easeT);
+      rotX = 0 + (4.5 * easeT);
+      rotY = 0 + (-5.5 * easeT);
+      rotZ = 0 + (2.0 * easeT);
+      glowOpacity = 0.85 + 0.25 * Math.sin(t * Math.PI);
+    } else if (p <= 0.50) {
+      // Complexes: Shifts over to the right and zooms in to highlight the glowing ball
+      const t = (p - 0.25) / 0.25;
+      const easeT = t * t * (3 - 2 * t);
+      x = -65 + (140 * easeT); // -65 -> +75
+      y = -35 + (-30 * easeT); // -35 -> -65
+      scale = 1.13 + (0.09 * easeT); // 1.13 -> 1.22
+      rotX = 4.5 + (-8.5 * easeT);
+      rotY = -5.5 + (10.5 * easeT);
+      rotZ = 2.0 + (-4.0 * easeT);
+      glowOpacity = 1.0 - 0.15 * easeT;
+    } else if (p <= 0.75) {
+      // Media Inventory & Calculator: Angled dynamic depth perspective
+      const t = (p - 0.50) / 0.25;
+      const easeT = t * t * (3 - 2 * t);
+      x = 75 + (-120 * easeT); // 75 -> -45
+      y = -65 + (95 * easeT); // -65 -> +30
+      scale = 1.22 + (0.08 * easeT); // 1.22 -> 1.30
+      rotX = -4.0 + (7.5 * easeT);
+      rotY = 5.0 + (-8.0 * easeT);
+      rotZ = -2.0 + (4.0 * easeT);
+      glowOpacity = 0.85 + 0.3 * easeT;
+    } else {
+      // Contact / Finale: Majestic central framing
+      const t = (p - 0.75) / 0.25;
+      const easeT = t * t * (3 - 2 * t);
+      x = -45 + (45 * easeT);
+      y = 30 + (-30 * easeT);
+      scale = 1.30 + (-0.18 * easeT);
+      rotX = 3.5 + (-3.5 * easeT);
+      rotY = -3.0 + (3.0 * easeT);
+      rotZ = 2.0 + (-2.0 * easeT);
+      glowOpacity = 1.15 - 0.3 * easeT;
+    }
+
+    return { x, y, scale, rotX, rotY, rotZ, glowOpacity };
+  }
+
+  let curX = 0, curY = 0, curScale = 1.05, curRotX = 0, curRotY = 0, curRotZ = 0;
+
+  function renderKineticMotion() {
+    requestAnimationFrame(renderKineticMotion);
+    const time = performance.now() * 0.001;
+
+    // Smooth Lerp for Scroll Progress
+    currentScrollProgress += (targetScrollProgress - currentScrollProgress) * 0.08;
+
+    // Smooth Lerp for Mouse
+    mouse.x += (mouse.targetX - mouse.x) * 0.05;
+    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+    // Kinematic waypoint calculation
+    const kf = getBgKeyframe(currentScrollProgress);
+
+    // Dynamic harmonic breathing & floating physics for ball and racket
+    const harmonicX = Math.cos(time * 1.5) * 12;
+    const harmonicY = Math.sin(time * 1.8) * 14;
+
+    const mouseX = mouse.x * 30;
+    const mouseY = mouse.y * 22;
+    const mouseRotX = mouse.y * -3.2;
+    const mouseRotY = mouse.x * 3.2;
+
+    curX += (kf.x + harmonicX + mouseX - curX) * 0.09;
+    curY += (kf.y + harmonicY + mouseY - curY) * 0.09;
+    curScale += (kf.scale - curScale) * 0.09;
+    curRotX += (kf.rotX + mouseRotX - curRotX) * 0.09;
+    curRotY += (kf.rotY + mouseRotY - curRotY) * 0.09;
+    curRotZ += (kf.rotZ - curRotZ) * 0.09;
+
+    if (bgImg) {
+      bgImg.style.transform = `perspective(1000px) translate3d(${curX}px, ${curY}px, 0) rotateX(${curRotX}deg) rotateY(${curRotY}deg) rotateZ(${curRotZ}deg) scale(${curScale})`;
+    }
+
+    if (bgGlow) {
+      bgGlow.style.opacity = kf.glowOpacity + Math.sin(time * 3) * 0.1;
+      bgGlow.style.transform = `translate3d(${curX * 0.6}px, ${curY * 0.6}px, 0) scale(${curScale * 1.02})`;
+    }
+  }
+  renderKineticMotion();
+
+    // Smart Finder Handler & Dropdown Trigger Fix
+  const zoneSelect = document.getElementById("finder-zone");
+  const mediaSelect = document.getElementById("finder-media");
+
+  [zoneSelect, mediaSelect].forEach(select => {
+    if (select) {
+      select.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+      });
+    }
+  });
+
+  // 3. Smart Finder Handler
+  const finderBtn = document.getElementById("finder-submit-btn");
+  if (finderBtn) {
+    finderBtn.addEventListener("click", () => {
+      const zone = document.getElementById("finder-zone").value;
+      const media = document.getElementById("finder-media").value;
+      
+      if (zone !== "all") {
+        const mapSection = document.getElementById("venues-map");
+        if (mapSection) mapSection.scrollIntoView({ behavior: "smooth" });
+        selectMapZone(zone);
+      } else if (media !== "all") {
+        const invSection = document.getElementById("inventory");
+        if (invSection) invSection.scrollIntoView({ behavior: "smooth" });
+        const tab = document.querySelector(`.inventory-tab[data-media="${media}"]`);
+        if (tab) tab.click();
+      } else {
+        const mapSection = document.getElementById("venues-map");
+        if (mapSection) mapSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+
+  // 4. Official 5 Complexes Map Data & Interactive Click
+  const mapData = {
+    t10: {
+      badge: "موقعیت طلایی • شمال تهران",
+      title: "مجموعه T10 (آجودانیه)",
+      loc: "تهران، آجودانیه، مجموعه اختصاصی T10",
+      desc: "مجهز به ۷ زمین پدل حرفه‌ای و ۳ زمین تنیس استاندارد. کانون اصلی ورزش‌های راکتی شمال پایتخت با حضور نخبگان ورزشی و بالاترین میانگین قدرت خرید مخاطبان.",
+      courts: "۷ پدل + ۳ تنیس",
+      impressions: "+۹۵,۰۰۰",
+      media: "نوار تور + شیشه + استیج"
+    },
+    arena: {
+      badge: "استادیوم ملی و مسابقات • غرب تهران",
+      title: "مجموعه Arena (استادیوم آزادی)",
+      loc: "تهران، بزرگراه شیخ فضل‌الله، مجموعه ورزشی آزادی",
+      desc: "بزرگترین کانون پدل غرب پایتخت با ۸ زمین استاندارد مسابقاتی. قطب برگزاری تورنمنت‌های ملی و رسمی با پوشش تصویری و رسانه‌ای گسترده.",
+      courts: "۸ زمین پدل",
+      impressions: "+۱۱۰,۰۰۰",
+      media: "تور مسابقه + نمایشگر LED + سمپلینگ"
+    },
+    iranzamin: {
+      badge: "موقعیت مدرن و پرمخاطب • شمال‌غرب",
+      title: "مجموعه Iran Zamin (شهرک غرب)",
+      loc: "تهران، شهرک غرب، خیابان ایران‌زمین",
+      desc: "محیطی فوق‌العاده مدرن با ۶ کورت پدل تمام شیشه‌ای، میزبانی از مسابقات هفتگی و گردهمایی علاقه‌مندان به ورزش‌های راکتی در قلب شهرک غرب.",
+      courts: "۶ زمین پدل",
+      impressions: "+۷۵,۰۰۰",
+      media: "دیواره شیشه‌ای + چمن کورت + لانژ"
+    },
+    netra: {
+      badge: "مخاطبان فوق لوکس • لواسانات",
+      title: "مجموعه Netra (لواسان)",
+      loc: "تهران، منطقه ویلایی و خوش‌آب‌وهوای لواسان",
+      desc: "مجتمع اختصاصی با ۷ کورت پدل پانورامیک در فضایی ییلاقی و دلنشین. ایده‌آل برای کمپین‌های برندهای لوکس، خودرویی و سبک زندگی پریمیوم.",
+      courts: "۷ زمین پدل",
+      impressions: "+۵۰,۰۰۰",
+      media: "کورت تمام شیشه‌ای + سمپلینگ VIP"
+    },
+    asayesh: {
+      badge: "قطب ورزش‌های راکتی شمال • مازندران",
+      title: "مجموعه Asayesh (ساری)",
+      loc: "مازندران، ساری، مجموعه ورزشی آسایش",
+      desc: "نخستین و مجهزترین کانون ورزش‌های راکتی استان مازندران با ۴ کورت پدل و ۱۲ زمین تنیس مسابقاتی. پوشش مخاطبان ورزش‌دوست و توریست‌های فصلی استان با ضریب دید بالا.",
+      courts: "۴ پدل + ۱۲ تنیس",
+      impressions: "+۴۰,۰۰۰",
+      media: "برندینگ تور + دیواره شیشه‌ای"
+    }
+  };
+
+  const mapSpots = document.querySelectorAll(".map-hotspot");
+  const mapFilterBtns = document.querySelectorAll(".map-filter-btn");
+
+  function selectMapZone(zoneKey) {
+    mapSpots.forEach(s => s.classList.remove("active"));
+    mapFilterBtns.forEach(b => b.classList.remove("active"));
+
+    const activeSpot = document.querySelector(`.map-hotspot[data-zone="${zoneKey}"]`);
+    if (activeSpot) activeSpot.classList.add("active");
+
+    const activeBtn = document.querySelector(`.map-filter-btn[data-pin="${zoneKey}"]`);
+    if (activeBtn) activeBtn.classList.add("active");
+
+    const data = mapData[zoneKey];
+    if (data) {
+      const badgeEl = document.getElementById("map-spot-badge");
+      const titleEl = document.getElementById("map-spot-title");
+      const locEl = document.getElementById("map-spot-loc");
+      const descEl = document.getElementById("map-spot-desc");
+      const courtsEl = document.getElementById("map-spot-courts");
+      const impressionsEl = document.getElementById("map-spot-impressions");
+      const mediaEl = document.getElementById("map-spot-media");
+
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (titleEl) titleEl.textContent = data.title;
+      if (locEl) locEl.textContent = data.loc;
+      if (descEl) descEl.textContent = data.desc;
+      if (courtsEl) courtsEl.textContent = data.courts;
+      if (impressionsEl) impressionsEl.textContent = data.impressions;
+      if (mediaEl) mediaEl.textContent = data.media;
+    }
+  }
+
+  mapSpots.forEach(spot => {
+    spot.addEventListener("click", () => {
+      const zone = spot.dataset.zone;
+      selectMapZone(zone);
+    });
+  });
+
+  mapFilterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const pin = btn.dataset.pin;
+      if (pin === "all") {
+        mapFilterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectMapZone("t10");
+      } else {
+        selectMapZone(pin);
+      }
+    });
+  });
+
+  // 5. Interactive Media Inventory Tabs & Blueprint Dynamic Highlights
+  const inventoryData = {
+    net: {
+      tag: "موقعیت: نوار مرکزی و پایه‌های تور کورت",
+      title: "برندینگ نوار و پایه‌های تور",
+      desc: "این موقعیت دقیقاً در نقطه ثقل دید مخاطبان، داور و زاویه اصلی پخش مسابقات قرار دارد. بیش از ۹۴٪ زمان مسابقه، نگاه تماشاگران به طور مستقیم از روی تور عبور می‌کند.",
+      m1: "۹۴٪", m1_lbl: "نرخ مکث نگاه",
+      m2: "+۱۸۰K", m2_lbl: "ایمپرشن ماهانه",
+      m3: "دوطرفه", m3_lbl: "قالب اجرا",
+      bp_class: "active-net",
+      bp_ids: ["bp-net"]
+    },
+    glass: {
+      tag: "موقعیت: دیواره‌های شیشه‌ای پیرامون کورت",
+      title: "دیواره‌های پانورامیک شیشه‌ای",
+      desc: "پوشش سراسری شیشه‌های پشت و بغل کورت با وینیل‌های شفاف یک‌طرفه با وضوح فوق‌العاده بالا. دید مستقیم برای تماشاگران حاضر در باشگاه و لنز دوربین‌های فیلم‌برداری.",
+      m1: "۸۸٪", m1_lbl: "وضوح دید شیشه",
+      m2: "+۲۲۰K", m2_lbl: "ایمپرشن ماهانه",
+      m3: "تک‌جهته", m3_lbl: "قالب اجرا",
+      bp_class: "active-glass",
+      bp_ids: ["bp-glass-left", "bp-glass-right"]
+    },
+    turf: {
+      tag: "موقعیت: چمن کورت پدل",
+      title: "درج لوگو در چمن کورت",
+      desc: "درج لوگوی برند با استفاده از چمن مصنوعی رنگی یا برش‌های باکیفیت بالا در زیر تور و باکس‌های سرویس. بیشترین نرخ نمایش در زاویه دید مستقیم دوربین مرکزی.",
+      m1: "۸۵٪", m1_lbl: "ثبت در ذهن",
+      m2: "+۱۴۰K", m2_lbl: "ایمپرشن ماهانه",
+      m3: "چاپ لیزری", m3_lbl: "قالب اجرا",
+      bp_class: "active-turf",
+      bp_ids: ["bp-turf-center-1", "bp-turf-center-2"]
+    },
+    digital: {
+      tag: "موقعیت: مانیتورها و LEDهای محیطی",
+      title: "نمایشگرهای دیجیتال و LED",
+      desc: "نمایش تیزرهای ویدیویی و موشن گرافیک‌های پویا بر روی نمایشگرهای هوشمند حاشیه کورت‌ها، همگام‌سازی شده با لحظات حساس بازی و تغییرات زنده امتیازات.",
+      m1: "۹۲٪", m1_lbl: "نرخ جذب مخاطب",
+      m2: "+۳۰۰K", m2_lbl: "ایمپرشن ماهانه",
+      m3: "موشن/ویدیو", m3_lbl: "فرمت محتوا",
+      bp_class: "active-digital",
+      bp_ids: ["bp-digital-1", "bp-digital-2", "bp-digital-3"]
+    },
+    sampling: {
+      tag: "موقعیت: ورودی کورت‌ها و لانژ VIP",
+      title: "سمپلینگ و پذیرایی اختصاصی",
+      desc: "ایجاد کانترهای نمونه‌سازی، دمو و سمپلینگ محصولات در لابی‌های مجلل و لانژ‌های تفریحی پرتردد کلوپ‌ها جهت ارتباط رودررو و صمیمی با مخاطبان کارآفرین و مدیر ارشد.",
+      m1: "۹۵٪", m1_lbl: "نرخ تعامل",
+      m2: "+۴۵K", m2_lbl: "مخاطب حضوری",
+      m3: "تجربه‌ای", m3_lbl: "نوع تعامل",
+      bp_class: "active-sampling",
+      bp_ids: ["bp-sampling"]
+    }
+  };
+
+  const invTabs = document.querySelectorAll(".inventory-tab");
+  
+  function updateInventoryDetails(mediaKey) {
+    const data = inventoryData[mediaKey];
+    if (!data) return;
+
+    // 1. Text transition fade out/in using GSAP
+    gsap.to(".media-text-content, .detail-metrics-grid", {
+      opacity: 0,
+      y: -10,
+      duration: 0.25,
+      onComplete: () => {
+        document.getElementById("media-tag").textContent = data.tag;
+        document.getElementById("media-title").textContent = data.title;
+        document.getElementById("media-desc").textContent = data.desc;
+        document.getElementById("media-m1").textContent = data.m1;
+        document.getElementById("media-m1-lbl").textContent = data.m1_lbl;
+        document.getElementById("media-m2").textContent = data.m2;
+        document.getElementById("media-m2-lbl").textContent = data.m2_lbl;
+        document.getElementById("media-m3").textContent = data.m3;
+        document.getElementById("media-m3-lbl").textContent = data.m3_lbl;
+
+        gsap.to(".media-text-content, .detail-metrics-grid", {
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // 2. Blueprint interactive SVG updates
+    // Reset all blueprint elements
+    document.querySelectorAll(".bp-element").forEach(el => {
+      el.classList.remove("active-net", "active-glass", "active-turf", "active-digital", "active-sampling");
+    });
+
+    // Add active classes
+    if (data.bp_ids && data.bp_class) {
+      data.bp_ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add(data.bp_class);
+      });
+    }
+  }
+
+  invTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      invTabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const media = tab.dataset.media;
+      updateInventoryDetails(media);
+    });
+  });
+
+  // 6. Campaign Planner Calculator
+  let plannerState = {
+    factor: 1.0,
+    venues: 3,
+    venuesText: "۳ باشگاه شاخص (T10 آجودانیه، Arena آزادی، Iran Zamin شهرک غرب)",
+    courtsCount: "۲۱ کورت پدل و تنیس",
+    months: 3,
+    monthsText: "۳ ماهه (فصل فعال مسابقات)"
+  };
+
+  function updatePlannerCalc() {
+    const baseMonthlyPerVenue = 40000;
+    const total = Math.round(plannerState.venues * baseMonthlyPerVenue * plannerState.months * plannerState.factor);
+    const formatted = "+" + (total / 1000).toLocaleString("fa-IR") + ",۰۰۰";
+    
+    const impEl = document.getElementById("calc-impression");
+    const vTextEl = document.getElementById("calc-venues-text");
+    const cCountEl = document.getElementById("calc-courts-count");
+    const dTextEl = document.getElementById("calc-duration-text");
+
+    if (impEl) impEl.textContent = formatted;
+    if (vTextEl) vTextEl.textContent = plannerState.venuesText;
+    if (cCountEl) cCountEl.textContent = plannerState.courtsCount;
+    if (dTextEl) dTextEl.textContent = plannerState.monthsText;
+  }
+
+  const goalPills = document.querySelectorAll("#planner-goal-pills .planner-pill");
+  goalPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      goalPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      plannerState.factor = parseFloat(pill.dataset.factor);
+      updatePlannerCalc();
+    });
+  });
+
+  const venuesPills = document.querySelectorAll("#planner-venues-pills .planner-pill");
+  venuesPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      venuesPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      plannerState.venues = parseInt(pill.dataset.venues);
+      plannerState.venuesText = pill.dataset.vname;
+      plannerState.courtsCount = plannerState.venues === 1 ? "۷ کورت پدل" : (plannerState.venues === 3 ? "۲۱ کورت پدل و تنیس" : "۳۲ کورت در ۵ مجتمع سراسری");
+      updatePlannerCalc();
+    });
+  });
+
+  const durPills = document.querySelectorAll("#planner-dur-pills .planner-pill");
+  durPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      durPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      plannerState.months = parseInt(pill.dataset.months);
+      plannerState.monthsText = plannerState.months === 1 ? "۱ ماهه (کمپین متمرکز)" : (plannerState.months === 3 ? "۳ ماهه (فصل مسابقات)" : "۱۲ ماهه (پوشش سالانه)");
+      updatePlannerCalc();
+    });
+  });
+
+  // 7. Lead Capture Modal Drawer
+  const kitModal = document.getElementById("kit-modal");
+  const openKitBtns = document.querySelectorAll("#open-kit-btn, .open-kit-trigger");
+  const closeKitBtn = document.getElementById("close-kit-modal");
+
+  openKitBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      if (btn.tagName === "A" || btn.closest("a")) return;
+      e.preventDefault();
+      if (kitModal) kitModal.classList.add("active");
+    });
+  });
+
+  if (closeKitBtn) {
+    closeKitBtn.addEventListener("click", () => {
+      if (kitModal) kitModal.classList.remove("active");
+    });
+  }
+
+  if (kitModal) {
+    kitModal.addEventListener("click", (e) => {
+      if (e.target === kitModal) {
+        kitModal.classList.remove("active");
+      }
+    });
+  }
+
+  // 8. Mobile Menu Toggle & Sticky Scroll Header
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeMobileMenu = document.getElementById("close-mobile-menu");
+  const mobileBackdrop = document.getElementById("mobile-backdrop");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+  const mainNav = document.getElementById("main-nav");
+
+  // Sticky Scroll Handler
+  if (mainNav) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        mainNav.classList.add("scrolled");
+      } else {
+        mainNav.classList.remove("scrolled");
+      }
+    });
+  }
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener("click", () => {
+      mobileMenu.classList.add("active");
+    });
+  }
+
+  const closeActions = [closeMobileMenu, mobileBackdrop];
+  closeActions.forEach(btn => {
+    if (btn && mobileMenu) {
+      btn.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+      });
+    }
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (mobileMenu) mobileMenu.classList.remove("active");
+    });
+  });
+})();
+</script>
+
+<!-- Featured Reservation Modal -->
+<div id="mainReservationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 18, 0.85); backdrop-filter: blur(24px); z-index: 9999; align-items: center; justify-content: center; direction: rtl; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;">
+  <div style="background: rgba(11, 19, 38, 0.95); border: 1.5px solid #CCFF00; border-radius: 32px; padding: 40px; width: 90%; max-width: 450px; position: relative; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(204, 255, 0, 0.2);">
+    
+    <button onclick="document.getElementById('mainReservationModal').style.display = 'none'" style="position: absolute; top: 24px; left: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+    </button>
+    
+    <h3 style="color: #CCFF00; font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">درخواست رزرو رسانه</h3>
+    <p id="modalMainTargetTitle" style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;"></p>
+    <div style="display: inline-block; background: rgba(204,255,0,0.1); border: 1px solid rgba(204,255,0,0.3); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px;">
+      <p id="modalMainTargetCode" style="color: #CCFF00; font-size: 0.95rem; font-weight: 700; margin: 0; font-family: monospace;"></p>
+    </div>
+    
+    <form id="mainReserveForm" onsubmit="submitMainReservation(event)" style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <label style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 10px; display: block; font-weight: 700;">شماره همراه</label>
+        <input type="tel" required placeholder="مثال: 09123456789" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#CCFF00'; this.style.boxShadow='0 0 15px rgba(204,255,0,0.1)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none'">
+      </div>
+      <div>
+        <label style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 10px; display: block; font-weight: 700;">نام برند یا شرکت</label>
+        <input type="text" required placeholder="نام برند شما" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#CCFF00'; this.style.boxShadow='0 0 15px rgba(204,255,0,0.1)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none'">
+      </div>
+      <input type="hidden" id="mainReserveCode">
+      <button type="submit" style="width: 100%; padding: 18px; margin-top: 10px; background: #CCFF00; color: #020617; font-weight: 900; font-size: 1.15rem; border: none; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important; box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 25px rgba(204,255,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(204,255,0,0.2)'">
+        ثبت درخواست رزرو
+      </button>
+    </form>
+
+    <div id="mainReserveSuccess" style="display: none; text-align: center; margin-top: 30px; margin-bottom: 20px;">
+      <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.15); border: 2px solid rgba(16, 185, 129, 0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);">
+        <svg width="40" height="40" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+      </div>
+      <h4 style="color: #10B981; font-size: 1.4rem; font-weight: 900; margin-bottom: 12px;">درخواست با موفقیت ثبت شد</h4>
+      <p style="color: #94A3B8; font-size: 1.05rem; line-height: 1.6;">اطلاعات شما در سیستم ثبت شد. کارشناسان سیلوریوم به زودی با شما تماس خواهند گرفت.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openMainReservationModal(code, title) {
+  document.getElementById('modalMainTargetTitle').innerText = title;
+  document.getElementById('modalMainTargetCode').innerText = "کد سازه: " + code;
+  document.getElementById('mainReserveCode').value = code;
+  document.getElementById('mainReserveForm').style.display = 'flex';
+  document.getElementById('mainReserveSuccess').style.display = 'none';
+  document.getElementById('mainReservationModal').style.display = 'flex';
+}
+
+function submitMainReservation(e) {
+  e.preventDefault();
+  // Here we would normally send data to backend. For now just show success.
+  document.getElementById('mainReserveForm').style.display = 'none';
+  document.getElementById('mainReserveSuccess').style.display = 'block';
+}
+</script>

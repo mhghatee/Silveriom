@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1224" />
+      <stop offset="100%" stop-color="#030814" />
+    </linearGradient>
+    
+    <!-- Neon Green S Gradient -->
+    <linearGradient id="sGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ccff00" />
+      <stop offset="50%" stop-color="#b6ff00" />
+      <stop offset="100%" stop-color="#00f0ff" />
+    </linearGradient>
+    
+    <!-- Subtle Inner Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Rounded Squircle Box (20% Corner Radius) -->
+  <rect x="16" y="16" width="480" height="480" rx="96" ry="96" fill="url(#bgGrad)" stroke="#1a2b4c" stroke-width="6" />
+
+  <!-- Modern Stylized "S" Emblem Group -->
+  <g filter="url(#neonGlow)">
+    <!-- Top Arc of S -->
+    <path d="M 340 180 C 340 130, 290 110, 240 110 C 180 110, 140 145, 140 195 C 140 260, 340 250, 340 320 C 340 375, 295 402, 235 402 C 170 402, 130 365, 130 320" 
+          fill="none" 
+          stroke="url(#sGrad)" 
+          stroke-width="52" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+          
+    <!-- Decorative Glowing Accent Dot -->
+    <circle cx="365" cy="135" r="18" fill="#ccff00" />
+  </g>
+</svg>

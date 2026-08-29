@@ -1,0 +1,23 @@
+# Ignore all python scripts used for building/fixing
+*.py
+
+# Ignore backup and temp files
+*.zip
+*.bak
+*.tmp
+*.log
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
+*.json
+extracted_*
+
+# Explicitly ignore deploy scripts which might contain passwords
+deploy*.py
+
+# Allow specific essential files if needed (none for now)
+.agents/
+homepage.html
+live_about_us.html
+media-planner.html
