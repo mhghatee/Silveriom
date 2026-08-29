@@ -7883,14 +7883,24 @@ body {
         display: none !important;
       }
       .sidebar-filter-card {
-        padding: 14px !important;
-        border-radius: 20px !important;
+        padding: 8px !important;
+        border-radius: 100px !important; /* Pill shape */
+        width: 92% !important; /* Center it */
+        margin-left: auto !important;
+        margin-right: auto !important;
         margin-bottom: 24px !important;
         position: sticky;
-        top: 60px; /* Below luxury-nav */
+        top: 66px; /* Below luxury-nav */
         z-index: 900;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        border: 1px solid rgba(204, 255, 0, 0.25) !important;
       }
+      
+      .sidebar-filter-card input[type="text"] {
+        border: none !important; /* Remove inner border to blend with pill */
+        background: transparent !important; /* Let the wrapper background show */
+      }
+
       .search-and-toggle-container {
         margin-bottom: 0 !important;
       }
@@ -7898,21 +7908,27 @@ body {
         display: flex !important;
         align-items: center;
         justify-content: center;
+        gap: 6px;
         background: rgba(204, 255, 0, 0.12) !important;
         border: 1px solid rgba(204, 255, 0, 0.4) !important;
         color: #CCFF00 !important;
-        border-radius: 24px !important;
+        border-radius: 100px !important;
         padding: 0 18px !important;
+        font-family: 'YekanBakh', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
         cursor: pointer;
         transition: 0.3s;
       }
       .desktop-always-visible {
         display: none;
       }
-      .desktop-always-visible.show-filters {
+            .desktop-always-visible.show-filters {
         display: block;
         margin-top: 16px;
         padding-top: 16px;
+        padding-left: 10px;
+        padding-right: 10px;
         border-top: 1px solid rgba(255,255,255,0.1);
         animation: fadeInDown 0.3s ease;
       }
@@ -8360,7 +8376,8 @@ body {
             <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: #94A3B8;"></i>
           </div>
           <button id="mobileFilterToggleBtn" class="mobile-filter-btn" onclick="document.getElementById('mobileFilterWrapper').classList.toggle('show-filters')" style="display: none;">
-            <i data-lucide="filter" style="width: 16px; height: 16px;"></i>
+            <i data-lucide="sliders-horizontal" style="width: 16px; height: 16px;"></i>
+            <span>فیلتر</span>
           </button>
         </div>
 
