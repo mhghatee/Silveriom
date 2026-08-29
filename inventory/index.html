@@ -7878,6 +7878,49 @@ body {
         padding: 8px 16px !important;
       }
 
+            /* --- REDESIGNED MOBILE FILTER BAR --- */
+      .sidebar-filter-card .desktop-only-header {
+        display: none !important;
+      }
+      .sidebar-filter-card {
+        padding: 14px !important;
+        border-radius: 20px !important;
+        margin-bottom: 24px !important;
+        position: sticky;
+        top: 60px; /* Below luxury-nav */
+        z-index: 900;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .search-and-toggle-container {
+        margin-bottom: 0 !important;
+      }
+      .mobile-filter-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: rgba(204, 255, 0, 0.12) !important;
+        border: 1px solid rgba(204, 255, 0, 0.4) !important;
+        color: #CCFF00 !important;
+        border-radius: 24px !important;
+        padding: 0 18px !important;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .desktop-always-visible {
+        display: none;
+      }
+      .desktop-always-visible.show-filters {
+        display: block;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        animation: fadeInDown 0.3s ease;
+      }
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       /* 3. Sidebar Filter Area */
       .sidebar-filter-card {
         padding: 16px !important;
@@ -8300,7 +8343,7 @@ body {
       <!-- 1. RIGHT SIDEBAR FILTER PANEL -->
       <aside class="sidebar-filter-card">
         
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
+        <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
           <div style="display: flex; align-items: center; gap: 8px; color: #CCFF00; font-weight: 900; font-size: 15px;">
             <i data-lucide="sliders-horizontal" style="width: 17px; height: 17px;"></i>
             <span>فیلتر هوشمند رسانه‌ها</span>
@@ -8310,13 +8353,18 @@ body {
           </span>
         </div>
 
-        <!-- Search Input inside Sidebar -->
-        <div style="position: relative; margin-bottom: 18px;">
-          <input type="text" id="sidebarSearchInput" onkeyup="filterAssets()" placeholder="جستجوی کد سازه یا نام..." style="width: 100%; background: rgba(7, 13, 27, 0.9); border: 1px solid rgba(204, 255, 0, 0.4); color: #ffffff; padding: 9px 12px 9px 36px; border-radius: 24px; font-size: 12.5px; outline: none;">
-          <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: #94A3B8;"></i>
+        <!-- Search Input & Mobile Filter Toggle -->
+        <div class="search-and-toggle-container" style="display: flex; gap: 10px; margin-bottom: 18px;">
+          <div style="position: relative; flex: 1;">
+            <input type="text" id="sidebarSearchInput" onkeyup="filterAssets()" placeholder="جستجوی کد سازه یا نام..." style="width: 100%; background: rgba(7, 13, 27, 0.9); border: 1px solid rgba(204, 255, 0, 0.4); color: #ffffff; padding: 9px 12px 9px 36px; border-radius: 24px; font-size: 12.5px; outline: none;">
+            <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: #94A3B8;"></i>
+          </div>
+          <button id="mobileFilterToggleBtn" class="mobile-filter-btn" onclick="document.getElementById('mobileFilterWrapper').classList.toggle('show-filters')" style="display: none;">
+            <i data-lucide="filter" style="width: 16px; height: 16px;"></i>
+          </button>
         </div>
 
-
+        <div id="mobileFilterWrapper" class="desktop-always-visible">
         <!-- ACCORDION 3: VENUES CHECKBOXES (۵ مجموعه) -->
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -8386,6 +8434,7 @@ body {
           <i data-lucide="rotate-ccw" style="width: 13px; height: 13px;"></i>
           <span>بازنشانی فیلترها</span>
         </button>
+        </div> <!-- End of mobileFilterWrapper -->
 
       </aside>
 
