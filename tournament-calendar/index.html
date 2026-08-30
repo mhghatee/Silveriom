@@ -5889,6 +5889,153 @@ section {
       </div>
     </section>
 
+
+    <!-- ==================== MONTH SPOTLIGHT ==================== -->
+    <style>
+      .spotlight-section {
+        padding: 100px 0;
+        position: relative;
+        z-index: 10;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        background: linear-gradient(to bottom, rgba(0,240,255,0.02), transparent);
+      }
+      .month-selector-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scrollbar-width: none;
+      }
+      .month-selector-wrapper::-webkit-scrollbar { display: none; }
+      .spotlight-months {
+        display: inline-flex;
+        gap: 10px;
+        background: rgba(255,255,255,0.02);
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+      .sp-month-btn {
+        background: transparent;
+        border: none;
+        color: #94A3B8;
+        padding: 12px 28px;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .sp-month-btn:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.05);
+      }
+      .sp-month-btn.active {
+        background: rgba(0,240,255,0.1);
+        color: #00F0FF;
+        box-shadow: inset 0 0 15px rgba(0,240,255,0.2);
+        border: 1px solid rgba(0,240,255,0.3);
+      }
+      .spotlight-panel {
+        background: rgba(6,18,40,0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0,240,255,0.2);
+        border-radius: 32px;
+        padding: 60px 50px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        box-shadow: inset 0 0 40px rgba(0,240,255,0.05), 0 20px 40px rgba(0,0,0,0.4);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+      @media(max-width: 991px) {
+        .spotlight-panel { grid-template-columns: 1fr 1fr; padding: 40px; }
+        .sp-stat { border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 30px; margin-bottom: 10px; }
+        .sp-stat:nth-child(3), .sp-stat:nth-child(4) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+      }
+      @media(max-width: 576px) {
+        .spotlight-panel { grid-template-columns: 1fr; }
+        .sp-stat { border-bottom: 1px solid rgba(255,255,255,0.05) !important; padding-bottom: 25px !important; margin-bottom: 25px !important; }
+        .sp-stat:last-child { border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+      }
+      .sp-stat {
+        border-left: 1px solid rgba(255,255,255,0.05);
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .sp-stat:last-child {
+        border-left: none;
+        padding-left: 0;
+      }
+      .sp-label {
+        color: #94A3B8;
+        font-size: 0.95rem;
+        display: block;
+        margin-bottom: 15px;
+      }
+      .sp-value-large {
+        color: #fff;
+        font-size: 4rem;
+        font-weight: 900;
+        line-height: 1;
+        font-family: 'Cinzel', serif;
+        text-shadow: 0 0 20px rgba(255,255,255,0.2);
+      }
+      .sp-value-text {
+        color: #00F0FF;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.7;
+      }
+      .sp-value-highlight {
+        color: #CCFF00;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.7;
+        text-transform: uppercase;
+      }
+    </style>
+
+    <section id="month-spotlight" class="section spotlight-section">
+      <div class="editorial-wide-container">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 class="luxury-title" style="font-size: 2.2rem; font-weight: 800; font-family: 'Cinzel', serif;">INTERACTIVE SEASON EXPLORER</h2>
+          <p style="color: #94A3B8; font-size: 1.05rem; margin-top: 10px;">انتخاب ماه و مشاهده وضعیت اختصاصی رویدادها</p>
+        </div>
+        
+        <div class="month-selector-wrapper">
+          <div id="spotlight-months" class="spotlight-months">
+            <!-- JS injects buttons -->
+          </div>
+        </div>
+
+        <div id="spotlight-panel" class="spotlight-panel">
+          <div class="sp-stat">
+            <span class="sp-label">تعداد کل رویدادها</span>
+            <strong id="sp-count" class="sp-value-large">۰</strong>
+          </div>
+          <div class="sp-stat">
+            <span class="sp-label">مجموعه‌های فعال</span>
+            <strong id="sp-locs" class="sp-value-text">-</strong>
+          </div>
+          <div class="sp-stat">
+            <span class="sp-label">انواع رویداد</span>
+            <strong id="sp-types" class="sp-value-highlight">-</strong>
+          </div>
+          <div class="sp-stat" style="border-right: none;">
+            <span class="sp-label">مهم‌ترین مسابقات</span>
+            <strong id="sp-top" class="sp-value-text" style="color: #fff;">-</strong>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
 <section id="timeline-section" class="section timeline-section" style="padding: 60px 0 120px; position: relative; z-index: 10;">
       <div class="editorial-wide-container">
         
@@ -6321,6 +6468,61 @@ section {
             heatmapGrid.innerHTML += `<div class="hm-cell ${levelClass}" title="${loc.name} - ${monthNames[i-1]} | ${tooltip}">${dotHtml}</div>`;
           }
         });
+      }
+
+      
+      // Build Month Spotlight
+      const spotlightMonths = document.getElementById('spotlight-months');
+      const spPanel = document.getElementById('spotlight-panel');
+      if(spotlightMonths && spPanel) {
+        const mNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+        
+        mNames.forEach((m, idx) => {
+          const btn = document.createElement('button');
+          btn.className = `sp-month-btn ${idx === 0 ? 'active' : ''}`;
+          btn.innerText = m;
+          btn.onclick = (e) => {
+            document.querySelectorAll('.sp-month-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            // Animate Out
+            spPanel.style.opacity = '0';
+            spPanel.style.transform = 'translateY(15px)';
+            
+            setTimeout(() => {
+              updateSpotlight(idx + 1);
+              // Animate In
+              spPanel.style.opacity = '1';
+              spPanel.style.transform = 'translateY(0)';
+            }, 300);
+          };
+          spotlightMonths.appendChild(btn);
+        });
+        
+        function updateSpotlight(monthIdx) {
+          const mEvents = events.filter(e => e.monthIdx === monthIdx);
+          document.getElementById('sp-count').innerText = mEvents.length;
+          
+          if(mEvents.length === 0) {
+            document.getElementById('sp-locs').innerText = '-';
+            document.getElementById('sp-types').innerText = '-';
+            document.getElementById('sp-top').innerText = '-';
+          } else {
+            const locIds = [...new Set(mEvents.map(e => e.locId))];
+            const locNames = locIds.map(id => locations.find(l=>l.id===id).name).join('، ');
+            document.getElementById('sp-locs').innerText = locNames;
+            
+            const types = [...new Set(mEvents.map(e => e.type))];
+            document.getElementById('sp-types').innerText = types.map(t => t.toUpperCase()).join('، ');
+            
+            let topEvs = mEvents.filter(e => e.featured);
+            if(topEvs.length === 0) topEvs = mEvents.slice(0, 2);
+            document.getElementById('sp-top').innerText = topEvs.map(e => e.name).join(' | ');
+          }
+        }
+        
+        // Initial Load
+        updateSpotlight(1);
       }
 
       buildFilters();
