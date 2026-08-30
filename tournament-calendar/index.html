@@ -5560,7 +5560,193 @@ section {
       </div>
     </section>
 
-    <!-- ==================== EVENT NETWORK MAP ==================== -->
+    
+    <!-- ==================== FEATURED TOURNAMENTS ==================== -->
+    <style>
+      .featured-section {
+        padding: 120px 0 80px;
+        position: relative;
+        z-index: 10;
+      }
+      .featured-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 50px;
+      }
+      @media(max-width: 991px) {
+        .featured-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .feat-card {
+        position: relative;
+        height: 500px;
+        border-radius: 30px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.05);
+        background: #02040a;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 40px;
+      }
+      .feat-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(204,255,0,0.3);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(204,255,0,0.05);
+      }
+      .feat-card.blue:hover {
+        border-color: rgba(0,240,255,0.3);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(0,240,255,0.05);
+      }
+      .fc-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.6;
+        transition: opacity 0.5s ease;
+      }
+      .feat-card:hover .fc-bg {
+        opacity: 0.8;
+      }
+      .fc-gradient {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(to top, rgba(2,4,10,1) 0%, rgba(2,4,10,0.7) 40%, transparent 100%);
+      }
+      .fc-content {
+        position: relative;
+        z-index: 3;
+      }
+      .fc-loc {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      .feat-card.blue .fc-loc {
+        color: #00F0FF;
+        border-color: rgba(0,240,255,0.3);
+        background: rgba(0,240,255,0.05);
+      }
+      .feat-card.neon .fc-loc {
+        color: #CCFF00;
+        border-color: rgba(204,255,0,0.3);
+        background: rgba(204,255,0,0.05);
+      }
+      .fc-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .fc-date {
+        color: #94A3B8;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .fc-desc {
+        color: #E2E8F0;
+        font-size: 1rem;
+        line-height: 1.6;
+        opacity: 0.8;
+        margin-bottom: 30px;
+        max-width: 90%;
+      }
+      .fc-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: gap 0.3s ease;
+      }
+      .feat-card:hover .fc-cta {
+        gap: 12px;
+      }
+      .fc-cta svg {
+        transition: transform 0.3s ease;
+      }
+      .feat-card.neon:hover .fc-cta { color: #CCFF00; }
+      .feat-card.blue:hover .fc-cta { color: #00F0FF; }
+    </style>
+
+    <section id="featured-tournaments" class="section featured-section">
+      <div class="editorial-wide-container">
+        
+        <div class="section-title-center" style="text-align: center;">
+          <h2 class="luxury-title" style="font-size: 2.5rem; font-weight: 900; font-family: 'Cinzel', serif; letter-spacing: 2px;">FEATURED TOURNAMENTS</h2>
+          <p style="color: #94A3B8; font-size: 1.1rem; margin-top: 15px;">مهم‌ترین رویدادهای شبکه سیلوریوم در سال ۱۴۰۵</p>
+        </div>
+
+        <div class="featured-grid">
+          
+          <!-- Card 1 -->
+          <div class="feat-card blue">
+            <div class="fc-bg" style="background-image: radial-gradient(circle at top right, rgba(0,240,255,0.15), transparent 60%);"></div>
+            <div class="fc-gradient"></div>
+            <div class="fc-content">
+              <div class="fc-loc">ASAYESH COMPLEX</div>
+              <h3 class="fc-title">جام بهاره سیلوریوم</h3>
+              <div class="fc-date">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                ۱۵ تا ۲۰ فروردین ۱۴۰۵
+              </div>
+              <p class="fc-desc">افتتاحیه فصل جدید با حضور برترین راکت‌به‌دستان ایران در مجموعه مجلل آسایش، همراه با پوشش کامل دیجیتال و حضور برندهای لوکس.</p>
+              <div class="fc-cta">
+                <span>مشاهده رویداد</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feat-card neon">
+            <div class="fc-bg" style="background-image: radial-gradient(circle at top left, rgba(204,255,0,0.12), transparent 60%);"></div>
+            <div class="fc-gradient"></div>
+            <div class="fc-content">
+              <div class="fc-loc">ARENA VIP</div>
+              <h3 class="fc-title">گرند اسلم آرنا</h3>
+              <div class="fc-date">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                ۱۵ تا ۲۲ بهمن ۱۴۰۵
+              </div>
+              <p class="fc-desc">بزرگترین رویداد پدل سال با حضور برندهای برتر، دهکده اسپانسرها و جوایز ویژه. نقطه اوج ترافیک مخاطبان حرفه‌ای.</p>
+              <div class="fc-cta">
+                <span>مشاهده رویداد</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+<!-- ==================== EVENT NETWORK MAP ==================== -->
     <section id="network-map" class="section network-section" style="padding: 100px 0; position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); background: radial-gradient(circle at 50% 50%, rgba(0,240,255,0.03) 0%, transparent 60%);">
       <div class="editorial-wide-container">
         <div style="text-align: center; margin-bottom: 60px;">
@@ -5669,6 +5855,134 @@ section {
         #network-info-panel { bottom: 10px !important; right: 10px !important; left: 10px !important; width: auto !important; padding: 15px !important; }
       }
     </style>
+
+    
+    <!-- ==================== FOR BRANDS ==================== -->
+    <style>
+      .brands-section {
+        padding: 120px 0;
+        position: relative;
+        z-index: 10;
+        background: linear-gradient(to bottom, transparent, rgba(204,255,0,0.02) 100%);
+        border-top: 1px solid rgba(255,255,255,0.05);
+      }
+      .brand-planning-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+      }
+      @media(max-width: 991px) {
+        .brand-planning-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .bp-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 24px;
+        padding: 50px 40px;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .bp-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .bp-card:hover {
+        background: rgba(255,255,255,0.04);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      }
+      .bp-card:hover::before {
+        opacity: 1;
+      }
+      .bp-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 30px;
+        transition: all 0.4s ease;
+      }
+      .bp-card:hover .bp-icon {
+        transform: scale(1.1);
+      }
+      .bp-card:nth-child(1) .bp-icon { color: #00F0FF; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.1); }
+      .bp-card:nth-child(2) .bp-icon { color: #CCFF00; background: rgba(204,255,0,0.05); border: 1px solid rgba(204,255,0,0.1); }
+      .bp-card:nth-child(3) .bp-icon { color: #D4AF37; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.1); }
+      
+      .bp-title {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+      }
+      .bp-desc {
+        color: #94A3B8;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      .bp-cta-wrapper {
+        text-align: center;
+      }
+    </style>
+
+    <section id="for-brands" class="section brands-section">
+      <div class="editorial-wide-container">
+        
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+          <h2 style="font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.3;">برنامه‌ریزی برند در قلب رویدادهای سال</h2>
+          <p style="color: #94A3B8; font-size: 1.15rem; line-height: 1.8;">با حضور استراتژیک در معتبرترین تورنمنت‌های تنیس و پدل ایران، برند خود را در نقطه اوج توجه مخاطبان ممتاز قرار دهید.</p>
+        </div>
+
+        <div class="brand-planning-grid">
+          
+          <div class="bp-card">
+            <div class="bp-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+            </div>
+            <h3 class="bp-title">High Traffic Moments</h3>
+            <p class="bp-desc">شناسایی و سرمایه‌گذاری روی زمان‌های اوج حضور ورزشکاران و تماشاگران برای اجرای کمپین‌های سمپلینگ و پروموشن.</p>
+          </div>
+
+          <div class="bp-card">
+            <div class="bp-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+            </div>
+            <h3 class="bp-title">Tournament Planning</h3>
+            <p class="bp-desc">انتخاب استراتژیک مسابقات برای اسپانسریگ، برندینگ زمین (Court) و حضور پررنگ در مراسم اهدای جوایز.</p>
+          </div>
+
+          <div class="bp-card">
+            <div class="bp-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="bp-title">Annual Media Planning</h3>
+            <p class="bp-desc">طراحی کمپین‌های یکپارچه و طولانی‌مدت از طریق تابلوهای دیجیتال، پوشش رسانه‌ای و سوشال مدیا.</p>
+          </div>
+
+        </div>
+
+        <div class="bp-cta-wrapper">
+          <a href="./media-planner" class="luxury-btn-solid" style="padding: 16px 40px; font-size: 1.1rem;">
+            <span>شروع برنامه‌ریزی کمپین</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
 
     <script>
     document.addEventListener("DOMContentLoaded", () => {
