@@ -6397,7 +6397,7 @@ section {
             const iconSvg = ev.sport === 'padel' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20M2 12h20"></path></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 0 1 8 0"></path></svg>';
 
             cardsHtml += `
-              <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s">
+              <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s; cursor:pointer;" onclick="openEventDrawer(${ev.id})">
                 <div class="event-date">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                   ${ev.date}
@@ -6527,6 +6527,48 @@ section {
 
       buildFilters();
       renderTimeline();
+
+    // Event Drawer Logic
+    window.openEventDrawer = function(eventId) {
+      const ev = events.find(e => e.id === eventId);
+      if(!ev) return;
+      
+      document.getElementById('dr-title').innerText = ev.name;
+      document.getElementById('dr-date').innerText = ev.date;
+      document.getElementById('dr-loc').innerText = locations.find(l=>l.id===ev.locId)?.name || '-';
+      document.getElementById('dr-sport').innerText = ev.sport === 'padel' ? 'پدل (Padel)' : 'تنیس (Tennis)';
+      
+      let typeText = ev.type;
+      if (ev.type === 'tournament') typeText = 'تورنمنت آزاد';
+      if (ev.type === 'league') typeText = 'لیگ دوره‌ای';
+      if (ev.type === 'vip') typeText = 'مسابقات VIP';
+      document.getElementById('dr-type').innerText = typeText;
+      
+      const badge = document.getElementById('dr-badge');
+      badge.className = 'dr-badge ' + ev.sport;
+      badge.innerText = ev.sport + ' ' + ev.type;
+      
+      // Dynamic Description
+      const desc = ev.featured 
+        ? `این مسابقات به عنوان یکی از مهم‌ترین رویدادهای تقویم سالانه سیلوریوم شناخته می‌شود. حضور بازیکنان سطح اول، تماشاگران ویژه (VIP) و پوشش گسترده رسانه‌ای دیجیتال، فضای بی‌نظیری برای برندینگ و اجرای کمپین‌های ۳۶۰ درجه فراهم می‌کند.` 
+        : `یک رویداد استاندارد و پرهیجان که میزبان ورزشکاران حرفه‌ای و علاقه‌مندان به این رشته است. این مسابقات فرصتی عالی برای دیده شدن برندها در بطن یک رویداد پویا و هدفمند ارائه می‌دهد.`;
+      document.getElementById('dr-desc').innerText = desc;
+      
+      document.getElementById('event-drawer').style.right = '0';
+      document.getElementById('event-drawer-overlay').style.opacity = '1';
+      document.getElementById('event-drawer-overlay').style.pointerEvents = 'auto';
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeEventDrawer = function() {
+      document.getElementById('event-drawer').style.right = '-100%';
+      document.getElementById('event-drawer-overlay').style.opacity = '0';
+      document.getElementById('event-drawer-overlay').style.pointerEvents = 'none';
+      document.body.style.overflow = '';
+    };
+    
+    document.getElementById('event-drawer-overlay')?.addEventListener('click', closeEventDrawer);
+
     });
     </script>
 
@@ -7215,6 +7257,106 @@ function submitMainReservation(e) {
   document.getElementById('mainReserveSuccess').style.display = 'block';
 }
 </script>
+
+
+  <!-- ==================== EVENT DETAILS DRAWER ==================== -->
+  <style>
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+      z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    }
+    .drawer-container {
+      position: fixed; top: 0; bottom: 0; right: -100%; width: 100%; max-width: 480px;
+      background: rgba(4, 10, 20, 0.95); border-left: 1px solid rgba(255,255,255,0.1);
+      z-index: 9999; transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto; box-shadow: -20px 0 50px rgba(0,0,0,0.5);
+    }
+    .drawer-close {
+      position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      cursor: pointer; transition: all 0.3s ease; z-index: 10;
+    }
+    .drawer-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); color: #00F0FF; }
+    .drawer-content { padding: 80px 40px 40px; }
+    .dr-badge {
+      display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing:1px;
+    }
+    .dr-badge.padel { background: rgba(0,240,255,0.1); color: #00F0FF; border: 1px solid rgba(0,240,255,0.3); }
+    .dr-badge.tennis { background: rgba(204,255,0,0.1); color: #CCFF00; border: 1px solid rgba(204,255,0,0.3); }
+    .dr-title { color: #fff; font-size: 2.2rem; font-weight: 900; line-height: 1.3; margin-bottom: 15px; }
+    .dr-date-row { display: flex; align-items: center; gap: 8px; color: #00F0FF; font-weight: 600; font-size: 1rem; margin-bottom: 30px; }
+    .dr-meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px;
+    }
+    .dr-meta-box { display: flex; flex-direction: column; gap: 5px; }
+    .dr-meta-label { color: #94A3B8; font-size: 0.85rem; }
+    .dr-meta-value { color: #fff; font-size: 1.05rem; font-weight: 700; text-transform: capitalize; }
+    .dr-section-title { color: #fff; font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; }
+    .dr-desc-text { color: #94A3B8; font-size: 1rem; line-height: 1.8; margin-bottom: 40px; text-align: justify; }
+    .dr-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .dr-tags span {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px; border-radius: 20px; color: #E2E8F0; font-size: 0.85rem; font-weight: 600;
+      transition: all 0.3s; cursor: default;
+    }
+    .dr-tags span:hover { background: rgba(255,255,255,0.1); border-color: rgba(204,255,0,0.3); color: #fff; }
+    @media(max-width: 576px) { .drawer-content { padding: 60px 25px 30px; } }
+  </style>
+
+  <div id="event-drawer-overlay" class="drawer-overlay"></div>
+  <div id="event-drawer" class="drawer-container">
+    <button class="drawer-close" onclick="closeEventDrawer()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    
+    <div class="drawer-content">
+      <span id="dr-badge" class="dr-badge"></span>
+      <h2 id="dr-title" class="dr-title">نام رویداد</h2>
+      
+      <div class="dr-date-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span id="dr-date">تاریخ رویداد</span>
+      </div>
+
+      <div class="dr-meta-grid">
+        <div class="dr-meta-box">
+          <span class="dr-meta-label">مجموعه میزبان</span>
+          <strong id="dr-loc" class="dr-meta-value">-</strong>
+        </div>
+        <div class="dr-meta-box">
+          <span class="dr-meta-label">رشته ورزشی</span>
+          <strong id="dr-sport" class="dr-meta-value">-</strong>
+        </div>
+        <div class="dr-meta-box">
+          <span class="dr-meta-label">نوع برگزاری</span>
+          <strong id="dr-type" class="dr-meta-value">-</strong>
+        </div>
+      </div>
+
+      <div class="dr-desc-box">
+        <h3 class="dr-section-title">درباره رویداد</h3>
+        <p id="dr-desc" class="dr-desc-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+      </div>
+
+      <div class="dr-opp-box">
+        <h3 class="dr-section-title" style="color:#CCFF00; font-family:'Cinzel', serif; letter-spacing:1px; margin-bottom:20px;">MEDIA & BRAND OPPORTUNITIES</h3>
+        <div class="dr-tags">
+          <span>Court Branding</span>
+          <span>LED Screens</span>
+          <span>Net Branding</span>
+          <span>Sampling</span>
+          <span>Digital Coverage</span>
+          <span>VIP Experience</span>
+        </div>
+      </div>
+      
+      <div style="margin-top:50px; text-align:center;">
+        <a href="./contact-us" class="luxury-btn-solid" style="width:100%; padding:16px; justify-content:center; box-shadow: 0 10px 30px rgba(204,255,0,0.2);">درخواست مشاوره اسپانسرینگ</a>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
