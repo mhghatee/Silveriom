@@ -23,26 +23,40 @@
     }
 
     // 2. Sync About Us Team
-    const teamGrid = document.getElementById('dynamic-team-grid');
-    if (teamGrid && db.aboutUs && db.aboutUs.team && db.aboutUs.team.length > 0) {
-      teamGrid.innerHTML = '';
+    const sliderContainer = document.getElementById('slider');
+    if (sliderContainer && db.aboutUs && db.aboutUs.team && db.aboutUs.team.length > 0) {
+      sliderContainer.innerHTML = '';
+      
       db.aboutUs.team.forEach(member => {
-        teamGrid.innerHTML += `
-        <div class="glass-card square-team-card" style="border-radius: 28px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); overflow: hidden; padding: 18px;">
-          <div style="width: 100%; aspect-ratio: 1 / 1; border-radius: 22px; overflow: hidden; position: relative; margin-bottom: 20px;">
-            <img src="${member.image ? (member.image.startsWith('http') || member.image.startsWith('/') ? member.image : '/panel/' + member.image) : 'https://via.placeholder.com/600x600?text=No+Image'}" alt="${member.name}" class="square-team-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 65%, rgba(7,10,17,0.85) 100%);"></div>
-            <span style="position: absolute; bottom: 12px; right: 12px; background: #CCFF00; color: #070A11; font-weight: 900; font-size: 11px; padding: 4px 12px; border-radius: 12px;">${member.role}</span>
+        let imgSrc = member.image ? (member.image.startsWith('http') || member.image.startsWith('/') ? member.image : '/panel/' + member.image) : 'https://via.placeholder.com/600x600?text=No+Image';
+        
+        sliderContainer.innerHTML += `
+          <div class="team-card-custom">
+            <div class="card__view">
+              <img class="shot" src="${imgSrc}" alt="${member.name}">
+              <img class="shot shot--mono" src="${imgSrc}" alt="${member.name}">
+              <span class="card__plate">
+                <b>${member.name}</b>
+                <i style="color: #CCFF00;">${member.role}</i>
+              </span>
+            </div>
           </div>
-          <div style="text-align: center; padding: 0 8px 8px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #ffffff; margin-bottom: 4px;">${member.name}</h3>
-            <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">
-              ${member.bio || ''}
-            </p>
-          </div>
-        </div>
         `;
       });
+
+      // Update dots
+      const progressContainer = document.getElementById('progress');
+      if (progressContainer) {
+        progressContainer.innerHTML = '';
+        db.aboutUs.team.forEach((_, i) => {
+          progressContainer.innerHTML += `<div class="progress-dot ${i === 1 ? 'active' : ''}"></div>`;
+        });
+      }
+
+      // Re-initialize GSAP slider logic globally if defined
+      if (typeof window.initTeamSlider === 'function') {
+        window.initTeamSlider();
+      }
     }
 
     // 3. Form Submission Interceptors (Kit Modal & Planner Forms)
