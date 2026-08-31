@@ -70,17 +70,16 @@ function switchAuthTab(tab) {
 
   if (tab === 'mediakit') {
     document.title = 'مدیاکیت سیلوریوم';
-    if (authTabsContainer) authTabsContainer.style.display = 'none';
+    if (authTabsContainer) authTabsContainer.style.display = 'flex';
 
     if (btnMediakit) {
-      btnMediakit.style.display = 'none';
+      
       btnMediakit.classList.add('active');
     }
     if (formMediakit) formMediakit.classList.add('active');
     if (subtitleText) subtitleText.textContent = 'پورتال اختصاصی دریافت کاتالوگ و مدیاکیت سیلوریوم';
   } else {
     if (authTabsContainer) authTabsContainer.style.display = 'flex';
-    if (btnMediakit) btnMediakit.style.display = 'none';
 
     if (tab === 'login') {
       document.title = 'ورود به پنل مدیریت | سیلوریوم';
