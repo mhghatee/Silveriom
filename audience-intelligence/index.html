@@ -2036,7 +2036,9 @@ body {
 }
 
 
+
 </style>
+
 <style>
 
 
@@ -7401,7 +7403,37 @@ section {
     font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
   }
 </style>
+
+<style>
+/* Responsive Cyber Padel Court - MUST BE LAST TO OVERRIDE */
+@media (max-width: 991px) {
+  .padel-court-wrapper {
+    transform: scale(0.7) !important;
+    margin: -40px auto -80px auto !important;
+  }
+  .court-stat { padding: 15px 20px !important; }
+  .court-stat .pct { font-size: 2.8rem !important; }
+  .court-stat .title { font-size: 1.2rem !important; }
+}
+
+@media (max-width: 576px) {
+  .padel-court-wrapper {
+    transform: scale(0.45) !important;
+    margin: -100px auto -140px auto !important;
+  }
+  .court-stat { padding: 24px 28px !important; min-width: 260px !important; }
+  .court-stat .pct { font-size: 4.2rem !important; }
+  .court-stat .title { font-size: 1.8rem !important; }
+  
+  /* Ensure stats stay fully visible by pulling them closer or making them wider */
+  .stat-1 { left: -90% !important; top: -10% !important; }
+  .stat-2 { right: -90% !important; top: -10% !important; }
+  .stat-3 { left: -90% !important; bottom: -10% !important; }
+  .stat-4 { right: -90% !important; bottom: -10% !important; }
+}
+</style>
 </head>
+
 
 
 <body>
