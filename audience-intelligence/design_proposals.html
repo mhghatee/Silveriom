@@ -172,121 +172,82 @@
 
 
 
-<!-- PADEL QUANTUM PRELOADER STYLE -->
+
+
+
+<!-- CYBER TENNIS SOLAR LOADER STYLE -->
 <style>
   #silveriom-loader {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
-    background: #010610; z-index: 9999999;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    position: fixed; inset: 0; z-index: 9999999;
+    background: #010610 url('https://silveriom.ir/assets/solar_loader.jpg') center/cover no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
     overflow: hidden;
   }
-  #silveriom-loader::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%, rgba(182,255,0,0.02) 100%);
-    pointer-events: none;
-  }
   .sl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
-
-  .pq-container { position: relative; display: flex; align-items: center; justify-content: center; transform: scale(1.1); }
-
-  .pq-core {
-    position: absolute; width: 150px; height: 150px; border-radius: 50%;
-    background-color: #061121;
-    background-image: radial-gradient(rgba(182,255,0,0.15) 2px, transparent 2px);
-    background-size: 12px 12px;
-    box-shadow: 0 0 40px rgba(182, 255, 0, 0.15), inset 0 0 30px rgba(0,0,0,0.9);
-    display: flex; align-items: center; justify-content: center; z-index: 10;
-    animation: pq-sweetspot-pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .pq-core-text {
-    color: #B6FF00; font-weight: 900; letter-spacing: 3px; font-size: 1.2rem;
-    text-shadow: 0 0 15px rgba(182,255,0,0.6); font-family: 'YekanBakh', Tahoma, sans-serif;
-    background: rgba(1, 6, 16, 0.85); padding: 5px 15px; border-radius: 20px;
-    backdrop-filter: blur(4px);
-  }
-  .pq-impact {
-    position: absolute; width: 100%; height: 100%; border-radius: 50%;
-    box-shadow: 0 0 50px #B6FF00; opacity: 0;
-    animation: pq-flash 3s infinite;
-  }
-
-  .pq-ring { position: absolute; border-radius: 50%; border: 1px dashed rgba(182,255,0,0.3); }
-  .pq-ring-1 { width: 240px; height: 240px; border-width: 2px; animation: pq-spin 4s linear infinite; }
-  .pq-ring-2 { width: 360px; height: 360px; border-width: 1px; border-style: dotted; animation: pq-spinRev 7s linear infinite; border-color: rgba(255,255,255,0.3); }
-  .pq-ring-3 { width: 500px; height: 500px; border: 1px dashed rgba(182,255,0,0.15); animation: pq-spin 12s linear infinite; }
-
-  .pq-ball {
-    position: absolute; width: 12px; height: 12px; background: #fff; border-radius: 50%;
-    box-shadow: 0 0 15px #fff, 0 0 30px #B6FF00;
-  }
-  .pq-trail-1 {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
-    box-shadow: -10px 0 10px rgba(182,255,0,0.8), -25px 0 15px rgba(182,255,0,0.4), -40px 0 20px rgba(182,255,0,0.1);
-  }
-  .pq-trail-2 {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
-    box-shadow: 10px -10px 10px rgba(182,255,0,0.8), 25px -25px 15px rgba(182,255,0,0.4);
-  }
-  .pq-trail-3 {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
-    box-shadow: 0 -10px 10px rgba(182,255,0,0.8), 0 -25px 15px rgba(182,255,0,0.4);
-  }
-
-  .pq-ring-1 .pq-ball { top: -6px; left: 50%; transform: translateX(-50%); }
-  .pq-ring-2 .pq-ball { bottom: -5px; left: 20%; background: #B6FF00; }
-  .pq-ring-3 .pq-ball { top: 50%; right: -6px; transform: translateY(-50%); background: #B6FF00; }
-
-  @keyframes pq-spin { 100% { transform: rotate(360deg); } }
-  @keyframes pq-spinRev { 100% { transform: rotate(-360deg); } }
-  @keyframes pq-sweetspot-pulse {
-    from { transform: scale(1); box-shadow: 0 0 40px rgba(182,255,0,0.1), inset 0 0 30px rgba(0,0,0,0.9); }
-    to { transform: scale(1.05); box-shadow: 0 0 80px rgba(182,255,0,0.5), inset 0 0 10px rgba(0,0,0,0.7); }
-  }
-  @keyframes pq-flash {
-    0%, 90% { opacity: 0; transform: scale(1); }
-    95% { opacity: 0.8; transform: scale(1.2); }
-    100% { opacity: 0; transform: scale(1.5); }
-  }
   
-  @media (max-width: 600px) {
-    .pq-container { transform: scale(0.7); }
+  /* Dynamic Progress Bar aligned with UI in image */
+  .cl-progress-wrapper {
+    position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+    width: 25%; max-width: 320px; height: 6px;
+    background: rgba(255,255,255,0.1); border-radius: 10px;
+    overflow: hidden;
+  }
+  .cl-progress-fill {
+    height: 100%; width: 0%; background: #B6FF00;
+    box-shadow: 0 0 10px #B6FF00;
+    animation: cl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  @keyframes cl-fill { 0% { width: 0%; } 100% { width: 100%; } }
+
+  /* Dynamic Moving Balls Overlay */
+  .cl-orbit {
+    position: absolute; top: 50%; left: 50%;
+    border-radius: 50%; border: 1px solid transparent;
+    transform: translate(-50%, -50%);
+  }
+  .cl-orbit-1 { width: 45vw; height: 45vw; animation: cl-spin 4s linear infinite; }
+  .cl-orbit-2 { width: 65vw; height: 65vw; animation: cl-spinRev 7s linear infinite; }
+  
+  .cl-ball {
+    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #B6FF00;
+    box-shadow: 0 0 20px #B6FF00, -15px 0 25px rgba(182,255,0,0.9);
+  }
+  .cl-orbit-2 .cl-ball { bottom: -8px; top: auto; box-shadow: 0 0 20px #B6FF00, 15px 0 25px rgba(182,255,0,0.9); }
+
+  @keyframes cl-spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+  @keyframes cl-spinRev { 0% { transform: translate(-50%, -50%) rotate(360deg); } 100% { transform: translate(-50%, -50%) rotate(0deg); } }
+
+  @media (max-width: 768px) {
+    .cl-progress-wrapper { width: 50%; bottom: 9.5%; }
+    .cl-orbit-1 { width: 80vw; height: 80vw; }
+    .cl-orbit-2 { width: 120vw; height: 120vw; }
+    #silveriom-loader { background-position: center; }
   }
 </style>
 
 </head>
 <body>
 
-<!-- PADEL QUANTUM PRELOADER DOM & JS -->
+<!-- CYBER TENNIS SOLAR LOADER DOM & JS -->
 <div id="silveriom-loader">
-  <div class="pq-container">
-    <div class="pq-ring pq-ring-3"><div class="pq-ball"><div class="pq-trail-3"></div></div></div>
-    <div class="pq-ring pq-ring-2"><div class="pq-ball"><div class="pq-trail-2"></div></div></div>
-    <div class="pq-ring pq-ring-1"><div class="pq-ball"><div class="pq-trail-1"></div></div></div>
-    
-    <div class="pq-core">
-      <div class="pq-impact"></div>
-      <div class="pq-core-text">SILVERIOM</div>
-    </div>
-  </div>
+  <div class="cl-orbit cl-orbit-1"><div class="cl-ball"></div></div>
+  <div class="cl-orbit cl-orbit-2"><div class="cl-ball"></div></div>
+  <div class="cl-progress-wrapper"><div class="cl-progress-fill"></div></div>
 </div>
 <script>
   (function() {
     const hideLoader = () => {
-      const loader = document.getElementById('silveriom-loader');
-      if(loader && !loader.classList.contains('sl-hidden')) {
-        loader.classList.add('sl-hidden');
-        setTimeout(() => loader.remove(), 600);
-      }
+      const l = document.getElementById('silveriom-loader');
+      if(l) l.classList.add('sl-hidden');
     };
     
-    // Normal Hide
-    window.addEventListener('load', () => setTimeout(hideLoader, 200));
-    
-    // FAIL-SAFE: Force hide after 3 seconds even if images hang!
-    setTimeout(hideLoader, 3000);
-    
-    // SPA Transitions
+    // Hide exactly when progress bar animation finishes (2.5s) + slight buffer
+    setTimeout(hideLoader, 2700);
+    window.addEventListener('load', () => { setTimeout(hideLoader, 2700); });
+
     document.addEventListener('DOMContentLoaded', () => {
       document.body.addEventListener('click', (e) => {
         const a = e.target.closest('a');
@@ -296,18 +257,27 @@
           const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
           if (isInternal) {
             e.preventDefault();
-            const loader = document.getElementById('silveriom-loader');
-            if(loader) {
-              loader.classList.remove('sl-hidden');
-              document.body.appendChild(loader); // Bring to very front
+            const l = document.getElementById('silveriom-loader');
+            if(l) {
+              l.classList.remove('sl-hidden');
+              const fill = l.querySelector('.cl-progress-fill');
+              if(fill) {
+                fill.style.animation = 'none';
+                fill.offsetHeight; /* trigger reflow */
+                fill.style.animation = 'cl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+              }
+              document.body.appendChild(l);
             }
-            setTimeout(() => { window.location.href = href; }, 350);
+            setTimeout(() => { window.location.href = href; }, 2600);
           }
         }
       });
     });
   })();
 </script>
+
+
+
 
 
 
