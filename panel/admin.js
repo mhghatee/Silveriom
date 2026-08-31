@@ -141,13 +141,13 @@ function logoutUser() {
 
 async function fetchState() {
   try {
-    let res = await fetch('/api/data');
+    let res = await fetch('api.php?action=load');
     if (!res.ok) throw new Error('API offline');
     state = await res.json();
     renderAll();
   } catch (err) {
     try {
-      let resStatic = await fetch('data/silveriom_db.json');
+      let resStatic = await fetch('../data/silveriom_db.json');
       if (resStatic.ok) {
         state = await resStatic.json();
         renderAll();
@@ -171,6 +171,7 @@ function renderAll() {
   renderAboutUs();
   renderContactUs();
   renderPortfolioPage();
+  renderAudience();
   renderHomePage();
   renderMediaPlanner();
   if (window.lucide) lucide.createIcons();
@@ -210,6 +211,7 @@ function switchTab(tabId) {
       'tab-venues': 'مدیریت باشگاه‌ها و کورت‌ها',
       'tab-media': 'سازه‌ها و رسانه‌های تبلیغاتی',
       'tab-portfolio': 'مدیریت صفحه نمونه‌کارها',
+      'tab-audience': 'مدیریت آمار و هوش مخاطب',
       'tab-planner': 'مدیریت مدیاپلنر و پکیج‌های تبلیغاتی',
       'tab-about-us': 'مدیریت کامل صفحه درباره ما',
       'tab-contact-us': 'مدیریت کامل صفحه تماس با ما',
@@ -1731,4 +1733,88 @@ function showToast(msg, type = 'info') {
     toast.style.transform = 'translateY(20px)';
     setTimeout(() => toast.remove(), 300);
   }, 4000);
+}
+
+function renderAudience() {
+  const aud = state.audience || {};
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.value = val || '';
+  };
+  setVal('aud-title', aud.title);
+  setVal('aud-subtitle', aud.subtitle);
+  setVal('aud-stat1-label', aud.stat1?.label);
+  setVal('aud-stat1-value', aud.stat1?.value);
+  setVal('aud-stat2-label', aud.stat2?.label);
+  setVal('aud-stat2-value', aud.stat2?.value);
+}
+
+// Attach event listener for Audience Form
+document.addEventListener('DOMContentLoaded', () => {
+  // wait for elements to exist
+  setTimeout(() => {
+    const audForm = document.getElementById('audience-form');
+    if (audForm) {
+      audForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        state.audience = {
+          title: document.getElementById('aud-title').value,
+          subtitle: document.getElementById('aud-subtitle').value,
+          stat1: { label: document.getElementById('aud-stat1-label').value, value: document.getElementById('aud-stat1-value').value },
+          stat2: { label: document.getElementById('aud-stat2-label').value, value: document.getElementById('aud-stat2-value').value }
+        };
+        await saveStateToServer();
+        showToast('اطلاعات هوش مخاطب ذخیره شد', 'success');
+      });
+    }
+  }, 500);
+});
+
+// === GLOBAL PERSISTENCE ENGINE ===
+window.saveStateToServer = async function() {
+  try {
+    await fetch('api.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'save_all', state: state })
+    });
+  } catch (e) {
+    console.error("Save failed", e);
+  }
+};
+
+// Intercept all UI actions that update state (by overriding fetch)
+// When any of the original fetch('/api/...') fails, they update the state locally in catch block.
+// We intercept all those original fetches, wait for them to finish (and run their catch blocks),
+// and THEN we save the global state to api.php!
+const originalFetch = window.fetch;
+window.fetch = async function(url, options) {
+  const result = await originalFetch(url, options);
+  
+  if (typeof url === 'string' && url.startsWith('/api/')) {
+    // Wait for the caller's catch block to finish mutating the state
+    setTimeout(() => {
+      window.saveStateToServer();
+    }, 100);
+  }
+  
+  return result;
+};
+
+// Also attach to delete buttons
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.danger') || e.target.closest('[onclick^="delete"]')) {
+    setTimeout(() => window.saveStateToServer(), 200);
+  }
+});
+
+function clearSystemCache() {
+  if(confirm("آیا از پاک کردن کش سیستم اطمینان دارید؟ این کار اطلاعات ذخیره نشده را پاک می‌کند.")){
+    localStorage.clear();
+    sessionStorage.clear();
+    showToast("کش سیستم پاک شد. در حال بارگذاری مجدد...", "info");
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 1500);
+  }
 }
