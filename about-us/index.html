@@ -17867,8 +17867,72 @@ section {
       }
     }
   </style>
+
+    <!-- SILVERIOM GLOBAL LOADER STYLE -->
+    <style>
+      #silveriom-loader {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
+        background: #010610; z-index: 9999999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+      }
+      .sl-spinner {
+        width: 48px; height: 48px;
+        border: 3px solid rgba(182, 255, 0, 0.1);
+        border-top-color: #B6FF00;
+        border-radius: 50%;
+        animation: sl-spin 1s linear infinite;
+        box-shadow: 0 0 20px rgba(182, 255, 0, 0.4);
+        margin-bottom: 1rem;
+      }
+      .sl-text {
+        color: #B6FF00; font-family: 'YekanBakh', Tahoma, sans-serif;
+        font-size: 0.85rem; font-weight: 800; letter-spacing: 3px;
+        animation: sl-pulse 1.2s ease-in-out infinite alternate;
+      }
+      @keyframes sl-spin { to { transform: rotate(360deg); } }
+      @keyframes sl-pulse { from { opacity: 0.4; box-shadow: 0 0 0px #b6ff00; } to { opacity: 1; text-shadow: 0 0 15px rgba(182,255,0,0.6); } }
+      .sl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+    </style>
+
 </head>
 <body class="luxury-body">
+
+<!-- SILVERIOM GLOBAL LOADER DOM & JS -->
+<div id="silveriom-loader">
+  <div class="sl-spinner"></div>
+  <div class="sl-text">SILVERIOM</div>
+</div>
+<script>
+  // Hide loader on full page load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('silveriom-loader');
+      if(loader) loader.classList.add('sl-hidden');
+    }, 150);
+  });
+  
+  // Intercept link clicks for smooth transitions
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      
+      const href = a.getAttribute('href');
+      // Only intercept internal links that are not anchors, not JS, and not opening in new tab
+      if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
+        const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
+        if (isInternal) {
+          e.preventDefault();
+          const loader = document.getElementById('silveriom-loader');
+          if(loader) loader.classList.remove('sl-hidden');
+          setTimeout(() => { window.location.href = href; }, 350);
+        }
+      }
+    });
+  });
+</script>
+
 
 
 
@@ -18453,8 +18517,8 @@ section {
     </div>
 
     <!-- 5. TEAM MEMBERS WITH STYLISH 1:1 SQUARE PHOTO CARDS -->
-    <div style="margin-bottom: 110px;">
-      <div style="text-align: center; margin-bottom: 60px;">
+    <div style="margin-bottom: 110px; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(12px); padding: 50px 0 20px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.05);">
+      <div style="text-align: center; margin-bottom: 20px;">
         <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">👥 تیم ارشد سیلوریوم</span>
         <h2 style="font-size: 2.4rem; font-weight: 900; color: #ffffff; margin-bottom: 14px;">
           معرفی اعضای <span style="color: #CCFF00; text-shadow: 0 0 25px rgba(204,255,0,0.5);">رهبری و دپارتمان‌ها</span>
@@ -18469,7 +18533,7 @@ section {
           align-items: center;
           width: 100%;
           overflow-x: hidden;
-          padding: 40px 0;
+          padding: 10px 0;
           background-color: transparent;
         }
         .slider-container {
@@ -18490,6 +18554,11 @@ section {
           overflow: hidden;
           cursor: pointer;
           box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+          transition: box-shadow 0.4s ease;
+        }
+        .team-card-custom:hover {
+          box-shadow: 0 15px 50px rgba(204, 255, 0, 0.45), 0 0 25px rgba(204, 255, 0, 0.2) !important;
+          
         }
         .card__view {
           position: relative;
