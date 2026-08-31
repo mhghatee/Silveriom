@@ -7406,6 +7406,12 @@ section {
 
 <style>
 /* Responsive Cyber Padel Court - MUST BE LAST TO OVERRIDE */
+/* Fix Line Colors Globally */
+.stat-1 { color: #CCFF00 !important; }
+.stat-2 { color: #00F0FF !important; }
+.stat-3 { color: #a855f7 !important; }
+.stat-4 { color: #f43f5e !important; }
+
 @media (max-width: 991px) {
   .padel-court-wrapper {
     transform: scale(0.7) !important;
@@ -7422,12 +7428,11 @@ section {
 
 @media (max-width: 576px) {
   .padel-court-wrapper {
-    /* Scale down the entire graphic uniformly so it fits on mobile */
-    transform: scale(0.40) !important;
-    margin: -110px auto -150px auto !important;
+    /* Slightly larger scale per user request (0.40 -> 0.50) */
+    transform: scale(0.50) !important;
+    margin: -80px auto -120px auto !important;
   }
   
-  /* Reset any previous compensations to let them scale naturally */
   .court-stat { 
     padding: 12px 18px !important; 
     min-width: 160px !important; 
@@ -7435,10 +7440,11 @@ section {
   .court-stat .pct { font-size: 2rem !important; }
   .court-stat .title { font-size: 0.9rem !important; }
   
-  .stat-1 { left: -60% !important; top: 5% !important; }
-  .stat-2 { right: -60% !important; top: 5% !important; }
-  .stat-3 { left: -60% !important; bottom: 5% !important; }
-  .stat-4 { right: -60% !important; bottom: 5% !important; }
+  /* Bring stats slightly closer to fit the larger scale */
+  .stat-1 { left: -50% !important; top: 5% !important; }
+  .stat-2 { right: -50% !important; top: 5% !important; }
+  .stat-3 { left: -50% !important; bottom: 5% !important; }
+  .stat-4 { right: -50% !important; bottom: 5% !important; }
 }
 </style>
 </head>
