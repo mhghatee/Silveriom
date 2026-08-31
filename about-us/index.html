@@ -18704,101 +18704,206 @@ section {
 
     <!-- 6. BRAND TRUST WALL (CLIENTS LOGO GRID) -->
     <style>
-      .partner-card {
-        border-radius: 20px; 
-        background: rgba(11, 19, 38, 0.72); 
-        backdrop-filter: blur(16px); 
-        border: 1px solid rgba(255, 255, 255, 0.1); 
-        overflow: hidden; 
-        display: flex; 
-        flex-direction: column; 
-        height: 100%; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      /* iOS 26 Apple Ultra Glassmorphism */
+      .ios26-card {
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 
+            0 30px 60px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        position: relative;
       }
-      .partner-card:hover {
-        border-color: rgba(204, 255, 0, 0.6);
-        box-shadow: 0 15px 40px rgba(204, 255, 0, 0.15);
-        transform: translateY(-8px);
+      .ios26-card:hover {
+        transform: scale(1.02) translateY(-10px);
+        box-shadow: 
+            0 40px 80px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 40px rgba(204, 255, 0, 0.15);
+        border: 1px solid rgba(204, 255, 0, 0.3);
       }
-      .partner-card .banner {
-        width: 100%; 
-        height: 120px; 
-        background-size: cover; 
-        background-position: center; 
-        border-bottom: 2px solid rgba(204, 255, 0, 0.3);
-        transition: all 0.4s ease;
+      
+      .ios26-banner {
+        width: 100%;
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
       }
-      .partner-card:hover .banner {
-        border-bottom-color: #CCFF00;
+      .ios26-banner::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0; height: 50%;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       }
-      .partner-card h3 {
-        color: #ffffff; 
-        font-weight: 900; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px; 
-        letter-spacing: 1px; 
-        transition: all 0.3s ease;
+
+      .ios26-content {
+        padding: 30px 24px;
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
       }
-      .partner-card:hover h3 {
+      
+      .ios26-title {
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+      }
+      
+      .ios26-desc {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      
+      .ios26-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      
+      .ios26-date {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      
+      /* Status Badge */
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .status-live {
+        background: rgba(204, 255, 0, 0.1);
         color: #CCFF00;
-        text-shadow: 0 0 15px rgba(204,255,0,0.4);
+        border: 1px solid rgba(204, 255, 0, 0.2);
+        box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+      }
+      .status-finished {
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      /* Glowing Dot for Live */
+      .dot-live {
+        width: 8px;
+        height: 8px;
+        background-color: #CCFF00;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #CCFF00, 0 0 20px #CCFF00;
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse {
+        0% { transform: scale(0.95); opacity: 0.7; }
+        100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 15px #CCFF00, 0 0 30px #CCFF00; }
+      }
+      
+      .dot-finished {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
       }
     </style>
-    <div style="margin-bottom: 100px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">🤝 اعتماد برندهای برتر</span>
-        <h2 style="font-size: 2.2rem; font-weight: 900; color: #ffffff; margin-bottom: 12px;">
-          <span style="color: #CCFF00;">برندهای همکار سیلوریوم</span>
+    
+    <div style="margin-bottom: 120px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; display: block;">🤝 برندهای معتبر</span>
+        <h2 style="font-size: 2.6rem; font-weight: 900; color: #ffffff; margin-bottom: 16px;">
+          همکاری با <span style="color: #CCFF00; text-shadow: 0 0 20px rgba(204,255,0,0.3);">برندهای پیشرو</span>
         </h2>
-        <p style="color: #94A3B8; font-size: 15px;">گوشه‌ای از برندهای پیشرو کشور که اکران تبلیغاتی خود را به سیلوریوم سپرده‌اند</p>
+        <p style="color: #94A3B8; font-size: 1.05rem;">گوشه‌ای از پروژه‌ها و اکران‌های تبلیغاتی سیلوریوم</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
         
-        <div class="partner-card">
-          <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=600&q=80');"></div>
-          <div style="padding: 24px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <h3>SUNSTAR</h3>
-            <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">پوشش سراسری اکران‌های سه‌بعدی و کمپین‌های بیلبوردی هوشمند</p>
+        <!-- Brand 1: Crystal -->
+        <div class="ios26-card">
+          <div class="ios26-banner" style="background-image: url('/assets/img/brands/crystal.jpg');"></div>
+          <div class="ios26-content">
+            <h3 class="ios26-title">Crystal</h3>
+            <p class="ios26-desc">طراحی و اجرای کمپین تبلیغاتی ۳۶۰ درجه با تمرکز بر اکران‌های سه‌بعدی و هویت بصری لاکچری.</p>
+            <div class="ios26-meta">
+              <span class="ios26-date">شهریور ۱۴۰۵</span>
+              <span class="status-badge status-live">
+                <span class="dot-live"></span> LIVE
+              </span>
+            </div>
           </div>
         </div>
 
-        <div class="partner-card">
-          <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');"></div>
-          <div style="padding: 24px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <h3>PMN GROUP</h3>
-            <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">همکاری در توسعه راهکارهای نوین تبلیغاتی و فضاهای تعاملی</p>
+        <!-- Brand 2: SunStar -->
+        <div class="ios26-card">
+          <div class="ios26-banner" style="background-image: url('/assets/img/brands/sunstar.jpg');"></div>
+          <div class="ios26-content">
+            <h3 class="ios26-title">SunStar</h3>
+            <p class="ios26-desc">اکران گسترده بیلبوردهای تعاملی در سراسر کشور جهت معرفی محصولات جدید تابستانی.</p>
+            <div class="ios26-meta">
+              <span class="ios26-date">تیر ۱۴۰۵</span>
+              <span class="status-badge status-finished">
+                <span class="dot-finished"></span> FINISHED
+              </span>
+            </div>
           </div>
         </div>
 
-        <div class="partner-card">
-          <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80');"></div>
-          <div style="padding: 24px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <h3>AFTAB MEDIA</h3>
-            <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">مدیریت یکپارچه اکران‌های دیجیتال و پایش بازخورد مخاطبان</p>
+        <!-- Brand 3: Mammut Khodro -->
+        <div class="ios26-card">
+          <div class="ios26-banner" style="background-image: url('/assets/img/brands/mammut.jpg');"></div>
+          <div class="ios26-content">
+            <h3 class="ios26-title">Mammut Khodro</h3>
+            <p class="ios26-desc">کمپین رونمایی خودرو با استفاده از سازه‌های نورپردازی شده خاص و تکنولوژی واقعیت افزوده.</p>
+            <div class="ios26-meta">
+              <span class="ios26-date">مرداد ۱۴۰۵</span>
+              <span class="status-badge status-live">
+                <span class="dot-live"></span> LIVE
+              </span>
+            </div>
           </div>
         </div>
 
-        <div class="partner-card">
-          <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=600&q=80');"></div>
-          <div style="padding: 24px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <h3>REMOTAX</h3>
-            <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">کمپین‌های دیجیتال مارکتینگ ۳۶۰ درجه و مدیریت سرنخ‌های فروش</p>
-          </div>
-        </div>
-
-        <div class="partner-card">
-          <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=600&q=80');"></div>
-          <div style="padding: 24px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <h3>NETRA LUXURY</h3>
-            <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">طراحی هویت بصری لاکچری و اجرای تبلیغات انحصاری در فضاهای خاص</p>
+        <!-- Brand 4: Blu Bank -->
+        <div class="ios26-card">
+          <div class="ios26-banner" style="background-image: url('/assets/img/brands/blu.jpg');"></div>
+          <div class="ios26-content">
+            <h3 class="ios26-title">Blu Bank</h3>
+            <p class="ios26-desc">طراحی فضاهای تبلیغاتی مینیمال و دیجیتال در نقاط کلیدی شهر برای جذب مخاطب جوان.</p>
+            <div class="ios26-meta">
+              <span class="ios26-date">اردیبهشت ۱۴۰۵</span>
+              <span class="status-badge status-finished">
+                <span class="dot-finished"></span> FINISHED
+              </span>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
-</div>
+
+  </div>
 </main>
 
 <footer class="luxury-mega-footer" id="main-footer">
