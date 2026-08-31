@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>داشبورد مدیریت محتوای سیلوریوم | Silveriom CMS</title>
+  
+  <!-- Font & Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Admin Application Wrapper -->
+  <div class="admin-wrapper">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/silveriom_logo_transparent.png" alt="Silveriom" class="sidebar-logo" onerror="this.style.display='none'">
+        <div class="sidebar-brand-text">
+          <h2>SILVERIOM</h2>
+          <p>سامانه مدیریت یکپارچه محتوا</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a class="menu-item active" data-tab="tab-overview">
+          <i data-lucide="layout-dashboard" class="icon"></i>
+          <span>پیشخوان و آمار کل</span>
+        </a>
+        <a class="menu-item" data-tab="tab-home">
+          <i data-lucide="home" class="icon"></i>
+          <span>مدیریت صفحه اصلی (خانه)</span>
+        </a>
+        <a class="menu-item" data-tab="tab-venues">
+          <i data-lucide="building-2" class="icon"></i>
+          <span>مدیریت باشگاه‌ها و کورت‌ها</span>
+        </a>
+        <a class="menu-item" data-tab="tab-media">
+          <i data-lucide="monitor-play" class="icon"></i>
+          <span>سازه‌ها و رسانه‌های تبلیغاتی</span>
+        </a>
+        <a class="menu-item" data-tab="tab-portfolio">
+          <i data-lucide="award" class="icon"></i>
+          <span>مدیریت صفحه نمونه‌کارها</span>
+        </a>
+        <a class="menu-item" data-tab="tab-planner">
+          <i data-lucide="calculator" class="icon"></i>
+          <span>مدیریت مدیاپلنر و پکیج‌ها</span>
+        </a>
+        <a class="menu-item" data-tab="tab-about-us">
+          <i data-lucide="sparkles" class="icon"></i>
+          <span>مدیریت صفحه درباره ما</span>
+        </a>
+        <a class="menu-item" data-tab="tab-contact-us">
+          <i data-lucide="headset" class="icon"></i>
+          <span>مدیریت صفحه تماس با ما</span>
+        </a>
+        <a class="menu-item" data-tab="tab-inquiries">
+          <i data-lucide="mail-open" class="icon"></i>
+          <span>پیام‌ها و لیدهای دریافتی</span>
+        </a>
+        <a class="menu-item" data-tab="tab-users">
+          <i data-lucide="user-check" class="icon"></i>
+          <span>مدیریت کاربران و دسترسی‌ها</span>
+        </a>
+        <a class="menu-item" data-tab="tab-settings">
+          <i data-lucide="settings" class="icon"></i>
+          <span>تنظیمات عمومی سایت</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" target="_blank" class="live-site-btn">
+          <i data-lucide="external-link" style="width:15px; height:15px;"></i>
+          <span>مشاهده وب‌سایت اصلی</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+
+      <!-- Top Header -->
+      <header class="glass-header">
+        <div class="header-title-area">
+          <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="منو">
+            <i data-lucide="menu"></i>
+          </button>
+          <h1 class="page-title" id="page-current-title">پیشخوان و آمار کلی</h1>
+          <span class="status-badge">
+            <span class="pulse-dot"></span>
+            <span>مدیریت لایو تمام صفحات سیلوریوم</span>
+          </span>
+        </div>
+
+        <div class="header-actions">
+          <div class="search-box">
+            <input type="text" id="global-search" class="search-input" placeholder="جستجوی سریع...">
+            <i data-lucide="search" class="search-icon"></i>
+          </div>
+
+          <div class="user-badge-container">
+            <div class="user-avatar" id="user-avatar-initial">S</div>
+            <div class="user-details">
+              <span class="user-name" id="user-display-name">مدیر سیستم</span>
+              <span class="user-role" id="user-display-role">مدیر ارشد</span>
+            </div>
+          </div>
+
+          <button class="btn-logout" onclick="logoutUser()" title="خروج از حساب">
+            <i data-lucide="log-out" style="width:16px; height:16px;"></i>
+            <span>خروج</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views Container -->
+      <div class="admin-body">
+        
+        <!-- TAB 1: OVERVIEW DASHBOARD -->
+        <section class="tab-panel active" id="tab-overview">
+          
+          <!-- Metrics 4-Grid -->
+          <div class="metrics-grid" id="dashboard-metrics-grid">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Quick Actions & Recent Activity Grid -->
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem; margin-bottom:2rem;">
+            
+            <!-- Recent Inquiries Table -->
+            <div class="glass-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h3 style="color:#fff; font-size:1.05rem; font-weight:700;">آخرین درخواست‌ها و لیدهای دریافتی</h3>
+                <a class="view-all-link" onclick="switchTab('tab-inquiries')">مشاهده همه پیام‌ها</a>
+              </div>
+              <div class="table-responsive">
+                <table class="glass-table">
+                  <thead>
+                    <tr>
+                      <th>نام مشتری</th>
+                      <th>شماره تماس</th>
+                      <th>باشگاه مدنظر</th>
+                      <th>نوع رسانه</th>
+                      <th>تاریخ</th>
+                      <th>وضعیت</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-inquiries-tbody">
+                    <!-- Dynamic -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Quick Management Shortcuts -->
+            <div class="glass-card">
+              <h3 style="color:#fff; font-size:1.05rem; font-weight:700; margin-bottom:1rem;">دسترسی‌های سریع مدیریتی</h3>
+              <div class="quick-links-list">
+                <button class="quick-btn" onclick="openVenueModal()">
+                  <i data-lucide="plus-circle"></i>
+                  <span>افزودن باشگاه جدید</span>
+                </button>
+                <button class="quick-btn" onclick="openCampaignModal()">
+                  <i data-lucide="briefcase"></i>
+                  <span>ثبت کمپین / نمونه‌کار جدید</span>
+                </button>
+                <button class="quick-btn" onclick="openTeamModal()">
+                  <i data-lucide="user-plus"></i>
+                  <span>افزودن عضو جدید تیم</span>
+                </button>
+                <button class="quick-btn" onclick="openUserModal()">
+                  <i data-lucide="shield-check"></i>
+                  <span>ایجاد حساب جدید کاربری</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: VENUES MANAGEMENT -->
+        <section class="tab-panel" id="tab-venues">
+          <div class="glass-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+              <div>
+                <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">باشگاه‌ها و مجموعه کورت‌های اختصاصی</h3>
+                <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">مدیریت موقعیت‌های مکانی، تعداد کورت‌ها، تصاویر و بازدید ماهانه</p>
+              </div>
+              <button class="btn-glass-gold" onclick="openVenueModal()">
+                <i data-lucide="plus"></i>
+                <span>افزودن باشگاه جدید</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>تصویر</th>
+                    <th>نام مجموعه</th>
+                    <th>موقعیت و آدرس</th>
+                    <th>تعداد کورت‌ها</th>
+                    <th>بازدید ماهانه</th>
+                    <th>نوع رسانه‌ها</th>
+                    <th>وضعیت</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="venues-tbody">
+                  <!-- Dynamic -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: MEDIA INVENTORY MANAGEMENT -->
+        <section class="tab-panel" id="tab-media">
+          <div class="section-header-bar">
+            <div>
+              <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">سازه‌ها و سبد رسانه‌های تبلیغاتی</h3>
+              <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">نوارهای تور کورت، دیوارهای پانورامیک، استیج‌ها و ویدئو وال‌های 4K</p>
+            </div>
+            <button class="btn-glass-gold" onclick="openMediaModal()">
+              <i data-lucide="plus"></i>
+              <span>تعریف سازه جدید</span>
+            </button>
+          </div>
+
+          <div class="cards-grid" id="media-cards-grid">
+            <!-- Dynamic Cards -->
+          </div>
+        </section>
+
+        <!-- TAB 4: PORTFOLIO & CAMPAIGNS PAGE CMS -->
+        <section class="tab-panel" id="tab-portfolio">
+          
+          <!-- Hero & Impact Stats Form -->
+          <div class="glass-card" style="margin-bottom:1.5rem;">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1rem; font-weight:700;">تنظیمات بخش هیرو و شاخص‌های کلیدی صفحه نمونه‌کارها (https://silveriom.ir/portfolio/)</h3>
+            
+            <form id="portfolio-page-form">
+              <div class="form-group">
+                <label class="form-label">نشان هیرو (Badge Text)</label>
+                <input type="text" id="port-heroBadge" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی هیرو</label>
+                <input type="text" id="port-heroTitle" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">زیرعنوان و توضیحات هیرو</label>
+                <textarea id="port-heroSubtitle" class="glass-input-field" style="min-height:75px;"></textarea>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.25rem 0;">
+
+              <!-- Impact Stats (4 Cards) -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">شاخص‌های کلیدی اثرگذاری (Impact Metrics)</h4>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">شاخص ۱ (عنوان + مقدار)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="port-stat1-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="port-stat1-value" class="glass-input-field" placeholder="مقدار" style="max-width:110px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">شاخص ۲ (عنوان + مقدار)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="port-stat2-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="port-stat2-value" class="glass-input-field" placeholder="مقدار" style="max-width:110px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">شاخص ۳ (عنوان + مقدار)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="port-stat3-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="port-stat3-value" class="glass-input-field" placeholder="مقدار" style="max-width:110px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">شاخص ۴ (عنوان + مقدار)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="port-stat4-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="port-stat4-value" class="glass-input-field" placeholder="مقدار" style="max-width:110px;">
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:1.25rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره تنظیمات هیرو و آمار نمونه‌کارها</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Campaigns CRUD Section -->
+          <div class="glass-card" style="margin-bottom:1.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+              <div>
+                <h3 style="color:#fff; font-size:1.1rem; font-weight:700;">مدیریت لیست کمپین‌ها و نمونه‌کارهای اجرا شده</h3>
+                <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">کمپین‌های سان‌استار، کریستال، ماموت خودرو، بلوبانک، والکس و غیره</p>
+              </div>
+              <button class="btn-glass-gold" onclick="openCampaignModal()">
+                <i data-lucide="plus"></i>
+                <span>ثبت کمپین جدید</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>پوستر</th>
+                    <th>نام برند</th>
+                    <th>عنوان کمپین</th>
+                    <th>دسته‌بندی</th>
+                    <th>محل اکران</th>
+                    <th>رسانه استفاده‌شده</th>
+                    <th>بازدید / نتایج</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="campaigns-tbody">
+                  <!-- Dynamic -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: ABOUT US PAGE CMS -->
+        <section class="tab-panel" id="tab-about-us">
+          <div class="glass-card">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1rem; font-weight:700;">مدیریت محتوای کامل صفحه درباره ما (https://silveriom.ir/about-us/)</h3>
+            
+            <form id="about-us-form">
+              <!-- Section 1: Hero & Intro -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۱. بخش هیرو و عنوان اصلی</h4>
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی صفحه درباره ما</label>
+                <input type="text" id="about-heroTitle" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">زیرعنوان و شعار هیرو</label>
+                <input type="text" id="about-heroSubtitle" class="glass-input-field">
+              </div>
+              <div class="form-group">
+                <label class="form-label">متن توضیحات کامل هیرو</label>
+                <textarea id="about-heroDesc" class="glass-input-field" style="min-height:90px;"></textarea>
+              </div>
+
+              <!-- Hero Image Upload -->
+              <div class="form-group">
+                <label class="form-label">تصویر شاخص هیرو</label>
+                <div style="display:flex; gap:0.5rem; align-items:center;">
+                  <input type="text" id="about-heroImage" class="glass-input-field" placeholder="مسیر عکس یا آپلود مستقیم...">
+                  <label class="btn-glass-outline" style="cursor:pointer; white-space:nowrap;">
+                    <i data-lucide="upload" style="width:15px; height:15px;"></i>
+                    <span>انتخاب تصویر</span>
+                    <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'about-heroImage', 'about-heroImage-preview')">
+                  </label>
+                </div>
+                <img id="about-heroImage-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 2: Story, Mission & Vision -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۲. داستان، مأموریت و چشم‌انداز</h4>
+              <div class="form-group">
+                <label class="form-label">عنوان بخش داستان برند</label>
+                <input type="text" id="about-storyTitle" class="glass-input-field">
+              </div>
+              <div class="form-group">
+                <label class="form-label">متن روایت داستان شکل‌گیری سیلوریوم</label>
+                <textarea id="about-storyContent" class="glass-input-field" style="min-height:90px;"></textarea>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">متن مأموریت (Mission)</label>
+                  <textarea id="about-mission" class="glass-input-field" style="min-height:80px;"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">متن چشم‌انداز (Vision)</label>
+                  <textarea id="about-vision" class="glass-input-field" style="min-height:80px;"></textarea>
+                </div>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 3: Bento Stats Grid -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۳. آمار و ارقام Bento Grid</h4>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">کارت ۱ (عنوان + عدد)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="about-stat1-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="about-stat1-value" class="glass-input-field" placeholder="عدد" style="max-width:100px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">کارت ۲ (عنوان + عدد)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="about-stat2-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="about-stat2-value" class="glass-input-field" placeholder="عدد" style="max-width:100px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">کارت ۳ (عنوان + عدد)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="about-stat3-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="about-stat3-value" class="glass-input-field" placeholder="عدد" style="max-width:100px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">کارت ۴ (عنوان + عدد)</label>
+                  <div style="display:flex; gap:0.5rem;">
+                    <input type="text" id="about-stat4-label" class="glass-input-field" placeholder="عنوان">
+                    <input type="text" id="about-stat4-value" class="glass-input-field" placeholder="عدد" style="max-width:100px;">
+                  </div>
+                </div>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 4: CTA Banner -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۴. بنر انتهای صفحه (CTA Banner)</h4>
+              <div class="form-group">
+                <label class="form-label">عنوان بنر فراخوان</label>
+                <input type="text" id="about-ctaTitle" class="glass-input-field">
+              </div>
+              <div class="form-group">
+                <label class="form-label">متن توضیحات بنر فراخوان</label>
+                <input type="text" id="about-ctaSubtitle" class="glass-input-field">
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">متن دکمه</label>
+                  <input type="text" id="about-ctaBtnText" class="glass-input-field">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">لینک دکمه</label>
+                  <input type="text" id="about-ctaBtnLink" class="glass-input-field" dir="ltr" style="text-align:right;">
+                </div>
+              </div>
+
+              <div style="margin-top:1.25rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره کلیه اطلاعات صفحه درباره ما</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Section 5: Team Members Table -->
+          <div class="glass-card" style="margin-top:1.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <h3 style="font-size:1.05rem; color:#fff; font-weight:700;">مدیریت اعضای تیم و مدیران سیلوریوم</h3>
+              <button class="btn-glass-gold" onclick="openTeamModal()">
+                <i data-lucide="user-plus"></i>
+                <span>افزودن عضو جدید تیم</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>تصویر</th>
+                    <th>نام و نام خانوادگی</th>
+                    <th>سمت و نقش</th>
+                    <th>بیوگرافی کوتاه</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="team-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB: HOME PAGE CMS -->
+        <section class="tab-panel" id="tab-home">
+          <div class="glass-card">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1rem; font-weight:700;">مدیریت محتوای صفحه اصلی / خانه (https://silveriom.ir/)</h3>
+
+            <form id="home-page-form">
+              <!-- Section 1: Hero Header -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۱. هیرو اصلی و نشان افتخار</h4>
+              <div class="form-group">
+                <label class="form-label">نشان بالای هیرو (Badge Text)</label>
+                <input type="text" id="hm-heroBadge" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی صفحه خانه</label>
+                <input type="text" id="hm-heroTitle" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">توضیحات هیرو (Subtitle)</label>
+                <textarea id="hm-heroSubtitle" class="glass-input-field" style="min-height:75px;"></textarea>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+                <div class="form-group">
+                  <label class="form-label">عنوان دکمه اول (اصلی)</label>
+                  <input type="text" id="hm-ctaPrimaryText" class="glass-input-field">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">لینک دکمه اول</label>
+                  <input type="text" id="hm-ctaPrimaryLink" class="glass-input-field" dir="ltr" style="text-align:right;">
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+                <div class="form-group">
+                  <label class="form-label">عنوان دکمه دوم (فرعی)</label>
+                  <input type="text" id="hm-ctaSecondaryText" class="glass-input-field">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">لینک دکمه دوم</label>
+                  <input type="text" id="hm-ctaSecondaryLink" class="glass-input-field" dir="ltr" style="text-align:right;">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">آدرس ویدئو و تیزر معرفی (Showreel Video MP4 URL)</label>
+                <input type="text" id="hm-reelVideoUrl" class="glass-input-field" dir="ltr" style="text-align:right;">
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 2: 4 Core Highlights -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۲. ۴ آمار و شاخص کلیدی صفحه اصلی</h4>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem;">شاخص ۱: بازدیدکنندگان</h5>
+                  <input type="text" id="hm-hl1-title" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="عنوان">
+                  <input type="text" id="hm-hl1-value" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="مقدار">
+                  <input type="text" id="hm-hl1-desc" class="glass-input-field" placeholder="توضیح کوتاه">
+                </div>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem;">شاخص ۲: کورت‌ها</h5>
+                  <input type="text" id="hm-hl2-title" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="عنوان">
+                  <input type="text" id="hm-hl2-value" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="مقدار">
+                  <input type="text" id="hm-hl2-desc" class="glass-input-field" placeholder="توضیح کوتاه">
+                </div>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem;">شاخص ۳: بازدهی ROI</h5>
+                  <input type="text" id="hm-hl3-title" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="عنوان">
+                  <input type="text" id="hm-hl3-value" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="مقدار">
+                  <input type="text" id="hm-hl3-desc" class="glass-input-field" placeholder="توضیح کوتاه">
+                </div>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem;">شاخص ۴: مجموعه‌ها</h5>
+                  <input type="text" id="hm-hl4-title" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="عنوان">
+                  <input type="text" id="hm-hl4-value" class="glass-input-field" style="margin-bottom:0.5rem;" placeholder="مقدار">
+                  <input type="text" id="hm-hl4-desc" class="glass-input-field" placeholder="توضیح کوتاه">
+                </div>
+              </div>
+
+              <div style="margin-top:1.5rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره تغییرات صفحه اصلی</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- TAB: MEDIA PLANNER CMS -->
+        <section class="tab-panel" id="tab-planner">
+          <div class="glass-card">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1rem; font-weight:700;">مدیریت مدیاپلنر و پکیج‌های تبلیغاتی (https://silveriom.ir/#planner)</h3>
+
+            <form id="media-planner-form">
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی بخش مدیاپلنر</label>
+                <input type="text" id="pln-title" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">توضیحات و زیرعنوان بخش مدیاپلنر</label>
+                <textarea id="pln-subtitle" class="glass-input-field" style="min-height:65px;"></textarea>
+              </div>
+
+              <div style="margin-top:1rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره تیترهای مدیاپلنر</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Packages Table -->
+          <div class="glass-card" style="margin-top:1.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <h3 style="font-size:1.05rem; color:#fff; font-weight:700;">جدول پکیج‌های تبلیغاتی سیلوریوم</h3>
+              <button class="btn-glass-gold" onclick="openPlannerModal()">
+                <i data-lucide="plus-circle"></i>
+                <span>افزودن پکیج جدید</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>نام پکیج</th>
+                    <th>بج پرستیژ</th>
+                    <th>مدت زمان</th>
+                    <th>قیمت تعرفه</th>
+                    <th>تخفیف</th>
+                    <th>میزان بازدید</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="planner-tbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 6: CONTACT US PAGE CMS -->
+        <section class="tab-panel" id="tab-contact-us">
+          <div class="glass-card">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1rem; font-weight:700;">مدیریت محتوای کامل صفحه تماس با ما (https://silveriom.ir/contact-us/)</h3>
+
+            <form id="contact-us-form">
+              <!-- Section 1: Hero & Badges -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۱. هیرو و وضعیت پاسخگویی</h4>
+              <div class="form-group">
+                <label class="form-label">نشان وضعیت لایو (Badge Text)</label>
+                <input type="text" id="cnt-heroBadge" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی صفحه تماس با ما</label>
+                <input type="text" id="cnt-heroTitle" class="glass-input-field" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">توضیحات و زیرعنوان هیرو</label>
+                <textarea id="cnt-heroSubtitle" class="glass-input-field" style="min-height:75px;"></textarea>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 2: 4 Quick Contact Cards -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۲. ۴ کارت اطلاعات تماس سریع</h4>
+              
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+                <!-- Card 1 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem; font-weight:700;">کارت ۱: تلفن پشتیبانی</h5>
+                  <div class="form-group">
+                    <label class="form-label">عنوان کارت</label>
+                    <input type="text" id="cnt-card1-title" class="glass-input-field">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">شماره / مقدار اصلی</label>
+                    <input type="text" id="cnt-card1-detail" class="glass-input-field" dir="ltr" style="text-align:right;">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">توضیحات کوتاه زیرین</label>
+                    <input type="text" id="cnt-card1-subdetail" class="glass-input-field">
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem; font-weight:700;">کارت ۲: تلفن دفتر مرکزی</h5>
+                  <div class="form-group">
+                    <label class="form-label">عنوان کارت</label>
+                    <input type="text" id="cnt-card2-title" class="glass-input-field">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">شماره / مقدار اصلی</label>
+                    <input type="text" id="cnt-card2-detail" class="glass-input-field" dir="ltr" style="text-align:right;">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">توضیحات کوتاه زیرین</label>
+                    <input type="text" id="cnt-card2-subdetail" class="glass-input-field">
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem; font-weight:700;">کارت ۳: ایمیل دپارتمان</h5>
+                  <div class="form-group">
+                    <label class="form-label">عنوان کارت</label>
+                    <input type="text" id="cnt-card3-title" class="glass-input-field">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">ایمیل / مقدار اصلی</label>
+                    <input type="text" id="cnt-card3-detail" class="glass-input-field" dir="ltr" style="text-align:right;">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">توضیحات کوتاه زیرین</label>
+                    <input type="text" id="cnt-card3-subdetail" class="glass-input-field">
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:1rem; border-radius:12px;">
+                  <h5 style="color:var(--color-gold); font-size:0.85rem; margin-bottom:0.5rem; font-weight:700;">کارت ۴: نشانی دفتر مرکزی</h5>
+                  <div class="form-group">
+                    <label class="form-label">عنوان کارت</label>
+                    <input type="text" id="cnt-card4-title" class="glass-input-field">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">آدرس متنی کامل</label>
+                    <input type="text" id="cnt-card4-detail" class="glass-input-field">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">توضیحات کوتاه زیرین</label>
+                    <input type="text" id="cnt-card4-subdetail" class="glass-input-field">
+                  </div>
+                </div>
+              </div>
+
+              <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
+
+              <!-- Section 3: Map & Hours -->
+              <h4 style="font-size:0.95rem; color:var(--color-neon); margin-bottom:0.75rem; font-weight:700;">۳. نقشه دفتر مرکزی و ساعات کاری</h4>
+              <div class="form-group">
+                <label class="form-label">عنوان بخش نقشه</label>
+                <input type="text" id="cnt-mapTitle" class="glass-input-field">
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">عرض جغرافیایی (Latitude)</label>
+                  <input type="text" id="cnt-mapLat" class="glass-input-field" dir="ltr" style="text-align:right;">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">طول جغرافیایی (Longitude)</label>
+                  <input type="text" id="cnt-mapLng" class="glass-input-field" dir="ltr" style="text-align:right;">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">متن ساعات کاری دفتر مرکزی</label>
+                <input type="text" id="cnt-workingHoursText" class="glass-input-field">
+              </div>
+
+              <div style="margin-top:1.25rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره کلیه اطلاعات صفحه تماس با ما</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- TAB 7: INQUIRIES & LEADS (CRM) -->
+        <section class="tab-panel" id="tab-inquiries">
+          <div class="glass-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+              <div>
+                <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">مدیریت پیام‌ها و لیدهای دریافتی (CRM)</h3>
+                <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">استعلام‌های قیمت، درخواست‌های مدیاکیت و فرم‌های تماس وب‌سایت</p>
+              </div>
+              <button class="btn-glass-outline" onclick="exportInquiriesCSV()">
+                <i data-lucide="download" style="color:var(--color-neon);"></i>
+                <span>دانلود خروجی اکسل (CSV)</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>تاریخ ثبت</th>
+                    <th>نام مشتری</th>
+                    <th>شماره تماس</th>
+                    <th>ایمیل</th>
+                    <th>باشگاه / موضوع</th>
+                    <th>نوع رسانه</th>
+                    <th>وضعیت پیگیری</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiries-tbody">
+                  <!-- Dynamic -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 8: USER MANAGEMENT -->
+        <section class="tab-panel" id="tab-users">
+          <!-- User Summary Cards -->
+          <div class="metrics-grid" style="margin-bottom:1.5rem;">
+            <div class="metric-card">
+              <div class="metric-info">
+                <h4>کل کاربران ثبت‌شده</h4>
+                <div class="value" id="user-count-total">0</div>
+              </div>
+              <div class="metric-icon-wrap">
+                <i data-lucide="users" style="width:20px; height:20px;"></i>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-info">
+                <h4>در انتظار تایید مدیر</h4>
+                <div class="value" id="user-count-pending" style="color:var(--color-gold);">0</div>
+              </div>
+              <div class="metric-icon-wrap">
+                <i data-lucide="user-check" style="width:20px; height:20px;"></i>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-info">
+                <h4>کاربران تایید شده</h4>
+                <div class="value" id="user-count-approved" style="color:var(--color-neon);">0</div>
+              </div>
+              <div class="metric-icon-wrap">
+                <i data-lucide="check-circle" style="width:20px; height:20px;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+              <div>
+                <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">مدیریت کاربران، سطح دسترسی و لایسنس‌ها</h3>
+                <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">تایید ثبت‌نام‌های جدید، تغییر نقش و مسدودسازی دسترسی‌ها</p>
+              </div>
+              <button class="btn-glass-gold" onclick="openUserModal()">
+                <i data-lucide="user-plus"></i>
+                <span>ایجاد کاربر جدید</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="glass-table">
+                <thead>
+                  <tr>
+                    <th>کاربر</th>
+                    <th>اطلاعات تماس</th>
+                    <th>نقش سازمانی</th>
+                    <th>تاریخ ثبت‌نام</th>
+                    <th>وضعیت دسترسی</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody id="users-table-body">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 9: SETTINGS -->
+        <section class="tab-panel" id="tab-settings">
+          <div class="glass-card">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:1.25rem; font-weight:700;">تنظیمات عمومی سایت و هیرو</h3>
+            <form id="settings-form">
+              <div class="form-group">
+                <label class="form-label">عنوان اصلی سایت (SEO Title)</label>
+                <input type="text" id="set-siteTitle" class="glass-input-field" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">نشان بالای هیرو (Hero Badge)</label>
+                <input type="text" id="set-heroBadge" class="glass-input-field">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">عنوان تیتر هیرو اصلی</label>
+                <input type="text" id="set-heroTitle" class="glass-input-field" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">زیرتیتر توضیحی هیرو (Hero Subtitle)</label>
+                <textarea id="set-heroSubtitle" class="glass-input-field"></textarea>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">تلفن تماس پشتیبانی</label>
+                  <input type="text" id="set-contactPhone" class="glass-input-field">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ایمیل رسمی</label>
+                  <input type="text" id="set-contactEmail" class="glass-input-field">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">آدرس دفتر مرکزی</label>
+                <input type="text" id="set-contactAddress" class="glass-input-field">
+              </div>
+
+              <div style="margin-top:1.25rem; text-align:left;">
+                <button type="submit" class="btn-glass-gold">
+                  <i data-lucide="check"></i>
+                  <span>ذخیره تغییرات هیرو و سایت</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Modal 1: Add/Edit Venue -->
+  <div class="glass-modal-overlay" id="modal-venue">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-venue-title">افزودن باشگاه جدید</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-venue')">&times;</button>
+      </div>
+      <form id="venue-form">
+        <input type="hidden" id="venue-id">
+        <div class="form-group">
+          <label class="form-label">نام باشگاه / مجموعه</label>
+          <input type="text" id="venue-title" class="glass-input-field" required placeholder="مثلاً: مجموعه T10 (آجودانیه)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">بج موقعیت (Badge Text)</label>
+          <input type="text" id="venue-badge" class="glass-input-field" placeholder="مثلاً: موقعیت طلایی • شمال تهران">
+        </div>
+        <div class="form-group">
+          <label class="form-label">آدرس دقیق مجموعه</label>
+          <input type="text" id="venue-location" class="glass-input-field" required placeholder="تهران، آجودانیه...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">توضیحات کوتاه و پرستیژ مجموعه</label>
+          <textarea id="venue-desc" class="glass-input-field" placeholder="توضیح کوتاه درباره باشگاه..."></textarea>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">تعداد کورت‌ها</label>
+            <input type="text" id="venue-courts" class="glass-input-field" placeholder="مثلاً: ۷ پدل + ۳ تنیس">
+          </div>
+          <div class="form-group">
+            <label class="form-label">بازدید و ماندگاری ماهانه</label>
+            <input type="text" id="venue-impressions" class="glass-input-field" placeholder="مثلاً: +۹۵,۰۰۰">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">نوع رسانه‌های موجود</label>
+          <input type="text" id="venue-mediaTypes" class="glass-input-field" placeholder="نوار تور + شیشه + استیج VIP">
+        </div>
+        
+        <!-- Image Upload Field -->
+        <div class="form-group">
+          <label class="form-label">تصویر مجموعه</label>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <input type="text" id="venue-image" class="glass-input-field" placeholder="مسیر عکس یا آپلود مستقیم...">
+            <label class="btn-glass-outline" style="cursor:pointer; white-space:nowrap;">
+              <i data-lucide="upload" style="width:15px; height:15px;"></i>
+              <span>انتخاب تصویر</span>
+              <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'venue-image', 'venue-image-preview')">
+            </label>
+          </div>
+          <img id="venue-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">عرض جغرافیایی (Lat)</label>
+            <input type="number" step="any" id="venue-lat" class="glass-input-field" placeholder="35.8123">
+          </div>
+          <div class="form-group">
+            <label class="form-label">طول جغرافیایی (Lng)</label>
+            <input type="number" step="any" id="venue-lng" class="glass-input-field" placeholder="51.4872">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-venue')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره اطلاعات مجموعه</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add/Edit Media Inventory -->
+  <div class="glass-modal-overlay" id="modal-media">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-media-title">تعریف سازه / رسانه جدید</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-media')">&times;</button>
+      </div>
+      <form id="media-form">
+        <input type="hidden" id="media-id">
+        <div class="form-group">
+          <label class="form-label">عنوان سازه یا رسانه</label>
+          <input type="text" id="media-title" class="glass-input-field" required placeholder="مثلاً: نوار تور کورت پدل">
+        </div>
+        <div class="form-group">
+          <label class="form-label">تگ پرستیژ (Badge)</label>
+          <input type="text" id="media-tag" class="glass-input-field" placeholder="مثلاً: دید فوق‌العاده بالینی">
+        </div>
+        <div class="form-group">
+          <label class="form-label">توضیحات و ویژگی‌های رسانه</label>
+          <textarea id="media-desc" class="glass-input-field" placeholder="توضیح موقعیت و شانس حضور در ویدئوها..."></textarea>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">وضعیت فضا (Availability)</label>
+            <input type="text" id="media-avail" class="glass-input-field" placeholder="آماده رزرو">
+          </div>
+          <div class="form-group">
+            <label class="form-label">میزان اثرگذاری و دید</label>
+            <input type="text" id="media-impact" class="glass-input-field" placeholder="۹۸٪ حضور در کادر">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">مشخصات فنی و ابعاد</label>
+          <input type="text" id="media-specs" class="glass-input-field" placeholder="طول ۱۰ متر، دو طرفه">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-media')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره رسانه</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add/Edit Campaign (Portfolio) -->
+  <div class="glass-modal-overlay" id="modal-campaign">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-campaign-title">ثبت / ویرایش کمپین برند</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-campaign')">&times;</button>
+      </div>
+      <form id="campaign-form">
+        <input type="hidden" id="camp-id">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">نام برند همکار</label>
+            <input type="text" id="camp-brand" class="glass-input-field" required placeholder="مثلاً: برند سان‌استار (SUNSTAR)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">دسته‌بندی صنعت</label>
+            <input type="text" id="camp-category" class="glass-input-field" placeholder="مثلاً: صنایع غذایی و نوشیدنی">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">عنوان کامل کمپین</label>
+          <input type="text" id="camp-title" class="glass-input-field" required placeholder="مثلاً: کمپین انحصاری نوشیدنی‌های طبیعی...">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">محل و باشگاه اکران</label>
+            <input type="text" id="camp-location" class="glass-input-field" placeholder="مجموعه پدل T10 آجودانیه">
+          </div>
+          <div class="form-group">
+            <label class="form-label">نوع رسانه‌های استفاده‌شده</label>
+            <input type="text" id="camp-media" class="glass-input-field" placeholder="نوار تور + شیشه پانورامیک">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">توضیحات اجرای کمپین و دستاوردها</label>
+          <textarea id="camp-desc" class="glass-input-field" placeholder="شرح اکران، سمپلینگ و بازخورد مخاطبان..."></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">تاریخ / سال اکران</label>
+            <input type="text" id="camp-date" class="glass-input-field" placeholder="۱۴۰۲">
+          </div>
+          <div class="form-group">
+            <label class="form-label">میزان بازدید / لید کیفی</label>
+            <input type="text" id="camp-impressions" class="glass-input-field" placeholder="+۲۵۰,۰۰۰ بازدید زنده">
+          </div>
+        </div>
+
+        <!-- Cover Image Upload -->
+        <div class="form-group">
+          <label class="form-label">پوستر / تصویر شاخص کمپین</label>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <input type="text" id="camp-image" class="glass-input-field" placeholder="مسیر عکس یا آپلود مستقیم...">
+            <label class="btn-glass-outline" style="cursor:pointer; white-space:nowrap;">
+              <i data-lucide="upload" style="width:15px; height:15px;"></i>
+              <span>انتخاب تصویر</span>
+              <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'camp-image', 'camp-image-preview')">
+            </label>
+          </div>
+          <img id="camp-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-campaign')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره کمپین</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add/Edit Planner Package -->
+  <div class="glass-modal-overlay" id="modal-planner">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-planner-title">ثبت / ویرایش پکیج تبلیغاتی</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-planner')">&times;</button>
+      </div>
+      <form id="planner-pkg-form">
+        <input type="hidden" id="pkg-id">
+        <div class="form-group">
+          <label class="form-label">نام پکیج تبلیغاتی</label>
+          <input type="text" id="pkg-name" class="glass-input-field" required placeholder="مثلاً: پکیج توسعه (پانورامیک ۳۶۰ درجه)">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">بج پرستیژ (Badge Text)</label>
+            <input type="text" id="pkg-badge" class="glass-input-field" placeholder="مثلاً: پیشنهاد ویژه برندها">
+          </div>
+          <div class="form-group">
+            <label class="form-label">مدت زمان کمپین</label>
+            <input type="text" id="pkg-duration" class="glass-input-field" placeholder="مثلاً: ۳ ماهه">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">قیمت تعرفه (تومان)</label>
+            <input type="text" id="pkg-price" class="glass-input-field" placeholder="۱۲۰,۰۰۰,۰۰۰ تومان">
+          </div>
+          <div class="form-group">
+            <label class="form-label">میزان بازدید برآوردی</label>
+            <input type="text" id="pkg-impressions" class="glass-input-field" placeholder="+۲۸۰,۰۰۰ بازدید">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">بج تخفیف ویژه</label>
+          <input type="text" id="pkg-discount" class="glass-input-field" placeholder="۱۸٪ تخفیف ویژه">
+        </div>
+        <div class="form-group">
+          <label class="form-label">لیست ویژگی‌ها و آیتم‌های پکیج (هر خط یک ویژگی)</label>
+          <textarea id="pkg-features" class="glass-input-field" style="min-height:100px;" placeholder="برندینگ نوار تور&#10;اکران تیزر روی ویدئو وال&#10;گزارش آنالیز تصویری"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-planner')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره پکیج</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Add/Edit User -->
+  <div class="glass-modal-overlay" id="modal-user">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-user-title">ایجاد کاربر جدید</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-user')">&times;</button>
+      </div>
+      <form id="user-form">
+        <input type="hidden" id="user-id">
+        <div class="form-group">
+          <label class="form-label">نام و نام خانوادگی</label>
+          <input type="text" id="user-name" class="glass-input-field" required placeholder="مثلاً: علی احمدی">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">ایمیل کاربری</label>
+            <input type="email" id="user-email" class="glass-input-field" required placeholder="name@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">شماره همراه</label>
+            <input type="tel" id="user-phone" class="glass-input-field" placeholder="09123456789">
+          </div>
+        </div>
+        <div class="form-group" id="user-pass-group">
+          <label class="form-label">رمز عبور</label>
+          <input type="password" id="user-password" class="glass-input-field" placeholder="••••••••">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">نقش کاربر</label>
+            <select id="user-role" class="glass-input-field">
+              <option value="مدیر ارشد">مدیر ارشد (Super Admin)</option>
+              <option value="ویرایشگر محتوا">ویرایشگر محتوا (Editor)</option>
+              <option value="کاربر پنل" selected>کاربر پنل (Panel User)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">وضعیت دسترسی</label>
+            <select id="user-status" class="glass-input-field">
+              <option value="تایید شده" selected>تایید شده (Active)</option>
+              <option value="در انتظار تایید">در انتظار تایید (Pending)</option>
+              <option value="مسدود / رد شده">مسدود / رد شده (Blocked)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-user')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره اطلاعات کاربر</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 5: Change Password -->
+  <div class="glass-modal-overlay" id="modal-password">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">تغییر رمز عبور کاربر</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-password')">&times;</button>
+      </div>
+      <form id="password-form">
+        <input type="hidden" id="pass-user-id">
+        <div class="form-group">
+          <label class="form-label">رمز عبور جدید</label>
+          <input type="password" id="new-password" class="glass-input-field" required minlength="6" placeholder="حداقل ۶ کاراکتر">
+        </div>
+        <div class="form-group">
+          <label class="form-label">تکرار رمز عبور جدید</label>
+          <input type="password" id="confirm-new-password" class="glass-input-field" required minlength="6" placeholder="تکرار رمز عبور">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-password')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">اعمال رمز عبور جدید</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 6: Add/Edit Team Member -->
+  <div class="glass-modal-overlay" id="modal-team">
+    <div class="glass-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-team-title">افزودن عضو جدید تیم</h3>
+        <button class="close-modal-btn" onclick="closeModal('modal-team')">&times;</button>
+      </div>
+      <form id="team-form">
+        <input type="hidden" id="team-id">
+        <div class="form-group">
+          <label class="form-label">نام و نام خانوادگی</label>
+          <input type="text" id="team-name" class="glass-input-field" required placeholder="مثلاً: مهندس علیرضا رضایی">
+        </div>
+        <div class="form-group">
+          <label class="form-label">سمت / نقش سازمانی</label>
+          <input type="text" id="team-role" class="glass-input-field" required placeholder="مثلاً: مدیرعامل و هم‌بنیان‌گذار">
+        </div>
+        <div class="form-group">
+          <label class="form-label">بیوگرافی و سوابق کوتاه</label>
+          <textarea id="team-bio" class="glass-input-field" placeholder="توضیح مختصر سوابق کاری..."></textarea>
+        </div>
+        
+        <!-- Team Photo Upload -->
+        <div class="form-group">
+          <label class="form-label">تصویر پرتره عضو تیم</label>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <input type="text" id="team-image" class="glass-input-field" placeholder="مسیر عکس یا آپلود مستقیم...">
+            <label class="btn-glass-outline" style="cursor:pointer; white-space:nowrap;">
+              <i data-lucide="upload" style="width:15px; height:15px;"></i>
+              <span>انتخاب تصویر</span>
+              <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'team-image', 'team-image-preview')">
+            </label>
+          </div>
+          <img id="team-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeModal('modal-team')">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره عضو تیم</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JS Dependencies -->
+  <script src="admin.js"></script>
+</body>
+</html>
