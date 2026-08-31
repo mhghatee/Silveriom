@@ -7409,27 +7409,36 @@ section {
 @media (max-width: 991px) {
   .padel-court-wrapper {
     transform: scale(0.7) !important;
-    margin: -40px auto -80px auto !important;
+    margin: -30px auto -60px auto !important;
   }
-  .court-stat { padding: 15px 20px !important; }
-  .court-stat .pct { font-size: 2.8rem !important; }
-  .court-stat .title { font-size: 1.2rem !important; }
+}
+
+@media (max-width: 768px) {
+  .padel-court-wrapper {
+    transform: scale(0.55) !important;
+    margin: -60px auto -100px auto !important;
+  }
 }
 
 @media (max-width: 576px) {
   .padel-court-wrapper {
-    transform: scale(0.45) !important;
-    margin: -100px auto -140px auto !important;
+    /* Scale down the entire graphic uniformly so it fits on mobile */
+    transform: scale(0.40) !important;
+    margin: -110px auto -150px auto !important;
   }
-  .court-stat { padding: 24px 28px !important; min-width: 260px !important; }
-  .court-stat .pct { font-size: 4.2rem !important; }
-  .court-stat .title { font-size: 1.8rem !important; }
   
-  /* Ensure stats stay fully visible by pulling them closer or making them wider */
-  .stat-1 { left: -90% !important; top: -10% !important; }
-  .stat-2 { right: -90% !important; top: -10% !important; }
-  .stat-3 { left: -90% !important; bottom: -10% !important; }
-  .stat-4 { right: -90% !important; bottom: -10% !important; }
+  /* Reset any previous compensations to let them scale naturally */
+  .court-stat { 
+    padding: 12px 18px !important; 
+    min-width: 160px !important; 
+  }
+  .court-stat .pct { font-size: 2rem !important; }
+  .court-stat .title { font-size: 0.9rem !important; }
+  
+  .stat-1 { left: -60% !important; top: 5% !important; }
+  .stat-2 { right: -60% !important; top: 5% !important; }
+  .stat-3 { left: -60% !important; bottom: 5% !important; }
+  .stat-4 { right: -60% !important; bottom: 5% !important; }
 }
 </style>
 </head>
