@@ -5,8 +5,8 @@
 
 @font-face {
   font-family: 'YekanBakh';
-  src: url('fonts/YekanBakh-Regular.woff2') format('woff2'),
-       url('fonts/YekanBakh-Regular.woff') format('woff');
+  src: url('fonts/YekanBakhFaNum-Regular.woff2') format('woff2'),
+       url('fonts/YekanBakhFaNum-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,8 +14,8 @@
 
 @font-face {
   font-family: 'YekanBakh';
-  src: url('fonts/YekanBakh-Bold.woff2') format('woff2'),
-       url('fonts/YekanBakh-Bold.woff') format('woff');
+  src: url('fonts/YekanBakhFaNum-Bold.woff2') format('woff2'),
+       url('fonts/YekanBakhFaNum-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -782,5 +782,67 @@ body {
   }
   .auth-tab-btn {
     font-size: 0.8rem;
+  }
+}
+/* ==========================================================================
+   MOBILE OPTIMIZATIONS (PIXEL PERFECT & KEYBOARD AWARE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Fix iOS input zoom bug */
+  .auth-input {
+    font-size: 16px !important;
+  }
+  
+  /* Neat padding and border radius for the mobile form card */
+  .auth-glass-card {
+    padding: 1.75rem 1.25rem !important; 
+    border-radius: 24px !important;
+  }
+  
+  .auth-title {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+  
+  .auth-subtitle {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Make the central sun smaller */
+  .galaxy-sun {
+    width: 75px !important;
+    height: 75px !important;
+  }
+  .sun-label {
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Compact Tabs */
+  .auth-tabs {
+    padding: 4px !important;
+    gap: 2px !important;
+  }
+  .auth-tab-btn {
+    font-size: 0.78rem !important;
+    padding: 0.6rem 0.2rem !important;
+  }
+  
+  /* Adjust Floating Button so it doesn't overlap excessively */
+  .floating-home-btn {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.75rem;
+    background: rgba(7, 26, 46, 0.95);
+  }
+}
+
+/* Smart Keyboard Fix: Only shift to top when keyboard is open (squished height) */
+@media (max-height: 720px) and (max-width: 768px) {
+  body {
+    align-items: flex-start !important;
+    padding-top: calc(env(safe-area-inset-top) + 4rem) !important;
+    padding-bottom: 2rem !important;
   }
 }
