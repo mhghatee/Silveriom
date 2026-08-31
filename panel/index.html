@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>پورتال سیلوریوم | ورود و مدیاکیت</title>
-  <meta name="description" content="پورتال اختصاصی سیلوریوم — ورود به پنل مدیریت و دریافت مدیاکیت">
-  
+
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -14,337 +13,335 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Auth CSS -->
+  <!-- Auth CSS (contains all styling for galaxy, orbits, card, forms) -->
   <link rel="stylesheet" href="auth.css">
 </head>
 <body>
 
-  <!-- Starfield Canvas -->
-  <canvas id="starfield-canvas"></canvas>
+  <!-- ===============================================
+       GALAXY BACKGROUND (Fixed, behind everything)
+       =============================================== -->
+  <div class="galaxy-container">
+    <div class="starfield"></div>
+    <div class="starfield-bright"></div>
 
-  <!-- Shooting Stars -->
-  <div class="shooting-star shooting-star-1"></div>
-  <div class="shooting-star shooting-star-2"></div>
+    <!-- Shooting Stars / Comets -->
+    <div class="shooting-star"></div>
+    <div class="shooting-star shooting-star-2"></div>
 
-  <!-- Star Sparkles -->
-  <div class="star-sparkle star-sparkle-1">✦</div>
-  <div class="star-sparkle star-sparkle-2">✦</div>
-  <div class="star-sparkle star-sparkle-3">✦</div>
-  <div class="star-sparkle star-sparkle-4">✦</div>
+    <!-- Twinkling Cross Stars -->
+    <div class="star-sparkle star-sparkle-1"></div>
+    <div class="star-sparkle star-sparkle-2"></div>
+    <div class="star-sparkle star-sparkle-3"></div>
+    <div class="star-sparkle star-sparkle-4"></div>
 
-  <!-- Toast Container -->
-  <div id="toast-container" class="toast-container"></div>
-
-  <!-- Main Layout -->
-  <div class="page-layout">
-
-    <!-- LEFT: Solar System Orbits -->
-    <div class="solar-system-side">
-      <div class="orbit-system">
-        <!-- Orbit Rings -->
-        <div class="orbit-ring orbit-1">
-          <div class="planet-sphere">
-            <img src="https://silveriom.ir/assets/logo-icon.png" alt="Silveriom" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:36px;height:36px;background:rgba(182,255,0,0.2);border:2px solid #B6FF00;border-radius:50%;\'></div>'">
-          </div>
-        </div>
-        <div class="orbit-ring orbit-2">
-          <div class="planet-sphere">
-            <img src="https://silveriom.ir/assets/padel-icon.png" alt="" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:36px;height:36px;background:rgba(0,240,255,0.15);border:2px solid #00F0FF;border-radius:50%;\'></div>'">
-          </div>
-        </div>
-        <div class="orbit-ring orbit-3">
-          <div class="planet-sphere">
-            <img src="https://silveriom.ir/assets/tennis-icon.png" alt="" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:36px;height:36px;background:rgba(182,255,0,0.1);border:2px solid rgba(182,255,0,0.5);border-radius:50%;\'></div>'">
-          </div>
-        </div>
-        <div class="orbit-ring orbit-4">
-          <div class="planet-sphere">
-            <img src="https://silveriom.ir/assets/star-icon.png" alt="" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:36px;height:36px;background:rgba(212,175,55,0.15);border:2px solid rgba(212,175,55,0.5);border-radius:50%;\'></div>'">
-          </div>
-        </div>
-
-        <!-- Center Logo -->
-        <div class="orbit-center">
-          <img src="https://silveriom.ir/assets/logo.png" alt="SILVERIOM" class="center-logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'color:#B6FF00;font-weight:900;font-size:1.2rem;letter-spacing:2px;\'>SILVERIOM</div>'">
-        </div>
+    <!-- Orbit Rings (centered absolutely in galaxy-container) -->
+    <div class="orbit-ring orbit-1">
+      <div class="planet-sphere">
+        <img src="https://silveriom.ir/assets/logo-icon.png" alt="" onerror="this.style.display='none'">
       </div>
-
-      <!-- Brand Tagline -->
-      <div class="solar-tagline">
-        <p>پلتفرم تخصصی تبلیغات رسانه‌های</p>
-        <p>تنیس و پدل ایران</p>
+    </div>
+    <div class="orbit-ring orbit-2">
+      <div class="planet-sphere">
+        <img src="https://silveriom.ir/assets/padel-icon.png" alt="" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="orbit-ring orbit-3">
+      <div class="planet-sphere">
+        <img src="https://silveriom.ir/assets/tennis-icon.png" alt="" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="orbit-ring orbit-4">
+      <div class="planet-sphere">
+        <img src="https://silveriom.ir/assets/star-icon.png" alt="" onerror="this.style.display='none'">
       </div>
     </div>
 
-    <!-- RIGHT: Auth Card -->
-    <div class="auth-side">
-      <div class="auth-container">
-        <div class="auth-glass-card">
-
-          <!-- Logo & Header -->
-          <div class="auth-header">
-            <img src="https://silveriom.ir/assets/logo.png" alt="SILVERIOM" class="auth-logo" onerror="this.style.display='none'">
-            <h1 class="auth-title">سیلوریوم پورتال</h1>
-            <p class="auth-subtitle" id="auth-subtitle-text">دریافت مدیاکیت رایگان یا ورود به حساب</p>
-          </div>
-
-          <!-- Tabs -->
-          <div class="auth-tabs">
-            <button class="auth-tab-btn active" id="btn-mediakit-tab" onclick="switchAuthTab('mediakit')">
-              📦 مدیاکیت
-            </button>
-            <button class="auth-tab-btn" id="btn-login-tab" onclick="switchAuthTab('login')">
-              🔐 ورود
-            </button>
-            <button class="auth-tab-btn" id="btn-register-tab" onclick="switchAuthTab('register')">
-              ✍️ ثبت‌نام
-            </button>
-          </div>
-
-          <!-- ============ MEDIAKIT FORM ============ -->
-          <form id="mediakit-form">
-            <div id="mediakit-lead-step">
-              <p style="color:#94a3b8; font-size:0.85rem; margin-bottom:1.2rem; text-align:center; line-height:1.7;">
-                کاتالوگ جامع فضاهای تبلیغاتی، آمار مخاطبان و جدول قیمت‌گذاری
-              </p>
-              <div class="form-group">
-                <label class="form-label">نام و نام خانوادگی</label>
-                <input type="text" id="mk-name" class="form-input" placeholder="نام شما" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">شماره موبایل</label>
-                <input type="tel" id="mk-phone" class="form-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵" required dir="ltr" style="text-align:right">
-              </div>
-              <div class="form-group">
-                <label class="form-label">ایمیل سازمانی</label>
-                <input type="email" id="mk-email" class="form-input" placeholder="info@company.com" dir="ltr" style="text-align:left">
-              </div>
-              <div class="form-group">
-                <label class="form-label">مجموعه مورد نظر</label>
-                <select id="mk-venue" class="form-input">
-                  <option value="all">همه مجموعه‌ها</option>
-                  <option value="t10">T10 آجودانیه</option>
-                  <option value="netra">نترا لواسان</option>
-                  <option value="asayesh">آسایش ساری</option>
-                  <option value="iranzamin">ایران‌زمین شهرک غرب</option>
-                  <option value="arena">آرنا آزادی</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">نوع رسانه</label>
-                <select id="mk-media" class="form-input">
-                  <option value="all">همه رسانه‌ها</option>
-                  <option value="net">نوار تور</option>
-                  <option value="glass">دیواره شیشه‌ای</option>
-                  <option value="video">ویدئووال</option>
-                  <option value="vip">استیج VIP</option>
-                </select>
-              </div>
-              <button type="submit" class="form-btn form-btn-primary" style="width:100%; margin-top:0.5rem;">
-                <i data-lucide="download"></i>
-                دریافت رایگان مدیاکیت
-              </button>
-            </div>
-            <div id="mediakit-success-step" style="display:none; text-align:center; padding:2rem 0;">
-              <div style="font-size:3rem; margin-bottom:1rem;">✅</div>
-              <h3 style="color:#B6FF00; margin-bottom:0.5rem;">مدیاکیت آماده دانلود است</h3>
-              <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.5rem;">اطلاعات شما ثبت شد و فایل در حال دانلود است</p>
-              <button type="button" class="form-btn form-btn-primary" onclick="triggerMediaKitPDFDownload()" style="width:100%;">
-                <i data-lucide="file-down"></i>
-                دانلود مجدد
-              </button>
-            </div>
-          </form>
-
-          <!-- ============ LOGIN FORM ============ -->
-          <form id="login-form" style="display:none;">
-
-            <!-- Toggle Admin Login -->
-            <div style="text-align:left; margin-bottom:1rem;">
-              <button type="button" id="toggle-admin-login-btn" style="background:none;border:none;color:#64748b;font-size:0.75rem;cursor:pointer;" onclick="showForgotToast()">
-                🔑 ورود مدیر ارشد
-              </button>
-            </div>
-
-            <!-- Method Toggle: Phone / Email -->
-            <div class="login-method-toggle">
-              <button type="button" id="method-phone-btn" class="method-btn active" onclick="switchLoginMethod('phone')">
-                📱 شماره موبایل
-              </button>
-              <button type="button" id="method-email-btn" class="method-btn" onclick="switchLoginMethod('email')">
-                ✉️ ایمیل
-              </button>
-            </div>
-
-            <!-- Phone Input -->
-            <div class="form-group" id="group-phone-input">
-              <label class="form-label">شماره موبایل</label>
-              <input type="tel" id="login-phone" class="form-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵" dir="ltr" style="text-align:right">
-            </div>
-
-            <!-- Email Input (hidden by default) -->
-            <div class="form-group" id="group-email-input" style="display:none;">
-              <label class="form-label">ایمیل</label>
-              <input type="email" id="login-email-input" class="form-input" placeholder="admin@silveriom.ir" dir="ltr" style="text-align:left">
-            </div>
-
-            <!-- Password -->
-            <div class="form-group">
-              <label class="form-label">رمز عبور</label>
-              <input type="password" id="login-password" class="form-input" placeholder="••••••••" dir="ltr">
-            </div>
-
-            <!-- Remember Me -->
-            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-              <input type="checkbox" id="login-remember" style="accent-color:#B6FF00; width:16px; height:16px;">
-              <label for="login-remember" style="color:#94a3b8; font-size:0.82rem; cursor:pointer;">مرا به خاطر بسپار</label>
-            </div>
-
-            <button type="submit" class="form-btn form-btn-primary" style="width:100%;">
-              <i data-lucide="log-in"></i>
-              ورود به سیستم
-            </button>
-            <p style="text-align:center; margin-top:0.75rem;">
-              <button type="button" style="background:none;border:none;color:#64748b;font-size:0.8rem;cursor:pointer;" onclick="showForgotToast()">
-                فراموشی رمز عبور؟
-              </button>
-            </p>
-          </form>
-
-          <!-- ============ REGISTER FORM ============ -->
-          <form id="register-form" style="display:none;">
-            <div class="form-group">
-              <label class="form-label">نام کامل</label>
-              <input type="text" id="reg-name" class="form-input" placeholder="نام و نام خانوادگی" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">شماره موبایل</label>
-              <input type="tel" id="reg-phone" class="form-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵" required dir="ltr" style="text-align:right">
-            </div>
-            <div class="form-group">
-              <label class="form-label">ایمیل</label>
-              <input type="email" id="reg-email" class="form-input" placeholder="info@company.com" dir="ltr" style="text-align:left">
-            </div>
-            <div class="form-group">
-              <label class="form-label">رمز عبور</label>
-              <input type="password" id="reg-password" class="form-input" placeholder="حداقل ۸ کاراکتر" dir="ltr">
-            </div>
-            <div class="form-group">
-              <label class="form-label">تکرار رمز عبور</label>
-              <input type="password" id="reg-confirm-password" class="form-input" placeholder="••••••••" dir="ltr">
-            </div>
-            <button type="submit" class="form-btn form-btn-primary" style="width:100%;">
-              <i data-lucide="user-plus"></i>
-              ثبت‌نام و درخواست لایسنس
-            </button>
-            <p style="color:#64748b; font-size:0.78rem; text-align:center; margin-top:0.75rem; line-height:1.6;">
-              پس از ثبت‌نام، درخواست شما توسط مدیریت بررسی و لایسنس فعال می‌شود.
-            </p>
-          </form>
-
-        </div>
-      </div>
+    <!-- Galaxy Sun (Neon Core) -->
+    <div class="galaxy-sun">
+      <span class="sun-label">SILVERIOM</span>
     </div>
-
   </div>
 
-  <!-- Brand Marquee Section (shown when mediakit tab is active) -->
-  <div class="brand-marquee-section">
-    <div class="brand-marquee-track">
-      <span class="brand-tag">🎾 T10 آجودانیه</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">⭐ نترا لواسان</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏆 آسایش ساری</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏙️ ایران‌زمین شهرک غرب</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏟️ آرنا آزادی</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">📊 +۹۵,۰۰۰ بازدید ماهانه</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">💎 رده A پریمیوم</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🎾 T10 آجودانیه</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">⭐ نترا لواسان</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏆 آسایش ساری</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏙️ ایران‌زمین شهرک غرب</span>
-      <span class="brand-sep">•</span>
-      <span class="brand-tag">🏟️ آرنا آزادی</span>
-      <span class="brand-sep">•</span>
+  <!-- ===============================================
+       FLOATING HOME BUTTON
+       =============================================== -->
+  <a href="https://silveriom.ir/" class="floating-home-btn">
+    <i data-lucide="arrow-right"></i>
+    بازگشت به سایت
+  </a>
+
+  <!-- ===============================================
+       TOAST NOTIFICATIONS
+       =============================================== -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ===============================================
+       AUTH CARD (centered over galaxy)
+       =============================================== -->
+  <div class="auth-container">
+    <div class="auth-glass-card">
+
+      <!-- Header -->
+      <div class="auth-header">
+        <img src="https://silveriom.ir/assets/logo.png" alt="SILVERIOM" class="auth-logo"
+             onerror="this.style.display='none'">
+        <h1 class="auth-title">سیلوریوم پورتال</h1>
+        <p class="auth-subtitle" id="auth-subtitle-text">پورتال اختصاصی دریافت کاتالوگ و مدیاکیت سیلوریوم</p>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="btn-mediakit-tab" onclick="switchAuthTab('mediakit')">
+          📦 مدیاکیت
+        </button>
+        <button class="auth-tab-btn" id="btn-login-tab" onclick="switchAuthTab('login')">
+          🔐 ورود
+        </button>
+        <button class="auth-tab-btn" id="btn-register-tab" onclick="switchAuthTab('register')">
+          ✍️ ثبت‌نام
+        </button>
+      </div>
+
+      <!-- ===== MEDIAKIT FORM ===== -->
+      <form id="mediakit-form" class="auth-form active">
+        <div id="mediakit-lead-step">
+          <p style="color:#94a3b8;font-size:0.83rem;margin-bottom:1.2rem;text-align:center;line-height:1.7;">
+            کاتالوگ جامع فضاهای تبلیغاتی، آمار مخاطبان و<br>جدول قیمت‌گذاری
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">نام و نام خانوادگی</label>
+            <div class="input-wrapper">
+              <input type="text" id="mk-name" class="auth-input" placeholder="نام شما" required>
+              <i data-lucide="user" class="input-icon"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">شماره موبایل</label>
+            <div class="input-wrapper">
+              <input type="tel" id="mk-phone" class="auth-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵" required dir="ltr" style="text-align:right">
+              <i data-lucide="phone" class="input-icon"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ایمیل سازمانی</label>
+            <div class="input-wrapper">
+              <input type="email" id="mk-email" class="auth-input" placeholder="info@company.com" dir="ltr" style="text-align:left">
+              <i data-lucide="mail" class="input-icon"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">مجموعه مورد نظر</label>
+            <div class="input-wrapper">
+              <select id="mk-venue" class="auth-input" style="padding-right: 2.5rem; text-align: right; direction: rtl;">
+                <option value="all">همه مجموعه‌ها</option>
+                <option value="t10">T10 آجودانیه</option>
+                <option value="netra">نترا لواسان</option>
+                <option value="asayesh">آسایش ساری</option>
+                <option value="iranzamin">ایران‌زمین شهرک غرب</option>
+                <option value="arena">آرنا آزادی</option>
+              </select>
+              <i data-lucide="map-pin" class="input-icon"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">نوع رسانه</label>
+            <div class="input-wrapper">
+              <select id="mk-media" class="auth-input" style="padding-right: 2.5rem; text-align: right; direction: rtl;">
+                <option value="all">همه رسانه‌ها</option>
+                <option value="net">نوار تور</option>
+                <option value="glass">دیواره شیشه‌ای</option>
+                <option value="video">ویدئووال</option>
+                <option value="vip">استیج VIP</option>
+              </select>
+              <i data-lucide="monitor-play" class="input-icon"></i>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-neon-submit" style="margin-top:0.5rem;">
+            <i data-lucide="download"></i>
+            دریافت رایگان مدیاکیت
+          </button>
+        </div>
+
+        <!-- Success Step -->
+        <div id="mediakit-success-step" style="display:none;text-align:center;padding:2rem 0;">
+          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <h3 style="color:#B6FF00;margin-bottom:0.5rem;">مدیاکیت آماده دانلود است</h3>
+          <p style="color:#94a3b8;font-size:0.9rem;margin-bottom:1.5rem;">اطلاعات شما ثبت شد و فایل در حال دانلود است</p>
+          <button type="button" class="btn-neon-submit" onclick="triggerMediaKitPDFDownload()">
+            <i data-lucide="file-down"></i>
+            دانلود مجدد
+          </button>
+        </div>
+      </form>
+
+      <!-- ===== LOGIN FORM ===== -->
+      <form id="login-form" class="auth-form">
+
+        <div style="text-align:left;margin-bottom:1rem;">
+          <button type="button" id="toggle-admin-login-btn"
+                  style="background:none;border:none;color:#475569;font-size:0.75rem;cursor:pointer;font-family:inherit;"
+                  onclick="showForgotToast()">
+            🔑 ورود مدیر ارشد
+          </button>
+        </div>
+
+        <!-- Method Toggle -->
+        <div class="login-method-toggle">
+          <button type="button" id="method-phone-btn" class="method-btn active"
+                  onclick="switchLoginMethod('phone')">📱 شماره موبایل</button>
+          <button type="button" id="method-email-btn" class="method-btn"
+                  onclick="switchLoginMethod('email')">✉️ ایمیل</button>
+        </div>
+
+        <div class="form-group" id="group-phone-input">
+          <label class="form-label">شماره موبایل</label>
+          <div class="input-wrapper">
+            <input type="tel" id="login-phone" class="auth-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵"
+                   dir="ltr" style="text-align:right">
+            <i data-lucide="phone" class="input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group" id="group-email-input" style="display:none;">
+          <label class="form-label">ایمیل</label>
+          <div class="input-wrapper">
+            <input type="email" id="login-email-input" class="auth-input"
+                   placeholder="admin@silveriom.ir" dir="ltr" style="text-align:left">
+            <i data-lucide="mail" class="input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">رمز عبور</label>
+          <div class="input-wrapper">
+            <input type="password" id="login-password" class="auth-input" placeholder="••••••••" dir="ltr">
+            <i data-lucide="lock" class="input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="login-remember">
+            مرا به خاطر بسپار
+          </label>
+          <a href="#" class="forgot-link" onclick="showForgotToast(); return false;">فراموشی رمز عبور؟</a>
+        </div>
+
+        <button type="submit" class="btn-neon-submit">
+          <i data-lucide="log-in"></i>
+          ورود به سیستم
+        </button>
+      </form>
+
+      <!-- ===== REGISTER FORM ===== -->
+      <form id="register-form" class="auth-form">
+        <div class="form-group">
+          <label class="form-label">نام کامل</label>
+          <div class="input-wrapper">
+            <input type="text" id="reg-name" class="auth-input" placeholder="نام و نام خانوادگی" required>
+            <i data-lucide="user" class="input-icon"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">شماره موبایل</label>
+          <div class="input-wrapper">
+            <input type="tel" id="reg-phone" class="auth-input" placeholder="۰۹۱۲۱۱۲۷۴۱۵"
+                   required dir="ltr" style="text-align:right">
+            <i data-lucide="phone" class="input-icon"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ایمیل</label>
+          <div class="input-wrapper">
+            <input type="email" id="reg-email" class="auth-input"
+                   placeholder="info@company.com" dir="ltr" style="text-align:left">
+            <i data-lucide="mail" class="input-icon"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">رمز عبور</label>
+          <div class="input-wrapper">
+            <input type="password" id="reg-password" class="auth-input" placeholder="حداقل ۸ کاراکتر" dir="ltr">
+            <i data-lucide="lock" class="input-icon"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">تکرار رمز عبور</label>
+          <div class="input-wrapper">
+            <input type="password" id="reg-confirm-password" class="auth-input" placeholder="••••••••" dir="ltr">
+            <i data-lucide="lock" class="input-icon"></i>
+          </div>
+        </div>
+        <button type="submit" class="btn-neon-submit">
+          <i data-lucide="user-plus"></i>
+          ثبت‌نام و درخواست لایسنس
+        </button>
+        <p style="color:#64748b;font-size:0.78rem;text-align:center;margin-top:0.75rem;line-height:1.6;">
+          پس از ثبت‌نام، درخواست شما توسط مدیریت بررسی و لایسنس فعال می‌شود.
+        </p>
+      </form>
+
+      <!-- Brand Marquee inside card -->
+      <div class="brand-marquee-section">
+        <div class="brand-marquee-wrapper">
+          <div class="brand-marquee-track">
+            <span class="brand-item">🎾 T10 آجودانیه</span>
+            <span class="brand-item">⭐ نترا لواسان</span>
+            <span class="brand-item">🏆 آسایش ساری</span>
+            <span class="brand-item">🏙️ ایران‌زمین</span>
+            <span class="brand-item">🏟️ آرنا آزادی</span>
+            <span class="brand-item">📊 +۹۵,۰۰۰ بازدید</span>
+            <span class="brand-item">💎 رده A پریمیوم</span>
+            <span class="brand-item">🎾 T10 آجودانیه</span>
+            <span class="brand-item">⭐ نترا لواسان</span>
+            <span class="brand-item">🏆 آسایش ساری</span>
+            <span class="brand-item">🏙️ ایران‌زمین</span>
+            <span class="brand-item">🏟️ آرنا آزادی</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- Auth JS -->
   <script src="auth.js"></script>
 
-  <!-- Starfield Script -->
   <script>
-    // Simple starfield canvas
-    const canvas = document.getElementById('starfield-canvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      const stars = Array.from({length: 200}, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5,
-        a: Math.random(),
-        speed: Math.random() * 0.02 + 0.005
-      }));
+    // Initialize Lucide icons
+    if (window.lucide) lucide.createIcons();
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
 
-      function drawStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(s => {
-          s.a += s.speed;
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${0.3 + Math.abs(Math.sin(s.a)) * 0.7})`;
-          ctx.fill();
-        });
-        requestAnimationFrame(drawStars);
-      }
-      drawStars();
-
-      window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
-    }
-
-    // switchLoginMethod helper
     function switchLoginMethod(method) {
       const phoneBtn = document.getElementById('method-phone-btn');
       const emailBtn = document.getElementById('method-email-btn');
       const groupPhone = document.getElementById('group-phone-input');
       const groupEmail = document.getElementById('group-email-input');
-      
       if (method === 'phone') {
-        if (phoneBtn) { phoneBtn.classList.add('active'); }
-        if (emailBtn) { emailBtn.classList.remove('active'); }
+        phoneBtn && phoneBtn.classList.add('active');
+        emailBtn && emailBtn.classList.remove('active');
         if (groupPhone) groupPhone.style.display = '';
         if (groupEmail) groupEmail.style.display = 'none';
       } else {
-        if (emailBtn) { emailBtn.classList.add('active'); }
-        if (phoneBtn) { phoneBtn.classList.remove('active'); }
+        emailBtn && emailBtn.classList.add('active');
+        phoneBtn && phoneBtn.classList.remove('active');
         if (groupEmail) groupEmail.style.display = '';
         if (groupPhone) groupPhone.style.display = 'none';
       }
     }
 
-    // triggerMediaKitPDFDownload placeholder
     function triggerMediaKitPDFDownload() {
-      const link = document.createElement('a');
-      link.href = '/panel/mediakit/silveriom_mediakit.pdf';
-      link.download = 'Silveriom_MediaKit.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const a = document.createElement('a');
+      a.href = '/panel/mediakit/silveriom_mediakit.pdf';
+      a.download = 'Silveriom_MediaKit.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   </script>
 
