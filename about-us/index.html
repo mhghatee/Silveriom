@@ -17871,169 +17871,148 @@ section {
     
 
 
-<!-- GALAXY PRELOADER STYLE -->
+
+
+
+<!-- PADEL QUANTUM PRELOADER STYLE -->
 <style>
   #silveriom-loader {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
     background: #010610; z-index: 9999999;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
     overflow: hidden;
   }
+  #silveriom-loader::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%, rgba(182,255,0,0.02) 100%);
+    pointer-events: none;
+  }
   .sl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+
+  .pq-container { position: relative; display: flex; align-items: center; justify-content: center; transform: scale(1.1); }
+
+  .pq-core {
+    position: absolute; width: 150px; height: 150px; border-radius: 50%;
+    background-color: #061121;
+    background-image: radial-gradient(rgba(182,255,0,0.15) 2px, transparent 2px);
+    background-size: 12px 12px;
+    box-shadow: 0 0 40px rgba(182, 255, 0, 0.15), inset 0 0 30px rgba(0,0,0,0.9);
+    display: flex; align-items: center; justify-content: center; z-index: 10;
+    animation: pq-sweetspot-pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pq-core-text {
+    color: #B6FF00; font-weight: 900; letter-spacing: 3px; font-size: 1.2rem;
+    text-shadow: 0 0 15px rgba(182,255,0,0.6); font-family: 'YekanBakh', Tahoma, sans-serif;
+    background: rgba(1, 6, 16, 0.85); padding: 5px 15px; border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .pq-impact {
+    position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 0 0 50px #B6FF00; opacity: 0;
+    animation: pq-flash 3s infinite;
+  }
+
+  .pq-ring { position: absolute; border-radius: 50%; border: 1px dashed rgba(182,255,0,0.3); }
+  .pq-ring-1 { width: 240px; height: 240px; border-width: 2px; animation: pq-spin 4s linear infinite; }
+  .pq-ring-2 { width: 360px; height: 360px; border-width: 1px; border-style: dotted; animation: pq-spinRev 7s linear infinite; border-color: rgba(255,255,255,0.3); }
+  .pq-ring-3 { width: 500px; height: 500px; border: 1px dashed rgba(182,255,0,0.15); animation: pq-spin 12s linear infinite; }
+
+  .pq-ball {
+    position: absolute; width: 12px; height: 12px; background: #fff; border-radius: 50%;
+    box-shadow: 0 0 15px #fff, 0 0 30px #B6FF00;
+  }
+  .pq-trail-1 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: -10px 0 10px rgba(182,255,0,0.8), -25px 0 15px rgba(182,255,0,0.4), -40px 0 20px rgba(182,255,0,0.1);
+  }
+  .pq-trail-2 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 10px -10px 10px rgba(182,255,0,0.8), 25px -25px 15px rgba(182,255,0,0.4);
+  }
+  .pq-trail-3 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 0 -10px 10px rgba(182,255,0,0.8), 0 -25px 15px rgba(182,255,0,0.4);
+  }
+
+  .pq-ring-1 .pq-ball { top: -6px; left: 50%; transform: translateX(-50%); }
+  .pq-ring-2 .pq-ball { bottom: -5px; left: 20%; background: #B6FF00; }
+  .pq-ring-3 .pq-ball { top: 50%; right: -6px; transform: translateY(-50%); background: #B6FF00; }
+
+  @keyframes pq-spin { 100% { transform: rotate(360deg); } }
+  @keyframes pq-spinRev { 100% { transform: rotate(-360deg); } }
+  @keyframes pq-sweetspot-pulse {
+    from { transform: scale(1); box-shadow: 0 0 40px rgba(182,255,0,0.1), inset 0 0 30px rgba(0,0,0,0.9); }
+    to { transform: scale(1.05); box-shadow: 0 0 80px rgba(182,255,0,0.5), inset 0 0 10px rgba(0,0,0,0.7); }
+  }
+  @keyframes pq-flash {
+    0%, 90% { opacity: 0; transform: scale(1); }
+    95% { opacity: 0.8; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.5); }
+  }
   
-  .sl-galaxy-container {
-    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: radial-gradient(ellipse at center, #0a2d52 0%, #030e1f 60%, #000308 100%);
-    transform-origin: center center;
-  }
-  .sl-starfield {
-    position: absolute; width: 100%; height: 100%;
-    background-image: 
-      radial-gradient(1.5px 1.5px at 25px 35px, #ffffff, rgba(0,0,0,0)),
-      radial-gradient(2px 2px at 50px 85px, rgba(182,255,0,0.9), rgba(0,0,0,0)),
-      radial-gradient(1px 1px at 110px 45px, #ffffff, rgba(0,0,0,0)),
-      radial-gradient(2.5px 2.5px at 180px 140px, rgba(182,255,0,0.8), rgba(0,0,0,0)),
-      radial-gradient(1.5px 1.5px at 250px 210px, #ffffff, rgba(0,0,0,0)),
-      radial-gradient(2px 2px at 330px 270px, rgba(255,255,255,0.9), rgba(0,0,0,0));
-    animation: sl-starsSlowPulse 5s infinite alternate ease-in-out;
-  }
-  @keyframes sl-starsSlowPulse { 0% { opacity: 0.3; } 100% { opacity: 0.85; } }
-  
-  .sl-star-sparkle {
-    position: absolute; width: 12px; height: 12px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(182,255,0,0.6) 40%, transparent 100%);
-    box-shadow: 0 0 10px rgba(182,255,0,0.8), 0 0 20px rgba(255,255,255,0.9);
-    animation: sl-sparkleFlash 4s infinite alternate ease-in-out;
-  }
-  .sl-star-sparkle-1 { top: 18%; left: 15%; animation-delay: 0s; }
-  .sl-star-sparkle-2 { top: 72%; left: 82%; animation-delay: 1.5s; }
-  .sl-star-sparkle-3 { top: 25%; right: 18%; animation-delay: 2.8s; }
-  .sl-star-sparkle-4 { bottom: 18%; right: 75%; animation-delay: 0.9s; }
-  @keyframes sl-sparkleFlash {
-    0% { transform: scale(0.6) rotate(0deg); opacity: 0.4; }
-    50% { transform: scale(1.4) rotate(45deg); opacity: 1; box-shadow: 0 0 16px rgba(182,255,0,1), 0 0 30px #ffffff; }
-    100% { transform: scale(0.7) rotate(90deg); opacity: 0.5; }
-  }
-
-  .sl-shooting-star {
-    position: absolute; top: 15%; left: 85%; width: 140px; height: 2px;
-    background: linear-gradient(90deg, rgba(182,255,0,1) 0%, rgba(255,255,255,0.9) 30%, transparent 100%);
-    transform: rotate(-35deg); animation: sl-cometPass 7s infinite ease-in-out; opacity: 0;
-    box-shadow: 0 0 10px rgba(182,255,0,0.8);
-  }
-  .sl-shooting-star-2 { top: 45%; left: 92%; width: 100px; height: 1.5px; animation-delay: 3.5s; }
-  @keyframes sl-cometPass {
-    0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
-    10% { opacity: 1; }
-    25% { transform: translate(-500px, 380px) rotate(-35deg); opacity: 0; }
-    100% { opacity: 0; }
-  }
-
-  .sl-galaxy-sun {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 140px; height: 140px; border-radius: 50%;
-    background: radial-gradient(circle, #B6FF00 0%, #76B800 45%, rgba(6,22,40,0.7) 80%, transparent 100%);
-    box-shadow: 0 0 90px rgba(182,255,0,0.6), 0 0 180px rgba(118,184,0,0.35);
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    z-index: 1; animation: sl-sunPulse 3.5s infinite alternate ease-in-out;
-  }
-  .sl-sun-label {
-    font-size: 1.15rem; font-weight: 900; color: #010610; letter-spacing: 2.5px; text-transform: uppercase;
-    text-shadow: 0 0 12px rgba(255,255,255,0.9); font-family: 'YekanBakh', sans-serif;
-  }
-  @keyframes sl-sunPulse {
-    0% { transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 0 70px rgba(182,255,0,0.5); }
-    100% { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 110px rgba(182,255,0,0.8); }
-  }
-
-  .sl-orbit-ring {
-    position: absolute; top: 50%; left: 50%; border-radius: 50%;
-    border: 1px dashed rgba(182,255,0,0.22); transform: translate(-50%, -50%); pointer-events: none;
-  }
-  .sl-orbit-1 { width: 300px; height: 300px; animation: sl-spinOrbit 20s linear infinite; }
-  .sl-orbit-2 { width: 450px; height: 450px; animation: sl-spinOrbitReverse 30s linear infinite; }
-  .sl-orbit-3 { width: 600px; height: 600px; animation: sl-spinOrbit 42s linear infinite; }
-  
-  @keyframes sl-spinOrbit { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-  @keyframes sl-spinOrbitReverse { from { transform: translate(-50%, -50%) rotate(360deg); } to { transform: translate(-50%, -50%) rotate(0deg); } }
-
-  .sl-planet-sphere {
-    width: 45px; height: 45px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #0d2a4a 0%, #061629 60%, #020a14 100%);
-    border: 1.5px solid rgba(182,255,0,0.85); box-shadow: 0 0 25px rgba(182,255,0,0.6), inset -5px -5px 12px rgba(0,0,0,0.85);
-    display: flex; align-items: center; justify-content: center; position: absolute; backdrop-filter: blur(10px);
-  }
-  .sl-planet-sphere img { width: 25px; height: 25px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.7)); }
-
-  .sl-orbit-1 .sl-planet-sphere { top: -22px; left: 50%; transform: translateX(-50%); animation: sl-counterSpin 20s linear infinite; }
-  .sl-orbit-2 .sl-planet-sphere { bottom: -22px; left: 50%; transform: translateX(-50%); animation: sl-counterSpinRev 30s linear infinite; }
-  .sl-orbit-3 .sl-planet-sphere { top: 50%; right: -22px; transform: translateY(-50%); animation: sl-counterSpin 42s linear infinite; }
-
-  @keyframes sl-counterSpin { from { transform: translateX(-50%) rotate(360deg); } to { transform: translateX(-50%) rotate(0deg); } }
-  @keyframes sl-counterSpinRev { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(360deg); } }
-
   @media (max-width: 600px) {
-    .sl-galaxy-sun { width: 100px !important; height: 100px !important; }
-    .sl-sun-label { font-size: 0.85rem !important; }
-    .sl-orbit-1 { width: 200px; height: 200px; }
-    .sl-orbit-2 { width: 300px; height: 300px; }
-    .sl-orbit-3 { width: 400px; height: 400px; }
-    .sl-planet-sphere { width: 35px; height: 35px; }
-    .sl-planet-sphere img { width: 18px; height: 18px; }
-    .sl-orbit-1 .sl-planet-sphere { top: -17px; }
-    .sl-orbit-2 .sl-planet-sphere { bottom: -17px; }
-    .sl-orbit-3 .sl-planet-sphere { right: -17px; }
+    .pq-container { transform: scale(0.7); }
   }
 </style>
 
 </head>
 <body class="luxury-body">
 
-<!-- GALAXY PRELOADER DOM & JS -->
+<!-- PADEL QUANTUM PRELOADER DOM & JS -->
 <div id="silveriom-loader">
-  <div class="sl-galaxy-container">
-    <div class="sl-starfield"></div>
-    <div class="sl-star-sparkle sl-star-sparkle-1"></div>
-    <div class="sl-star-sparkle sl-star-sparkle-2"></div>
-    <div class="sl-star-sparkle sl-star-sparkle-3"></div>
-    <div class="sl-star-sparkle sl-star-sparkle-4"></div>
-    <div class="sl-shooting-star"></div>
-    <div class="sl-shooting-star sl-shooting-star-2"></div>
-
-    <div class="sl-orbit-ring sl-orbit-1"><div class="sl-planet-sphere"><img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'"></div></div>
-    <div class="sl-orbit-ring sl-orbit-2"><div class="sl-planet-sphere"><img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'"></div></div>
-    <div class="sl-orbit-ring sl-orbit-3"><div class="sl-planet-sphere"><img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'"></div></div>
-
-    <div class="sl-galaxy-sun"><span class="sl-sun-label">SILVERIOM</span></div>
+  <div class="pq-container">
+    <div class="pq-ring pq-ring-3"><div class="pq-ball"><div class="pq-trail-3"></div></div></div>
+    <div class="pq-ring pq-ring-2"><div class="pq-ball"><div class="pq-trail-2"></div></div></div>
+    <div class="pq-ring pq-ring-1"><div class="pq-ball"><div class="pq-trail-1"></div></div></div>
+    
+    <div class="pq-core">
+      <div class="pq-impact"></div>
+      <div class="pq-core-text">SILVERIOM</div>
+    </div>
   </div>
 </div>
 <script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
+  (function() {
+    const hideLoader = () => {
       const loader = document.getElementById('silveriom-loader');
-      if(loader) loader.classList.add('sl-hidden');
-    }, 200);
-  });
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      
-      const href = a.getAttribute('href');
-      if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
-        const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
-        if (isInternal) {
-          e.preventDefault();
-          const loader = document.getElementById('silveriom-loader');
-          if(loader) loader.classList.remove('sl-hidden');
-          setTimeout(() => { window.location.href = href; }, 350);
-        }
+      if(loader && !loader.classList.contains('sl-hidden')) {
+        loader.classList.add('sl-hidden');
+        setTimeout(() => loader.remove(), 600);
       }
+    };
+    
+    // Normal Hide
+    window.addEventListener('load', () => setTimeout(hideLoader, 200));
+    
+    // FAIL-SAFE: Force hide after 3 seconds even if images hang!
+    setTimeout(hideLoader, 3000);
+    
+    // SPA Transitions
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
+          const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
+          if (isInternal) {
+            e.preventDefault();
+            const loader = document.getElementById('silveriom-loader');
+            if(loader) {
+              loader.classList.remove('sl-hidden');
+              document.body.appendChild(loader); // Bring to very front
+            }
+            setTimeout(() => { window.location.href = href; }, 350);
+          }
+        }
+      });
     });
-  });
+  })();
 </script>
+
+
+
 
 
 

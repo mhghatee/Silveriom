@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پیش‌نمایش ایده‌های لودینگ سیلوریوم</title>
+  <style>
+    @font-face {
+      font-family: 'YekanBakh';
+      src: url('panel/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
+    }
+    body { 
+      margin: 0; background: #010610; color: white; 
+      font-family: 'YekanBakh', Tahoma, sans-serif; 
+      overflow: hidden; 
+    }
+    
+    .tabs-container {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 100;
+      background: rgba(2, 6, 18, 0.8); backdrop-filter: blur(10px);
+      padding: 10px; border-radius: 50px; border: 1px solid rgba(182, 255, 0, 0.2);
+    }
+    .tab { 
+      padding: 12px 20px; background: transparent; 
+      color: rgba(255,255,255,0.7); border-radius: 30px; 
+      cursor: pointer; font-size: 0.85rem; font-weight: bold;
+      transition: all 0.3s; text-align: center; white-space: nowrap;
+    }
+    .tab.active { 
+      background: #B6FF00; color: #010610; 
+      box-shadow: 0 0 15px rgba(182, 255, 0, 0.4); 
+    }
+    .concept { 
+      display: none; position: absolute; inset: 0; 
+      align-items: center; justify-content: center; 
+      width: 100vw; height: 100vh;
+      background: radial-gradient(ellipse at center, #0a2d52 0%, #030e1f 60%, #000308 100%);
+    }
+    .concept.active { display: flex; }
+
+    /* =========================================
+       CONCEPT 1: Quantum Data Core 
+       ========================================= */
+    .q-container { position: relative; display: flex; align-items: center; justify-content: center; }
+    .q-core-text { 
+      position: absolute; z-index: 10; color: #B6FF00; 
+      font-weight: 900; letter-spacing: 3px; font-size: 1.2rem;
+      text-shadow: 0 0 15px rgba(182,255,0,0.8);
+      animation: q-pulse 1.5s infinite alternate;
+    }
+    .q-ring-1 { 
+      position: absolute; width: 140px; height: 140px; 
+      border: 2px dashed rgba(182, 255, 0, 0.8); border-radius: 50%; 
+      animation: spin 8s linear infinite; 
+    }
+    .q-ring-2 { 
+      position: absolute; width: 220px; height: 220px; 
+      border: 1px dotted rgba(255, 255, 255, 0.4); border-radius: 50%; 
+      animation: spinRev 12s linear infinite; 
+    }
+    .q-ring-3 { 
+      position: absolute; width: 320px; height: 320px; 
+      border: 1px dashed rgba(182, 255, 0, 0.2); border-radius: 50%; 
+      animation: spin 20s linear infinite; 
+    }
+    .q-node { 
+      position: absolute; width: 10px; height: 10px; 
+      background: #fff; border-radius: 50%; 
+      box-shadow: 0 0 15px #fff, 0 0 30px #B6FF00; 
+    }
+    .q-ring-1 .q-node { top: -6px; left: 50%; transform: translateX(-50%); }
+    .q-ring-2 .q-node { bottom: -5px; left: 20%; background: #B6FF00; }
+    .q-ring-3 .q-node { top: 50%; right: -5px; transform: translateY(-50%); }
+
+    /* =========================================
+       CONCEPT 2: Neon Eclipse (Cinematic)
+       ========================================= */
+    .e-container { position: relative; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; perspective: 1000px; background: #000; }
+    .e-sun { 
+      width: 140px; height: 140px; background: #000; border-radius: 50%; 
+      box-shadow: 0 0 80px 20px #B6FF00, inset 0 0 20px rgba(0,0,0,1); 
+      z-index: 10; display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .e-text { 
+      color: #fff; font-weight: 900; z-index: 11; letter-spacing: 4px; font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    .e-orbit-1 { 
+      position: absolute; width: 340px; height: 340px; 
+      border-radius: 50%; border: 1px solid rgba(255,255,255,0.05);
+      transform-style: preserve-3d; transform: rotateX(65deg);
+      animation: e-spin3d 6s linear infinite; z-index: 5;
+    }
+    .e-orbit-2 { 
+      position: absolute; width: 480px; height: 480px; 
+      border-radius: 50%; border: 1px solid rgba(182,255,0,0.1);
+      transform-style: preserve-3d; transform: rotateX(75deg) rotateY(20deg);
+      animation: e-spin3dRev 10s linear infinite; z-index: 15;
+    }
+    .e-planet-silver { 
+      position: absolute; top: -12px; left: 50%; width: 24px; height: 24px; 
+      background: radial-gradient(circle at 30% 30%, #fff, #888); 
+      border-radius: 50%; box-shadow: 0 0 20px rgba(255,255,255,0.8); 
+      transform: translateX(-50%) rotateX(-90deg); 
+    }
+    .e-planet-neon { 
+      position: absolute; bottom: -8px; left: 50%; width: 16px; height: 16px; 
+      background: #B6FF00; border-radius: 50%; 
+      box-shadow: 0 0 20px #B6FF00; transform: translateX(-50%) rotateX(-90deg); 
+    }
+    @keyframes e-spin3d { 100% { transform: rotateX(65deg) rotateZ(360deg); } }
+    @keyframes e-spin3dRev { 100% { transform: rotateX(75deg) rotateY(20deg) rotateZ(-360deg); } }
+
+    /* =========================================
+       CONCEPT 3: Gravitational Ripples
+       ========================================= */
+    .r-container { position: relative; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    /* Simulated glassmorphism bg */
+    .r-bg { position: absolute; inset: 0; background: url('https://silveriom.ir/assets/silveriom_logo_transparent.png') center/30% no-repeat; filter: blur(30px) opacity(0.2); }
+    
+    .r-sun { 
+      width: 120px; height: 120px; 
+      background: radial-gradient(circle, #B6FF00 0%, #76B800 60%, transparent 100%); 
+      border-radius: 50%; box-shadow: 0 0 60px rgba(182,255,0,0.6); 
+      animation: r-pulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1); 
+      display: flex; align-items: center; justify-content: center; 
+      z-index: 10; color: #010610; font-weight: 900; letter-spacing: 2px; font-size: 1.1rem;
+    }
+    .r-ripple-wrapper { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1;}
+    .r-ripple { 
+      position: absolute; border: 2px solid #B6FF00; border-radius: 50%; 
+      animation: r-wave 3s infinite cubic-bezier(0.1, 0.5, 0.8, 1); opacity: 0; 
+    }
+    .r-ripple:nth-child(2) { animation-delay: 1s; }
+    .r-ripple:nth-child(3) { animation-delay: 2s; }
+    
+    /* Planet riding the ripple */
+    .r-planet-rider {
+      position: absolute; width: 16px; height: 16px; background: #fff; 
+      border-radius: 50%; box-shadow: 0 0 15px #fff;
+      animation: r-ride 3s infinite cubic-bezier(0.1, 0.5, 0.8, 1);
+    }
+    .r-ripple:nth-child(2) .r-planet-rider { background: #B6FF00; box-shadow: 0 0 15px #B6FF00; animation-delay: 1s; left: 20%; top: 20%;}
+    .r-ripple:nth-child(3) .r-planet-rider { display: none; } /* keep it clean */
+
+    @keyframes r-pulse { 
+      0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(182,255,0,0.4); } 
+      50% { transform: scale(1.1); box-shadow: 0 0 90px rgba(182,255,0,0.8); } 
+    }
+    @keyframes r-wave { 
+      0% { width: 100px; height: 100px; opacity: 1; border-width: 4px; transform: rotate(0deg);} 
+      100% { width: 600px; height: 600px; opacity: 0; border-width: 1px; transform: rotate(180deg);} 
+    }
+    @keyframes r-ride {
+      0% { transform: translate(50px, 0); opacity: 1; }
+      100% { transform: translate(300px, 0); opacity: 0; }
+    }
+
+    /* Helpers */
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes spinRev { 100% { transform: rotate(-360deg); } }
+    @keyframes q-pulse { from { opacity: 0.6; } to { opacity: 1; } }
+    
+    @media (max-width: 600px) {
+      .tabs-container { width: 90%; justify-content: center; flex-wrap: wrap; bottom: 20px;}
+      .tab { font-size: 0.75rem; padding: 10px 15px; }
+    }
+  </style>
+
+<!-- PADEL QUANTUM PRELOADER STYLE -->
+<style>
+  #silveriom-loader {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
+    background: #010610; z-index: 9999999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    overflow: hidden;
+  }
+  #silveriom-loader::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%, rgba(182,255,0,0.02) 100%);
+    pointer-events: none;
+  }
+  .sl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+
+  .pq-container { position: relative; display: flex; align-items: center; justify-content: center; transform: scale(1.1); }
+
+  .pq-core {
+    position: absolute; width: 150px; height: 150px; border-radius: 50%;
+    background-color: #061121;
+    background-image: radial-gradient(rgba(182,255,0,0.15) 2px, transparent 2px);
+    background-size: 12px 12px;
+    box-shadow: 0 0 40px rgba(182, 255, 0, 0.15), inset 0 0 30px rgba(0,0,0,0.9);
+    display: flex; align-items: center; justify-content: center; z-index: 10;
+    animation: pq-sweetspot-pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pq-core-text {
+    color: #B6FF00; font-weight: 900; letter-spacing: 3px; font-size: 1.2rem;
+    text-shadow: 0 0 15px rgba(182,255,0,0.6); font-family: 'YekanBakh', Tahoma, sans-serif;
+    background: rgba(1, 6, 16, 0.85); padding: 5px 15px; border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .pq-impact {
+    position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 0 0 50px #B6FF00; opacity: 0;
+    animation: pq-flash 3s infinite;
+  }
+
+  .pq-ring { position: absolute; border-radius: 50%; border: 1px dashed rgba(182,255,0,0.3); }
+  .pq-ring-1 { width: 240px; height: 240px; border-width: 2px; animation: pq-spin 4s linear infinite; }
+  .pq-ring-2 { width: 360px; height: 360px; border-width: 1px; border-style: dotted; animation: pq-spinRev 7s linear infinite; border-color: rgba(255,255,255,0.3); }
+  .pq-ring-3 { width: 500px; height: 500px; border: 1px dashed rgba(182,255,0,0.15); animation: pq-spin 12s linear infinite; }
+
+  .pq-ball {
+    position: absolute; width: 12px; height: 12px; background: #fff; border-radius: 50%;
+    box-shadow: 0 0 15px #fff, 0 0 30px #B6FF00;
+  }
+  .pq-trail-1 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: -10px 0 10px rgba(182,255,0,0.8), -25px 0 15px rgba(182,255,0,0.4), -40px 0 20px rgba(182,255,0,0.1);
+  }
+  .pq-trail-2 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 10px -10px 10px rgba(182,255,0,0.8), 25px -25px 15px rgba(182,255,0,0.4);
+  }
+  .pq-trail-3 {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: 0 -10px 10px rgba(182,255,0,0.8), 0 -25px 15px rgba(182,255,0,0.4);
+  }
+
+  .pq-ring-1 .pq-ball { top: -6px; left: 50%; transform: translateX(-50%); }
+  .pq-ring-2 .pq-ball { bottom: -5px; left: 20%; background: #B6FF00; }
+  .pq-ring-3 .pq-ball { top: 50%; right: -6px; transform: translateY(-50%); background: #B6FF00; }
+
+  @keyframes pq-spin { 100% { transform: rotate(360deg); } }
+  @keyframes pq-spinRev { 100% { transform: rotate(-360deg); } }
+  @keyframes pq-sweetspot-pulse {
+    from { transform: scale(1); box-shadow: 0 0 40px rgba(182,255,0,0.1), inset 0 0 30px rgba(0,0,0,0.9); }
+    to { transform: scale(1.05); box-shadow: 0 0 80px rgba(182,255,0,0.5), inset 0 0 10px rgba(0,0,0,0.7); }
+  }
+  @keyframes pq-flash {
+    0%, 90% { opacity: 0; transform: scale(1); }
+    95% { opacity: 0.8; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.5); }
+  }
+  
+  @media (max-width: 600px) {
+    .pq-container { transform: scale(0.7); }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- PADEL QUANTUM PRELOADER DOM & JS -->
+<div id="silveriom-loader">
+  <div class="pq-container">
+    <div class="pq-ring pq-ring-3"><div class="pq-ball"><div class="pq-trail-3"></div></div></div>
+    <div class="pq-ring pq-ring-2"><div class="pq-ball"><div class="pq-trail-2"></div></div></div>
+    <div class="pq-ring pq-ring-1"><div class="pq-ball"><div class="pq-trail-1"></div></div></div>
+    
+    <div class="pq-core">
+      <div class="pq-impact"></div>
+      <div class="pq-core-text">SILVERIOM</div>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    const hideLoader = () => {
+      const loader = document.getElementById('silveriom-loader');
+      if(loader && !loader.classList.contains('sl-hidden')) {
+        loader.classList.add('sl-hidden');
+        setTimeout(() => loader.remove(), 600);
+      }
+    };
+    
+    // Normal Hide
+    window.addEventListener('load', () => setTimeout(hideLoader, 200));
+    
+    // FAIL-SAFE: Force hide after 3 seconds even if images hang!
+    setTimeout(hideLoader, 3000);
+    
+    // SPA Transitions
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
+          const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
+          if (isInternal) {
+            e.preventDefault();
+            const loader = document.getElementById('silveriom-loader');
+            if(loader) {
+              loader.classList.remove('sl-hidden');
+              document.body.appendChild(loader); // Bring to very front
+            }
+            setTimeout(() => { window.location.href = href; }, 350);
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+  
+  <div id="c1" class="concept active">
+    <div class="q-container">
+      <div class="q-ring-3"><div class="q-node"></div></div>
+      <div class="q-ring-2"><div class="q-node"></div></div>
+      <div class="q-ring-1"><div class="q-node"></div></div>
+      <div class="q-core-text">SILVERIOM</div>
+    </div>
+  </div>
+  
+  <div id="c2" class="concept">
+    <div class="e-container">
+      <div class="e-orbit-2"><div class="e-planet-neon"></div></div>
+      <div class="e-orbit-1"><div class="e-planet-silver"></div></div>
+      <div class="e-sun"><div class="e-text">SILVERIOM</div></div>
+    </div>
+  </div>
+
+  <div id="c3" class="concept">
+    <div class="r-container">
+      <div class="r-bg"></div>
+      <div class="r-ripple-wrapper">
+        <div class="r-ripple"><div class="r-planet-rider" style="top: 10%; left: 80%;"></div></div>
+        <div class="r-ripple"><div class="r-planet-rider" style="top: 70%; left: 15%;"></div></div>
+        <div class="r-ripple"></div>
+      </div>
+      <div class="r-sun">SILVERIOM</div>
+    </div>
+  </div>
+
+  <div class="tabs-container">
+    <div class="tab active" onclick="show(1)">۱. هسته کوانتومی</div>
+    <div class="tab" onclick="show(2)">۲. خورشیدگرفتگی</div>
+    <div class="tab" onclick="show(3)">۳. فضای سیال</div>
+  </div>
+
+  <script>
+    function show(n) {
+      document.querySelectorAll('.concept').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('c' + n).classList.add('active');
+      document.querySelectorAll('.tab')[n-1].classList.add('active');
+    }
+  </script>
+</body>
+</html>
