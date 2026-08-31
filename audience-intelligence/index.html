@@ -2438,6 +2438,7 @@ body {
   
   mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  direction: ltr !important;
 }
 
 .marquee-track {
@@ -2467,7 +2468,7 @@ body {
 
 @keyframes marqueeContinuous {
   0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(50%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .top-bar-badge {
@@ -5705,7 +5706,7 @@ section {
   white-space: nowrap;
   width: max-content;
   animation: tickerScroll 20s linear infinite;
-  direction: ltr; /* keep english flow */
+  direction: ltr !important; /* keep english flow */
 }
 .hero-ticker-track span {
   font-family: 'Space Grotesk', sans-serif;
@@ -5721,7 +5722,7 @@ section {
 }
 @keyframes tickerScroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
+  100% { transform: translateX(-50%); }
 }
 
 .hero-scroll-indicator {
