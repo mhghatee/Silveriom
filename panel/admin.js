@@ -1,3 +1,9 @@
+window.addEventListener('error', function(event) {
+    alert("JS Error: " + event.message + "\nFile: " + event.filename + "\nLine: " + event.lineno);
+});
+window.addEventListener('unhandledrejection', function(event) {
+    alert("Promise Error: " + event.reason);
+});
 /* ==========================================================================
    SILVERIOM — Executive Glassmorphism Admin CMS JavaScript Engine
    Includes Direct Image File Upload, Dual Auth, & About Us Page CMS Engine
@@ -889,7 +895,7 @@ async function deleteTeamMember(id) {
    -------------------------------------------------------------------------- */
 function setupFormHandlers() {
   // Venue Form
-  document.getElementById('venue-form').addEventListener('submit', async (e) => {
+  const vForm = document.getElementById('venue-form'); if(vForm) vForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const venue = {
       id: document.getElementById('venue-id').value || ('v_' + Date.now()),
@@ -924,7 +930,7 @@ function setupFormHandlers() {
   });
 
   // Media Form
-  document.getElementById('media-form').addEventListener('submit', async (e) => {
+  const mForm = document.getElementById('media-form'); if(mForm) mForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const media = {
       id: document.getElementById('media-id').value || ('mi_' + Date.now()),
@@ -955,7 +961,7 @@ function setupFormHandlers() {
   });
 
   // Portfolio Form
-  document.getElementById('portfolio-form').addEventListener('submit', async (e) => {
+  const pForm = document.getElementById('portfolio-form'); if(pForm) pForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const portfolio = {
       id: document.getElementById('port-id').value || ('p_' + Date.now()),
@@ -986,7 +992,7 @@ function setupFormHandlers() {
   });
 
   // User Add/Edit Form
-  document.getElementById('user-form').addEventListener('submit', async (e) => {
+  const uForm = document.getElementById('user-form'); if(uForm) uForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const id = document.getElementById('user-id').value;
     const user_item = {
@@ -1020,7 +1026,7 @@ function setupFormHandlers() {
   });
 
   // Change Password Form
-  document.getElementById('password-form').addEventListener('submit', async (e) => {
+  const pwdForm = document.getElementById('password-form'); if(pwdForm) pwdForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const id = document.getElementById('pass-user-id').value;
     const newPass = document.getElementById('new-password').value;
@@ -1045,7 +1051,7 @@ function setupFormHandlers() {
   });
 
   // Settings Form
-  document.getElementById('settings-form').addEventListener('submit', async (e) => {
+  const sForm = document.getElementById('settings-form'); if(sForm) sForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     state.settings = {
       siteTitle: document.getElementById('set-siteTitle').value,
