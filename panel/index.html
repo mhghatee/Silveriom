@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود به پنل مدیریت | سیلوریوم</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  
+  <style>
+    @font-face {
+      font-family: "YekanBakh";
+      src: url("../fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "YekanBakh";
+      src: url("../fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "YekanBakh";
+      src: url("../fonts/YekanBakhFaNum-Heavy.woff2") format("woff2");
+      font-weight: 900; font-style: normal; font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "YekanBakh", sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Cinematic Background */
+    .bg-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://silveriom.ir/assets/padel_cinematic_bg.jpg') center/cover no-repeat;
+      opacity: 0.4;
+      z-index: 1;
+    }
+    .bg-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, rgba(2,6,23,0.3) 0%, rgba(2,6,23,0.9) 100%);
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 10;
+      background: rgba(11, 19, 38, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      text-align: center;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeUp 0.8s forwards ease-out;
+    }
+
+    @keyframes fadeUp {
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo-box {
+      margin-bottom: 2rem;
+    }
+    .logo-box img {
+      height: 50px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+      text-align: right;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-weight: 700;
+    }
+    .input-group input {
+      width: 100%;
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    .input-group input:focus {
+      border-color: #CCFF00;
+      box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.15);
+      background: rgba(2, 6, 23, 0.8);
+    }
+
+    .btn-login {
+      width: 100%;
+      background: #CCFF00;
+      color: #020617;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);
+      margin-top: 1rem;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(204, 255, 0, 0.3);
+      background: #d4ff1a;
+    }
+
+    .footer-link {
+      margin-top: 2rem;
+      display: block;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-link:hover {
+      color: #CCFF00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="login-container">
+    <div class="logo-box">
+      <!-- Standard Silveriom Logo -->
+      <img src="https://silveriom.ir/assets/logo.png" alt="Silveriom Panel">
+    </div>
+    
+    <h1>سیلوریوم پنل</h1>
+    <p class="subtitle">لطفاً برای دسترسی به دشبورد مدیریتی وارد شوید.</p>
+
+    <form onsubmit="event.preventDefault(); alert('در حال توسعه... اتصال به پایگاه داده به‌زودی!');">
+      <div class="input-group">
+        <label for="username">نام کاربری یا ایمیل</label>
+        <input type="text" id="username" placeholder="admin@silveriom.ir" required dir="ltr" style="text-align: left;">
+      </div>
+      
+      <div class="input-group">
+        <label for="password">رمز عبور</label>
+        <input type="password" id="password" placeholder="••••••••" required dir="ltr" style="text-align: left;">
+      </div>
+
+      <button type="submit" class="btn-login">ورود به سیستم</button>
+    </form>
+
+    <a href="/" class="footer-link">← بازگشت به صفحه اصلی</a>
+  </div>
+
+</body>
+</html>
