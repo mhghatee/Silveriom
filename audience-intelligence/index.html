@@ -7465,56 +7465,109 @@ section {
 
 
 
-<!-- CYBER TENNIS SOLAR LOADER STYLE -->
+
+
+
+<!-- SOLAR SYSTEM LOADER STYLE -->
 <style>
-  #silveriom-loader {
-    position: fixed; inset: 0; z-index: 9999999;
-    background: #010610 url('https://silveriom.ir/assets/solar_loader.jpg') center/cover no-repeat;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    overflow: hidden;
+  #solar-system-loader {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999999;
+    background: #020713 url('https://silveriom.ir/assets/solar/cyber_space_bg.jpg') center/cover no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden; perspective: 1200px;
   }
-  .sl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
-  
-  /* Dynamic Progress Bar aligned with UI in image */
-  .cl-progress-wrapper {
+  .ssl-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+
+  /* 3D Scene */
+  .ssl-scene {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transform-style: preserve-3d;
+  }
+
+  /* Center Giant Tennis Ball */
+  .ssl-core {
+    position: absolute; width: 300px; height: 300px; z-index: 10;
+    background: url('https://silveriom.ir/assets/solar/cyber_ball.png') center/contain no-repeat;
+    animation: ssl-breathe 4s ease-in-out infinite alternate;
+  }
+  @keyframes ssl-breathe { 
+    0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(182,255,0,0.5)); } 
+    100% { transform: scale(1.05); filter: drop-shadow(0 0 50px rgba(182,255,0,0.8)); } 
+  }
+
+  /* Orbit Rings */
+  .ssl-orbit {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(182, 255, 0, 0.4);
+    transform-style: preserve-3d;
+    box-shadow: 0 0 30px rgba(182,255,0,0.1) inset;
+  }
+  .ssl-orbit-1 { width: 500px; height: 500px; border-style: dashed; animation: ssl-spin-1 12s linear infinite; }
+  .ssl-orbit-2 { width: 750px; height: 750px; animation: ssl-spin-2 18s linear infinite; }
+  .ssl-orbit-3 { width: 1000px; height: 1000px; border: 2px solid rgba(182, 255, 0, 0.15); animation: ssl-spin-1 25s linear infinite; }
+
+  @keyframes ssl-spin-1 { from { transform: rotateX(75deg) rotateZ(0deg); } to { transform: rotateX(75deg) rotateZ(360deg); } }
+  @keyframes ssl-spin-2 { from { transform: rotateX(75deg) rotateZ(360deg); } to { transform: rotateX(75deg) rotateZ(0deg); } }
+
+  /* Planets and Trails */
+  .ssl-planet-wrapper {
+    position: absolute; top: -15px; left: 50%; width: 30px; height: 30px;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(-75deg);
+  }
+  .ssl-planet {
+    width: 100%; height: 100%;
+    background: url('https://silveriom.ir/assets/solar/small_ball.png') center/contain no-repeat;
+    filter: drop-shadow(0 0 15px #B6FF00);
+  }
+  .ssl-trail {
+    position: absolute; top: 50%; right: 10px; width: 150px; height: 50px;
+    background: url('https://silveriom.ir/assets/solar/light_trail.png') center/contain no-repeat;
+    transform: translateY(-50%); opacity: 0.8; z-index: -1;
+  }
+
+  /* Planet Positions */
+  .ssl-orbit-2 .ssl-planet-wrapper { top: 50%; left: -15px; transform: translateY(-50%) rotateY(90deg) rotateX(-75deg); }
+  .ssl-orbit-2 .ssl-trail { right: auto; left: 10px; transform: translateY(-50%) rotate(180deg); } /* reverse trail */
+
+  .ssl-orbit-3 .ssl-planet-wrapper { top: auto; bottom: -15px; left: 50%; transform: translateX(-50%) rotateX(-75deg); }
+  .ssl-orbit-3 .ssl-trail { right: auto; left: 10px; transform: translateY(-50%) rotate(180deg); }
+
+  .ssl-orbit-3 .ssl-planet-wrapper-2 { top: 50%; left: auto; right: -15px; transform: translateY(-50%) rotateY(-90deg) rotateX(-75deg); position: absolute; width: 30px; height: 30px; transform-style: preserve-3d; }
+
+  /* UI Frame & Loader */
+  .ssl-ui-container {
     position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
-    width: 25%; max-width: 320px; height: 6px;
-    background: rgba(255,255,255,0.1); border-radius: 10px;
-    overflow: hidden;
+    width: 90%; max-width: 800px; height: 120px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: url('https://silveriom.ir/assets/solar/ui_loading_frame.png') center/contain no-repeat;
+    z-index: 50;
   }
-  .cl-progress-fill {
-    height: 100%; width: 0%; background: #B6FF00;
-    box-shadow: 0 0 10px #B6FF00;
-    animation: cl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  .ssl-logo-text {
+    color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 8px;
+    text-shadow: 0 0 15px rgba(182,255,0,0.6); margin-bottom: 25px; font-family: 'Helvetica Neue', Arial, sans-serif;
   }
-  @keyframes cl-fill { 0% { width: 0%; } 100% { width: 100%; } }
+  .ssl-progress-track {
+    position: absolute; bottom: 21px; left: 50%; transform: translateX(-50%);
+    width: 55%; height: 5px; border-radius: 3px; overflow: hidden;
+  }
+  .ssl-progress-fill {
+    height: 100%; width: 0%; background: #B6FF00; box-shadow: 0 0 10px #B6FF00;
+    animation: ssl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
 
-  /* Dynamic Moving Balls Overlay */
-  .cl-orbit {
-    position: absolute; top: 50%; left: 50%;
-    border-radius: 50%; border: 1px solid transparent;
-    transform: translate(-50%, -50%);
-  }
-  .cl-orbit-1 { width: 45vw; height: 45vw; animation: cl-spin 4s linear infinite; }
-  .cl-orbit-2 { width: 65vw; height: 65vw; animation: cl-spinRev 7s linear infinite; }
-  
-  .cl-ball {
-    position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #B6FF00;
-    box-shadow: 0 0 20px #B6FF00, -15px 0 25px rgba(182,255,0,0.9);
-  }
-  .cl-orbit-2 .cl-ball { bottom: -8px; top: auto; box-shadow: 0 0 20px #B6FF00, 15px 0 25px rgba(182,255,0,0.9); }
-
-  @keyframes cl-spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-  @keyframes cl-spinRev { 0% { transform: translate(-50%, -50%) rotate(360deg); } 100% { transform: translate(-50%, -50%) rotate(0deg); } }
+  @keyframes ssl-fill { 0% { width: 0%; } 100% { width: 100%; } }
 
   @media (max-width: 768px) {
-    .cl-progress-wrapper { width: 50%; bottom: 9.5%; }
-    .cl-orbit-1 { width: 80vw; height: 80vw; }
-    .cl-orbit-2 { width: 120vw; height: 120vw; }
-    #silveriom-loader { background-position: center; }
+    .ssl-core { width: 160px; height: 160px; }
+    .ssl-orbit-1 { width: 280px; height: 280px; }
+    .ssl-orbit-2 { width: 420px; height: 420px; }
+    .ssl-orbit-3 { width: 550px; height: 550px; }
+    .ssl-ui-container { height: 80px; bottom: 10%; }
+    .ssl-logo-text { font-size: 1.2rem; margin-bottom: 12px; }
+    .ssl-progress-track { width: 52%; bottom: 12px; }
   }
 </style>
 
@@ -7524,22 +7577,32 @@ section {
 
 <body>
 
-<!-- CYBER TENNIS SOLAR LOADER DOM & JS -->
-<div id="silveriom-loader">
-  <div class="cl-orbit cl-orbit-1"><div class="cl-ball"></div></div>
-  <div class="cl-orbit cl-orbit-2"><div class="cl-ball"></div></div>
-  <div class="cl-progress-wrapper"><div class="cl-progress-fill"></div></div>
+<!-- SOLAR SYSTEM LOADER DOM & JS -->
+<div id="solar-system-loader">
+  <div class="ssl-scene">
+    <div class="ssl-orbit ssl-orbit-3">
+      <div class="ssl-planet-wrapper"><div class="ssl-trail"></div><div class="ssl-planet"></div></div>
+      <div class="ssl-planet-wrapper-2"><div class="ssl-trail"></div><div class="ssl-planet"></div></div>
+    </div>
+    <div class="ssl-orbit ssl-orbit-2">
+      <div class="ssl-planet-wrapper"><div class="ssl-trail"></div><div class="ssl-planet"></div></div>
+    </div>
+    <div class="ssl-orbit ssl-orbit-1">
+      <div class="ssl-planet-wrapper"><div class="ssl-trail"></div><div class="ssl-planet"></div></div>
+    </div>
+    <div class="ssl-core"></div>
+  </div>
+  
+  <div class="ssl-ui-container">
+    <div class="ssl-logo-text">SILVERIOM</div>
+    <div class="ssl-progress-track"><div class="ssl-progress-fill"></div></div>
+  </div>
 </div>
 <script>
   (function() {
-    const hideLoader = () => {
-      const l = document.getElementById('silveriom-loader');
-      if(l) l.classList.add('sl-hidden');
-    };
-    
-    // Hide exactly when progress bar animation finishes (2.5s) + slight buffer
-    setTimeout(hideLoader, 2700);
-    window.addEventListener('load', () => { setTimeout(hideLoader, 2700); });
+    const hideLoader = () => { const l = document.getElementById('solar-system-loader'); if(l) l.classList.add('ssl-hidden'); };
+    setTimeout(hideLoader, 2800);
+    window.addEventListener('load', () => { setTimeout(hideLoader, 2800); });
 
     document.addEventListener('DOMContentLoaded', () => {
       document.body.addEventListener('click', (e) => {
@@ -7550,24 +7613,27 @@ section {
           const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
           if (isInternal) {
             e.preventDefault();
-            const l = document.getElementById('silveriom-loader');
+            const l = document.getElementById('solar-system-loader');
             if(l) {
-              l.classList.remove('sl-hidden');
-              const fill = l.querySelector('.cl-progress-fill');
+              l.classList.remove('ssl-hidden');
+              const fill = l.querySelector('.ssl-progress-fill');
               if(fill) {
                 fill.style.animation = 'none';
-                fill.offsetHeight; /* trigger reflow */
-                fill.style.animation = 'cl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                fill.offsetHeight; 
+                fill.style.animation = 'ssl-fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
               }
               document.body.appendChild(l);
             }
-            setTimeout(() => { window.location.href = href; }, 2600);
+            setTimeout(() => { window.location.href = href; }, 2700);
           }
         }
       });
     });
   })();
 </script>
+
+
+
 
 
 
