@@ -5941,7 +5941,74 @@ section {
     
     <!-- ==================== SEASON ACTIVITY HEATMAP ==================== -->
     <style>
-      .heatmap-section {
+      
+      /* --- Custom Heatmap Enhancements --- */
+      .hm-cell.hm-crosshair {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      
+      .hm-cell.hm-level-1 {
+        background: rgba(0, 240, 255, 0.15);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        cursor: pointer;
+      }
+      .hm-cell.hm-level-1 .hm-dot { background: #00F0FF; box-shadow: 0 0 10px #00F0FF; }
+      
+      .hm-cell.hm-level-2 {
+        background: rgba(204, 255, 0, 0.15);
+        border: 1px solid rgba(204, 255, 0, 0.3);
+        cursor: pointer;
+      }
+      .hm-cell.hm-level-2 .hm-dot { background: #CCFF00; box-shadow: 0 0 10px #CCFF00; }
+      
+      .hm-cell.hm-level-3 {
+        background: rgba(255, 215, 0, 0.15);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        cursor: pointer;
+      }
+      .hm-cell.hm-level-3 .hm-dot { background: #FFD700; box-shadow: 0 0 15px #FFD700; }
+      
+      .hm-cell:hover {
+        transform: scale(1.1);
+        z-index: 10;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      }
+      
+      .hm-current-month {
+        color: #CCFF00 !important;
+        background: rgba(204, 255, 0, 0.05);
+        border-radius: 8px;
+        border-bottom: 2px solid #CCFF00;
+      }
+      
+      #heatmap-tooltip {
+        position: fixed;
+        pointer-events: none;
+        opacity: 0;
+        background: rgba(10, 20, 35, 0.95);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 16px;
+        color: #fff;
+        font-family: 'YekanBakh', sans-serif;
+        z-index: 9999;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        transform: translate(-50%, -100%) scale(0.95);
+        min-width: 200px;
+        text-align: right;
+        direction: rtl;
+      }
+      #heatmap-tooltip.active {
+        opacity: 1;
+        transform: translate(-50%, calc(-100% - 15px)) scale(1);
+      }
+      #ht-title { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+      #ht-subtitle { font-size: 0.85rem; color: #94A3B8; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+      #ht-desc { font-size: 0.85rem; color: #CCFF00; font-weight: 600; }
+      /* --------------------------------- */
+.heatmap-section {
         padding: 80px 0;
         position: relative;
         z-index: 10;
@@ -6611,18 +6678,30 @@ section {
       // Build Heatmap
       const heatmapGrid = document.getElementById('heatmap-grid');
       if(heatmapGrid) {
+        // Create tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.id = 'heatmap-tooltip';
+        tooltip.innerHTML = `
+          <div id="ht-title"></div>
+          <div id="ht-subtitle"></div>
+          <div id="ht-desc"></div>
+        `;
+        document.body.appendChild(tooltip);
+
+        const currentMonthIdx = 6; // شهریور
         const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
         heatmapGrid.style.gridTemplateColumns = `150px repeat(12, 1fr)`;
         
         // Header Row
         heatmapGrid.innerHTML += `<div class="hm-cell hm-header-month"></div>`;
-        monthNames.forEach(m => {
-          heatmapGrid.innerHTML += `<div class="hm-cell hm-header-month">${m}</div>`;
+        monthNames.forEach((m, idx) => {
+          const currClass = (idx + 1 === currentMonthIdx) ? 'hm-current-month' : '';
+          heatmapGrid.innerHTML += `<div class="hm-cell hm-header-month ${currClass}" data-col="${idx+1}">${m}</div>`;
         });
         
         // Data Rows
-        locations.forEach(loc => {
-          heatmapGrid.innerHTML += `<div class="hm-cell hm-header-loc">${loc.name}</div>`;
+        locations.forEach((loc, rowIdx) => {
+          heatmapGrid.innerHTML += `<div class="hm-cell hm-header-loc" data-row="${rowIdx}">${loc.name}</div>`;
           
           for(let i = 1; i <= 12; i++) {
             const monthEvents = events.filter(e => e.locId === loc.id && e.monthIdx === i);
@@ -6630,29 +6709,94 @@ section {
             
             let levelClass = 'hm-empty';
             let dotHtml = '';
-            let tooltip = `هیچ رویدادی در این ماه برنامه‌ریزی نشده است`;
+            let tipTitle = `${loc.name} - ${monthNames[i-1]}`;
+            let tipSub = `هیچ رویدادی در این ماه برنامه‌ریزی نشده است`;
+            let tipDesc = '';
             
             if(count === 1) { 
               levelClass = 'hm-level-1'; 
               dotHtml = `<div class="hm-dot"></div>`;
-              tooltip = `۱ رویداد: ${monthEvents[0].name}`;
+              tipSub = `۱ رویداد رسمی`;
+              tipDesc = monthEvents[0].name;
             } else if(count === 2) { 
               levelClass = 'hm-level-2'; 
               dotHtml = `<div class="hm-dot" style="width:8px; height:8px;"></div>`; 
-              tooltip = `۲ رویداد برنامه ریزی شده`;
+              tipSub = `۲ رویداد برنامه ریزی شده`;
+              tipDesc = monthEvents.map(e => e.name).join(' | ');
             } else if(count > 2) { 
               levelClass = 'hm-level-3'; 
-              dotHtml = `<div class="hm-dot" style="width:10px; height:10px; box-shadow:0 0 15px #fff;"></div>`; 
-              tooltip = `${count} رویداد (ترافیک بالا)`;
+              dotHtml = `<div class="hm-dot" style="width:10px; height:10px;"></div>`; 
+              tipSub = `${count} رویداد (ترافیک بالا)`;
+              tipDesc = monthEvents.map(e => e.name).join(' | ');
             }
             
-            heatmapGrid.innerHTML += `<div class="hm-cell ${levelClass}" title="${loc.name} - ${monthNames[i-1]} | ${tooltip}">${dotHtml}</div>`;
+            heatmapGrid.innerHTML += `
+              <div class="hm-cell ${levelClass}" 
+                   data-row="${rowIdx}" 
+                   data-col="${i}" 
+                   data-locid="${loc.id}"
+                   data-monthidx="${i}"
+                   data-title="${tipTitle}" 
+                   data-sub="${tipSub}" 
+                   data-desc="${tipDesc}">
+                ${dotHtml}
+              </div>
+            `;
           }
+        });
+
+        // Add Interactivity
+        const allCells = heatmapGrid.querySelectorAll('.hm-cell');
+        
+        allCells.forEach(cell => {
+          cell.addEventListener('mouseenter', (e) => {
+            const row = cell.getAttribute('data-row');
+            const col = cell.getAttribute('data-col');
+            
+            // Crosshair effect
+            if(row !== null) {
+              heatmapGrid.querySelectorAll(`[data-row="${row}"]`).forEach(c => c.classList.add('hm-crosshair'));
+            }
+            if(col !== null) {
+              heatmapGrid.querySelectorAll(`[data-col="${col}"]`).forEach(c => c.classList.add('hm-crosshair'));
+            }
+
+            // Tooltip
+            const title = cell.getAttribute('data-title');
+            if(title) {
+              document.getElementById('ht-title').innerText = title;
+              document.getElementById('ht-subtitle').innerText = cell.getAttribute('data-sub');
+              document.getElementById('ht-desc').innerText = cell.getAttribute('data-desc');
+              
+              const rect = cell.getBoundingClientRect();
+              tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+              tooltip.style.top = rect.top + 'px';
+              tooltip.classList.add('active');
+            }
+          });
+          
+          cell.addEventListener('mouseleave', () => {
+            allCells.forEach(c => c.classList.remove('hm-crosshair'));
+            tooltip.classList.remove('active');
+          });
+
+          cell.addEventListener('click', () => {
+            const locId = cell.getAttribute('data-locid');
+            const countLevel = cell.classList.contains('hm-empty');
+            if (locId && !countLevel) {
+              // Scroll to timeline and filter
+              document.getElementById('timeline-content').scrollIntoView({ behavior: 'smooth', block: 'center' });
+              
+              // Trigger filter click
+              const filterBtn = document.querySelector(`#loc-filters button[data-loc="${locId}"]`);
+              if(filterBtn) filterBtn.click();
+            }
+          });
         });
       }
 
-      
       // Build Month Spotlight
+
       const spotlightMonths = document.getElementById('spotlight-months');
       const spPanel = document.getElementById('spotlight-panel');
       if(spotlightMonths && spPanel) {
