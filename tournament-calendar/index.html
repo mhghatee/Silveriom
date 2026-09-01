@@ -6433,29 +6433,47 @@ section {
 
       const netCanvas = document.getElementById('network-canvas');
       if (netCanvas) {
-        let svgHtml = '<svg style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;">';
-        const connections = [[0,1], [1,2], [2,3], [3,4], [4,5], [5,0], [1,4], [0,3]];
-        connections.forEach(pair => {
-          const p1 = locations[pair[0]];
-          const p2 = locations[pair[1]];
-          svgHtml += `<line x1="${p1.x}%" y1="${p1.y}%" x2="${p2.x}%" y2="${p2.y}%" class="net-line" />`;
-        });
-        svgHtml += '</svg>';
-        netCanvas.innerHTML += svgHtml;
-
         const infoPanel = document.getElementById('network-info-panel');
         locations.forEach(loc => {
           const node = document.createElement('div');
-          node.className = 'net-node';
+          node.className = 'net-hotspot';
+          node.style.position = 'absolute';
           node.style.left = loc.x + '%';
           node.style.top = loc.y + '%';
+          node.style.width = '40px';
+          node.style.height = '40px';
+          node.style.transform = 'translate(-50%, -50%)';
+          node.style.borderRadius = '50%';
+          node.style.cursor = 'pointer';
+          node.style.background = 'radial-gradient(circle, rgba(204,255,0,0.8) 0%, rgba(204,255,0,0) 70%)';
+          node.style.animation = 'pulseHotspot 2s infinite alternate';
           
           node.addEventListener('mouseenter', () => showNetInfo(loc, node));
           node.addEventListener('click', () => showNetInfo(loc, node));
+          
           netCanvas.appendChild(node);
         });
+        
+        // Add hotspot animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+          @keyframes pulseHotspot {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+          }
+          .net-hotspot:hover {
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%) !important;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        netCanvas.addEventListener('mouseleave', () => {
+          infoPanel.style.opacity = '0';
+          infoPanel.style.transform = 'translateY(-20px)';
+        });
+      }
 
-        function showNetInfo(loc, nodeElement) {
+      function showNetInfo(loc, nodeElement) {
           document.querySelectorAll('.net-node').forEach(n => n.classList.remove('active'));
           nodeElement.classList.add('active');
           document.getElementById('ni-title').innerText = loc.name;
