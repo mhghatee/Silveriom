@@ -21,3 +21,5 @@ deploy*.py
 homepage.html
 live_about_us.html
 media-planner.html
+*.sh
+*.txt

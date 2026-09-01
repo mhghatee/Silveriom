@@ -9498,7 +9498,57 @@ section {
   }
 </style>
 
+
+<style>
+/* Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(6, 11, 19, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: right;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-item {
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+}
+</style>
 </head>
+
 <body class="luxury-body">
 
 <!-- SILVERIOM MINIMAL LOADER DOM & JS -->
@@ -9628,7 +9678,16 @@ section {
 
       <nav class="nav-links">
         <a href="https://silveriom.ir" class="nav-item">خانه</a>
-        <a href="https://silveriom.ir/inventory/" class="nav-item">رسانه‌ها</a>
+        <div class="nav-dropdown">
+          <a href="https://silveriom.ir/inventory/" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+            رسانه‌ها
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="https://silveriom.ir/inventory/" class="nav-dropdown-item">همه رسانه‌ها</a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">ایران زمین (شهرک غرب)</a>
+          </div>
+        </div>
         <a href="https://silveriom.ir/audience-intelligence/" class="nav-item">مخاطبین</a>
         <a href="https://silveriom.ir/tournament-calendar/" class="nav-item">تقویم مسابقات</a>
         <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
