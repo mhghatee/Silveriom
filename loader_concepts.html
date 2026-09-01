@@ -207,6 +207,11 @@
     animation: ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   }
   @keyframes ml-fill { 0% { width: 0%; } 100% { width: 100%; } }
+  .ml-percent {
+    color: #B6FF00; font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 700; margin-top: 15px; letter-spacing: 2px;
+    opacity: 0; animation: ml-fade-in 0.5s ease forwards 0.3s;
+  }
 </style>
 
 </head>
@@ -214,11 +219,25 @@
 
 <!-- SILVERIOM MINIMAL LOADER DOM & JS -->
 <div id="minimal-loader">
-  <div class="ml-brand">SILVERIOM</div>
+  <div class="ml-brand" style="margin-bottom: 5px; opacity:1; animation: none;">
+    <img src="https://silveriom.ir/assets/neon_logo.png" alt="Silveriom" style="max-height: 80px; filter: drop-shadow(0 0 15px rgba(182,255,0,0.5));">
+  </div>
+  <div class="ml-percent" id="ml-percent">0%</div>
   <div class="ml-progress-container"><div class="ml-progress-bar"></div></div>
 </div>
 <script>
   (function() {
+    
+    const pct = document.getElementById('ml-percent');
+    if (pct) {
+      let p = 0;
+      const interval = setInterval(() => {
+        p += Math.floor(Math.random() * 8) + 4;
+        if(p >= 100) { p = 100; clearInterval(interval); }
+        pct.innerText = p + '%';
+      }, 50);
+    }
+
     const hide = () => { const l = document.getElementById('minimal-loader'); if(l) l.classList.add('ml-hidden'); };
     setTimeout(hide, 1400);
     window.addEventListener('load', () => { setTimeout(hide, 1400); });
