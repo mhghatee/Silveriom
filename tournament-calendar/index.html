@@ -5708,121 +5708,92 @@ section {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
-        margin-top: 50px;
+        /* margin-top removed for better spacing */
       }
       @media(max-width: 991px) {
         .featured-grid {
           grid-template-columns: 1fr;
         }
       }
-      .feat-card {
-        position: relative;
-        height: 500px;
+            .feat-card {
+        height: 560px;
         border-radius: 30px;
         overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.05);
-        background: #02040a;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(10, 20, 35, 0.4);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding: 40px;
       }
       .feat-card:hover {
         transform: translateY(-10px);
         border-color: rgba(204,255,0,0.3);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(204,255,0,0.05);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(204,255,0,0.1);
       }
       .feat-card.blue:hover {
         border-color: rgba(0,240,255,0.3);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(0,240,255,0.05);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(0,240,255,0.1);
       }
-      .fc-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background-size: cover;
-        background-position: center;
-        opacity: 0.6;
-        transition: opacity 0.5s ease;
-      }
-      .feat-card:hover .fc-bg {
-        opacity: 0.8;
-      }
-      .fc-gradient {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background: linear-gradient(to top, rgba(2,4,10,1) 0%, rgba(2,4,10,0.7) 40%, transparent 100%);
-      }
-      .fc-content {
+      .fc-poster {
+        height: 220px;
+        width: 100%;
         position: relative;
-        z-index: 3;
+        overflow: hidden;
+        background: rgba(0,0,0,0.3);
       }
-      .fc-loc {
-        display: inline-block;
+      .fc-poster-img {
+        width: 100%; height: 100%; object-fit: cover;
+        opacity: 0.7; transition: transform 0.7s ease, opacity 0.5s ease;
+      }
+      .feat-card:hover .fc-poster-img {
+        transform: scale(1.08); opacity: 1;
+      }
+      .fc-poster-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(10, 20, 35, 1) 0%, rgba(10, 20, 35, 0) 100%);
+      }
+      .fc-loc-badge {
+        position: absolute; top: 20px; right: 20px;
         padding: 6px 14px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 8px;
-        color: #fff;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
+        background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+        color: #fff; font-size: 0.8rem; font-weight: 700;
+        z-index: 5; display: flex; align-items: center; gap: 6px;
       }
-      .feat-card.blue .fc-loc {
-        color: #00F0FF;
-        border-color: rgba(0,240,255,0.3);
-        background: rgba(0,240,255,0.05);
-      }
-      .feat-card.neon .fc-loc {
-        color: #CCFF00;
-        border-color: rgba(204,255,0,0.3);
-        background: rgba(204,255,0,0.05);
+      .feat-card.blue .fc-loc-badge { color: #00F0FF; border-color: rgba(0,240,255,0.3); background: rgba(0,240,255,0.1); }
+      .feat-card.neon .fc-loc-badge { color: #CCFF00; border-color: rgba(204,255,0,0.3); background: rgba(204,255,0,0.1); }
+      .fc-content {
+        padding: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
       .fc-title {
-        font-size: 2.2rem;
-        font-weight: 900;
-        color: #fff;
-        margin-bottom: 12px;
-        line-height: 1.2;
+        font-size: 2.2rem; font-weight: 900; color: #fff;
+        margin-bottom: 15px; line-height: 1.2;
       }
-      .fc-date {
-        color: #94A3B8;
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      .fc-meta {
+        display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;
       }
+      .fc-meta-item {
+        color: #94A3B8; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;
+      }
+      .feat-card.blue .fc-meta-item svg { color: #00F0FF; }
+      .feat-card.neon .fc-meta-item svg { color: #CCFF00; }
       .fc-desc {
-        color: #E2E8F0;
-        font-size: 1rem;
-        line-height: 1.6;
-        opacity: 0.8;
-        margin-bottom: 30px;
-        max-width: 90%;
+        color: #E2E8F0; font-size: 1rem; line-height: 1.7; opacity: 0.8;
+        margin-bottom: 20px; flex: 1;
       }
       .fc-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: gap 0.3s ease;
+        display: inline-flex; align-items: center; gap: 8px;
+        color: #fff; font-weight: 700; font-size: 0.95rem;
+        text-transform: uppercase; letter-spacing: 1px; transition: gap 0.3s ease;
       }
-      .feat-card:hover .fc-cta {
-        gap: 12px;
-      }
-      .fc-cta svg {
-        transition: transform 0.3s ease;
-      }
+      .feat-card:hover .fc-cta { gap: 12px; }
       .feat-card.neon:hover .fc-cta { color: #CCFF00; }
       .feat-card.blue:hover .fc-cta { color: #00F0FF; }
     </style>
@@ -5830,23 +5801,34 @@ section {
     <section id="featured-tournaments" class="section featured-section">
       <div class="editorial-wide-container">
         
-        <div class="section-title-center" style="text-align: center;">
-          <h2 class="luxury-title" style="font-size: 2.5rem; font-weight: 900; font-family: 'Cinzel', serif; letter-spacing: 2px;">FEATURED TOURNAMENTS</h2>
-          <p style="color: #94A3B8; font-size: 1.1rem; margin-top: 15px;">مهم‌ترین رویدادهای شبکه سیلوریوم در سال ۱۴۰۵</p>
+        <div class="section-title-center" style="text-align: center; margin-bottom: 80px;">
+          <h2 class="luxury-title" style="font-size: 2.5rem; font-weight: 900; letter-spacing: 0px;">رویدادهای ویــژه</h2>
+          <p style="color: #94A3B8; font-size: 1.1rem; margin-top: 15px;">مهم‌ترین تورنمنت‌های شبکه سیلوریوم در سال ۱۴۰۵</p>
         </div>
 
         <div class="featured-grid">
           
           <!-- Card 1 -->
           <div class="feat-card blue">
-            <div class="fc-bg" style="background-image: radial-gradient(circle at top right, rgba(0,240,255,0.15), transparent 60%);"></div>
-            <div class="fc-gradient"></div>
+            <div class="fc-poster">
+              <img src="https://silveriom.ir/assets/solar_poster.jpg" alt="Poster Placeholder" class="fc-poster-img" onerror="this.src='https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&q=80&w=800';">
+              <div class="fc-poster-overlay"></div>
+              <div class="fc-loc-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ASAYESH COMPLEX
+              </div>
+            </div>
             <div class="fc-content">
-              <div class="fc-loc">ASAYESH COMPLEX</div>
               <h3 class="fc-title">جام بهاره سیلوریوم</h3>
-              <div class="fc-date">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                ۱۵ تا ۲۰ فروردین ۱۴۰۵
+              <div class="fc-meta">
+                <div class="fc-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>۱۵ تا ۲۰ فروردین ۱۴۰۵</span>
+                </div>
+                <div class="fc-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>ساعت ۱۶:۰۰ الی ۲۲:۰۰</span>
+                </div>
               </div>
               <p class="fc-desc">افتتاحیه فصل جدید با حضور برترین راکت‌به‌دستان ایران در مجموعه مجلل آسایش، همراه با پوشش کامل دیجیتال و حضور برندهای لوکس.</p>
               <div class="fc-cta">
@@ -5858,14 +5840,25 @@ section {
 
           <!-- Card 2 -->
           <div class="feat-card neon">
-            <div class="fc-bg" style="background-image: radial-gradient(circle at top left, rgba(204,255,0,0.12), transparent 60%);"></div>
-            <div class="fc-gradient"></div>
+            <div class="fc-poster">
+              <img src="https://silveriom.ir/assets/neon_poster.jpg" alt="Poster Placeholder" class="fc-poster-img" onerror="this.src='https://images.unsplash.com/photo-1554068865-24cecd4e34d8?auto=format&fit=crop&q=80&w=800';">
+              <div class="fc-poster-overlay"></div>
+              <div class="fc-loc-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ARENA VIP
+              </div>
+            </div>
             <div class="fc-content">
-              <div class="fc-loc">ARENA VIP</div>
               <h3 class="fc-title">گرند اسلم آرنا</h3>
-              <div class="fc-date">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                ۱۵ تا ۲۲ بهمن ۱۴۰۵
+              <div class="fc-meta">
+                <div class="fc-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>۱۵ تا ۲۲ بهمن ۱۴۰۵</span>
+                </div>
+                <div class="fc-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>ساعت ۱۸:۰۰ الی ۲۳:۳۰</span>
+                </div>
               </div>
               <p class="fc-desc">بزرگترین رویداد پدل سال با حضور برندهای برتر، دهکده اسپانسرها و جوایز ویژه. نقطه اوج ترافیک مخاطبان حرفه‌ای.</p>
               <div class="fc-cta">
