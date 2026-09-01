@@ -6130,11 +6130,17 @@ section {
       }
       .month-selector-wrapper {
         display: flex;
-        justify-content: center;
         margin-bottom: 50px;
         overflow-x: auto;
         padding-bottom: 15px;
         scrollbar-width: none;
+        scroll-behavior: smooth;
+        direction: rtl;
+      }
+      .month-selector-wrapper::before,
+      .month-selector-wrapper::after {
+        content: '';
+        margin: auto;
       }
       .month-selector-wrapper::-webkit-scrollbar { display: none; }
       .spotlight-months {
