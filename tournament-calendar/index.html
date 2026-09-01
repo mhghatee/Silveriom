@@ -6769,8 +6769,6 @@ section {
                                  'رقابت‌های نفس‌گیر در دل بهترین مجموعه‌های ورزشی. اوج هیجان و قدرت در مسابقات رسمی و جایزه بزرگ.';
             
             const badgeLoc = ev.locId === 'asayesh' ? 'ASAYESH' : ev.locId === 'netra' ? 'NETRA VIP' : ev.locId === 't10' ? 'T10 COMPLEX' : ev.locId === 'iranzamin' ? 'IRAN ZAMIN' : 'ARENA VIP';
-            
-            const featClass = ev.featured ? 'featured' : '';
 
             cardsHtml += `
               <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s;" onclick="openEventDrawer(${ev.id})">
