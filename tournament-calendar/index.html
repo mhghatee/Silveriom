@@ -6319,24 +6319,127 @@ section {
       
       .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
       
-      .event-card {
-        background: rgba(6,18,40,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 20px; padding: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); animation: fadeUpIn 0.5s forwards;
+            .event-card {
+        background: #0B1120;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        opacity: 0; transform: translateY(20px); animation: fadeUpIn 0.5s forwards;
+        font-family: 'YekanBakh', sans-serif !important;
+        cursor: pointer;
       }
-      .event-card:hover { transform: translateY(-5px); border-color: rgba(0,240,255,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0,240,255,0.1); }
-      .event-card.featured { border-color: rgba(204,255,0,0.3); background: linear-gradient(135deg, rgba(6,18,40,0.8) 0%, rgba(20,30,10,0.6) 100%); }
-      .event-card.featured:hover { border-color: #CCFF00; box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 25px rgba(204,255,0,0.15); }
-      
-      .event-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; margin-left: 8px; }
-      .bg-padel { background: rgba(0,240,255,0.1); color: #00F0FF; border: 1px solid rgba(0,240,255,0.3); }
-      .bg-tennis { background: rgba(204,255,0,0.1); color: #CCFF00; border: 1px solid rgba(204,255,0,0.3); }
-      .bg-vip { background: rgba(212,175,55,0.1); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
-      
-      .event-date { font-size: 0.85rem; color: #00F0FF; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-      .event-title { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.4; }
-      .event-loc { font-size: 0.9rem; color: #94A3B8; display: flex; align-items: center; gap: 6px; }
-      
+      .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        border-color: rgba(204,255,0,0.3);
+      }
+      .ec-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+      }
+      .ec-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .event-card:hover .ec-image-wrapper img {
+        transform: scale(1.05);
+      }
+      .ec-image-overlay {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 100px;
+        background: linear-gradient(to top, #0B1120, transparent);
+      }
+      .ec-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(0,240,255,0.15);
+        border: 1px solid rgba(0,240,255,0.3);
+        color: #00F0FF;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        backdrop-filter: blur(5px);
+        direction: ltr;
+        z-index: 2;
+      }
+      .event-card.featured .ec-badge {
+        background: rgba(204,255,0,0.15);
+        border-color: rgba(204,255,0,0.3);
+        color: #CCFF00;
+      }
+      .ec-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+      .ec-title {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        font-family: 'YekanBakh', sans-serif !important;
+        line-height: 1.4;
+      }
+      .ec-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .ec-meta-item {
+        color: #94A3B8;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+      }
+      .ec-meta-item svg {
+        color: #00F0FF;
+      }
+      .ec-desc {
+        color: #94A3B8;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        margin-bottom: 24px;
+        flex-grow: 1;
+      }
+      .ec-link {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-end;
+        transition: color 0.3s ease;
+      }
+      .event-card:hover .ec-link {
+        color: #CCFF00;
+      }
+      .ec-link svg {
+        color: #fff;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .event-card:hover .ec-link svg {
+        color: #CCFF00;
+        transform: translateX(-5px);
+      }
       @keyframes fadeUpIn { to { opacity: 1; transform: translateY(0); } }
 
       .net-node { position: absolute; width: 20px; height: 20px; background: #00F0FF; border-radius: 50%; transform: translate(-50%, -50%); cursor: pointer; box-shadow: 0 0 20px #00F0FF, 0 0 40px #00F0FF; transition: all 0.3s ease; z-index: 5; }
@@ -6652,22 +6755,54 @@ section {
                               ev.type === 'vip' ? '<span class="event-badge bg-vip">VIP</span>' : '<span class="event-badge" style="background:rgba(255,255,255,0.1); color:#fff;">League</span>';
             
             const featClass = ev.featured ? 'featured' : '';
-            const iconSvg = ev.sport === 'padel' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20M2 12h20"></path></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 0 1 8 0"></path></svg>';
+            // Enhanced mapping for placeholder images based on ID
+            let imgUrl = 'https://silveriom.ir/assets/hypothetical_tournament.jpg';
+            if(ev.id === 1) imgUrl = 'https://silveriom.ir/assets/crystal_cup_poster.jpg';
+            if(ev.id === 2) imgUrl = 'https://silveriom.ir/assets/sunstar_league_poster.jpg';
+            if(ev.id === 3) imgUrl = 'https://silveriom.ir/assets/mammut_tournament_poster.jpg';
+            if(ev.id === 10) imgUrl = 'https://silveriom.ir/assets/crystal_cup_poster.jpg';
+            if(ev.id === 11) imgUrl = 'https://silveriom.ir/assets/mammut_tournament_poster.jpg';
+            
+            // Extract a cool description or use fallback
+            const fallbackDesc = ev.type === 'league' ? 'بزرگترین مسابقات با اسپانسری انحصاری برندهای معتبر. رقابت‌های تیمی و هیجان‌انگیز در بالاترین سطح کیفی.' : 
+                                 ev.type === 'vip' ? 'رویداد ویژه با حضور مهمانان برجسته و مدیران ارشد. تجربه‌ای بی‌نظیر از ورزش و ارتباطات تجاری.' :
+                                 'رقابت‌های نفس‌گیر در دل بهترین مجموعه‌های ورزشی. اوج هیجان و قدرت در مسابقات رسمی و جایزه بزرگ.';
+            
+            const badgeLoc = ev.locId === 'asayesh' ? 'ASAYESH' : ev.locId === 'netra' ? 'NETRA VIP' : ev.locId === 't10' ? 'T10 COMPLEX' : ev.locId === 'iranzamin' ? 'IRAN ZAMIN' : 'ARENA VIP';
+            
+            const featClass = ev.featured ? 'featured' : '';
 
             cardsHtml += `
-              <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s; cursor:pointer;" onclick="openEventDrawer(${ev.id})">
-                <div class="event-date">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                  ${ev.date}
+              <div class="event-card ${featClass}" style="animation-delay: ${delayCounter * 0.05}s;" onclick="openEventDrawer(${ev.id})">
+                <div class="ec-image-wrapper">
+                  <img src="${imgUrl}" alt="${ev.name}">
+                  <div class="ec-image-overlay"></div>
+                  <div class="ec-badge">
+                    ${badgeLoc}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </div>
                 </div>
-                <h4 class="event-title">${ev.name}</h4>
-                <div class="event-loc" style="margin-bottom: 16px;">
-                  ${iconSvg}
-                  مجموعه ${locName}
-                </div>
-                <div>
-                  ${sportBadge}
-                  ${typeBadge}
+                
+                <div class="ec-content">
+                  <h4 class="ec-title">${ev.name}</h4>
+                  
+                  <div class="ec-meta">
+                    <div class="ec-meta-item">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      ${ev.date}
+                    </div>
+                    <div class="ec-meta-item">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                      ساعت ۱۸:۰۰ الی ۲۳:۳۰
+                    </div>
+                  </div>
+                  
+                  <p class="ec-desc">${fallbackDesc}</p>
+                  
+                  <div class="ec-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    مشاهده رویداد
+                  </div>
                 </div>
               </div>
             `;
