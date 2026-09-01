@@ -6368,6 +6368,12 @@ section {
 
 <section id="timeline-section" class="section timeline-section" style="padding: 60px 0 120px; position: relative; z-index: 10;">
   <div class="editorial-wide-container">
+    
+    <div style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-family: 'YekanBakh', sans-serif !important; font-size: 2.8rem; font-weight: 900; color: #fff; margin-bottom: 15px;">اکتشاف <span style="color: #CCFF00;">فصلی مسابقات</span></h2>
+      <p style="font-family: 'YekanBakh', sans-serif !important; color: #94A3B8; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">رویدادهای پیش‌رو در مجموعه سیلوریوم را به تفکیک زمان و مکان مرور کنید</p>
+    </div>
+
     <div class="inventory-main-layout">
       <!-- RIGHT SIDEBAR FILTER PANEL -->
       <aside class="sidebar-filter-card">
@@ -6922,13 +6928,20 @@ section {
                               ev.type === 'vip' ? '<span class="event-badge bg-vip">VIP</span>' : '<span class="event-badge" style="background:rgba(255,255,255,0.1); color:#fff;">League</span>';
             
             const featClass = ev.featured ? 'featured' : '';
-            // Enhanced mapping for placeholder images based on ID
-            let imgUrl = 'https://silveriom.ir/assets/hypothetical_tournament.jpg';
-            if(ev.id === 1) imgUrl = 'https://silveriom.ir/assets/crystal_cup_poster.jpg';
-            if(ev.id === 2) imgUrl = 'https://silveriom.ir/assets/sunstar_league_poster.jpg';
-            if(ev.id === 3) imgUrl = 'https://silveriom.ir/assets/mammut_tournament_poster.jpg';
-            if(ev.id === 10) imgUrl = 'https://silveriom.ir/assets/crystal_cup_poster.jpg';
-            if(ev.id === 11) imgUrl = 'https://silveriom.ir/assets/mammut_tournament_poster.jpg';
+            // Dynamic AI Poster Assignment based on Month
+            let imgUrl = 'https://silveriom.ir/assets/spring_poster.jpg'; // default
+            
+            // Special custom posters if they exist
+            if(ev.id === 1) imgUrl = 'https://silveriom.ir/assets/crystal_poster.jpg';
+            else if(ev.id === 2) imgUrl = 'https://silveriom.ir/assets/sunstar_poster.jpg';
+            else if(ev.id === 3) imgUrl = 'https://silveriom.ir/assets/mammut_poster.jpg';
+            else {
+              // Map AI posters based on season
+              if ([1, 2, 3].includes(ev.monthIdx)) imgUrl = 'https://silveriom.ir/assets/spring_poster.jpg'; // فروردین, اردیبهشت, خرداد
+              else if ([4, 5, 6].includes(ev.monthIdx)) imgUrl = 'https://silveriom.ir/assets/summer_poster.jpg'; // تیر, مرداد, شهریور
+              else if ([7, 8, 9].includes(ev.monthIdx)) imgUrl = 'https://silveriom.ir/assets/autumn_poster.jpg'; // مهر, آبان, آذر
+              else if ([10, 11, 12].includes(ev.monthIdx)) imgUrl = 'https://silveriom.ir/assets/winter_poster.jpg'; // دی, بهمن, اسفند
+            }
             
             // Extract a cool description or use fallback
             const fallbackDesc = ev.type === 'league' ? 'بزرگترین مسابقات با اسپانسری انحصاری برندهای معتبر. رقابت‌های تیمی و هیجان‌انگیز در بالاترین سطح کیفی.' : 
