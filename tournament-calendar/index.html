@@ -5251,7 +5251,7 @@ section {
 </style>
 </head>
 
-<body class="luxury-body">
+<body class="luxury-body">\n<div class="ios-overflow-fix-wrapper" style="overflow-x: hidden !important; width: 100% !important; position: relative;">\n
 
 <!-- SILVERIOM MINIMAL LOADER DOM & JS -->
 <div id="minimal-loader">
@@ -5456,22 +5456,28 @@ section {
         </a>
 
         <!-- Link 02: Media -->
-        <a href="https://silveriom.ir/inventory/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-              </svg>
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-card" onclick="toggleMobileSubmenu('media-submenu', this)" style="cursor: pointer;">
+            <div class="nav-card-right">
+              <div class="nav-card-icon-box">
+                <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              </div>
+              <div class="nav-card-text">
+                <span class="nav-card-title">رسانه‌ها</span>
+                <span class="nav-card-desc">فضاهای تبلیغاتی و واگذاری</span>
+              </div>
             </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">رسانه‌ها</span>
-              <span class="nav-card-desc">فضاهای تبلیغاتی و واگذاری</span>
-            </div>
+            <svg class="nav-card-chevron" id="media-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+            </svg>
           </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
+          <div id="media-submenu" class="mobile-submenu" style="display: none; flex-direction: column; gap: 8px; padding-right: 56px; margin-top: -4px; margin-bottom: 12px;">
+            <a href="https://silveriom.ir/inventory/" class="mobile-submenu-link" style="color: #8b9bb4; text-decoration: none; font-size: 0.9rem; padding: 10px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); display: block;">همه رسانه‌ها</a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mobile-submenu-link" style="color: #8b9bb4; text-decoration: none; font-size: 0.9rem; padding: 10px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); display: block;">مجموعه ایران زمین (شهرک غرب)</a>
+          </div>
+        </div>
 
         <a href="https://silveriom.ir/audience-intelligence/" class="mobile-nav-card">
           <div class="nav-card-right">
@@ -6250,8 +6256,8 @@ section {
         box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         animation: hintPulse 2s infinite;
       }
-      .scroll-hint-right { right: -5px; }
-      .scroll-hint-left { left: -5px; }
+      .scroll-hint-right { right: 5px; }
+      .scroll-hint-left { left: 5px; }
       @keyframes hintPulse {
         0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
         50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
@@ -6290,8 +6296,8 @@ section {
         box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         animation: hintPulse 2s infinite;
       }
-      .scroll-hint-right { right: -5px; }
-      .scroll-hint-left { left: -5px; }
+      .scroll-hint-right { right: 5px; }
+      .scroll-hint-left { left: 5px; }
       @keyframes hintPulse {
         0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
         50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
@@ -6322,8 +6328,8 @@ section {
         box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         animation: hintPulse 2s infinite;
       }
-      .scroll-hint-right { right: -5px; }
-      .scroll-hint-left { left: -5px; }
+      .scroll-hint-right { right: 5px; }
+      .scroll-hint-left { left: 5px; }
       @keyframes hintPulse {
         0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
         50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
@@ -8140,5 +8146,5 @@ function submitMainReservation(e) {
     </div>
   </div>
 </footer>
-</body>
+\n</div><!-- /.ios-overflow-fix-wrapper -->\n</body>
 </html>
