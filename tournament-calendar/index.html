@@ -6130,7 +6130,6 @@ section {
       }
       .month-selector-wrapper {
         display: flex;
-        margin-bottom: 50px;
         overflow-x: auto;
         padding-bottom: 15px;
         scrollbar-width: none;
@@ -6156,9 +6155,9 @@ section {
         background: transparent;
         border: none;
         color: #94A3B8;
-        padding: 12px 28px;
-        border-radius: 14px;
-        font-size: 1rem;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-size: 0.9rem;
         font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -6174,6 +6173,33 @@ section {
         box-shadow: inset 0 0 15px rgba(0,240,255,0.2);
         border: 1px solid rgba(0,240,255,0.3);
       }
+      .scroll-hint {
+        display: none;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(6,18,40,0.9);
+        border: 1px solid rgba(0,240,255,0.4);
+        color: #00F0FF;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        animation: hintPulse 2s infinite;
+      }
+      .scroll-hint-right { right: -5px; }
+      .scroll-hint-left { left: -5px; }
+      @keyframes hintPulse {
+        0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
+        50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+      }
+      @media (max-width: 991px) {
+        .scroll-hint { display: flex; }
+      }
       .spotlight-panel {
         background: rgba(6,18,40,0.6);
         backdrop-filter: blur(20px);
@@ -6187,12 +6213,66 @@ section {
         transition: opacity 0.4s ease, transform 0.4s ease;
       }
       @media(max-width: 991px) {
-        .spotlight-panel { grid-template-columns: 1fr 1fr; padding: 40px; }
+        .scroll-hint {
+        display: none;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(6,18,40,0.9);
+        border: 1px solid rgba(0,240,255,0.4);
+        color: #00F0FF;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        animation: hintPulse 2s infinite;
+      }
+      .scroll-hint-right { right: -5px; }
+      .scroll-hint-left { left: -5px; }
+      @keyframes hintPulse {
+        0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
+        50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+      }
+      @media (max-width: 991px) {
+        .scroll-hint { display: flex; }
+      }
+      .spotlight-panel { grid-template-columns: 1fr 1fr; padding: 40px; }
         .sp-stat { border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 30px; margin-bottom: 10px; }
         .sp-stat:nth-child(3), .sp-stat:nth-child(4) { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
       }
       @media(max-width: 576px) {
-        .spotlight-panel { grid-template-columns: 1fr; }
+        .scroll-hint {
+        display: none;
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(6,18,40,0.9);
+        border: 1px solid rgba(0,240,255,0.4);
+        color: #00F0FF;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        animation: hintPulse 2s infinite;
+      }
+      .scroll-hint-right { right: -5px; }
+      .scroll-hint-left { left: -5px; }
+      @keyframes hintPulse {
+        0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
+        50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+      }
+      @media (max-width: 991px) {
+        .scroll-hint { display: flex; }
+      }
+      .spotlight-panel { grid-template-columns: 1fr; }
         .sp-stat { border-bottom: 1px solid rgba(255,255,255,0.05) !important; padding-bottom: 25px !important; margin-bottom: 25px !important; }
         .sp-stat:last-child { border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
       }
@@ -6250,9 +6330,14 @@ section {
           <p style="color: #94A3B8; font-size: 1.05rem; margin-top: 10px;">انتخاب ماه و مشاهده وضعیت اختصاصی رویدادها</p>
         </div>
         
-        <div class="month-selector-wrapper">
-          <div id="spotlight-months" class="spotlight-months">
-            <!-- JS injects buttons -->
+        <div class="month-selector-outer" style="position: relative; margin-bottom: 50px;">
+          <div class="scroll-hint scroll-hint-right"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+          <div class="scroll-hint scroll-hint-left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></div>
+          
+          <div class="month-selector-wrapper" style="margin-bottom: 0;">
+            <div id="spotlight-months" class="spotlight-months">
+              <!-- JS injects buttons -->
+            </div>
           </div>
         </div>
 
