@@ -6474,23 +6474,25 @@ section {
       }
 
       function showNetInfo(loc, nodeElement) {
-          document.querySelectorAll('.net-node').forEach(n => n.classList.remove('active'));
+          document.querySelectorAll('.net-hotspot').forEach(n => n.classList.remove('active'));
           nodeElement.classList.add('active');
           document.getElementById('ni-title').innerText = loc.name;
           document.getElementById('ni-stats').innerText = `تعداد رویدادها: ${loc.eventsCount} رویداد سالانه`;
           document.getElementById('ni-types').innerText = loc.types;
           document.getElementById('ni-months').innerText = loc.months;
+          
+          const infoPanel = document.getElementById('network-info-panel');
           infoPanel.style.opacity = '1';
           infoPanel.style.transform = 'translateY(0)';
           infoPanel.style.pointerEvents = 'auto';
         }
         
         setTimeout(() => {
-          if(netCanvas.querySelector('.net-node')) {
-            showNetInfo(locations[0], netCanvas.querySelector('.net-node'));
+          const netCanvas = document.getElementById('network-canvas');
+          if(netCanvas && netCanvas.querySelector('.net-hotspot')) {
+            showNetInfo(locations[0], netCanvas.querySelector('.net-hotspot'));
           }
         }, 1000);
-      }
 
       const locFiltersContainer = document.getElementById('loc-filters');
       const typeFiltersContainer = document.getElementById('type-filters');
