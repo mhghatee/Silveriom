@@ -6367,42 +6367,118 @@ section {
     </section>
 
 <section id="timeline-section" class="section timeline-section" style="padding: 60px 0 120px; position: relative; z-index: 10;">
-      <div class="editorial-wide-container">
-        
-        <!-- Filters -->
-        <div class="calendar-filters" style="background: rgba(6,18,40,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px; margin-bottom: 60px;">
-          <div style="margin-bottom: 24px;">
-            <span style="display: block; color: #94A3B8; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">فیلتر مجموعه‌ها (Locations)</span>
-            <div class="filter-group" id="loc-filters" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
-          </div>
-          <div>
-            <span style="display: block; color: #94A3B8; font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">نوع رویداد (Event Types)</span>
-            <div class="filter-group" id="type-filters" style="display: flex; gap: 10px; flex-wrap: wrap;"></div>
+  <div class="editorial-wide-container">
+    <div class="inventory-main-layout">
+      <!-- RIGHT SIDEBAR FILTER PANEL -->
+      <aside class="sidebar-filter-card">
+        <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; color: #CCFF00; font-weight: 900; font-size: 15px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+            <span>فیلتر رویدادها</span>
           </div>
         </div>
 
-        <!-- Timeline Render Area -->
-        <div id="timeline-render-area" style="position: relative;">
-          <div id="timeline-content" style="display: flex; flex-direction: column; gap: 60px;"></div>
+        <div id="mobileFilterWrapper" class="desktop-always-visible">
+          <!-- Accordion 1: Locations -->
+          <div class="accordion-item">
+            <div class="accordion-header" style="padding: 8px 0; color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 10px;">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>مجموعه‌ها (Locations)</span>
+              </span>
+            </div>
+            <div class="accordion-body">
+              <div class="filter-group" id="loc-filters" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+          </div>
+          
+          <!-- Accordion 2: Event Types -->
+          <div class="accordion-item" style="border-bottom: none; margin-bottom: 0; padding-top: 15px;">
+            <div class="accordion-header" style="padding: 8px 0; color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 10px;">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>نوع رویداد (Types)</span>
+              </span>
+            </div>
+            <div class="accordion-body">
+              <div class="filter-group" id="type-filters" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+          </div>
         </div>
+      </aside>
 
+      <!-- LEFT CONTENT AREA -->
+      <div id="timeline-render-area" style="position: relative;">
+        <div id="timeline-content" style="display: flex; flex-direction: column; gap: 60px;"></div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <style>
-      .cal-filter-btn {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: #E2E8F0;
-        padding: 8px 18px;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-family: inherit;
-        cursor: pointer;
-        transition: all 0.3s ease;
+      .inventory-main-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 40px;
+        align-items: start;
+        direction: rtl;
       }
-      .cal-filter-btn:hover { background: rgba(255,255,255,0.1); }
-      .cal-filter-btn.active { background: rgba(204,255,0,0.15); border-color: #CCFF00; color: #CCFF00; box-shadow: 0 0 15px rgba(204,255,0,0.2); }
+      @media (max-width: 991px) {
+        .inventory-main-layout { grid-template-columns: 1fr; }
+      }
+      
+      .sidebar-filter-card {
+        position: sticky;
+        top: 110px;
+        background: linear-gradient(145deg, rgba(13, 22, 45, 0.98), rgba(6, 11, 24, 0.99)) !important;
+        backdrop-filter: blur(30px) !important;
+        border: 1px solid rgba(204, 255, 0, 0.4) !important;
+        border-radius: 28px !important;
+        padding: 24px 20px !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+        z-index: 20;
+      }
+      .accordion-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 14px;
+        margin-bottom: 14px;
+      }
+      .accordion-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+      .cal-filter-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #CBD5E1;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        font-family: 'YekanBakh', sans-serif !important;
+        text-align: right;
+        padding: 4px 0;
+        width: 100%;
+        transition: all 0.2s ease;
+      }
+      .cal-filter-btn:hover { color: #ffffff; }
+      .cal-filter-btn::before {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        background: rgba(15,25,50,0.8);
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+      .cal-filter-btn.active { color: #ffffff; }
+      .cal-filter-btn.active::before {
+        background: #CCFF00;
+        border-color: #CCFF00;
+        box-shadow: inset 0 0 0 4px #0B1120;
+      }
 
       .timeline-month-block { position: relative; width: 100%; }
       .month-header { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
