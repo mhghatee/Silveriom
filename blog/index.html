@@ -6,29 +6,25 @@
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
-    font-weight: 400 500;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400 500; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
-    font-weight: 700 800;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 700 800; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-ExtraBold.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 900; font-style: normal; font-display: swap;
   }
-
   *, *::before, *::after, html, body, main, section, div, p, span, a, h1, h2, h3, h4, h5, h6,
   input, select, textarea, button, label, li, ul, ol, option, optgroup, form, table, td, th {
     font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;
   }
+  .post-content h2, .post-content h3 { font-family: 'YekanBakh', sans-serif !important; }
+  .post-content p { font-family: 'YekanBakh', sans-serif !important; }
+  .post-content ul li { font-family: 'YekanBakh', sans-serif !important; }
 </style>
 
 
@@ -4859,18 +4855,12 @@ section {
 </head>
 <body class="luxury-body">
 
-
-  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
   <div class="cinematic-bg-container" id="cinematic-bg-container">
     <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
     <div class="bg-energy-glow"></div>
     <div class="navy-overlay-layer"></div>
   </div>
-
-  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
   <canvas id="webgl-canvas"></canvas>
-
-  <!-- Balanced Navy Blue Soft Overlay Layer -->
   <div class="navy-readability-overlay" style="position: fixed !important; inset: 0 !important; z-index: 5 !important; background: radial-gradient(circle at 50% 30%, rgba(6, 14, 30, 0.45) 0%, rgba(4, 9, 20, 0.62) 60%, rgba(2, 6, 14, 0.78) 100%) !important; pointer-events: none !important;"></div>
 
 <div class="top-complex-bar" id="top-complex-bar">
@@ -4915,6 +4905,7 @@ section {
         <a href="https://silveriom.ir/inventory/" class="nav-item ">سبد رسانه‌ها</a>
         <a href="https://silveriom.ir/portfolio/" class="nav-item ">نمونه کارها</a>
         <a href="https://silveriom.ir/media-planner/" class="nav-item ">مدیاپلنر</a>
+        <a href="https://silveriom.ir/blog/" class="nav-item ">مجله تخصصی</a>
         <a href="https://silveriom.ir/contact-us/" class="nav-item ">تماس با ما</a>
       </nav>
 
@@ -4940,17 +4931,14 @@ section {
     </div>
   </header>
 
-
 <main class="main-blog-page" style="position: relative; z-index: 10; padding-top: 210px; padding-bottom: 120px; font-family: 'YekanBakh', sans-serif !important;">
   <div class="editorial-wide-container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
     
-    <!-- Hero Banner for Blog -->
     <div style="text-align: center; margin-bottom: 70px; margin-top: 20px;">
       <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.35); padding: 10px 24px; border-radius: 50px; color: #00F0FF; font-size: 14px; font-weight: 700; margin-bottom: 30px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);">
         <span style="width: 10px; height: 10px; background: #00F0FF; border-radius: 50%; display: inline-block; box-shadow: 0 0 12px #00F0FF;"></span>
         <span>📰 مجله تخصصی سیلوریوم</span>
       </div>
-      
       <h1 style="font-size: 3.5rem; font-weight: 900; color: #ffffff; margin-bottom: 24px; line-height: 1.25; text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);">
         آرشیو اخبار و مقالات <span style="color: #CCFF00; text-shadow: 0 0 30px rgba(204, 255, 0, 0.65);">پدل و تنیس</span>
       </h1>
@@ -4959,139 +4947,83 @@ section {
       </p>
     </div>
 
-    <!-- Featured Post -->
-    <div class="glass-card featured-post" style="padding: 0; border-radius: 32px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); margin-bottom: 60px; overflow: hidden; display: flex; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 300px; position: relative;">
-        <img src="https://silveriom.ir/assets/sunstar-preview.jpg" alt="Featured Post" style="width: 100%; height: 100%; object-fit: cover; min-height: 400px;">
-        <div style="position: absolute; top: 20px; right: 20px; background: #CCFF00; color: #000; font-weight: 800; padding: 6px 16px; border-radius: 20px; font-size: 13px;">ویژه</div>
-      </div>
-      <div style="flex: 1; min-width: 300px; padding: 50px; display: flex; flex-direction: column; justify-content: center;">
-        <div style="color: #00F0FF; font-size: 14px; font-weight: 700; margin-bottom: 12px;">تحلیل کمپین • ۱۲ اردیبهشت ۱۴۰۵</div>
-        <h2 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.4;">چگونه کمپین سان‌استار در آرنا آزادی رکورد بازدید را شکست؟</h2>
-        <p style="color: #CBD5E1; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-          بررسی تخصصی استراتژی اکران محیطی برند سان‌استار در بزرگترین رویداد پدل سال و تاثیر آن بر مخاطبان VIP و ورزشکاران حرفه‌ای.
-        </p>
-        <a href="#" style="align-self: flex-start; background: transparent; color: #CCFF00; font-weight: 700; font-size: 16px; text-decoration: none; border: 2px solid #CCFF00; padding: 12px 28px; border-radius: 12px; transition: all 0.3s;" onmouseover="this.style.background='#CCFF00'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='#CCFF00';">
-          ادامه مطلب ←
-        </a>
-      </div>
-    </div>
-
     <!-- Category Filter -->
     <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 50px; flex-wrap: wrap;">
       <a href="#" style="background: rgba(204,255,0,0.15); border: 1px solid #CCFF00; color: #CCFF00; padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; text-decoration: none;">همه مقالات</a>
-      <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: 500; font-size: 14px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='rgba(255,255,255,0.05)';">اخبار تورنمنت‌ها</a>
-      <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: 500; font-size: 14px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='rgba(255,255,255,0.05)';">تحلیل کمپین</a>
-      <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: 500; font-size: 14px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='rgba(255,255,255,0.05)';">آموزش پدل</a>
     </div>
 
     <!-- Blog Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 80px;">
       
-      <!-- Card 1 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
+    <div class="glass-card blog-card" onclick="window.location.href='post-1.html'" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
         <div style="height: 220px; overflow: hidden; position: relative;">
-          <img src="https://silveriom.ir/assets/pmn.png" alt="Blog 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">اخبار تورنمنت‌ها</div>
+          <img src="https://silveriom.ir/assets/blog_1.jpg" alt="انقلاب نئونی: تبلیغات محیطی در کورت‌های پدل" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">تحلیل کمپین</div>
         </div>
         <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۵ اردیبهشت ۱۴۰۵</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">افتتاح کورت‌های جدید پانورامیک در مجموعه ایران زمین</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">گزارش تصویری و تحلیلی از امکانات جدید مجموعه ایران زمین و ظرفیت‌های تبلیغاتی اضافه شده.</p>
+          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۱۵ شهریور ۱۴۰۵</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">انقلاب نئونی: تبلیغات محیطی در کورت‌های پدل</h3>
+          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">بررسی تاثیر نورپردازی نئونی و طراحی‌های سایبرپانک در تبلیغات دور کورت‌های پدل بر افزایش نرخ تعامل مخاطبان VIP.</p>
           <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
         </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(204,255,0,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-        <div style="height: 220px; overflow: hidden; position: relative;">
-          <img src="https://silveriom.ir/assets/12.png" alt="Blog 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #CCFF00; color: #CCFF00; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">تحلیل کمپین</div>
-        </div>
-        <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۲۸ فروردین ۱۴۰۵</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">نقش تبلیغات محیطی ۳بعدی در جذب مخاطب لوکس</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">چرا برندهای بین‌المللی به سمت استفاده از استندهای دیجیتال در محیط‌های ورزشی روی آورده‌اند؟</p>
-          <div style="color: #CCFF00; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(168,85,247,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-        <div style="height: 220px; overflow: hidden; position: relative;">
-          <img src="https://silveriom.ir/assets/og-preview.jpg" alt="Blog 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #A855F7; color: #A855F7; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">آموزش پدل</div>
-        </div>
-        <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۱۵ فروردین ۱۴۰۵</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">آشنایی با راکت‌های حرفه‌ای و نحوه انتخاب صحیح</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">راهنمای جامع برای بازیکنان نیمه‌حرفه‌ای پدل در انتخاب راکت مناسب سبک بازی.</p>
-          <div style="color: #A855F7; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
-        </div>
-      </div>
-      
-      <!-- Card 4 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-        <div style="height: 220px; overflow: hidden; position: relative;">
-          <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #020617, #0f172a); display: flex; align-items: center; justify-content: center;">
-             <span style="font-size: 60px;">🏆</span>
-          </div>
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">اخبار تورنمنت‌ها</div>
-        </div>
-        <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۸ فروردین ۱۴۰۵</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">تقویم مسابقات بهاره پدل در سال ۱۴۰۵</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">لیست کامل مسابقات جایزه بزرگ پدل در تهران و شهرستان‌ها به همراه تاریخ برگزاری.</p>
-          <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
-        </div>
-      </div>
-      
-      <!-- Card 5 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(204,255,0,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-        <div style="height: 220px; overflow: hidden; position: relative;">
-          <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #020617, #0f172a); display: flex; align-items: center; justify-content: center;">
-             <span style="font-size: 60px;">📈</span>
-          </div>
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #CCFF00; color: #CCFF00; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">تحلیل کمپین</div>
-        </div>
-        <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۲ فروردین ۱۴۰۵</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">بررسی بازگشت سرمایه (ROI) در تبلیغات محیطی لوکس</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">چرا برندها در سال جدید بودجه بیشتری را به تبلیغات در مجموعه‌های تنیس و پدل اختصاص داده‌اند؟</p>
-          <div style="color: #CCFF00; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
-        </div>
-      </div>
-      
-      <!-- Card 6 -->
-      <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(168,85,247,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-        <div style="height: 220px; overflow: hidden; position: relative;">
-          <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #020617, #0f172a); display: flex; align-items: center; justify-content: center;">
-             <span style="font-size: 60px;">🎾</span>
-          </div>
-          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #A855F7; color: #A855F7; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">آموزش پدل</div>
-        </div>
-        <div style="padding: 24px;">
-          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۲۵ اسفند ۱۴۰۴</div>
-          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">۵ اشتباه رایج بازیکنان مبتدی پدل</h3>
-          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">نکاتی برای بهبود سریع سطح بازی و جلوگیری از مصدومیت‌های احتمالی در پدل.</p>
-          <div style="color: #A855F7; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
-        </div>
-      </div>
-
     </div>
     
-    <!-- Pagination -->
-    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 50px;">
-        <button style="width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;">&lt;</button>
-        <button style="width: 40px; height: 40px; border-radius: 50%; background: #CCFF00; border: none; color: #000; font-weight: 800; cursor: pointer;">۱</button>
-        <button style="width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='transparent';">۲</button>
-        <button style="width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='transparent';">۳</button>
-        <button style="width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='transparent';">&gt;</button>
+    <div class="glass-card blog-card" onclick="window.location.href='post-2.html'" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
+        <div style="height: 220px; overflow: hidden; position: relative;">
+          <img src="https://silveriom.ir/assets/blog_2.jpg" alt="وی‌آی‌پی لانژها: نقطه اتصال برندهای لوکس" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">اخبار کلاب‌ها</div>
+        </div>
+        <div style="padding: 24px;">
+          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۱۰ شهریور ۱۴۰۵</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">وی‌آی‌پی لانژها: نقطه اتصال برندهای لوکس</h3>
+          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">چگونه کلاب‌های ورزشی با طراحی لانژهای اختصاصی، بستر مناسبی برای پروموشن برندهای لاکچری فراهم می‌کنند؟</p>
+          <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
+        </div>
+    </div>
+    
+    <div class="glass-card blog-card" onclick="window.location.href='post-3.html'" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
+        <div style="height: 220px; overflow: hidden; position: relative;">
+          <img src="https://silveriom.ir/assets/blog_3.jpg" alt="استندهای LED سه بعدی؛ تحول تبلیغات دیجیتال" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">تکنولوژی تبلیغات</div>
+        </div>
+        <div style="padding: 24px;">
+          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۵ شهریور ۱۴۰۵</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">استندهای LED سه بعدی؛ تحول تبلیغات دیجیتال</h3>
+          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">معرفی نسل جدید استندهای تبلیغاتی سه‌بعدی تعاملی که به تازگی در مجموعه‌های برتر نصب شده‌اند.</p>
+          <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
+        </div>
+    </div>
+    
+    <div class="glass-card blog-card" onclick="window.location.href='post-4.html'" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
+        <div style="height: 220px; overflow: hidden; position: relative;">
+          <img src="https://silveriom.ir/assets/blog_4.jpg" alt="اوج هیجان در مسابقات حرفه‌ای پدل" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">اخبار تورنمنت‌ها</div>
+        </div>
+        <div style="padding: 24px;">
+          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۱ شهریور ۱۴۰۵</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">اوج هیجان در مسابقات حرفه‌ای پدل</h3>
+          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">گزارش تصویری از فینال مسابقات جایزه بزرگ پدل و نقش کلیدی اسپانسرها در ارتقای کیفیت مسابقات.</p>
+          <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
+        </div>
+    </div>
+    
+    <div class="glass-card blog-card" onclick="window.location.href='post-5.html'" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
+        <div style="height: 220px; overflow: hidden; position: relative;">
+          <img src="https://silveriom.ir/assets/blog_5.jpg" alt="تحلیل بازار تجهیزات پریمیوم پدل" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00F0FF; color: #00F0FF; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; backdrop-filter: blur(4px);">آموزش پدل</div>
+        </div>
+        <div style="padding: 24px;">
+          <div style="color: #94A3B8; font-size: 13px; margin-bottom: 10px;">۲۸ مرداد ۱۴۰۵</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">تحلیل بازار تجهیزات پریمیوم پدل</h3>
+          <p style="color: #CBD5E1; font-size: 14px; line-height: 1.7; margin-bottom: 20px;">نگاهی نزدیک به تکنولوژی فیبر کربن و طراحی‌های آیرودینامیک در نسل جدید راکت‌های حرفه‌ای پدل.</p>
+          <div style="color: #00F0FF; font-weight: 700; font-size: 14px;">مطالعه مقاله ↗</div>
+        </div>
+    </div>
+    
     </div>
 
   </div>
 </main>
-
 
 <footer class="luxury-mega-footer" id="main-footer">
   <div class="editorial-wide-container">
@@ -5163,7 +5095,6 @@ section {
     </div>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -5772,6 +5703,5 @@ section {
   });
 })();
 </script>
-
 </body>
 </html>

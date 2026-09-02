@@ -1,32 +1,246 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیلوریوم - مجموعه Asayesh ساری</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
 
-  <!-- Favicon -->
-  
-  
-  
-  
-  
-  
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#06080b',
+                            card: '#0d131f',
+                            cardBorder: 'rgba(255, 255, 255, 0.08)',
+                            lime: '#ccff00',
+                            cyan: '#00f0ff',
+                            text: '#ffffff',
+                            textMuted: '#8b9bb4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['YekanBakh', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #040914; /* Deep Navy Base */
+            color: #ffffff;
+            font-family: 'YekanBakh', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(204, 255, 0, 0.06) 0%, transparent 30%),
+                radial-gradient(circle at 85% 85%, rgba(204, 255, 0, 0.04) 0%, transparent 35%),
+                linear-gradient(135deg, rgba(6, 13, 28, 0.95) 0%, rgba(4, 9, 20, 0.98) 100%);
+            background-attachment: fixed;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(204, 255, 0, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(204, 255, 0, 0.05);
+        }
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <base href="./">
-  <title>سیلوریوم | پلتفرم تخصصی تبلیغات و رسانه‌های تنیس و پدل</title>
-  <meta name="description" content="سیلوریوم، مجری انحصاری رسانه‌ها و تبلیغات محیطی در برترین مجتمع‌های تنیس و پدل. برندها را در نقطه اوج توجه ورزشی قرار دهید.">
-  
-  <!-- Luxury Persian & Display Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Three.js & Animation Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        .text-gradient-lime {
+            background: linear-gradient(to right, #ccff00, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  <style>
+        .nav-link {
+            color: #8b9bb4;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: #ccff00;
+        }
+
+        .nav-link.active {
+            color: #ccff00;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            border-radius: 9999px;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            border-color: #ccff00;
+            color: #ccff00;
+            background: rgba(204, 255, 0, 0.05);
+        }
+
+        .btn-contact {
+            border: 1px solid rgba(204, 255, 0, 0.3);
+            color: #ccff00;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-contact:hover {
+            background: rgba(204, 255, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-subtitle {
+            color: #ccff00;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .section-heading {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: #ccff00;
+            border-radius: 2px;
+        }
+        .progress-bar-fill.cyan {
+            background: #00f0ff;
+        }
+
+        .textbox {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            line-height: 1.8;
+            color: #8b9bb4;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6, 8, 11, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+    
+  .reserve-trigger-btn {
+    background: #CCFF00;
+    color: #070A11;
+    font-weight: 900;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    font-size: 13.5px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  .reserve-trigger-btn:hover {
+    box-shadow: 0 0 35px rgba(204, 255, 0, 0.6);
+    transform: translateY(-2px);
+  }
+</style>
+
+
+    <!-- SILVERIOM MINIMAL LOADER STYLE -->
+    <style>
+      #minimal-loader {
+        position: fixed; inset: 0; z-index: 9999999;
+        background-color: #030712; 
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      .ml-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      
+      .ml-brand {
+        color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 1.2rem; font-weight: 300; letter-spacing: 10px;
+        text-transform: uppercase; margin-bottom: 25px; margin-left: 10px;
+        opacity: 0; animation: ml-fade-in 0.8s ease forwards, ml-pulse 2s 0.8s infinite alternate;
+      }
+      @keyframes ml-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 0.9; transform: translateY(0); } }
+      @keyframes ml-pulse { 0% { opacity: 0.5; } 100% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.2); } }
+
+      .ml-progress-container {
+        width: 180px; height: 1px; background: rgba(255,255,255,0.1);
+        overflow: hidden;
+      }
+      .ml-progress-bar {
+        width: 0%; height: 100%; background: #B6FF00;
+        box-shadow: 0 0 10px #B6FF00;
+        animation: ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+      }
+      @keyframes ml-fill { 0% { width: 0%; } 100% { width: 100%; } }
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<style>
 
 @font-face {
   font-family: "YekanBakh";
@@ -99,23 +313,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: var(--color-midnight);
-  color: var(--color-silver);
-  font-family: 'YekanBakh', 'Yekan Bakh', -apple-system, sans-serif;
-  font-weight: 300;
-}
 
-body {
-  background: radial-gradient(circle at 50% 10%, #08172c 0%, #02040a 70%);
-  background-attachment: fixed;
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-  direction: rtl;
-  text-align: right;
-}
+
+
 
 /* ==========================================================================
    NUMBERS / IMPACT SECTION (DARK CYBER LUXURY)
@@ -549,12 +749,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.detail-body {
-  font-size: 0.92rem;
-  line-height: 1.85;
-  color: var(--color-silver);
-  margin-bottom: 2.5rem;
-}
+.detail-
 
 .detail-metrics-grid {
   display: grid;
@@ -1634,13 +1829,7 @@ body {
   margin: 0 auto;
 }
 
-.planner-body {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 3rem;
-  margin-top: 3rem;
-  align-items: start;
-}
+.planner-
 
 .planner-controls {
   display: flex;
@@ -1988,9 +2177,7 @@ body {
   .map-interactive-wrapper {
     grid-template-columns: 1fr;
   }
-  .planner-body {
-    grid-template-columns: 1fr;
-  }
+  .planner-
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -3139,14 +3326,7 @@ section {
   pointer-events: none !important;
 }
 
-.complex-card-body {
-  padding: 1.8rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-  flex-grow: 1 !important;
-  text-align: right !important;
-}
+.complex-card-
 
 .complex-card-meta {
   display: flex !important;
@@ -3706,14 +3886,7 @@ section {
   color: var(--color-neon) !important;
 }
 
-.case-card-body {
-  padding: 1.8rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-  flex-grow: 1 !important;
-  text-align: right !important;
-}
+.case-card-
 
 .case-card-brand-row {
   display: flex !important;
@@ -4165,14 +4338,7 @@ section {
   background: rgba(182, 255, 0, 0.1) !important;
 }
 
-.fcard-body {
-  padding: 1.8rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1.2rem !important;
-  flex-grow: 1 !important;
-  text-align: right !important;
-}
+.fcard-
 
 .fcard-title {
   font-size: 1.25rem !important;
@@ -4733,7 +4899,6 @@ section {
   }
 }
 </style>
-
 <style id="island-header-overrides">
 .top-bar-badge {
   background: rgba(204, 255, 0, 0.1) !important;
@@ -4812,10 +4977,6 @@ section {
   color: #CCFF00 !important;
 }
 </style>
-
-
-
-
 <style id="exact-grid-badge">
 
 /* EXACT MATCH CSS overrides */
@@ -4888,7 +5049,6 @@ section {
 }
 
 </style>
-
 <style>
 .featured-actions {
   display: flex !important;
@@ -4901,8 +5061,6 @@ section {
   margin: 0 !important;
 }
 </style>
-
-
 <style>
 .featured-actions {
   display: block !important;
@@ -4918,11 +5076,6 @@ section {
   margin: 0 !important;
 }
 </style>
-
-<!-- ============================================================ -->
-<!-- SILVERIOM HERO VISUAL STYLE — About-Us layout reference     -->
-<!-- Content is 100% unchanged. Only visual style is updated.    -->
-<!-- ============================================================ -->
 <style id="silveriom-hero-style-aboutus">
 
 /* === HERO SECTION: CENTER ALIGNMENT (matches about-us hero) === */
@@ -5026,13 +5179,6 @@ section {
 }
 
 </style>
-
-
-<!-- ==================================================================== -->
-<!-- SILVERIOM UNIFIED GLOBAL CONTAINER SYSTEM                            -->
-<!-- Absolute Reference: inventory/index.html .editorial-wide-container   -->
-<!-- Values: max-width 1280px, padding clamp(2rem, 5vw, 4.5rem), margin auto -->
-<!-- ==================================================================== -->
 <style id="silveriom-global-container-system">
   /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
   .luxury-nav, 
@@ -5066,16 +5212,7 @@ section {
     padding-right: 0 !important;
   }
 </style>
-
-  
-
-  <!-- GLOBAL FAVICON CONFIGURATION V2 -->
-  <link rel="icon" type="image/png" href="https://silveriom.ir/assets/favicon.png?v=2" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://silveriom.ir/assets/favicon-32x32.png?v=2">
-  <link rel="apple-touch-icon" href="https://silveriom.ir/assets/apple-touch-icon.png?v=2">
-
-  <!-- UNIVERSAL MOBILE INLINE FIXES (Injected by Antigravity) -->
-  <style id="universal-mobile-inline-fixes">
+<style id="universal-mobile-inline-fixes">
     @media (max-width: 768px) {
       /* 1. Neutralize all dangerous minmax grids that cause horizontal explosion */
       div[style*="grid-template-columns: repeat(auto-fit, minmax("] {
@@ -5134,10 +5271,7 @@ section {
       }
     }
   </style>
-
-
-  <!-- UNIFIED HERO SPACING FIX (Based on Portfolio Reference) -->
-  <style>
+<style>
     @media (max-width: 768px) {
       .hero-section, 
       .main-portfolio-page, 
@@ -5148,23 +5282,6 @@ section {
       }
     }
   </style>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- SILVERIOM MINIMAL LOADER STYLE -->
 <style>
   #minimal-loader {
     position: fixed; inset: 0; z-index: 9999999;
@@ -5199,7 +5316,7 @@ section {
     opacity: 0; animation: ml-fade-in 0.5s ease forwards 0.3s;
   }
 </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 /* Navigation Dropdown */
@@ -5251,93 +5368,17 @@ section {
 </style>
 </head>
 
-<body>
-
-<!-- SILVERIOM MINIMAL LOADER DOM & JS -->
-<div id="minimal-loader">
-  <div class="ml-brand" style="margin-bottom: 5px; opacity:1; animation: none;">
-    <img src="https://silveriom.ir/assets/neon_logo.png" alt="Silveriom" style="max-height: 80px; filter: drop-shadow(0 0 15px rgba(182,255,0,0.5));">
-  </div>
-  <div class="ml-percent" id="ml-percent">0%</div>
-  <div class="ml-progress-container"><div class="ml-progress-bar"></div></div>
-</div>
-<script>
-  (function() {
-    
-    const pct = document.getElementById('ml-percent');
-    if (pct) {
-      let p = 0;
-      const interval = setInterval(() => {
-        p += Math.floor(Math.random() * 8) + 4;
-        if(p >= 100) { p = 100; clearInterval(interval); }
-        pct.innerText = p + '%';
-      }, 50);
-    }
-
-    const hide = () => { const l = document.getElementById('minimal-loader'); if(l) l.classList.add('ml-hidden'); };
-    setTimeout(hide, 1400);
-    window.addEventListener('load', () => { setTimeout(hide, 1400); });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        const href = a.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
-          const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
-          if (isInternal) {
-            e.preventDefault();
-            const l = document.getElementById('minimal-loader');
-            if(l) {
-              l.classList.remove('ml-hidden');
-              const fill = l.querySelector('.ml-progress-bar');
-              if(fill) {
-                fill.style.animation = 'none';
-                fill.offsetHeight; 
-                fill.style.animation = 'ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards';
-              }
-              document.body.appendChild(l);
-            }
-            setTimeout(() => { window.location.href = href; }, 1300);
-          }
-        }
-      });
-    });
-  })();
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<body class="antialiased min-h-screen">
 
   <!-- 3D WebGL Background Canvas -->
-  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
   <div class="cinematic-bg-container" id="cinematic-bg-container">
-    <img src="assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
-    <div class="bg-energy-glow">    <div class="bg-energy-glow"></div>
+    <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
+    <div class="bg-energy-glow"></div>
     <div class="navy-overlay-layer"></div>
   </div>
-  </div>
-
-  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
   <canvas id="webgl-canvas"></canvas>
 
-  <!-- Deep Navy Blue Readability Overlay Layer -->
-  <div class="navy-readability-overlay"></div>
-
-  <!-- Top Neon Green Padel Complexes Announcement Bar -->
-    <!-- Top Infinite Seamless Marquee Ticker for Padel Complexes -->
+<!-- Top Infinite Seamless Marquee Ticker for Padel Complexes -->
     <!-- Top Infinite Seamless Continuous Marquee Ticker -->
   <div class="top-complex-bar" id="top-complex-bar">
     <div class="marquee-track">
@@ -5369,12 +5410,10 @@ section {
       </div>
     </div>
   </div>
-
-  <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
-  <header class="luxury-nav" id="main-nav">
+<header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
-        <img src="assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img">
       </a>
 
       <nav class="nav-links">
@@ -5426,13 +5465,15 @@ section {
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu (Staggered Dashboard Redesign) -->
+  
+
+<!-- Mobile Drawer Menu (Staggered Dashboard Redesign) -->
   <div id="mobile-menu" class="mobile-overlay">
     <div class="mobile-backdrop" id="mobile-backdrop"></div>
     <div class="mobile-drawer">
       <div class="mobile-head">
         <div class="drawer-brand-area">
-          <img src="assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
           <div class="drawer-status-bar">
             <span class="status-indicator-ping"></span>
             <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
@@ -5544,20 +5585,20 @@ section {
 
         <!-- Link 03: Portfolio -->
         <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
-          <div class="nav-card-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </div>
-          <div class="nav-card-text">
-            <span>تقویم مسابقات</span>
-            <small>رویدادها و لیگ‌ها</small>
-          </div>
           <div class="nav-card-right">
             <div class="nav-card-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">تقویم مسابقات</span>
+              <span class="nav-card-desc">رویدادها و لیگ‌ها</span>
             </div>
           </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
         </a>
 
         <!-- Link 04: Blog -->
@@ -5667,1036 +5708,499 @@ section {
     </div>
   </div>
 
-  <!-- Main Experience Container -->
-  <main class="experience-container">
 
-    <!-- ==================== HERO SECTION ==================== -->
-        <section id="hero" class="section hero-section">
-      <div class="hero-content">
-        <div class="luxury-badge">
-          <span class="badge-dot"></span>
-          <span class="badge-text font-mono-en">CYBER-LUXURY SPORTS MEDIA PLATFORM</span>
-        </div>
 
-        <h1 class="hero-title">
-          راهکارهای تبلیغات<br>
-          در دنیای تنیس و پدل
-        </h1>
+    <!-- SILVERIOM MINIMAL LOADER DOM -->
+    <div id="minimal-loader">
+      <div class="ml-brand">SILVERIOM</div>
+      <div class="ml-progress-container"><div class="ml-progress-bar"></div></div>
+    </div>
+    <script>
+      (function() {
+        const hide = () => { const l = document.getElementById('minimal-loader'); if(l) l.classList.add('ml-hidden'); };
+        setTimeout(hide, 1400);
+        window.addEventListener('load', () => { setTimeout(hide, 1400); });
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.addEventListener('click', (e) => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            const href = a.getAttribute('href');
+            if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
+              const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
+              if (isInternal) {
+                e.preventDefault();
+                const l = document.getElementById('minimal-loader');
+                if(l) {
+                  l.classList.remove('ml-hidden');
+                  const fill = l.querySelector('.ml-progress-bar');
+                  if(fill) {
+                    fill.style.animation = 'none';
+                    fill.offsetHeight; 
+                    fill.style.animation = 'ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards';
+                  }
+                  document.body.appendChild(l);
+                }
+                setTimeout(() => { window.location.href = href; }, 1300);
+              }
+            }
+          });
+        });
+      })();
+    </script>
 
-        <p class="hero-subtitle">
-          سیلوریوم با تلفیق تکنولوژی روز، برندینگ نئونی و مهندسی رسانه‌ای، برندهای برتر را به جامعه پرقدرت و نخبه ورزش‌های راکتی متصل می‌کند.
-        </p>
-
-        <div class="hero-actions">
-          <button class="luxury-btn-solid open-kit-trigger">
-            <span>دریافت مدیا کیت</span>
-          </button>
-          <a href="#venues-map" class="luxury-btn-ghost">
-            <span>مشاهده نقشه و کورت‌ها</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Full-Width Liquid Glass Hero Dock (Spans Full Hero Bottom Row) -->
-      <!-- Full-Width Liquid Glass Hero Dock (Spans Full Hero Bottom Row) -->
-      <div class="hero-smart-finder-dock">
-        <div class="finder-dock-inner">
-          <div class="finder-field">
-            <label class="finder-label">
-              <svg class="finder-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg> موقعیت / مجتمع هدف
-            </label>
-            <select id="finder-zone" class="finder-select">
-              <option value="all">همه مجتمع‌ها (پوشش سراسری)</option>
-              <option value="t10">مجموعه T10 (آجودانیه)</option>
-              <option value="arena">مجموعه Arena (آزادی)</option>
-              <option value="iranzamin">مجموعه Iran Zamin (شهرک غرب)</option>
-              <option value="netra">مجموعه Netra (لواسان)</option>
-              <option value="asayesh">مجموعه Asayesh (ساری)</option>
-            </select>
-          </div>
-
-          <div class="finder-field">
-            <label class="finder-label">
-              <svg class="finder-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> نوع رسانه تبلیغاتی
-            </label>
-            <select id="finder-media" class="finder-select">
-              <option value="all">همه فضاهای تبلیغاتی (۳۶۰ درجه)</option>
-              <option value="net">نوار و تور مسابقات (دید مستقیم ۹۴٪)</option>
-              <option value="glass">دیواره شیشه‌ای پانورامیک</option>
-              <option value="digital">نمایشگر دیجیتال LED محیطی</option>
-              <option value="turf">درج لوگو در چمن کورت</option>
-              <option value="sampling">جایگاه سمپلینگ و VIP لانژ</option>
-            </select>
-          </div>
-
-          <div class="finder-action-col">
-            <button id="finder-submit-btn" class="finder-btn">
-              <span>جستجو در رسانه‌ها</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="hero-scroll-cue">
-        <div class="neon-arrow-down">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="7 13 12 18 17 13"></polyline>
-            <polyline points="7 6 12 11 17 6"></polyline>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== NUMBERS / IMPACT SECTION ==================== -->
-    <section class="impact-section">
-      <div class="editorial-wide-container">
-        <div class="stats-grid">
-          
-          <!-- Stat 01: Brands -->
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-number">+۳۵</span>
-              <div class="stat-icon-wrapper">
-                <svg class="stat-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="7" />
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                </svg>
-              </div>
-            </div>
-            <div class="stat-card-divider"></div>
-            <div class="stat-card-footer">
-              <span class="stat-title">برند همکار</span>
-              <span class="stat-desc">شرکت‌های پیشرو و بین‌المللی</span>
-            </div>
-          </div>
-
-          <!-- Stat 02: Audience -->
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-number">+۱۲۰K</span>
-              <div class="stat-icon-wrapper">
-                <svg class="stat-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-            </div>
-            <div class="stat-card-divider"></div>
-            <div class="stat-card-footer">
-              <span class="stat-title">مخاطب ورزشی ماهانه</span>
-              <span class="stat-desc">جامعه مدیران و ورزشکاران نخبه</span>
-            </div>
-          </div>
-
-          <!-- Stat 03: Media -->
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-number">+۴۵</span>
-              <div class="stat-icon-wrapper">
-                <svg class="stat-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="15" x="2" y="7" rx="2" ry="2" />
-                  <polyline points="17 2 12 7 7 2" />
-                </svg>
-              </div>
-            </div>
-            <div class="stat-card-divider"></div>
-            <div class="stat-card-footer">
-              <span class="stat-title">رسانه تبلیغاتی اختصاصی</span>
-              <span class="stat-desc">دیواره‌های شیشه‌ای، تور و LED</span>
-            </div>
-          </div>
-
-          <!-- Stat 04: Complexes -->
-          <div class="stat-card">
-            <div class="stat-card-header">
-              <span class="stat-number">۰۷</span>
-              <div class="stat-icon-wrapper">
-                <svg class="stat-svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-            </div>
-            <div class="stat-card-divider"></div>
-            <div class="stat-card-footer">
-              <span class="stat-title">مجتمع ورزشی فعال</span>
-              <span class="stat-desc">برترین باشگاه‌های تنیس و پدل</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
     
-    <!-- ==================== INTERACTIVE CYBER MAP SECTION ==================== -->
-    <section id="venues-map" class="section map-interactive-section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">سازه‌یاب و نقشه هوشمند پایتخت</span>
-          <h2 class="section-title">نقشه کورت‌ها و رسانه‌های اختصاصی</h2>
-          <p class="section-lead">پوشش استراتژیک در پرترددترین کانون‌های ورزشی و تجاری تهران و حومه با دید هدفمند.</p>
-        </div>
 
-        <!-- Map Filter Tabs (Excluding 'همه مجموعه‌ها') -->
-        <div class="map-filter-bar">
-          <button class="map-filter-btn active" data-pin="t10">مجموعه T10 (آجودانیه)</button>
-          <button class="map-filter-btn" data-pin="arena">مجموعه Arena (آزادی)</button>
-          <button class="map-filter-btn" data-pin="iranzamin">مجموعه Iran Zamin (شهرک غرب)</button>
-          <button class="map-filter-btn" data-pin="netra">مجموعه Netra (لواسان)</button>
-          <button class="map-filter-btn" data-pin="asayesh">مجموعه Asayesh (ساری)</button>
-        </div>
+    <script>
+        </script>
 
-        <div class="map-interactive-wrapper">
-          <div class="map-canvas-box">
-            <img src="assets/iran_padel_hud_map.jpg" alt="نقشه کورت‌ها و رسانه‌های اختصاصی سیلوریوم" class="map-bg-img">
-            
-            <!-- Interactive Location Beacons Centered Exactly Over Map Pin Heads -->
-            <!-- 1. T10 (Ajudaniyeh) -->
-            <div class="map-hotspot pin-t10 active" data-zone="t10" style="top: 35.5%; left: 59.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه T10 آجودانیه">
-              <div class="map-pin-beacon">
-                <div class="beacon-pulse-ring"></div>
-                <div class="beacon-dot"></div>
-                <span class="beacon-tooltip">مجموعه T10 (آجودانیه) 🎯</span>
-              </div>
-            </div>
 
-            <!-- 2. Arena (Azadi) -->
-            <div class="map-hotspot pin-arena" data-zone="arena" style="top: 60%; left: 19.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Arena آزادی">
-              <div class="map-pin-beacon">
-                <div class="beacon-pulse-ring"></div>
-                <div class="beacon-dot"></div>
-                <span class="beacon-tooltip">مجموعه Arena (آزادی) 🎯</span>
-              </div>
-            </div>
+    
+    <!-- Split Layout Hero Section -->
+    <section class="relative z-10 pt-[180px] lg:pt-[200px] pb-4 relative flex items-center overflow-hidden" style="padding-top: 180px !important; padding-bottom: 1rem !important;">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00f0ff]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-            <!-- 3. Iran Zamin (Shahrak Gharb) -->
-            <div class="map-hotspot pin-iranzamin" data-zone="iranzamin" style="top: 36.5%; left: 24.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Iran Zamin شهرک غرب">
-              <div class="map-pin-beacon">
-                <div class="beacon-pulse-ring"></div>
-                <div class="beacon-dot"></div>
-                <span class="beacon-tooltip">مجموعه Iran Zamin (شهرک غرب) 🎯</span>
-              </div>
-            </div>
-
-            <!-- 4. Netra (Lavasan) -->
-            <div class="map-hotspot pin-netra" data-zone="netra" style="top: 23.5%; left: 81.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Netra لواسان">
-              <div class="map-pin-beacon">
-                <div class="beacon-pulse-ring"></div>
-                <div class="beacon-dot"></div>
-                <span class="beacon-tooltip">مجموعه Netra (لواسان) 🎯</span>
-              </div>
-            </div>
-
-            <!-- 5. Asayesh (Sari) -->
-            <div class="map-hotspot pin-asayesh" data-zone="asayesh" style="top: 13.5%; left: 91.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Asayesh ساری">
-              <div class="map-pin-beacon">
-                <div class="beacon-pulse-ring"></div>
-                <div class="beacon-dot"></div>
-                <span class="beacon-tooltip">مجموعه Asayesh (ساری) 🎯</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Live Spot Detail Card -->
-          <div class="map-info-panel" id="map-info-card">
-            <div class="panel-header">
-              <span class="panel-badge" id="map-spot-badge">موقعیت طلایی • شمال تهران</span>
-              <h3 class="panel-title" id="map-spot-title">مجموعه T10 (آجودانیه)</h3>
-              <p class="panel-location" id="map-spot-loc">تهران، آجودانیه، مجموعه اختصاصی T10</p>
-            </div>
-
-            <p class="panel-desc" id="map-spot-desc">
-              مجهز به ۷ زمین پدل حرفه‌ای و ۳ زمین تنیس استاندارد. کانون اصلی ورزش‌های راکتی شمال پایتخت با حضور نخبگان ورزشی و بالاترین میانگین قدرت خرید مخاطبان.
-            </p>
-
-            <div class="panel-stats-grid">
-              <div class="pstat-item">
-                <span class="pstat-val" id="map-spot-courts">۷ پدل + ۳ تنیس</span>
-                <span class="pstat-lbl">زمین فعال مسابقاتی</span>
-              </div>
-              <div class="pstat-item">
-                <span class="pstat-val" id="map-spot-impressions">+۹۵,۰۰۰</span>
-                <span class="pstat-lbl">ایمپرشن ماهانه</span>
-              </div>
-              <div class="pstat-item">
-                <span class="pstat-val" id="map-spot-media">نوار تور + شیشه + استیج</span>
-                <span class="pstat-lbl">رسانه‌های آماده اکران</span>
-              </div>
-            </div>
-
-            <div class="panel-actions">
-              <button class="luxury-btn-solid open-kit-trigger" id="map-inquire-btn" style="width: 100%;">
-                <span>استعلام رزرو این موقعیت</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== FEATURED GOLDEN INVENTORY ==================== -->
-    <section id="featured-inventory" class="section featured-inventory-section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">موقعیت‌های طلایی اکران</span>
-          <h2 class="section-title">سازه‌ها و فضاهای برگزیده</h2>
-          <p class="section-lead">رسانه‌هایی با بالاترین ضریب دید، ماندگاری چشمی و بازتاب در پخش رسانه‌ای.</p>
-        </div>
-
-        <div class="featured-grid">
-
-          <!-- Structure 01 -->
-          <div class="glass-card product-asset-card featured-override-card">
-            <div class="fcard-img-wrapper" style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 220px;">
-              <img src="assets/structure_sunstar_building.jpg" alt="دیواره ساختمان مرکزی" style="width: 100%; height: 100%; object-fit: cover;">
-              <span class="structure-code-badge">
-                کد: SL-BD-01
-              </span>
-              <span class="status-available-badge">
-                موجود جهت اکران
-              </span>
-            </div>
-
-            <div style="color: #00d287; font-size: 13px; font-weight: 800; margin-bottom: 8px; text-align: right;">📍 انقلاب پدل کلاب (تهران)</div>
-            <h3 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 16px; line-height: 1.4; text-align: right;">دیواره تبلیغاتی ساختمان مرکزی</h3>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; background: #0E1629; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(204,255,0,0.3);">
-              <span style="color: #94A3B8; font-size: 13px; font-weight: 600;">تعرفه ماهانه:</span>
-              <span style="color: #CCFF00; font-weight: 900; font-size: 18px;">۵۵ میلیون تومان</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: #121A2F; padding: 16px; border-radius: 14px; font-size: 13px; color: #CBD5E1; margin-bottom: 24px; text-align: right;" dir="rtl">
-              <div>📐 ابعاد: <strong style="color: #F8FAFC;">۶m × ۴m</strong></div>
-              <div>👁️ بازدید: <strong style="color: #F8FAFC;">۱.۸M+</strong></div>
-              <div>⚡ چاپ: <strong style="color: #F8FAFC;">مش آلمانی</strong></div>
-              <div>👥 مخاطب: <strong style="color: #F8FAFC;">HNWIs</strong></div>
-            </div>
-
-            <button class="reserve-trigger-btn" onclick="openMainReservationModal('SL-BD-01', 'دیواره تبلیغاتی ساختمان مرکزی')" style="width: 100%; background: #CCFF00; color: #020617; font-weight: 900; padding: 16px; border-radius: 20px; border: none; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-plus"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
-                <span>رزرو رسانه</span>
-              </button>
-          </div>
-
-          <!-- Structure 02 -->
-          <div class="glass-card product-asset-card featured-override-card">
-            <div class="fcard-img-wrapper" style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 220px;">
-              <img src="assets/structure_fizio_building.jpg" alt="لایت‌باکس منحنی" style="width: 100%; height: 100%; object-fit: cover;">
-              <span class="structure-code-badge">
-                کد: SL-BD-02
-              </span>
-              <span class="status-available-badge">
-                موجود جهت اکران
-              </span>
-            </div>
-
-            <div style="color: #00d287; font-size: 13px; font-weight: 800; margin-bottom: 8px; text-align: right;">📍 انقلاب پدل کلاب (تهران)</div>
-            <h3 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 16px; line-height: 1.4; text-align: right;">لایت‌باکس منحنی ساختمان مرکزی</h3>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; background: #0E1629; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(204,255,0,0.3);">
-              <span style="color: #94A3B8; font-size: 13px; font-weight: 600;">تعرفه ماهانه:</span>
-              <span style="color: #CCFF00; font-weight: 900; font-size: 18px;">۶۵ میلیون تومان</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: #121A2F; padding: 16px; border-radius: 14px; font-size: 13px; color: #CBD5E1; margin-bottom: 24px; text-align: right;" dir="rtl">
-              <div>📐 ابعاد: <strong style="color: #F8FAFC;">۸m × ۱.۵m</strong></div>
-              <div>👁️ بازدید: <strong style="color: #F8FAFC;">۲.۱M+</strong></div>
-              <div>⚡ چاپ: <strong style="color: #F8FAFC;">فلکس نورپردازی</strong></div>
-              <div>👥 مخاطب: <strong style="color: #F8FAFC;">VIPs</strong></div>
-            </div>
-
-            <button class="reserve-trigger-btn" onclick="openMainReservationModal('SL-BD-02', 'لایت‌باکس منحنی ساختمان مرکزی')" style="width: 100%; background: #CCFF00; color: #020617; font-weight: 900; padding: 16px; border-radius: 20px; border: none; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-plus"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
-                <span>رزرو رسانه</span>
-              </button>
-          </div>
-
-          <!-- Structure 03 -->
-          <div class="glass-card product-asset-card featured-override-card">
-            <div class="fcard-img-wrapper" style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 220px;">
-              <img src="assets/structure_blueberry_glass.jpg" alt="برندینگ شیشه‌های ورودی" style="width: 100%; height: 100%; object-fit: cover;">
-              <span class="structure-code-badge">
-                کد: SL-BD-03
-              </span>
-              <span class="status-available-badge">
-                موجود جهت اکران
-              </span>
-            </div>
-
-            <div style="color: #00d287; font-size: 13px; font-weight: 800; margin-bottom: 8px; text-align: right;">📍 انقلاب پدل کلاب (تهران)</div>
-            <h3 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 16px; line-height: 1.4; text-align: right;">برندینگ شیشه‌های ورودی لابی</h3>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; background: #0E1629; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(204,255,0,0.3);">
-              <span style="color: #94A3B8; font-size: 13px; font-weight: 600;">تعرفه ماهانه:</span>
-              <span style="color: #CCFF00; font-weight: 900; font-size: 18px;">۴۵ میلیون تومان</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: #121A2F; padding: 16px; border-radius: 14px; font-size: 13px; color: #CBD5E1; margin-bottom: 24px; text-align: right;" dir="rtl">
-              <div>📐 ابعاد: <strong style="color: #F8FAFC;">۵m × ۲.۵m</strong></div>
-              <div>👁️ بازدید: <strong style="color: #F8FAFC;">۱.۲M+</strong></div>
-              <div>⚡ چاپ: <strong style="color: #F8FAFC;">وینیل شفاف</strong></div>
-              <div>👥 مخاطب: <strong style="color: #F8FAFC;">همه‌ی مراجعین</strong></div>
-            </div>
-
-            <button class="reserve-trigger-btn" onclick="openMainReservationModal('SL-BD-03', 'برندینگ شیشه‌های ورودی لابی')" style="width: 100%; background: #CCFF00; color: #020617; font-weight: 900; padding: 16px; border-radius: 20px; border: none; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-plus"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
-                <span>رزرو رسانه</span>
-              </button>
-          </div>
-
-        <div class="featured-actions" style="display: flex; justify-content: flex-end; width: 100%; max-width: 1280px; margin: 2rem auto 0 auto; direction: rtl; text-align: left;">
-          <a href="https://silveriom.ir/inventory" class="luxury-btn-outline inventory-view-all-btn" style="margin-right: auto; margin-left: 0; display: inline-flex; float: left;">
-            <span>همه سازه‌ها</span>
-            <svg class="btn-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== OUR COMPLEXES (5 OFFICIAL PADEL & TENNIS CLUBS) ==================== -->
-    <section id="complexes" class="section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">مجموعه‌ها و باشگاه‌های تحت پوشش</span>
-          <h2 class="section-title">مجموعه های انحصاری سیلوریوم</h2>
-          <p class="section-lead">پوشش انحصاری برترین کورت‌های تنیس و پدل پایتخت و شمال کشور با بیشترین نرخ حضور مخاطبان سطح یک.</p>
-        </div>
-
-        <div class="complexes-grid">
-
-          <!-- Complex 01: T10 (Ajudaniyeh) -->
-          <div class="complex-card">
-            <div class="complex-card-img-wrapper">
-              <img src="assets/padel_map_ajudaniyeh.jpg" alt="مجموعه T10" class="complex-card-img">
-              <div class="complex-card-img-overlay"></div>
-            </div>
-            <div class="complex-card-body">
-              <div class="complex-card-meta">
-                <span class="complex-card-loc">📍 تهران، آجودانیه</span>
-              </div>
-              <h3 class="complex-card-name">مجموعه T10</h3>
-              <p class="complex-card-desc">مجموعه ورزشی لوکس شمال پایتخت با امکانات رفاهی کامل، لانژ اختصاصی و محیطی عاری از دغدغه برای بازی و رویدادهای ویژه.</p>
-              <div class="complex-card-courts-grid">
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۷ پدل</span>
-                  <span class="court-spec-lbl">کورت مسابقاتی</span>
-                </div>
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۳ تنیس</span>
-                  <span class="court-spec-lbl">زمین استاندارد</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Complex 02: Arena (Azadi) -->
-          <div class="complex-card">
-            <div class="complex-card-img-wrapper">
-              <img src="assets/padel_map_azadi.jpg" alt="مجموعه Arena" class="complex-card-img">
-              <div class="complex-card-img-overlay"></div>
-            </div>
-            <div class="complex-card-body">
-              <div class="complex-card-meta">
-                <span class="complex-card-loc">📍 تهران، دهکده آزادی</span>
-              </div>
-              <h3 class="complex-card-name">مجموعه Arena</h3>
-              <p class="complex-card-desc">بزرگ‌ترین و مجهزترین مرکز اختصاصی پدل کشور با کورت‌های عریض و استاندارد، میزبان رویدادها و تورهای ملی و بین‌المللی.</p>
-              <div class="complex-card-courts-grid">
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۸ پدل</span>
-                  <span class="court-spec-lbl">مسابقاتی</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Complex 03: Asayesh (Sari) -->
-          <div class="complex-card">
-            <div class="complex-card-img-wrapper">
-              <img src="assets/padel_map_sari.jpg" alt="مجموعه Asayesh" class="complex-card-img">
-              <div class="complex-card-img-overlay"></div>
-            </div>
-            <div class="complex-card-body">
-              <div class="complex-card-meta">
-                <span class="complex-card-loc">📍 مازندران، ساری</span>
-              </div>
-              <h3 class="complex-card-name">مجموعه Asayesh</h3>
-              <p class="complex-card-desc">کانون اصلی ورزش‌های راکتی شمال کشور در آب و هوایی سرسبز و دلنشین، پذیرای ورزشکاران حرفه‌ای و توریست‌های تفریحی.</p>
-              <div class="complex-card-courts-grid">
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۴ پدل</span>
-                  <span class="court-spec-lbl">کورت مسابقاتی</span>
-                </div>
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۱۲ تنیس</span>
-                  <span class="court-spec-lbl">زمین مسابقاتی</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Complex 04: Iran Zamin (Shahrak Gharb) -->
-          <div class="complex-card">
-            <div class="complex-card-img-wrapper">
-              <img src="assets/padel_map_shahrak_gharb.jpg" alt="مجموعه Iran Zamin" class="complex-card-img">
-              <div class="complex-card-img-overlay"></div>
-            </div>
-            <div class="complex-card-body">
-              <div class="complex-card-meta">
-                <span class="complex-card-loc">📍 تهران، شهرک غرب</span>
-              </div>
-              <h3 class="complex-card-name">مجموعه Iran Zamin</h3>
-              <p class="complex-card-desc">مجموعه مجهز پدل در غرب پایتخت با کورت‌های پانورامیک تمام شیشه‌ای و دسترسی آسان برای علاقه‌مندان به ورزش پدل.</p>
-              <div class="complex-card-courts-grid">
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۶ پدل</span>
-                  <span class="court-spec-lbl">پانورامیک</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Complex 05: Netra (Lavasan) -->
-          <div class="complex-card">
-            <div class="complex-card-img-wrapper">
-              <img src="assets/padel_map_lavasan.jpg" alt="مجموعه Netra" class="complex-card-img">
-              <div class="complex-card-img-overlay"></div>
-            </div>
-            <div class="complex-card-body">
-              <div class="complex-card-meta">
-                <span class="complex-card-loc">📍 تهران، لواسان</span>
-              </div>
-              <h3 class="complex-card-name">مجموعه Netra</h3>
-              <p class="complex-card-desc">مجموعه ورزشی اختصاصی و ییلاقی لواسانات با کورت‌های پانورامیک لوکس، لانژ VIP و خدمات ممتاز پذیرایی.</p>
-              <div class="complex-card-courts-grid">
-                <div class="court-spec-box">
-                  <span class="court-spec-val">۷ پدل</span>
-                  <span class="court-spec-lbl">VIP</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== MEDIA INVENTORY ==================== -->
-    <section id="inventory" class="section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">فضاهای تبلیغاتی قابل واگذاری</span>
-          <h2 class="section-title">سبد رسانه‌ای سیلوریوم</h2>
-          <p class="section-lead">رسانه‌های هدفمند با حداکثر نرخ مکث نگاه و ماندگاری در ذهن مخاطب ورزشی.</p>
-        </div>
-
-        <div class="inventory-layout">
-          
-          <!-- Left details card containing blueprint visualization -->
-          <div class="inventory-details-card" id="media-card">
-            
-            <!-- Court Blueprint Visualization -->
-            <div class="blueprint-container">
-              <svg class="court-blueprint" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="blueprint-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255, 255, 255, 0.025)" stroke-width="0.5"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#blueprint-grid)" rx="10" />
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 
-                <!-- Court boundaries outline -->
-                <rect x="25" y="15" width="150" height="90" rx="4" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
-                
-                <!-- Side Glass Walls -->
-                <path id="bp-glass-left" class="bp-element" d="M 25 15 L 25 105" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
-                <path id="bp-glass-right" class="bp-element" d="M 175 15 L 175 105" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
-                
-                <!-- Service Lines -->
-                <line x1="55" y1="15" x2="55" y2="105" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="2,2" />
-                <line x1="145" y1="15" x2="145" y2="105" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="2,2" />
-                
-                <!-- Service Boxes Center Lines (Turf Inlay Area) -->
-                <line id="bp-turf-center-1" class="bp-element" x1="25" y1="60" x2="55" y2="60" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <line id="bp-turf-center-2" class="bp-element" x1="145" y1="60" x2="175" y2="60" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                
-                <!-- Net Line -->
-                <line id="bp-net" class="bp-element active-net" x1="100" y1="12" x2="100" y2="108" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2.5" />
-                <circle cx="100" cy="12" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
-                <circle cx="100" cy="108" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
+                <!-- Right Column: Text Content (RTL) -->
+                <div class="text-right flex flex-col items-start order-1">
+                    <!-- Location Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-lg">
+                        <i class="fa-solid fa-location-dot text-[#00f0ff]"></i>
+                        <span class="text-sm font-medium text-[#00f0ff]">مازندران، ساری، مجموعه ورزشی آسایش</span>
+                    </div>
 
-                <!-- Digital Screens (represented by glowing rectangles outside) -->
-                <rect id="bp-digital-1" class="bp-element" x="45" y="6" width="18" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <rect id="bp-digital-2" class="bp-element" x="135" y="6" width="18" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <rect id="bp-digital-3" class="bp-element" x="90" y="110" width="20" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+                    <!-- Main Title -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white">
+                        مجموعه ورزشی <br>
+                        <span class="text-gradient-lime drop-shadow-md">Asayesh ساری</span>
+                    </h1>
 
-                <!-- VIP Sampling Lounge (represented by a glowing capsule) -->
-                <rect id="bp-sampling" class="bp-element" x="6" y="45" width="12" height="30" rx="3" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-              </svg>
+                    <!-- Subtitle -->
+                    <p class="text-lg md:text-xl text-[#8b9bb4] max-w-xl mb-10 leading-relaxed font-light text-justify">
+                        نگین درخشان ورزش‌های راکتی در غرب تهران. پاتوقی برای مدیران، چهره‌های شناخته شده و دوست‌داران سبک زندگی لوکس و سالم. بهترین فرصت برای دیده شدن برند شما در قلب مخاطبان پریمیوم.
+                    </p>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                        <a href="#inventory" class="luxury-btn-solid w-full sm:w-auto flex justify-center">
+                            <span>فضاهای تبلیغاتی</span>
+                        </a>
+                        <a href="#gallery" class="luxury-btn-ghost w-full sm:w-auto flex justify-center">
+                            <span>گالری تصاویر</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Left Column: Image -->
+                <div class="relative order-2 mb-10 lg:mb-0 group cursor-pointer">
+                    <!-- Decorative glow behind image -->
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-[#ccff00]/30 to-[#00f0ff]/30 rounded-[36px] blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <!-- The Image -->
+                    <img src="https://silveriom.ir/assets/iran_zamin_hero_map_v3.jpg" alt="Iran Zamin Padel Club" class="relative z-10 w-full h-auto rounded-[32px] border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] object-cover aspect-[4/3] transform transition-transform duration-700 group-hover:scale-[1.02]">
+                </div>
+
             </div>
+        </div>
+    </section>
 
-            <div class="media-text-content">
-              <span class="detail-zone-tag" id="media-tag">موقعیت: نوار مرکزی و پایه‌های تور کورت</span>
-              <h3 class="detail-heading" id="media-title">برندینگ نوار و پایه‌های تور</h3>
-              <p class="detail-body" id="media-desc">
-                این موقعیت دقیقاً در نقطه ثقل دید مخاطبان، داور و زاویه اصلی پخش مسابقات قرار دارد. بیش از ۹۴٪ زمان مسابقه، نگاه تماشاگران به طور مستقیم از روی تور عبور می‌کند.
-              </p>
+
+    <!-- Textbox Description & Quick Stats -->
+    <section class="relative z-10 pt-0 pb-4" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Description Box -->
+                <div class="lg:col-span-8">
+                    <div class="textbox h-full flex flex-col justify-center relative overflow-hidden">
+                        <!-- subtle glow -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-lime/5 blur-3xl rounded-full pointer-events-none"></div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-brand-cyan text-base"></i>
+                            درباره مجموعه
+                        </h3>
+                        <p class="text-justify mb-4">
+                            نخستین و مجهزترین کانون ورزش‌های راکتی استان مازندران با ۴ کورت پدل و ۱۲ زمین تنیس مسابقاتی. پوشش مخاطبان ورزش‌دوست بومی و توریست‌های فصلی استان با ضریب دید بالا.
+                        </p>
+                        <p class="text-justify">
+                            فضای دلنشین و مخاطبان وفادار این مجموعه که اکثراً دارای قدرت خرید بالا و سبک زندگی مدرن هستند، این مجموعه را به یک <strong>مدیوم تبلیغاتی ایده‌آل</strong> برای برندهای لوکس تبدیل کرده است.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stats Side -->
+                <div class="lg:col-span-4 flex flex-col gap-4">
+                    <div class="glass-card p-6 flex flex-col justify-center items-center text-center h-full">
+                        <div class="w-12 h-12 rounded-xl bg-brand-lime/10 text-brand-lime flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-number text-white mb-1">
+                            <span class="text-brand-cyan">+</span>۳۰<span class="text-lg">K</span>
+                        </div>
+                        <div class="text-xs text-brand-textMuted">مخاطب ماهانه</div>
+                    </div>
+                    
+                    <div class="glass-card p-6 flex flex-col justify-center items-center text-center h-full">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="stat-number text-white mb-1">
+                            ۱۲۰<span class="text-base text-brand-textMuted font-normal mr-1">دقیقه</span>
+                        </div>
+                        <div class="text-xs text-brand-textMuted">میانگین زمان توقف</div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="detail-metrics-grid">
-              <div>
-                <div class="metric-number" id="media-m1">۹۴٪</div>
-                <div class="metric-title" id="media-m1-lbl">نرخ مکث نگاه</div>
-              </div>
-              <div>
-                <div class="metric-number" id="media-m2">+۱۸۰K</div>
-                <div class="metric-title" id="media-m2-lbl">ایمپرشن ماهانه</div>
-              </div>
-              <div>
-                <div class="metric-number" id="media-m3">دوطرفه</div>
-                <div class="metric-title" id="media-m3-lbl">قالب اجرا</div>
-              </div>
+    <!-- Facilities Section -->
+    <section class="relative z-10 py-6 relative" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="section-title">
+                <div class="section-subtitle">زیرساخت‌ها و خدمات</div>
+                <h2 class="section-heading">امکانات رفاهی و تخصصی</h2>
             </div>
-          </div>
-
-          <!-- Right tabs column -->
-          <div class="inventory-tabs">
             
-            <!-- Tab 01: Net -->
-            <div class="inventory-tab active" data-media="net">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                  </svg>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+                <!-- Facility 1 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-mug-hot text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">کافه رستوران</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">فضای باز و سرپوشیده</span>
                 </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">برندینگ نوار و تور مسابقه</h4>
-                  <p class="tab-desc">Net Branding</p>
+                
+                <!-- Facility 2 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-square-parking text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">پارکینگ اختصاصی</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">ظرفیت بالا + VIP</span>
                 </div>
-              </div>
-              <span class="tab-index-badge">۰۱</span>
+
+                <!-- Facility 3 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-store text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">پرو شاپ</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">تجهیزات حرفه‌ای تنیس</span>
+                </div>
+
+                <!-- Facility 4 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-shower text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">رختکن و دوش</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">مدرن و کاملاً بهداشتی</span>
+                </div>
+                
+                <!-- Facility 5 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-lightbulb text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">نورپردازی استاندارد</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">استاندارد مسابقات شبانه</span>
+                </div>
+
+                <!-- Facility 6 -->
+                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
+                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
+                        <i class="fa-solid fa-users-viewfinder text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">جایگاه تماشاچیان</h4>
+                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">دید کامل به زمین‌ها</span>
+                </div>
             </div>
-
-            <!-- Tab 02: Glass -->
-            <div class="inventory-tab" data-media="glass">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                  </svg>
-                </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">دیواره‌های پانورامیک شیشه‌ای</h4>
-                  <p class="tab-desc">Glass Wall Branding</p>
-                </div>
-              </div>
-              <span class="tab-index-badge">۰۲</span>
-            </div>
-
-            <!-- Tab 03: Turf -->
-            <div class="inventory-tab" data-media="turf">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                  </svg>
-                </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">درج لوگو در چمن کورت</h4>
-                  <p class="tab-desc">Court Turf Inlay</p>
-                </div>
-              </div>
-              <span class="tab-index-badge">۰۳</span>
-            </div>
-
-            <!-- Tab 04: Digital -->
-            <div class="inventory-tab" data-media="digital">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4"></path>
-                  </svg>
-                </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">نمایشگرهای دیجیتال و LED محیطی</h4>
-                  <p class="tab-desc">Digital Screens</p>
-                </div>
-              </div>
-              <span class="tab-index-badge">۰۴</span>
-            </div>
-
-            <!-- Tab 05: Sampling -->
-            <div class="inventory-tab" data-media="sampling">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path>
-                  </svg>
-                </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">جایگاه سمپلینگ و لانژ اختصاصی</h4>
-                  <p class="tab-desc">Sampling Areas</p>
-                </div>
-              </div>
-              <span class="tab-index-badge">۰۵</span>
-            </div>
-
-          </div>
-
         </div>
-      </div>
     </section>
 
-    <!-- ==================== 360° EXECUTION PROCESS ==================== -->
-    <section id="process" class="section process-section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">استاندارد اجرایی سیلوریوم</span>
-          <h2 class="section-title">فرآیند ۳۶۰ درجه کمپین تبلیغات ورزشی</h2>
-          <p class="section-lead">از تحلیل رفتار مخاطبان تا تولید متریال فدراسیونی و گزارش لحظه‌ای اثربخشی.</p>
+    <!-- Gallery Section -->
+    <section id="gallery" class="relative z-10 py-6 bg-white/[0.01] border-y border-white/[0.02] overflow-hidden" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
+        <div class="container mx-auto px-6 mb-4">
+            <div class="section-title">
+                <div class="section-subtitle">فضای مجموعه</div>
+                <h2 class="section-heading">گالری تصاویر اختصاصی</h2>
+            </div>
         </div>
-
-        <div class="process-grid">
-          <div class="process-step">
-            <div class="pstep-num">۰۱</div>
-            <h4 class="pstep-title">پلنینگ و تارگتینگ مخاطبان VIP</h4>
-            <p class="pstep-desc">تحلیل جغرافیایی، انتخاب بهترین کورت‌ها و زمان‌بندی همگام با ایونت‌ها و مسابقات مهم.</p>
-          </div>
-          <div class="process-step">
-            <div class="pstep-num">۰۲</div>
-            <h4 class="pstep-title">طراحی خلاق و مهندسی سه‌بعدی</h4>
-            <p class="pstep-desc">تولید طرح‌های بصری و تیزرهای دیجیتال هماهنگ با سرعت حرکت بازیکنان و زاویه ثبت دوربین.</p>
-          </div>
-          <div class="process-step">
-            <div class="pstep-num">۰۳</div>
-            <h4 class="pstep-title">چاپ و استقرار با استاندارد FIP</h4>
-            <p class="pstep-desc">استفاده از وینیل‌های ضدسایش، چاپ UV بادوام و نصب شبانه بدون وقفه در فعالیت باشگاه‌ها.</p>
-          </div>
-          <div class="process-step">
-            <div class="pstep-num">۰۴</div>
-            <h4 class="pstep-title">پایش زنده و گزارش تصویری ۴K</h4>
-            <p class="pstep-desc">ارسال منظم گزارش‌های عکاسی و ویدیویی باکیفیت و ارزیابی نرخ تعامل و ایمپرشن واقعی.</p>
-          </div>
+        
+        <div class="swiper mySwiper w-full pb-16 pt-4">
+                        <div class="swiper-wrapper">
+                <!-- Gallery Item 1 -->
+                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
+                    <a href="https://silveriom.ir/assets/padel_court_night.jpg" class="glightbox h-full block">
+                        <img src="https://silveriom.ir/assets/padel_court_night.jpg" alt="زمین پدل" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white font-bold text-lg md:text-xl">کورت‌های استاندارد در شب</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
+                    <a href="https://silveriom.ir/assets/padel_vip_lounge.jpg" class="glightbox h-full block">
+                        <img src="https://silveriom.ir/assets/padel_vip_lounge.jpg" alt="VIP Lounge" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white font-bold text-lg md:text-xl">لانژ اختصاصی و فضای VIP</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
+                    <a href="https://silveriom.ir/assets/padel_racket_glass.jpg" class="glightbox h-full block">
+                        <img src="https://silveriom.ir/assets/padel_racket_glass.jpg" alt="تجهیزات پدل" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white font-bold text-lg md:text-xl">تجهیزات و متریال پریمیوم</span>
+                        </div>
+                    </a>
+                </div>
+            </div></div>
         </div>
-      </div>
-    </section>
-
-    <!-- ==================== CASE STUDIES PORTFOLIO ==================== -->
-    <section id="portfolio" class="section portfolio-section">
-      <div class="editorial-wide-container">
-        <div class="section-header">
-          <span class="section-tag">نتایج واقعی کمپین‌ها</span>
-          <h2 class="section-title">ویترین پروژه‌ها و کمپین‌های اکران‌شده</h2>
-          <p class="section-lead">همکاری با برندهای پیشرو و ایجاد پیوند ملموس با جامعه مخاطبان تنیس و پدل.</p>
-        </div>
-
-        <div class="case-studies-grid">
-
-          <!-- Campaign 01: Sunstar -->
-          <div class="case-card">
-            <div class="case-card-img-wrapper">
-              <img src="assets/campaign_sunstar.jpg" alt="کمپین ساناستار" class="case-card-img">
-              <div class="case-card-img-overlay"></div>
-              <div class="case-card-badges">
-                <span class="case-badge-item">نوار و تور کورت</span>
-                <span class="case-badge-item">VIP لانژ</span>
-              </div>
-            </div>
-            <div class="case-card-body">
-              <div class="case-card-brand-row">
-                <span class="case-brand-name">SUNSTAR</span>
-              </div>
-              <h3 class="case-card-title">کمپین اختصاصی برند ساناستار (SUNSTAR)</h3>
-              <p class="case-card-desc">پوشش سراسری نوار تور و دیواره‌های شیشه‌ای در کنار جایگاه اختصاصی سمپلینگ و پذیرایی از ورزشکاران در گرندتورنمنت انقلاب.</p>
-              <div class="case-card-metrics-grid">
-                <div class="case-metric-box">
-                  <span class="case-metric-val">+۹۵K</span>
-                  <span class="case-metric-lbl">سمپلینگ موفق</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">+۳۵۰K</span>
-                  <span class="case-metric-lbl">ایمپرشن زنده</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">۴۵ روز</span>
-                  <span class="case-metric-lbl">مدت اکران</span>
-                </div>
-              </div>
-              
-              <!-- Sunstar Timeline: Completed & Final Reporting stage -->
-              <div class="case-timeline">
-                <div class="timeline-track">
-                  <div class="timeline-progress" style="width: 100%;"></div>
-                </div>
-                <div class="timeline-steps">
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">طراحی طرح</span>
-                  </div>
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">نصب فیزیکی</span>
-                  </div>
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">اکران لایو</span>
-                  </div>
-                  <div class="timeline-step active">
-                    <span class="step-dot"></span>
-                    <span class="step-label">گزارش نهایی</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Sunstar Chart: Peak sampling mid-campaign -->
-              <div class="case-card-chart">
-                <svg class="case-mini-chart" viewBox="0 0 100 25" width="100%" height="25" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="grad-sunstar" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-neon)" stop-opacity="0.35"/>
-                      <stop offset="100%" stop-color="var(--color-neon)" stop-opacity="0"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,25 L15,22 L30,18 L45,4 L55,6 L70,18 L85,22 L100,20 L100,25 Z" fill="url(#grad-sunstar)" />
-                  <path d="M0,25 L15,22 L30,18 L45,4 L55,6 L70,18 L85,22 L100,20" fill="none" stroke="var(--color-neon)" stroke-width="1.8" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Campaign 02: Crystal -->
-          <div class="case-card">
-            <div class="case-card-img-wrapper">
-              <img src="assets/campaign_crystal.jpg" alt="کمپین نوشیدنی کریستال" class="case-card-img">
-              <div class="case-card-img-overlay"></div>
-              <div class="case-card-badges">
-                <span class="case-badge-item">دیواره شیشه‌ای</span>
-                <span class="case-badge-item">اکران دیجیتال</span>
-              </div>
-            </div>
-            <div class="case-card-body">
-              <div class="case-card-brand-row">
-                <span class="case-brand-name">CRYSTAL DRINK</span>
-              </div>
-              <h3 class="case-card-title">کمپین اختصاصی نوشیدنی کریستال (CRYSTAL)</h3>
-              <p class="case-card-desc">برندینگ و تبلیغات محیطی خلاقانه و گسترده نوشیدنی‌های انرژی‌بخش کریستال روی شیشه‌های کورت‌های VIP فرمانیه و تهران.</p>
-              <div class="case-card-metrics-grid">
-                <div class="case-metric-box">
-                  <span class="case-metric-val">+۲۸۰K</span>
-                  <span class="case-metric-lbl">ایمپرشن هدفمند</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">۳ کورت</span>
-                  <span class="case-metric-lbl">تحت پوشش</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">۶۰ روز</span>
-                  <span class="case-metric-lbl">مدت اکران</span>
-                </div>
-              </div>
-
-              <!-- Crystal Timeline: Currently Live -->
-              <div class="case-timeline">
-                <div class="timeline-track">
-                  <div class="timeline-progress" style="width: 66%;"></div>
-                </div>
-                <div class="timeline-steps">
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">طراحی طرح</span>
-                  </div>
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">نصب فیزیکی</span>
-                  </div>
-                  <div class="timeline-step active">
-                    <span class="step-dot"></span>
-                    <span class="step-label">اکران لایو</span>
-                  </div>
-                  <div class="timeline-step">
-                    <span class="step-dot"></span>
-                    <span class="step-label">گزارش نهایی</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Crystal Chart: Consistent steady growth -->
-              <div class="case-card-chart">
-                <svg class="case-mini-chart" viewBox="0 0 100 25" width="100%" height="25" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="grad-crystal" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-neon)" stop-opacity="0.35"/>
-                      <stop offset="100%" stop-color="var(--color-neon)" stop-opacity="0"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,25 L15,21 L35,16 L50,13 L65,8 L80,5 L100,1 L100,25 Z" fill="url(#grad-crystal)" />
-                  <path d="M0,25 L15,21 L35,16 L50,13 L65,8 L80,5 L100,1" fill="none" stroke="var(--color-neon)" stroke-width="1.8" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Campaign 03: Mammut Khodro -->
-          <div class="case-card">
-            <div class="case-card-img-wrapper">
-              <img src="assets/campaign_mammut.jpg" alt="کمپین ماموت خودرو" class="case-card-img">
-              <div class="case-card-img-overlay"></div>
-              <div class="case-card-badges">
-                <span class="case-badge-item">دیواره پانورامیک</span>
-                <span class="case-badge-item">اکران انحصاری</span>
-              </div>
-            </div>
-            <div class="case-card-body">
-              <div class="case-card-brand-row">
-                <span class="case-brand-name">MAMMUT KHODRO</span>
-              </div>
-              <h3 class="case-card-title">برندینگ انحصاری ماموت خودرو (Mammut Khodro)</h3>
-              <p class="case-card-desc">اکران طرح‌های خلاقانه و لوکس خودروهای وارداتی فولکس‌واگن و آی‌دی ماموت خودرو بر روی دیواره‌های تمام پانورامیک کلاب‌های مجلل.</p>
-              <div class="case-card-metrics-grid">
-                <div class="case-metric-box">
-                  <span class="case-metric-val">+۴۵۰K</span>
-                  <span class="case-metric-lbl">ایمپرشن زنده</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">VIP</span>
-                  <span class="case-metric-lbl">سطح دسترسی</span>
-                </div>
-                <div class="case-metric-box">
-                  <span class="case-metric-val">۹۰ روز</span>
-                  <span class="case-metric-lbl">مدت اکران</span>
-                </div>
-              </div>
-
-              <!-- Mammut Timeline: Physical Installation stage -->
-              <div class="case-timeline">
-                <div class="timeline-track">
-                  <div class="timeline-progress" style="width: 33%;"></div>
-                </div>
-                <div class="timeline-steps">
-                  <div class="timeline-step completed">
-                    <span class="step-dot"></span>
-                    <span class="step-label">طراحی طرح</span>
-                  </div>
-                  <div class="timeline-step active">
-                    <span class="step-dot"></span>
-                    <span class="step-label">نصب فیزیکی</span>
-                  </div>
-                  <div class="timeline-step">
-                    <span class="step-dot"></span>
-                    <span class="step-label">اکران لایو</span>
-                  </div>
-                  <div class="timeline-step">
-                    <span class="step-dot"></span>
-                    <span class="step-label">گزارش نهایی</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mammut Chart: Dynamic waving spikes -->
-              <div class="case-card-chart">
-                <svg class="case-mini-chart" viewBox="0 0 100 25" width="100%" height="25" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="grad-mammut" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-neon)" stop-opacity="0.35"/>
-                      <stop offset="100%" stop-color="var(--color-neon)" stop-opacity="0"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,12 L15,20 L30,6 L45,18 L60,8 L75,22 L90,4 L100,14 L100,25 Z" fill="url(#grad-mammut)" />
-                  <path d="M0,12 L15,20 L30,6 L45,18 L60,8 L75,22 L90,4 L100,14" fill="none" stroke="var(--color-neon)" stroke-width="1.8" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </section>
 
     
+    <!-- Enhanced Demographics Section -->
+    <section class="relative z-10 py-6 relative overflow-hidden" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
+        <!-- Ambient Glows -->
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00f0ff]/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="section-title mb-2 text-center" style="margin-bottom: 1rem !important;"">
+                <div class="section-subtitle text-[#ccff00] text-sm font-bold tracking-widest uppercase mb-3">Audience Intelligence</div>
+                <h2 class="section-heading text-3xl md:text-5xl font-black text-white mb-4">تحلیل دقیق مخاطبان</h2>
+                <p class="text-[#8b9bb4] max-w-2xl mx-auto leading-relaxed text-sm">شناخت دقیق ترکیب جمعیتی و رفتاری مخاطبان مجموعه Asayesh (ساری) برای هدف‌گذاری اثربخشِ برند شما.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+                <!-- Age & Gender Card (Dashboard Style) -->
+                <div class="lg:col-span-7 glass-card p-8 md:p-12 relative overflow-hidden" style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);">
+                    <div class="absolute -right-16 -top-16 opacity-5 pointer-events-none">
+                        <i class="fa-solid fa-chart-pie text-[200px] text-white"></i>
+                    </div>
+                    
+                    <h4 class="text-xl font-black mb-6 text-white flex items-center gap-3 relative z-10">
+                        <i class="fa-solid fa-mars-and-venus text-[#ccff00] text-2xl"></i> 
+                        ترکیب جنسیتی
+                    </h4>
+                    
+                    <!-- Gender Stats -->
+                    <div class="space-y-8 mb-2 relative" style="margin-bottom: 1rem !important;" z-10">
+                        <!-- Male -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-mars text-[#00f0ff] w-5"></i> آقایان</span>
+                                <span class="font-black text-2xl text-white">۶۰٪</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full bg-[#00f0ff] rounded-full shadow-[0_0_15px_#00f0ff]" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <!-- Female -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-venus text-[#ccff00] w-5"></i> بانوان</span>
+                                <span class="font-black text-2xl text-white">۴۰٪</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full bg-[#ccff00] rounded-full shadow-[0_0_15px_#ccff00]" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10"></div>
+                    
+                    <h4 class="text-xl font-black mb-6 text-white flex items-center gap-3 relative z-10">
+                        <i class="fa-solid fa-user-clock text-[#00f0ff] text-2xl"></i> 
+                        رده‌بندی سنی
+                    </h4>
+                    
+                    <!-- Age Stats -->
+                    <div class="space-y-8 relative z-10">
+                        <!-- 18-35 -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-[#8b9bb4] font-medium text-sm">۱۸ تا ۳۵ سال <span class="text-white/40 text-xs mr-1">(جوانان و نسل جدید)</span></span>
+                                <span class="font-black text-2xl text-white">۸۰٪</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
+                                <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#ccff00] to-[#00f0ff] rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <!-- 35-45 -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-[#8b9bb4] font-medium text-sm">۳۵ تا ۴۵ سال <span class="text-white/40 text-xs mr-1">(مدیران و متخصصین)</span></span>
+                                <span class="font-black text-2xl text-white">۲۰٪</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
+                                <div class="absolute top-0 left-0 h-full bg-white/20 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- ==================== WHY US SECTION ==================== -->
-    <section id="why-us" class="section">
-      <div class="editorial-container">
-        <div class="section-header">
-          <span class="section-tag">مزیت رقابتی سیلوریوم</span>
-          <h2 class="section-title">چرا برندهای پیشرو سیلوریوم را انتخاب می‌کنند؟</h2>
-          <p class="section-lead">فراتر از بیلبوردهای سنتی، ما پیوند عاطفی عمیقی بین ارزش‌های برند و پیروزی‌های ورزشی می‌سازیم.</p>
+                <!-- Persona Card -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <!-- Insight Card 1 -->
+                    <div class="glass-card p-8 h-full flex flex-col justify-center relative overflow-hidden group transition-all duration-300 hover:bg-white/[0.05]" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px);">
+                        <div class="absolute top-0 right-0 w-1 bg-gradient-to-b from-[#ccff00] to-transparent h-0 group-hover:h-full transition-all duration-500 ease-out"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#ccff00]/10 text-[#ccff00] flex items-center justify-center text-2xl mb-6 shadow-[0_0_20px_rgba(204,255,0,0.15)] group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h5 class="text-white font-black text-xl mb-3">مدیران و کارآفرینان</h5>
+                        <p class="text-[13px] text-[#8b9bb4] leading-relaxed text-justify">
+                            بخش عمده‌ای از مراجعین ثابت این مجموعه را صاحبان کسب‌وکار، استارتاپ‌ها و مدیران ارشد مستقر در برج‌های مسکونی و تجاری منطقه تشکیل می‌دهند که این فضا را برای نتورکینگ و ورزش انتخاب کرده‌اند.
+                        </p>
+                    </div>
+                    
+                    <!-- Insight Card 2 -->
+                    <div class="glass-card p-8 h-full flex flex-col justify-center relative overflow-hidden group transition-all duration-300 hover:bg-white/[0.05]" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px);">
+                        <div class="absolute top-0 right-0 w-1 bg-gradient-to-b from-[#00f0ff] to-transparent h-0 group-hover:h-full transition-all duration-500 ease-out"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 text-[#00f0ff] flex items-center justify-center text-2xl mb-6 shadow-[0_0_20px_rgba(0,240,255,0.15)] group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h5 class="text-white font-black text-xl mb-3">مصرف‌کنندگان پریمیوم</h5>
+                        <p class="text-[13px] text-[#8b9bb4] leading-relaxed text-justify">
+                            مخاطبانی با قدرت خرید بسیار بالا و گرایش قوی به برندهای لوکس، خودروهای وارداتی و خدمات خاص (Premium). این گروه به تبلیغاتی که با سبک زندگی آن‌ها همخوانی دارد به شدت واکنش مثبت نشان می‌دهند.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="why-grid">
-          
-          <!-- Card 01 -->
-          <div class="why-card">
-            <div class="why-icon-container">
-              <svg class="why-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
-              </svg>
-            </div>
-            <span class="why-num">01</span>
-            <h4 class="why-title">مخاطبان با قدرت خرید بالا</h4>
-            <p class="why-desc">ورزش‌های تنیس و پدل در کانون توجه مدیران ارشد، کارآفرینان و قشر تصمیم‌گیرنده جامعه قرار دارند.</p>
-          </div>
-
-          <!-- Card 02 -->
-          <div class="why-card">
-            <div class="why-icon-container">
-              <svg class="why-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="6" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
-            </div>
-            <span class="why-num">02</span>
-            <h4 class="why-title">تمرکز انحصاری و تخصصی</h4>
-            <p class="why-desc">ما سال‌هاست که در عمق اکوسیستم راکت اسپورتس فعالیت می‌کنیم و ادبیات این جامعه را به خوبی می‌شناسیم.</p>
-          </div>
-
-          <!-- Card 03 -->
-          <div class="why-card">
-            <div class="why-icon-container">
-              <svg class="why-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            </div>
-            <span class="why-num">03</span>
-            <h4 class="why-title">جانمایی استراتژیک در نقاط طلایی</h4>
-            <p class="why-desc">هر رسانه بر اساس زاویه دید طبیعی چشم بازیکنان و تماشاگران مهندسی و نصب می‌شود.</p>
-          </div>
-
-          <!-- Card 04 -->
-          <div class="why-card">
-            <div class="why-icon-container">
-              <svg class="why-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-                <path d="M16 3h5v5" />
-                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-                <path d="M8 21H3v-5" />
-              </svg>
-            </div>
-            <span class="why-num">04</span>
-            <h4 class="why-title">اجرای ۳۶۰ درجه کمپین</h4>
-            <p class="why-desc">از استراتژی و تولید محتوا تا نصب فیزیکی، گزارش‌دهی دقیق تصویری و اندازه‌گیری بازگشت سرمایه.</p>
-          </div>
-
-        </div>
-      </div>
     </section>
 
-    
 
-    
+    <!-- Media Opportunities -->
+    <section id="media" class="relative z-10 py-6 relative" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div class="container mx-auto px-6">
+            <div class="section-title">
+                <div class="section-subtitle">فضاهای تبلیغاتی اختصاصی</div>
+                <h2 class="section-heading">رسانه‌های موجود در این مجموعه</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    
+                <!-- Card 1: SIL-IZ-01 -->
+                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+                    <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" alt="Iran Zamin Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                      کد: SIL-IZ-01
+                    </span>
+                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                      موجود جهت اکران
+                    </span>
+                  </div>
 
-    
+                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Asayesh (ساری)</div>
+                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای کورت VIP</h3>
+                  
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۵۰ میلیون تومان</span>
+                  </div>
 
-    <!-- ==================== FINAL CTA ==================== -->
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+                    <div>📐 ابعاد: <strong>۱۲m × ۳m</strong></div>
+                    <div>👁️ بازدید: <strong>۱.۵M+</strong></div>
+                    <div>⚡ جنس: <strong>UV Glass</strong></div>
+                    <div>👥 مخاطب: <strong>مدیران ارشد</strong></div>
+                  </div>
+
+                  <button class="reserve-trigger-btn">
+                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
+                    <span>رزرو انحصاری رسانه</span>
+                  </button>
+                </div>
+
+                <!-- Card 2: SIL-IZ-02 (Based precisely on SIL-AJ-02 requested) -->
+                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+                    <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" alt="Iran Zamin LED Stand" style="width: 100%; height: 100%; object-fit: cover;">
+                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                      کد: SIL-IZ-02
+                    </span>
+                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                      موجود جهت اکران
+                    </span>
+                  </div>
+
+                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Asayesh (ساری)</div>
+                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استند هوشمند ۴K LED ورودی لابی</h3>
+                  
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۳۵ میلیون تومان</span>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+                    <div>📐 ابعاد: <strong>۷۵ اینچ ۴K</strong></div>
+                    <div>👁️ بازدید: <strong>۱.۳۵M+</strong></div>
+                    <div>⏱️ زمان: <strong>تیزر ۱۵ ثانیه</strong></div>
+                    <div>⚡ موقعیت: <strong>لابی اصلی</strong></div>
+                  </div>
+
+                  <button class="reserve-trigger-btn">
+                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
+                    <span>رزرو انحصاری رسانه</span>
+                  </button>
+                </div>
+
+                <!-- Card 3: SIL-IZ-03 -->
+                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+                    <img src="https://silveriom.ir/assets/padel_mammut_court.jpg" alt="Iran Zamin Floor Sticker" style="width: 100%; height: 100%; object-fit: cover;">
+                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                      کد: SIL-IZ-03
+                    </span>
+                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(245, 158, 11, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                      رزرو محدود
+                    </span>
+                  </div>
+
+                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Asayesh (ساری)</div>
+                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استیکر کف زمین (Logo)</h3>
+                  
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۹۰ میلیون تومان</span>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+                    <div>📐 ابعاد: <strong>۴m × ۲m</strong></div>
+                    <div>👁️ بازدید: <strong>۱M+</strong></div>
+                    <div>⚡ جنس: <strong>ضد لغزش</strong></div>
+                    <div>📍 موقعیت: <strong>داخل کورت</strong></div>
+                  </div>
+
+                  <button class="reserve-trigger-btn">
+                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
+                    <span>رزرو انحصاری رسانه</span>
+                  </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <footer class="luxury-mega-footer" id="main-footer">
   <div class="editorial-wide-container">
     <div class="footer-top-grid">
@@ -6768,78 +6272,40 @@ section {
   </div>
 </footer>
 
-  </main>
+    <!-- Initialize GLightbox -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            zoomable: true
+        });
 
-  <!-- ==================== MEDIA KIT MODAL ==================== -->
-  <div id="kit-modal" class="modal-overlay">
-    <div class="modal-card">
-      <button id="close-kit-btn" class="modal-close">&times;</button>
-      
-      <span class="section-tag">درخواست دریافت مدیا کیت</span>
-      <h3 class="modal-title">دریافت تعرفه‌ها و پلن‌های رسانه‌ای</h3>
-      <p class="modal-desc">فرم زیر را تکمیل نمایید تا کاتالوگ جامع فضاهای تبلیغاتی، آمار مخاطبان و جدول قیمت‌گذاری ظرف ۲۴ ساعت کاری برای شما ارسال گردد.</p>
+        const swiper = new Swiper('.mySwiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 200,
+                modifier: 1,
+                slideShadows: true,
+            },
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
 
-      <form id="kit-form" class="modal-form">
-        <div class="form-grid">
-          <div class="field-group">
-            <label>نام شرکت یا برند *</label>
-            <input type="text" required placeholder="مثال: سان استار، رولکس">
-          </div>
-          <div class="field-group">
-            <label>نام و نام خانوادگی مسئول *</label>
-            <input type="text" required placeholder="مثال: علی احمدی، مدیر مارکتینگ">
-          </div>
-        </div>
 
-        <div class="form-grid">
-          <div class="field-group">
-            <label>ایمیل سازمانی *</label>
-            <input type="email" required placeholder="name@company.com">
-          </div>
-          <div class="field-group">
-            <label>شماره تماس / واتس‌اپ *</label>
-            <input type="tel" required placeholder="۰۹۱۲ ...">
-          </div>
-        </div>
 
-        <div class="field-group">
-          <label>حوزه ورزشی مدنظر</label>
-          <div class="radio-group">
-            <label class="radio-pill">
-              <input type="radio" name="sport" value="tennis" checked>
-              <span>تنیس</span>
-            </label>
-            <label class="radio-pill">
-              <input type="radio" name="sport" value="padel">
-              <span>پدل</span>
-            </label>
-            <label class="radio-pill">
-              <input type="radio" name="sport" value="both">
-              <span>هر دو حوزه (۳۶۰)</span>
-            </label>
-          </div>
-        </div>
 
-        <div class="field-group">
-          <label>توضیحات یا اهداف کمپین</label>
-          <textarea rows="3" placeholder="مختصری از زمان‌بندی مدنظر، بودجه تقریبی یا اهداف کلیدی برند خود را بنویسید..."></textarea>
-        </div>
-
-        <button type="submit" class="luxury-btn-solid" style="width:100%; margin-top:0.5rem;">
-          <span>ارسال درخواست و دریافت مدیا کیت</span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-/**
- * ==========================================================================
- * SILVERIOM — CINEMATIC SCROLL-DRIVEN 3D BACKGROUND MOTION ENGINE
- * Pure Background Ball & Racket Kinematics (Zero Foreground Clutter)
- * ==========================================================================
- */
-(function() {
+<script>
   // 1. Ambient WebGL Particle Lighting Canvas (No foreground meshes)
   const canvas = document.getElementById("webgl-canvas");
   if (canvas && typeof THREE !== "undefined") {
@@ -6925,12 +6391,10 @@ section {
     mouse.targetY = (e.clientY / window.innerHeight - 0.5) * 2;
   }, { passive: true });
 
-  // Kinematic Keyframes: Giving dramatic 3D transformation to the ball and racket in the photo
   function getBgKeyframe(p) {
     let x = 0, y = 0, scale = 1.05, rotX = 0, rotY = 0, rotZ = 0, glowOpacity = 0.85;
 
     if (p <= 0.25) {
-      // Venues Map: Shifts left and tilts upward to focus on racket core and let map shine
       const t = p / 0.25;
       const easeT = t * t * (3 - 2 * t);
       x = 0 + (-65 * easeT);
@@ -6941,29 +6405,26 @@ section {
       rotZ = 0 + (2.0 * easeT);
       glowOpacity = 0.85 + 0.25 * Math.sin(t * Math.PI);
     } else if (p <= 0.50) {
-      // Complexes: Shifts over to the right and zooms in to highlight the glowing ball
       const t = (p - 0.25) / 0.25;
       const easeT = t * t * (3 - 2 * t);
-      x = -65 + (140 * easeT); // -65 -> +75
-      y = -35 + (-30 * easeT); // -35 -> -65
-      scale = 1.13 + (0.09 * easeT); // 1.13 -> 1.22
+      x = -65 + (140 * easeT);
+      y = -35 + (-30 * easeT);
+      scale = 1.13 + (0.09 * easeT);
       rotX = 4.5 + (-8.5 * easeT);
       rotY = -5.5 + (10.5 * easeT);
       rotZ = 2.0 + (-4.0 * easeT);
       glowOpacity = 1.0 - 0.15 * easeT;
     } else if (p <= 0.75) {
-      // Media Inventory & Calculator: Angled dynamic depth perspective
       const t = (p - 0.50) / 0.25;
       const easeT = t * t * (3 - 2 * t);
-      x = 75 + (-120 * easeT); // 75 -> -45
-      y = -65 + (95 * easeT); // -65 -> +30
-      scale = 1.22 + (0.08 * easeT); // 1.22 -> 1.30
+      x = 75 + (-120 * easeT);
+      y = -65 + (95 * easeT);
+      scale = 1.22 + (0.08 * easeT);
       rotX = -4.0 + (7.5 * easeT);
       rotY = 5.0 + (-8.0 * easeT);
       rotZ = -2.0 + (4.0 * easeT);
       glowOpacity = 0.85 + 0.3 * easeT;
     } else {
-      // Contact / Finale: Majestic central framing
       const t = (p - 0.75) / 0.25;
       const easeT = t * t * (3 - 2 * t);
       x = -45 + (45 * easeT);
@@ -6974,7 +6435,6 @@ section {
       rotZ = 2.0 + (-2.0 * easeT);
       glowOpacity = 1.15 - 0.3 * easeT;
     }
-
     return { x, y, scale, rotX, rotY, rotZ, glowOpacity };
   }
 
@@ -6984,20 +6444,13 @@ section {
     requestAnimationFrame(renderKineticMotion);
     const time = performance.now() * 0.001;
 
-    // Smooth Lerp for Scroll Progress
     currentScrollProgress += (targetScrollProgress - currentScrollProgress) * 0.08;
-
-    // Smooth Lerp for Mouse
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Kinematic waypoint calculation
     const kf = getBgKeyframe(currentScrollProgress);
-
-    // Dynamic harmonic breathing & floating physics for ball and racket
     const harmonicX = Math.cos(time * 1.5) * 12;
     const harmonicY = Math.sin(time * 1.8) * 14;
-
     const mouseX = mouse.x * 30;
     const mouseY = mouse.y * 22;
     const mouseRotX = mouse.y * -3.2;
@@ -7013,355 +6466,23 @@ section {
     if (bgImg) {
       bgImg.style.transform = `perspective(1000px) translate3d(${curX}px, ${curY}px, 0) rotateX(${curRotX}deg) rotateY(${curRotY}deg) rotateZ(${curRotZ}deg) scale(${curScale})`;
     }
-
     if (bgGlow) {
       bgGlow.style.opacity = kf.glowOpacity + Math.sin(time * 3) * 0.1;
       bgGlow.style.transform = `translate3d(${curX * 0.6}px, ${curY * 0.6}px, 0) scale(${curScale * 1.02})`;
     }
   }
   renderKineticMotion();
+</script>
 
-    // Smart Finder Handler & Dropdown Trigger Fix
-  const zoneSelect = document.getElementById("finder-zone");
-  const mediaSelect = document.getElementById("finder-media");
-
-  [zoneSelect, mediaSelect].forEach(select => {
-    if (select) {
-      select.addEventListener("mousedown", (e) => {
-        e.stopPropagation();
-      });
-    }
-  });
-
-  // 3. Smart Finder Handler
-  const finderBtn = document.getElementById("finder-submit-btn");
-  if (finderBtn) {
-    finderBtn.addEventListener("click", () => {
-      const zone = document.getElementById("finder-zone").value;
-      const media = document.getElementById("finder-media").value;
-      
-      if (zone !== "all") {
-        const mapSection = document.getElementById("venues-map");
-        if (mapSection) mapSection.scrollIntoView({ behavior: "smooth" });
-        selectMapZone(zone);
-      } else if (media !== "all") {
-        const invSection = document.getElementById("inventory");
-        if (invSection) invSection.scrollIntoView({ behavior: "smooth" });
-        const tab = document.querySelector(`.inventory-tab[data-media="${media}"]`);
-        if (tab) tab.click();
-      } else {
-        const mapSection = document.getElementById("venues-map");
-        if (mapSection) mapSection.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  }
-
-  // 4. Official 5 Complexes Map Data & Interactive Click
-  const mapData = {
-    t10: {
-      badge: "موقعیت طلایی • شمال تهران",
-      title: "مجموعه T10 (آجودانیه)",
-      loc: "تهران، آجودانیه، مجموعه اختصاصی T10",
-      desc: "مجهز به ۷ زمین پدل حرفه‌ای و ۳ زمین تنیس استاندارد. کانون اصلی ورزش‌های راکتی شمال پایتخت با حضور نخبگان ورزشی و بالاترین میانگین قدرت خرید مخاطبان.",
-      courts: "۷ پدل + ۳ تنیس",
-      impressions: "+۹۵,۰۰۰",
-      media: "نوار تور + شیشه + استیج"
-    },
-    arena: {
-      badge: "استادیوم ملی و مسابقات • غرب تهران",
-      title: "مجموعه Arena (استادیوم آزادی)",
-      loc: "تهران، بزرگراه شیخ فضل‌الله، مجموعه ورزشی آزادی",
-      desc: "بزرگترین کانون پدل غرب پایتخت با ۸ زمین استاندارد مسابقاتی. قطب برگزاری تورنمنت‌های ملی و رسمی با پوشش تصویری و رسانه‌ای گسترده.",
-      courts: "۸ زمین پدل",
-      impressions: "+۱۱۰,۰۰۰",
-      media: "تور مسابقه + نمایشگر LED + سمپلینگ"
-    },
-    iranzamin: {
-      badge: "موقعیت مدرن و پرمخاطب • شمال‌غرب",
-      title: "مجموعه Iran Zamin (شهرک غرب)",
-      loc: "تهران، شهرک غرب، خیابان ایران‌زمین",
-      desc: "محیطی فوق‌العاده مدرن با ۶ کورت پدل تمام شیشه‌ای، میزبانی از مسابقات هفتگی و گردهمایی علاقه‌مندان به ورزش‌های راکتی در قلب شهرک غرب.",
-      courts: "۶ زمین پدل",
-      impressions: "+۷۵,۰۰۰",
-      media: "دیواره شیشه‌ای + چمن کورت + لانژ"
-    },
-    netra: {
-      badge: "مخاطبان فوق لوکس • لواسانات",
-      title: "مجموعه Netra (لواسان)",
-      loc: "تهران، منطقه ویلایی و خوش‌آب‌وهوای لواسان",
-      desc: "مجتمع اختصاصی با ۷ کورت پدل پانورامیک در فضایی ییلاقی و دلنشین. ایده‌آل برای کمپین‌های برندهای لوکس، خودرویی و سبک زندگی پریمیوم.",
-      courts: "۷ زمین پدل",
-      impressions: "+۵۰,۰۰۰",
-      media: "کورت تمام شیشه‌ای + سمپلینگ VIP"
-    },
-    asayesh: {
-      badge: "قطب ورزش‌های راکتی شمال • مازندران",
-      title: "مجموعه Asayesh (ساری)",
-      loc: "مازندران، ساری، مجموعه ورزشی آسایش",
-      desc: "نخستین و مجهزترین کانون ورزش‌های راکتی استان مازندران با ۴ کورت پدل و ۱۲ زمین تنیس مسابقاتی. پوشش مخاطبان ورزش‌دوست و توریست‌های فصلی استان با ضریب دید بالا.",
-      courts: "۴ پدل + ۱۲ تنیس",
-      impressions: "+۴۰,۰۰۰",
-      media: "برندینگ تور + دیواره شیشه‌ای"
-    }
-  };
-
-  const mapSpots = document.querySelectorAll(".map-hotspot");
-  const mapFilterBtns = document.querySelectorAll(".map-filter-btn");
-
-  function selectMapZone(zoneKey) {
-    mapSpots.forEach(s => s.classList.remove("active"));
-    mapFilterBtns.forEach(b => b.classList.remove("active"));
-
-    const activeSpot = document.querySelector(`.map-hotspot[data-zone="${zoneKey}"]`);
-    if (activeSpot) activeSpot.classList.add("active");
-
-    const activeBtn = document.querySelector(`.map-filter-btn[data-pin="${zoneKey}"]`);
-    if (activeBtn) activeBtn.classList.add("active");
-
-    const data = mapData[zoneKey];
-    if (data) {
-      const badgeEl = document.getElementById("map-spot-badge");
-      const titleEl = document.getElementById("map-spot-title");
-      const locEl = document.getElementById("map-spot-loc");
-      const descEl = document.getElementById("map-spot-desc");
-      const courtsEl = document.getElementById("map-spot-courts");
-      const impressionsEl = document.getElementById("map-spot-impressions");
-      const mediaEl = document.getElementById("map-spot-media");
-
-      if (badgeEl) badgeEl.textContent = data.badge;
-      if (titleEl) titleEl.textContent = data.title;
-      if (locEl) locEl.textContent = data.loc;
-      if (descEl) descEl.textContent = data.desc;
-      if (courtsEl) courtsEl.textContent = data.courts;
-      if (impressionsEl) impressionsEl.textContent = data.impressions;
-      if (mediaEl) mediaEl.textContent = data.media;
-    }
-  }
-
-  mapSpots.forEach(spot => {
-    spot.addEventListener("click", () => {
-      const zone = spot.dataset.zone;
-      selectMapZone(zone);
-    });
-  });
-
-  mapFilterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const pin = btn.dataset.pin;
-      if (pin === "all") {
-        mapFilterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        selectMapZone("t10");
-      } else {
-        selectMapZone(pin);
-      }
-    });
-  });
-
-  // 5. Interactive Media Inventory Tabs & Blueprint Dynamic Highlights
-  const inventoryData = {
-    net: {
-      tag: "موقعیت: نوار مرکزی و پایه‌های تور کورت",
-      title: "برندینگ نوار و پایه‌های تور",
-      desc: "این موقعیت دقیقاً در نقطه ثقل دید مخاطبان، داور و زاویه اصلی پخش مسابقات قرار دارد. بیش از ۹۴٪ زمان مسابقه، نگاه تماشاگران به طور مستقیم از روی تور عبور می‌کند.",
-      m1: "۹۴٪", m1_lbl: "نرخ مکث نگاه",
-      m2: "+۱۸۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "دوطرفه", m3_lbl: "قالب اجرا",
-      bp_class: "active-net",
-      bp_ids: ["bp-net"]
-    },
-    glass: {
-      tag: "موقعیت: دیواره‌های شیشه‌ای پیرامون کورت",
-      title: "دیواره‌های پانورامیک شیشه‌ای",
-      desc: "پوشش سراسری شیشه‌های پشت و بغل کورت با وینیل‌های شفاف یک‌طرفه با وضوح فوق‌العاده بالا. دید مستقیم برای تماشاگران حاضر در باشگاه و لنز دوربین‌های فیلم‌برداری.",
-      m1: "۸۸٪", m1_lbl: "وضوح دید شیشه",
-      m2: "+۲۲۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "تک‌جهته", m3_lbl: "قالب اجرا",
-      bp_class: "active-glass",
-      bp_ids: ["bp-glass-left", "bp-glass-right"]
-    },
-    turf: {
-      tag: "موقعیت: چمن کورت پدل",
-      title: "درج لوگو در چمن کورت",
-      desc: "درج لوگوی برند با استفاده از چمن مصنوعی رنگی یا برش‌های باکیفیت بالا در زیر تور و باکس‌های سرویس. بیشترین نرخ نمایش در زاویه دید مستقیم دوربین مرکزی.",
-      m1: "۸۵٪", m1_lbl: "ثبت در ذهن",
-      m2: "+۱۴۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "چاپ لیزری", m3_lbl: "قالب اجرا",
-      bp_class: "active-turf",
-      bp_ids: ["bp-turf-center-1", "bp-turf-center-2"]
-    },
-    digital: {
-      tag: "موقعیت: مانیتورها و LEDهای محیطی",
-      title: "نمایشگرهای دیجیتال و LED",
-      desc: "نمایش تیزرهای ویدیویی و موشن گرافیک‌های پویا بر روی نمایشگرهای هوشمند حاشیه کورت‌ها، همگام‌سازی شده با لحظات حساس بازی و تغییرات زنده امتیازات.",
-      m1: "۹۲٪", m1_lbl: "نرخ جذب مخاطب",
-      m2: "+۳۰۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "موشن/ویدیو", m3_lbl: "فرمت محتوا",
-      bp_class: "active-digital",
-      bp_ids: ["bp-digital-1", "bp-digital-2", "bp-digital-3"]
-    },
-    sampling: {
-      tag: "موقعیت: ورودی کورت‌ها و لانژ VIP",
-      title: "سمپلینگ و پذیرایی اختصاصی",
-      desc: "ایجاد کانترهای نمونه‌سازی، دمو و سمپلینگ محصولات در لابی‌های مجلل و لانژ‌های تفریحی پرتردد کلوپ‌ها جهت ارتباط رودررو و صمیمی با مخاطبان کارآفرین و مدیر ارشد.",
-      m1: "۹۵٪", m1_lbl: "نرخ تعامل",
-      m2: "+۴۵K", m2_lbl: "مخاطب حضوری",
-      m3: "تجربه‌ای", m3_lbl: "نوع تعامل",
-      bp_class: "active-sampling",
-      bp_ids: ["bp-sampling"]
-    }
-  };
-
-  const invTabs = document.querySelectorAll(".inventory-tab");
-  
-  function updateInventoryDetails(mediaKey) {
-    const data = inventoryData[mediaKey];
-    if (!data) return;
-
-    // 1. Text transition fade out/in using GSAP
-    gsap.to(".media-text-content, .detail-metrics-grid", {
-      opacity: 0,
-      y: -10,
-      duration: 0.25,
-      onComplete: () => {
-        document.getElementById("media-tag").textContent = data.tag;
-        document.getElementById("media-title").textContent = data.title;
-        document.getElementById("media-desc").textContent = data.desc;
-        document.getElementById("media-m1").textContent = data.m1;
-        document.getElementById("media-m1-lbl").textContent = data.m1_lbl;
-        document.getElementById("media-m2").textContent = data.m2;
-        document.getElementById("media-m2-lbl").textContent = data.m2_lbl;
-        document.getElementById("media-m3").textContent = data.m3;
-        document.getElementById("media-m3-lbl").textContent = data.m3_lbl;
-
-        gsap.to(".media-text-content, .detail-metrics-grid", {
-          opacity: 1,
-          y: 0,
-          duration: 0.35,
-          ease: "power2.out"
-        });
-      }
-    });
-
-    // 2. Blueprint interactive SVG updates
-    // Reset all blueprint elements
-    document.querySelectorAll(".bp-element").forEach(el => {
-      el.classList.remove("active-net", "active-glass", "active-turf", "active-digital", "active-sampling");
-    });
-
-    // Add active classes
-    if (data.bp_ids && data.bp_class) {
-      data.bp_ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.add(data.bp_class);
-      });
-    }
-  }
-
-  invTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      invTabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      const media = tab.dataset.media;
-      updateInventoryDetails(media);
-    });
-  });
-
-  // 6. Campaign Planner Calculator
-  let plannerState = {
-    factor: 1.0,
-    venues: 3,
-    venuesText: "۳ باشگاه شاخص (T10 آجودانیه، Arena آزادی، Iran Zamin شهرک غرب)",
-    courtsCount: "۲۱ کورت پدل و تنیس",
-    months: 3,
-    monthsText: "۳ ماهه (فصل فعال مسابقات)"
-  };
-
-  function updatePlannerCalc() {
-    const baseMonthlyPerVenue = 40000;
-    const total = Math.round(plannerState.venues * baseMonthlyPerVenue * plannerState.months * plannerState.factor);
-    const formatted = "+" + (total / 1000).toLocaleString("fa-IR") + ",۰۰۰";
-    
-    const impEl = document.getElementById("calc-impression");
-    const vTextEl = document.getElementById("calc-venues-text");
-    const cCountEl = document.getElementById("calc-courts-count");
-    const dTextEl = document.getElementById("calc-duration-text");
-
-    if (impEl) impEl.textContent = formatted;
-    if (vTextEl) vTextEl.textContent = plannerState.venuesText;
-    if (cCountEl) cCountEl.textContent = plannerState.courtsCount;
-    if (dTextEl) dTextEl.textContent = plannerState.monthsText;
-  }
-
-  const goalPills = document.querySelectorAll("#planner-goal-pills .planner-pill");
-  goalPills.forEach(pill => {
-    pill.addEventListener("click", () => {
-      goalPills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      plannerState.factor = parseFloat(pill.dataset.factor);
-      updatePlannerCalc();
-    });
-  });
-
-  const venuesPills = document.querySelectorAll("#planner-venues-pills .planner-pill");
-  venuesPills.forEach(pill => {
-    pill.addEventListener("click", () => {
-      venuesPills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      plannerState.venues = parseInt(pill.dataset.venues);
-      plannerState.venuesText = pill.dataset.vname;
-      plannerState.courtsCount = plannerState.venues === 1 ? "۷ کورت پدل" : (plannerState.venues === 3 ? "۲۱ کورت پدل و تنیس" : "۳۲ کورت در ۵ مجتمع سراسری");
-      updatePlannerCalc();
-    });
-  });
-
-  const durPills = document.querySelectorAll("#planner-dur-pills .planner-pill");
-  durPills.forEach(pill => {
-    pill.addEventListener("click", () => {
-      durPills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      plannerState.months = parseInt(pill.dataset.months);
-      plannerState.monthsText = plannerState.months === 1 ? "۱ ماهه (کمپین متمرکز)" : (plannerState.months === 3 ? "۳ ماهه (فصل مسابقات)" : "۱۲ ماهه (پوشش سالانه)");
-      updatePlannerCalc();
-    });
-  });
-
-  // 7. Lead Capture Modal Drawer
-  const kitModal = document.getElementById("kit-modal");
-  const openKitBtns = document.querySelectorAll("#open-kit-btn, .open-kit-trigger");
-  const closeKitBtn = document.getElementById("close-kit-modal");
-
-  openKitBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      if (btn.tagName === "A" || btn.closest("a")) return;
-      e.preventDefault();
-      if (kitModal) kitModal.classList.add("active");
-    });
-  });
-
-  if (closeKitBtn) {
-    closeKitBtn.addEventListener("click", () => {
-      if (kitModal) kitModal.classList.remove("active");
-    });
-  }
-
-  if (kitModal) {
-    kitModal.addEventListener("click", (e) => {
-      if (e.target === kitModal) {
-        kitModal.classList.remove("active");
-      }
-    });
-  }
-
-  // 8. Mobile Menu Toggle & Sticky Scroll Header
+<script>
+(function() {
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   const closeMobileMenu = document.getElementById("close-mobile-menu");
   const mobileBackdrop = document.getElementById("mobile-backdrop");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-card"); // adjusted selector just in case
   const mainNav = document.getElementById("main-nav");
 
-  // Sticky Scroll Handler
   if (mainNav) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 40) {
@@ -7387,70 +6508,55 @@ section {
     }
   });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      if (mobileMenu) mobileMenu.classList.remove("active");
-    });
-  });
+  if (mobileLinks) {
+    /* auto close handled globally */
+  }
 })();
 </script>
 
-<!-- Featured Reservation Modal -->
-<div id="mainReservationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 18, 0.85); backdrop-filter: blur(24px); z-index: 9999; align-items: center; justify-content: center; direction: rtl; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;">
-  <div style="background: rgba(11, 19, 38, 0.95); border: 1.5px solid #CCFF00; border-radius: 32px; padding: 40px; width: 90%; max-width: 450px; position: relative; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(204, 255, 0, 0.2);">
-    
-    <button onclick="document.getElementById('mainReservationModal').style.display = 'none'" style="position: absolute; top: 24px; left: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-    </button>
-    
-    <h3 style="color: #CCFF00; font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">درخواست رزرو رسانه</h3>
-    <p id="modalMainTargetTitle" style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;"></p>
-    <div style="display: inline-block; background: rgba(204,255,0,0.1); border: 1px solid rgba(204,255,0,0.3); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px;">
-      <p id="modalMainTargetCode" style="color: #CCFF00; font-size: 0.95rem; font-weight: 700; margin: 0; font-family: monospace;"></p>
-    </div>
-    
-    <form id="mainReserveForm" onsubmit="submitMainReservation(event)" style="display: flex; flex-direction: column; gap: 20px;">
-      <div>
-        <label style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 10px; display: block; font-weight: 700;">شماره همراه</label>
-        <input type="tel" required placeholder="مثال: 09123456789" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#CCFF00'; this.style.boxShadow='0 0 15px rgba(204,255,0,0.1)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none'">
-      </div>
-      <div>
-        <label style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 10px; display: block; font-weight: 700;">نام برند یا شرکت</label>
-        <input type="text" required placeholder="نام برند شما" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#CCFF00'; this.style.boxShadow='0 0 15px rgba(204,255,0,0.1)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none'">
-      </div>
-      <input type="hidden" id="mainReserveCode">
-      <button type="submit" style="width: 100%; padding: 18px; margin-top: 10px; background: #CCFF00; color: #020617; font-weight: 900; font-size: 1.15rem; border: none; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important; box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 25px rgba(204,255,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(204,255,0,0.2)'">
-        ثبت درخواست رزرو
-      </button>
-    </form>
 
-    <div id="mainReserveSuccess" style="display: none; text-align: center; margin-top: 30px; margin-bottom: 20px;">
-      <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.15); border: 2px solid rgba(16, 185, 129, 0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);">
-        <svg width="40" height="40" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-      </div>
-      <h4 style="color: #10B981; font-size: 1.4rem; font-weight: 900; margin-bottom: 12px;">درخواست با موفقیت ثبت شد</h4>
-      <p style="color: #94A3B8; font-size: 1.05rem; line-height: 1.6;">اطلاعات شما در سیستم ثبت شد. کارشناسان سیلوریوم به زودی با شما تماس خواهند گرفت.</p>
-    </div>
-  </div>
-</div>
 
 <script>
-function openMainReservationModal(code, title) {
-  document.getElementById('modalMainTargetTitle').innerText = title;
-  document.getElementById('modalMainTargetCode').innerText = "کد سازه: " + code;
-  document.getElementById('mainReserveCode').value = code;
-  document.getElementById('mainReserveForm').style.display = 'flex';
-  document.getElementById('mainReserveSuccess').style.display = 'none';
-  document.getElementById('mainReservationModal').style.display = 'flex';
-}
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Mobile Menu Toggles
+    const toggleBtn = document.getElementById("media-mobile-toggle");
+    const submenu = document.getElementById("media-submenu");
+    
+    if (toggleBtn && submenu) {
+        toggleBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const chevron = this.querySelector('.nav-card-chevron');
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'flex';
+                if(chevron) chevron.style.transform = 'rotate(-90deg)';
+            } else {
+                submenu.style.display = 'none';
+                if(chevron) chevron.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
 
-function submitMainReservation(e) {
-  e.preventDefault();
-  // Here we would normally send data to backend. For now just show success.
-  document.getElementById('mainReserveForm').style.display = 'none';
-  document.getElementById('mainReserveSuccess').style.display = 'block';
-}
+    // 2. Fix the auto-close behavior globally
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) {
+        // Find all links inside the mobile menu
+        const allLinks = mobileMenu.querySelectorAll("a");
+        allLinks.forEach(link => {
+            // Only close menu if it's a real link, NOT a toggle or submenu wrapper
+            link.addEventListener("click", function(e) {
+                // If it's the toggle itself, don't close
+                if (this.id === 'media-mobile-toggle') return;
+                
+                // Allow normal navigation but close the menu
+                mobileMenu.classList.remove("active");
+            });
+        });
+    }
+});
 </script>
 
 </body>
+
 </html>
