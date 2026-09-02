@@ -5457,22 +5457,40 @@ section {
         </a>
 
         <!-- Link 02: Media -->
-        <a href="https://silveriom.ir/inventory/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-              </svg>
+        <div class="mobile-nav-group">
+          <div class="mobile-nav-card" id="media-mobile-toggle" style="cursor: pointer;">
+            <div class="nav-card-right">
+              <div class="nav-card-icon-box">
+                <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              </div>
+              <div class="nav-card-text">
+                <span class="nav-card-title">رسانه‌ها</span>
+                <span class="nav-card-desc">فضاهای تبلیغاتی و واگذاری</span>
+              </div>
             </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">رسانه‌ها</span>
-              <span class="nav-card-desc">فضاهای تبلیغاتی و واگذاری</span>
-            </div>
+            <svg class="nav-card-chevron" id="media-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+            </svg>
           </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
+          <div id="media-submenu" class="mobile-submenu" style="display: none; flex-direction: column; gap: 10px; margin-top: 4px; margin-bottom: 20px; padding-right: 24px; border-right: 1.5px dashed rgba(255, 255, 255, 0.15); margin-right: 34px;">
+            <a href="https://silveriom.ir/inventory/" style="display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: #ccff00; box-shadow: 0 0 10px rgba(204,255,0,0.8);"></div>
+                <span>همه رسانه‌ها (Inventory)</span>
+              </div>
+              <svg width="14" height="14" fill="none" stroke="#8b9bb4" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" style="display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; padding: 10px 0;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.8);"></div>
+                <span>مجموعه ایران زمین (شهرک غرب)</span>
+              </div>
+              <svg width="14" height="14" fill="none" stroke="#8b9bb4" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+          </div>
+        </div>
 
         <a href="https://silveriom.ir/audience-intelligence/" class="mobile-nav-card">
           <div class="nav-card-right">

@@ -5389,22 +5389,7 @@ section {
           </div>
         </div>
         <a href="https://silveriom.ir/audience-intelligence/" class="nav-item">مخاطبین</a>
-        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">تقویم مسابقات</span>
-              <span class="nav-card-desc">رویدادها و لیگ‌ها</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
+        <a href="https://silveriom.ir/tournament-calendar/" class="nav-item">تقویم مسابقات</a>
         <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
         <a href="https://silveriom.ir/media-planner/" class="nav-item">مدیاپلنر</a>
         <a href="https://silveriom.ir/about-us/" class="nav-item">درباره ما</a>
@@ -5472,7 +5457,7 @@ section {
 
         <!-- Link 02: Media -->
         <div class="mobile-nav-group">
-          <div class="mobile-nav-card" onclick="toggleMobileSubmenu('media-submenu', this, event)" style="cursor: pointer;">
+          <div class="mobile-nav-card" id="media-mobile-toggle" style="cursor: pointer;">
             <div class="nav-card-right">
               <div class="nav-card-icon-box">
                 <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -5488,9 +5473,21 @@ section {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
             </svg>
           </div>
-          <div id="media-submenu" class="mobile-submenu" style="display: none; flex-direction: column; gap: 8px; padding-right: 56px; margin-top: -4px; margin-bottom: 12px;">
-            <a href="https://silveriom.ir/inventory/" class="mobile-submenu-link" style="color: #8b9bb4; text-decoration: none; font-size: 0.9rem; padding: 10px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); display: block;">همه رسانه‌ها</a>
-            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mobile-submenu-link" style="color: #8b9bb4; text-decoration: none; font-size: 0.9rem; padding: 10px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); display: block;">مجموعه ایران زمین (شهرک غرب)</a>
+          <div id="media-submenu" class="mobile-submenu" style="display: none; flex-direction: column; gap: 10px; margin-top: 4px; margin-bottom: 20px; padding-right: 24px; border-right: 1.5px dashed rgba(255, 255, 255, 0.15); margin-right: 34px;">
+            <a href="https://silveriom.ir/inventory/" style="display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: #ccff00; box-shadow: 0 0 10px rgba(204,255,0,0.8);"></div>
+                <span>همه رسانه‌ها (Inventory)</span>
+              </div>
+              <svg width="14" height="14" fill="none" stroke="#8b9bb4" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" style="display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; padding: 10px 0;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.8);"></div>
+                <span>مجموعه ایران زمین (شهرک غرب)</span>
+              </div>
+              <svg width="14" height="14" fill="none" stroke="#8b9bb4" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
           </div>
         </div>
 
@@ -7964,11 +7961,7 @@ section {
     }
   });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      if (mobileMenu) mobileMenu.classList.remove("active");
-    });
-  });
+  /* auto close handled globally */
 })();
 </script>
 
@@ -8201,33 +8194,48 @@ function submitMainReservation(e) {
   </div>
 </footer>
 \n</div><!-- /.ios-overflow-fix-wrapper -->\n
-<script>
-function toggleMobileSubmenu(submenuId, element, event) {
-  if (event) event.preventDefault();
-  const submenu = document.getElementById(submenuId);
-  const chevron = element.querySelector('.nav-card-chevron');
-  if (!submenu) return;
-  if (submenu.style.display === 'none' || submenu.style.display === '') {
-    submenu.style.display = 'flex';
-    if(chevron) chevron.style.transform = 'rotate(-90deg)';
-  } else {
-    submenu.style.display = 'none';
-    if(chevron) chevron.style.transform = 'rotate(0deg)';
-  }
-}
 
-// Override the click listener that closes the menu to ignore elements with onclick
+
+<script>
 document.addEventListener("DOMContentLoaded", function() {
-    const mobileLinks = document.querySelectorAll('.mobile-nav-card');
-    mobileLinks.forEach(link => {
-        // If it has onclick (like our submenu toggle), don't close the menu
-        if (link.hasAttribute('onclick')) {
-            link.addEventListener('click', function(e) {
-                e.stopPropagation(); 
+    // 1. Mobile Menu Toggles
+    const toggleBtn = document.getElementById("media-mobile-toggle");
+    const submenu = document.getElementById("media-submenu");
+    
+    if (toggleBtn && submenu) {
+        toggleBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const chevron = this.querySelector('.nav-card-chevron');
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'flex';
+                if(chevron) chevron.style.transform = 'rotate(-90deg)';
+            } else {
+                submenu.style.display = 'none';
+                if(chevron) chevron.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+
+    // 2. Fix the auto-close behavior globally
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) {
+        // Find all links inside the mobile menu
+        const allLinks = mobileMenu.querySelectorAll("a");
+        allLinks.forEach(link => {
+            // Only close menu if it's a real link, NOT a toggle or submenu wrapper
+            link.addEventListener("click", function(e) {
+                // If it's the toggle itself, don't close
+                if (this.id === 'media-mobile-toggle') return;
+                
+                // Allow normal navigation but close the menu
+                mobileMenu.classList.remove("active");
             });
-        }
-    });
+        });
+    }
 });
 </script>
+
 </body>
 </html>
