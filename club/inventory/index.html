@@ -4924,7 +4924,7 @@ section {
     font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;
   }
 
-  /* Strict CSS Fix for Navbar Menu Links: White text, no underline, no blue link color */
+  /* Strict CSS Fix for Navbar Menu Links */
   .nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
     color: #ffffff !important;
     text-decoration: none !important;
@@ -4949,42 +4949,236 @@ section {
     border-bottom: none !important;
   }
 
-  /* Bento Grid & Case Study Card Animations */
-  .bento-portfolio-card {
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Layout: Desktop 2-Column Grid (RTL: Right Sidebar 320px, Left Products 1fr) */
+  .inventory-main-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  @media (max-width: 1024px) {
+    .inventory-main-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Right Sidebar Filter Panel */
+  .sidebar-filter-card {
+    position: sticky;
+    top: 110px;
+    background: linear-gradient(145deg, rgba(13, 22, 45, 0.98), rgba(6, 11, 24, 0.99)) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(204, 255, 0, 0.4) !important;
+    border-radius: 28px !important;
+    padding: 24px 20px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+    z-index: 20;
+  }
+
+  /* Collapsible Accordion */
+  .accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .accordion-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    user-select: none;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .accordion-header:hover {
+    color: #CCFF00;
+  }
+  .accordion-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Custom Checkbox */
+    .custom-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #CBD5E1;
+    font-size: 13.5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+  .custom-checkbox-label:hover { color: #ffffff; }
+  .cb-text { padding-top: 2px; }
+  .custom-checkbox-input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4.5px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    margin: 0;
+  }
+  .custom-checkbox-input:checked {
+    background: #CCFF00;
+    border-color: #CCFF00;
+  }
+  .custom-checkbox-input:checked::after {
+    content: '¹4';
+    position: absolute;
+    color: #000;
+    font-size: 13px;
+    font-weight: 900;
+    left: 2px;
+    top: 0px;
+  }
+  .custom-checkbox-label:hover {
+    color: #ffffff;
+  }
+  .custom-checkbox-input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background: rgba(15, 25, 50, 0.8);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .custom-checkbox-input:checked {
+    background: #CCFF00;
+    border-color: #CCFF00;
+  }
+  .custom-checkbox-input:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #070A11;
+    font-weight: 900;
+    font-size: 12px;
+  }
+
+  /* Range Slider */
+  .range-slider-input {
+    width: 100%;
+    accent-color: #CCFF00;
+    cursor: pointer;
+  }
+
+  /* Product Catalog Area & Cards */
+  .product-catalog-area {
+    width: 100%;
+  }
+
+  .product-asset-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
-  .bento-portfolio-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -10px rgba(204, 255, 0, 0.28);
+  .product-asset-card:hover {
+    transform: translateY(-6px);
     border-color: rgba(204, 255, 0, 0.6) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(204, 255, 0, 0.25) !important;
   }
 
-  .case-study-card {
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .case-study-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px -12px rgba(204, 255, 0, 0.3);
-    border-color: rgba(204, 255, 0, 0.6) !important;
-  }
-  .case-study-card:hover .portfolio-img {
-    transform: scale(1.07);
-  }
-
-  .portfolio-img {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .metric-badge-box {
+  /* Reserve Button (Glassmorphic) */
+  .reserve-trigger-btn {
+    background: rgba(204, 255, 0, 0.12);
+    color: #CCFF00;
+    font-weight: 900;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(204, 255, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: 13.5px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.1);
     transition: all 0.3s ease;
   }
-  .case-study-card:hover .metric-badge-box {
-    background: rgba(204, 255, 0, 0.12) !important;
-    border-color: rgba(204, 255, 0, 0.4) !important;
+  .reserve-trigger-btn:hover {
+    background: rgba(204, 255, 0, 0.25);
+    border-color: #CCFF00;
+    box-shadow: 0 0 35px rgba(204, 255, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Reservation Modal Backdrop */
+  .reserve-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(4, 9, 20, 0.88);
+    backdrop-filter: blur(20px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .reserve-modal-box {
+    background: linear-gradient(145deg, rgba(13, 22, 45, 0.99), rgba(7, 13, 27, 0.99));
+    border: 1px solid rgba(204, 255, 0, 0.5);
+    border-radius: 32px;
+    padding: 36px;
+    max-width: 580px;
+    width: 100%;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.85), 0 0 40px rgba(204, 255, 0, 0.25);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Calendar Date Grid */
+  .calendar-date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .calendar-day-cell {
+    padding: 10px 4px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+  .calendar-day-cell:hover {
+    background: rgba(204,255,0,0.2);
+    color: #CCFF00;
+  }
+  .calendar-day-cell.selected {
+    background: #CCFF00 !important;
+    color: #070A11 !important;
+    font-weight: 900 !important;
   }
 
 /* ==========================================================================
@@ -7436,2253 +7630,7 @@ body {
   }
 }
 
-  
-
-/* ==========================================================================
-   TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
-   ========================================================================== */
-.top-complex-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  z-index: 102;
-  background: rgba(6, 16, 32, 0.78);
-  backdrop-filter: blur(36px) saturate(220%);
-  -webkit-backdrop-filter: blur(36px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f8fafc;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  direction: ltr !important;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  will-change: transform;
-  animation: marqueeContinuous 38s linear infinite;
-}
-
-.top-complex-bar:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-group {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  padding: 0 1.4rem;
-  flex-shrink: 0;
-  white-space: nowrap;
-  direction: rtl;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.90rem;
-  font-weight: 600;
-}
-
-@keyframes marqueeContinuous {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-.top-bar-badge {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #ffffff;
-  padding: 0.22rem 0.95rem;
-  border-radius: 9999px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 14px rgba(182, 255, 0, 0.25);
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.top-c-item {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  font-size: 0.90rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 8px;
-}
-
-.top-c-item strong {
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.top-c-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.top-c-sep {
-  color: rgba(255, 255, 255, 0.3);
-  font-weight: 800;
-}
-
-/* ==========================================================================
-   LUXURY CLEAN NAVIGATION (Clean Edge-to-Edge - No Pill Container Box)
-   ========================================================================== */
-.luxury-nav {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 0.85rem 2.5rem;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%);
-  box-sizing: border-box;
-}
-
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0;
-}
-
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
-
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5));
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75));
-}
-
-.nav-links {
-  display: none;
-  align-items: center;
-  gap: 0.35rem;
-  background: rgba(6, 18, 38, 0.68);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 30px rgba(0, 0, 0, 0.5);
-  flex-shrink: 0;
-}
-
-@media (min-width: 1024px) {
-  .nav-links { display: flex; }
-}
-
-.nav-item {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.nav-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 15px rgba(182, 255, 0, 0.25);
-}
-
-.nav-item.active {
-  color: var(--color-neon);
-  background: rgba(182, 255, 0, 0.16);
-  border-color: rgba(182, 255, 0, 0.45);
-}
-
-.glass-phone-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: rgba(6, 18, 38, 0.68);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(182, 255, 0, 0.45);
-  padding: 0.5rem 1.15rem;
-  border-radius: 9999px;
-  color: #ffffff;
-  text-decoration: none;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-}
-
-.glass-phone-btn:hover {
-  background: rgba(182, 255, 0, 0.2);
-  border-color: var(--color-neon);
-  color: var(--color-neon);
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.5);
-  transform: translateY(-1px);
-}
-
-.glass-phone-icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(182, 255, 0, 0.22);
-  color: var(--color-neon);
-  box-shadow: 0 0 10px rgba(182, 255, 0, 0.35);
-  flex-shrink: 0;
-}
-
-.phone-pulse-dot {
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 7px;
-  height: 7px;
-  background: var(--color-neon);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--color-neon);
-  animation: pulseRing 1.8s infinite;
-}
-
-.glass-phone-num {
-  direction: ltr;
-  letter-spacing: 0.04em;
-  font-size: 0.94rem;
-  font-weight: 800;
-}
-
-.nav-action {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  flex-shrink: 0;
-}
-
-/* FULL-WIDTH LIQUID GLASS HERO DOCK & MAP BEACONS */
-.hero-smart-finder-dock {
-  width: 100%;
-  max-width: 1380px;
-  margin: 3.5rem auto 1.5rem auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
-  z-index: 50;
-  position: relative;
-  pointer-events: auto !important;
-}
-
-.finder-dock-inner {
-  background: rgba(6, 18, 42, 0.72);
-  backdrop-filter: blur(36px) saturate(210%);
-  -webkit-backdrop-filter: blur(36px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 28px;
-  padding: 1.4rem 2rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 40px rgba(0, 240, 255, 0.12);
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 1.75rem;
-  align-items: flex-end;
-  box-sizing: border-box;
-  direction: rtl;
-  text-align: right;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  z-index: 60;
-  pointer-events: auto !important;
-}
-
-.finder-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  min-width: 0;
-  position: relative;
-  z-index: 70;
-  pointer-events: auto !important;
-}
-
-.finder-label {
-  font-size: 0.94rem;
-  color: #f8fafc;
-  font-weight: 700;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  white-space: nowrap;
-}
-
-.finder-select {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(8, 24, 52, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 16px;
-  height: 56px;
-  padding: 0 1.25rem 0 2.5rem;
-  color: #ffffff;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.98rem;
-  font-weight: 600;
-  outline: none;
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 80;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2300F0FF' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left 1.2rem center;
-  background-size: 16px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 4px 15px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.finder-select option {
-  background: #06152a;
-  color: #ffffff;
-  padding: 12px;
-}
-
-.finder-btn {
-  height: 56px;
-  background: var(--color-neon);
-  color: #020617;
-  border: none;
-  border-radius: 16px;
-  padding: 0 2.4rem;
-  font-weight: 800;
-  font-size: 1.02rem;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 28px rgba(182, 255, 0, 0.45);
-}
-
-.finder-btn:hover {
-  background: #ffffff;
-  color: #02040a;
-  box-shadow: 0 0 38px rgba(255, 255, 255, 0.75);
-  transform: translateY(-2px);
-}
-
-/* INTERACTIVE MAP LOCATION BEACONS & HOVER EFFECTS */
-.map-hotspot {
-  position: absolute;
-  cursor: pointer !important;
-  z-index: 20;
-  border-radius: 9999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-}
-
-.map-pin-beacon {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.beacon-dot {
-  width: 14px;
-  height: 14px;
-  background: #00F0FF;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 16px #00F0FF, 0 0 30px rgba(0, 240, 255, 0.85);
-  transition: all 0.3s ease;
-  z-index: 2;
-}
-
-.beacon-pulse-ring {
-  position: absolute;
-  inset: -8px;
-  border: 2px solid #00F0FF;
-  border-radius: 50%;
-  animation: radarPing 2s infinite ease-out;
-  opacity: 0.8;
-  z-index: 1;
-}
-
-.beacon-tooltip {
-  position: absolute;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%) translateY(8px) scale(0.85);
-  background: rgba(6, 18, 42, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--color-neon);
-  color: #ffffff;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(182, 255, 0, 0.35);
-  z-index: 30;
-}
-
-.map-hotspot:hover .beacon-dot {
-  background: var(--color-neon);
-  border-color: #ffffff;
-  transform: scale(1.45);
-  box-shadow: 0 0 25px var(--color-neon), 0 0 45px rgba(182, 255, 0, 0.95);
-}
-
-.map-hotspot:hover .beacon-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-}
-
-@keyframes radarPing {
-  0% { transform: scale(0.6); opacity: 0.9; }
-  80% { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.4); opacity: 0; }
-}
-
-
-
-/* ==========================================================================
-   FIXED FULL-SCREEN COVER BACKGROUND & MEDIA KIT BUTTON STYLING
-   ========================================================================== */
-#cinematic-bg-container {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: -1 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
-
-#cinematic-bg-img {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  will-change: transform, filter !important;
-  filter: contrast(1.08) brightness(0.88) !important;
-}
-
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
-
-#open-kit-btn:hover, .luxury-btn-outline:hover {
-  background: rgba(182, 255, 0, 0.28) !important;
-  border-color: var(--color-neon) !important;
-  color: var(--color-neon) !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.55) !important;
-  transform: translateY(-1px) !important;
-}
-
-
-
-/* ==========================================================================
-   GUARANTEED VISIBLE CINEMATIC COVER BACKGROUND (Racket & Tennis Ball)
-   ========================================================================== */
-#cinematic-bg-container, .cinematic-bg-container {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 1 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  background: #020617 !important;
-}
-
-#cinematic-bg-img, .cinematic-bg-img {
-  position: absolute !important;
-  top: -5% !important;
-  left: -5% !important;
-  width: 110% !important;
-  height: 110% !important;
-  object-fit: cover !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: contrast(1.1) brightness(0.9) !important;
-  will-change: transform !important;
-}
-
-#webgl-canvas {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 3 !important;
-  pointer-events: none !important;
-  opacity: 0.35 !important;
-}
-
-.experience-container, main {
-  position: relative !important;
-  z-index: 10 !important;
-}
-
-.hero-section {
-  position: relative !important;
-  z-index: 20 !important;
-  min-height: 100vh !important;
-  padding-top: 130px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-}
-
-.hero-content {
-  position: relative !important;
-  z-index: 25 !important;
-  max-width: 860px !important;
-  margin: 0 auto !important;
-  text-align: center !important;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 5.2vw, 4.5rem) !important;
-  font-weight: 800 !important;
-  line-height: 1.15 !important;
-  margin-bottom: 1.25rem !important;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.85) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #ffffff !important;
-}
-
-.hero-subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.25rem) !important;
-  line-height: 1.8 !important;
-  color: #94a3b8 !important;
-  max-width: 720px !important;
-  margin: 0 auto 2.5rem auto !important;
-}
-
-.hero-actions {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 1.25rem !important;
-  flex-wrap: wrap !important;
-  margin-bottom: 2rem !important;
-}
-
-.luxury-btn-solid {
-  background: #b6ff00 !important;
-  color: #020617 !important;
-  border: none !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.45) !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.luxury-btn-ghost {
-  background: rgba(6, 18, 42, 0.65) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-
-
-/* ==========================================================================
-   1. SOFT DARK NAVY OVERLAY (Enhances Text Legibility)
-   ========================================================================== */
-.navy-overlay-layer {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 3 !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.65) 0%, rgba(6, 18, 38, 0.58) 50%, rgba(2, 6, 18, 0.72) 100%) !important;
-  pointer-events: none !important;
-}
-
-
-
-/* ==========================================================================
-   LUXURY CENTERED CONTAINER LAYOUT (Matching Photo 2 with Generous Side Margins)
-   ========================================================================== */
-.editorial-wide-container {
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  box-sizing: border-box !important;
-}
-
-.experience-container, main {
-  max-width: 100% !important;
-  margin: 0 auto !important;
-}
-
-.hero-section,
-.impact-section,
-.map-interactive-section,
-.complexes-section,
-.inventory-section,
-.process-section,
-.portfolio-section,
-.planner-section,
-.why-us-section,
-.contact-section,
-footer {
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  box-sizing: border-box !important;
-}
-
-.hero-content {
-  max-width: 820px !important;
-  margin-right: clamp(2rem, 5vw, 4.5rem) !important;
-  margin-left: auto !important;
-}
-
-.hero-smart-finder-dock {
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(1.5rem, 4vw, 3.5rem) !important;
-  padding-right: clamp(1.5rem, 4vw, 3.5rem) !important;
-}
-
-
-
-/* ==========================================================================
-   UNIVERSAL LUXURY CONTAINER LAYOUT (Fixes Why-Us & All Sections Matching Photo 2)
-   ========================================================================== */
-.editorial-container,
-.editorial-wide-container,
-.why-us-section,
-#why-us,
-.why-grid {
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  box-sizing: border-box !important;
-}
-
-.section,
-section,
-.experience-container,
-main {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.section > .editorial-container,
-.section > .editorial-wide-container {
-  width: 100% !important;
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-
-
-/* ==========================================================================
-   4 HERO SECTION REFINEMENTS (Matching User Screenshot Exactly)
-   ========================================================================== */
-
-/* 1. Increased Top Spacing & Height */
-.hero-section {
-  min-height: 108vh !important;
-  padding-top: 185px !important;
-  padding-bottom: 4.5rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-}
-
-/* 2. Neon Green Border Box Badge */
-.luxury-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  padding: 0.4rem 1.15rem !important;
-  background: rgba(182, 255, 0, 0.08) !important;
-  border: 1.5px solid #b6ff00 !important;
-  border-radius: 9999px !important;
-  margin-bottom: 1.6rem !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  backdrop-filter: blur(20px) !important;
-  box-shadow: 0 0 16px rgba(182, 255, 0, 0.35), inset 0 0 10px rgba(182, 255, 0, 0.15) !important;
-}
-
-.badge-dot {
-  width: 8px !important;
-  height: 8px !important;
-  background: #b6ff00 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 10px #b6ff00, 0 0 18px #b6ff00 !important;
-}
-
-.badge-text {
-  font-size: 0.78rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.12em !important;
-  color: #b6ff00 !important;
-  text-shadow: 0 0 10px rgba(182, 255, 0, 0.5) !important;
-}
-
-/* 3. Title & Subtitle Justified & Right-Aligned */
-.hero-content {
-  position: relative !important;
-  z-index: 25 !important;
-  max-width: 780px !important;
-  margin-right: clamp(2rem, 5.5vw, 4.8rem) !important;
-  margin-left: auto !important;
-  text-align: right !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-}
-
-.hero-title {
-  text-align: right !important;
-  font-size: clamp(2.7rem, 5.5vw, 4.8rem) !important;
-  font-weight: 800 !important;
-  line-height: 1.16 !important;
-  margin-bottom: 1.35rem !important;
-  color: #ffffff !important;
-}
-
-.hero-subtitle {
-  text-align: justify !important;
-  text-align-last: right !important;
-  font-size: clamp(1.02rem, 1.8vw, 1.2rem) !important;
-  line-height: 1.88 !important;
-  color: #cbd5e1 !important;
-  max-width: 700px !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-bottom: 2.2rem !important;
-}
-
-.hero-actions {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 1.25rem !important;
-  flex-wrap: wrap !important;
-  margin-bottom: 1.5rem !important;
-}
-
-/* 4. Horizontal Scroll Down Cue Matching Screenshot */
-.hero-scroll-cue {
-  position: relative !important;
-  z-index: 30 !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 1rem !important;
-  margin-right: clamp(2rem, 5.5vw, 4.8rem) !important;
-  margin-left: auto !important;
-  display: flex !important;
-  flex-direction: row-reverse !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 0.75rem !important;
-  width: auto !important;
-}
-
-.scroll-text {
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.84rem !important;
-  font-weight: 600 !important;
-  color: rgba(255, 255, 255, 0.75) !important;
-  letter-spacing: 0.02em !important;
-}
-
-.scroll-line {
-  width: 45px !important;
-  height: 2px !important;
-  background: linear-gradient(90deg, #b6ff00 0%, rgba(182, 255, 0, 0.15) 100%) !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 0 10px rgba(182, 255, 0, 0.5) !important;
-  animation: scrollPulseH 1.8s infinite ease-in-out !important;
-}
-
-@keyframes scrollPulseH {
-  0% { transform: scaleX(0.7); opacity: 0.5; }
-  50% { transform: scaleX(1.1); opacity: 1; }
-  100% { transform: scaleX(0.7); opacity: 0.5; }
-}
-
-
-
-/* ==========================================================================
-   NAV TOP SPACING & HERO SCROLL CUE AT BOTTOM LEFT (With Small Gap)
-   ========================================================================== */
-
-/* 1. Spacing between Top Marquee Ticker & Main Navigation Bar */
-.luxury-nav {
-  position: fixed !important;
-  top: 64px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 100 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
-
-.hero-section {
-  padding-top: 200px !important;
-}
-
-/* 2. Scroll Cue Moved to Bottom LEFT with Tiny Gap */
-.hero-scroll-cue {
-  position: relative !important;
-  z-index: 30 !important;
-  margin-top: 1.1rem !important;
-  margin-bottom: 0.8rem !important;
-  margin-left: clamp(2rem, 5.5vw, 4.8rem) !important;
-  margin-right: auto !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 0.65rem !important;
-  width: auto !important;
-  direction: ltr !important;
-}
-
-.scroll-text {
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.84rem !important;
-  font-weight: 600 !important;
-  color: rgba(255, 255, 255, 0.78) !important;
-  letter-spacing: 0.02em !important;
-}
-
-.scroll-line {
-  width: 42px !important;
-  height: 2px !important;
-  background: linear-gradient(90deg, rgba(182, 255, 0, 0.15) 0%, #b6ff00 100%) !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 0 10px rgba(182, 255, 0, 0.5) !important;
-  animation: scrollPulseH 1.8s infinite ease-in-out !important;
-}
-
-
-
-
-/* ==========================================================================
-   UNIFORM 96PX SECTION SPACING (Standardized Across All Sections)
-   ========================================================================== */
-#why-us,
-.why-us-section,
-#inventory,
-.inventory-section,
-.featured-inventory-section,
-#venues-map,
-.map-interactive-section,
-#complexes,
-.complexes-section,
-#process,
-.process-section,
-#portfolio,
-.portfolio-section,
-#planner,
-.planner-section,
-#contact,
-.contact-section,
-.section {
-  position: relative !important;
-  padding-top: 6rem !important;
-  padding-bottom: 6rem !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  box-sizing: border-box !important;
-  clear: both !important;
-}
-
-#why-us .section-header,
-#inventory .section-header {
-  margin-top: 0 !important;
-  margin-bottom: 3.5rem !important;
-}
-
-
-
-/* ==========================================================================
-   FIX NEON BADGE OVERLAP & REMOVE NAV BLACK HALO BACKDROP
-   ========================================================================== */
-
-/* 1. Remove Dark Black Halo / Gradient Backdrop Behind Nav Bar */
-.luxury-nav {
-  position: fixed !important;
-  top: 64px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 100 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  box-sizing: border-box !important;
-}
-
-/* 2. Increased Top Spacing for Hero Content to prevent Neon Badge Overlap */
-.hero-section {
-  min-height: 110vh !important;
-  padding-top: 245px !important;
-  padding-bottom: 4.5rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  box-sizing: border-box !important;
-}
-
-.hero-content {
-  margin-top: 2.2rem !important;
-  position: relative !important;
-  z-index: 25 !important;
-}
-
-
-
-/* ==========================================================================
-   ULTRA-COMPREHENSIVE 30 MOBILE RESPONSIVE FIXES
-   ========================================================================== */
-
-/* Fix 30: Touch Highlight Removal */
-* {
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-/* Fix 23: Background Scroll Lock When Mobile Menu Is Open */
-body.mobile-menu-open {
-  overflow: hidden !important;
-  height: 100dvh !important;
-}
-
-/* Fix 14: Mobile Menu Z-Index Conflict with Top Marquee */
-#mobile-menu, .mobile-menu {
-  z-index: 9999 !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  background: rgba(2, 6, 18, 0.98) !important;
-  backdrop-filter: blur(30px) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  padding: 5rem 2rem 3rem 2rem !important;
-  box-sizing: border-box !important;
-}
-
-/* Fix 18 & 4: Touch Target Sizes for Close Button */
-#close-mobile-menu, .close-mobile-menu {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 1.8rem !important;
-  cursor: pointer !important;
-  position: absolute !important;
-  top: 1.2rem !important;
-  left: 1.2rem !important;
-  z-index: 10000 !important;
-}
-
-/* Fix 7: Touch Target Sizes for Map Hotspots */
-.map-hotspot {
-  min-width: 44px !important;
-  min-height: 44px !important;
-  padding: 6px !important;
-}
-
-/* ==========================================================================
-   TABLET & MOBILE BREAKPOINTS (< 900px & < 768px)
-   ========================================================================== */
-@media (max-width: 900px) {
-  /* Fix 17: Media Planner Calculator Grid Reorder */
-  .planner-grid, #planner .grid {
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    gap: 2rem !important;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Fix 2: Hero Spacing & Fix 3: Dynamic Viewport Units 100dvh */
-  .hero-section {
-    min-height: 100dvh !important;
-    padding-top: 140px !important;
-    padding-bottom: 3.5rem !important;
-  }
-
-  /* Fix 4: Hero Content Center Alignment on Mobile */
-  .hero-content {
-    margin-right: auto !important;
-    margin-left: auto !important;
-    text-align: center !important;
-    align-items: center !important;
-    max-width: 100% !important;
-  }
-
-  .luxury-badge {
-    margin-right: auto !important;
-    margin-left: auto !important;
-  }
-
-  .hero-title {
-    text-align: center !important;
-    font-size: clamp(2rem, 6.5vw, 3rem) !important;
-    line-height: 1.28 !important;
-  }
-
-  .hero-subtitle {
-    text-align: center !important;
-    text-align-last: center !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-    font-size: 0.95rem !important;
-  }
-
-  .hero-actions {
-    justify-content: center !important;
-    width: 100% !important;
-  }
-
-  /* Fix 12: Mobile Header Phone Button Hide to Prevent Logo Squeezing */
-  .glass-phone-btn {
-    display: none !important;
-  }
-
-  .nav-brand-logo-img {
-    height: 42px !important;
-    max-width: 140px !important;
-  }
-
-  /* Fix 16: Finder Dock Mobile Height & Padding */
-  .finder-dock-inner {
-    padding: 1.1rem !important;
-    gap: 1rem !important;
-  }
-
-  .finder-select {
-    height: 48px !important;
-    font-size: 0.9rem !important;
-  }
-
-  .finder-btn {
-    height: 48px !important;
-    font-size: 0.92rem !important;
-  }
-
-  /* Fix 8: Map Interactive Wrapper Mobile Column Stack */
-  .map-interactive-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-  }
-
-  /* Fix 15: Map Beacon Tooltip Persistence on Touch */
-  .map-hotspot.active .beacon-tooltip {
-    opacity: 1 !important;
-    transform: translateX(-50%) translateY(0) scale(1) !important;
-  }
-
-  /* Fix 21: Inventory Tabs Horizontal Touch Scroll */
-  .inventory-tabs {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding-bottom: 0.5rem !important;
-    gap: 0.5rem !important;
-  }
-
-  .inventory-tab {
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
-  }
-
-  /* Fix 22: Process Steps Vertical Stack */
-  .process-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  /* Fix 26: Hero Scroll Cue Centering on Mobile */
-  .hero-scroll-cue {
-    margin: 1.5rem auto 0 auto !important;
-    justify-content: center !important;
-    direction: rtl !important;
-  }
-
-  /* Fix 28: Mobile GPU Rendering Performance Optimization */
-  #ambient-dust-canvas {
-    display: none !important;
-  }
-}
-
-/* ==========================================================================
-   SMALL MOBILE BREAKPOINTS (< 600px & < 480px)
-   ========================================================================== */
-@media (max-width: 600px) {
-  /* Fix 9: Map Filter Buttons Horizontal Touch Scroll */
-  .map-filter-bar {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding-bottom: 0.5rem !important;
-    justify-content: flex-start !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-
-  .map-filter-btn {
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Fix 1: Horizontal Scroll & Fix 14: Stats Grid Columns */
-  .stats-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1.2rem 1rem !important;
-  }
-
-  /* Fix 24: Font Scaling for Persian Stat Numbers */
-  .stat-number {
-    font-size: 2.2rem !important;
-  }
-
-  .stat-title {
-    font-size: 0.82rem !important;
-  }
-
-  /* Fix 5: Hero Title Font Size for Small Screens */
-  .hero-title {
-    font-size: 1.95rem !important;
-    line-height: 1.3 !important;
-  }
-
-  /* Fix 6: Hero Buttons Stack Vertically */
-  .hero-actions {
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 0.75rem !important;
-  }
-
-  .luxury-btn-solid,
-  .luxury-btn-ghost,
-  .hero-actions button,
-  .hero-actions a {
-    width: 100% !important;
-    padding: 0.8rem 1.25rem !important;
-    text-align: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Fix 10: Map Detail Card Stats Grid 1-Column */
-  .panel-stats-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.6rem !important;
-  }
-
-  /* Fix 11: Complexes Grid 1-Column */
-  .complexes-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.2rem !important;
-  }
-
-  /* Fix 19: Portfolio Cards Reduced Mobile Padding */
-  .portfolio-section .case-card,
-  .case-card {
-    padding: 1.25rem !important;
-  }
-
-  /* Fix 25: Finder Select Padding on Mobile */
-  .finder-select {
-    padding-left: 0.85rem !important;
-    padding-right: 0.85rem !important;
-    font-size: 0.85rem !important;
-  }
-
-  /* Fix 27: Media Planner Pills Touch Target & Spacing */
-  .planner-pill {
-    padding: 0.6rem 0.9rem !important;
-    font-size: 0.82rem !important;
-  }
-}
-
-/* ==========================================================================
-   LANDSCAPE ORIENTATION BREAKPOINT (Fix 20 & 6)
-   ========================================================================== */
-@media (orientation: landscape) and (max-height: 500px) {
-  .top-complex-bar {
-    display: none !important;
-    direction: ltr !important;
-}
-
-  .luxury-nav {
-    top: 0 !important;
-    padding: 0.4rem 1.5rem !important;
-  }
-
-  .hero-section {
-    padding-top: 80px !important;
-    min-height: auto !important;
-  }
-}
-
-
-
-/* ==========================================================================
-   MOBILE HAMBURGER TOGGLE & FULL-SCREEN GLASS DRAWER MENU STYLING
-   ========================================================================== */
-.mobile-toggle {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 5px !important;
-  width: 44px !important;
-  height: 44px !important;
-  background: rgba(6, 18, 42, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.4) !important;
-  border-radius: 12px !important;
-  cursor: pointer !important;
-  z-index: 101 !important;
-  padding: 0 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
-}
-
-@media (min-width: 1024px) {
-  .mobile-toggle {
-    display: none !important;
-  }
-}
-
-.mobile-toggle span {
-  display: block !important;
-  width: 22px !important;
-  height: 2px !important;
-  background: #b6ff00 !important;
-  border-radius: 9999px !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 0 6px rgba(182, 255, 0, 0.6) !important;
-}
-
-.mobile-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  background: rgba(2, 6, 18, 0.96) !important;
-  backdrop-filter: blur(36px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(200%) !important;
-  z-index: 9999 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease, visibility 0.3s ease !important;
-  padding: 1.5rem !important;
-  box-sizing: border-box !important;
-}
-
-.mobile-overlay.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-.mobile-head {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-bottom: 1.25rem !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-  margin-bottom: 1.5rem !important;
-}
-
-.mobile-nav {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.4rem !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  padding-bottom: 2rem !important;
-}
-
-.mobile-link {
-  color: #f8fafc !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 1.08rem !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  padding: 0.75rem 1rem !important;
-  border-radius: 12px !important;
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  transition: all 0.2s ease !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-.mobile-link:hover, .mobile-link:active {
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-  color: #b6ff00 !important;
-}
-
-
-
-/* ==========================================================================
-   REDESIGNED LUXURY MEGA FOOTER WITH TRANSPARENT LOGO
-   ========================================================================== */
-.luxury-mega-footer {
-  position: relative !important;
-  z-index: 20 !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.95) 0%, rgba(6, 18, 38, 0.98) 100%) !important;
-  border-top: 1px solid rgba(182, 255, 0, 0.25) !important;
-  box-shadow: 0 -4px 30px rgba(182, 255, 0, 0.1) !important;
-  padding-top: 4.5rem !important;
-  padding-bottom: 2.5rem !important;
-  color: #94a3b8 !important;
-}
-
-.footer-top-grid {
-  display: grid !important;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr !important;
-  gap: 2.5rem !important;
-  margin-bottom: 3.5rem !important;
-}
-
-@media (max-width: 1024px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-}
-
-.footer-brand-logo-img {
-  height: 52px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  filter: drop-shadow(0 0 14px rgba(182, 255, 0, 0.45)) !important;
-  margin-bottom: 1.2rem !important;
-  display: block !important;
-}
-
-.footer-tagline {
-  font-size: 0.92rem !important;
-  line-height: 1.85 !important;
-  color: #cbd5e1 !important;
-  margin-bottom: 1.5rem !important;
-  text-align: justify !important;
-}
-
-.footer-badges {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.6rem !important;
-}
-
-.fbadge {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  font-size: 0.8rem !important;
-  color: #b6ff00 !important;
-  background: rgba(182, 255, 0, 0.06) !important;
-  border: 1px solid rgba(182, 255, 0, 0.25) !important;
-  padding: 0.4rem 0.85rem !important;
-  border-radius: 9999px !important;
-}
-
-.fbadge-dot {
-  width: 6px !important;
-  height: 6px !important;
-  background: #b6ff00 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 8px #b6ff00 !important;
-}
-
-.fcol-heading {
-  color: #ffffff !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 1.25rem !important;
-  position: relative !important;
-  padding-bottom: 0.6rem !important;
-}
-
-.fcol-heading::after {
-  content: "" !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  right: 0 !important;
-  width: 32px !important;
-  height: 2px !important;
-  background: #b6ff00 !important;
-  box-shadow: 0 0 8px #b6ff00 !important;
-  border-radius: 9999px !important;
-}
-
-.fcol-links {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.7rem !important;
-}
-
-.fcol-links a {
-  color: #94a3b8 !important;
-  text-decoration: none !important;
-  font-size: 0.9rem !important;
-  transition: all 0.2s ease !important;
-  display: inline-block !important;
-}
-
-.fcol-links a:hover {
-  color: #b6ff00 !important;
-  transform: translateX(-4px) !important;
-}
-
-.footer-contact-box {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-}
-
-.footer-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.6rem !important;
-  padding: 0.75rem 1.25rem !important;
-  background: rgba(182, 255, 0, 0.12) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  border-radius: 9999px !important;
-  color: #b6ff00 !important;
-  font-weight: 700 !important;
-  font-size: 1.05rem !important;
-  text-decoration: none !important;
-  box-shadow: 0 0 15px rgba(182, 255, 0, 0.2) !important;
-  transition: all 0.25s ease !important;
-  width: fit-content !important;
-}
-
-.footer-phone-btn:hover {
-  background: #b6ff00 !important;
-  color: #020617 !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.6) !important;
-}
-
-.footer-address, .footer-email {
-  font-size: 0.88rem !important;
-  line-height: 1.7 !important;
-  color: #94a3b8 !important;
-}
-
-.footer-address span, .footer-email span {
-  color: #cbd5e1 !important;
-  font-weight: 700 !important;
-}
-
-.footer-bottom-bar {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-top: 1.8rem !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  flex-wrap: wrap !important;
-  gap: 1rem !important;
-}
-
-.copyright-text {
-  font-size: 0.85rem !important;
-  color: #64748b !important;
-  margin: 0 !important;
-}
-
-.back-to-top-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  color: #b6ff00 !important;
-  font-size: 0.84rem !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  padding: 0.4rem 0.9rem !important;
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(182, 255, 0, 0.3) !important;
-  border-radius: 9999px !important;
-  transition: all 0.25s ease !important;
-}
-
-.back-to-top-btn:hover {
-  background: rgba(182, 255, 0, 0.15) !important;
-  box-shadow: 0 0 12px rgba(182, 255, 0, 0.3) !important;
-}
-
-
-
-/* ==========================================================================
-   GLASSMORPHISM FOOTER & TOP/BOTTOM SPACING FIXES
-   ========================================================================== */
-.luxury-mega-footer {
-  position: relative !important;
-  z-index: 20 !important;
-  background: rgba(2, 6, 18, 0.65) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  border-top: 1px solid rgba(182, 255, 0, 0.35) !important;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5), 0 -2px 14px rgba(182, 255, 0, 0.15) !important;
-  margin-top: 5.5rem !important;
-  padding-top: 4.5rem !important;
-  padding-bottom: 1.8rem !important;
-  margin-bottom: 0 !important;
-  color: #94a3b8 !important;
-  box-sizing: border-box !important;
-}
-
-.footer-bottom-bar {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding-top: 1.8rem !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  flex-wrap: wrap !important;
-  gap: 1rem !important;
-}
-
-
-
-/* ==========================================================================
-   ELIMINATE FOOTER BOTTOM SPACE & EXTEND GLASS BACKDROP TO SCREEN BOTTOM
-   ========================================================================== */
-html, body, main, .experience-container {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-footer,
-.luxury-mega-footer {
-  margin-bottom: 0 !important;
-  padding-bottom: 2rem !important;
-  border-bottom: none !important;
-  position: relative !important;
-  z-index: 20 !important;
-}
-
-.footer-bottom-bar {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-
-
-/* ==========================================================================
-   FIX MOBILE SMART FINDER DOCK (Vertical Stack for Selects & Labels)
-   ========================================================================== */
-@media (max-width: 768px) {
-  .hero-smart-finder-dock {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 0.75rem !important;
-    margin-top: 1.8rem !important;
-    margin-bottom: 1.2rem !important;
-    box-sizing: border-box !important;
-  }
-
-  .finder-dock-inner {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.15rem !important;
-    padding: 1.25rem 1.1rem !important;
-    border-radius: 22px !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .finder-field {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.55rem !important;
-    box-sizing: border-box !important;
-  }
-
-  .finder-label {
-    font-size: 0.88rem !important;
-    font-weight: 700 !important;
-    color: #f8fafc !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.4rem !important;
-    white-space: nowrap !important;
-    margin: 0 !important;
-  }
-
-  .finder-select {
-    width: 100% !important;
-    height: 50px !important;
-    padding-left: 2.2rem !important;
-    padding-right: 1.1rem !important;
-    font-size: 0.9rem !important;
-    font-weight: 600 !important;
-    border-radius: 14px !important;
-    box-sizing: border-box !important;
-    text-overflow: ellipsis !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    background-position: left 0.9rem center !important;
-  }
-
-  .finder-btn,
-  .hero-smart-finder-dock button,
-  .hero-smart-finder-dock .luxury-btn-solid {
-    width: 100% !important;
-    height: 50px !important;
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 14px !important;
-    box-sizing: border-box !important;
-    margin-top: 0.2rem !important;
-  }
-}
-
-
-
-/* ==========================================================================
-   1. TOTAL ELIMINATION OF HORIZONTAL OVERFLOW (iPhone 13 Pro & Mobile Devices)
-   ========================================================================== */
-html, body {
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-  position: relative !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-main,
-.experience-container,
-.hero-section,
-.top-complex-bar,
-.luxury-nav,
-.hero-smart-finder-dock,
-.luxury-mega-footer,
-.section,
-section {
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box !important;
-}
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   COMPLEXES SECTION PHOTOS & LUXURY CARDS STYLING
-   ========================================================================== */
-.complexes-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-  gap: 1.8rem !important;
-  margin-top: 2.5rem !important;
-}
-
-@media (max-width: 600px) {
-  .complexes-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-.complex-card {
-  background: rgba(6, 18, 42, 0.72) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 20px !important;
-  overflow: hidden !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
-}
-
-.complex-card:hover {
-  transform: translateY(-6px) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(182, 255, 0, 0.18) !important;
-}
-
-.complex-card-media {
-  position: relative !important;
-  width: 100% !important;
-  height: 210px !important;
-  overflow: hidden !important;
-}
-
-.complex-card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.complex-card:hover .complex-card-img {
-  transform: scale(1.08) !important;
-}
-
-.complex-card-badge {
-  position: absolute !important;
-  top: 1rem !important;
-  right: 1rem !important;
-  background: rgba(2, 6, 18, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.4) !important;
-  color: #b6ff00 !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  padding: 0.3rem 0.8rem !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
-}
-
-.complex-card-body {
-  padding: 1.4rem 1.5rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-  flex-grow: 1 !important;
-}
-
-.complex-name {
-  color: #ffffff !important;
-  font-size: 1.2rem !important;
-  font-weight: 800 !important;
-  margin: 0 0 0.3rem 0 !important;
-}
-
-.complex-location {
-  color: #94a3b8 !important;
-  font-size: 0.88rem !important;
-  margin: 0 !important;
-}
-
-.complex-features {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-}
-
-.feature-pill {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #cbd5e1 !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.75rem !important;
-  border-radius: 8px !important;
-}
-
-
-
-/* Move Complex Card Location Badge to Left */
-.complex-card-badge {
-  position: absolute !important;
-  top: 1rem !important;
-  left: 1rem !important;
-  right: auto !important;
-  background: rgba(2, 6, 18, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.4) !important;
-  color: #b6ff00 !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  padding: 0.3rem 0.8rem !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
-}
-
-
-
-/* Map Panel Image Header Styling */
-.map-panel-media {
-  width: 100% !important;
-  height: 180px !important;
-  overflow: hidden !important;
-  border-radius: 16px 16px 0 0 !important;
-  margin: -1.5rem -1.5rem 1.25rem -1.5rem !important;
-  width: calc(100% + 3rem) !important;
-  position: relative !important;
-}
-
-.map-panel-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: all 0.4s ease !important;
-}
-
-
-
-/* ==========================================================================
-   WIDE FULL-SIZE COMPLEX CARDS & LARGER PHOTO DISPLAY
-   ========================================================================== */
-.complexes-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)) !important;
-  gap: 2.2rem !important;
-  margin-top: 3rem !important;
-  width: 100% !important;
-}
-
-@media (max-width: 900px) {
-  .complexes-grid {
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
-  }
-}
-
-@media (max-width: 550px) {
-  .complexes-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-.complex-card {
-  background: rgba(6, 18, 42, 0.76) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 24px !important;
-  overflow: hidden !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5) !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.complex-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: rgba(182, 255, 0, 0.5) !important;
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7), 0 0 35px rgba(182, 255, 0, 0.22) !important;
-}
-
-.complex-card-media {
-  position: relative !important;
-  width: 100% !important;
-  height: 320px !important;
-  overflow: hidden !important;
-}
-
-@media (max-width: 600px) {
-  .complex-card-media {
-    height: 240px !important;
-  }
-}
-
-.complex-card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.complex-card:hover .complex-card-img {
-  transform: scale(1.06) !important;
-}
-
-.complex-card-badge {
-  position: absolute !important;
-  top: 1.1rem !important;
-  left: 1.1rem !important;
-  right: auto !important;
-  background: rgba(2, 6, 18, 0.85) !important;
-  backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  color: #b6ff00 !important;
-  font-size: 0.82rem !important;
-  font-weight: 700 !important;
-  padding: 0.35rem 0.95rem !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
-}
-
-.complex-card-body {
-  padding: 1.6rem 1.8rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1.1rem !important;
-  flex-grow: 1 !important;
-}
-
-.complex-name {
-  color: #ffffff !important;
-  font-size: 1.3rem !important;
-  font-weight: 800 !important;
-  margin: 0 0 0.35rem 0 !important;
-}
-
-.complex-location {
-  color: #94a3b8 !important;
-  font-size: 0.92rem !important;
-  margin: 0 !important;
-}
-
-
-
-/* ==========================================================================
-   REDESIGNED 3-COLUMN ULTRA-GLASSMORPHISM COMPLEX CARDS STYLING
-   ========================================================================== */
-.complexes-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 2rem !important;
-  margin-top: 3rem !important;
-  width: 100% !important;
-}
-
-@media (max-width: 1024px) {
-  .complexes-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .complexes-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-}
-
-.complex-card {
-  background: rgba(6, 18, 42, 0.55) !important;
-  backdrop-filter: blur(32px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-radius: 24px !important;
-  overflow: hidden !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.complex-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: rgba(182, 255, 0, 0.5) !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(182, 255, 0, 0.25) !important;
-}
-
-.complex-card-media {
-  position: relative !important;
-  width: 100% !important;
-  height: 220px !important;
-  overflow: hidden !important;
-}
-
-.complex-card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.complex-card:hover .complex-card-img {
-  transform: scale(1.08) !important;
-}
-
-/* Location Badge Positioned at TOP RIGHT (بالا سمت راست) */
-.complex-card-badge {
-  position: absolute !important;
-  top: 1rem !important;
-  right: 1rem !important;
-  left: auto !important;
-  background: rgba(2, 6, 18, 0.85) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  color: #b6ff00 !important;
-  font-size: 0.8rem !important;
-  font-weight: 700 !important;
-  padding: 0.35rem 0.9rem !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(182, 255, 0, 0.2) !important;
-  z-index: 10 !important;
-}
-
-.complex-card-body {
-  padding: 1.5rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1rem !important;
-  flex-grow: 1 !important;
-  justify-content: space-between !important;
-}
-
-.complex-name {
-  color: #ffffff !important;
-  font-size: 1.25rem !important;
-  font-weight: 800 !important;
-  margin: 0 0 0.25rem 0 !important;
-}
-
-.complex-location {
-  color: #94a3b8 !important;
-  font-size: 0.88rem !important;
-  margin: 0 !important;
-}
-
-.complex-desc {
-  color: #cbd5e1 !important;
-  font-size: 0.88rem !important;
-  line-height: 1.75 !important;
-  margin: 0 !important;
-  text-align: justify !important;
-}
-
-.complex-features {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.6rem !important;
-}
-
-.court-pill {
-  font-size: 0.8rem !important;
-  font-weight: 700 !important;
-  padding: 0.4rem 0.85rem !important;
-  border-radius: 10px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  backdrop-filter: blur(10px) !important;
-}
-
-.padel-pill {
-  background: rgba(182, 255, 0, 0.1) !important;
-  border: 1px solid rgba(182, 255, 0, 0.35) !important;
-  color: #b6ff00 !important;
-}
-
-.tennis-pill {
-  background: rgba(0, 240, 255, 0.1) !important;
-  border: 1px solid rgba(0, 240, 255, 0.35) !important;
-  color: #00f0ff !important;
-}
-
-.complex-card-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.6rem !important;
-  width: 100% !important;
-  padding: 0.75rem 1rem !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(182, 255, 0, 0.35) !important;
-  border-radius: 14px !important;
-  color: #b6ff00 !important;
-  font-weight: 700 !important;
-  font-size: 0.92rem !important;
-  text-decoration: none !important;
-  transition: all 0.25s ease !important;
-  box-sizing: border-box !important;
-  margin-top: 0.5rem !important;
-}
-
-.complex-card-btn:hover {
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: #b6ff00 !important;
-  box-shadow: 0 0 20px rgba(182, 255, 0, 0.3) !important;
-  transform: translateY(-2px) !important;
-}
-
-
-
-/* Merged Neon Location Badge Pill Under Complex Title */
-.complex-card-head {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.45rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-.complex-location-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  background: rgba(182, 255, 0, 0.08) !important;
-  border: 1px solid rgba(182, 255, 0, 0.38) !important;
-  color: #b6ff00 !important;
-  font-size: 0.82rem !important;
-  font-weight: 700 !important;
-  padding: 0.3rem 0.85rem !important;
-  border-radius: 9999px !important;
-  backdrop-filter: blur(10px) !important;
-  box-shadow: 0 0 12px rgba(182, 255, 0, 0.15) !important;
-}
-
-.complex-card-badge {
-  display: none !important;
-}
-
-</style>
+  </style>
 
   
 
@@ -9926,221 +7874,228 @@ section {
   <link rel="apple-touch-icon" href="https://silveriom.ir/assets/apple-touch-icon.png?v=2">
 
   
-  <style id="mobile-portfolio-fixes">
+  <style id="mobile-inventory-fixes">
     /* ==========================================================================
-       MOBILE RESPONSIVE SYSTEM FOR PORTFOLIO BENTO GRID (320px to 768px)
+       MOBILE RESPONSIVE SYSTEM FOR INVENTORY PAGE (320px to 768px)
        ========================================================================== */
 
     @media (max-width: 768px) {
-      /* Reset grid span that breaks layout on mobile */
-      .bento-portfolio-card[style*="grid-column: span 2"] {
-        grid-column: span 1 !important;
-        padding: 24px !important;
+      /* 1. Page & Layout Adjustments */
+      .main-inventory-page {
+        padding-top: 130px !important;
+        padding-bottom: 60px !important;
+        overflow-x: hidden !important;
       }
       
-      /* Make sure the bento grid itself adapts */
-      div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+      .inventory-main-layout {
         display: flex !important;
         flex-direction: column !important;
-        gap: 16px !important;
-      }
-      
-      .bento-portfolio-card {
-        padding: 24px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+        gap: 20px !important;
+        padding: 0 5px !important;
       }
 
-      /* Adjust typography inside bento cards */
-      .bento-portfolio-card h2,
-      .bento-portfolio-card h3 {
+      /* 2. Hero Section Adjustments */
+      .editorial-wide-container > div:first-child > h1 {
+        font-size: 2.2rem !important; 
+        line-height: 1.3 !important;
+      }
+      .editorial-wide-container > div:first-child > p {
+        font-size: 1rem !important;
+        padding: 0 10px !important;
+        line-height: 1.6 !important;
+      }
+      .editorial-wide-container > div:first-child > div:first-child {
+        font-size: 12px !important;
+        padding: 8px 16px !important;
+      }
+
+            /* --- REDESIGNED MOBILE FILTER BAR --- */
+      /* Default Mobile (Collapsed) */
+      .sidebar-filter-card {
+        padding: 10px !important;
+        border-radius: 18px !important; 
+        width: 100% !important; 
+        margin-bottom: 24px !important;
+        position: static !important;
+        transition: all 0.3s ease;
+      }
+      .sidebar-filter-card .desktop-only-header { display: none !important; }
+      .sidebar-filter-card #mobileFilterWrapper { display: none !important; }
+      .sidebar-filter-card .search-and-toggle-container { margin-bottom: 0 !important; }
+      
+      /* Expanded Mobile */
+      .sidebar-filter-card.expanded {
+        padding: 22px !important;
+        border-radius: 24px !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
+      }
+      .sidebar-filter-card.expanded .desktop-only-header {
+        display: flex !important;
+        margin-bottom: 20px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+        padding-bottom: 20px !important;
+      }
+      .sidebar-filter-card.expanded .desktop-only-header h3 {
+        line-height: 1.4;
+        max-width: 140px;
+      }
+      .sidebar-filter-card.expanded .desktop-only-header span {
+        text-align: center;
+        line-height: 1.4;
+      }
+      .sidebar-filter-card.expanded #mobileFilterWrapper {
+        display: block !important;
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid rgba(255,255,255,0.08) !important;
+        animation: fadeInDown 0.3s ease;
+      }
+      .sidebar-filter-card.expanded .search-and-toggle-container {
+        margin-bottom: 0 !important;
+      }
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* 3. Sidebar Filter Area */
+      .sidebar-filter-card {
+        padding: 16px !important;
+        border-radius: 20px !important;
+        margin-bottom: 20px !important;
+      }
+      .sidebar-filter-card > div:first-child span#activeCountBadge {
+        font-size: 10px !important;
+      }
+
+      /* 4. Search and Filter Controls */
+      .sidebar-filter-card input[type="text"] {
+        font-size: 13px !important;
+        padding: 10px 14px 10px 35px !important;
+      }
+      
+      .filter-checkbox-group {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+
+      /* 5. Product Grid (Media Cards) */
+      .product-catalog-area > div:first-child h2 {
+        font-size: 1.2rem !important;
+        line-height: 1.4 !important;
+        text-align: right !important;
+      }
+      .product-catalog-area > div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      
+      #productGrid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; 
+        gap: 20px !important;
+      }
+
+      /* 6. Media Cards Internal Padding */
+      .product-asset-card {
+        padding: 16px !important;
+        border-radius: 20px !important;
+      }
+      
+      .product-asset-card > div:first-child {
+        height: 180px !important; /* Slightly smaller image on mobile */
+      }
+      
+      .product-asset-card h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+      }
+
+      /* Ensure features/badges flow nicely */
+      .product-asset-card .specs-grid,
+      .product-asset-card > div[style*="display: grid; grid-template-columns: 1fr 1fr"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        margin-bottom: 16px !important;
+      }
+      
+      /* Make sure stats inside grid fit */
+      .product-asset-card > div[style*="display: grid"] > div {
+        padding: 8px !important;
+      }
+      .product-asset-card > div[style*="display: grid"] > div span:last-child {
+        font-size: 12px !important;
+      }
+      
+      /* Price row */
+      .product-asset-card > div[style*="justify-content: space-between"] {
+        flex-direction: column !important;
+        gap: 16px !important;
+        align-items: flex-start !important;
+      }
+      
+      .product-asset-card button {
+        width: 100% !important;
+        padding: 12px 14px !important;
+        font-size: 0.95rem !important;
+        justify-content: center !important;
+      }
+
+      /* 8. Reservation Modal */
+      #bookModal .glass-card {
+        padding: 24px 16px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        border-radius: 20px !important;
+        width: 95% !important;
+        max-width: 400px !important;
+      }
+      
+      #bookModal h3 {
         font-size: 1.3rem !important;
       }
       
-      .bento-portfolio-card p {
+      #bookModal p {
+        font-size: 0.85rem !important;
+      }
+      
+      #bookModal .form-input, 
+      #bookModal select {
+        padding: 12px !important;
         font-size: 0.9rem !important;
-        line-height: 1.6 !important;
       }
       
-      .bento-portfolio-card div[style*="font-size: 3.2rem"] {
-        font-size: 2.2rem !important;
+      #bookModal .form-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 12px !important;
       }
       
-      .bento-portfolio-card div[style*="font-size: 4rem"] {
-        font-size: 2.5rem !important;
-      }
-      
-      
-      
-      /* --- CASE STUDY CARDS (Campaign Displays) FIXES --- */
-      /* Fix massive padding pushing everything out */
-      .case-study-card {
-        padding: 24px !important;
-        border-radius: 24px !important;
-      }
-      
-      /* Fix the minmax(320px) which breaks 320px/375px screens */
-      .case-study-card > div[style*="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))"] {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 24px !important;
-      }
-      
-      /* Fix the height of the image wrapper */
-      .case-study-card > div > div[style*="height: 360px"] {
-        height: 220px !important;
-      }
-      
-      /* Fix titles */
-      .case-study-card h3 {
-        font-size: 1.4rem !important;
-        margin-bottom: 12px !important;
-      }
-      
-      /* Fix overlapping absolute tags inside image */
-      .case-study-card > div > div > div[style*="top: 16px; right: 16px"] {
-        flex-direction: column !important;
-        gap: 6px !important;
-        top: 12px !important;
+      /* Fix the LTR icons placed absolute in inputs (search icon) */
+      .sidebar-filter-card div[style*="position: relative"] i[data-lucide="search"] {
         right: 12px !important;
-        align-items: flex-end !important;
+        left: auto !important;
       }
-      
-      /* Fix bottom absolute tags */
-      .case-study-card > div > div > div[style*="bottom: 20px; right: 20px"] {
-        bottom: 12px !important;
-        right: 12px !important;
-        left: 12px !important;
-      }
-      .case-study-card > div > div > div[style*="font-size: 16px"] {
-        font-size: 13px !important;
-        line-height: 1.4 !important;
+      .sidebar-filter-card input[type="text"] {
+        padding-right: 35px !important;
+        padding-left: 14px !important;
       }
 
-      
-      
-      /* Scroll hint arrow for ticker */
-      .live-ticker-container::after {
-        content: '← بکشید';
-        position: sticky;
-        left: 0;
-        background: linear-gradient(to right, rgba(11, 19, 38, 1) 30%, rgba(11, 19, 38, 0));
-        padding-right: 25px;
-        padding-left: 5px;
-        color: #CCFF00;
-        font-weight: 800;
-        font-size: 10px;
-        display: flex;
-        align-items: center;
-        animation: pulseArrow 1.5s infinite;
-        pointer-events: none;
+/* Restored top bar for consistency */
+      #hero.hero-section {
+        padding-top: 100px !important;
       }
-      @keyframes pulseArrow {
-        0% { transform: translateX(0); opacity: 0.5; }
-        50% { transform: translateX(-4px); opacity: 1; }
-        100% { transform: translateX(0); opacity: 0.5; }
+    }
+    
+    @media (max-width: 375px) {
+      .product-asset-card h3 {
+        font-size: 1rem !important;
       }
-
-      /* --- HERO SECTION MOBILE FIXES --- */
-      /* Reduce top spacing */
-      .main-portfolio-page {
-        padding-top: 110px !important;
-      }
-      
-      /* Green Badge at the top */
-      .editorial-wide-container > div:first-child > div:first-child {
-        padding: 6px 12px !important;
-        font-size: 11px !important;
-        white-space: nowrap !important;
-        margin-bottom: 20px !important;
-      }
-      
-      /* Main Title */
       .editorial-wide-container > div:first-child > h1 {
-        font-size: 2rem !important;
-        line-height: 1.35 !important;
-        margin-bottom: 16px !important;
-        padding: 0 10px !important;
-      }
-      
-      /* Subtitle */
-      .editorial-wide-container > div:first-child > p {
-        font-size: 0.95rem !important;
-        line-height: 1.7 !important;
-        padding: 0 16px !important;
-      }
-      
-      /* Bottom Ticker (Live campaigns) */
-      .editorial-wide-container > div:first-child > div:last-child {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-        padding: 12px 16px !important;
-        margin: 24px 16px 0 16px !important;
-        justify-content: flex-start !important;
-        -webkit-overflow-scrolling: touch;
-        border-radius: 20px !important;
-      }
-      /* Hide scrollbar for ticker */
-      .editorial-wide-container > div:first-child > div:last-child::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* --- BRAND RECALL CARD FIXES --- */
-      /* Fix the overflowing 3.8rem number */
-      .bento-portfolio-card div[style*="font-size: 3.8rem"] {
-        font-size: 2.2rem !important;
-        white-space: nowrap !important;
-      }
-      
-      /* Fix the overflowing flex containers in Brand Recall */
-      .bento-portfolio-card > div > div[style*="display: flex; justify-content: space-between; align-items: center"] {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 12px !important;
-      }
-      
-      .bento-portfolio-card > div > div[style*="align-items: baseline"] {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 4px !important;
-      }
-
-      /* Allow the long badge text to wrap if necessary */
-      .bento-portfolio-card span[style*="padding: 6px 16px"] {
-        white-space: normal !important;
-        text-align: right !important;
-        line-height: 1.5 !important;
-        font-size: 11px !important;
-      }
-      
-      /* Make sure the main grid doesn't overflow */
-      .bento-portfolio-card {
-        max-width: 100vw !important;
-        overflow: hidden !important;
-      }
-
-      /* Internal small grids in Bento Cards */
-      div[style*="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))"] {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-      }
-
-      /* Featured Sections Grids (e.g., 3-column stats) */
-      div[style*="grid-template-columns: repeat(3, 1fr)"] {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-      }
-      
-      /* Hero Layout Adjustment */
-      .editorial-container > div[style*="background: rgba(4, 8, 20, 0.8)"] {
-        padding: 24px !important;
-      }
-      .editorial-container > div[style*="background: rgba(4, 8, 20, 0.8)"] h2 {
-        font-size: 1.4rem !important;
-        line-height: 1.4 !important;
+        font-size: 2rem !important; 
       }
     }
   </style>
@@ -10419,6 +8374,64 @@ section {
   color: #CCFF00;
 }
 </style>
+
+<style id="liquid-glass-reserve-btn">
+/* iOS/VisionOS Liquid Glass Design for Reserve Buttons */
+.reserve-trigger-btn {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(204, 255, 0, 0.25) 0%, rgba(204, 255, 0, 0.05) 100%) !important;
+    backdrop-filter: blur(40px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+    border: 1px solid rgba(204, 255, 0, 0.4) !important;
+    border-top: 1px solid rgba(204, 255, 0, 0.6) !important; /* Top highlight for liquid volume */
+    border-radius: 20px !important;
+    padding: 16px !important;
+    color: #CCFF00 !important;
+    font-weight: 900 !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15), /* Inner top highlight */
+        inset 0 -2px 10px rgba(204, 255, 0, 0.1) !important; /* Inner bottom glow */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.reserve-trigger-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+}
+
+.reserve-trigger-btn:hover {
+    background: linear-gradient(135deg, rgba(204, 255, 0, 0.35) 0%, rgba(204, 255, 0, 0.15) 100%) !important;
+    border-color: rgba(204, 255, 0, 0.8) !important;
+    box-shadow: 
+        0 12px 40px 0 rgba(204, 255, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 10px rgba(204, 255, 0, 0.2) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+}
+
+.reserve-trigger-btn:hover::before {
+    left: 200%;
+}
+
+.reserve-trigger-btn:active {
+    transform: translateY(1px) scale(0.98) !important;
+}
+</style>
+
 
 
 
@@ -11309,7 +9322,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <div class="content-wrapper">
       <div class="video-container">
         <video autoplay loop muted playsinline preload="auto">
-          <source src="../loading_video.mp4" type="video/mp4">
+          <source src="../../loading_video.mp4" type="video/mp4">
         </video>
       </div>
       
@@ -11878,613 +9891,703 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     </div>
   </div>
 
-<main class="main-portfolio-page" style="position: relative; z-index: 10; padding-top: 210px; padding-bottom: 120px;">
+<main class="main-inventory-page" style="position: relative; z-index: 10; padding-top: 200px; padding-bottom: 120px;">
   <div class="editorial-wide-container">
     
-    <!-- 1. HERO MANIFESTO BANNER -->
-    <div style="text-align: center; margin-bottom: 65px; margin-top: 20px;">
-      <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(204, 255, 0, 0.1); border: 1px solid rgba(204, 255, 0, 0.35); padding: 10px 24px; border-radius: 50px; color: #CCFF00; font-size: 14px; font-weight: 700; margin-bottom: 30px; box-shadow: 0 0 25px rgba(204, 255, 0, 0.2);">
-        <span style="width: 10px; height: 10px; background: #CCFF00; border-radius: 50%; display: inline-block; box-shadow: 0 0 12px #CCFF00;"></span>
-        <span>🎾 ویترین اکران کمپین‌های انحصاری سیلوریوم در سال ۲۰۲۶</span>
+    <!-- HERO MANIFESTO BANNER -->
+    <div style="text-align: center; margin-bottom: 45px; margin-top: 10px;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(204, 255, 0, 0.12); border: 1px solid rgba(204, 255, 0, 0.4); padding: 10px 28px; border-radius: 50px; color: #CCFF00; font-size: 14px; font-weight: 800; margin-bottom: 20px; box-shadow: 0 0 30px rgba(204, 255, 0, 0.25);">
+        <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+        <span>مرجع تخصصی و بانک جامع سازه‌های تبلیغات ورزشی کشور</span>
       </div>
       
-      <h1 style="font-size: 3.5rem; font-weight: 900; color: #ffffff; margin-bottom: 24px; line-height: 1.2; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);">
-        بازنویسی داستان برندها در <br><span style="color: #CCFF00; text-shadow: 0 0 35px rgba(204, 255, 0, 0.65);">کانون دیده‌شدن نخبگان و جامعه ورزشی</span>
+      <h1 style="font-size: 3.4rem; font-weight: 900; color: #ffffff; margin-bottom: 16px; line-height: 1.2; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);">
+        سبد رسانه‌های انحصاری <br><span style="color: #CCFF00; text-shadow: 0 0 35px rgba(204, 255, 0, 0.65);">سیلوریوم در ۵ ورزشگاه کشور</span>
       </h1>
-      <p style="max-width: 880px; margin: 0 auto; color: #F1F5F9; font-size: 1.2rem; line-height: 1.9; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.8);">
-        تحلیل جامع اکران، اندازه‌گیری نرخ بازخوانی (Brand Recall)، خیرگی چشمی مخاطب و شبیه‌سازی سه بعدی سازه‌ها در برترین مجتمع‌های ورزشی تنیس و پدل کشور.
+      <p style="max-width: 900px; margin: 0 auto; color: #F1F5F9; font-size: 1.2rem; line-height: 1.9; font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,0.8);">
+        بررسی، فیلتر هوشمند بر برحسب بودجه، زمان اکران و رزرو انحصاری آنلاین رسانه‌های تبلیغاتی پدل و تنیس.
       </p>
-
-      <!-- Live Floating Ticker Badge with Requested Brands -->
-      <div class="live-ticker-container" style="position: relative; display: inline-flex; align-items: center; gap: 14px; margin-top: 36px; background: rgba(11, 19, 38, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); padding: 12px 28px; border-radius: 40px; font-size: 13px; color: #E2E8F0;">
-        <span style="color: #CCFF00; font-weight: 800;">🟢 هم‌اکنون در حال اکران:</span>
-        <span>سان‌ استار (T10 آجودانیه)</span>
-        <span style="color: rgba(255,255,255,0.2);">|</span>
-        <span>ماموت خودرو (Arena آزادی)</span>
-        <span style="color: rgba(255,255,255,0.2);">|</span>
-        <span>بلو بانک (Netra لواسان)</span>
-        <span style="color: rgba(255,255,255,0.2);">|</span>
-        <span>صرافی والکس (شهرک غرب)</span>
-      </div>
     </div>
 
-    <!-- 2. HIGHLY CREATIVE BENTO GRID ANALYTICS DASHBOARD -->
-    <div style="margin-bottom: 100px;">
-      <div style="text-align: center; margin-bottom: 45px;">
-        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">📊 داشبورد تحلیلی و بازدهی کمپین‌ها</span>
-        <h2 style="font-size: 2.3rem; font-weight: 900; color: #ffffff;">شاخص‌های کلیدی اثرگذاری <span style="color: #CCFF00;">سیلوریوم</span></h2>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+    <!-- MAIN TWO-COLUMN LAYOUT: RIGHT SIDEBAR FILTER + LEFT PRODUCT GRID -->
+    <div class="inventory-main-layout">
+      
+      <!-- 1. RIGHT SIDEBAR FILTER PANEL -->
+      <aside class="sidebar-filter-card" style="border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(10, 15, 28, 0.9) !important; border-radius: 24px !important; padding: 22px !important;">
         
-        <!-- Bento Card 1 (Featured Card: Brand Recall & Impression Wave Chart) -->
-        <div class="bento-portfolio-card" style="grid-column: span 2; padding: 40px; border-radius: 32px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.92), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(24px); border: 1px solid rgba(204, 255, 0, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-              <span style="background: rgba(204, 255, 0, 0.15); border: 1px solid rgba(204, 255, 0, 0.4); color: #CCFF00; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px;">
-                <span style="width: 8px; height: 8px; background: #CCFF00; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #CCFF00;"></span>
-                نرخ بازخوانی و اثرگذاری ماندگار برند (Brand Recall)
+        <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px;">
+          <h3 style="color: #CCFF00; font-weight: 900; font-size: 15px; margin: 0; font-family: 'YekanBakh', sans-serif;">فیلتر هوشمند رسانه‌ها</h3>
+          <span id="activeCountBadge" style="background: rgba(45, 74, 34, 0.6); color: #B6FF00; font-size: 11.5px; font-weight: 800; padding: 5px 12px; border-radius: 20px;">
+            ۱۲ سازه فعال
+          </span>
+        </div>
+
+        <div class="search-and-toggle-container" style="display: flex; gap: 10px; margin-bottom: 25px;">
+          <button id="mobileFilterToggleBtn" class="mobile-filter-btn" onclick="document.querySelector('.sidebar-filter-card').classList.toggle('expanded')" style="background: #CCFF00; color: #020612; border: none; border-radius: 12px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 900; font-size: 14px; padding: 0 15px; width: 35%; cursor: pointer; font-family: 'YekanBakh', sans-serif;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M7 12h10M10 18h4"/>
+            </svg>
+            <span style="padding-top: 2px;">فیلترها</span>
+          </button>
+          
+          <div style="flex: 1; background: #070B14; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; display: flex; align-items: center; padding: 0 12px; height: 44px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="sidebarSearchInput" onkeyup="filterAssets()" placeholder="جستجوی کد یا نام..." style="width: 100%; height: 100%; background: transparent; border: none; color: #ffffff; padding: 0 12px 0 0; font-size: 13.5px; outline: none; font-family: 'YekanBakh', sans-serif;">
+          </div>
+        </div>
+
+        <div id="mobileFilterWrapper" class="desktop-always-visible">
+          <!-- Venues -->
+          <div style="margin-bottom: 25px;">
+            <div style="color: #fff; font-size: 15px; font-weight: 800; padding: 0 0 18px 0; text-align: right; cursor: default;">
+              <span>انتخاب ورزشگاه‌ها</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input venue-cb" value="ajudaniyeh" checked onchange="filterAssets()">
+                <span class="cb-text">🎾 T10 آجودانیه (تهران)</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input venue-cb" value="azadi" checked onchange="filterAssets()">
+                <span class="cb-text">🏆 Arena آزادی (تهران)</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input venue-cb" value="shahrak" checked onchange="filterAssets()">
+                <span class="cb-text">💎 Iran Zamin شهرک غرب</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input venue-cb" value="lavasan" checked onchange="filterAssets()">
+                <span class="cb-text">✨ Netra لواسان</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input venue-cb" value="sari" checked onchange="filterAssets()">
+                <span class="cb-text">🌊 Asayesh ساری (مازندران)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Media Format -->
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; margin-bottom: 0;">
+            <div style="color: #fff; font-size: 15px; font-weight: 800; padding: 0 0 18px 0; text-align: right; cursor: default;">
+              <span>فرمت سازه تبلیغاتی</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input media-cb" value="glass" checked onchange="filterAssets()">
+                <span class="cb-text">🪟 دیواره شیشه‌ای پانورامیک</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input media-cb" value="led" checked onchange="filterAssets()">
+                <span class="cb-text">📺 استند ۴K LED دیجیتال</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input media-cb" value="tournament" checked onchange="filterAssets()">
+                <span class="cb-text">🏅 نوار تور و استیج مسابقه</span>
+              </label>
+              <label class="custom-checkbox-label">
+                <input type="checkbox" class="custom-checkbox-input media-cb" value="vip" checked onchange="filterAssets()">
+                <span class="cb-text">🍸 VIP لانژ و سمپلینگ</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="resetSidebarFilters()" style="margin-top: 30px; width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; height: 48px; border-radius: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; text-align: center; font-family: 'YekanBakh', sans-serif; transition: all 0.2s ease;">
+            بازنشانی فیلترها
+          </button>
+        </div>
+      </aside>
+
+      <!-- 2. LEFT PRODUCT CATALOG AREA (DENSE PRODUCT GRID - 15 MEDIA CARDS) -->
+      <div class="product-catalog-area">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
+          <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin: 0;">کاتالوگ آنلاین سازه‌ها و رسانه‌های سیلوریوم</h2>
+          <span style="color: #94A3B8; font-size: 13px;">نمایش فعال کلیه فضاهای اکران</span>
+        </div>
+
+        <div id="productGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px;">
+          
+          <!-- Card 1: SIL-AJ-01 -->
+          <div class="glass-card product-asset-card" data-venue="ajudaniyeh" data-media="glass" data-price="120" data-title="دیواره شیشه‌ای پانورامیک k-glass کورت ۱ آجودانیه SIL-AJ-01" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_map_ajudaniyeh.jpg" alt="T10 Ajudaniyeh Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AJ-01
               </span>
-              <span style="color: #94A3B8; font-size: 13px; font-weight: 700;">ارزیابی میدانی</span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
             </div>
 
-            <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px;">
-              <div style="font-size: 3.8rem; font-weight: 900; color: #CCFF00; line-height: 1; text-shadow: 0 0 30px rgba(204,255,0,0.5);">۲,۵۰۰,۰۰۰+</div>
-              <span style="color: #ffffff; font-size: 1.3rem; font-weight: 800;">نمایش موفق ماهانه</span>
-            </div>
+            <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 آجودانیه (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای پانورامیک کورت ۱</h3>
             
-            <p style="color: #CBD5E1; font-size: 1rem; line-height: 1.8; max-width: 600px;">
-              تحلیل بازخورد اکران برندهایی مانند سان‌استار، ماموت خودرو، بلوبانک، کریستال و والکس نشان‌دهنده ثبت ماندگار پیام در ذهن مخاطبان به دلیل حضور بدون حواس‌پرتی است.
-            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۲۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۲m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۲M+</strong></div>
+              <div>⚡ جنس: <strong>UV Glass</strong></div>
+              <div>👥 مخاطب: <strong>HNWIs</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AJ-01', 'دیواره شیشه‌ای کورت ۱ T10 آجودانیه', 120)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
 
-          <!-- Sub-metrics Row -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 24px; margin-bottom: 20px;">
-            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 14px; color: #ffffff; font-size: 13px; font-weight: 700;">
-              👥 ٪۹۲ دیده‌شدن توسط مدیران
+          <!-- Card 2: SIL-AJ-02 -->
+          <div class="glass-card product-asset-card" data-venue="ajudaniyeh" data-media="led" data-price="135" data-title="استند هوشمند ۴K LED ورودی آجودانیه SIL-AJ-02" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" alt="Ajudaniyeh LED Stand" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AJ-02
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
             </div>
-            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 14px; color: #ffffff; font-size: 13px; font-weight: 700;">
-              ⏱️ ۲.۵ ساعت زمان ماندگاری
+
+            <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 آجودانیه (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استند هوشمند ۴K LED ورودی لابی</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۳۵ میلیون تومان</span>
             </div>
-            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 14px; color: #ffffff; font-size: 13px; font-weight: 700;">
-              📈 ۳.۸x اثرگذاری بیشتر
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۷۵ اینچ ۴K</strong></div>
+              <div>👁️ بازدید: <strong>۱.۳۵M+</strong></div>
+              <div>⏱️ زمان: <strong>تیزر ۱۵ ثانیه</strong></div>
+              <div>⚡ موقعیت: <strong>لابی اصلی</strong></div>
             </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AJ-02', 'استند ۴K LED ورودی آجودانیه', 135)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
 
-          <!-- SVG Wave Chart Graphic -->
-          <div style="position: relative;">
-            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94A3B8; margin-bottom: 8px; font-weight: 700;">
-              <span>منحنی رشد یادآوری برند در طول دوره اکران</span>
-              <span style="color: #CCFF00;">↑ ٪۴۵ رشد پیوسته</span>
+          <!-- Card 3: SIL-AJ-03 -->
+          <div class="glass-card product-asset-card" data-venue="ajudaniyeh" data-media="vip" data-price="95" data-title="لایت‌باکس پرستیژ VIP لانژ آجودانیه SIL-AJ-03" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ajudaniyeh VIP Lounge Lightbox" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AJ-03
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(245, 158, 11, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                رزرو محدود
+              </span>
             </div>
-            <svg viewBox="0 0 500 80" style="width: 100%; height: 80px;">
-              <defs>
-                <linearGradient id="portGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.4"/>
-                  <stop offset="100%" stop-color="#CCFF00" stop-opacity="0.0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0,70 Q100,50 200,30 T400,20 T500,5 L500,80 L0,80 Z" fill="url(#portGrad)" />
-              <path d="M0,70 Q100,50 200,30 T400,20 T500,5" fill="none" stroke="#CCFF00" stroke-width="3.5" stroke-linecap="round"/>
-              <circle cx="500" cy="5" r="5" fill="#CCFF00" style="filter: drop-shadow(0 0 8px #CCFF00);" />
-            </svg>
-          </div>
-        </div>
 
-        <!-- Bento Card 2 (Network Location Map Node Graphic) -->
-        <div class="bento-portfolio-card" style="padding: 32px 26px; border-radius: 32px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <div style="width: 44px; height: 44px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #10B981; font-size: 20px;">
-                📍
-              </div>
-              <span style="color: #10B981; font-size: 12px; font-weight: 800; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 10px;">شبکه جغرافیایی</span>
+            <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 آجودانیه (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">لایت‌باکس پرستیژ VIP لانژ</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۹۵ میلیون تومان</span>
             </div>
-            <div style="font-size: 3.2rem; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 8px;">۱۰+</div>
-            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">مجموعه ورزشی انحصاری</h3>
-            <p style="color: #94A3B8; font-size: 13px; line-height: 1.6;">
-              پوشش کامل کورت‌های برتر تهران (آجودانیه، آزادی، شهرک غرب، لواسان) و مازندران (ساری).
-            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۳m × ۲m</strong></div>
+              <div>👁️ بازدید: <strong>۹۵۰K+</strong></div>
+              <div>💡 نور: <strong>LED Edge-Lit</strong></div>
+              <div>⚡ موقعیت: <strong>VIP لانژ</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AJ-03', 'لایت‌باکس VIP لانژ آجودانیه', 95)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
 
-          <!-- Network Location Node Chart -->
-          <div style="margin-top: 20px;">
-            <svg viewBox="0 0 200 50" style="width: 100%; height: 50px;">
-              <line x1="20" y1="25" x2="60" y2="15" stroke="rgba(16,185,129,0.3)" stroke-width="2" stroke-dasharray="4"/>
-              <line x1="60" y1="15" x2="100" y2="35" stroke="rgba(16,185,129,0.3)" stroke-width="2" stroke-dasharray="4"/>
-              <line x1="100" y1="35" x2="140" y2="20" stroke="rgba(16,185,129,0.3)" stroke-width="2" stroke-dasharray="4"/>
-              <line x1="140" y1="20" x2="180" y2="30" stroke="rgba(16,185,129,0.3)" stroke-width="2" stroke-dasharray="4"/>
-              
-              <circle cx="20" cy="25" r="5" fill="#10B981"/>
-              <circle cx="60" cy="15" r="6" fill="#10B981" style="filter: drop-shadow(0 0 6px #10B981);"/>
-              <circle cx="100" cy="35" r="5" fill="#10B981"/>
-              <circle cx="140" cy="20" r="7" fill="#10B981" style="filter: drop-shadow(0 0 8px #10B981);"/>
-              <circle cx="180" cy="30" r="5" fill="#10B981"/>
-            </svg>
-            <div style="display: flex; justify-content: space-between; font-size: 10px; color: #10B981; font-weight: 700; margin-top: 4px;">
-              <span>آجودانیه</span>
-              <span>آزادی</span>
-              <span>شهرک غرب</span>
-              <span>لواسان</span>
-              <span>ساری</span>
+          <!-- Card 4: SIL-AZ-01 -->
+          <div class="glass-card product-asset-card" data-venue="azadi" data-media="glass" data-price="180" data-title="دیواره شیشه‌ای سنتر کورت آزادی SIL-AZ-01" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_map_azadi.jpg" alt="Azadi Center Court Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AZ-01
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
             </div>
-          </div>
-        </div>
 
-        <!-- Bento Card 3 (Digital LED Screens & Pulse Graphic) -->
-        <div class="bento-portfolio-card" style="padding: 32px 26px; border-radius: 32px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <div style="width: 44px; height: 44px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #3B82F6; font-size: 20px;">
-                📺
-              </div>
-              <span style="color: #3B82F6; font-size: 12px; font-weight: 800; background: rgba(59, 130, 246, 0.1); padding: 4px 10px; border-radius: 10px;">استندهای LED</span>
+            <div style="color: #10B981; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Arena آزادی (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای سنتر کورت فینال</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۸۰ میلیون تومان</span>
             </div>
-            <div style="font-size: 3.2rem; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 8px;">۴K</div>
-            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">کیفیت اکران ویدئویی دیجیتال</h3>
-            <p style="color: #94A3B8; font-size: 13px; line-height: 1.6;">
-              شبکه استندهای هوشمند دیجیتال با امکان تغییر آنلاین ویدئوها و سناریوها.
-            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۴m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۸M+</strong></div>
+              <div>⚡ پوشش: <strong>رسانه‌ای</strong></div>
+              <div>👥 مخاطب: <strong>ملی</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AZ-01', 'دیواره شیشه‌ای سنتر کورت آزادی', 180)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
 
-          <div style="margin-top: 16px; display: flex; align-items: center; justify-content: space-between;">
-            <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
-              <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(59,130,246,0.3)" stroke-width="2"/>
-              <circle cx="20" cy="20" r="8" fill="#3B82F6"/>
-            </svg>
-            <div style="font-size: 11px; color: #3B82F6; font-weight: 700;">
-              زمان‌بندی پویا ➔ تحلیل خروجی
+          <!-- Card 5: SIL-AZ-02 -->
+          <div class="glass-card product-asset-card" data-venue="azadi" data-media="tournament" data-price="165" data-title="برندینگ تور و استیج مسابقات آزادی SIL-AZ-02" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_mammut_court.jpg" alt="Azadi Net & Stage Branding" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AZ-02
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
             </div>
-          </div>
-        </div>
 
-        <!-- Bento Card 4 (Engagement Ratio & Sparkline Graphic) -->
-        <div class="bento-portfolio-card" style="padding: 32px 26px; border-radius: 32px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <div style="width: 44px; height: 44px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #A855F7; font-size: 20px;">
-                🎯
-              </div>
-              <span style="color: #A855F7; font-size: 12px; font-weight: 800; background: rgba(168, 85, 247, 0.1); padding: 4px 10px; border-radius: 10px;">Engagement</span>
+            <div style="color: #10B981; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Arena آزادی (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">برندینگ تور و استیج اهداء جوایز</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۶۵ میلیون تومان</span>
             </div>
-            <div style="font-size: 3.2rem; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 8px;">۳.۵x</div>
-            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">تعامل و خیرگی چشمی مخاطب</h3>
-            <p style="color: #94A3B8; font-size: 13px; line-height: 1.6;">
-              نرخ درگیری ذهنی مخاطب (Eye-Contact Duration) بیش از ۳ برابر تبلیغات سنتی.
-            </p>
-          </div>
 
-          <div style="margin-top: 16px;">
-            <svg viewBox="0 0 120 30" style="width: 100%; height: 30px;">
-              <path d="M0,25 L30,18 L60,20 L90,8 L120,2" fill="none" stroke="#A855F7" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Bento Card 5 (360 Consultation Card) -->
-        <div class="bento-portfolio-card" style="padding: 32px 26px; border-radius: 32px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <div style="width: 44px; height: 44px; background: rgba(234, 179, 8, 0.15); border: 1px solid rgba(234, 179, 8, 0.4); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #EAB308; font-size: 20px;">
-                🎯
-              </div>
-              <span style="color: #EAB308; font-size: 12px; font-weight: 800; background: rgba(234, 179, 8, 0.1); padding: 4px 10px; border-radius: 10px;">استراتژی ۳۶۰°</span>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۰m تور</strong></div>
+              <div>👁️ بازدید: <strong>۱.۶۵M+</strong></div>
+              <div>🏆 پوشش: <strong>عکس قهرمانی</strong></div>
+              <div>⚡ موقعیت: <strong>مرکز کورت</strong></div>
             </div>
-            <div style="font-size: 3.2rem; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 8px;">۳۶۰°</div>
-            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">مشاوره و طراحی تخصصی کمپین</h3>
-            <p style="color: #94A3B8; font-size: 13px; line-height: 1.6;">
-              تدوین استراتژی رسانه‌ای، شبیه‌سازی سه بعدی سازه‌ها و اکران هدفمند بر اساس پرسونای مخاطب.
-            </p>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AZ-02', 'برندینگ تور و استیج آزادی', 165)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
 
-          <div style="margin-top: 16px; display: flex; align-items: center; justify-content: space-between;">
-            <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
-              <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(234,179,8,0.2)" stroke-width="2"/>
-              <circle cx="20" cy="20" r="10" fill="none" stroke="rgba(234,179,8,0.4)" stroke-width="2"/>
-              <circle cx="20" cy="20" r="4" fill="#EAB308"/>
-              <line x1="20" y1="4" x2="20" y2="36" stroke="#EAB308" stroke-width="1.5" stroke-dasharray="2"/>
-              <line x1="4" y1="20" x2="36" y2="20" stroke="#EAB308" stroke-width="1.5" stroke-dasharray="2"/>
-            </svg>
-            <div style="font-size: 11px; color: #EAB308; font-weight: 700; text-align: left;">
-              تحلیل نیازمندی ➔ دیزاین ۳بعدی ➔ اکران
+          <!-- Card 6: SIL-SH-01 -->
+          <div class="glass-card product-asset-card" data-venue="shahrak" data-media="glass" data-price="160" data-title="دیواره شیشه‌ای کورت VIP شهرک غرب SIL-SH-01" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_map_shahrak_gharb.jpg" alt="Shahrak Gharb Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-SH-01
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(245, 158, 11, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                رزرو محدود
+              </span>
             </div>
+
+            <div style="color: #3B82F6; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Iran Zamin شهرک غرب</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای کورت مرکزی VIP</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۶۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۰m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۶M+</strong></div>
+              <div>⚡ موقعیت: <strong>کافه تراس</strong></div>
+              <div>👥 مخاطب: <strong>غرب تهران</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-SH-01', 'دیواره شیشه‌ای کورت VIP شهرک غرب', 160)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
           </div>
+
+          <!-- Card 7: SIL-SH-02 -->
+          <div class="glass-card product-asset-card" data-venue="shahrak" data-media="led" data-price="140" data-title="استند ۴K LED شهرک غرب SIL-SH-02" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" alt="Shahrak Gharb LED Stand" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-SH-02
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #3B82F6; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Iran Zamin شهرک غرب</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استند دیجیتال ۴K ورودی مجموعه</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۴۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 کیفیت: <strong>۸۵ اینچ 4K</strong></div>
+              <div>👁️ بازدید: <strong>۱.۴M+</strong></div>
+              <div>⚡ چرخش: <strong>ویدیو ۱۵ ثانیه</strong></div>
+              <div>👥 مخاطب: <strong>کافه مراجعین</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-SH-02', 'استند ۴K LED شهرک غرب', 140)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
+          <!-- Card 8: SIL-LV-01 -->
+          <div class="glass-card product-asset-card" data-venue="lavasan" data-media="glass" data-price="110" data-title="دیواره شیشه‌ای پانورامیک لواسان SIL-LV-01" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_map_lavasan.jpg" alt="Netra Lavasan Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-LV-01
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #F59E0B; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Netra لواسان</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای پانورامیک کورت ۱</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۱۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۲m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۱M+</strong></div>
+              <div>⚡ مخاطب: <strong>مالکان لواسان</strong></div>
+              <div>💎 کیفیت: <strong>چاپ UV</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-LV-01', 'دیواره شیشه‌ای کورت ۱ Netra لواسان', 110)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
+          <!-- Card 9: SIL-LV-02 -->
+          <div class="glass-card product-asset-card" data-venue="lavasan" data-media="vip" data-price="85" data-title="VIP لانژ و فضای استراحت لواسان SIL-LV-02" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/banner_lavasan.jpg" alt="Netra Lavasan VIP Lounge" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-LV-02
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #F59E0B; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Netra لواسان</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">سمپلینگ و استند VIP لانژ لواسان</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۸۵ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 نوع: <strong>استند + تست محصول</strong></div>
+              <div>👁️ بازدید: <strong>۸۵۰K+</strong></div>
+              <div>⚡ موقعیت: <strong>VIP لانژ</strong></div>
+              <div>💎 کاربرد: <strong>محصولات لاکچری</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-LV-02', 'سمپلینگ و استند VIP لواسان', 85)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
+          <!-- Card 10: SIL-SR-01 -->
+          <div class="glass-card product-asset-card" data-venue="sari" data-media="glass" data-price="130" data-title="دیواره شیشه‌ای کورت مرکزی ساری SIL-SR-01" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_map_sari.jpg" alt="Asayesh Sari Glass Wall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-SR-01
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #A855F7; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Asayesh ساری (مازندران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای کورت مرکزی</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۳۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۱۲m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۳M+</strong></div>
+              <div>⚡ پوشش: <strong>شمال کشور</strong></div>
+              <div>👥 مخاطب: <strong>گردشگران</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-SR-01', 'دیواره شیشه‌ای کورت مرکزی ساری', 130)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
+          <!-- Card 11: SIL-SR-02 -->
+          <div class="glass-card product-asset-card" data-venue="sari" data-media="tournament" data-price="90" data-title="نوار تور کورت تنیس خاک قرمز ساری SIL-SR-02" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/banner_sari.jpg" alt="Asayesh Sari Tennis Net" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-SR-02
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #A855F7; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 Asayesh ساری (مازندران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">نوار تور کورت تنیس خاک قرمز</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۹۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 طول: <strong>۱۲ متر تور</strong></div>
+              <div>👁️ بازدید: <strong>۱.۱M+</strong></div>
+              <div>⚡ نوع: <strong>چاپ گلدوزی</strong></div>
+              <div>👥 مخاطب: <strong>ورزشکاران تنیس</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-SR-02', 'نوار تور تنیس خاک قرمز ساری', 90)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
+          <!-- Card 12: SIL-AJ-04 -->
+          <div class="glass-card product-asset-card" data-venue="ajudaniyeh" data-media="tournament" data-price="150" data-title="استیج قهرمانی T10 آجودانیه SIL-AJ-04" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
+            <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
+              <img src="https://silveriom.ir/assets/padel_wallex_court.jpg" alt="Ajudaniyeh Stage Branding" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
+                کد: SIL-AJ-04
+              </span>
+              <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
+                موجود جهت اکران
+              </span>
+            </div>
+
+            <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 آجودانیه (تهران)</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استیج اصلی و دیواره قهرمانی</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
+              <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
+              <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۵۰ میلیون تومان</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
+              <div>📐 ابعاد: <strong>۶m × ۳m</strong></div>
+              <div>👁️ بازدید: <strong>۱.۴M+</strong></div>
+              <div>🏆 کاربرد: <strong>عکس اهداء جوایز</strong></div>
+              <div>⚡ موقعیت: <strong>استیج اصلی</strong></div>
+            </div>
+
+            <button class="reserve-trigger-btn" onclick="openReservationModal('SIL-AJ-04', 'استیج اصلی قهرمانی آجودانیه', 150)">
+              <i data-lucide="calendar-plus" style="width: 16px; height: 16px;"></i>
+              <span>رزرو انحصاری رسانه</span>
+            </button>
+          </div>
+
         </div>
 
       </div>
+
     </div>
 
-    <!-- 3. DEEP HIGH-END CASE STUDY CARDS (۵ برند درخواستی کاربر همراه با تصاویر اختصاصی کورت‌ها) -->
-    <div style="margin-bottom: 110px;">
-      <div style="text-align: center; margin-bottom: 60px;">
-        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">📂 کیس استادی پروژه‌های اختصاصی برندها</span>
-        <h2 style="font-size: 2.4rem; font-weight: 900; color: #ffffff; margin-bottom: 14px;">
-          تحلیل و گزارش اکران <span style="color: #CCFF00; text-shadow: 0 0 25px rgba(204,255,0,0.5);">برندهای برتر کشور</span>
-        </h2>
-        <p style="color: #94A3B8; font-size: 1rem; max-width: 600px; margin: 0 auto;">بررسی عمیق چالش‌ها، راهکار انحصاری سیلوریوم و آمار عملکردی کمپین‌های پیشرو</p>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 45px;">
-        
-        <!-- Brand 1: SUNSTAR (سان‌استار) -->
-        <div class="glass-card case-study-card" style="padding: 44px; border-radius: 36px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.9), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(28px); border: 1px solid rgba(204, 255, 0, 0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
-            <div style="position: relative; border-radius: 28px; overflow: hidden; height: 360px; border: 1px solid rgba(204,255,0,0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
-              <img src="https://silveriom.ir/assets/campaign_sunstar.jpg" alt="کمپین برندینگ سان‌استار" class="portfolio-img" style="width: 100%; height: 100%; object-fit: cover;">
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,10,17,0.92) 100%);"></div>
-              
-              <div style="position: absolute; top: 16px; right: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(7, 10, 17, 0.9); border: 1px solid #CCFF00; color: #CCFF00; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 900; box-shadow: 0 0 15px rgba(204,255,0,0.3);">
-                  سان‌استار (SUNSTAR)
-                </span>
-                <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10B981; color: #10B981; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;">
-                  🔴 اکران فعال
-                </span>
-              </div>
-
-              <div style="position: absolute; bottom: 20px; right: 20px; left: 20px;">
-                <div style="color: #CCFF00; font-size: 12px; font-weight: 800; margin-bottom: 4px;">📍 لوکیشن اکران:</div>
-                <div style="color: #ffffff; font-size: 16px; font-weight: 800;">مجموعه اختصاصی پدل T10 (آجودانیه تهران)</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="background: rgba(204, 255, 0, 0.12); color: #CCFF00; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 800;">صنایع غذایی و آبمیوه‌های فاخر</span>
-              </div>
-
-              <h3 style="font-size: 2.1rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.3;">کمپین اختصاصی برند سان‌استار (SUNSTAR)</h3>
-              
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-                <div style="background: rgba(7, 13, 27, 0.7); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #94A3B8; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span style="color: #EF4444;">📌</span> چالش مارکتینگ برند:
-                  </div>
-                  <div style="color: #E2E8F0; font-size: 14px; line-height: 1.7;">افزایش سهم بازار و برقراری ارتباط مستقیم با قشر متمول و مدیران ارشد در شمال تهران.</div>
-                </div>
-
-                <div style="background: rgba(204, 255, 0, 0.08); border: 1px solid rgba(204, 255, 0, 0.3); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #CCFF00; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span>💡</span> راهکار و اجرای انحصاری سیلوریوم:
-                  </div>
-                  <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7;">برندینگ کامل دیواره‌های پانورامیک شیشه‌ای + استندهای ۴K LED + سمپلینگ محصولات VIP در کلاب T10.</div>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #CCFF00; line-height: 1; margin-bottom: 4px;">۱,۲۰۰,۰۰۰+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">نمایش موفق ماهانه</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #CCFF00; line-height: 1; margin-bottom: 4px;">٪۹۹</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">رضایت مدیران برند</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #CCFF00; line-height: 1; margin-bottom: 4px;">٪۹۵</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">نرخ یادآوری (Recall)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Brand 2: CRYSTAL (نوشیدنی کریستال) -->
-        <div class="glass-card case-study-card" style="padding: 44px; border-radius: 36px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.9), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(28px); border: 1px solid rgba(6, 182, 212, 0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
-            <div style="position: relative; border-radius: 28px; overflow: hidden; height: 360px; border: 1px solid rgba(6,182,212,0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
-              <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" alt="کمپین نوشیدنی کریستال" class="portfolio-img" style="width: 100%; height: 100%; object-fit: cover;">
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,10,17,0.92) 100%);"></div>
-              
-              <div style="position: absolute; top: 16px; right: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(7, 10, 17, 0.9); border: 1px solid #06B6D4; color: #06B6D4; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 900; box-shadow: 0 0 15px rgba(6,182,212,0.3);">
-                  نوشیدنی کریستال (CRYSTAL)
-                </span>
-                <span style="background: rgba(6, 182, 212, 0.2); border: 1px solid #06B6D4; color: #06B6D4; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;">
-                  💎 کریستال دیزاین
-                </span>
-              </div>
-
-              <div style="position: absolute; bottom: 20px; right: 20px; left: 20px;">
-                <div style="color: #06B6D4; font-size: 12px; font-weight: 800; margin-bottom: 4px;">📍 لوکیشن اکران:</div>
-                <div style="color: #ffffff; font-size: 16px; font-weight: 800;">مجموعه اختصاصی Netra (لواسان)</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="background: rgba(6, 182, 212, 0.12); color: #06B6D4; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 800;">صنایع آشامیدنی و نوشیدنی‌های گازدار پریمیوم</span>
-              </div>
-
-              <h3 style="font-size: 2.1rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.3;">کمپین اختصاصی نوشیدنی کریستال (CRYSTAL)</h3>
-              
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-                <div style="background: rgba(7, 13, 27, 0.7); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #94A3B8; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span style="color: #EF4444;">📌</span> چالش مارکتینگ برند:
-                  </div>
-                  <div style="color: #E2E8F0; font-size: 14px; line-height: 1.7;">معرفی طعم‌های جدید و تداعی حس تازگی کریستالی در لحظات تمرین و مسابقات ورزشکاران.</div>
-                </div>
-
-                <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #06B6D4; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span>💡</span> راهکار و اجرای انحصاری سیلوریوم:
-                  </div>
-                  <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7;">طراحی استیکرهای کریستالی درخشان بر روی دیواره‌های شیشه‌ای + یخ‌چال‌های شفاف برندینگ‌شده در VIP لانژ.</div>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #06B6D4; line-height: 1; margin-bottom: 4px;">۹۸۰,۰۰۰+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">نمایش موفق ماهانه</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #06B6D4; line-height: 1; margin-bottom: 4px;">٪۹۷</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">ارزیابی مثبت طعم</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #06B6D4; line-height: 1; margin-bottom: 4px;">۷ کورت</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">پوشش کورت‌ها</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Brand 3: MAMMUT KHODRO (ماموت خودرو) -->
-        <div class="glass-card case-study-card" style="padding: 44px; border-radius: 36px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.9), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(28px); border: 1px solid rgba(16, 185, 129, 0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
-            <div style="position: relative; border-radius: 28px; overflow: hidden; height: 360px; border: 1px solid rgba(16,185,129,0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
-              <img src="https://silveriom.ir/assets/padel_mammut_court.jpg" alt="کمپین ماموت خودرو" class="portfolio-img" style="width: 100%; height: 100%; object-fit: cover;">
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,10,17,0.92) 100%);"></div>
-              
-              <div style="position: absolute; top: 16px; right: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(7, 10, 17, 0.9); border: 1px solid #10B981; color: #10B981; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 900; box-shadow: 0 0 15px rgba(16,185,129,0.3);">
-                  ماموت خودرو (Mammut Khodro)
-                </span>
-                <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10B981; color: #10B981; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;">
-                  🚗 صنعت خودرو
-                </span>
-              </div>
-
-              <div style="position: absolute; bottom: 20px; right: 20px; left: 20px;">
-                <div style="color: #10B981; font-size: 12px; font-weight: 800; margin-bottom: 4px;">📍 لوکیشن اکران:</div>
-                <div style="color: #ffffff; font-size: 16px; font-weight: 800;">استادیوم Arena (مجموعه ورزشی آزادی تهران)</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="background: rgba(16, 185, 129, 0.12); color: #10B981; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 800;">صنعت خودرو و واردات خودروهای لوکس آلمانی</span>
-              </div>
-
-              <h3 style="font-size: 2.1rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.3;">برندینگ انحصاری ماموت خودرو (Mammut Khodro)</h3>
-              
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-                <div style="background: rgba(7, 13, 27, 0.7); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #94A3B8; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span style="color: #EF4444;">📌</span> چالش مارکتینگ برند:
-                  </div>
-                  <div style="color: #E2E8F0; font-size: 14px; line-height: 1.7;">رونمایی از مدل‌های جدید خودروهای لوکس و برقراری ارتباط با خریداران بالقوه خودروهای وارداتی.</div>
-                </div>
-
-                <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #10B981; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span>💡</span> راهکار و اجرای انحصاری سیلوریوم:
-                  </div>
-                  <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7;">طراحی استیکرهای دیواره کورت‌های آزادی + استیج اختصاصی نمایش خودرو در ورودی کلاب + لایت‌باکس‌های محیطی.</div>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #10B981; line-height: 1; margin-bottom: 4px;">۱,۴۵۰,۰۰۰+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">دیده‌شدن موفق مسابقات</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #10B981; line-height: 1; margin-bottom: 4px;">٪۹۸</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">پرستیژ برندینگ</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #10B981; line-height: 1; margin-bottom: 4px;">۸ کورت</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">پوشش کورت‌ها</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Brand 4: BLU BANK (بلوبانک) -->
-        <div class="glass-card case-study-card" style="padding: 44px; border-radius: 36px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.9), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(28px); border: 1px solid rgba(59, 130, 246, 0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
-            <div style="position: relative; border-radius: 28px; overflow: hidden; height: 360px; border: 1px solid rgba(59,130,246,0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
-              <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" alt="کمپین بلوبانک" class="portfolio-img" style="width: 100%; height: 100%; object-fit: cover;">
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,10,17,0.92) 100%);"></div>
-              
-              <div style="position: absolute; top: 16px; right: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(7, 10, 17, 0.9); border: 1px solid #3B82F6; color: #3B82F6; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 900; box-shadow: 0 0 15px rgba(59,130,246,0.3);">
-                  بلوبانک (Blu Bank)
-                </span>
-                <span style="background: rgba(59, 130, 246, 0.2); border: 1px solid #3B82F6; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;">
-                  💳 نئوبانک هوشمند
-                </span>
-              </div>
-
-              <div style="position: absolute; bottom: 20px; right: 20px; left: 20px;">
-                <div style="color: #3B82F6; font-size: 12px; font-weight: 800; margin-bottom: 4px;">📍 لوکیشن اکران:</div>
-                <div style="color: #ffffff; font-size: 16px; font-weight: 800;">مجموعه اختصاصی پدل Iran Zamin (شهرک غرب)</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="background: rgba(59, 130, 246, 0.12); color: #3B82F6; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 800;">نئوبانک و خدمات بانکداری دیجیتال با سبک زندگی مدرن</span>
-              </div>
-
-              <h3 style="font-size: 2.1rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.3;">اکران کمپین بلوبانک (Blu Bank)</h3>
-              
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-                <div style="background: rgba(7, 13, 27, 0.7); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #94A3B8; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span style="color: #EF4444;">📌</span> چالش مارکتینگ برند:
-                  </div>
-                  <div style="color: #E2E8F0; font-size: 14px; line-height: 1.7;">افزایش افتتاح حساب و جذب نسل جوان و ورزشکاران مدرن به نئوبانک.</div>
-                </div>
-
-                <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #3B82F6; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span>💡</span> راهکار و اجرای انحصاری سیلوریوم:
-                  </div>
-                  <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7;">طراحی نئون‌های آبی الکتریکی شیشه‌های کورت + کدهای کیوآر تعاملی اکران‌شده روی استندهای دیجیتال ۴K.</div>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #3B82F6; line-height: 1; margin-bottom: 4px;">۱,۶۰۰,۰۰۰+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">دیده‌شدن موفق ماهانه</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #3B82F6; line-height: 1; margin-bottom: 4px;">٪۴۲+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">افزایش اسکن کیوآر</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #3B82F6; line-height: 1; margin-bottom: 4px;">۶ کورت</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">پوشش پانورامیک</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Brand 5: WALLEX (صرافی ارز دیجیتال والکس) -->
-        <div class="glass-card case-study-card" style="padding: 44px; border-radius: 36px; background: linear-gradient(135deg, rgba(15, 25, 50, 0.9), rgba(7, 13, 27, 0.95)); backdrop-filter: blur(28px); border: 1px solid rgba(168, 85, 247, 0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
-            <div style="position: relative; border-radius: 28px; overflow: hidden; height: 360px; border: 1px solid rgba(168,85,247,0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
-              <img src="https://silveriom.ir/assets/padel_wallex_court.jpg" alt="کمپین صرافی والکس" class="portfolio-img" style="width: 100%; height: 100%; object-fit: cover;">
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,10,17,0.92) 100%);"></div>
-              
-              <div style="position: absolute; top: 16px; right: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(7, 10, 17, 0.9); border: 1px solid #A855F7; color: #A855F7; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 900; box-shadow: 0 0 15px rgba(168,85,247,0.3);">
-                  صرافی ارز دیجیتال والکس (Wallex)
-                </span>
-                <span style="background: rgba(168, 85, 247, 0.2); border: 1px solid #A855F7; color: #A855F7; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800;">
-                  🚀 فین‌تک و کریپتو
-                </span>
-              </div>
-
-              <div style="position: absolute; bottom: 20px; right: 20px; left: 20px;">
-                <div style="color: #A855F7; font-size: 12px; font-weight: 800; margin-bottom: 4px;">📍 لوکیشن اکران:</div>
-                <div style="color: #ffffff; font-size: 16px; font-weight: 800;">مجموعه ورزشی Asayesh (مازندران - ساری)</div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="background: rgba(168, 85, 247, 0.12); color: #A855F7; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 800;">پلتفرم معامله و صرافی آنلاین ارزهای دیجیتال</span>
-              </div>
-
-              <h3 style="font-size: 2.1rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.3;">کمپین انحصاری صرافی ارز دیجیتال والکس (Wallex)</h3>
-              
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
-                <div style="background: rgba(7, 13, 27, 0.7); border: 1px solid rgba(255,255,255,0.1); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #94A3B8; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span style="color: #EF4444;">📌</span> چالش مارکتینگ برند:
-                  </div>
-                  <div style="color: #E2E8F0; font-size: 14px; line-height: 1.7;">معرفی ابزارهای معامله‌پذیری مدرن به سرمایه‌گذاران و تریدرها در فضایی لوکس و متمرکز.</div>
-                </div>
-
-                <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); padding: 16px 20px; border-radius: 18px;">
-                  <div style="color: #A855F7; font-size: 12px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                    <span>💡</span> راهکار و اجرای انحصاری سیلوریوم:
-                  </div>
-                  <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7;">برندینگ کورت‌ها با تم دیجیتال و سایبرپانک + نمایش قیمت‌های لحظه‌ای بازار بر روی استندهای دیجیتال.</div>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #A855F7; line-height: 1; margin-bottom: 4px;">۱,۱۰۰,۰۰۰+</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">دیده‌شدن کشوری</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #A855F7; line-height: 1; margin-bottom: 4px;">٪۹۵</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">نرخ جذب مخاطب B2C</div>
-                </div>
-                <div class="metric-badge-box" style="background: rgba(11, 19, 38, 0.8); border: 1px solid rgba(255,255,255,0.12); padding: 14px; border-radius: 18px; text-align: center;">
-                  <div style="font-size: 1.6rem; font-weight: 900; color: #A855F7; line-height: 1; margin-bottom: 4px;">۱۶ کورت</div>
-                  <div style="font-size: 11px; color: #94A3B8; font-weight: 700;">پوشش کامل کلاب</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 4. SILVERIOM 5-STEP CAMPAIGN WORKFLOW TIMELINE -->
-    <div style="margin-bottom: 100px;">
+    <!-- 3. BOTTOM SECTION: 5 VENUE GRAPHIC PANORAMIC BANNERS & DETAILED DESCRIPTION (ته صفحه) -->
+    <div style="margin-top: 100px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 70px;">
+      
       <div style="text-align: center; margin-bottom: 50px;">
-        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">🛠️ فرآیند مهندسی اکران</span>
-        <h2 style="font-size: 2.2rem; font-weight: 900; color: #ffffff; margin-bottom: 14px;">
-          ۵ گام سیلوریوم از <span style="color: #CCFF00;">ایده تا اکران موفق کمپین</span>
-        </h2>
-        <p style="color: #94A3B8; font-size: 1rem;">مسیر گام‌به‌گام طراحی و پایش کمپین‌های تبلیغاتی در شبکه انحصاری سیلوریوم</p>
+        <span style="color: #CCFF00; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: block;">📍 آشنایی با موقعیت‌های جغرافیایی</span>
+        <h2 style="font-size: 2.5rem; font-weight: 900; color: #ffffff;">معرفی ۵ مجموعه ورزشی انحصاری سیلوریوم</h2>
+        <p style="color: #94A3B8; font-size: 1rem; max-width: 680px; margin: 0 auto;">مشخصات، فضاهای اختصاصی و مزایای تبلیغاتی اکران در هر ورزشگاه</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 60px;">
         
-        <div class="glass-card process-step-card" style="padding: 28px 20px; border-radius: 24px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); text-align: center;">
-          <div style="width: 46px; height: 46px; background: rgba(204, 255, 0, 0.15); border: 1px solid #CCFF00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #CCFF00; font-weight: 900; font-size: 18px; margin: 0 auto 16px;">۱</div>
-          <h4 style="color: #ffffff; font-size: 15px; font-weight: 800; margin-bottom: 8px;">نیازسنجی و پرسونا</h4>
-          <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">تحلیل نیازمندی برند و انطباق آن با پرسونای مخاطبان مجتمع‌ها.</p>
+        <!-- Venue Banner 1: T10 Ajudaniyeh -->
+        <div class="glass-card" style="border-radius: 32px; overflow: hidden; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(204, 255, 0, 0.35);">
+          <div style="height: 280px; overflow: hidden;">
+            <img src="https://silveriom.ir/assets/banner_ajudaniyeh.jpg" alt="T10 Ajudaniyeh Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 36px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 14px;">
+              <h3 style="font-size: 1.8rem; font-weight: 900; color: #ffffff;">مجموعه ورزشی انحصاری T10 آجودانیه (تهران)</h3>
+              <span style="background: rgba(204, 255, 0, 0.15); color: #CCFF00; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 800;">۱,۵۰۰,۰۰۰+ دیده‌شدن ماهانه</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 14.5px; line-height: 1.9;">
+              مجموعه T10 آجودانیه واقع در منطقه ۱ تهران، معتبرترین و مدرن‌ترین کلاب پدل و تنیس شمال پایتخت است. این مجموعه شامل ۷ کورت پدل استاندارد جهانی و ۳ کورت تنیس خاک قرمز، کافه رستوران لاکچری و VIP لانژ اختصاصی می‌باشد. مخاطبان این مجموعه را مدیران ارشد، کارآفرینان، ثروتمندان (HNWIs) و چهره‌های برجسته تشکیل می‌دهند.
+            </p>
+          </div>
         </div>
 
-        <div class="glass-card process-step-card" style="padding: 28px 20px; border-radius: 24px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); text-align: center;">
-          <div style="width: 46px; height: 46px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #10B981; font-weight: 900; font-size: 18px; margin: 0 auto 16px;">۲</div>
-          <h4 style="color: #ffffff; font-size: 15px; font-weight: 800; margin-bottom: 8px;">شبیه‌سازی ۳بعدی</h4>
-          <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">ارائه رندر ۳بعدی زاویه دید سازه‌ها در کورت‌ها قبل از ساخت.</p>
+        <!-- Venue Banner 2: Arena Azadi -->
+        <div class="glass-card" style="border-radius: 32px; overflow: hidden; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(16, 185, 129, 0.35);">
+          <div style="height: 280px; overflow: hidden;">
+            <img src="https://silveriom.ir/assets/banner_azadi.jpg" alt="Arena Azadi Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 36px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 14px;">
+              <h3 style="font-size: 1.8rem; font-weight: 900; color: #ffffff;">استادیوم Arena آزادی (تهران)</h3>
+              <span style="background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 800;">۲,۲۰۰,۰۰۰+ دیده‌شدن تورنمنت</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 14.5px; line-height: 1.9;">
+              استادیوم مرکزی Arena آزادی، قلب تپنده مسابقات و لیگ‌های ملی پدل ایران است. این استادیوم با دارا بودن ۸ کورت استاندارد بین‌المللی و گنجایش بالای تماشاگران، مرکز اصلی پوشش تصویری رسانه‌ها، برنامه‌های تلویزیونی و گزارش‌های ورزشی است که حداکثر نرخ دیده‌شدن کشوری را برای برندها به ارمغان می‌آورد.
+            </p>
+          </div>
         </div>
 
-        <div class="glass-card process-step-card" style="padding: 28px 20px; border-radius: 24px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); text-align: center;">
-          <div style="width: 46px; height: 46px; background: rgba(59, 130, 246, 0.15); border: 1px solid #3B82F6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3B82F6; font-weight: 900; font-size: 18px; margin: 0 auto 16px;">۳</div>
-          <h4 style="color: #ffffff; font-size: 15px; font-weight: 800; margin-bottom: 8px;">ساخت و نصب سازه</h4>
-          <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">تولید شیشه‌های ضدبازتاب، بنرها و پیکربندی استندهای ۴K LED.</p>
+        <!-- Venue Banner 3: Shahrak Gharb -->
+        <div class="glass-card" style="border-radius: 32px; overflow: hidden; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(59, 130, 246, 0.35);">
+          <div style="height: 280px; overflow: hidden;">
+            <img src="https://silveriom.ir/assets/banner_shahrak.jpg" alt="Shahrak Gharb Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 36px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 14px;">
+              <h3 style="font-size: 1.8rem; font-weight: 900; color: #ffffff;">مجموعه Iran Zamin شهرک غرب (تهران)</h3>
+              <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 800;">۱,۸۰۰,۰۰۰+ دیده‌شدن ماهانه</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 14.5px; line-height: 1.9;">
+              واقع در خیابان ایران زمین شهرک غرب، این مجموعه با ۶ کورت پانورامیک شیشه‌ای و فضای باز اختصاصی، پاتوق اصلی جوانان، متخصصین و طبقه اقتصادی ممتاز غرب تهران است.
+            </p>
+          </div>
         </div>
 
-        <div class="glass-card process-step-card" style="padding: 28px 20px; border-radius: 24px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); text-align: center;">
-          <div style="width: 46px; height: 46px; background: rgba(168, 85, 247, 0.15); border: 1px solid #A855F7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #A855F7; font-weight: 900; font-size: 18px; margin: 0 auto 16px;">۴</div>
-          <h4 style="color: #ffffff; font-size: 15px; font-weight: 800; margin-bottom: 8px;">پایش و اکران زنده</h4>
-          <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">نظارت ۲۴ ساعته بر کیفیت اکران و نگهداری سازه‌های ورزشی.</p>
+        <!-- Venue Banner 4: Netra Lavasan -->
+        <div class="glass-card" style="border-radius: 32px; overflow: hidden; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(245, 158, 11, 0.35);">
+          <div style="height: 280px; overflow: hidden;">
+            <img src="https://silveriom.ir/assets/banner_lavasan.jpg" alt="Netra Lavasan Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 36px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 14px;">
+              <h3 style="font-size: 1.8rem; font-weight: 900; color: #ffffff;">مجموعه لوکس Netra لواسان</h3>
+              <span style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 800;">۱,۱۰۰,۰۰۰+ دیده‌شدن VIP</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 14.5px; line-height: 1.9;">
+              کمپ اختصاصی Netra لواسان، مجلل‌ترین مجموعه ورزشی کوهستانی پدل است که پاتوق اصلی ثروتمندان، کلکسیونرها و مالکان ویلاهای سوپرلوکس لواسان است.
+            </p>
+          </div>
         </div>
 
-        <div class="glass-card process-step-card" style="padding: 28px 20px; border-radius: 24px; background: rgba(11, 19, 38, 0.78); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); text-align: center;">
-          <div style="width: 46px; height: 46px; background: rgba(234, 179, 8, 0.15); border: 1px solid #EAB308; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #EAB308; font-weight: 900; font-size: 18px; margin: 0 auto 16px;">۵</div>
-          <h4 style="color: #ffffff; font-size: 15px; font-weight: 800; margin-bottom: 8px;">تحلیل اثرگذاری ROI</h4>
-          <p style="color: #94A3B8; font-size: 12px; line-height: 1.7;">ارائه گزارش تحلیلی کامل میزان دیده‌شدن و ماندگاری پیام برند.</p>
+        <!-- Venue Banner 5: Asayesh Sari -->
+        <div class="glass-card" style="border-radius: 32px; overflow: hidden; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(168, 85, 247, 0.35);">
+          <div style="height: 280px; overflow: hidden;">
+            <img src="https://silveriom.ir/assets/banner_sari.jpg" alt="Asayesh Sari Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 36px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 14px;">
+              <h3 style="font-size: 1.8rem; font-weight: 900; color: #ffffff;">مجموعه ورزشی Asayesh ساری (مازندران)</h3>
+              <span style="background: rgba(168, 85, 247, 0.15); color: #A855F7; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 800;">۱,۳۰۰,۰۰۰+ دیده‌شدن کشوری</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 14.5px; line-height: 1.9;">
+              بزرگ‌ترین مجتمع پدل و تنیس استان مازندران واقع در ساری با ۴ کورت پدل و ۱۲ کورت تنیس، پوشش‌دهنده استان‌های شمالی کشور و مسافران نخبگان در تمام طول سال.
+            </p>
+          </div>
         </div>
 
       </div>
+
     </div>
 
-    <!-- 5. CALL TO ACTION (CTA BAR) -->
-    <div class="glass-card" style="padding: 60px 40px; border-radius: 36px; background: linear-gradient(135deg, rgba(11, 19, 38, 0.95), rgba(7, 10, 17, 0.95)); border: 1px solid rgba(204, 255, 0, 0.45); text-align: center; box-shadow: 0 0 50px rgba(204,255,0,0.15);">
-      <h2 style="font-size: 2.4rem; font-weight: 900; color: #ffffff; margin-bottom: 18px;">آماده سفارش کمپین اختصاصی برند خود هستید؟</h2>
-      <p style="color: #CBD5E1; font-size: 1.05rem; max-width: 720px; margin: 0 auto 36px; line-height: 1.8;">
-        کارشناسان رسانه‌ای سیلوریوم آماده تدوین بهترین پلن اکران متناسب با اهداف تبلیغاتی برند شما هستند.
-      </p>
-      <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://silveriom.ir/contact-us/" style="background: #CCFF00; color: #070A11; font-weight: 900; padding: 18px 40px; border-radius: 18px; font-size: 16px; text-decoration: none; box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);">
-          درخواست مشاوره و ثبت سفارش کمپین ←
-        </a>
-        <a href="tel:09121127415" style="background: rgba(255,255,255,0.08); color: #ffffff; font-weight: 800; padding: 18px 36px; border-radius: 18px; font-size: 16px; text-decoration: none; border: 1px solid rgba(255,255,255,0.25);">
-          تماس مستقیم: ۰۹۱۲۱۱۲۷۴۱۵
-        </a>
+  </div>
+
+  <!-- INTERACTIVE RESERVATION MODAL WITH DATE CALENDAR & FORM -->
+  <div id="reservationModal" class="reserve-modal-backdrop">
+    <div class="reserve-modal-box">
+      
+      <button onclick="closeReservationModal()" style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1); border: none; color: #ffffff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+        ✕
+      </button>
+
+      <div style="margin-bottom: 24px;">
+        <span style="color: #CCFF00; font-size: 12px; font-weight: 800; text-transform: uppercase;">⚡ درخواست آنلاین رزرو رسانه</span>
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: #ffffff; margin-top: 4px;" id="modalTargetTitle">دیواره شیشه‌ای کورت ۱</h2>
+        <span style="color: #94A3B8; font-size: 13px;" id="modalTargetCode">کد سازه: SIL-AJ-01</span>
       </div>
-    </div>
 
+      <!-- Step 1: Calendar Date Selection -->
+      <div style="margin-bottom: 24px; background: rgba(255,255,255,0.04); padding: 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+        <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px; margin-bottom: 10px;">
+          📅 ۱. انتخاب بازه و تاریخ شروع اکران کمپین:
+        </label>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #CCFF00; margin-bottom: 8px; font-weight: 700;">
+          <span>ماه جاری (سال ۱۴۰۵ / ۲۰۲۶)</span>
+          <span id="selectedDateDisplay">روز انتخابی: ۱۵ام</span>
+        </div>
+        <div class="calendar-date-grid">
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 1)">۱</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 2)">۲</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 3)">۳</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 4)">۴</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 5)">۵</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 6)">۶</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 7)">۷</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 8)">۸</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 9)">۹</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 10)">۱۰</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 11)">۱۱</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 12)">۱۲</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 13)">۱۳</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 14)">۱۴</div>
+          <div class="calendar-day-cell selected" onclick="selectCalendarDay(this, 15)">۱۵</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 16)">۱۶</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 17)">۱۷</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 18)">۱۸</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 19)">۱۹</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 20)">۲۰</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 21)">۲۱</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 22)">۲۲</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 23)">۲۳</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 24)">۲۴</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 25)">۲۵</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 26)">۲۶</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 27)">۲۷</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 28)">۲۸</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 29)">۲۹</div>
+          <div class="calendar-day-cell" onclick="selectCalendarDay(this, 30)">۳۰</div>
+        </div>
+      </div>
+
+      <!-- Step 2: Form Inputs (نام برند | نام و نام خانوادگی درخواست دهنده | شماره همراه) -->
+      <form id="modalReserveForm" onsubmit="submitReservationForm(event)" style="display: flex; flex-direction: column; gap: 14px;">
+        <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px;">
+          📝 ۲. اطلاعات درخواست‌دهنده رزرو:
+        </label>
+
+        <input type="text" id="reserveBrand" required placeholder="نام برند / شرکت *" style="width: 100%; background: #070D1B; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 12px; color: #ffffff; font-size: 13px; outline: none;">
+        
+        <input type="text" id="reserveFullName" required placeholder="نام و نام خانوادگی درخواست‌دهنده *" style="width: 100%; background: #070D1B; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 12px; color: #ffffff; font-size: 13px; outline: none;">
+        
+        <input type="tel" id="reservePhone" required placeholder="شماره همراه جهت هماهنگی و ارسال پیش‌فاکتور *" dir="ltr" style="width: 100%; background: #070D1B; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 12px; color: #ffffff; font-size: 13px; outline: none;">
+
+        <button type="submit" id="btnSubmitModalReserve" style="width: 100%; background: #CCFF00; color: #070A11; font-weight: 900; padding: 15px; border-radius: 14px; border: none; font-size: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); margin-top: 8px;">
+          ثبت نهایی درخواست رزرو رسانه ←
+        </button>
+
+        <div id="modalReserveSuccess" style="display: none; background: rgba(16, 185, 129, 0.25); border: 1px solid rgba(16, 185, 129, 0.5); color: #6EE7B7; padding: 14px; border-radius: 12px; text-align: center; font-size: 13.5px; font-weight: 700;">
+          ✅ درخواست رزرو شما ثبت شد. کارشناسان سیلوریوم ظرف ۱ ساعت آینده جهت تایید نهایی با شما تماس خواهند گرفت.
+        </div>
+      </form>
+
+    </div>
   </div>
 </main>
 
@@ -12563,6 +10666,100 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
 
 
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+    filterAssets();
+  });
+
+  function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    const arrow = header.querySelector('.acc-arrow');
+    if (content.style.display === 'none') {
+      content.style.display = 'flex';
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+    } else {
+      content.style.display = 'none';
+      if (arrow) arrow.style.transform = 'rotate(-90deg)';
+    }
+  }
+
+  let selectedDayNum = 15;
+
+  function resetSidebarFilters() {
+    document.querySelectorAll('.venue-cb').forEach(cb => cb.checked = true);
+    document.querySelectorAll('.media-cb').forEach(cb => cb.checked = true);
+    document.getElementById('sidebarSearchInput').value = '';
+    filterAssets();
+  }
+
+  function filterAssets() {
+    const searchInput = document.getElementById('sidebarSearchInput');
+    const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    
+    // Checked venues
+    const checkedVenues = Array.from(document.querySelectorAll('.venue-cb:checked')).map(cb => cb.value);
+    // Checked media formats
+    const checkedMedias = Array.from(document.querySelectorAll('.media-cb:checked')).map(cb => cb.value);
+    
+    const cards = document.querySelectorAll('.product-asset-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardVenue = card.getAttribute('data-venue');
+      const cardMedia = card.getAttribute('data-media');
+      const cardTitle = card.getAttribute('data-title').toLowerCase();
+
+      const matchesVenue = checkedVenues.includes(cardVenue);
+      const matchesMedia = checkedMedias.includes(cardMedia);
+      const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
+
+      if (matchesVenue && matchesMedia && matchesSearch) {
+        card.style.setProperty('display', 'block', 'important');
+        card.style.setProperty('opacity', '1', 'important');
+        card.style.setProperty('visibility', 'visible', 'important');
+        visibleCount++;
+      } else {
+        card.style.setProperty('display', 'none', 'important');
+      }
+    });
+
+    const badge = document.getElementById('activeCountBadge');
+    if (badge) {
+      badge.innerText = `${visibleCount.toLocaleString('fa-IR')} سازه فعال`;
+    }
+  }
+
+  // Reservation Modal & Calendar Controls
+  function openReservationModal(code, title, price) {
+    document.getElementById('modalTargetTitle').innerText = title;
+    document.getElementById('modalTargetCode').innerText = `کد سازه: ${code} | تعرفه ماهانه: ${price} میلیون تومان`;
+    document.getElementById('modalReserveSuccess').style.display = 'none';
+    document.getElementById('btnSubmitModalReserve').style.display = 'block';
+    document.getElementById('reservationModal').style.display = 'flex';
+  }
+
+  function closeReservationModal() {
+    document.getElementById('reservationModal').style.display = 'none';
+  }
+
+  function selectCalendarDay(cell, day) {
+    document.querySelectorAll('.calendar-day-cell').forEach(c => c.classList.remove('selected'));
+    cell.classList.add('selected');
+    selectedDayNum = day;
+    document.getElementById('selectedDateDisplay').innerText = `روز انتخابی: ${day.toLocaleString('fa-IR')}ام`;
+  }
+
+  function submitReservationForm(e) {
+    e.preventDefault();
+    document.getElementById('btnSubmitModalReserve').style.display = 'none';
+    document.getElementById('modalReserveSuccess').style.display = 'block';
+  }
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -12864,11 +11061,6 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
       const mediaEl = document.getElementById("map-spot-media");
 
       if (badgeEl) badgeEl.textContent = data.badge;
-      const imgEl = document.getElementById("map-spot-img");
-      if (imgEl && data.img) {
-        imgEl.src = data.img;
-        imgEl.alt = data.title;
-      }
       if (titleEl) titleEl.textContent = data.title;
       if (locEl) locEl.textContent = data.loc;
       if (descEl) descEl.textContent = data.desc;
@@ -13030,7 +11222,10 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
   /* auto close handled globally */
 })();
 </script>
-<script src="client_sync.js"></script>
+
+
+
+
 
 
 

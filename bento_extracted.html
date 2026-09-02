@@ -1,0 +1,110 @@
+<section id="bento-dashboard-stats" class="section bento-section">
+  <div class="editorial-wide-container">
+    <div class="section-header" style="margin-bottom: 3rem;">
+      <span class="section-tag">آمار بهره‌وری و دموگرافی</span>
+      <h2 class="section-title">گزارش آماری مخاطبان و شبکه‌ها</h2>
+      <p class="section-lead">تحلیل ظرفیت زمین‌ها، بازدید ماهانه و ترکیب جمعیتی در کانون‌های انحصاری.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card 1: Monthly/Annual Visits Line Chart -->
+      <div class="bento-card bento-large">
+        <div class="bento-card-top">
+          <div class="bento-info">
+            <h3 class="bento-title">ترافیک و بازدید شبکه‌ها</h3>
+            <span class="bento-subtitle">مجموع بازدید سالانه</span>
+            <div class="bento-value">۲۲۴,۸۴۰ <span class="bento-trend trend-up">↑ ۲۴٪ امسال</span></div>
+          </div>
+          <div class="bento-badge">بازدید ماهانه: ۱۸,۴۸۰</div>
+        </div>
+        <div class="bento-chart-container">
+          <svg viewBox="0 0 500 150" class="bento-line-chart" preserveAspectRatio="none">
+             <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
+                </linearGradient>
+             </defs>
+             <!-- Flipped curve for RTL flow -->
+             <path d="M500,130 C450,90 400,20 350,50 C300,80 250,30 200,60 C150,90 100,40 50,70 L0,40 L0,150 L500,150 Z" fill="url(#chartGrad)"/>
+             <path d="M500,130 C450,90 400,20 350,50 C300,80 250,30 200,60 C150,90 100,40 50,70 L0,40" fill="none" stroke="#CCFF00" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Network Size -->
+      <div class="bento-card">
+        <div class="bento-icon" style="font-size: 2rem; margin-bottom: 10px;">🎾</div>
+        <h3 class="bento-title">گستره شبکه انحصاری</h3>
+        <div class="bento-value" style="font-size: 1.8rem;">۴۴ <span class="bento-subtitle" style="display:inline;">کورت فعال</span></div>
+        <div class="bento-stats-list">
+          <div class="stat-row">
+            <span>تعداد کلاب‌ها</span>
+            <strong class="text-neon" style="color: #CCFF00;">۶ مجتمع لوکس</strong>
+          </div>
+          <div class="stat-row">
+            <span>میانگین تراکم روز</span>
+            <strong style="color: #00d287;">۸۰٪ (پیک)</strong>
+          </div>
+          <div class="stat-row">
+            <span>میانگین تراکم شب</span>
+            <strong style="color: #94A3B8;">۲۰٪</strong>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 3: Gender -->
+      <div class="bento-card">
+        <h3 class="bento-title">ترکیب جنسیتی</h3>
+        <div class="donut-container">
+           <div class="donut-chart" style="--perc: 60%; --color1: #00d287; "></div>
+           <div class="donut-center">
+             <span class="donut-val" style="color: #00d287;">۶۰٪</span>
+             <span class="donut-lbl">مردان</span>
+           </div>
+        </div>
+        <div class="bento-legend">
+           <div class="legend-item"><span class="dot" style="background:#00d287;"></span> مردان (۶۰٪)</div>
+           <div class="legend-item"><span class="dot" style="background:#334155;"></span> زنان (۴۰٪)</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Age -->
+      <div class="bento-card">
+        <h3 class="bento-title">ترکیب سنی مخاطبان</h3>
+        <div class="donut-container">
+           <div class="donut-chart" style="--perc: 80%; --color1: #CCFF00; "></div>
+           <div class="donut-center">
+             <span class="donut-val" style="color: #CCFF00;">۸۰٪</span>
+             <span class="donut-lbl">۱۸ تا ۳۵ سال</span>
+           </div>
+        </div>
+        <div class="bento-legend">
+           <div class="legend-item"><span class="dot" style="background:#CCFF00;"></span> نسل جدید (۸۰٪)</div>
+           <div class="legend-item"><span class="dot" style="background:#334155;"></span> متخصصین (۲۰٪)</div>
+        </div>
+      </div>
+
+
+      <!-- Card 5: Engagement (New) -->
+      <div class="bento-card">
+        <div class="bento-card-top" style="margin-bottom:0;">
+          <h3 class="bento-title">نرخ تعامل (Hit Rate)</h3>
+        </div>
+        <div class="bento-value" style="font-size: 2.5rem; margin-top:0;">۹۴٪</div>
+        <span class="bento-subtitle">میانگین مکث نگاه مستقیم</span>
+        
+        <div class="bento-stats-list" style="margin-top:auto;">
+          <div class="stat-row">
+            <span>جایگاه برند</span>
+            <strong style="color: #CCFF00;">VIP & لوکس</strong>
+          </div>
+          <div class="stat-row">
+            <span>مدت زمان توقف</span>
+            <strong style="color: #00d287;">بالای ۸ ثانیه</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -193,6 +193,275 @@
   }
 </style>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="cinematic-grid-bg">
+/* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
+body {
+    background: transparent !important;
+}
+html {
+    background: #02040a !important;
+}
+
+/* Overlay ON TOP of the cinematic background container */
+#cinematic-bg-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
+        radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+}
+</style>
+
+
+
+
+
+<style id="mobile-menu-final-polish-v8">
+/* ==========================================================================
+   MOBILE MENU MASTER GRID SYSTEM - SHOW ALL ARROWS V8
+   ========================================================================== */
+
+/* 1. Reset and hide scrollbars */
+.mobile-drawer, .mobile-nav, .mobile-submenu, .mobile-drawer * {
+    scrollbar-width: none !important;
+}
+.mobile-drawer::-webkit-scrollbar, .mobile-drawer *::-webkit-scrollbar {
+    display: none !important;
+}
+.mobile-drawer {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* 2. Containers */
+.mobile-nav {
+    display: block !important; 
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}
+.mobile-nav-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important; 
+}
+
+/* 3. Base Grid for Cards (UNIFORM 3-COLUMN FOR ALL) */
+.mobile-nav a.mobile-nav-card,
+.nav-group-header {
+    display: grid !important;
+    grid-template-columns: 42px 1fr 22px !important; 
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    gap: 18px !important; 
+    text-decoration: none !important;
+    direction: rtl !important;
+    margin: 0 !important;
+    margin-bottom: 16px !important; 
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Make active (Home) card have neon border */
+.mobile-nav a.mobile-nav-card.active,
+.mobile-nav a.mobile-nav-card:nth-of-type(1) {
+    border: 1px solid rgba(204, 255, 0, 0.3) !important;
+    background: rgba(204, 255, 0, 0.03) !important;
+}
+
+/* 4. Flatten inconsistent HTML */
+.mobile-nav .nav-card-right,
+.nav-group-header > div:first-child {
+    display: contents !important;
+}
+
+/* 5. Handle Arrows - SHOW ALL */
+.mobile-nav .nav-card-chevron,
+.mobile-nav a.mobile-nav-card > svg:last-child {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* Neon chevron for Home ONLY */
+.mobile-nav a[href="https://silveriom.ir"] > svg:last-child,
+.mobile-nav a[href="https://silveriom.ir"] .nav-card-chevron {
+    color: #ccff00 !important;
+}
+
+/* Fix "Calendar" having its arrow wrapped in an icon-box */
+a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure accordion chevron is visible */
+.nav-group-header .chevron-icon {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* 6. Text Formatting */
+.mobile-nav .nav-card-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    text-align: right !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.mobile-nav .nav-card-text > span:first-child,
+.nav-group-header > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    color: #f1f5f9 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+.mobile-nav .nav-card-text > span:last-child:not(:first-child),
+.mobile-nav .nav-card-text > small {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+/* 7. Icon Boxes */
+.mobile-nav .nav-card-icon-box:not(a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box) {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #8b9bb4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.mobile-nav .nav-card-icon-box svg:not(.lucide-arrow-left) {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* 8. Submenu Grid */
+.mobile-submenu {
+    flex-direction: column !important;
+    gap: 8px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.mobile-submenu a {
+    display: grid !important;
+    grid-template-columns: 8px 1fr 22px !important; 
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    direction: rtl !important;
+}
+
+.mobile-submenu a > div:first-child {
+    display: contents !important;
+}
+
+.mobile-submenu a > div:first-child > div {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+    margin: 0 !important;
+}
+
+.mobile-submenu a > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #f8fafc !important;
+    direction: ltr !important; 
+    unicode-bidi: isolate !important; 
+    text-align: right !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+/* Hide submenu chevrons if desired */
+.mobile-submenu a > svg {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+</style>
+
 </head>
 <body>
 

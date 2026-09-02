@@ -3247,7 +3247,7 @@ body.mobile-menu-open {
   .map-interactive-wrapper {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.5rem !important;
+    gap: 0.5rem !important;
   }
 
   /* Fix 15: Map Beacon Tooltip Persistence on Touch */
@@ -3482,7 +3482,7 @@ body.mobile-menu-open {
 .mobile-nav {
   display: flex !important;
   flex-direction: column !important;
-  gap: 0.85rem !important;
+  gap: 0.4rem !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
   padding-bottom: 2rem !important;
@@ -4151,7 +4151,7 @@ section {
 @media (max-width: 1024px) {
   .complexes-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.5rem !important;
+    gap: 0.5rem !important;
   }
 }
 
@@ -4448,7 +4448,7 @@ section {
 .nav-links {
   display: flex !important;
   align-items: center !important;
-  gap: 1.5rem !important;
+  gap: 0.5rem !important;
   background: rgba(6, 18, 40, 0.68) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
@@ -4489,7 +4489,7 @@ section {
 
 <!-- SILVERIOM MINIMAL LOADER STYLE -->
 <style>
-  #minimal-loader {
+  #minimal-loader { display: none !important; opacity: 0 !important; visibility: hidden !important; z-index: -1 !important;
     position: fixed; inset: 0; z-index: 9999999;
     background-color: #030712; /* Deep premium dark */
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -4523,60 +4523,416 @@ section {
   }
 </style>
 
+
+    <!-- ================= Silverium Loader CSS ================= -->
+    <style id="silverium-loader-styles">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
+    
+    #silverium-loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: radial-gradient(ellipse at bottom center, rgba(57,255,20,0.15) 0%, #040e29 60%, #01030a 100%);
+      background-color: #01030a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    #silverium-loader .bg-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      pointer-events: none;
+    }
+
+    #silverium-loader .content-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #silverium-loader .video-container {
+      width: 400px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #silverium-loader video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      mix-blend-mode: screen; 
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%);
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%);
+    }
+
+    #silverium-loader .progress-section {
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    #silverium-loader .percentage {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      font-variant-numeric: tabular-nums;
+    }
+
+    #silverium-loader .progress-bar-container {
+      width: 100%;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    #silverium-loader .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      transition: width 0.15s ease-out;
+    }
+
+    #silverium-loader .loading-text {
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      font-weight: normal;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 1.5rem;
+      animation: silveriumPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes silveriumPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    </style>
+    
+
+<style id="silveriom-nav-dropdown-styles">
+/* Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(6, 11, 19, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: right;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-item {
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+}
+</style>
+
+
+<style id="mobile-menu-final-polish-v8">
+/* ==========================================================================
+   MOBILE MENU MASTER GRID SYSTEM - SHOW ALL ARROWS V8
+   ========================================================================== */
+
+/* 1. Reset and hide scrollbars */
+.mobile-drawer, .mobile-nav, .mobile-submenu, .mobile-drawer * {
+    scrollbar-width: none !important;
+}
+.mobile-drawer::-webkit-scrollbar, .mobile-drawer *::-webkit-scrollbar {
+    display: none !important;
+}
+.mobile-drawer {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* 2. Containers */
+.mobile-nav {
+    display: block !important; 
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}
+.mobile-nav-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important; 
+}
+
+/* 3. Base Grid for Cards (UNIFORM 3-COLUMN FOR ALL) */
+.mobile-nav a.mobile-nav-card,
+.nav-group-header {
+    display: grid !important;
+    grid-template-columns: 42px 1fr 22px !important; 
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    gap: 18px !important; 
+    text-decoration: none !important;
+    direction: rtl !important;
+    margin: 0 !important;
+    margin-bottom: 16px !important; 
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Make active (Home) card have neon border */
+.mobile-nav a.mobile-nav-card.active,
+.mobile-nav a.mobile-nav-card:nth-of-type(1) {
+    border: 1px solid rgba(204, 255, 0, 0.3) !important;
+    background: rgba(204, 255, 0, 0.03) !important;
+}
+
+/* 4. Flatten inconsistent HTML */
+.mobile-nav .nav-card-right,
+.nav-group-header > div:first-child {
+    display: contents !important;
+}
+
+/* 5. Handle Arrows - SHOW ALL */
+.mobile-nav .nav-card-chevron,
+.mobile-nav a.mobile-nav-card > svg:last-child {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* Neon chevron for Home ONLY */
+.mobile-nav a[href="https://silveriom.ir"] > svg:last-child,
+.mobile-nav a[href="https://silveriom.ir"] .nav-card-chevron {
+    color: #ccff00 !important;
+}
+
+/* Fix "Calendar" having its arrow wrapped in an icon-box */
+a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure accordion chevron is visible */
+.nav-group-header .chevron-icon {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* 6. Text Formatting */
+.mobile-nav .nav-card-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    text-align: right !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.mobile-nav .nav-card-text > span:first-child,
+.nav-group-header > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    color: #f1f5f9 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+.mobile-nav .nav-card-text > span:last-child:not(:first-child),
+.mobile-nav .nav-card-text > small {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+/* 7. Icon Boxes */
+.mobile-nav .nav-card-icon-box:not(a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box) {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #8b9bb4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.mobile-nav .nav-card-icon-box svg:not(.lucide-arrow-left) {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* 8. Submenu Grid */
+.mobile-submenu {
+    flex-direction: column !important;
+    gap: 8px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.mobile-submenu a {
+    display: grid !important;
+    grid-template-columns: 8px 1fr 22px !important; 
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    direction: rtl !important;
+}
+
+.mobile-submenu a > div:first-child {
+    display: contents !important;
+}
+
+.mobile-submenu a > div:first-child > div {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+    margin: 0 !important;
+}
+
+.mobile-submenu a > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #f8fafc !important;
+    direction: ltr !important; 
+    unicode-bidi: isolate !important; 
+    text-align: right !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+/* Hide submenu chevrons if desired */
+.mobile-submenu a > svg {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+</style>
+
 </head>
 <body class="luxury-body">
 
-<!-- SILVERIOM MINIMAL LOADER DOM & JS -->
-<div id="minimal-loader">
-  <div class="ml-brand" style="margin-bottom: 5px; opacity:1; animation: none;">
-    <img src="https://silveriom.ir/assets/neon_logo.png" alt="Silveriom" style="max-height: 80px; filter: drop-shadow(0 0 15px rgba(182,255,0,0.5));">
+  <!-- ================= Silverium Loader HTML ================= -->
+  <div id="silverium-loader">
+    <div class="bg-grid"></div>
+    <div class="content-wrapper">
+      <div class="video-container">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../loading_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="progress-section">
+        <div class="percentage" id="loader-percentage">0%</div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="loader-progress-fill"></div>
+        </div>
+        <div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+      </div>
+    </div>
   </div>
-  <div class="ml-percent" id="ml-percent">0%</div>
-  <div class="ml-progress-container"><div class="ml-progress-bar"></div></div>
-</div>
-<script>
-  (function() {
-    
-    const pct = document.getElementById('ml-percent');
-    if (pct) {
-      let p = 0;
-      const interval = setInterval(() => {
-        p += Math.floor(Math.random() * 8) + 4;
-        if(p >= 100) { p = 100; clearInterval(interval); }
-        pct.innerText = p + '%';
-      }, 50);
-    }
 
-    const hide = () => { const l = document.getElementById('minimal-loader'); if(l) l.classList.add('ml-hidden'); };
-    setTimeout(hide, 1400);
-    window.addEventListener('load', () => { setTimeout(hide, 1400); });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        const href = a.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
-          const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
-          if (isInternal) {
-            e.preventDefault();
-            const l = document.getElementById('minimal-loader');
-            if(l) {
-              l.classList.remove('ml-hidden');
-              const fill = l.querySelector('.ml-progress-bar');
-              if(fill) {
-                fill.style.animation = 'none';
-                fill.offsetHeight; 
-                fill.style.animation = 'ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards';
-              }
-              document.body.appendChild(l);
-            }
-            setTimeout(() => { window.location.href = href; }, 1300);
-          }
-        }
-      });
-    });
-  })();
-</script>
+
+
 
 
 
@@ -5780,6 +6136,73 @@ section {
 })();
 </script>
 <script src="client_sync.js"></script>
+
+
+  <!-- ================= Silverium Loader JS ================= -->
+  <script id="silverium-loader-script">
+    (function() {
+      let currentPercent = 0;
+      let isSiteFullyLoaded = false;
+      
+      const loaderWrapper = document.getElementById('silverium-loader');
+      const fillEl = document.getElementById('loader-progress-fill');
+      const pctEl = document.getElementById('loader-percentage');
+      const textEl = document.getElementById('loader-text');
+
+      function advanceProgress() {
+        if (isSiteFullyLoaded || currentPercent >= 95) return;
+
+        let increment = 0;
+        if (currentPercent < 40) {
+          increment = Math.random() * 8 + 4;
+        } else if (currentPercent < 75) {
+          increment = Math.random() * 4 + 2;
+        } else {
+          increment = Math.random() * 1.5 + 0.5; 
+        }
+
+        currentPercent += increment;
+        if (currentPercent > 95) currentPercent = 95;
+
+        fillEl.style.width = Math.floor(currentPercent) + '%';
+        pctEl.textContent = Math.floor(currentPercent) + '%';
+        
+        setTimeout(advanceProgress, Math.random() * 250 + 100);
+      }
+
+      advanceProgress();
+
+      window.addEventListener('load', function() {
+        isSiteFullyLoaded = true;
+
+        let finishInterval = setInterval(() => {
+          currentPercent += 2;
+          
+          if (currentPercent >= 100) {
+            currentPercent = 100;
+            clearInterval(finishInterval);
+            fillEl.style.width = '100%';
+            pctEl.textContent = '100%';
+            
+            textEl.textContent = "خوش آمدید!";
+            textEl.style.animation = "none";
+            textEl.style.opacity = "1";
+            textEl.style.color = "#dfff11";
+            
+            setTimeout(() => {
+              loaderWrapper.style.opacity = '0'; 
+              setTimeout(() => {
+                loaderWrapper.style.display = 'none'; 
+              }, 600); 
+            }, 800);
+          } else {
+            fillEl.style.width = Math.floor(currentPercent) + '%';
+            pctEl.textContent = Math.floor(currentPercent) + '%';
+          }
+        }, 15);
+      });
+    })();
+  </script>
 
 </body>
 </html>

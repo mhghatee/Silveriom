@@ -2108,7 +2108,7 @@ body {
 .mobile-nav {
   display: flex !important;
   flex-direction: column !important;
-  gap: 0.85rem !important;
+  gap: 0.4rem !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
   padding-bottom: 2rem !important;
@@ -2178,11 +2178,11 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 1.5rem !important;
+  gap: 0.5rem !important;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 !important;
+  padding: 0 1rem !important;
 }
 
 .nav-brand {
@@ -2259,7 +2259,7 @@ body {
 .nav-action {
   display: flex !important;
   align-items: center !important;
-  gap: 0.85rem !important;
+  gap: 0.4rem !important;
   flex-shrink: 0 !important;
 }
 
@@ -3256,7 +3256,7 @@ section {
 .complex-card-courts-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-  gap: 0.85rem !important;
+  gap: 0.4rem !important;
   margin-top: auto !important;
 }
 
@@ -3306,7 +3306,7 @@ section {
 .why-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1.5rem !important;
+  gap: 0.5rem !important;
 }
 
 @media (max-width: 1024px) {
@@ -3426,7 +3426,7 @@ section {
 .stats-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1.5rem !important;
+  gap: 0.5rem !important;
   max-width: 1280px !important;
   margin: 0 auto !important;
 }
@@ -4088,7 +4088,7 @@ section {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 1.5rem !important;
+  gap: 0.5rem !important;
 }
 
 .blueprint-container {
@@ -4816,7 +4816,7 @@ section {
 
 <!-- SILVERIOM MINIMAL LOADER STYLE -->
 <style>
-  #minimal-loader {
+  #minimal-loader { display: none !important; opacity: 0 !important; visibility: hidden !important; z-index: -1 !important;
     position: fixed; inset: 0; z-index: 9999999;
     background-color: #030712; /* Deep premium dark */
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -4852,8 +4852,458 @@ section {
 
 
 <title>استندهای LED سه بعدی؛ تحول تبلیغات دیجیتال | وبلاگ سیلوریوم</title>
+
+    <!-- ================= Silverium Loader CSS ================= -->
+    <style id="silverium-loader-styles">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
+    
+    #silverium-loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: radial-gradient(ellipse at bottom center, rgba(57,255,20,0.15) 0%, #040e29 60%, #01030a 100%);
+      background-color: #01030a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    #silverium-loader .bg-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+      pointer-events: none;
+    }
+
+    #silverium-loader .content-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #silverium-loader .video-container {
+      width: 400px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #silverium-loader video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      mix-blend-mode: screen; 
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%);
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%);
+    }
+
+    #silverium-loader .progress-section {
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    #silverium-loader .percentage {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      font-variant-numeric: tabular-nums;
+    }
+
+    #silverium-loader .progress-bar-container {
+      width: 100%;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    #silverium-loader .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      transition: width 0.15s ease-out;
+    }
+
+    #silverium-loader .loading-text {
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      font-weight: normal;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 1.5rem;
+      animation: silveriumPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes silveriumPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    </style>
+    
+
+<style id="silveriom-nav-dropdown-styles">
+/* Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(6, 11, 19, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: right;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-item {
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="cinematic-grid-bg">
+/* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
+body {
+    background: transparent !important;
+}
+html {
+    background: #02040a !important;
+}
+
+/* Overlay ON TOP of the cinematic background container */
+#cinematic-bg-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
+        radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+}
+</style>
+
+
+
+
+
+<style id="mobile-menu-final-polish-v8">
+/* ==========================================================================
+   MOBILE MENU MASTER GRID SYSTEM - SHOW ALL ARROWS V8
+   ========================================================================== */
+
+/* 1. Reset and hide scrollbars */
+.mobile-drawer, .mobile-nav, .mobile-submenu, .mobile-drawer * {
+    scrollbar-width: none !important;
+}
+.mobile-drawer::-webkit-scrollbar, .mobile-drawer *::-webkit-scrollbar {
+    display: none !important;
+}
+.mobile-drawer {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* 2. Containers */
+.mobile-nav {
+    display: block !important; 
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}
+.mobile-nav-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important; 
+}
+
+/* 3. Base Grid for Cards (UNIFORM 3-COLUMN FOR ALL) */
+.mobile-nav a.mobile-nav-card,
+.nav-group-header {
+    display: grid !important;
+    grid-template-columns: 42px 1fr 22px !important; 
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    gap: 18px !important; 
+    text-decoration: none !important;
+    direction: rtl !important;
+    margin: 0 !important;
+    margin-bottom: 16px !important; 
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Make active (Home) card have neon border */
+.mobile-nav a.mobile-nav-card.active,
+.mobile-nav a.mobile-nav-card:nth-of-type(1) {
+    border: 1px solid rgba(204, 255, 0, 0.3) !important;
+    background: rgba(204, 255, 0, 0.03) !important;
+}
+
+/* 4. Flatten inconsistent HTML */
+.mobile-nav .nav-card-right,
+.nav-group-header > div:first-child {
+    display: contents !important;
+}
+
+/* 5. Handle Arrows - SHOW ALL */
+.mobile-nav .nav-card-chevron,
+.mobile-nav a.mobile-nav-card > svg:last-child {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* Neon chevron for Home ONLY */
+.mobile-nav a[href="https://silveriom.ir"] > svg:last-child,
+.mobile-nav a[href="https://silveriom.ir"] .nav-card-chevron {
+    color: #ccff00 !important;
+}
+
+/* Fix "Calendar" having its arrow wrapped in an icon-box */
+a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure accordion chevron is visible */
+.nav-group-header .chevron-icon {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #64748b !important;
+    margin: 0 auto !important;
+}
+
+/* 6. Text Formatting */
+.mobile-nav .nav-card-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    text-align: right !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.mobile-nav .nav-card-text > span:first-child,
+.nav-group-header > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    color: #f1f5f9 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+.mobile-nav .nav-card-text > span:last-child:not(:first-child),
+.mobile-nav .nav-card-text > small {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #94a3b8 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+
+/* 7. Icon Boxes */
+.mobile-nav .nav-card-icon-box:not(a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box) {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #8b9bb4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.mobile-nav .nav-card-icon-box svg:not(.lucide-arrow-left) {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* 8. Submenu Grid */
+.mobile-submenu {
+    flex-direction: column !important;
+    gap: 8px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.mobile-submenu a {
+    display: grid !important;
+    grid-template-columns: 8px 1fr 22px !important; 
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 16px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    direction: rtl !important;
+}
+
+.mobile-submenu a > div:first-child {
+    display: contents !important;
+}
+
+.mobile-submenu a > div:first-child > div {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+    margin: 0 !important;
+}
+
+.mobile-submenu a > div:first-child > span {
+    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #f8fafc !important;
+    direction: ltr !important; 
+    unicode-bidi: isolate !important; 
+    text-align: right !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+/* Hide submenu chevrons if desired */
+.mobile-submenu a > svg {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+</style>
+
 </head>
 <body class="luxury-body">
+
+  <!-- ================= Silverium Loader HTML ================= -->
+  <div id="silverium-loader">
+    <div class="bg-grid"></div>
+    <div class="content-wrapper">
+      <div class="video-container">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../loading_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="progress-section">
+        <div class="percentage" id="loader-percentage">0%</div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="loader-progress-fill"></div>
+        </div>
+        <div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="cinematic-bg-container" id="cinematic-bg-container">
     <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
@@ -4893,20 +5343,36 @@ section {
       </div>
     </div>
   </div>
-<header class="luxury-nav" id="main-nav">
+<!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
+  <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
-      <a href="https://silveriom.ir/" class="nav-brand" title="SILVERIOM Padel Media Agency">
+      <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
         <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img">
       </a>
 
       <nav class="nav-links">
-        <a href="https://silveriom.ir/" class="nav-item active">خانه</a>
-        <a href="https://silveriom.ir/about-us/" class="nav-item ">درباره ما</a>
-        <a href="https://silveriom.ir/inventory/" class="nav-item ">سبد رسانه‌ها</a>
-        <a href="https://silveriom.ir/portfolio/" class="nav-item ">نمونه کارها</a>
-        <a href="https://silveriom.ir/media-planner/" class="nav-item ">مدیاپلنر</a>
-        <a href="https://silveriom.ir/blog/" class="nav-item ">مجله تخصصی</a>
-        <a href="https://silveriom.ir/contact-us/" class="nav-item ">تماس با ما</a>
+        <a href="https://silveriom.ir" class="nav-item active">خانه</a>
+        <div class="nav-dropdown">
+          <a href="https://silveriom.ir/club/inventory/" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+            رسانه‌ها
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="https://silveriom.ir/clubs/t10.html" class="nav-dropdown-item">T10 (آجودانیه)</a>
+            <a href="https://silveriom.ir/clubs/arena.html" class="nav-dropdown-item">Arena (آزادی)</a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
+            <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
+            <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
+          </div>
+        </div>
+        
+        <a href="https://silveriom.ir/audience-intelligence/" class="nav-item">مخاطبین</a>
+        <a href="https://silveriom.ir/tournament-calendar/" class="nav-item">تقویم مسابقات</a>
+        <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
+        <a href="https://silveriom.ir/media-planner/" class="nav-item">مدیاپلنر</a>
+        <a href="https://silveriom.ir/blog/" class="nav-item">مجله تخصصی</a>
+        <a href="https://silveriom.ir/about-us/" class="nav-item">درباره ما</a>
+        <a href="https://silveriom.ir/contact-us/" class="nav-item">تماس با ما</a>
       </nav>
 
       <div class="nav-action">
@@ -4920,7 +5386,9 @@ section {
           <span class="glass-phone-num">۰۹۱۲۱۱۲۷۴۱۵</span>
         </a>
 
-        <a href="https://silveriom.ir/media-planner/" class="luxury-btn-outline"><span>دریافت مدیا کیت</span></a>
+        <a href="https://silveriom.ir/panel/login.html?action=mediakit" id="open-kit-btn" class="luxury-btn-outline" style="padding: 0.5rem 1.25rem; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center;">
+          <span>دریافت مدیا کیت</span>
+        </a>
 
         <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="منو">
           <span></span>
@@ -4930,6 +5398,254 @@ section {
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu (Staggered Dashboard Redesign) -->
+  <div id="mobile-menu" class="mobile-overlay">
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+    <div class="mobile-drawer">
+      <div class="mobile-head">
+        <div class="drawer-brand-area">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
+          <div class="drawer-status-bar">
+            <span class="status-indicator-ping"></span>
+            <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
+          </div>
+        </div>
+        <button id="close-mobile-menu" class="mobile-close-btn">&times;</button>
+      </div>
+      
+      <nav class="mobile-nav">
+        
+        <!-- Link 01: Home -->
+        <a href="https://silveriom.ir" class="mobile-nav-card active">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">خانه</span>
+              <span class="nav-card-subtitle">صفحه اصلی و آغاز مسیر</span>
+            </div>
+          </div>
+
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 02: Media Planner -->
+        <a href="https://silveriom.ir/media-planner/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box" style="background: rgba(204, 255, 0, 0.1); border-color: rgba(204, 255, 0, 0.2);">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title" style="color: #ccff00;">رسانه ها</span>
+              <span class="nav-card-subtitle">فضاهای تبلیغاتی و واگذاری</span>
+            </div>
+          </div>
+
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 03: Inventory (Dropdown equivalent) -->
+        <div class="mobile-nav-group">
+          <div class="nav-group-header" onclick="document.getElementById('media-submenu').style.display = document.getElementById('media-submenu').style.display === 'none' ? 'flex' : 'none'; this.querySelector('.chevron-icon').style.transform = document.getElementById('media-submenu').style.display === 'none' ? 'rotate(0deg)' : 'rotate(180deg)';">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="nav-card-icon-box">
+                <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              </div>
+              <span style="color: #f8fafc; font-weight: 600; font-size: 1.05rem;">رسانه ها</span>
+            </div>
+            <svg class="chevron-icon" width="20" height="20" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24" style="transition: transform 0.3s ease;"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div id="media-submenu" class="mobile-submenu" style="display: none; flex-direction: column; gap: 8px; margin-top: 4px; margin-bottom: 12px; padding-right: 16px;">
+
+            <a href="https://silveriom.ir/clubs/t10.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>T10 (آجودانیه)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/arena.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>Arena (آزادی)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/iran-zamin.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>Iran Zamin (شهرک غرب)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/netra.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>Netra (لواسان)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/asayesh.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>Asayesh (ساری)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+          </div>
+
+        <a href="https://silveriom.ir/audience-intelligence/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">مخاطبین</span>
+              <span class="nav-card-desc">تحلیل و آمار مخاطبان رسانه‌ها</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 03: Portfolio -->
+        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
+          <div class="nav-card-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="nav-card-text">
+            <span>تقویم مسابقات</span>
+            <small>رویدادها و لیگ‌ها</small>
+          </div>
+
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 04: Blog -->
+        <a href="https://silveriom.ir/blog/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">مجله تخصصی</span>
+              <span class="nav-card-desc">اخبار و مقالات</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+        <a href="https://silveriom.ir/portfolio/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">نمونه کارها</span>
+              <span class="nav-card-desc">گزارش و نتایج کمپین‌ها</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 04: Planner -->
+        <a href="https://silveriom.ir/media-planner/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">مدیاپلنر</span>
+              <span class="nav-card-desc">برنامه‌ریزی هوشمند کمپین</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 05: About -->
+        <a href="https://silveriom.ir/about-us/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">درباره ما</span>
+              <span class="nav-card-desc">داستان و ماموریت سیلوریوم</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Link 06: Contact -->
+        <a href="https://silveriom.ir/contact-us/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">تماس با ما</span>
+              <span class="nav-card-desc">ارتباط فوری با کارشناسان</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+
+      </nav>
+      
+      <div class="mobile-footer">
+        <a href="tel:09121127415" class="glass-phone-btn" style="width: 100% !important; display: inline-flex !important; justify-content: center; align-items: center; margin-bottom: 1rem; padding: 0.9rem !important; border-radius: 9999px !important; text-decoration: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;" title="تماس فوری و مشاوره تبلیغات">
+          <span class="glass-phone-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span class="phone-pulse-dot"></span>
+          </span>
+          <span class="glass-phone-num" style="color: #ffffff !important; margin-right: 0.6rem !important;">۰۹۱۲۱۱۲۷۴۱۵ (مشاوره)</span>
+        </a>
+        <button class="luxury-btn-solid" style="width:100%;" onclick="document.getElementById('open-kit-btn').click(); document.getElementById('close-mobile-menu').click();">
+          دریافت مدیا کیت
+        </button>
+      </div>
+    </div>
+  </div>
 
     <main class="main-single-post" style="position: relative; z-index: 10; padding-top: 180px; padding-bottom: 120px; font-family: 'YekanBakh', sans-serif !important;">
       <div class="editorial-wide-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
@@ -5082,49 +5798,7 @@ section {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-  (function() {
-    
-    const pct = document.getElementById('ml-percent');
-    if (pct) {
-      let p = 0;
-      const interval = setInterval(() => {
-        p += Math.floor(Math.random() * 8) + 4;
-        if(p >= 100) { p = 100; clearInterval(interval); }
-        pct.innerText = p + '%';
-      }, 50);
-    }
 
-    const hide = () => { const l = document.getElementById('minimal-loader'); if(l) l.classList.add('ml-hidden'); };
-    setTimeout(hide, 1400);
-    window.addEventListener('load', () => { setTimeout(hide, 1400); });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        const href = a.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('javascript') && !href.startsWith('tel:') && !href.startsWith('mailto:') && a.target !== '_blank') {
-          const isInternal = href.startsWith('/') || href.includes('silveriom.ir') || !href.startsWith('http');
-          if (isInternal) {
-            e.preventDefault();
-            const l = document.getElementById('minimal-loader');
-            if(l) {
-              l.classList.remove('ml-hidden');
-              const fill = l.querySelector('.ml-progress-bar');
-              if(fill) {
-                fill.style.animation = 'none';
-                fill.offsetHeight; 
-                fill.style.animation = 'ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards';
-              }
-              document.body.appendChild(l);
-            }
-            setTimeout(() => { window.location.href = href; }, 1300);
-          }
-        }
-      });
-    });
-  })();
-</script>
 <script>
 /**
  * ==========================================================================
@@ -5687,5 +6361,72 @@ section {
   });
 })();
 </script>
+
+  <!-- ================= Silverium Loader JS ================= -->
+  <script id="silverium-loader-script">
+    (function() {
+      let currentPercent = 0;
+      let isSiteFullyLoaded = false;
+      
+      const loaderWrapper = document.getElementById('silverium-loader');
+      const fillEl = document.getElementById('loader-progress-fill');
+      const pctEl = document.getElementById('loader-percentage');
+      const textEl = document.getElementById('loader-text');
+
+      function advanceProgress() {
+        if (isSiteFullyLoaded || currentPercent >= 95) return;
+
+        let increment = 0;
+        if (currentPercent < 40) {
+          increment = Math.random() * 8 + 4;
+        } else if (currentPercent < 75) {
+          increment = Math.random() * 4 + 2;
+        } else {
+          increment = Math.random() * 1.5 + 0.5; 
+        }
+
+        currentPercent += increment;
+        if (currentPercent > 95) currentPercent = 95;
+
+        fillEl.style.width = Math.floor(currentPercent) + '%';
+        pctEl.textContent = Math.floor(currentPercent) + '%';
+        
+        setTimeout(advanceProgress, Math.random() * 250 + 100);
+      }
+
+      advanceProgress();
+
+      window.addEventListener('load', function() {
+        isSiteFullyLoaded = true;
+
+        let finishInterval = setInterval(() => {
+          currentPercent += 2;
+          
+          if (currentPercent >= 100) {
+            currentPercent = 100;
+            clearInterval(finishInterval);
+            fillEl.style.width = '100%';
+            pctEl.textContent = '100%';
+            
+            textEl.textContent = "خوش آمدید!";
+            textEl.style.animation = "none";
+            textEl.style.opacity = "1";
+            textEl.style.color = "#dfff11";
+            
+            setTimeout(() => {
+              loaderWrapper.style.opacity = '0'; 
+              setTimeout(() => {
+                loaderWrapper.style.display = 'none'; 
+              }, 600); 
+            }, 800);
+          } else {
+            fillEl.style.width = Math.floor(currentPercent) + '%';
+            pctEl.textContent = Math.floor(currentPercent) + '%';
+          }
+        }, 15);
+      });
+    })();
+  </script>
+
 </body>
 </html>

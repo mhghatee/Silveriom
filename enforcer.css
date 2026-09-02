@@ -1,0 +1,342 @@
+
+<style id="ultimate-global-nav-enforcer">
+.luxury-nav {
+  position: fixed !important;
+  top: 50px !important; /* Positioned below the 50px marquee ticker */
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  padding: 0.85rem 2.5rem !important;
+  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
+  box-sizing: border-box !important;
+}
+
+.nav-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 1rem !important;
+}
+
+.nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+}
+
+.nav-brand-logo-img {
+  height: 48px !important;
+  max-height: 52px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  display: flex !important; justify-content: center !important;
+  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
+
+.nav-brand:hover .nav-brand-logo-img {
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
+}
+
+/* 3. Glass Capsule Menu surrounding 6 Links */
+.nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+}
+
+
+
+.nav-item.active {
+  color: var(--color-neon) !important;
+  background: rgba(182, 255, 0, 0.16) !important;
+  border-color: rgba(182, 255, 0, 0.45) !important;
+}
+
+/* 4. Left Action Section & Buttons */
+.nav-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  flex-shrink: 0 !important;
+}
+
+.glass-phone-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  background: rgba(6, 18, 38, 0.68) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182, 255, 0, 0.45) !important;
+  padding: 0.5rem 1.15rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  flex-shrink: 0 !important;
+}
+
+.glass-phone-btn:hover {
+  background: rgba(182, 255, 0, 0.2) !important;
+  border-color: var(--color-neon) !important;
+  color: var(--color-neon) !important;
+  box-shadow: 0 0 25px rgba(182, 255, 0, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+.glass-phone-icon {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: rgba(182, 255, 0, 0.22) !important;
+  color: var(--color-neon) !important;
+  box-shadow: 0 0 10px rgba(182, 255, 0, 0.35) !important;
+  flex-shrink: 0 !important;
+}
+
+.phone-pulse-dot {
+  position: absolute !important;
+  top: -1px !important;
+  right: -1px !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: var(--color-neon) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px var(--color-neon) !important;
+  animation: pulseRing 1.8s infinite !important;
+}
+
+.glass-phone-num {
+  direction: ltr !important;
+  letter-spacing: 0.04em !important;
+  font-size: 0.94rem !important;
+  font-weight: 800 !important;
+}
+
+#open-kit-btn, .luxury-btn-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: rgba(182, 255, 0, 0.14) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182, 255, 0, 0.5) !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
+
+#open-kit-btn:hover, .luxury-btn-outline:hover {
+  background: rgba(182, 255, 0, 0.28) !important;
+  border-color: var(--color-neon) !important;
+  color: var(--color-neon) !important;
+  box-shadow: 0 0 25px rgba(182, 255, 0, 0.55) !important;
+  transform: translateY(-1px) !important;
+}
+
+.luxury-btn-solid {
+  background: #b6ff00 !important;
+  color: #020617 !important;
+  border: none !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 9999px !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 25px rgba(182, 255, 0, 0.45) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.luxury-btn-solid:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 35px rgba(182, 255, 0, 0.65) !important;
+}
+
+.luxury-btn-ghost {
+  background: rgba(6, 18, 42, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 9999px !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.luxury-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  80% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* 5. Hero Section Spacing & Right-Aligned Content */
+#hero.hero-section {
+  position: relative !important;
+  z-index: 20 !important;
+  min-height: auto !important;
+  padding-top: 173px !important;
+  padding-bottom: 50px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+.hero-content {
+  position: relative !important;
+  z-index: 25 !important;
+  max-width: 780px !important;
+  margin-right: 5% !important;
+  margin-left: auto !important;
+  margin-top: 25px !important;
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  transform: none !important;
+}
+
+.luxury-badge {
+  align-self: flex-start !important;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-bottom: 1rem !important;
+}
+
+.hero-title {
+  text-align: right !important;
+  margin-bottom: 1.25rem !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: clamp(2.5rem, 5.2vw, 4.5rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.85) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.hero-subtitle {
+  text-align: right !important;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-bottom: 2.2rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: clamp(1rem, 1.8vw, 1.25rem) !important;
+  line-height: 1.8 !important;
+  font-weight: 500 !important;
+}
+
+.hero-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 1.25rem !important;
+  margin-right: 0 !important;
+}
+
+.hero-actions a {
+  text-decoration: none !important;
+}
+
+/* Background Image Brightness */
+.cinematic-bg-img {
+  opacity: 0.65 !important;
+  filter: brightness(0.9) contrast(1.1) !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    margin-right: auto !important;
+    margin-left: auto !important;
+</style>
