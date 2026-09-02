@@ -5389,7 +5389,22 @@ section {
           </div>
         </div>
         <a href="https://silveriom.ir/audience-intelligence/" class="nav-item">مخاطبین</a>
-        <a href="https://silveriom.ir/tournament-calendar/" class="nav-item active">تقویم مسابقات</a>
+        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
+          <div class="nav-card-right">
+            <div class="nav-card-icon-box">
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">تقویم مسابقات</span>
+              <span class="nav-card-desc">رویدادها و لیگ‌ها</span>
+            </div>
+          </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
         <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
         <a href="https://silveriom.ir/media-planner/" class="nav-item">مدیاپلنر</a>
         <a href="https://silveriom.ir/about-us/" class="nav-item">درباره ما</a>
@@ -5457,7 +5472,7 @@ section {
 
         <!-- Link 02: Media -->
         <div class="mobile-nav-group">
-          <div class="mobile-nav-card" onclick="toggleMobileSubmenu('media-submenu', this)" style="cursor: pointer;">
+          <div class="mobile-nav-card" onclick="toggleMobileSubmenu('media-submenu', this, event)" style="cursor: pointer;">
             <div class="nav-card-right">
               <div class="nav-card-icon-box">
                 <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -5497,21 +5512,21 @@ section {
         </a>
 
         <!-- Link 03: Portfolio -->
-        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card active">
-          <div class="nav-card-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </div>
-          <div class="nav-card-text">
-            <span>تقویم مسابقات</span>
-            <small>رویدادها و لیگ‌ها</small>
-          </div>
+        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
           <div class="nav-card-right">
             <div class="nav-card-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="nav-card-text">
+              <span class="nav-card-title">تقویم مسابقات</span>
+              <span class="nav-card-desc">رویدادها و لیگ‌ها</span>
             </div>
           </div>
+          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+          </svg>
         </a>
         <a href="https://silveriom.ir/portfolio/" class="mobile-nav-card">
           <div class="nav-card-right">
@@ -5607,11 +5622,32 @@ section {
   
   <main class="experience-container">
 
+    <style>
+      .hero-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      @media (max-width: 991px) {
+        .hero-grid-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 40px;
+        }
+        .hero-content {
+          text-align: center !important;
+        }
+        .hero-actions {
+          justify-content: center;
+        }
+      }
+    </style>
     <!-- ==================== HERO SECTION (CALENDAR) ==================== -->
     <section id="hero" class="section hero-section" style="min-height: 100vh; padding-top: 180px; padding-bottom: 80px; display: flex; align-items: center; position: relative; z-index: 10;">
       <div class="editorial-wide-container">
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div class="hero-grid-container">
           
           <!-- Text Content -->
           <div class="hero-content" style="text-align: right;">
@@ -5620,12 +5656,12 @@ section {
               <span style="letter-spacing: 2px;">SILVERIOM SEASON 1405</span>
             </div>
             
-            <h1 class="hero-title" style="font-size: 3.8rem; font-weight: 900; color: #ffffff; margin-bottom: 24px; line-height: 1.25; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);">
+            <h1 class="hero-title" style="font-size: clamp(2rem, 6.5vw, 3.8rem); font-weight: 900; color: #ffffff; margin-bottom: 24px; line-height: 1.35; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);">
               یک سال. شش مجموعه.<br>
               <span style="color: #CCFF00; text-shadow: 0 0 35px rgba(204, 255, 0, 0.65);">یک شبکه زنده از مسابقات.</span>
             </h1>
             
-            <p class="hero-subtitle" style="font-size: 1.25rem; color: #E2E8F0; line-height: 1.9; font-weight: 500; margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); max-width: 600px;">
+            <p class="hero-subtitle" style="font-size: clamp(1.05rem, 4vw, 1.25rem); color: #E2E8F0; line-height: 1.9; font-weight: 500; margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); max-width: 600px;">
               تمام تورنمنت‌ها، لیگ‌ها و رویدادهای سالانه شبکه سیلوریوم را در یک تقویم واحد دنبال کنید.
             </p>
             
@@ -5978,12 +6014,14 @@ section {
           <p style="color: #94A3B8; margin-top: 10px; font-size: 1.1rem;">گستره جغرافیایی شبکه‌ی رویدادهای سیلوریوم</p>
         </div>
         
-        <div class="network-container" style="position: relative; width: 100%; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-          <!-- Map Image -->
-          <img src="https://silveriom.ir/assets/network_map_tehran.jpg" alt="Silveriom Network Map" style="width: 100%; display: block;">
-          
-          <!-- Interactive Nodes Container -->
-          <div id="network-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+        <div class="network-container" style="position: relative; width: 100%; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column;">
+          <div class="map-wrapper" style="position: relative; width: 100%;">
+            <!-- Map Image -->
+            <img src="https://silveriom.ir/assets/network_map_tehran.jpg" alt="Silveriom Network Map" style="width: 100%; display: block;">
+            
+            <!-- Interactive Nodes Container -->
+            <div id="network-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+          </div>
 
           <!-- Info Panel -->
           <div id="network-info-panel" style="position: absolute; bottom: 20px; right: 20px; background: rgba(6,18,40,0.9); backdrop-filter: blur(15px); border: 1px solid rgba(204,255,0,0.4); border-radius: 20px; padding: 24px; width: 300px; opacity: 0; pointer-events: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(20px); box-shadow: 0 20px 40px rgba(0,0,0,0.7); z-index: 10;">
@@ -6695,8 +6733,24 @@ section {
 
       @media (max-width: 768px) {
         .events-grid { grid-template-columns: 1fr; }
-        .network-container { height: 350px !important; }
-        #network-info-panel { bottom: 10px !important; right: 10px !important; left: 10px !important; width: auto !important; padding: 15px !important; }
+        .network-container { 
+          height: auto !important; 
+          background: rgba(6,18,40,0.6) !important;
+        }
+        #network-info-panel { 
+          position: relative !important;
+          bottom: auto !important; 
+          right: auto !important; 
+          left: auto !important; 
+          width: 100% !important; 
+          padding: 20px !important;
+          border-radius: 0 0 30px 30px !important;
+          border: none !important;
+          border-top: 1px solid rgba(255,255,255,0.05) !important;
+          box-shadow: none !important;
+          transform: none !important;
+          margin-top: 0 !important;
+        }
       }
     </style>
 
@@ -8146,5 +8200,34 @@ function submitMainReservation(e) {
     </div>
   </div>
 </footer>
-\n</div><!-- /.ios-overflow-fix-wrapper -->\n</body>
+\n</div><!-- /.ios-overflow-fix-wrapper -->\n
+<script>
+function toggleMobileSubmenu(submenuId, element, event) {
+  if (event) event.preventDefault();
+  const submenu = document.getElementById(submenuId);
+  const chevron = element.querySelector('.nav-card-chevron');
+  if (!submenu) return;
+  if (submenu.style.display === 'none' || submenu.style.display === '') {
+    submenu.style.display = 'flex';
+    if(chevron) chevron.style.transform = 'rotate(-90deg)';
+  } else {
+    submenu.style.display = 'none';
+    if(chevron) chevron.style.transform = 'rotate(0deg)';
+  }
+}
+
+// Override the click listener that closes the menu to ignore elements with onclick
+document.addEventListener("DOMContentLoaded", function() {
+    const mobileLinks = document.querySelectorAll('.mobile-nav-card');
+    mobileLinks.forEach(link => {
+        // If it has onclick (like our submenu toggle), don't close the menu
+        if (link.hasAttribute('onclick')) {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+            });
+        }
+    });
+});
+</script>
+</body>
 </html>
