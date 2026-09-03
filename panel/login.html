@@ -488,22 +488,22 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <!-- Orbit Rings (centered absolutely in galaxy-container) -->
     <div class="orbit-ring orbit-1">
       <div class="planet-sphere">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'" loading="lazy">
       </div>
     </div>
     <div class="orbit-ring orbit-2">
       <div class="planet-sphere">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'" loading="lazy">
       </div>
     </div>
     <div class="orbit-ring orbit-3">
       <div class="planet-sphere">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'" loading="lazy">
       </div>
     </div>
     <div class="orbit-ring orbit-4">
       <div class="planet-sphere">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="" onerror="this.style.display='none'" loading="lazy">
       </div>
     </div>
 
@@ -535,7 +535,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
       <!-- Header -->
       <div class="auth-header">
         <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="auth-logo"
-             onerror="this.style.display='none'">
+             onerror="this.style.display='none'" loading="lazy">
         <h1 class="auth-title">سیلوریوم پورتال</h1>
         <p class="auth-subtitle" id="auth-subtitle-text">پورتال اختصاصی دریافت کاتالوگ و مدیاکیت سیلوریوم</p>
       </div>
@@ -830,7 +830,8 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      const finishLoaderSequence = function() {
+        if(isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -858,7 +859,12 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      });
+      };
+      // SPEED OPTIMIZATIONS: Trigger loader removal early
+      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
+      window.addEventListener("load", finishLoaderSequence);
+      setTimeout(finishLoaderSequence, 3500); // Failsafe
+
     })();
   </script>
 

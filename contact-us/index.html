@@ -10072,7 +10072,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img" loading="lazy">
       </a>
 
       <nav class="nav-links">
@@ -10130,7 +10130,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <div class="mobile-drawer">
       <div class="mobile-head">
         <div class="drawer-brand-area">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;" loading="lazy">
           <div class="drawer-status-bar">
             <span class="status-indicator-ping"></span>
             <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
@@ -10377,7 +10377,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <div class="mobile-drawer">
       <div class="mobile-head">
         <div class="drawer-brand-area">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;" loading="lazy">
           <div class="drawer-status-bar">
             <span class="status-indicator-ping"></span>
             <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
@@ -10735,7 +10735,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
       <!-- Column 1: Main Brand with Transparent Logo -->
       <div class="footer-col-main">
         <a href="https://silveriom.ir/#hero" class="footer-logo-link">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="footer-brand-logo-img">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="footer-brand-logo-img" loading="lazy">
         </a>
         <p class="footer-tagline">
           سیلوریوم، پلتفرم پیشگام تبلیغات، برندینگ ۳بعدی و مهندسی رسانه‌ای در برترین مجتمع‌های ورزشی تنیس و پدل ایران. برندهای تراز اول را در کانون توجه تصمیم‌گیرندگان و جامعه نخبه کشور قرار دهید.
@@ -11938,7 +11938,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      const finishLoaderSequence = function() {
+        if(isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -11966,7 +11967,12 @@ document.addEventListener("DOMContentLoaded", function() {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      });
+      };
+      // SPEED OPTIMIZATIONS: Trigger loader removal early
+      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
+      window.addEventListener("load", finishLoaderSequence);
+      setTimeout(finishLoaderSequence, 3500); // Failsafe
+
     })();
   </script>
 

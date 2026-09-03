@@ -780,7 +780,8 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      const finishLoaderSequence = function() {
+        if(isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -808,7 +809,12 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      });
+      };
+      // SPEED OPTIMIZATIONS: Trigger loader removal early
+      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
+      window.addEventListener("load", finishLoaderSequence);
+      setTimeout(finishLoaderSequence, 3500); // Failsafe
+
     })();
   </script>
 

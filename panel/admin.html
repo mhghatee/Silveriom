@@ -476,7 +476,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <!-- Sidebar Navigation -->
     <aside class="admin-sidebar" id="sidebar">
       <div class="sidebar-header">
-        <img src="assets/silveriom_logo_transparent.png" alt="Silveriom" class="sidebar-logo" onerror="this.style.display='none'">
+        <img src="assets/silveriom_logo_transparent.png" alt="Silveriom" class="sidebar-logo" onerror="this.style.display='none'" loading="lazy">
         <div class="sidebar-brand-text">
           <h2>SILVERIOM</h2>
           <p>سامانه مدیریت یکپارچه محتوا</p>
@@ -832,7 +832,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
                     <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'about-heroImage', 'about-heroImage-preview')">
                   </label>
                 </div>
-                <img id="about-heroImage-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+                <img id="about-heroImage-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;" loading="lazy">
               </div>
 
               <hr style="border:none; border-top:1px solid var(--border-glass); margin:1.5rem 0;">
@@ -1474,7 +1474,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
               <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'venue-image', 'venue-image-preview')">
             </label>
           </div>
-          <img id="venue-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+          <img id="venue-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;" loading="lazy">
         </div>
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
@@ -1603,7 +1603,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
               <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'camp-image', 'camp-image-preview')">
             </label>
           </div>
-          <img id="camp-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+          <img id="camp-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;" loading="lazy">
         </div>
 
         <div class="modal-footer">
@@ -1775,7 +1775,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
               <input type="file" accept="image/*" style="display:none;" onchange="handleDirectFileUpload(this, 'team-image', 'team-image-preview')">
             </label>
           </div>
-          <img id="team-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;">
+          <img id="team-image-preview" style="max-height:80px; margin-top:0.5rem; border-radius:8px; border:1px solid var(--border-glass); display:none;" loading="lazy">
         </div>
 
         <div class="modal-footer">
@@ -1826,7 +1826,8 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      const finishLoaderSequence = function() {
+        if(isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -1854,7 +1855,12 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      });
+      };
+      // SPEED OPTIMIZATIONS: Trigger loader removal early
+      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
+      window.addEventListener("load", finishLoaderSequence);
+      setTimeout(finishLoaderSequence, 3500); // Failsafe
+
     })();
   </script>
 

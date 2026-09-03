@@ -2499,7 +2499,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img">
+        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img" loading="lazy">
       </a>
 
       <nav class="nav-links">
@@ -2557,7 +2557,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     <div class="mobile-drawer">
       <div class="mobile-head">
         <div class="drawer-brand-area">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;" loading="lazy">
           <div class="drawer-status-bar">
             <span class="status-indicator-ping"></span>
             <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
@@ -2929,7 +2929,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
         <div class="map-interactive-wrapper">
           <div class="map-canvas-box">
-            <img src="assets/iran_padel_hud_map.jpg" alt="نقشه کورت‌ها و رسانه‌های اختصاصی سیلوریوم" class="map-bg-img">
+            <img src="assets/iran_padel_hud_map.jpg" alt="نقشه کورت‌ها و رسانه‌های اختصاصی سیلوریوم" class="map-bg-img" loading="lazy">
             
             <!-- Interactive Location Beacons Centered Exactly Over Map Pin Heads -->
             <!-- 1. T10 (Ajudaniyeh) -->
@@ -4185,7 +4185,8 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      const finishLoaderSequence = function() {
+        if(isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -4213,7 +4214,12 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      });
+      };
+      // SPEED OPTIMIZATIONS: Trigger loader removal early
+      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
+      window.addEventListener("load", finishLoaderSequence);
+      setTimeout(finishLoaderSequence, 3500); // Failsafe
+
     })();
   </script>
 
