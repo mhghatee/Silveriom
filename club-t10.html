@@ -7013,8 +7013,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       advanceProgress();
 
-      const finishLoaderSequence = function() {
-        if(isSiteFullyLoaded) return;
+      window.addEventListener('load', function() {
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
@@ -7042,11 +7041,7 @@ document.addEventListener("DOMContentLoaded", function() {
             pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-      };
-      // SPEED OPTIMIZATIONS: Trigger loader removal early
-      document.addEventListener("DOMContentLoaded", () => setTimeout(finishLoaderSequence, 800));
-      window.addEventListener("load", finishLoaderSequence);
-      setTimeout(finishLoaderSequence, 3500); // Failsafe
+            });
 
     })();
   </script>
