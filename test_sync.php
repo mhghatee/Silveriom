@@ -52,22 +52,14 @@ $files = [
     "clubs/asayesh.html"
 ];
 
-$success = 0;
+$failed = [];
 foreach($files as $file) {
-    // Add cache busting
     $url = "https://raw.githubusercontent.com/mhghatee/silveriom/main/" . str_replace(" ", "%20", $file) . "?v=" . time() . rand(1, 1000);
     
-    // Create directory if it doesn't exist
-    $dir = dirname($file);
-    if ($dir != "." && !is_dir($dir)) {
-        mkdir($dir, 0777, true);
-    }
-    
-    $content = @file_get_contents($url);
-    if($content !== FALSE) {
-        file_put_contents($file, $content);
-        $success++;
+    $headers = @get_headers($url);
+    if(!$headers || strpos($headers[0], '200') === false) {
+        $failed[] = $file;
     }
 }
-echo "SYNC_SUCCESS: $success/" . count($files);
+echo "Failed files:\n" . implode("\n", $failed);
 ?>
