@@ -1,11 +1,6 @@
 <?php
 $files = [
-    "blog/post.html",
-    "blog/post-1.html",
-    "blog/post-2.html",
-    "blog/post-3.html",
-    "blog/post-4.html",
-    "blog/post-5.html"
+    "blog/index.html"
 ];
 
 $success = 0;
