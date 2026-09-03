@@ -4,7 +4,6 @@ $files = [
     "audience-intelligence/design_proposals.html",
     "audience-intelligence/index.html",
     "audience-intelligence/index_backup.html",
-    "bento_extracted.html",
     "blog/index.html",
     "blog/post-1.html",
     "blog/post-2.html",
@@ -19,12 +18,8 @@ $files = [
     "club-t10.html",
     "club/inventory/index.html",
     "contact-us/index.html",
-    "enforcer.css",
     "index.html",
-    "loader_concepts.html",
     "media-planner/index.html",
-    "mobile_html_debug.html",
-    "native_loader.html",
     "panel/admin.html",
     "panel/fetched_login.html",
     "panel/index.html",
@@ -32,8 +27,6 @@ $files = [
     "panel/original_login_server.html",
     "portfolio/index.html",
     "portfolio/index_clean.html",
-    "shared_components/global_css.html",
-    "shared_components/header.html",
     "tournament-calendar/index.html"
 ];
 
@@ -41,19 +34,11 @@ $success = 0;
 foreach($files as $file) {
     $url = "https://raw.githubusercontent.com/mhghatee/silveriom/main/" . str_replace(" ", "%20", $file);
     
-    // Create directory if it doesn't exist
-    $dir = dirname($file);
-    if($dir != "." && !is_dir($dir)) {
-        mkdir($dir, 0755, true);
-    }
-    
     $content = @file_get_contents($url);
     if($content !== FALSE) {
         file_put_contents($file, $content);
         $success++;
-    } else {
-        echo "Failed: $file<br>";
     }
 }
-echo "SUCCESS: $success/" . count($files);
+echo "SYNC_SUCCESS: $success/" . count($files);
 ?>
