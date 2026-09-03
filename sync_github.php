@@ -1,33 +1,7 @@
 <?php
 $files = [
-    "about-us/index.html",
-    "audience-intelligence/design_proposals.html",
-    "audience-intelligence/index.html",
-    "audience-intelligence/index_backup.html",
-    "blog/index.html",
-    "blog/post-1.html",
-    "blog/post-2.html",
-    "blog/post-3.html",
-    "blog/post-4.html",
-    "blog/post-5.html",
-    "blog/post.html",
-    "club-arena.html",
-    "club-asayesh.html",
-    "club-iran-zamin.html",
-    "club-netra.html",
-    "club-t10.html",
-    "club/inventory/index.html",
-    "contact-us/index.html",
-    "index.html",
     "media-planner/index.html",
-    "panel/admin.html",
-    "panel/fetched_login.html",
-    "panel/index.html",
-    "panel/login.html",
-    "panel/original_login_server.html",
-    "portfolio/index.html",
-    "portfolio/index_clean.html",
-    "tournament-calendar/index.html"
+    "media-planner.html"
 ];
 
 $success = 0;
