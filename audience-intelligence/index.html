@@ -7961,8 +7961,9 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
   <div id="silverium-loader">
     <div class="bg-grid"></div>
     <div class="content-wrapper">
-      <div class="video-container">
-        <video autoplay loop muted playsinline preload="auto" poster="/loading_poster.png">
+      <div class="video-container" style="position: relative;">
+        <img src="/loading_poster.png" id="silverium-video-poster" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); mix-blend-mode: screen; -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%); z-index: 2; pointer-events: none;" alt="Loading">
+        <video id="silverium-main-video" autoplay loop muted playsinline preload="auto" >
           <source src="../loading_video.mp4" type="video/mp4">
         </video>
       </div>
@@ -10333,6 +10334,16 @@ document.addEventListener("DOMContentLoaded", function() {
       const fillEl = document.getElementById('loader-progress-fill');
       const pctEl = document.getElementById('loader-percentage');
       const textEl = document.getElementById('loader-text');
+
+      
+      const mainVid = document.getElementById('silverium-main-video');
+      const posterImg = document.getElementById('silverium-video-poster');
+      if (mainVid && posterImg) {
+          mainVid.addEventListener('playing', () => {
+              posterImg.style.opacity = '0';
+              setTimeout(() => posterImg.style.display = 'none', 300);
+          });
+      }
 
       function advanceProgress() {
         if (isSiteFullyLoaded || currentPercent >= 95) return;
