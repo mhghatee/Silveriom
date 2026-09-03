@@ -40,6 +40,19 @@
       grid-template-columns: 1fr !important;
     }
   }
+
+/* Responsive Single Blog Layout */
+@media (min-width: 1025px) {
+  .blog-single-layout {
+    grid-template-columns: 1fr 320px;
+  }
+}
+@media (max-width: 1024px) {
+  .blog-single-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 
 
@@ -5715,7 +5728,7 @@ a[href*="tournament-calendar"] .nav-card-right .nav-card-icon-box {
     </div>
 
     <!-- Main Content Layout -->
-    <div style="display: grid; grid-template-columns: 1fr 320px; gap: 50px;">
+    <div class="blog-single-layout" style="display: grid; gap: 50px;">
       
       <!-- Left Article Content -->
       <div>
