@@ -8130,41 +8130,8 @@ body {
 
 
 
-<!-- SILVERIOM MINIMAL LOADER STYLE -->
-<style>
-  #minimal-loader { display: none !important; opacity: 0 !important; visibility: hidden !important; z-index: -1 !important;
-    position: fixed; inset: 0; z-index: 9999999;
-    background-color: #030712; /* Deep premium dark */
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-  }
-  .ml-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
-  
-  .ml-brand {
-    color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.2rem; font-weight: 300; letter-spacing: 10px;
-    text-transform: uppercase; margin-bottom: 25px; margin-left: 10px; /* offset for letter spacing */
-    opacity: 0; animation: ml-fade-in 0.8s ease forwards, ml-pulse 2s 0.8s infinite alternate;
-  }
-  @keyframes ml-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 0.9; transform: translateY(0); } }
-  @keyframes ml-pulse { 0% { opacity: 0.5; } 100% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.2); } }
 
-  .ml-progress-container {
-    width: 180px; height: 1px; background: rgba(255,255,255,0.1);
-    overflow: hidden;
-  }
-  .ml-progress-bar {
-    width: 0%; height: 100%; background: #B6FF00; /* Silveriom Neon Green */
-    box-shadow: 0 0 10px #B6FF00;
-    animation: ml-fill 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-  }
-  @keyframes ml-fill { 0% { width: 0%; } 100% { width: 100%; } }
-  .ml-percent {
-    color: #B6FF00; font-family: 'Helvetica Neue', Arial, sans-serif !important; direction: ltr;
-    font-size: 1.1rem; font-weight: 700; margin-top: 15px; letter-spacing: 2px;
-    opacity: 0; animation: ml-fade-in 0.5s ease forwards 0.3s;
-  }
-</style>
+
 
 
 <style>
