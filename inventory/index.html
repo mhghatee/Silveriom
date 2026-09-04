@@ -2041,6 +2041,96 @@ body {
   color: #CCFF00 !important;
 }
 
+
+  /* Dual Range Slider CSS */
+  .price-slider-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-top: 15px;
+  }
+  .price-slider-track {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  .slider-track-fill {
+    background-color: #CCFF00;
+    position: absolute;
+    height: 4px;
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-moz-range-track {
+    -moz-appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-ms-track {
+    appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: #CCFF00;
+    cursor: pointer;
+    margin-top: -7px;
+    pointer-events: auto;
+    border-radius: 50%;
+    border: 2px solid #000;
+    z-index: 2;
+    position: relative;
+  }
+  input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: #CCFF00;
+    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: auto;
+    border: 2px solid #000;
+    z-index: 2;
+    position: relative;
+  }
+  .price-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #94A3B8;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .price-values span {
+    color: #CCFF00;
+    font-weight: 700;
+  }
 </style>
 <style id="silveriom-master-styles">
 
@@ -8970,6 +9060,30 @@ html {
           </div>
         </div>
 
+        <!-- ACCORDION 5: PRICE FILTER -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>محدوده قیمت (ماهانه)</span>
+            </span>
+            <svg class="acc-arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="accordion-body">
+             <div class="price-slider-container">
+                <div class="price-slider-track"></div>
+                <div class="slider-track-fill" id="sliderTrackFill"></div>
+                <input type="range" min="20" max="1000" value="20" id="priceMin" oninput="updatePriceSlider(event)">
+                <input type="range" min="20" max="1000" value="1000" id="priceMax" oninput="updatePriceSlider(event)">
+             </div>
+             <div class="price-values">
+                <span id="priceValMinStr">۲۰ میلیون</span>
+                <span id="priceValMaxStr">۱ میلیارد</span>
+             </div>
+             <div style="font-size:11px; color:#64748b; margin-top:12px; text-align:center;">تعرفه‌های «تماس بگیرید» همواره نمایش داده می‌شوند</div>
+          </div>
+        </div>
+
         <!-- Reset Button -->
         <button onclick="resetSidebarFilters()" style="margin-top: 10px; width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #94A3B8; padding: 9px; border-radius: 14px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
           <i data-lucide="rotate-ccw" style="width: 13px; height: 13px;"></i>
@@ -9284,7 +9398,71 @@ html {
     document.querySelectorAll('.venue-cb').forEach(cb => cb.checked = true);
     document.querySelectorAll('.media-cb').forEach(cb => cb.checked = true);
     document.getElementById('sidebarSearchInput').value = '';
+    
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    if (minSlider) minSlider.value = 20;
+    if (maxSlider) maxSlider.value = 1000;
+    updatePriceSlider();
+    
     filterAssets();
+  }
+
+  
+  // --- DUAL PRICE SLIDER LOGIC ---
+  function updatePriceSlider(event) {
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    if(!minSlider || !maxSlider) return;
+
+    let minVal = parseInt(minSlider.value);
+    let maxVal = parseInt(maxSlider.value);
+
+    // Prevent crossing
+    if (minVal > maxVal - 10) {
+      if (event && event.target && event.target.id === "priceMin") {
+        minSlider.value = maxVal - 10;
+        minVal = maxVal - 10;
+      } else if (event && event.target && event.target.id === "priceMax") {
+        maxSlider.value = minVal + 10;
+        maxVal = minVal + 10;
+      } else {
+        // Fallback if no event
+        minSlider.value = maxVal - 10;
+        minVal = maxVal - 10;
+      }
+    }
+
+    // Fill track
+    let minPercent = ((minVal - 20) / (1000 - 20)) * 100;
+    let maxPercent = ((maxVal - 20) / (1000 - 20)) * 100;
+    let fill = document.getElementById("sliderTrackFill");
+    if(fill) {
+      fill.style.left = minPercent + "%";
+      fill.style.width = (maxPercent - minPercent) + "%";
+    }
+
+    // Update text
+    document.getElementById("priceValMinStr").innerText = minVal >= 1000 ? "۱ میلیارد" : minVal + " میلیون";
+    document.getElementById("priceValMaxStr").innerText = maxVal >= 1000 ? "۱ میلیارد" : maxVal + " میلیون";
+
+    // Trigger filter
+    filterAssets();
+  }
+
+  function parseTariffToMillions(text) {
+    if (!text || text.includes('تماس')) return null;
+    const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+    const arabicNumbers  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+    let englishText = text;
+    for(let i=0; i<10; i++) {
+        englishText = englishText.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+    }
+    const match = englishText.match(/[\d\.]+/);
+    if (!match) return null;
+    let val = parseFloat(match[0]);
+    if (englishText.includes('میلیارد')) val *= 1000;
+    return val;
   }
 
   function filterAssets() {
@@ -9294,14 +9472,23 @@ html {
     const checkedVenues = Array.from(document.querySelectorAll('.venue-cb:checked')).map(cb => cb.value);
     const checkedMedias = Array.from(document.querySelectorAll('.media-cb:checked')).map(cb => cb.value);
     
+    // Read price bounds
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    let priceMin = minSlider ? parseInt(minSlider.value) : 20;
+    let priceMax = maxSlider ? parseInt(maxSlider.value) : 1000;
+    
     const cards = document.querySelectorAll('.media-showcase-card');
     let visibleCount = 0;
 
     cards.forEach(card => {
       const locEl = card.querySelector('.msc-location');
       const titleEl = card.querySelector('.msc-title');
+      const tariffEl = card.querySelector('.msc-tariff-value');
+      
       const cardVenueText = locEl ? locEl.textContent : '';
       const cardTitle = titleEl ? titleEl.textContent.toLowerCase() : '';
+      const cardTariff = tariffEl ? tariffEl.textContent : '';
       const cardType = card.dataset.type || '';
       
       let cardVenue = '';
@@ -9315,8 +9502,15 @@ html {
       const matchesVenue = checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
       const matchesMedia = checkedMedias.includes(cardType) || checkedMedias.length === 0;
       const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
+      
+      // Price Check
+      let matchesPrice = true;
+      const parsedPrice = parseTariffToMillions(cardTariff);
+      if (parsedPrice !== null) {
+          matchesPrice = (parsedPrice >= priceMin && parsedPrice <= priceMax);
+      }
 
-      if (matchesVenue && matchesMedia && matchesSearch) {
+      if (matchesVenue && matchesMedia && matchesSearch && matchesPrice) {
         card.style.setProperty('display', 'flex', 'important');
         card.style.setProperty('opacity', '1', 'important');
         card.style.setProperty('visibility', 'visible', 'important');
