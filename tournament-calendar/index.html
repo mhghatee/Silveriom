@@ -6977,7 +6977,7 @@ html {
 
     <div class="inventory-main-layout">
       <!-- RIGHT SIDEBAR FILTER PANEL -->
-      <aside class="sidebar-filter-card" style="border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(10, 15, 28, 0.9) !important; border-radius: 24px !important; padding: 22px !important; position: sticky; top: 110px; backdrop-filter: blur(30px) !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important; z-index: 20;">
+      <aside class="sidebar-filter-card" style="border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(10, 15, 28, 0.9) !important; border-radius: 24px !important; padding: 22px !important; position: sticky; top: 110px; max-height: calc(100vh - 140px); box-sizing: border-box; overflow-y: auto; backdrop-filter: blur(30px) !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important; z-index: 20;">
         
         <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px;">
           <h3 style="color: #CCFF00; font-weight: 900; font-size: 15px; margin: 0; font-family: 'YekanBakh', sans-serif;">فیلتر هوشمند تورنمنت‌ها</h3>
@@ -7096,6 +7096,9 @@ html {
       .sidebar-filter-card {
         position: sticky;
         top: 110px;
+        max-height: calc(100vh - 140px);
+        box-sizing: border-box;
+        overflow-y: auto;
         background: linear-gradient(145deg, rgba(13, 22, 45, 0.98), rgba(6, 11, 24, 0.99)) !important;
         backdrop-filter: blur(30px) !important;
         border: 1px solid rgba(204, 255, 0, 0.4) !important;
@@ -7104,6 +7107,10 @@ html {
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
         z-index: 20;
       }
+      .sidebar-filter-card::-webkit-scrollbar { width: 6px; }
+      .sidebar-filter-card::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+      .sidebar-filter-card::-webkit-scrollbar-thumb { background: rgba(204, 255, 0, 0.3); border-radius: 10px; }
+      .sidebar-filter-card::-webkit-scrollbar-thumb:hover { background: rgba(204, 255, 0, 0.5); }
       .accordion-item {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         padding-bottom: 14px;

@@ -5102,6 +5102,9 @@ section {
   .sidebar-filter-card {
     position: sticky;
     top: 110px;
+    max-height: calc(100vh - 140px);
+    box-sizing: border-box;
+    overflow-y: auto;
     background: linear-gradient(145deg, rgba(13, 22, 45, 0.98), rgba(6, 11, 24, 0.99)) !important;
     backdrop-filter: blur(30px) !important;
     border: 1px solid rgba(204, 255, 0, 0.4) !important;
@@ -5109,6 +5112,22 @@ section {
     padding: 24px 20px !important;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
     z-index: 20;
+  }
+  
+  /* Styling scrollbar for the sidebar */
+  .sidebar-filter-card::-webkit-scrollbar {
+    width: 6px;
+  }
+  .sidebar-filter-card::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+  .sidebar-filter-card::-webkit-scrollbar-thumb {
+    background: rgba(204, 255, 0, 0.3);
+    border-radius: 10px;
+  }
+  .sidebar-filter-card::-webkit-scrollbar-thumb:hover {
+    background: rgba(204, 255, 0, 0.5);
   }
 
   /* Collapsible Accordion */
