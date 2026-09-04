@@ -475,7 +475,7 @@ async function compressAndUploadMediaImage(event, mediaId) {
            const mIndex = state.mediaInventory.findIndex(m => m.id === mediaId);
            if (mIndex > -1) {
              state.mediaInventory[mIndex].image = data.url;
-             await saveState(); // Save to DB
+             await saveStateToServer(); // Save to DB
              
              // Update image instantly on UI
              document.getElementById('media-img-' + mediaId).src = data.url.startsWith('/') ? data.url : '../' + data.url;
@@ -2037,7 +2037,7 @@ async function saveExcelData() {
       }
     });
     
-    await saveState();
+    await saveStateToServer();
     
     // Hide preview
     pendingExcelMedia = [];
