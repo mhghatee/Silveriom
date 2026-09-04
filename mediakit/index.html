@@ -9059,5 +9059,30 @@ html {
 <script>
   lucide.createIcons();
 </script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+      let pct = 0;
+      const fillEl = document.getElementById('loader-progress-fill');
+      const pctEl = document.getElementById('loader-percentage');
+      const intv = setInterval(() => {
+          pct += 15;
+          if(pct >= 100) {
+             pct = 100;
+             clearInterval(intv);
+             setTimeout(() => {
+                const loader = document.getElementById('silverium-loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 600);
+                }
+             }, 300);
+          }
+          if(fillEl) fillEl.style.width = pct + '%';
+          if(pctEl) pctEl.innerText = pct + '%';
+      }, 40);
+  });
+</script>
+
 </body>
 </html>
