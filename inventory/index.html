@@ -8270,7 +8270,166 @@ html {
 }
 </style>
 
+
+<style>
+.media-showcase-card {
+  background: rgba(13, 22, 45, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  text-align: right;
+  direction: rtl;
+}
+
+.media-showcase-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(182, 255, 0, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(182, 255, 0, 0.1);
+}
+
+.msc-img-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  height: 220px;
+  width: 100%;
+}
+
+.msc-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.media-showcase-card:hover .msc-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.msc-code-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-neon, #B6FF00);
+  color: var(--color-neon, #B6FF00);
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  z-index: 10;
+}
+
+.msc-status-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: #00d287;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 210, 135, 0.4);
+}
+
+.msc-status-badge.reserved {
+  background: #FF453A;
+  box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+}
+
+.msc-location {
+  color: #00d287;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.msc-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.msc-tariff-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  background: #0E1629;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(204, 255, 0, 0.3);
+}
+
+.msc-tariff-label {
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.msc-tariff-value {
+  color: var(--color-neon, #B6FF00);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.msc-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: #121A2F;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  color: #CBD5E1;
+  margin-bottom: 24px;
+}
+
+.msc-specs-grid div strong {
+  color: #F8FAFC;
+}
+
+.msc-reserve-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(182, 255, 0, 0.5);
+  color: var(--color-neon, #B6FF00);
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.msc-reserve-btn:hover {
+  background: var(--color-neon, #B6FF00);
+  color: #020617;
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.3);
+}
+</style>
+
+</style>
 </head>
+
 
 <body class="luxury-body">
 
@@ -10306,5 +10465,94 @@ document.addEventListener("DOMContentLoaded", function() {
     })();
   </script>
 
+
+<script>
+window.renderMediaCard = function(media) {
+    // Defaults
+    const title = media.title || media.name || 'بدون عنوان';
+    const code = media.code || 'SIL-000';
+    const location = media.location || 'تهران';
+    const image = media.image || 'assets/placeholder_media.jpg';
+    const tariff = media.tariff || 'تماس بگیرید';
+    
+    const dims = media.dimensions || media.specs || 'نامشخص';
+    const views = media.views || 'نامشخص';
+    const printType = media.print_type || 'وینیل/مش';
+    const audience = media.audience || 'عمومی';
+    
+    const isReserved = media.status === 'reserved';
+    const statusText = isReserved ? 'رزرو شده' : 'موجود جهت اکران';
+    const statusClass = isReserved ? 'reserved' : '';
+    
+    // Lucide Calendar Plus Icon
+    const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>`;
+
+    return `
+    <article class="media-showcase-card" data-id="${media.id || code}">
+        <div class="msc-img-wrapper">
+            <img src="${image}" alt="${title}" loading="lazy">
+            <span class="msc-code-badge">کد: ${code}</span>
+            <span class="msc-status-badge ${statusClass}">${statusText}</span>
+        </div>
+        
+        <div class="msc-location">📍 ${location}</div>
+        <h3 class="msc-title">${title}</h3>
+        
+        <div class="msc-tariff-box">
+            <span class="msc-tariff-label">تعرفه ماهانه:</span>
+            <span class="msc-tariff-value">${tariff}</span>
+        </div>
+        
+        <div class="msc-specs-grid">
+            <div>📐 ابعاد: <strong>${dims}</strong></div>
+            <div>👁️ بازدید: <strong>${views}</strong></div>
+            <div>⚡ چاپ: <strong>${printType}</strong></div>
+            <div>👥 مخاطب: <strong>${audience}</strong></div>
+        </div>
+        
+        <button class="msc-reserve-btn" onclick="openMainReservationModal('${code}', '${title}')">
+            ${calendarIcon}
+            <span>رزرو رسانه</span>
+        </button>
+    </article>
+    `;
+};
+
+window.renderMediaShowcase = function(containerId, filterPageId) {
+    // 1. Fetch JSON
+    fetch('/data/silveriom_db.json')
+        .then(res => res.json())
+        .then(db => {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            let inventory = db.mediaInventory || [];
+            
+            // 2. Filter if specific page
+            if (filterPageId && filterPageId !== 'all') {
+                inventory = inventory.filter(item => 
+                    item.display_pages && item.display_pages.includes(filterPageId)
+                );
+            }
+            
+            // 3. Render HTML
+            if (inventory.length === 0) {
+                container.innerHTML = '<div style="color:#8E8E93; text-align:center; padding: 2rem;">هیچ رسانه‌ای برای این بخش یافت نشد.</div>';
+                return;
+            }
+            
+            let html = '';
+            inventory.forEach(media => {
+                html += window.renderMediaCard(media);
+            });
+            
+            container.innerHTML = html;
+        })
+        .catch(err => console.error('Failed to load media DB:', err));
+};
+</script>
+
+</script>
 </body>
+
 </html>
