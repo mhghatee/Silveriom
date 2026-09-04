@@ -60,7 +60,22 @@
       object-fit: cover !important;
       z-index: 2 !important;
       opacity: 1 !important;
-      filter: contrast(1.1) brightness(0.7) blur(2px);
+      visibility: visible !important;
+      filter: contrast(1.1) brightness(0.9) !important;
+    }
+    .bg-energy-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 150vw; height: 150vh;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at center, rgba(204, 255, 0, 0.08) 0%, transparent 60%);
+      z-index: 4;
+    }
+    .navy-overlay-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, transparent 0%, rgba(2, 6, 23, 0.95) 100%);
+      z-index: 3;
     }
     #cinematic-bg-container::after {
         content: "";
@@ -71,9 +86,7 @@
         z-index: 10;
         background: 
             linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-            radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
-            radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px;
     }
     .navy-readability-overlay {
       position: fixed;
@@ -240,6 +253,8 @@
   <!-- Cinematic Background Elements -->
   <div class="cinematic-bg-container" id="cinematic-bg-container">
     <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Background" class="cinematic-bg-img" id="cinematic-bg-img">
+    <div class="bg-energy-glow"></div>
+    <div class="navy-overlay-layer"></div>
   </div>
   <div class="navy-readability-overlay"></div>
 
