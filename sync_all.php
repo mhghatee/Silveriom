@@ -57,7 +57,8 @@ $files = [
     "panel/admin.js",
     "panel/auth.js",
     "panel/client_sync.js",
-    "panel/api.php"];
+    "panel/api.php",
+    "panel/upload.php"];
 
 $success = 0;
 foreach($files as $file) {

@@ -369,40 +369,52 @@ async function deleteVenue(id) {
 /* --------------------------------------------------------------------------
    TAB 3: MEDIA INVENTORY RENDER
    -------------------------------------------------------------------------- */
+
 function renderMedia() {
   const grid = document.getElementById('media-cards-grid');
   if (!grid) return;
   const media = state.mediaInventory || [];
 
   if (media.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--color-silver-dim); padding:2rem;">هیچ سازه تبلیغاتی ثبت نشده است.</div>`;
+    grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--color-silver-dim); padding:2rem;">هیچ رسانه/سازه‌ای ثبت نشده است.</div>`;
     return;
   }
 
   grid.innerHTML = media.map(m => `
-    <div class="inventory-card">
-      <div>
-        <div class="inventory-tag">${m.tag || 'سازه تبلیغاتی'}</div>
-        <h3 class="inventory-title">${m.title}</h3>
-        <p class="inventory-desc" style="margin-top:0.4rem;">${m.desc || ''}</p>
+    <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px;">
+      
+      <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
+        <img src="${m.image && m.image.startsWith('/') ? m.image : (m.image ? '../'+m.image : '../assets/placeholder_media.jpg')}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" />
+        <div style="position:absolute; bottom:5px; right:5px;">
+           <label class="btn-glass-gold" style="cursor:pointer; font-size:11px; padding: 4px 8px;">
+              <i data-lucide="upload" style="width:12px; height:12px;"></i> آپلود عکس
+              <input type="file" style="display:none;" accept="image/*" onchange="compressAndUploadMediaImage(event, '${m.id}')">
+           </label>
+        </div>
       </div>
 
       <div>
-        <div class="inventory-metrics-row">
-          <div class="mini-metric">${m.impact || 'دید بسیار بالا'}</div>
-          <div class="mini-metric">${m.specs || 'استاندارد'}</div>
-        </div>
+        <div class="inventory-tag" style="font-size: 10px;">${m.code || m.id} | ${m.location || 'لوکیشن نامشخص'}</div>
+        <h3 class="inventory-title" style="font-size: 14px; margin-top:5px;">${m.title}</h3>
+      </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="badge badge-gold">${m.avail || 'موجود برای رزرو'}</span>
-          <div style="display:flex; gap:0.5rem;">
-            <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
-              <i data-lucide="edit-2" style="width:14px; height:14px;"></i>
-            </button>
-            <button class="btn-glass-outline btn-glass-danger" style="padding:0.35rem 0.65rem;" onclick="deleteMedia('${m.id}')" title="حذف">
-              <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
-            </button>
-          </div>
+      <div style="display:flex; flex-wrap: wrap; gap: 5px; font-size: 11px; color: #94a3b8; margin: 10px 0;">
+          <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">تعرفه: ${m.tariff || '?'}</span>
+          <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">ابعاد: ${m.dimensions || '?'}</span>
+          <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">صفحات: ${(m.display_pages || []).join(', ')}</span>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top: auto;">
+        <span class="badge ${m.status === 'reserved' ? 'badge-danger' : 'badge-gold'}" style="font-size: 11px;">
+           ${m.status === 'reserved' ? 'رزرو شده' : 'موجود'}
+        </span>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
+            <i data-lucide="edit-2" style="width:14px; height:14px;"></i>
+          </button>
+          <button class="btn-glass-outline btn-glass-danger" style="padding:0.35rem 0.65rem;" onclick="deleteMedia('${m.id}')" title="حذف">
+            <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -410,6 +422,77 @@ function renderMedia() {
 
   if (window.lucide) lucide.createIcons();
 }
+
+async function compressAndUploadMediaImage(event, mediaId) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  // Validate image
+  if (!file.type.startsWith('image/')) {
+    showToast('لطفا یک فایل تصویری انتخاب کنید', 'error');
+    return;
+  }
+
+  showToast('در حال بهینه‌سازی و تبدیل به WebP...', 'info');
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = async function() {
+      // 1. Setup Canvas for resizing
+      const canvas = document.createElement('canvas');
+      const MAX_WIDTH = 1200; // max width to prevent heavy images
+      
+      let width = img.width;
+      let height = img.height;
+
+      if (width > MAX_WIDTH) {
+        height = Math.round((height * MAX_WIDTH) / width);
+        width = MAX_WIDTH;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // 2. Compress to WebP with 0.75 quality
+      const webpBase64 = canvas.toDataURL('image/webp', 0.75);
+
+      // 3. Upload to server
+      try {
+        const response = await fetch('upload.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image_base64: webpBase64 })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success && data.url) {
+           // 4. Update JSON DB
+           const mIndex = state.mediaInventory.findIndex(m => m.id === mediaId);
+           if (mIndex > -1) {
+             state.mediaInventory[mIndex].image = data.url;
+             await saveState(); // Save to DB
+             
+             // Update image instantly on UI
+             document.getElementById('media-img-' + mediaId).src = data.url.startsWith('/') ? data.url : '../' + data.url;
+             showToast('تصویر با موفقیت فشرده و آپلود شد!', 'success');
+           }
+        } else {
+           showToast('خطا در آپلود: ' + (data.error || 'Unknown'), 'error');
+        }
+      } catch (err) {
+        showToast('ارتباط با سرور قطع شد', 'error');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 
 function openMediaModal(id = null) {
   const modal = document.getElementById('modal-media');
