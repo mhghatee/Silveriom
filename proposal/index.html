@@ -240,7 +240,7 @@
       }
 
       try {
-        const res = await fetch('/data/silveriom_db.json');
+        const res = await fetch('/data/silveriom_db.json?v=' + new Date().getTime());
         const db = await res.json();
         
         const inquiries = db.inquiries || [];
