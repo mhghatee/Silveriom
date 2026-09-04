@@ -8244,6 +8244,32 @@ body {
 
 
 
+
+<style id="cinematic-grid-bg">
+/* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
+body {
+    background: transparent !important;
+}
+html {
+    background: #02040a !important;
+}
+
+/* Overlay ON TOP of the cinematic background container */
+#cinematic-bg-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
+        radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+}
+</style>
+
 </head>
 
 <body class="luxury-body">
