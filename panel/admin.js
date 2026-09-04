@@ -2043,7 +2043,7 @@ async function saveExcelData() {
     pendingExcelMedia = [];
     document.getElementById('excel-preview-area').style.display = 'none';
     
-    renderMediaInventory();
+    renderMedia();
     showToast('رسانه‌ها با موفقیت آپدیت و ذخیره شدند!', 'success');
   } catch (error) {
     showToast('خطا در ذخیره‌سازی: ' + error.message, 'error');
