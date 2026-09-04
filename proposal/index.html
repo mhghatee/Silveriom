@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروپوزال مدیاکیت | سیلوریوم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+      font-family: "YekanBakh";
+      src: url("../fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+      font-weight: 300 400 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "YekanBakh";
+      src: url("../fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+      font-weight: 600 700 800 900;
+      font-display: swap;
+    }
+    
+    :root {
+      --color-bg: #02040a;
+      --color-silver: #f4f4f5;
+      --color-neon: #CCFF00;
+      --color-card: rgba(15, 20, 30, 0.7);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'YekanBakh', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-silver);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    
+    /* Cinematic BG */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      background: 
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+          radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%),
+          radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    }
+
+    #proposal-container {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(10, 15, 25, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+
+    /* Used for PDF generation to keep styling intact */
+    .pdf-mode #proposal-container {
+      background: #0a0f19; /* Solid for PDF */
+      border: none;
+      box-shadow: none;
+      color: #fff;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .logo-area { text-align: right; }
+    .logo-area img { height: 40px; }
+    
+    .proposal-meta {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #94A3B8;
+    }
+    .proposal-meta strong {
+      display: block;
+      color: #fff;
+      font-size: 1.2rem;
+      margin-top: 5px;
+    }
+    .proposal-meta .pid {
+      color: var(--color-neon);
+      font-family: monospace;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .client-info {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      border-right: 4px solid var(--color-neon);
+    }
+    .client-info h2 { font-size: 1.4rem; margin-bottom: 10px; }
+    .client-info p { color: #cbd5e1; }
+    
+    .items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .item-card {
+      display: flex;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 15px;
+      align-items: center;
+    }
+    .item-card img {
+      width: 100px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .item-details { flex-grow: 1; }
+    .item-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
+    .item-code { font-size: 0.85rem; color: #94A3B8; margin-bottom: 8px; }
+    .item-meta { display: flex; gap: 15px; font-size: 0.85rem; color: #cbd5e1; }
+    
+    .item-price {
+      font-weight: 800;
+      color: var(--color-neon);
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .total-section {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+    .total-section .label { color: #94A3B8; font-size: 1.1rem; }
+    .total-section .value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--color-neon);
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* ACTION BAR */
+    .action-bar {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 25px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    
+    .btn-primary { background: var(--color-neon); color: #000; }
+    .btn-primary:hover { box-shadow: 0 0 20px rgba(204,255,0,0.4); }
+    
+    .btn-wa { background: #25D366; color: #fff; }
+    .btn-wa:hover { box-shadow: 0 0 20px rgba(37,211,102,0.4); }
+    
+    .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+    
+    .loading-state { text-align: center; color: #94A3B8; padding: 50px; font-size: 1.2rem; }
+    
+    @media (max-width: 768px) {
+      .header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .proposal-meta { text-align: right; }
+      .item-card { flex-direction: column; align-items: flex-start; }
+      .item-card img { width: 100%; height: 150px; }
+      .action-bar { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div id="app">
+    <div class="loading-state">در حال بارگذاری پروپوزال...</div>
+  </div>
+
+  <div class="action-bar" id="actions" style="display: none;">
+    <button class="btn btn-primary" onclick="downloadPDF()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      دانلود فایل PDF
+    </button>
+    <a href="#" class="btn btn-wa" id="waBtn" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      ارسال در واتس‌اپ
+    </a>
+    <button class="btn btn-secondary" onclick="copyLink()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      کپی لینک
+    </button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const proposalId = urlParams.get('id');
+
+    async function init() {
+      if (!proposalId) {
+        document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">شناسه پروپوزال یافت نشد.</div>';
+        return;
+      }
+
+      try {
+        const res = await fetch('/data/silveriom_db.json');
+        const db = await res.json();
+        
+        const inquiries = db.inquiries || [];
+        const proposal = inquiries.find(p => p.id === proposalId);
+        
+        if (!proposal) {
+          document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">پروپوزال یافت نشد یا حذف شده است.</div>';
+          return;
+        }
+
+        const mediaInventory = db.mediaInventory || [];
+        
+        renderProposal(proposal, mediaInventory);
+        setupActions(proposal);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">خطا در دریافت اطلاعات.</div>';
+      }
+    }
+
+    function parseTariff(val) {
+        // Just for optional numeric sum, if it has "میلیون", multiply by 1e6 etc.
+        // For now we just list them.
+        return val || 'توافقی';
+    }
+
+    function renderProposal(proposal, inventory) {
+      let itemsHtml = '';
+      
+      proposal.cart.forEach(code => {
+        const media = inventory.find(m => m.code === code || m.id === code);
+        if (media) {
+            let image = media.image || 'assets/placeholder_media.jpg';
+            if (!image.startsWith('/') && !image.startsWith('http') && !image.startsWith('../')) {
+                image = '/' + image;
+            }
+            itemsHtml += `
+            <div class="item-card">
+              <img src="${image}" alt="${media.title}">
+              <div class="item-details">
+                <div class="item-title">${media.title}</div>
+                <div class="item-code">${media.code} | ${media.location}</div>
+                <div class="item-meta">
+                  ${media.dimensions ? `<span>ابعاد: ${media.dimensions}</span>` : ''}
+                  ${media.print_type ? `<span>چاپ: ${media.print_type}</span>` : ''}
+                </div>
+              </div>
+              <div class="item-price">${media.tariff || 'توافقی'}</div>
+            </div>
+            `;
+        }
+      });
+
+      const dateStr = proposal.created_at ? new Date(proposal.created_at).toLocaleDateString('fa-IR') : 'امروز';
+
+      const html = `
+        <div id="proposal-container">
+          <div class="header">
+            <div class="logo-area">
+              <img src="/assets/silveriom_logo_transparent.png" alt="Silveriom">
+            </div>
+            <div class="proposal-meta">
+              شناسه پروپوزال: <span class="pid">${proposal.id}</span>
+              <strong>تاریخ: ${dateStr}</strong>
+            </div>
+          </div>
+
+          <div class="client-info">
+            <h2>پروپوزال اختصاصی رسانه‌ای</h2>
+            <p>تهیه شده برای: <strong>${proposal.brand || 'برند نامشخص'}</strong> (به نمایندگی ${proposal.name || 'نامشخص'})</p>
+          </div>
+
+          <div class="items-list">
+            ${itemsHtml}
+          </div>
+
+          <div class="total-section">
+             <span class="label">توضیحات تکمیلی:</span>
+             <p style="color:#94A3B8; font-size: 0.9rem; margin-top: 5px; line-height: 1.6;">کلیه مبالغ و شرایط درج شده مطابق با توافقات اولیه بوده و ممکن است شامل هزینه‌های جانبی (مانند نصب یا طراحی) نباشد. جهت تایید نهایی با کارشناسان سیلوریوم در ارتباط باشید.</p>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('app').innerHTML = html;
+      document.getElementById('actions').style.display = 'flex';
+    }
+
+    function setupActions(proposal) {
+        const link = window.location.href;
+        
+        // WA setup
+        const text = `سلام، پروپوزال رسانه‌ای برند ${proposal.brand} در پلتفرم سیلوریوم با شناسه ${proposal.id} آماده است. جهت مشاهده روی لینک کلیک کنید:\n\n${link}`;
+        const encodedText = encodeURIComponent(text);
+        document.getElementById('waBtn').href = `https://wa.me/?text=${encodedText}`;
+    }
+
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('لینک کپی شد!');
+        }).catch(err => {
+            console.error('Copy failed', err);
+        });
+    }
+
+    function downloadPDF() {
+        const element = document.getElementById('proposal-container');
+        document.body.classList.add('pdf-mode'); // Change styling for clean PDF
+        
+        const opt = {
+          margin:       0.5,
+          filename:     `Silveriom_MediaKit_${proposalId}.pdf`,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+
+        // New Promise-based usage:
+        html2pdf().set(opt).from(element).save().then(() => {
+            document.body.classList.remove('pdf-mode');
+        });
+    }
+
+    init();
+  </script>
+</body>
+</html>

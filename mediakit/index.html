@@ -9054,7 +9054,7 @@ html {
     renderCart();
   }
 
-  function submitMediaKit() {
+  async function submitMediaKit() {
     const name = document.getElementById('mkName').value;
     const brand = document.getElementById('mkBrand').value;
     const phone = document.getElementById('mkPhone').value;
@@ -9069,7 +9069,34 @@ html {
         return;
     }
     
-    alert("اطلاعات ثبت شد! (منطق ساخت مدیاکیت در فاز بعدی پیاده‌سازی می‌شود)");
+    const btn = document.querySelector('.submit-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'در حال ساخت پروپوزال...';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('/api/submit_proposal.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, brand, phone, cart })
+        });
+        
+        const data = await response.json();
+        if(data.success) {
+            // keep or clear cart? let's clear it so it's clean
+            localStorage.removeItem('silveriom_cart');
+            window.location.href = '/proposal/?id=' + data.id;
+        } else {
+            alert('خطا: ' + (data.error || 'ناشناخته'));
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    } catch (err) {
+        console.error(err);
+        alert('خطا در ارتباط با سرور');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
   }
 </script>
 
