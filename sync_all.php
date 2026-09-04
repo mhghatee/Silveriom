@@ -58,7 +58,9 @@ $files = [
     "panel/auth.js",
     "panel/client_sync.js",
     "panel/api.php",
-    "panel/upload.php"];
+    "panel/upload.php",
+    "panel/lucide.min.js",
+    "panel/xlsx.full.min.js"];
 
 $success = 0;
 foreach($files as $file) {
