@@ -1945,10 +1945,14 @@ function renderExcelPreview() {
   if(area) area.style.display = 'block';
   
   const typeOptions = `
-    <option value="digital_board">بیلبورد دیجیتال</option>
-    <option value="lightbox">لایت‌باکس</option>
-    <option value="straboard">استرابورد</option>
-    <option value="wall">دیواره تبلیغاتی</option>
+    <option value="outdoor_billboard">بیلبورد بیرونی</option>
+    <option value="indoor_backlight">بکلایت داخلی</option>
+    <option value="outdoor_backlight">بکلایت بیرونی</option>
+    <option value="indoor_frontlight">فورلایت داخلی</option>
+    <option value="outdoor_frontlight">فورلایت بیرونی</option>
+    <option value="court_border">برندینگ حاشیه کورت</option>
+    <option value="court_net">برندینگ تور</option>
+    <option value="court_entrance">برندینگ ورودی کورت</option>
   `;
   const locationOptions = `
     <option value="azadi">آرنا (آزادی)</option>

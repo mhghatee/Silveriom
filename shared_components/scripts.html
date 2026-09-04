@@ -688,6 +688,7 @@ window.renderMediaCard = function(media) {
     // Defaults
     const title = media.title || media.name || 'بدون عنوان';
     const code = media.code || 'SIL-000';
+    const type = media.type || '';
     let rawLoc = media.location || 'تهران';
     let location = rawLoc;
     
@@ -721,7 +722,7 @@ window.renderMediaCard = function(media) {
     const printIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
 
     return `
-    <article class="media-showcase-card" data-id="${media.id || code}">
+    <article class="media-showcase-card" data-id="${media.id || code}" data-type="${type}">
         <div class="msc-img-wrapper">
             <img src="${image}" alt="${title}" loading="lazy">
             <span class="msc-code-badge">کد: ${code}</span>
