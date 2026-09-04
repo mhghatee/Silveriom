@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>پروپوزال مدیاکیت | سیلوریوم</title>
+  <title>مدیاکیت | سیلوریوم</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
   
   <style>
@@ -39,28 +39,65 @@
       padding: 40px 20px;
     }
     
-    /* Cinematic BG */
-    .bg-grid {
+    /* Cinematic Background */
+    #cinematic-bg-container {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -1 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      background: #020617 !important;
+    }
+    #cinematic-bg-img {
+      position: absolute !important;
+      top: -5% !important;
+      left: -5% !important;
+      width: 110% !important;
+      height: 110% !important;
+      object-fit: cover !important;
+      z-index: 2 !important;
+      opacity: 1 !important;
+      filter: contrast(1.1) brightness(0.7) blur(2px);
+    }
+    #cinematic-bg-container::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 10;
+        background: 
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+            radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
+            radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+    }
+    .navy-readability-overlay {
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(4, 9, 20, 0.65);
+      z-index: 0;
       pointer-events: none;
-      z-index: -1;
-      background: 
-          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-          radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%),
-          radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    }
+
+    #app, .action-bar {
+      position: relative;
+      z-index: 15;
     }
 
     #proposal-container {
       width: 100%;
       max-width: 900px;
-      background: rgba(10, 15, 25, 0.8);
+      background: rgba(10, 15, 25, 0.85);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 24px;
       padding: 40px;
       margin-bottom: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
 
     /* Used for PDF generation to keep styling intact */
@@ -151,13 +188,6 @@
       text-align: left;
     }
     .total-section .label { color: #94A3B8; font-size: 1.1rem; }
-    .total-section .value {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--color-neon);
-      display: block;
-      margin-top: 10px;
-    }
 
     /* ACTION BAR */
     .action-bar {
@@ -207,10 +237,14 @@
 </head>
 <body>
 
-  <div class="bg-grid"></div>
+  <!-- Cinematic Background Elements -->
+  <div class="cinematic-bg-container" id="cinematic-bg-container">
+    <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Background" class="cinematic-bg-img" id="cinematic-bg-img">
+  </div>
+  <div class="navy-readability-overlay"></div>
 
   <div id="app">
-    <div class="loading-state">در حال بارگذاری پروپوزال...</div>
+    <div class="loading-state">در حال بارگذاری مدیاکیت...</div>
   </div>
 
   <div class="action-bar" id="actions" style="display: none;">
@@ -235,7 +269,7 @@
 
     async function init() {
       if (!proposalId) {
-        document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">شناسه پروپوزال یافت نشد.</div>';
+        document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">شناسه مدیاکیت یافت نشد.</div>';
         return;
       }
 
@@ -247,7 +281,7 @@
         const proposal = inquiries.find(p => p.id === proposalId);
         
         if (!proposal) {
-          document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">پروپوزال یافت نشد یا حذف شده است.</div>';
+          document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">مدیاکیت یافت نشد یا حذف شده است.</div>';
           return;
         }
 
@@ -259,12 +293,6 @@
         console.error(err);
         document.getElementById('app').innerHTML = '<div class="loading-state" style="color:#ff6b6b">خطا در دریافت اطلاعات.</div>';
       }
-    }
-
-    function parseTariff(val) {
-        // Just for optional numeric sum, if it has "میلیون", multiply by 1e6 etc.
-        // For now we just list them.
-        return val || 'توافقی';
     }
 
     function renderProposal(proposal, inventory) {
@@ -303,13 +331,13 @@
               <img src="/assets/silveriom_logo_transparent.png" alt="Silveriom">
             </div>
             <div class="proposal-meta">
-              شناسه پروپوزال: <span class="pid">${proposal.id}</span>
+              شناسه مدیاکیت: <span class="pid">${proposal.id}</span>
               <strong>تاریخ: ${dateStr}</strong>
             </div>
           </div>
 
           <div class="client-info">
-            <h2>پروپوزال اختصاصی رسانه‌ای</h2>
+            <h2>مدیاکیت اختصاصی رسانه‌ای</h2>
             <p>تهیه شده برای: <strong>${proposal.brand || 'برند نامشخص'}</strong> (به نمایندگی ${proposal.name || 'نامشخص'})</p>
           </div>
 
@@ -332,7 +360,7 @@
         const link = window.location.href;
         
         // WA setup
-        const text = `سلام، پروپوزال رسانه‌ای برند ${proposal.brand} در پلتفرم سیلوریوم با شناسه ${proposal.id} آماده است. جهت مشاهده روی لینک کلیک کنید:\n\n${link}`;
+        const text = `سلام، مدیاکیت رسانه‌ای برند ${proposal.brand} در پلتفرم سیلوریوم با شناسه ${proposal.id} آماده است. جهت مشاهده روی لینک کلیک کنید:\n\n${link}`;
         const encodedText = encodeURIComponent(text);
         document.getElementById('waBtn').href = `https://wa.me/?text=${encodedText}`;
     }
@@ -357,7 +385,6 @@
           jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
-        // New Promise-based usage:
         html2pdf().set(opt).from(element).save().then(() => {
             document.body.classList.remove('pdf-mode');
         });
