@@ -49,7 +49,10 @@ $files = [
     "clubs/arena.html",
     "clubs/iran-zamin.html",
     "clubs/netra.html",
-    "clubs/asayesh.html"
+    "clubs/asayesh.html",
+    "mediakit/index.html",
+    "proposal/index.html",
+    "api/submit_proposal.php"
 ,
     "panel/admin.css",
     "panel/auth.css",
