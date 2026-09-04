@@ -794,3 +794,39 @@ window.renderMediaShowcase = function(containerId, filterPageId) {
         .catch(err => console.error('Failed to load media DB:', err));
 };
 </script>
+
+<script>
+
+  // --- MEDIA KIT CART LOGIC ---
+  window.toggleCartItem = function(code) {
+    let cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const index = cart.indexOf(code);
+    if (index > -1) {
+      cart.splice(index, 1);
+    } else {
+      cart.push(code);
+    }
+    localStorage.setItem('silveriom_cart', JSON.stringify(cart));
+    
+    // Update the button directly
+    const cards = document.querySelectorAll('.media-showcase-card');
+    cards.forEach(c => {
+      if(c.dataset.id === code) {
+         const btn = c.querySelector('.msc-reserve-btn');
+         const isInCart = cart.includes(code);
+         if(isInCart) {
+            btn.className = 'msc-reserve-btn in-cart';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>حذف از مدیا کیت</span>`;
+         } else {
+            btn.className = 'msc-reserve-btn';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>اضافه کردن به مدیا کیت</span>`;
+         }
+      }
+    });
+
+    if (window.updateFloatingCart) {
+        window.updateFloatingCart();
+    }
+  };
+
+</script>
