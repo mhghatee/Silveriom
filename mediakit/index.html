@@ -8584,8 +8584,238 @@ html {
 
 </style>
 </head>
-<body style="background-color: #0A0F1A; color: #fff; font-family: 'Vazirmatn', sans-serif;">
-<header class="luxury-nav" id="main-nav">
+<style>
+  .checkout-container {
+    max-width: 1200px;
+    margin: 140px auto 40px; /* offset for fixed header */
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    direction: rtl;
+    position: relative;
+    z-index: 10;
+  }
+  @media (max-width: 900px) {
+    .checkout-container {
+      grid-template-columns: 1fr;
+      margin-top: 180px;
+    }
+  }
+  .form-box, .summary-box {
+    background: rgba(20, 25, 35, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .form-box h2, .summary-box h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #94A3B8;
+    font-size: 13px;
+  }
+  .form-group input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-family: 'Vazirmatn', sans-serif;
+    outline: none;
+    transition: border 0.2s;
+    box-sizing: border-box;
+  }
+  .form-group input:focus {
+    border-color: #CCFF00;
+  }
+  .submit-btn {
+    width: 100%;
+    background: #CCFF00;
+    color: #000;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Vazirmatn', sans-serif;
+    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);
+  }
+  
+  /* Summary items */
+  .summary-item {
+    display: flex;
+    gap: 12px;
+    background: rgba(255,255,255,0.03);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .summary-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .si-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .si-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .si-code {
+    font-size: 11px;
+    color: #CCFF00;
+  }
+  .remove-item {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 50, 50, 0.1);
+    color: #ff4444;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .remove-item:hover {
+    background: rgba(255, 50, 50, 0.3);
+  }
+  .empty-cart {
+    text-align: center;
+    color: #94A3B8;
+    padding: 40px 0;
+  }
+</style>
+
+<body class="luxury-body">
+
+  <!-- ================= Silverium Loader HTML ================= -->
+  <div id="silverium-loader">
+    <div class="bg-grid"></div>
+    <div class="content-wrapper">
+      <div class="video-container">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="https://silveriom.ir/loading_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="progress-section">
+        <div class="percentage" id="loader-percentage">0%</div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="loader-progress-fill"></div>
+        </div>
+        <div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- SILVERIOM MINIMAL LOADER DOM & JS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 3D WebGL Background Canvas -->
+  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
+  <div class="cinematic-bg-container" id="cinematic-bg-container">
+    <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
+    <div class="bg-energy-glow">    <div class="bg-energy-glow"></div>
+    <div class="navy-overlay-layer"></div>
+  </div>
+  </div>
+
+  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Deep Navy Blue Readability Overlay Layer -->
+  <div class="navy-readability-overlay"></div>
+
+
+
+  <div class="top-complex-bar" id="top-complex-bar">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span class="top-bar-badge">شبکه انحصاری پدل سیلوریوم:</span>
+        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+      </div>
+      <div class="marquee-group">
+        <span class="top-bar-badge">شبکه انحصاری پدل سیلوریوم:</span>
+        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
+  <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
         <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img" loading="lazy">
@@ -8641,131 +8871,6 @@ html {
       </div>
     </div>
   </header>
-
-<style>
-  .checkout-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    direction: rtl;
-  }
-  @media (max-width: 900px) {
-    .checkout-container {
-      grid-template-columns: 1fr;
-    }
-  }
-  .form-box, .summary-box {
-    background: rgba(20, 25, 35, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 30px;
-  }
-  .form-box h2, .summary-box h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #94A3B8;
-    font-size: 13px;
-  }
-  .form-group input {
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    padding: 14px 16px;
-    border-radius: 12px;
-    font-family: 'Vazirmatn', sans-serif;
-    outline: none;
-    transition: border 0.2s;
-  }
-  .form-group input:focus {
-    border-color: #CCFF00;
-  }
-  .submit-btn {
-    width: 100%;
-    background: #CCFF00;
-    color: #000;
-    border: none;
-    padding: 16px;
-    border-radius: 14px;
-    font-weight: 800;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: 'Vazirmatn', sans-serif;
-    margin-top: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);
-  }
-  
-  /* Summary items */
-  .summary-item {
-    display: flex;
-    gap: 12px;
-    background: rgba(255,255,255,0.03);
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    position: relative;
-  }
-  .summary-item img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .si-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .si-title {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .si-code {
-    font-size: 11px;
-    color: #94A3B8;
-  }
-  .remove-item {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 50, 50, 0.1);
-    color: #ff4444;
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .empty-cart {
-    text-align: center;
-    color: #94A3B8;
-    padding: 40px 0;
-  }
-</style>
-
 <div class="checkout-container">
   <!-- FORM -->
   <div class="form-box">
@@ -8802,16 +8907,89 @@ html {
     </div>
   </div>
 </div>
+<footer class="luxury-mega-footer" id="main-footer">
+  <div class="editorial-wide-container">
+    <div class="footer-top-grid">
+      <!-- Column 1: Main Brand with Transparent Logo -->
+      <div class="footer-col-main">
+        <a href="https://silveriom.ir/#hero" class="footer-logo-link">
+          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="footer-brand-logo-img" loading="lazy">
+        </a>
+        <p class="footer-tagline">
+          سیلوریوم، پلتفرم پیشگام تبلیغات، برندینگ ۳بعدی و مهندسی رسانه‌ای در برترین مجتمع‌های ورزشی تنیس و پدل ایران. برندهای تراز اول را در کانون توجه تصمیم‌گیرندگان و جامعه نخبه کشور قرار دهید.
+        </p>
+      </div>
 
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h4 class="fcol-heading">دسترسی سریع</h4>
+        <ul class="fcol-links">
+          <li><a href="https://silveriom.ir/#hero">صفحه اصلی</a></li>
+          <li><a href="https://silveriom.ir/#venues-map">نقشه هوشمند کورت‌ها</a></li>
+          <li><a href="https://silveriom.ir/#complexes">مجتمع‌های همکار</a></li>
+          <li><a href="https://silveriom.ir/#inventory">سبد رسانه‌های تبلیغاتی</a></li>
+          <li><a href="https://silveriom.ir/#process">فرآیند اکران کمپین</a></li>
+          <li><a href="https://silveriom.ir/portfolio/">نمونه‌کارها و پروژه‌ها</a></li>
+          <li><a href="https://silveriom.ir/#planner">مدیاپلنر و صدور پیش‌فاکتور</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Media & Services -->
+      <div class="footer-col">
+        <h4 class="fcol-heading">رسانه‌ها و خدمات</h4>
+        <ul class="fcol-links">
+          <li><a href="https://silveriom.ir/#inventory">برندینگ اختصاصی نوار و تور</a></li>
+          <li><a href="https://silveriom.ir/#inventory">دیواره‌های پانورامیک شیشه</a></li>
+          <li><a href="https://silveriom.ir/#inventory">نمایشگرهای هوشمند دیجیتال LED</a></li>
+          <li><a href="https://silveriom.ir/#inventory">جایگاه سمپلینگ و VIP لانژ</a></li>
+          <li><a href="https://silveriom.ir/#process">شبیه‌سازی ۳بعدی سازه و نورپردازی</a></li>
+          <li><a href="https://silveriom.ir/portfolio/">کمپین‌های موفق برندهای برتر</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact & Office -->
+      <div class="footer-col">
+        <h4 class="fcol-heading">ارتباط و پشتیبانی</h4>
+        <div class="footer-contact-box">
+          <a href="tel:09121127415" class="footer-phone-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            ۰۹۱۲۱۱۲۷۴۱۵
+          </a>
+          <p class="footer-address">
+            <span>دفتر مرکزی:</span> تهران، آجودانیه، مجموعه اختصاصی پدل T10 • دپارتمان رسانه‌ای سیلوریوم
+          </p>
+          <p class="footer-email">
+            <span>ایمیل سازمانی:</span> contact@silveriom.ir
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom-bar">
+      <p class="copyright-text">© ۲۰۲۶ تمامی حقوق مادی و معنوی متعلق به پلتفرم رسانه‌ای سیلوریوم (SILVERIOM) می‌باشد.</p>
+      <div class="footer-bottom-actions">
+        <a href="https://silveriom.ir/#hero" class="back-to-top-btn" aria-label="بازگشت به بالا">
+          <span>بازگشت به بالا</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 <script>
   let allMedia = [];
 
   window.addEventListener('load', () => {
     fetch('/data/silveriom_db.json')
       .then(r => r.json())
-      .then(data => {
-         allMedia = data;
+      .then(db => {
+         allMedia = db.mediaInventory || []; // FIX: Use db.mediaInventory instead of raw object
          renderCart();
+      })
+      .catch(err => {
+         console.error('Failed to load DB:', err);
+         document.getElementById('cartItemsContainer').innerHTML = '<div class="empty-cart">خطا در دریافت اطلاعات. لطفا رفرش کنید.</div>';
       });
   });
 
@@ -8872,9 +9050,14 @@ html {
         return;
     }
     
-    // For now, just alert success. The user said: "حالا بعد بهت میگم مدیاکیت چطوری ساخته بشه"
     alert("اطلاعات ثبت شد! (منطق ساخت مدیاکیت در فاز بعدی پیاده‌سازی می‌شود)");
   }
+</script>
+
+<!-- ================= CORE SCRIPTS ================= -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
 </script>
 </body>
 </html>
