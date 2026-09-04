@@ -11632,7 +11632,12 @@ window.renderMediaCard = function(media) {
     const title = media.title || media.name || 'بدون عنوان';
     const code = media.code || 'SIL-000';
     const location = media.location || 'تهران';
-    const image = media.image || 'assets/placeholder_media.jpg';
+    let image = media.image || 'assets/placeholder_media.jpg';
+    if (!image.startsWith('/') && !image.startsWith('http') && !image.startsWith('../')) {
+        image = '/' + image;
+    } else if (image.startsWith('../')) {
+        image = image.replace('../', '/');
+    }
     const tariff = media.tariff || 'تماس بگیرید';
     
     const dims = media.dimensions || media.specs || 'نامشخص';
