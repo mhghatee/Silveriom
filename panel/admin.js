@@ -21,7 +21,7 @@ let state = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) {
+  if (typeof lucide !== "undefined") {
     lucide.createIcons();
   }
 
@@ -174,7 +174,7 @@ function renderAll() {
   renderAudience();
   renderHomePage();
   renderMediaPlanner();
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function setupTabNavigation() {
@@ -229,7 +229,7 @@ function switchTab(tabId) {
   const overlay = document.getElementById('sidebar-overlay');
   if (sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
   if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 /* --------------------------------------------------------------------------
@@ -309,7 +309,7 @@ function renderVenues() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openVenueModal(id = null) {
@@ -346,7 +346,7 @@ function openVenueModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteVenue(id) {
@@ -419,10 +419,10 @@ function renderMedia() {
     </div>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
-async function compressAndUploadMediaImage(event, mediaId) {
+window.compressAndUploadMediaImage = async function(event, mediaId) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -439,18 +439,14 @@ async function compressAndUploadMediaImage(event, mediaId) {
     img.onload = async function() {
       const canvas = document.createElement('canvas');
       const MAX_WIDTH = 1200;
-      
       let width = img.width;
       let height = img.height;
-
       if (width > MAX_WIDTH) {
         height = Math.round((height * MAX_WIDTH) / width);
         width = MAX_WIDTH;
       }
-
       canvas.width = width;
       canvas.height = height;
-
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, width, height);
 
@@ -462,15 +458,12 @@ async function compressAndUploadMediaImage(event, mediaId) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ image_base64: webpBase64 })
         });
-        
         const data = await response.json();
-        
         if (data.success && data.url) {
            const mIndex = state.mediaInventory.findIndex(m => m.id === mediaId);
            if (mIndex > -1) {
              state.mediaInventory[mIndex].image = data.url;
              await window.saveStateToServer(); 
-             
              document.getElementById('media-img-' + mediaId).src = data.url.startsWith('/') ? data.url : '../' + data.url;
              showToast('تصویر با موفقیت فشرده و آپلود شد!', 'success');
            }
@@ -486,6 +479,37 @@ async function compressAndUploadMediaImage(event, mediaId) {
   reader.readAsDataURL(file);
 }
 
+  grid.innerHTML = media.map(m => `
+    <div class="inventory-card">
+      <div>
+        <div class="inventory-tag">${m.tag || 'سازه تبلیغاتی'}</div>
+        <h3 class="inventory-title">${m.title}</h3>
+        <p class="inventory-desc" style="margin-top:0.4rem;">${m.desc || ''}</p>
+      </div>
+
+      <div>
+        <div class="inventory-metrics-row">
+          <div class="mini-metric">${m.impact || 'دید بسیار بالا'}</div>
+          <div class="mini-metric">${m.specs || 'استاندارد'}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge badge-gold">${m.avail || 'موجود برای رزرو'}</span>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
+              <i data-lucide="edit-2" style="width:14px; height:14px;"></i>
+            </button>
+            <button class="btn-glass-outline btn-glass-danger" style="padding:0.35rem 0.65rem;" onclick="deleteMedia('${m.id}')" title="حذف">
+              <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  if (typeof lucide !== "undefined") lucide.createIcons();
+}
 
 function openMediaModal(id = null) {
   const modal = document.getElementById('modal-media');
@@ -511,7 +535,7 @@ function openMediaModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteMedia(id) {
@@ -571,7 +595,7 @@ function renderPortfolio() {
     </div>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openPortfolioModal(id = null) {
@@ -605,7 +629,7 @@ function openPortfolioModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deletePortfolio(id) {
@@ -656,7 +680,7 @@ function renderInquiries() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function updateInquiryStatus(id, status) {
@@ -728,7 +752,7 @@ function renderUsers() {
     `;
   }).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openUserModal(id = null) {
@@ -759,7 +783,7 @@ function openUserModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function approveUser(id) {
@@ -802,7 +826,7 @@ function openPasswordModal(id) {
   document.getElementById('pass-user-id').value = id;
   document.getElementById('password-form').reset();
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteUser(id) {
@@ -910,7 +934,7 @@ function renderTeamTable() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openTeamModal(id = null) {
@@ -943,7 +967,7 @@ function openTeamModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteTeamMember(id) {
@@ -1059,7 +1083,7 @@ let state = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) {
+  if (typeof lucide !== "undefined") {
     lucide.createIcons();
   }
 
@@ -1212,7 +1236,7 @@ function renderAll() {
   renderAudience();
   renderHomePage();
   renderMediaPlanner();
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function setupTabNavigation() {
@@ -1267,7 +1291,7 @@ function switchTab(tabId) {
   const overlay = document.getElementById('sidebar-overlay');
   if (sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
   if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 /* --------------------------------------------------------------------------
@@ -1347,7 +1371,7 @@ function renderVenues() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openVenueModal(id = null) {
@@ -1384,7 +1408,7 @@ function openVenueModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteVenue(id) {
@@ -1457,10 +1481,10 @@ function renderMedia() {
     </div>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
-async function compressAndUploadMediaImage(event, mediaId) {
+window.compressAndUploadMediaImage = async function(event, mediaId) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -1477,18 +1501,14 @@ async function compressAndUploadMediaImage(event, mediaId) {
     img.onload = async function() {
       const canvas = document.createElement('canvas');
       const MAX_WIDTH = 1200;
-      
       let width = img.width;
       let height = img.height;
-
       if (width > MAX_WIDTH) {
         height = Math.round((height * MAX_WIDTH) / width);
         width = MAX_WIDTH;
       }
-
       canvas.width = width;
       canvas.height = height;
-
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, width, height);
 
@@ -1500,15 +1520,12 @@ async function compressAndUploadMediaImage(event, mediaId) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ image_base64: webpBase64 })
         });
-        
         const data = await response.json();
-        
         if (data.success && data.url) {
            const mIndex = state.mediaInventory.findIndex(m => m.id === mediaId);
            if (mIndex > -1) {
              state.mediaInventory[mIndex].image = data.url;
              await window.saveStateToServer(); 
-             
              document.getElementById('media-img-' + mediaId).src = data.url.startsWith('/') ? data.url : '../' + data.url;
              showToast('تصویر با موفقیت فشرده و آپلود شد!', 'success');
            }
@@ -1524,6 +1541,37 @@ async function compressAndUploadMediaImage(event, mediaId) {
   reader.readAsDataURL(file);
 }
 
+  grid.innerHTML = media.map(m => `
+    <div class="inventory-card">
+      <div>
+        <div class="inventory-tag">${m.tag || 'سازه تبلیغاتی'}</div>
+        <h3 class="inventory-title">${m.title}</h3>
+        <p class="inventory-desc" style="margin-top:0.4rem;">${m.desc || ''}</p>
+      </div>
+
+      <div>
+        <div class="inventory-metrics-row">
+          <div class="mini-metric">${m.impact || 'دید بسیار بالا'}</div>
+          <div class="mini-metric">${m.specs || 'استاندارد'}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge badge-gold">${m.avail || 'موجود برای رزرو'}</span>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
+              <i data-lucide="edit-2" style="width:14px; height:14px;"></i>
+            </button>
+            <button class="btn-glass-outline btn-glass-danger" style="padding:0.35rem 0.65rem;" onclick="deleteMedia('${m.id}')" title="حذف">
+              <i data-lucide="trash-2" style="width:14px; height:14px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  if (typeof lucide !== "undefined") lucide.createIcons();
+}
 
 function openMediaModal(id = null) {
   const modal = document.getElementById('modal-media');
@@ -1549,7 +1597,7 @@ function openMediaModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteMedia(id) {
@@ -1609,7 +1657,7 @@ function renderPortfolio() {
     </div>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openPortfolioModal(id = null) {
@@ -1643,7 +1691,7 @@ function openPortfolioModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deletePortfolio(id) {
@@ -1694,7 +1742,7 @@ function renderInquiries() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function updateInquiryStatus(id, status) {
@@ -1766,7 +1814,7 @@ function renderUsers() {
     `;
   }).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openUserModal(id = null) {
@@ -1797,7 +1845,7 @@ function openUserModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function approveUser(id) {
@@ -1840,7 +1888,7 @@ function openPasswordModal(id) {
   document.getElementById('pass-user-id').value = id;
   document.getElementById('password-form').reset();
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteUser(id) {
@@ -1948,7 +1996,7 @@ function renderTeamTable() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openTeamModal(id = null) {
@@ -1981,7 +2029,7 @@ function openTeamModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteTeamMember(id) {
@@ -2594,7 +2642,7 @@ function renderPlannerTable() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openPlannerModal(id = null) {
@@ -2622,7 +2670,7 @@ function openPlannerModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deletePlannerPackage(id) {
@@ -2735,7 +2783,7 @@ function renderCampaignsTable() {
     </tr>
   `).join('');
 
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function openCampaignModal(id = null) {
@@ -2772,7 +2820,7 @@ function openCampaignModal(id = null) {
   }
 
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 async function deleteCampaign(id) {
@@ -2839,7 +2887,7 @@ function showToast(msg, type = 'info') {
   `;
 
   container.appendChild(toast);
-  if (window.lucide) lucide.createIcons();
+  if (typeof lucide !== "undefined") lucide.createIcons();
 
   setTimeout(() => {
     toast.style.opacity = '0';
@@ -2938,7 +2986,7 @@ function clearSystemCache() {
    ========================================================================== */
 let pendingExcelMedia = [];
 
-function handleExcelUpload(event) {
+window.handleExcelUpload = function(event) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -2950,7 +2998,6 @@ function handleExcelUpload(event) {
     const worksheet = workbook.Sheets[firstSheetName];
     const json = XLSX.utils.sheet_to_json(worksheet);
     
-    // Map Excel columns to our JSON structure
     pendingExcelMedia = json.map(row => {
       return {
         id: row['کد رسانه'] || 'SIL-' + Math.floor(Math.random()*10000),
@@ -2963,9 +3010,9 @@ function handleExcelUpload(event) {
         audience: row['مخاطب'] || '',
         status: row['وضعیت'] === 'رزرو شده' ? 'reserved' : 'available',
         image: row['لینک تصویر'] || 'assets/placeholder_media.jpg',
-        type: 'digital_board', // default
-        location: 'enghelab', // default
-        display_pages: ['inventory'] // default
+        type: 'digital_board',
+        location: 'enghelab',
+        display_pages: ['inventory']
       };
     });
 
@@ -2991,7 +3038,6 @@ function renderExcelPreview() {
     <option value="straboard">استرابورد</option>
     <option value="wall">دیواره تبلیغاتی</option>
   `;
-  
   const locationOptions = `
     <option value="enghelab">پدل کلاب انقلاب</option>
     <option value="ajudaniyeh">کلاب آجودانیه</option>
@@ -3000,7 +3046,6 @@ function renderExcelPreview() {
     <option value="iran-zamin">ایران زمین</option>
     <option value="netra">نترا کلاب</option>
   `;
-
   const pageOptions = `
     <option value="home">صفحه اصلی (Home)</option>
     <option value="inventory" selected>نمایشگاه (Inventory)</option>
@@ -3045,7 +3090,7 @@ function renderExcelPreview() {
   if(tbody) tbody.innerHTML = html;
 }
 
-async function saveExcelData() {
+window.saveExcelData = async function() {
   if (!pendingExcelMedia || pendingExcelMedia.length === 0) return;
   
   try {
