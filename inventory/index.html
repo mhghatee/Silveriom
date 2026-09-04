@@ -10724,6 +10724,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
       advanceProgress();
 
+      setTimeout(function() {
+        if(!isSiteFullyLoaded) {
+           isSiteFullyLoaded = true;
+           let finishInterval = setInterval(() => {
+             currentPercent += 2;
+             if (currentPercent >= 100) {
+               currentPercent = 100;
+               fillEl.style.width = '100%';
+               pctEl.innerText = '100%';
+               clearInterval(finishInterval);
+               setTimeout(() => {
+                 loaderWrapper.style.opacity = '0';
+                 setTimeout(() => { loaderWrapper.style.display = 'none'; }, 600);
+               }, 200);
+             } else {
+               fillEl.style.width = Math.floor(currentPercent) + '%';
+               pctEl.innerText = Math.floor(currentPercent) + '%';
+             }
+           }, 20);
+        }
+      }, 1500); // 1.5 seconds max loader time
+
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;
 

@@ -8980,7 +8980,7 @@ html {
 <script>
   let allMedia = [];
 
-  window.addEventListener('load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     fetch('/data/silveriom_db.json')
       .then(r => r.json())
       .then(db => {
