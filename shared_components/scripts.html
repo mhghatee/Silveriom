@@ -688,7 +688,17 @@ window.renderMediaCard = function(media) {
     // Defaults
     const title = media.title || media.name || 'بدون عنوان';
     const code = media.code || 'SIL-000';
-    const location = media.location || 'تهران';
+    let rawLoc = media.location || 'تهران';
+    let location = rawLoc;
+    
+    // Map to Persian names
+    if(rawLoc === 'azadi') location = 'مجموعه آرنا (آزادی)';
+    else if(rawLoc === 'lavasan') location = 'مجموعه نترا (لواسان)';
+    else if(rawLoc === 'ajudaniyeh' || rawLoc === 't10') location = 'مجموعه T10 (آجودانیه)';
+    else if(rawLoc === 'shahrak' || rawLoc === 'iran-zamin') location = 'مجموعه ایران زمین (شهرک غرب)';
+    else if(rawLoc === 'sari' || rawLoc === 'asayesh') location = 'مجموعه آسایش (ساری)';
+    else if(rawLoc === 'enghelab') location = 'مجموعه انقلاب (تهران)';
+
     let image = media.image || 'assets/placeholder_media.jpg';
     if (!image.startsWith('/') && !image.startsWith('http') && !image.startsWith('../')) {
         image = '/' + image;
@@ -698,16 +708,17 @@ window.renderMediaCard = function(media) {
     const tariff = media.tariff || 'تماس بگیرید';
     
     const dims = media.dimensions || media.specs || 'نامشخص';
-    const views = media.views || 'نامشخص';
     const printType = media.print_type || 'وینیل/مش';
-    const audience = media.audience || 'عمومی';
     
     const isReserved = media.status === 'reserved';
     const statusText = isReserved ? 'رزرو شده' : 'موجود جهت اکران';
     const statusClass = isReserved ? 'reserved' : '';
     
-    // Lucide Calendar Plus Icon
-    const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>`;
+    // SVG Icons
+    const plusIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>`;
+    const locIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const dimsIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>`;
+    const printIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
 
     return `
     <article class="media-showcase-card" data-id="${media.id || code}">
@@ -717,7 +728,7 @@ window.renderMediaCard = function(media) {
             <span class="msc-status-badge ${statusClass}">${statusText}</span>
         </div>
         
-        <div class="msc-location">📍 ${location}</div>
+        <div class="msc-location" style="display: flex; align-items: center; gap: 6px;">${locIcon} <span class="msc-location-text" style="display:none;">${rawLoc}</span> ${location}</div>
         <h3 class="msc-title">${title}</h3>
         
         <div class="msc-tariff-box">
@@ -725,16 +736,14 @@ window.renderMediaCard = function(media) {
             <span class="msc-tariff-value">${tariff}</span>
         </div>
         
-        <div class="msc-specs-grid">
-            <div>📐 ابعاد: <strong>${dims}</strong></div>
-            <div>👁️ بازدید: <strong>${views}</strong></div>
-            <div>⚡ چاپ: <strong>${printType}</strong></div>
-            <div>👥 مخاطب: <strong>${audience}</strong></div>
+        <div class="msc-specs-grid" style="grid-template-columns: 1fr 1fr;">
+            <div style="display: flex; align-items: center; gap: 6px;">${dimsIcon} <span>ابعاد: <strong>${dims}</strong></span></div>
+            <div style="display: flex; align-items: center; gap: 6px;">${printIcon} <span>چاپ: <strong>${printType}</strong></span></div>
         </div>
         
         <button class="msc-reserve-btn" onclick="openMainReservationModal('${code}', '${title}')">
-            ${calendarIcon}
-            <span>رزرو رسانه</span>
+            ${plusIcon}
+            <span>اضافه کردن به مدیا کیت</span>
         </button>
     </article>
     `;
