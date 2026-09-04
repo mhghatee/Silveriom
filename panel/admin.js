@@ -1951,22 +1951,20 @@ function renderExcelPreview() {
     <option value="wall">دیواره تبلیغاتی</option>
   `;
   const locationOptions = `
-    <option value="enghelab">پدل کلاب انقلاب</option>
-    <option value="ajudaniyeh">کلاب آجودانیه</option>
-    <option value="t10">کلاب T10</option>
-    <option value="arena">آرنا کلاب</option>
-    <option value="iran-zamin">ایران زمین</option>
-    <option value="netra">نترا کلاب</option>
+    <option value="azadi">آرنا (آزادی)</option>
+    <option value="lavasan">نترا (لواسان)</option>
+    <option value="ajudaniyeh">T10 (آجودانیه)</option>
+    <option value="shahrak">ایران زمین (شهرک غرب)</option>
+    <option value="sari">آسایش (ساری)</option>
   `;
   const pageOptions = `
     <option value="home">صفحه اصلی (Home)</option>
     <option value="inventory" selected>نمایشگاه (Inventory)</option>
-    <option value="club-enghelab">کلاب انقلاب</option>
-    <option value="club-ajudaniyeh">کلاب آجودانیه</option>
-    <option value="club-t10">کلاب T10</option>
-    <option value="club-arena">کلاب آرنا</option>
-    <option value="club-iran-zamin">ایران زمین</option>
-    <option value="club-netra">نترا کلاب</option>
+    <option value="club-azadi">آرنا (آزادی)</option>
+    <option value="club-lavasan">نترا (لواسان)</option>
+    <option value="club-ajudaniyeh">T10 (آجودانیه)</option>
+    <option value="club-shahrak">ایران زمین (شهرک غرب)</option>
+    <option value="club-sari">آسایش (ساری)</option>
   `;
 
   let html = '';
