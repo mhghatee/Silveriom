@@ -4894,3 +4894,160 @@ section {
 }
 
 </style>
+
+<!-- ================= GLOBAL MEDIA CARD COMPONENT ================= -->
+<style id="global-media-card-css">
+.media-showcase-card {
+  background: rgba(13, 22, 45, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  text-align: right;
+  direction: rtl;
+}
+
+.media-showcase-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(182, 255, 0, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(182, 255, 0, 0.1);
+}
+
+.msc-img-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  height: 220px;
+  width: 100%;
+}
+
+.msc-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.media-showcase-card:hover .msc-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.msc-code-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-neon, #B6FF00);
+  color: var(--color-neon, #B6FF00);
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  z-index: 10;
+}
+
+.msc-status-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: #00d287;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 210, 135, 0.4);
+}
+
+.msc-status-badge.reserved {
+  background: #FF453A;
+  box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+}
+
+.msc-location {
+  color: #00d287;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.msc-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.msc-tariff-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  background: #0E1629;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(204, 255, 0, 0.3);
+}
+
+.msc-tariff-label {
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.msc-tariff-value {
+  color: var(--color-neon, #B6FF00);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.msc-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: #121A2F;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  color: #CBD5E1;
+  margin-bottom: 24px;
+}
+
+.msc-specs-grid div strong {
+  color: #F8FAFC;
+}
+
+.msc-reserve-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(182, 255, 0, 0.5);
+  color: var(--color-neon, #B6FF00);
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.msc-reserve-btn:hover {
+  background: var(--color-neon, #B6FF00);
+  color: #020617;
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.3);
+}
+</style>

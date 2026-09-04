@@ -1818,3 +1818,151 @@ function clearSystemCache() {
     }, 1500);
   }
 }
+
+
+/* ==========================================================================
+   EXCEL IMPORT LOGIC (MEDIA INVENTORY)
+   ========================================================================== */
+let pendingExcelMedia = [];
+
+function handleExcelUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const data = new Uint8Array(e.target.result);
+    const workbook = XLSX.read(data, {type: 'array'});
+    const firstSheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[firstSheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+    
+    // Map Excel columns to our JSON structure
+    pendingExcelMedia = json.map(row => {
+      return {
+        id: row['کد رسانه'] || 'SIL-' + Math.floor(Math.random()*10000),
+        code: row['کد رسانه'] || '',
+        title: row['عنوان سازه'] || '',
+        tariff: row['تعرفه ماهانه'] || '',
+        dimensions: row['ابعاد'] || '',
+        views: row['بازدید ماهانه'] || '',
+        print_type: row['نوع چاپ/متریال'] || '',
+        audience: row['مخاطب'] || '',
+        status: row['وضعیت'] === 'رزرو شده' ? 'reserved' : 'available',
+        image: row['لینک تصویر'] || 'assets/placeholder_media.jpg',
+        type: 'digital', // default
+        location: 'tehran', // default
+        display_pages: ['inventory'] // default
+      };
+    });
+
+    renderExcelPreview();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function renderExcelPreview() {
+  const area = document.getElementById('excel-preview-area');
+  const tbody = document.getElementById('excel-preview-tbody');
+  
+  if(pendingExcelMedia.length === 0) {
+    area.style.display = 'none';
+    return;
+  }
+  
+  area.style.display = 'block';
+  
+  const typeOptions = `
+    <option value="digital_board">بیلبورد دیجیتال</option>
+    <option value="lightbox">لایت‌باکس</option>
+    <option value="straboard">استرابورد</option>
+    <option value="wall">دیواره تبلیغاتی</option>
+  `;
+  
+  const locationOptions = `
+    <option value="enghelab">پدل کلاب انقلاب</option>
+    <option value="ajudaniyeh">کلاب آجودانیه</option>
+    <option value="t10">کلاب T10</option>
+    <option value="arena">آرنا کلاب</option>
+    <option value="iran-zamin">ایران زمین</option>
+    <option value="netra">نترا کلاب</option>
+  `;
+
+  // Provide multi-select for pages (we will use simple text input or select multiple for simplicity, but a nice UI is better.
+  // We'll use a multiple select)
+  const pageOptions = `
+    <option value="home">صفحه اصلی (Home)</option>
+    <option value="inventory" selected>نمایشگاه (Inventory)</option>
+    <option value="club-enghelab">کلاب انقلاب</option>
+    <option value="club-ajudaniyeh">کلاب آجودانیه</option>
+    <option value="club-t10">کلاب T10</option>
+    <option value="club-arena">کلاب آرنا</option>
+    <option value="club-iran-zamin">ایران زمین</option>
+    <option value="club-netra">نترا کلاب</option>
+  `;
+
+  let html = '';
+  pendingExcelMedia.forEach((media, index) => {
+    html += `
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <td style="padding: 10px; font-weight: bold;">
+            <div style="font-size: 11px; color: var(--color-neon);">${media.code}</div>
+            <div>${media.title}</div>
+        </td>
+        <td style="padding: 10px;">
+          <select class="glass-input-field" style="padding: 5px; font-size: 12px; height: auto;" onchange="pendingExcelMedia[${index}].type = this.value">
+            ${typeOptions}
+          </select>
+        </td>
+        <td style="padding: 10px;">
+          <select class="glass-input-field" style="padding: 5px; font-size: 12px; height: auto;" onchange="pendingExcelMedia[${index}].location = this.value">
+            ${locationOptions}
+          </select>
+        </td>
+        <td style="padding: 10px;">
+          <select class="glass-input-field" style="padding: 5px; font-size: 12px; height: auto;" multiple onchange="
+            pendingExcelMedia[${index}].display_pages = Array.from(this.selectedOptions).map(o => o.value)
+          ">
+            ${pageOptions}
+          </select>
+          <div style="font-size: 10px; color:#888;">با Ctrl/Cmd چندتا انتخاب کنید</div>
+        </td>
+      </tr>
+    `;
+  });
+  
+  tbody.innerHTML = html;
+}
+
+async function saveExcelData() {
+  if (!pendingExcelMedia || pendingExcelMedia.length === 0) return;
+  
+  try {
+    showToast('در حال ذخیره‌سازی رسانه‌ها...', 'info');
+    
+    // Check if mediaInventory exists
+    if (!state.mediaInventory) state.mediaInventory = [];
+    
+    // Append or replace?
+    // We will update existing by code, or append new
+    pendingExcelMedia.forEach(newMedia => {
+      const idx = state.mediaInventory.findIndex(m => m.code === newMedia.code);
+      if (idx >= 0) {
+        state.mediaInventory[idx] = { ...state.mediaInventory[idx], ...newMedia };
+      } else {
+        state.mediaInventory.push(newMedia);
+      }
+    });
+    
+    await saveState();
+    
+    // Hide preview
+    pendingExcelMedia = [];
+    document.getElementById('excel-preview-area').style.display = 'none';
+    
+    renderMediaInventory();
+    showToast('رسانه‌ها با موفقیت آپدیت و ذخیره شدند!', 'success');
+  } catch (error) {
+    showToast('خطا در ذخیره‌سازی: ' + error.message, 'error');
+  }
+}

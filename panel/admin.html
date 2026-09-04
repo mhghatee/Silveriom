@@ -7,6 +7,7 @@
   
   <!-- Font & Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
   <!-- Admin Stylesheet -->
   <link rel="stylesheet" href="admin.css?v=15">
@@ -680,16 +681,44 @@ html {
 
         <!-- TAB 3: MEDIA INVENTORY MANAGEMENT -->
         <section class="tab-panel" id="tab-media">
+          
           <div class="section-header-bar">
             <div>
               <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">سازه‌ها و سبد رسانه‌های تبلیغاتی</h3>
-              <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">نوارهای تور کورت، دیوارهای پانورامیک، استیج‌ها و ویدئو وال‌های 4K</p>
+              <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">درون‌ریزی از طریق اکسل و مدیریت رسانه‌های نمایشی</p>
             </div>
-            <button class="btn-glass-gold" onclick="openMediaModal()">
-              <i data-lucide="plus"></i>
-              <span>تعریف سازه جدید</span>
-            </button>
+            <div style="display: flex; gap: 10px;">
+              <input type="file" id="media-excel-upload" accept=".xlsx, .xls, .csv" style="display: none;" onchange="handleExcelUpload(event)">
+              <button class="btn-glass" onclick="document.getElementById('media-excel-upload').click()" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.2);">
+                <i data-lucide="upload"></i>
+                <span>ایمپورت اکسل</span>
+              </button>
+              <button class="btn-glass-gold" onclick="openMediaModal()">
+                <i data-lucide="plus"></i>
+                <span>تعریف دستی سازه</span>
+              </button>
+            </div>
           </div>
+
+          <!-- Excel Import Preview / Bulk Edit Area -->
+          <div id="excel-preview-area" class="glass-card" style="display: none; margin-bottom: 1.5rem; overflow-x: auto;">
+             <div style="display:flex; justify-content:space-between; margin-bottom: 1rem;">
+                <h4 style="color:#CCFF33;">پیش‌نمایش اطلاعات اکسل</h4>
+                <button class="btn-glass-gold" onclick="saveExcelData()" style="padding: 5px 15px; font-size: 13px;">ذخیره و انتقال به رسانه‌ها</button>
+             </div>
+             <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; color: #fff;">
+               <thead>
+                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                    <th style="padding: 10px; text-align: right;">کد / عنوان</th>
+                    <th style="padding: 10px; text-align: right;">نوع سازه</th>
+                    <th style="padding: 10px; text-align: right;">لوکیشن</th>
+                    <th style="padding: 10px; text-align: right;">صفحات هدف</th>
+                 </tr>
+               </thead>
+               <tbody id="excel-preview-tbody"></tbody>
+             </table>
+          </div>
+
 
           <div class="cards-grid" id="media-cards-grid">
             <!-- Dynamic Cards -->
@@ -1786,7 +1815,7 @@ html {
   <div class="toast-container" id="toast-container"></div>
 
   <!-- JS Dependencies -->
-  <script src="admin.js?v=7"></script>
+  <script src="admin.js?v=16"></script>
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
