@@ -321,26 +321,21 @@ function openVenueModal(id = null) {
   const preview = document.getElementById('venue-image-preview');
   if (preview) preview.style.display = 'none';
 
+  
   if (id) {
-    const v = state.venues.find(item => item.id === id);
-    if (v) {
-      title.textContent = 'ویرایش مجموعه پدل';
-      document.getElementById('venue-id').value = v.id;
-      document.getElementById('venue-title').value = v.title || '';
-      document.getElementById('venue-badge').value = v.badge || '';
-      document.getElementById('venue-location').value = v.location || '';
-      document.getElementById('venue-courts').value = v.courts || '';
-      document.getElementById('venue-impressions').value = v.impressions || '';
-      document.getElementById('venue-lat').value = v.lat || 35.8;
-      document.getElementById('venue-lng').value = v.lng || 51.4;
-      document.getElementById('venue-image').value = v.image || '';
-      document.getElementById('venue-desc').value = v.desc || '';
-      if (v.image && preview) {
-        preview.src = v.image;
-        preview.style.display = 'block';
-      }
+    const m = state.mediaInventory.find(item => item.id === id);
+    if (m) {
+      title.textContent = 'ویرایش سازه تبلیغاتی';
+      document.getElementById('media-id').value = m.id || '';
+      document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
+      if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
+      if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
+      if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
+      if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
     }
   } else {
+
     title.textContent = 'افزودن باشگاه جدید';
     document.getElementById('venue-id').value = '';
   }
@@ -500,20 +495,21 @@ function openMediaModal(id = null) {
   const form = document.getElementById('media-form');
   form.reset();
 
+  
   if (id) {
     const m = state.mediaInventory.find(item => item.id === id);
     if (m) {
       title.textContent = 'ویرایش سازه تبلیغاتی';
-      document.getElementById('media-id').value = m.id;
-      document.getElementById('media-title').value = m.title || '';
-      document.getElementById('media-zoneTag').value = m.tag || '';
-      document.getElementById('media-m1').value = m.impact || '';
-      document.getElementById('media-m2').value = m.specs || '';
-      document.getElementById('media-m3').value = m.avail || '';
-      document.getElementById('media-desc').value = m.desc || '';
-      document.getElementById('media-status').value = m.avail || 'موجود برای رزرو';
+      document.getElementById('media-id').value = m.id || '';
+      document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
+      if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
+      if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
+      if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
+      if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
     }
   } else {
+
     title.textContent = 'افزودن سازه تبلیغاتی جدید';
     document.getElementById('media-id').value = '';
   }
@@ -591,23 +587,21 @@ function openPortfolioModal(id = null) {
   const preview = document.getElementById('port-image-preview');
   if (preview) preview.style.display = 'none';
 
+  
   if (id) {
-    const p = state.portfolio.find(item => item.id === id);
-    if (p) {
-      title.textContent = 'ویرایش نمونه‌کار / کمپین';
-      document.getElementById('port-id').value = p.id;
-      document.getElementById('port-brand').value = p.brand || '';
-      document.getElementById('port-title').value = p.title || '';
-      document.getElementById('port-category').value = p.category || '';
-      document.getElementById('port-desc').value = p.desc || '';
-      document.getElementById('port-image').value = p.image || '';
-      document.getElementById('port-date').value = p.date || '';
-      if (p.image && preview) {
-        preview.src = p.image;
-        preview.style.display = 'block';
-      }
+    const m = state.mediaInventory.find(item => item.id === id);
+    if (m) {
+      title.textContent = 'ویرایش سازه تبلیغاتی';
+      document.getElementById('media-id').value = m.id || '';
+      document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
+      if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
+      if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
+      if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
+      if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
     }
   } else {
+
     title.textContent = 'افزودن کمپین جدید';
     document.getElementById('port-id').value = '';
   }
@@ -746,20 +740,21 @@ function openUserModal(id = null) {
   const passGroup = document.getElementById('user-password-group');
   form.reset();
 
+  
   if (id) {
-    const u = state.users.find(item => item.id === id);
-    if (u) {
-      title.textContent = 'ویرایش مشخصات کاربر';
-      document.getElementById('user-id').value = u.id;
-      document.getElementById('user-name').value = u.name || '';
-      document.getElementById('user-email').value = u.email || '';
-      document.getElementById('user-phone').value = u.phone || '';
-      document.getElementById('user-role').value = u.role || 'کاربر پنل';
-      document.getElementById('user-status').value = u.status || 'تایید شده';
-      if (passGroup) passGroup.style.display = 'none';
-      document.getElementById('user-password').removeAttribute('required');
+    const m = state.mediaInventory.find(item => item.id === id);
+    if (m) {
+      title.textContent = 'ویرایش سازه تبلیغاتی';
+      document.getElementById('media-id').value = m.id || '';
+      document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
+      if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
+      if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
+      if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
+      if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
     }
   } else {
+
     title.textContent = 'افزودن کاربر جدید';
     document.getElementById('user-id').value = '';
     if (passGroup) passGroup.style.display = 'block';
@@ -930,22 +925,21 @@ function openTeamModal(id = null) {
   const preview = document.getElementById('team-image-preview');
   if (preview) preview.style.display = 'none';
 
+  
   if (id) {
-    const team = (state.aboutUs && state.aboutUs.team) ? state.aboutUs.team : [];
-    const member = team.find(m => m.id === id);
-    if (member) {
-      title.textContent = 'ویرایش اطلاعات عضو تیم';
-      document.getElementById('team-id').value = member.id;
-      document.getElementById('team-name').value = member.name || '';
-      document.getElementById('team-role').value = member.role || '';
-      document.getElementById('team-bio').value = member.bio || '';
-      document.getElementById('team-image').value = member.image || '';
-      if (member.image && preview) {
-        preview.src = member.image;
-        preview.style.display = 'block';
-      }
+    const m = state.mediaInventory.find(item => item.id === id);
+    if (m) {
+      title.textContent = 'ویرایش سازه تبلیغاتی';
+      document.getElementById('media-id').value = m.id || '';
+      document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
+      if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
+      if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
+      if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
+      if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
     }
   } else {
+
     title.textContent = 'افزودن عضو جدید تیم';
     document.getElementById('team-id').value = '';
   }
@@ -1015,881 +1009,45 @@ function setupFormHandlers() {
   });
 
   // Media Form
+  
   const mForm = document.getElementById('media-form'); if(mForm) mForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const media = {
-      id: document.getElementById('media-id').value || ('mi_' + Date.now()),
-      title: document.getElementById('media-title').value,
-      tag: document.getElementById('media-zoneTag').value,
-      impact: document.getElementById('media-m1').value,
-      specs: document.getElementById('media-m2').value,
-      avail: document.getElementById('media-m3').value || document.getElementById('media-status').value,
-      desc: document.getElementById('media-desc').value
-    };
+    
+    // We only update the basic fields from this modal, so we don't overwrite the advanced properties set from Excel
+    const id = document.getElementById('media-id').value || ('SIL-' + Date.now());
+    let mIndex = state.mediaInventory.findIndex(m => m.id === id);
+    
+    let mediaObj = mIndex > -1 ? state.mediaInventory[mIndex] : { id: id };
+    
+    mediaObj.title = document.getElementById('media-title') ? document.getElementById('media-title').value : mediaObj.title;
+    if(document.getElementById('media-tag')) mediaObj.tag = document.getElementById('media-tag').value;
+    if(document.getElementById('media-impact')) mediaObj.impact = document.getElementById('media-impact').value;
+    if(document.getElementById('media-specs')) {
+        mediaObj.specs = document.getElementById('media-specs').value;
+        mediaObj.dimensions = mediaObj.specs;
+    }
+    if(document.getElementById('media-avail')) {
+        mediaObj.avail = document.getElementById('media-avail').value;
+        mediaObj.status = mediaObj.avail;
+    }
+    if(document.getElementById('media-desc')) mediaObj.desc = document.getElementById('media-desc').value;
+
+    if (mIndex > -1) {
+        state.mediaInventory[mIndex] = mediaObj;
+    } else {
+        state.mediaInventory.push(mediaObj);
+    }
 
     try {
-      const res = await fetch('/api/media', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'save', media })
-      });
-      const data = await res.json();
-      if (data.success) state.mediaInventory = data.mediaInventory;
+      await saveStateToServer();
+      closeModal('modal-media');
+      renderMedia();
+      showToast('سازه تبلیغاتی با موفقیت ذخیره شد', 'success');
     } catch (err) {
-      const idx = state.mediaInventory.findIndex(m => m.id === media.id);
-      if (idx >= 0) state.mediaInventory[idx] = media;
-      else state.mediaInventory.push(media);
+      showToast('خطا در ذخیره‌سازی: ' + err.message, 'error');
     }
-    renderMedia();
-    closeModal('modal-media');
-    showToast('اطلاعات سازه تبلیغاتی ذخیره شد', 'success');
   });
 
-  // Portfolio Form
-  const pForm = document.getElementById('portfolio-form'); if(pForm) pForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const portfolio = {
-      id: document.getElementById('port-id').value || ('p_' + Date.now()),
-      brand: document.getElementById('port-brand').value,
-      title: document.getElementById('port-title').value,
-      category: document.getElementById('port-category').value,
-      desc: document.getElementById('port-desc').value,
-      image: document.getElementById('port-image').value,
-      date: document.getElementById('port-date').value
-    };
-
-    try {
-      const res = await fetch('/api/portfolio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'save', portfolio })
-      });
-      const data = await res.json();
-      if (data.success) state.portfolio = data.portfolio;
-    } catch (err) {
-      const idx = state.portfolio.findIndex(p => p.id === portfolio.id);
-      if (idx >= 0) state.portfolio[idx] = portfolio;
-      else state.portfolio.push(portfolio);
-    }
-    renderPortfolio();
-    closeModal('modal-portfolio');
-    showToast('نمونه‌کار جدید ذخیره شد', 'success');
-  });
-
-  // User Add/Edit Form
-  const uForm = document.getElementById('user-form'); if(uForm) uForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const id = document.getElementById('user-id').value;
-    const user_item = {
-      id: id || ('u_' + Date.now()),
-      name: document.getElementById('user-name').value,
-      email: normalizeDigits(document.getElementById('user-email').value).toLowerCase(),
-      phone: normalizeDigits(document.getElementById('user-phone').value),
-      role: document.getElementById('user-role').value,
-      status: document.getElementById('user-status').value
-    };
-    if (!id) {
-      user_item.password = document.getElementById('user-password').value;
-    }
-
-    try {
-      const res = await fetch('/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'save', user: user_item })
-      });
-      const data = await res.json();
-      if (data.success) state.users = data.users;
-    } catch (err) {
-      const idx = state.users.findIndex(u => u.id === user_item.id);
-      if (idx >= 0) state.users[idx] = user_item;
-      else state.users.push(user_item);
-    }
-    renderUsers();
-    closeModal('modal-user');
-    showToast('اطلاعات کاربر با موفقیت ذخیره شد', 'success');
-  });
-
-  // Change Password Form
-  const pwdForm = document.getElementById('password-form'); if(pwdForm) pwdForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const id = document.getElementById('pass-user-id').value;
-    const newPass = document.getElementById('new-password').value;
-    const confirmPass = document.getElementById('confirm-new-password').value;
-
-    if (newPass !== confirmPass) {
-      showToast('رمز عبور جدید و تکرار آن مطابقت ندارند', 'warning');
-      return;
-    }
-
-    try {
-      const res = await fetch('/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'change_password', id, password: newPass })
-      });
-      const data = await res.json();
-      if (data.success) state.users = data.users;
-    } catch (err) {}
-    closeModal('modal-password');
-    showToast('رمز عبور جدید کاربر اعمال شد', 'success');
-  });
-
-  // Settings Form
-  const sForm = document.getElementById('settings-form'); if(sForm) sForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    state.settings = {
-      siteTitle: document.getElementById('set-siteTitle').value,
-      heroBadge: document.getElementById('set-heroBadge').value,
-      heroTitle: document.getElementById('set-heroTitle').value,
-      heroSubtitle: document.getElementById('set-heroSubtitle').value,
-      contactPhone: document.getElementById('set-contactPhone').value,
-      contactEmail: document.getElementById('set-contactEmail').value,
-      contactAddress: document.getElementById('set-contactAddress').value
-    };
-
-    try {
-      await fetch('/api/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings: state.settings, metrics: state.metrics })
-      });
-    } catch (err) {}
-    showToast('تنظیمات عمومی با موفقیت ذخیره شد', 'success');
-  });
-
-  // About Us Form Handler
-  const aboutForm = document.getElementById('about-us-form');
-  if (aboutForm) {
-    aboutForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const aboutData = {
-        heroTitle: document.getElementById('about-heroTitle').value,
-        heroSubtitle: document.getElementById('about-heroSubtitle').value,
-        heroDesc: document.getElementById('about-heroDesc').value,
-        heroImage: document.getElementById('about-heroImage').value,
-        storyTitle: document.getElementById('about-storyTitle').value,
-        storyContent: document.getElementById('about-storyContent').value,
-        mission: document.getElementById('about-mission').value,
-        vision: document.getElementById('about-vision').value,
-        stats: [
-          { label: document.getElementById('about-stat1-label').value, value: document.getElementById('about-stat1-val').value },
-          { label: document.getElementById('about-stat2-label').value, value: document.getElementById('about-stat2-val').value },
-          { label: document.getElementById('about-stat3-label').value, value: document.getElementById('about-stat3-val').value },
-          { label: document.getElementById('about-stat4-label').value, value: document.getElementById('about-stat4-val').value }
-        ],
-        team: (state.aboutUs && state.aboutUs.team) ? state.aboutUs.team : [],
-        ctaTitle: document.getElementById('about-ctaTitle').value,
-        ctaSubtitle: document.getElementById('about-ctaSubtitle').value,
-        ctaBtnText: document.getElementById('about-ctaBtnText').value,
-        ctaBtnLink: document.getElementById('about-ctaBtnLink').value
-      };
-
-      try {
-        const res = await fetch('/api/about_us', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ aboutUs: aboutData })
-        });
-        const data = await res.json();
-        if (data.success && data.aboutUs) {
-          state.aboutUs = data.aboutUs;
-        }
-      } catch (err) {
-        state.aboutUs = aboutData;
-      }
-
-      showToast('اطلاعات صفحه درباره ما با موفقیت به‌روزرسانی شد', 'success');
-    });
-  }
-
-  // Team Form Handler
-  const teamForm = document.getElementById('team-form');
-  if (teamForm) {
-    teamForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const member = {
-        id: document.getElementById('team-id').value || ('t_' + Date.now()),
-        name: document.getElementById('team-name').value,
-        role: document.getElementById('team-role').value,
-        bio: document.getElementById('team-bio').value,
-        image: document.getElementById('team-image').value
-      };
-
-      try {
-        const res = await fetch('/api/team', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'save', member })
-        });
-        const data = await res.json();
-        if (data.success && data.aboutUs) {
-          state.aboutUs = data.aboutUs;
-        }
-      } catch (err) {
-        const team = state.aboutUs.team || [];
-        const idx = team.findIndex(m => m.id === member.id);
-        if (idx >= 0) team[idx] = member;
-        else team.push(member);
-        state.aboutUs.team = team;
-      }
-
-      renderTeamTable();
-      closeModal('modal-team');
-      showToast('مشخصات عضو تیم ذخیره شد', 'success');
-    });
-  }
-
-  // Contact Us Form Handler
-  const contactForm = document.getElementById('contact-us-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const contactData = {
-        heroBadge: document.getElementById('cnt-heroBadge').value,
-        heroTitle: document.getElementById('cnt-heroTitle').value,
-        heroSubtitle: document.getElementById('cnt-heroSubtitle').value,
-        cards: [
-          {
-            id: 'c1',
-            title: document.getElementById('cnt-card1-title').value,
-            detail: document.getElementById('cnt-card1-detail').value,
-            subdetail: document.getElementById('cnt-card1-subdetail').value,
-            icon: 'phone'
-          },
-          {
-            id: 'c2',
-            title: document.getElementById('cnt-card2-title').value,
-            detail: document.getElementById('cnt-card2-detail').value,
-            subdetail: document.getElementById('cnt-card2-subdetail').value,
-            icon: 'building'
-          },
-          {
-            id: 'c3',
-            title: document.getElementById('cnt-card3-title').value,
-            detail: document.getElementById('cnt-card3-detail').value,
-            subdetail: document.getElementById('cnt-card3-subdetail').value,
-            icon: 'mail'
-          },
-          {
-            id: 'c4',
-            title: document.getElementById('cnt-card4-title').value,
-            detail: document.getElementById('cnt-card4-detail').value,
-            subdetail: document.getElementById('cnt-card4-subdetail').value,
-            icon: 'map-pin'
-          }
-        ],
-        mapTitle: document.getElementById('cnt-mapTitle').value,
-        mapLat: document.getElementById('cnt-mapLat').value,
-        mapLng: document.getElementById('cnt-mapLng').value,
-        workingHoursText: document.getElementById('cnt-workingHoursText').value
-      };
-
-      try {
-        const res = await fetch('/api/contact_us', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contactUs: contactData })
-        });
-        const data = await res.json();
-        if (data.success && data.contactUs) {
-          state.contactUs = data.contactUs;
-        }
-      } catch (err) {
-        state.contactUs = contactData;
-      }
-
-      showToast('اطلاعات صفحه تماس با ما به‌روزرسانی شد', 'success');
-    });
-  }
-
-  // Portfolio Page Form Handler
-  const portPageForm = document.getElementById('portfolio-page-form');
-  if (portPageForm) {
-    portPageForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const portData = {
-        heroBadge: document.getElementById('port-heroBadge').value,
-        heroTitle: document.getElementById('port-heroTitle').value,
-        heroSubtitle: document.getElementById('port-heroSubtitle').value,
-        impactMetrics: [
-          { id: 'im1', label: document.getElementById('port-stat1-label').value, value: document.getElementById('port-stat1-value').value },
-          { id: 'im2', label: document.getElementById('port-stat2-label').value, value: document.getElementById('port-stat2-value').value },
-          { id: 'im3', label: document.getElementById('port-stat3-label').value, value: document.getElementById('port-stat3-value').value },
-          { id: 'im4', label: document.getElementById('port-stat4-label').value, value: document.getElementById('port-stat4-value').value }
-        ],
-        campaigns: (state.portfolioPage && state.portfolioPage.campaigns) ? state.portfolioPage.campaigns : []
-      };
-
-      try {
-        const res = await fetch('/api/portfolio_page', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ portfolioPage: portData })
-        });
-        const data = await res.json();
-        if (data.success && data.portfolioPage) {
-          state.portfolioPage = data.portfolioPage;
-        }
-      } catch (err) {
-        state.portfolioPage = portData;
-      }
-
-      showToast('تنظیمات صفحه نمونه‌کارها به‌روزرسانی شد', 'success');
-    });
-  }
-
-  // Campaign Modal Form Handler
-  const campaignForm = document.getElementById('campaign-form');
-  if (campaignForm) {
-    campaignForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const campaign = {
-        id: document.getElementById('camp-id').value || ('camp_' + Date.now()),
-        brand: document.getElementById('camp-brand').value,
-        title: document.getElementById('camp-title').value,
-        category: document.getElementById('camp-category').value,
-        location: document.getElementById('camp-location').value,
-        media: document.getElementById('camp-media').value,
-        desc: document.getElementById('camp-desc').value,
-        date: document.getElementById('camp-date').value,
-        impressions: document.getElementById('camp-impressions').value,
-        image: document.getElementById('camp-image').value
-      };
-
-      try {
-        const res = await fetch('/api/campaigns', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'save', campaign })
-        });
-        const data = await res.json();
-        if (data.success && data.portfolioPage) {
-          state.portfolioPage = data.portfolioPage;
-        }
-      } catch (err) {
-        if (!state.portfolioPage) state.portfolioPage = { campaigns: [] };
-        if (!state.portfolioPage.campaigns) state.portfolioPage.campaigns = [];
-        const idx = state.portfolioPage.campaigns.findIndex(c => c.id === campaign.id);
-        if (idx >= 0) state.portfolioPage.campaigns[idx] = campaign;
-        else state.portfolioPage.campaigns.push(campaign);
-      }
-
-      renderCampaignsTable();
-      closeModal('modal-campaign');
-      showToast('اطلاعات کمپین برند ذخیره گردید', 'success');
-    });
-  }
-
-  // Home Page Form Handler
-  const homeForm = document.getElementById('home-page-form');
-  if (homeForm) {
-    homeForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const homeData = {
-        heroBadge: document.getElementById('hm-heroBadge').value,
-        heroTitle: document.getElementById('hm-heroTitle').value,
-        heroSubtitle: document.getElementById('hm-heroSubtitle').value,
-        ctaPrimaryText: document.getElementById('hm-ctaPrimaryText').value,
-        ctaPrimaryLink: document.getElementById('hm-ctaPrimaryLink').value,
-        ctaSecondaryText: document.getElementById('hm-ctaSecondaryText').value,
-        ctaSecondaryLink: document.getElementById('hm-ctaSecondaryLink').value,
-        reelVideoUrl: document.getElementById('hm-reelVideoUrl').value,
-        highlights: [
-          { id: 'h1', title: document.getElementById('hm-hl1-title').value, value: document.getElementById('hm-hl1-value').value, desc: document.getElementById('hm-hl1-desc').value },
-          { id: 'h2', title: document.getElementById('hm-hl2-title').value, value: document.getElementById('hm-hl2-value').value, desc: document.getElementById('hm-hl2-desc').value },
-          { id: 'h3', title: document.getElementById('hm-hl3-title').value, value: document.getElementById('hm-hl3-value').value, desc: document.getElementById('hm-hl3-desc').value },
-          { id: 'h4', title: document.getElementById('hm-hl4-title').value, value: document.getElementById('hm-hl4-value').value, desc: document.getElementById('hm-hl4-desc').value }
-        ]
-      };
-
-      try {
-        const res = await fetch('/api/home_page', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ homePage: homeData })
-        });
-        const data = await res.json();
-        if (data.success && data.homePage) {
-          state.homePage = data.homePage;
-        }
-      } catch (err) {
-        state.homePage = homeData;
-      }
-
-      showToast('اطلاعات صفحه اصلی (خانه) با موفقیت به‌روزرسانی شد', 'success');
-    });
-  }
-
-  // Media Planner Main Form Handler
-  const plannerForm = document.getElementById('media-planner-form');
-  if (plannerForm) {
-    plannerForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const plannerData = {
-        title: document.getElementById('pln-title').value,
-        subtitle: document.getElementById('pln-subtitle').value,
-        packages: (state.mediaPlanner && state.mediaPlanner.packages) ? state.mediaPlanner.packages : []
-      };
-
-      try {
-        const res = await fetch('/api/media_planner', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ mediaPlanner: plannerData })
-        });
-        const data = await res.json();
-        if (data.success && data.mediaPlanner) {
-          state.mediaPlanner = data.mediaPlanner;
-        }
-      } catch (err) {
-        state.mediaPlanner = plannerData;
-      }
-
-      showToast('تنظیمات بخش مدیاپلنر ذخیره گردید', 'success');
-    });
-  }
-
-  // Planner Package Form Handler
-  const pkgForm = document.getElementById('planner-pkg-form');
-  if (pkgForm) {
-    pkgForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const rawFeatures = document.getElementById('pkg-features').value || '';
-      const features = rawFeatures.split('\n').map(s => s.trim()).filter(Boolean);
-
-      const packageObj = {
-        id: document.getElementById('pkg-id').value || ('pkg_' + Date.now()),
-        name: document.getElementById('pkg-name').value,
-        badge: document.getElementById('pkg-badge').value,
-        duration: document.getElementById('pkg-duration').value,
-        price: document.getElementById('pkg-price').value,
-        impressions: document.getElementById('pkg-impressions').value,
-        discount: document.getElementById('pkg-discount').value,
-        features: features
-      };
-
-      try {
-        const res = await fetch('/api/planner_packages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'save', package: packageObj })
-        });
-        const data = await res.json();
-        if (data.success && data.mediaPlanner) {
-          state.mediaPlanner = data.mediaPlanner;
-        }
-      } catch (err) {
-        if (!state.mediaPlanner) state.mediaPlanner = { packages: [] };
-        if (!state.mediaPlanner.packages) state.mediaPlanner.packages = [];
-        const idx = state.mediaPlanner.packages.findIndex(p => p.id === packageObj.id);
-        if (idx >= 0) state.mediaPlanner.packages[idx] = packageObj;
-        else state.mediaPlanner.packages.push(packageObj);
-      }
-
-      renderPlannerTable();
-      closeModal('modal-planner');
-      showToast('مشخصات پکیج تبلیغاتی با موفقیت ذخیره گردید', 'success');
-    });
-  }
-}
-
-function renderHomePage() {
-  const hm = state.homePage || {};
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  };
-
-  setVal('hm-heroBadge', hm.heroBadge);
-  setVal('hm-heroTitle', hm.heroTitle);
-  setVal('hm-heroSubtitle', hm.heroSubtitle);
-  setVal('hm-ctaPrimaryText', hm.ctaPrimaryText);
-  setVal('hm-ctaPrimaryLink', hm.ctaPrimaryLink);
-  setVal('hm-ctaSecondaryText', hm.ctaSecondaryText);
-  setVal('hm-ctaSecondaryLink', hm.ctaSecondaryLink);
-  setVal('hm-reelVideoUrl', hm.reelVideoUrl);
-
-  const hls = hm.highlights || [];
-  if (hls[0]) { setVal('hm-hl1-title', hls[0].title); setVal('hm-hl1-value', hls[0].value); setVal('hm-hl1-desc', hls[0].desc); }
-  if (hls[1]) { setVal('hm-hl2-title', hls[1].title); setVal('hm-hl2-value', hls[1].value); setVal('hm-hl2-desc', hls[1].desc); }
-  if (hls[2]) { setVal('hm-hl3-title', hls[2].title); setVal('hm-hl3-value', hls[2].value); setVal('hm-hl3-desc', hls[2].desc); }
-  if (hls[3]) { setVal('hm-hl4-title', hls[3].title); setVal('hm-hl4-value', hls[3].value); setVal('hm-hl4-desc', hls[3].desc); }
-}
-
-function renderMediaPlanner() {
-  const pln = state.mediaPlanner || {};
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  };
-
-  setVal('pln-title', pln.title);
-  setVal('pln-subtitle', pln.subtitle);
-
-  renderPlannerTable();
-}
-
-function renderPlannerTable() {
-  const tbody = document.getElementById('planner-tbody');
-  if (!tbody) return;
-  const packages = (state.mediaPlanner && state.mediaPlanner.packages) ? state.mediaPlanner.packages : [];
-
-  if (packages.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--color-silver-dim); padding:2rem;">هیچ پکیج تبلیغاتی ثبت نشده است.</td></tr>`;
-    return;
-  }
-
-  tbody.innerHTML = packages.map(p => `
-    <tr>
-      <td style="font-weight:700; color:#fff;">${p.name || '---'}</td>
-      <td><span class="badge-tag">${p.badge || 'عادی'}</span></td>
-      <td>${p.duration || '---'}</td>
-      <td style="color:var(--color-neon); font-weight:700;">${p.price || '---'}</td>
-      <td><span class="badge-gold">${p.discount || '---'}</span></td>
-      <td>${p.impressions || '---'}</td>
-      <td>
-        <div style="display:flex; gap:0.5rem;">
-          <button class="action-icon-btn" onclick="openPlannerModal('${p.id}')" title="ویرایش"><i data-lucide="edit"></i></button>
-          <button class="action-icon-btn danger" onclick="deletePlannerPackage('${p.id}')" title="حذف"><i data-lucide="trash-2"></i></button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
-
-  if (window.lucide) lucide.createIcons();
-}
-
-function openPlannerModal(id = null) {
-  const modal = document.getElementById('modal-planner');
-  if (!modal) return;
-
-  document.getElementById('planner-pkg-form').reset();
-  document.getElementById('pkg-id').value = '';
-
-  if (id && state.mediaPlanner && state.mediaPlanner.packages) {
-    const p = state.mediaPlanner.packages.find(item => item.id === id);
-    if (p) {
-      document.getElementById('modal-planner-title').textContent = 'ویرایش پکیج: ' + p.name;
-      document.getElementById('pkg-id').value = p.id;
-      document.getElementById('pkg-name').value = p.name || '';
-      document.getElementById('pkg-badge').value = p.badge || '';
-      document.getElementById('pkg-duration').value = p.duration || '';
-      document.getElementById('pkg-price').value = p.price || '';
-      document.getElementById('pkg-impressions').value = p.impressions || '';
-      document.getElementById('pkg-discount').value = p.discount || '';
-      document.getElementById('pkg-features').value = (p.features || []).join('\n');
-    }
-  } else {
-    document.getElementById('modal-planner-title').textContent = 'ثبت پکیج جدید';
-  }
-
-  modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
-}
-
-async function deletePlannerPackage(id) {
-  if (!confirm('آیا از حذف این پکیج تبلیغاتی اطمینان دارید؟')) return;
-  try {
-    const res = await fetch('/api/planner_packages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'delete', id })
-    });
-    const data = await res.json();
-    if (data.success && data.mediaPlanner) {
-      state.mediaPlanner = data.mediaPlanner;
-    }
-  } catch (err) {
-    if (state.mediaPlanner && state.mediaPlanner.packages) {
-      state.mediaPlanner.packages = state.mediaPlanner.packages.filter(p => p.id !== id);
-    }
-  }
-  renderPlannerTable();
-  showToast('پکیج تبلیغاتی حذف گردید', 'info');
-}
-
-function renderContactUs() {
-  const cnt = state.contactUs || {};
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  };
-
-  setVal('cnt-heroBadge', cnt.heroBadge);
-  setVal('cnt-heroTitle', cnt.heroTitle);
-  setVal('cnt-heroSubtitle', cnt.heroSubtitle);
-
-  const cards = cnt.cards || [];
-  if (cards[0]) {
-    setVal('cnt-card1-title', cards[0].title);
-    setVal('cnt-card1-detail', cards[0].detail);
-    setVal('cnt-card1-subdetail', cards[0].subdetail);
-  }
-  if (cards[1]) {
-    setVal('cnt-card2-title', cards[1].title);
-    setVal('cnt-card2-detail', cards[1].detail);
-    setVal('cnt-card2-subdetail', cards[1].subdetail);
-  }
-  if (cards[2]) {
-    setVal('cnt-card3-title', cards[2].title);
-    setVal('cnt-card3-detail', cards[2].detail);
-    setVal('cnt-card3-subdetail', cards[2].subdetail);
-  }
-  if (cards[3]) {
-    setVal('cnt-card4-title', cards[3].title);
-    setVal('cnt-card4-detail', cards[3].detail);
-    setVal('cnt-card4-subdetail', cards[3].subdetail);
-  }
-
-  setVal('cnt-mapTitle', cnt.mapTitle);
-  setVal('cnt-mapLat', cnt.mapLat);
-  setVal('cnt-mapLng', cnt.mapLng);
-  setVal('cnt-workingHoursText', cnt.workingHoursText);
-}
-
-function renderPortfolioPage() {
-  const port = state.portfolioPage || {};
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  };
-
-  setVal('port-heroBadge', port.heroBadge);
-  setVal('port-heroTitle', port.heroTitle);
-  setVal('port-heroSubtitle', port.heroSubtitle);
-
-  const metrics = port.impactMetrics || [];
-  if (metrics[0]) { setVal('port-stat1-label', metrics[0].label); setVal('port-stat1-value', metrics[0].value); }
-  if (metrics[1]) { setVal('port-stat2-label', metrics[1].label); setVal('port-stat2-value', metrics[1].value); }
-  if (metrics[2]) { setVal('port-stat3-label', metrics[2].label); setVal('port-stat3-value', metrics[2].value); }
-  if (metrics[3]) { setVal('port-stat4-label', metrics[3].label); setVal('port-stat4-value', metrics[3].value); }
-
-  renderCampaignsTable();
-}
-
-function renderCampaignsTable() {
-  const tbody = document.getElementById('campaigns-tbody');
-  if (!tbody) return;
-  const campaigns = (state.portfolioPage && state.portfolioPage.campaigns) ? state.portfolioPage.campaigns : [];
-  
-  if (campaigns.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--color-silver-dim); padding:2rem;">هیچ کمپینی ثبت نشده است.</td></tr>`;
-    return;
-  }
-
-  tbody.innerHTML = campaigns.map(c => `
-    <tr>
-      <td>
-        <img src="${c.image || 'assets/silveriom_logo_transparent.png'}" class="table-thumb" onerror="this.src='assets/silveriom_logo_transparent.png'">
-      </td>
-      <td style="font-weight:700; color:#fff;">${c.brand || '---'}</td>
-      <td>${c.title || '---'}</td>
-      <td><span class="badge-tag">${c.category || 'عام'}</span></td>
-      <td>${c.location || '---'}</td>
-      <td>${c.media || '---'}</td>
-      <td><span style="color:var(--color-neon); font-weight:700;">${c.impressions || '---'}</span></td>
-      <td>
-        <div style="display:flex; gap:0.5rem;">
-          <button class="action-icon-btn" onclick="openCampaignModal('${c.id}')" title="ویرایش"><i data-lucide="edit"></i></button>
-          <button class="action-icon-btn danger" onclick="deleteCampaign('${c.id}')" title="حذف"><i data-lucide="trash-2"></i></button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
-
-  if (window.lucide) lucide.createIcons();
-}
-
-function openCampaignModal(id = null) {
-  const modal = document.getElementById('modal-campaign');
-  if (!modal) return;
-
-  document.getElementById('campaign-form').reset();
-  document.getElementById('camp-id').value = '';
-  document.getElementById('camp-image-preview').style.display = 'none';
-
-  if (id && state.portfolioPage && state.portfolioPage.campaigns) {
-    const c = state.portfolioPage.campaigns.find(item => item.id === id);
-    if (c) {
-      document.getElementById('modal-campaign-title').textContent = 'ویرایش کمپین: ' + c.brand;
-      document.getElementById('camp-id').value = c.id;
-      document.getElementById('camp-brand').value = c.brand || '';
-      document.getElementById('camp-title').value = c.title || '';
-      document.getElementById('camp-category').value = c.category || '';
-      document.getElementById('camp-location').value = c.location || '';
-      document.getElementById('camp-media').value = c.media || '';
-      document.getElementById('camp-desc').value = c.desc || '';
-      document.getElementById('camp-date').value = c.date || '';
-      document.getElementById('camp-impressions').value = c.impressions || '';
-      document.getElementById('camp-image').value = c.image || '';
-
-      if (c.image) {
-        const prev = document.getElementById('camp-image-preview');
-        prev.src = c.image;
-        prev.style.display = 'block';
-      }
-    }
-  } else {
-    document.getElementById('modal-campaign-title').textContent = 'ثبت کمپین جدید';
-  }
-
-  modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
-}
-
-async function deleteCampaign(id) {
-  if (!confirm('آیا از حذف این کمپین اطمینان دارید؟')) return;
-  try {
-    const res = await fetch('/api/campaigns', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'delete', id })
-    });
-    const data = await res.json();
-    if (data.success && data.portfolioPage) {
-      state.portfolioPage = data.portfolioPage;
-    }
-  } catch (err) {
-    if (state.portfolioPage && state.portfolioPage.campaigns) {
-      state.portfolioPage.campaigns = state.portfolioPage.campaigns.filter(c => c.id !== id);
-    }
-  }
-  renderCampaignsTable();
-  showToast('کمپین حذف گردید', 'info');
-}
-
-function setupGlobalSearch() {
-  const searchInput = document.getElementById('global-search');
-  if (!searchInput) return;
-
-  searchInput.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase().trim();
-    if (!q) {
-      renderAll();
-      return;
-    }
-
-    const matchedVenues = state.venues.filter(v => 
-      v.title.toLowerCase().includes(q) || (v.location && v.location.toLowerCase().includes(q))
-    );
-    state.venues = matchedVenues;
-    renderVenues();
-  });
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) modal.classList.remove('active');
-}
-
-function showToast(msg, type = 'info') {
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  
-  const iconMap = {
-    success: 'check-circle',
-    danger: 'alert-triangle',
-    warning: 'alert-circle',
-    info: 'info'
-  };
-
-  toast.innerHTML = `
-    <i data-lucide="${iconMap[type] || 'info'}" style="color:${type === 'success' ? 'var(--color-neon)' : 'var(--color-neon)'}"></i>
-    <span>${msg}</span>
-  `;
-
-  container.appendChild(toast);
-  if (window.lucide) lucide.createIcons();
-
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(20px)';
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
-}
-
-function renderAudience() {
-  const aud = state.audience || {};
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  };
-  setVal('aud-title', aud.title);
-  setVal('aud-subtitle', aud.subtitle);
-  setVal('aud-stat1-label', aud.stat1?.label);
-  setVal('aud-stat1-value', aud.stat1?.value);
-  setVal('aud-stat2-label', aud.stat2?.label);
-  setVal('aud-stat2-value', aud.stat2?.value);
-}
-
-// Attach event listener for Audience Form
-document.addEventListener('DOMContentLoaded', () => {
-  // wait for elements to exist
-  setTimeout(() => {
-    const audForm = document.getElementById('audience-form');
-    if (audForm) {
-      audForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        state.audience = {
-          title: document.getElementById('aud-title').value,
-          subtitle: document.getElementById('aud-subtitle').value,
-          stat1: { label: document.getElementById('aud-stat1-label').value, value: document.getElementById('aud-stat1-value').value },
-          stat2: { label: document.getElementById('aud-stat2-label').value, value: document.getElementById('aud-stat2-value').value }
-        };
-        await saveStateToServer();
-        showToast('اطلاعات هوش مخاطب ذخیره شد', 'success');
-      });
-    }
-  }, 500);
-});
-
-// === GLOBAL PERSISTENCE ENGINE ===
-window.saveStateToServer = async function() {
-  try {
-    await fetch('api.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'save_all', state: state })
-    });
-  } catch (e) {
-    console.error("Save failed", e);
-  }
-};
-
-// Intercept all UI actions that update state (by overriding fetch)
-// When any of the original fetch('/api/...') fails, they update the state locally in catch block.
-// We intercept all those original fetches, wait for them to finish (and run their catch blocks),
-// and THEN we save the global state to api.php!
-const originalFetch = window.fetch;
-window.fetch = async function(url, options) {
-  const result = await originalFetch(url, options);
-  
-  if (typeof url === 'string' && url.startsWith('/api/')) {
-    // Wait for the caller's catch block to finish mutating the state
-    setTimeout(() => {
-      window.saveStateToServer();
-    }, 100);
-  }
-  
-  return result;
-};
-
-// Also attach to delete buttons
-document.addEventListener('click', (e) => {
-  if (e.target.closest('.danger') || e.target.closest('[onclick^="delete"]')) {
-    setTimeout(() => window.saveStateToServer(), 200);
-  }
-});
 
 function clearSystemCache() {
   if(confirm("آیا از پاک کردن کش سیستم اطمینان دارید؟ این کار اطلاعات ذخیره نشده را پاک می‌کند.")){
