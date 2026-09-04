@@ -50,7 +50,14 @@ $files = [
     "clubs/iran-zamin.html",
     "clubs/netra.html",
     "clubs/asayesh.html"
-];
+,
+    "panel/admin.css",
+    "panel/auth.css",
+    "panel/style.css",
+    "panel/admin.js",
+    "panel/auth.js",
+    "panel/client_sync.js",
+    "panel/api.php"];
 
 $success = 0;
 foreach($files as $file) {
