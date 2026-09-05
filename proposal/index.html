@@ -832,7 +832,7 @@
         @media print {
             @page {
                 size: 210mm auto;
-                margin: 0;
+                margin: 10mm 8mm;
             }
 
             html, body {
@@ -843,41 +843,89 @@
                 color-adjust: exact !important;
             }
 
-            /* Hide actions bar */
-            #actions, .action-bar { display: none !important; }
-
-            /* Keep all backgrounds */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
 
-            /* App container fills page width */
+            /* Hide UI-only elements */
+            #actions, .action-bar,
+            .luxury-pattern-bg,
+            .bg-energy-glow,
+            .navy-overlay-layer { display: none !important; }
+
+            /* App container fills page */
             #app-container {
                 width: 100% !important;
                 max-width: 100% !important;
-                padding: 20px 30px !important;
+                padding: 0 !important;
             }
 
-            /* Cards: 2 per row */
+            /* ── PRODUCT CARDS: compact horizontal row layout ── */
             #productGrid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+
+            article.media-showcase-card {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 12px !important;
+                padding: 10px !important;
+                border-radius: 10px !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                min-height: unset !important;
+                background: rgba(13,22,45,0.85) !important;
+                border: 1px solid rgba(182,255,0,0.3) !important;
+            }
+
+            /* Image: small square on the right (RTL) */
+            .msc-img-wrapper {
+                width: 80px !important;
+                height: 60px !important;
+                min-width: 80px !important;
+                margin-bottom: 0 !important;
+                border-radius: 8px !important;
+                flex-shrink: 0 !important;
+            }
+
+            .msc-img-wrapper img {
+                width: 80px !important;
+                height: 60px !important;
+                object-fit: cover !important;
+            }
+
+            /* Card content takes remaining space */
+            .msc-location { font-size: 0.65rem !important; margin-bottom: 2px !important; }
+            h3.msc-title { font-size: 0.8rem !important; margin: 2px 0 !important; }
+            .msc-tariff-box { padding: 3px 6px !important; margin: 4px 0 !important; }
+            .msc-tariff-label { font-size: 0.65rem !important; }
+            .msc-tariff-value { font-size: 0.85rem !important; }
+            .msc-specs-grid { font-size: 0.65rem !important; gap: 4px !important; }
+
+            /* Badges */
+            .msc-code-badge, .msc-status-badge {
+                font-size: 0.55rem !important;
+                padding: 2px 5px !important;
+            }
+
+            /* Bento stats: 2 columns for print */
+            .bento-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
-
-            article.media-spec-card {
+            .bento-card {
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
             }
 
-            /* Bento grid: 2 per row for print */
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+            /* About section */
+            .section { break-inside: avoid; margin-bottom: 1.5rem !important; }
 
-            /* Section breaks */
-            .section {
-                break-inside: avoid;
-            }
+            /* Header */
+            .proposal-logo { width: 80px !important; }
         }
 </style>
 </head>
