@@ -826,107 +826,71 @@
             }
         }
     
-        /* ============================================================
-           PRINT / PDF STYLES — window.print() strategy
-           ============================================================ */
-        @media print {
-            @page {
-                size: 210mm auto;
-                margin: 10mm 8mm;
-            }
-
-            html, body {
-                width: 210mm;
-                background: #020617 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            /* Hide UI-only elements */
-            #actions, .action-bar,
-            .luxury-pattern-bg,
-            .bg-energy-glow,
-            .navy-overlay-layer { display: none !important; }
-
-            /* App container fills page */
-            #app-container {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0 !important;
-            }
-
-            /* ── PRODUCT CARDS: compact horizontal row layout ── */
-            #productGrid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 8px !important;
-            }
-
-            article.media-showcase-card {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 12px !important;
-                padding: 10px !important;
-                border-radius: 10px !important;
-                break-inside: avoid !important;
-                page-break-inside: avoid !important;
-                min-height: unset !important;
-                background: rgba(13,22,45,0.85) !important;
-                border: 1px solid rgba(182,255,0,0.3) !important;
-            }
-
-            /* Image: small square on the right (RTL) */
-            .msc-img-wrapper {
-                width: 80px !important;
-                height: 60px !important;
-                min-width: 80px !important;
-                margin-bottom: 0 !important;
-                border-radius: 8px !important;
-                flex-shrink: 0 !important;
-            }
-
-            .msc-img-wrapper img {
-                width: 80px !important;
-                height: 60px !important;
-                object-fit: cover !important;
-            }
-
-            /* Card content takes remaining space */
-            .msc-location { font-size: 0.65rem !important; margin-bottom: 2px !important; }
-            h3.msc-title { font-size: 0.8rem !important; margin: 2px 0 !important; }
-            .msc-tariff-box { padding: 3px 6px !important; margin: 4px 0 !important; }
-            .msc-tariff-label { font-size: 0.65rem !important; }
-            .msc-tariff-value { font-size: 0.85rem !important; }
-            .msc-specs-grid { font-size: 0.65rem !important; gap: 4px !important; }
-
-            /* Badges */
-            .msc-code-badge, .msc-status-badge {
-                font-size: 0.55rem !important;
-                padding: 2px 5px !important;
-            }
-
-            /* Bento stats: 2 columns for print */
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            .bento-card {
-                break-inside: avoid !important;
-                page-break-inside: avoid !important;
-            }
-
-            /* About section */
-            .section { break-inside: avoid; margin-bottom: 1.5rem !important; }
-
-            /* Header */
-            .proposal-logo { width: 80px !important; }
+        
+        .pdf-mode .action-bar { display: none !important; }
+        
+        .pdf-mode {
+            background-color: #020617 !important;
         }
+        
+        .pdf-mode .luxury-pattern-bg {
+            display: block !important;
+            opacity: 0.75 !important;
+        }
+        
+        .pdf-mode .bg-energy-glow, .pdf-mode .navy-overlay-layer {
+            height: 100% !important;
+        }
+
+        /* COMPACT HORIZONTAL CARDS FOR PDF */
+        .pdf-mode #productGrid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+
+        .pdf-mode article.media-showcase-card {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 15px !important;
+            padding: 12px !important;
+            border-radius: 12px !important;
+            min-height: unset !important;
+            height: auto !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+            background: rgba(13,22,45,0.9) !important;
+        }
+
+        .pdf-mode .msc-img-wrapper {
+            width: 120px !important;
+            height: 90px !important;
+            min-width: 120px !important;
+            margin-bottom: 0 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .pdf-mode h3.msc-title { font-size: 1rem !important; margin: 4px 0 !important; }
+        .pdf-mode .msc-tariff-box { padding: 4px 8px !important; margin: 6px 0 !important; }
+        
+        /* BENTO STATS FIX */
+        .pdf-mode .bento-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .pdf-mode .bento-card {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .pdf-mode .section {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+            margin-bottom: 2rem !important;
+        }
+
 </style>
 </head>
 <body>
@@ -1483,47 +1447,7 @@
         });
     }
 
-    function downloadPDF() {
-        const actionsBar = document.getElementById('actions');
-
-        // Pre-render donuts to canvas for print color accuracy
-        document.querySelectorAll('.donut-chart').forEach(donut => {
-            if (donut.querySelector('canvas')) return;
-            const styleStr = donut.getAttribute('style') || '';
-            const percMatch = styleStr.match(/--perc:\s*([\d.]+)/);
-            const c1Match   = styleStr.match(/--color1:\s*(#[\w]+)/);
-            const c2Match   = styleStr.match(/--color2:\s*(#[\w]+)/);
-            const perc   = percMatch ? parseFloat(percMatch[1]) : 60;
-            const color1 = c1Match   ? c1Match[1].trim()        : '#CCFF00';
-            const color2 = c2Match   ? c2Match[1].trim()        : '#1e293b';
-            const SIZE = 160, R = 65, LW = 14;
-            const canvas = document.createElement('canvas');
-            canvas.width = SIZE; canvas.height = SIZE;
-            const ctx = canvas.getContext('2d');
-            ctx.beginPath(); ctx.arc(SIZE/2, SIZE/2, R, 0, 2*Math.PI);
-            ctx.strokeStyle = color2; ctx.lineWidth = LW; ctx.stroke();
-            ctx.beginPath();
-            const start = -Math.PI / 2;
-            ctx.arc(SIZE/2, SIZE/2, R, start, start + (perc/100)*2*Math.PI);
-            ctx.strokeStyle = color1; ctx.lineWidth = LW; ctx.lineCap = 'round'; ctx.stroke();
-            canvas.style.cssText = 'position:absolute;top:0;left:0;z-index:0;';
-            donut.style.background = 'none';
-            donut.style.mask = 'none';
-            donut.style.webkitMask = 'none';
-            donut.insertBefore(canvas, donut.firstChild);
-        });
-
-        actionsBar.style.display = 'none';
-        document.title = 'Silveriom_MediaKit_' + ((proposalData && proposalData.id) ? proposalData.id : 'SVM');
-
-        // Give browser time to render, then print
-        setTimeout(() => {
-            window.print();
-            setTimeout(() => {
-                actionsBar.style.display = 'flex';
-            }, 1000);
-        }, 300);
-    }
+    
 
 
     function setupActions(proposal) {
@@ -1538,19 +1462,23 @@
         });
     }
 
+    
+
+    window.addEventListener('DOMContentLoaded', init);
+
     function downloadPDF() {
         const actionsBar = document.getElementById('actions');
         actionsBar.style.display = 'none';
         document.body.classList.add('pdf-mode');
 
-        // Pre-render donuts as Canvas (conic-gradient & CSS mask unsupported by html2canvas)
+        // Pre-render donuts to Canvas (conic-gradient & CSS mask unsupported by html2canvas)
         const donutRestoreData = [];
         document.querySelectorAll('.donut-chart').forEach(donut => {
             if (donut.querySelector('canvas')) return;
             const styleStr = donut.getAttribute('style') || '';
             const percMatch = styleStr.match(/--perc:\s*([\d.]+)/);
-            const c1Match   = styleStr.match(/--color1:\s*(#[\w]+)/);
-            const c2Match   = styleStr.match(/--color2:\s*(#[\w]+)/);
+            const c1Match   = styleStr.match(/--color1:\s*(#[\w]+|rgb[^;]+)/);
+            const c2Match   = styleStr.match(/--color2:\s*(#[\w]+|rgb[^;]+)/);
             const perc   = percMatch ? parseFloat(percMatch[1]) : 60;
             const color1 = c1Match   ? c1Match[1].trim()        : '#CCFF00';
             const color2 = c2Match   ? c2Match[1].trim()        : '#1e293b';
@@ -1587,59 +1515,66 @@
             donut.style.webkitMask = 'none';
         });
 
-        // Capture #app-container directly to avoid body-centering left-shift
+        // Capture #app-container directly
         const appEl        = document.getElementById('app-container');
         const pid          = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
         const filename     = `Silveriom_MediaKit_${pid}.pdf`;
-        const contentWidth  = appEl.scrollWidth;
-        const contentHeight = appEl.scrollHeight + 80;
-        const pxToMm        = 0.264583;
+        
+        // Temporarily adjust app-container for perfect PDF capture
+        appEl.style.maxWidth = '1200px';
+        appEl.style.width = '1200px';
+        appEl.style.margin = '0 auto';
+        
+        // Wait a frame for styles to apply
+        setTimeout(() => {
+            const contentWidth  = 1200;
+            const contentHeight = appEl.scrollHeight + 80;
+            const pxToMm        = 0.264583;
 
-        const opt = {
-          margin: 0,
-          filename: filename,
-          image: { type: 'jpeg', quality: 0.97 },
-          html2canvas: {
-              scale: 1.8,
-              useCORS: true,
-              allowTaint: true,
-              windowWidth: contentWidth,
-              windowHeight: contentHeight,
-              backgroundColor: '#020617',
-              scrollX: 0,
-              scrollY: -window.scrollY,
-              width: contentWidth,
-              height: contentHeight
-          },
-          jsPDF: {
-              unit: 'mm',
-              format: [contentWidth * pxToMm, contentHeight * pxToMm],
-              orientation: 'portrait'
-          },
-          pagebreak: { mode: 'avoid-all' }
-        };
+            const opt = {
+              margin: 0,
+              filename: filename,
+              image: { type: 'jpeg', quality: 0.97 },
+              html2canvas: {
+                  scale: 1.5,
+                  useCORS: true,
+                  allowTaint: true,
+                  windowWidth: contentWidth,
+                  windowHeight: contentHeight,
+                  backgroundColor: '#020617',
+                  scrollX: 0,
+                  scrollY: -window.scrollY,
+                  width: contentWidth,
+                  height: contentHeight
+              },
+              jsPDF: {
+                  unit: 'mm',
+                  format: [contentWidth * pxToMm, contentHeight * pxToMm],
+                  orientation: 'portrait'
+              },
+              pagebreak: { mode: 'avoid-all' }
+            };
 
-        const restore = () => {
-            actionsBar.style.display = 'flex';
-            document.body.classList.remove('pdf-mode');
-            donutRestoreData.forEach(d => {
-                d.canvas.remove();
-                d.el.style.background  = d.oldBg;
-                d.el.style.mask        = d.oldMask;
-                d.el.style.webkitMask  = d.oldWebkitMask;
-            });
-        };
+            const restore = () => {
+                actionsBar.style.display = 'flex';
+                document.body.classList.remove('pdf-mode');
+                appEl.style.maxWidth = '';
+                appEl.style.width = '';
+                appEl.style.margin = '0 auto';
+                donutRestoreData.forEach(d => {
+                    d.canvas.remove();
+                    d.el.style.background  = d.oldBg;
+                    d.el.style.mask        = d.oldMask;
+                    d.el.style.webkitMask  = d.oldWebkitMask;
+                });
+            };
 
-        document.fonts.ready.then(() => {
-            setTimeout(() => {
-                html2pdf().set(opt).from(appEl).save()
-                    .then(restore)
-                    .catch(err => { console.error('PDF error:', err); restore(); alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.'); });
-            }, 400);
-        });
+            html2pdf().set(opt).from(appEl).save()
+                .then(restore)
+                .catch(err => { console.error('PDF error:', err); restore(); alert('خطا در تولید PDF.'); });
+        }, 300);
     }
 
-    window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
