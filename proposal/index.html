@@ -777,6 +777,18 @@
             height: 100% !important;
         }
 
+        /* Fix PDF deformation: force cards to 2-column grid for better PDF rendering */
+        .pdf-mode #productGrid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            width: 100% !important;
+        }
+        .pdf-mode article.media-spec-card {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
         /* Section header from audience page */
         .silveriom-section-header {
             text-align: right;
@@ -1228,7 +1240,7 @@
             const filterVenue = urlParams.get('venue') || 'all';
             const filterMedia = urlParams.get('media') || 'all';
             
-            let availableMedias = (db.inventory || []).filter(m => m.status === 'available');
+            let availableMedias = (db.mediaInventory || []).filter(m => m.status === 'available');
             
             if (filterVenue !== 'all') {
                 availableMedias = availableMedias.filter(m => m.location === filterVenue);
@@ -1268,7 +1280,7 @@
         }
 
         proposalData = proposal;
-        const mediaInventory = db.inventory || [];
+        const mediaInventory = db.mediaInventory || [];
         
         renderHeader(proposal);
         renderProductCards(proposal, mediaInventory);
