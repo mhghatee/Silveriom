@@ -537,13 +537,13 @@ html {
       <!-- Auth Tabs -->
       <div class="auth-tabs">
         <button class="auth-tab-btn active" id="btn-mediakit-tab" onclick="switchAuthTab('mediakit')">
-          📦 مدیاکیت
+          <div style="display:flex;align-items:center;gap:6px;justify-content:center"><i data-lucide="package" style="width:16px;height:16px;"></i> مدیاکیت</div>
         </button>
         <button class="auth-tab-btn" id="btn-login-tab" onclick="switchAuthTab('login')">
-          🔐 ورود
+          <div style="display:flex;align-items:center;gap:6px;justify-content:center"><i data-lucide="lock" style="width:16px;height:16px;"></i> ورود</div>
         </button>
         <button class="auth-tab-btn" id="btn-register-tab" onclick="switchAuthTab('register')">
-          ✍️ ثبت‌نام
+          <div style="display:flex;align-items:center;gap:6px;justify-content:center"><i data-lucide="user-plus" style="width:16px;height:16px;"></i> ثبت‌نام</div>
         </button>
       </div>
 
@@ -615,7 +615,12 @@ html {
 
         <!-- Success Step -->
         <div id="mediakit-success-step" style="display:none;text-align:center;padding:2rem 0;">
-          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <div class="success-icon-wrapper" style="display: flex; justify-content: center; align-items: center; margin: 0 auto 1.5rem auto; width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, rgba(182, 255, 0, 0.2), rgba(0, 240, 200, 0.05)); border: 1px solid rgba(182, 255, 0, 0.4); box-shadow: 0 0 40px rgba(182, 255, 0, 0.15), inset 0 0 20px rgba(182, 255, 0, 0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#B6FF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(182,255,0,0.6));">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
           <h3 style="color:#B6FF00;margin-bottom:0.5rem;">مدیاکیت آماده دانلود است</h3>
           <p style="color:#94a3b8;font-size:0.9rem;margin-bottom:1.5rem;">اطلاعات شما ثبت شد و فایل در حال دانلود است</p>
           <button type="button" class="btn-neon-submit" onclick="triggerMediaKitPDFDownload()">
@@ -736,18 +741,18 @@ html {
       <div class="brand-marquee-section">
         <div class="brand-marquee-wrapper">
           <div class="brand-marquee-track">
-            <span class="brand-item">🎾 T10 آجودانیه</span>
-            <span class="brand-item">⭐ نترا لواسان</span>
-            <span class="brand-item">🏆 آسایش ساری</span>
-            <span class="brand-item">🏙️ ایران‌زمین</span>
-            <span class="brand-item">🏟️ آرنا آزادی</span>
-            <span class="brand-item">📊 +۹۵,۰۰۰ بازدید</span>
-            <span class="brand-item">💎 رده A پریمیوم</span>
-            <span class="brand-item">🎾 T10 آجودانیه</span>
-            <span class="brand-item">⭐ نترا لواسان</span>
-            <span class="brand-item">🏆 آسایش ساری</span>
-            <span class="brand-item">🏙️ ایران‌زمین</span>
-            <span class="brand-item">🏟️ آرنا آزادی</span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="circle-dot" style="width:16px;height:16px;"></i> T10 آجودانیه</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="star" style="width:16px;height:16px;"></i> نترا لواسان</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="trophy" style="width:16px;height:16px;"></i> آسایش ساری</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="building-2" style="width:16px;height:16px;"></i> ایران‌زمین</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> آرنا آزادی</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="bar-chart-2" style="width:16px;height:16px;"></i> +۹۵,۰۰۰ بازدید</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="gem" style="width:16px;height:16px;"></i> رده A پریمیوم</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="circle-dot" style="width:16px;height:16px;"></i> T10 آجودانیه</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="star" style="width:16px;height:16px;"></i> نترا لواسان</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="trophy" style="width:16px;height:16px;"></i> آسایش ساری</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="building-2" style="width:16px;height:16px;"></i> ایران‌زمین</div></span>
+            <span class="brand-item"><div style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> آرنا آزادی</div></span>
           </div>
         </div>
       </div>
