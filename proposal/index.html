@@ -825,7 +825,61 @@
                 flex-direction: column !important;
             }
         }
-    </style>
+    
+        /* ============================================================
+           PRINT / PDF STYLES — window.print() strategy
+           ============================================================ */
+        @media print {
+            @page {
+                size: 210mm auto;
+                margin: 0;
+            }
+
+            html, body {
+                width: 210mm;
+                background: #020617 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Hide actions bar */
+            #actions, .action-bar { display: none !important; }
+
+            /* Keep all backgrounds */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* App container fills page width */
+            #app-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 20px 30px !important;
+            }
+
+            /* Cards: 2 per row */
+            #productGrid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            article.media-spec-card {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            /* Bento grid: 2 per row for print */
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Section breaks */
+            .section {
+                break-inside: avoid;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -1368,6 +1422,61 @@
             setTimeout(downloadPDF, 1500);
         }
     }
+
+    function setupActions(proposal) {
+        const link = window.location.href;
+        const text = `سلام، مدیاکیت رسانه‌ای برند ${proposal.brand} در پلتفرم سیلوریوم با شناسه ${proposal.id} آماده است. جهت مشاهده روی لینک کلیک کنید:\n\n${link}`;
+        document.getElementById('waBtn').href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    }
+
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('لینک کپی شد!');
+        });
+    }
+
+    function downloadPDF() {
+        const actionsBar = document.getElementById('actions');
+
+        // Pre-render donuts to canvas for print color accuracy
+        document.querySelectorAll('.donut-chart').forEach(donut => {
+            if (donut.querySelector('canvas')) return;
+            const styleStr = donut.getAttribute('style') || '';
+            const percMatch = styleStr.match(/--perc:\s*([\d.]+)/);
+            const c1Match   = styleStr.match(/--color1:\s*(#[\w]+)/);
+            const c2Match   = styleStr.match(/--color2:\s*(#[\w]+)/);
+            const perc   = percMatch ? parseFloat(percMatch[1]) : 60;
+            const color1 = c1Match   ? c1Match[1].trim()        : '#CCFF00';
+            const color2 = c2Match   ? c2Match[1].trim()        : '#1e293b';
+            const SIZE = 160, R = 65, LW = 14;
+            const canvas = document.createElement('canvas');
+            canvas.width = SIZE; canvas.height = SIZE;
+            const ctx = canvas.getContext('2d');
+            ctx.beginPath(); ctx.arc(SIZE/2, SIZE/2, R, 0, 2*Math.PI);
+            ctx.strokeStyle = color2; ctx.lineWidth = LW; ctx.stroke();
+            ctx.beginPath();
+            const start = -Math.PI / 2;
+            ctx.arc(SIZE/2, SIZE/2, R, start, start + (perc/100)*2*Math.PI);
+            ctx.strokeStyle = color1; ctx.lineWidth = LW; ctx.lineCap = 'round'; ctx.stroke();
+            canvas.style.cssText = 'position:absolute;top:0;left:0;z-index:0;';
+            donut.style.background = 'none';
+            donut.style.mask = 'none';
+            donut.style.webkitMask = 'none';
+            donut.insertBefore(canvas, donut.firstChild);
+        });
+
+        actionsBar.style.display = 'none';
+        document.title = 'Silveriom_MediaKit_' + ((proposalData && proposalData.id) ? proposalData.id : 'SVM');
+
+        // Give browser time to render, then print
+        setTimeout(() => {
+            window.print();
+            setTimeout(() => {
+                actionsBar.style.display = 'flex';
+            }, 1000);
+        }, 300);
+    }
+
 
     function setupActions(proposal) {
         const link = window.location.href;
