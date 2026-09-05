@@ -1223,7 +1223,7 @@
         const db = await res.json();
         
         let proposal;
-                if (proposalId === 'ALL_INVENTORY') {
+                                if (proposalId === 'ALL_INVENTORY') {
             const urlParams = new URLSearchParams(window.location.search);
             const filterVenue = urlParams.get('venue') || 'all';
             const filterMedia = urlParams.get('media') || 'all';
@@ -1234,10 +1234,10 @@
                 availableMedias = availableMedias.filter(m => m.location === filterVenue);
             }
             if (filterMedia !== 'all') {
-                if (filterMedia === 'net') availableMedias = availableMedias.filter(m => (m.title || '').includes('تور'));
-                else if (filterMedia === 'glass') availableMedias = availableMedias.filter(m => (m.title || '').includes('شیشه') || (m.title || '').includes('پدل'));
-                else if (filterMedia === 'video') availableMedias = availableMedias.filter(m => (m.title || '').includes('ویدئو') || (m.title || '').includes('دیجیتال'));
-                else if (filterMedia === 'vip') availableMedias = availableMedias.filter(m => (m.title || '').includes('VIP') || (m.title || '').includes('وی آی پی'));
+                if (filterMedia === 'billboard') availableMedias = availableMedias.filter(m => (m.title || '').includes('تابلو') || (m.title || '').includes('بیلبورد') || (m.title || '').includes('پیشانی'));
+                else if (filterMedia === 'sticker') availableMedias = availableMedias.filter(m => (m.print_type || '').includes('استیکر') || (m.title || '').includes('آسانسور'));
+                else if (filterMedia === 'court') availableMedias = availableMedias.filter(m => (m.title || '').includes('تور') || (m.title || '').includes('شیشه') || (m.title || '').includes('پدل'));
+                else if (filterMedia === 'digital') availableMedias = availableMedias.filter(m => (m.title || '').includes('ویدئو') || (m.title || '').includes('دیجیتال') || (m.title || '').includes('نمایشگر'));
             }
             
             proposal = {
@@ -1250,7 +1250,7 @@
                 }, 0) + ' میلیون تومان ',
                 discount: '0',
                 final_price: 'انتخابی',
-                medias: availableMedias,
+                cart: availableMedias.map(m => m.code || m.id),
                 status: 'pending'
             };
         } else {
