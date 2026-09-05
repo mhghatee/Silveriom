@@ -743,13 +743,15 @@
         .pdf-mode .cinematic-bg-container {
             position: absolute !important;
             height: 100% !important;
-            background: #020617 !important;
+            background: #020617 url('https://silveriom.ir/assets/padel_cinematic_bg.jpg') repeat-y center top !important;
+            background-size: 100% auto !important;
         }
         .pdf-mode .cinematic-bg-img {
-            position: absolute !important;
-            height: 1200px !important; /* Limit image height to avoid massive distortion */
-            object-fit: cover !important;
-            object-position: top center !important;
+            display: none !important;
+        }
+        .pdf-mode .bento-line-chart path {
+            fill: #CCFF00 !important;
+            opacity: 0.15;
         }
         .pdf-mode .bg-energy-glow, .pdf-mode .navy-overlay-layer {
             height: 100% !important;
@@ -912,7 +914,7 @@
       <!-- Card 5: Engagement (New) -->
       <div class="bento-card">
         <div class="bento-card-top" style="margin-bottom:0;">
-          <h3 class="bento-title">نرخ تعامل (Hit Rate)</h3>
+          <h3 class="bento-title">نرخ تعامل <span dir="ltr">(Hit Rate)</span></h3>
         </div>
         <div class="bento-value" style="font-size: 2.5rem; margin-top:0;">۹۴٪</div>
         <span class="bento-subtitle">میانگین مکث نگاه مستقیم</span>
@@ -946,7 +948,7 @@
         <!-- Global Demographics -->
         <div class="demo-panel">
           <div class="demo-card">
-            <h3 class="demo-title">ترکیب جنسیتی (Gender)</h3>
+            <h3 class="demo-title">ترکیب جنسیتی <span dir="ltr">(Gender)</span></h3>
             <div class="demo-bars">
               <div class="demo-bar-wrap">
                 <div class="demo-bar-info"><span>مردان</span><span>۶۰٪</span></div>
@@ -960,7 +962,7 @@
           </div>
           
           <div class="demo-card">
-            <h3 class="demo-title">ترکیب سنی (Age Group)</h3>
+            <h3 class="demo-title">ترکیب سنی <span dir="ltr">(Age Group)</span></h3>
             <div class="demo-bars">
               <div class="demo-bar-wrap">
                 <div class="demo-bar-info"><span>۱۸ تا ۳۵ سال (جوانان و نسل جدید)</span><span>۸۰٪</span></div>
@@ -1293,6 +1295,43 @@
         const actionsBar = document.getElementById('actions');
         actionsBar.style.display = 'none';
         document.body.classList.add('pdf-mode');
+
+        // Render donuts to Canvas for html2canvas support (conic-gradient is not supported)
+        document.querySelectorAll('.donut-chart').forEach(donut => {
+            if (donut.querySelector('canvas')) return;
+            const perc = parseFloat(donut.style.getPropertyValue('--perc')) || 0;
+            const color1 = donut.style.getPropertyValue('--color1').trim() || '#CCFF00';
+            const color2 = donut.style.getPropertyValue('--color2').trim() || '#1e293b';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = 160;
+            canvas.height = 160;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.beginPath();
+            ctx.arc(80, 80, 65, 0, 2 * Math.PI);
+            ctx.strokeStyle = color2;
+            ctx.lineWidth = 14;
+            ctx.stroke();
+            
+            ctx.beginPath();
+            const startAngle = -Math.PI / 2;
+            const endAngle = startAngle + (perc / 100) * 2 * Math.PI;
+            ctx.arc(80, 80, 65, startAngle, endAngle);
+            ctx.strokeStyle = color1;
+            ctx.lineWidth = 14;
+            ctx.stroke();
+            
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.zIndex = '0';
+            
+            donut.style.background = 'none';
+            if (donut.style.mask !== undefined) donut.style.mask = 'none';
+            if (donut.style.webkitMask !== undefined) donut.style.webkitMask = 'none';
+            donut.insertBefore(canvas, donut.firstChild);
+        });
         
         // Capture the entire body to include the background
         const element = document.body;
