@@ -42,21 +42,12 @@
         body {
             background-color: #020617;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-                radial-gradient(circle at 15% 15%, rgba(0, 240, 200, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 35%, rgba(204, 255, 0, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 20% 65%, rgba(0, 240, 200, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 80% 85%, rgba(204, 255, 0, 0.07) 0%, transparent 45%),
-                linear-gradient(180deg, #050b18 0%, #020617 25%, #03091e 50%, #020617 75%, #050b18 100%);
-            background-size: 
-                60px 60px,
-                60px 60px,
-                100% 100%,
-                100% 100%,
-                100% 100%,
-                100% 100%,
-                100% 100%;
+                radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 30%, rgba(204, 255, 0, 0.08), transparent 40%),
+                radial-gradient(circle at 20% 70%, rgba(0, 240, 255, 0.06), transparent 40%),
+                radial-gradient(circle at 80% 90%, rgba(204, 255, 0, 0.08), transparent 40%),
+                linear-gradient(180deg, #050b18 0%, #020617 50%, #050b18 100%);
+            background-size: 100% 100%;
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
@@ -71,8 +62,8 @@
             background-repeat: repeat-y;
             background-position: top center;
             background-size: 100% auto; /* Full width, scales height proportionally */
-            opacity: 0.15;
-            mix-blend-mode: overlay;
+                        opacity: 0.65;
+            mix-blend-mode: screen;
         }
         
             color: #fff;
@@ -772,7 +763,7 @@
         
         .pdf-mode .luxury-pattern-bg {
             display: block !important;
-            opacity: 0.32 !important;
+            opacity: 0.75 !important;
         }
         .pdf-mode .bento-line-chart path {
             fill: #CCFF00 !important;
