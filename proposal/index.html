@@ -735,6 +735,25 @@
         .btn-secondary-mk:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
         
         .pdf-mode .action-bar { display: none !important; }
+        
+        /* PDF Background Fix */
+        .pdf-mode {
+            background: #020617 !important;
+        }
+        .pdf-mode .cinematic-bg-container {
+            position: absolute !important;
+            height: 100% !important;
+            background: #020617 !important;
+        }
+        .pdf-mode .cinematic-bg-img {
+            position: absolute !important;
+            height: 1200px !important; /* Limit image height to avoid massive distortion */
+            object-fit: cover !important;
+            object-position: top center !important;
+        }
+        .pdf-mode .bg-energy-glow, .pdf-mode .navy-overlay-layer {
+            height: 100% !important;
+        }
 
         /* Section header from audience page */
         .silveriom-section-header {
@@ -1273,14 +1292,16 @@
     function downloadPDF() {
         const actionsBar = document.getElementById('actions');
         actionsBar.style.display = 'none';
+        document.body.classList.add('pdf-mode');
         
-        const element = document.getElementById('app-container');
+        // Capture the entire body to include the background
+        const element = document.body;
         const pid = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
         const filename = `Silveriom_MediaKit_${pid}.pdf`;
 
         // Measure actual content size for a single-page PDF with no breaks
-        const contentWidth  = element.scrollWidth;
-        const contentHeight = element.scrollHeight;
+        const contentWidth  = document.getElementById('app-container').scrollWidth;
+        const contentHeight = document.getElementById('app-container').scrollHeight + 100; // add some padding
         const pxToMm = 0.264583;
         const widthMm  = contentWidth  * pxToMm;
         const heightMm = contentHeight * pxToMm;
@@ -1309,9 +1330,11 @@
 
         html2pdf().set(opt).from(element).save().then(() => {
             actionsBar.style.display = 'flex';
+            document.body.classList.remove('pdf-mode');
         }).catch(err => {
             console.error('PDF error:', err);
             actionsBar.style.display = 'flex';
+            document.body.classList.remove('pdf-mode');
             alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
         });
     }
