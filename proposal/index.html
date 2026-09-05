@@ -266,6 +266,208 @@
 }
 
         
+        /* Bento */
+        <style id="bento-dashboard-styles">
+/* Hide old section */
+.impact-section { display: none !important; }
+
+/* Bento Styles */
+.bento-section {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  background: transparent !important;
+  direction: rtl;
+  text-align: right;
+  position: relative;
+  z-index: 10;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bento-large {
+  grid-column: span 2;
+}
+
+.bento-card {
+  background: rgba(18, 26, 47, 0.45);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  --color2: rgba(255, 255, 255, 0.08) !important;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(204, 255, 0, 0.2);
+}
+
+.bento-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.bento-title {
+  font-size: 1.15rem !important;
+  color: #F8FAFC !important;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: right !important;
+  width: 100% !important;
+}
+
+.bento-subtitle {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  display: block;
+}
+
+.bento-value {
+  flex-wrap: wrap;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.bento-trend {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.trend-up {
+  background: rgba(0, 210, 135, 0.15);
+  color: #00d287;
+}
+
+.bento-badge {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.bento-chart-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 20px;
+  width: 100%;
+}
+.bento-line-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bento-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.text-neon { color: #CCFF00 !important; }
+
+@media (max-width: 991px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-large {
+    grid-column: span 1;
+  }
+}
+
+/* Redesigned Donut Charts for true glassmorphism */
+.donut-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 30px 0;
+}
+.donut-chart {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(var(--color1) var(--perc), var(--color2) 0) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  /* Magic CSS to punch a truly transparent hole in the donut */
+  -webkit-mask: radial-gradient(transparent 55px, #000 56px) !important;
+  mask: radial-gradient(transparent 55px, #000 56px) !important;
+}
+.donut-chart::before {
+  display: none !important;
+}
+.donut-center {
+  position: absolute !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+}
+.donut-val {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+.donut-lbl {
+  font-size: 0.8rem !important;
+  color: #CBD5E1 !important;
+  margin-top: 2px !important;
+}
+
+.legend-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 0.9rem !important;
+  color: #94A3B8 !important;
+  margin-bottom: 6px !important;
+}
+.dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+</style>
+
+
+        
         /* Utils */
         
 /* ==========================================
@@ -571,6 +773,119 @@
               </p>
            </div>
         </section>
+
+        <!-- 2.5 Bento Dashboard Stats -->
+            <section id="bento-dashboard-stats" class="section bento-section">
+  <div class="editorial-wide-container">
+    <div class="section-header" style="margin-bottom: 3rem;">
+      <span class="section-tag">آمار بهره‌وری و دموگرافی</span>
+      <h2 class="section-title">گزارش آماری مخاطبان و شبکه‌ها</h2>
+      <p class="section-lead">تحلیل ظرفیت زمین‌ها، بازدید ماهانه و ترکیب جمعیتی در کانون‌های انحصاری.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card 1: Monthly/Annual Visits Line Chart -->
+      <div class="bento-card bento-large">
+        <div class="bento-card-top">
+          <div class="bento-info">
+            <h3 class="bento-title">ترافیک و بازدید شبکه‌ها</h3>
+            <span class="bento-subtitle">مجموع بازدید سالانه</span>
+            <div class="bento-value">۲۲۴,۸۴۰ <span class="bento-trend trend-up">↑ ۲۴٪ امسال</span></div>
+          </div>
+          <div class="bento-badge">بازدید ماهانه: ۱۸,۴۸۰</div>
+        </div>
+        <div class="bento-chart-container">
+          <svg viewBox="0 0 500 150" class="bento-line-chart" preserveAspectRatio="none">
+             <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
+                </linearGradient>
+             </defs>
+             <!-- Flipped curve for RTL flow -->
+             <path d="M500,130 C450,90 400,20 350,50 C300,80 250,30 200,60 C150,90 100,40 50,70 L0,40 L0,150 L500,150 Z" fill="url(#chartGrad)"/>
+             <path d="M500,130 C450,90 400,20 350,50 C300,80 250,30 200,60 C150,90 100,40 50,70 L0,40" fill="none" stroke="#CCFF00" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Network Size -->
+      <div class="bento-card">
+        <div class="bento-icon" style="font-size: 2rem; margin-bottom: 10px;">🎾</div>
+        <h3 class="bento-title">گستره شبکه انحصاری</h3>
+        <div class="bento-value" style="font-size: 1.8rem;">۴۴ <span class="bento-subtitle" style="display:inline;">کورت فعال</span></div>
+        <div class="bento-stats-list">
+          <div class="stat-row">
+            <span>تعداد کلاب‌ها</span>
+            <strong class="text-neon" style="color: #CCFF00;">۶ مجتمع لوکس</strong>
+          </div>
+          <div class="stat-row">
+            <span>میانگین تراکم روز</span>
+            <strong style="color: #00d287;">۸۰٪ (پیک)</strong>
+          </div>
+          <div class="stat-row">
+            <span>میانگین تراکم شب</span>
+            <strong style="color: #94A3B8;">۲۰٪</strong>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 3: Gender -->
+      <div class="bento-card">
+        <h3 class="bento-title">ترکیب جنسیتی</h3>
+        <div class="donut-container">
+           <div class="donut-chart" style="--perc: 60%; --color1: #00d287; "></div>
+           <div class="donut-center">
+             <span class="donut-val" style="color: #00d287;">۶۰٪</span>
+             <span class="donut-lbl">مردان</span>
+           </div>
+        </div>
+        <div class="bento-legend">
+           <div class="legend-item"><span class="dot" style="background:#00d287;"></span> مردان (۶۰٪)</div>
+           <div class="legend-item"><span class="dot" style="background:#334155;"></span> زنان (۴۰٪)</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Age -->
+      <div class="bento-card">
+        <h3 class="bento-title">ترکیب سنی مخاطبان</h3>
+        <div class="donut-container">
+           <div class="donut-chart" style="--perc: 80%; --color1: #CCFF00; "></div>
+           <div class="donut-center">
+             <span class="donut-val" style="color: #CCFF00;">۸۰٪</span>
+             <span class="donut-lbl">۱۸ تا ۳۵ سال</span>
+           </div>
+        </div>
+        <div class="bento-legend">
+           <div class="legend-item"><span class="dot" style="background:#CCFF00;"></span> نسل جدید (۸۰٪)</div>
+           <div class="legend-item"><span class="dot" style="background:#334155;"></span> متخصصین (۲۰٪)</div>
+        </div>
+      </div>
+
+
+      <!-- Card 5: Engagement (New) -->
+      <div class="bento-card">
+        <div class="bento-card-top" style="margin-bottom:0;">
+          <h3 class="bento-title">نرخ تعامل (Hit Rate)</h3>
+        </div>
+        <div class="bento-value" style="font-size: 2.5rem; margin-top:0;">۹۴٪</div>
+        <span class="bento-subtitle">میانگین مکث نگاه مستقیم</span>
+        
+        <div class="bento-stats-list" style="margin-top:auto;">
+          <div class="stat-row">
+            <span>جایگاه برند</span>
+            <strong style="color: #CCFF00;">VIP & لوکس</strong>
+          </div>
+          <div class="stat-row">
+            <span>مدت زمان توقف</span>
+            <strong style="color: #00d287;">بالای ۸ ثانیه</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <!-- 3. Audience Intelligence (Util Section) -->
             <section class="util-section">

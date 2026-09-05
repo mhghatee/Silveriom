@@ -1,0 +1,199 @@
+<style id="bento-dashboard-styles">
+/* Hide old section */
+.impact-section { display: none !important; }
+
+/* Bento Styles */
+.bento-section {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  background: transparent !important;
+  direction: rtl;
+  text-align: right;
+  position: relative;
+  z-index: 10;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bento-large {
+  grid-column: span 2;
+}
+
+.bento-card {
+  background: rgba(18, 26, 47, 0.45);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  --color2: rgba(255, 255, 255, 0.08) !important;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(204, 255, 0, 0.2);
+}
+
+.bento-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.bento-title {
+  font-size: 1.15rem !important;
+  color: #F8FAFC !important;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: right !important;
+  width: 100% !important;
+}
+
+.bento-subtitle {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  display: block;
+}
+
+.bento-value {
+  flex-wrap: wrap;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.bento-trend {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.trend-up {
+  background: rgba(0, 210, 135, 0.15);
+  color: #00d287;
+}
+
+.bento-badge {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.bento-chart-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 20px;
+  width: 100%;
+}
+.bento-line-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bento-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.text-neon { color: #CCFF00 !important; }
+
+@media (max-width: 991px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-large {
+    grid-column: span 1;
+  }
+}
+
+/* Redesigned Donut Charts for true glassmorphism */
+.donut-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 30px 0;
+}
+.donut-chart {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(var(--color1) var(--perc), var(--color2) 0) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  /* Magic CSS to punch a truly transparent hole in the donut */
+  -webkit-mask: radial-gradient(transparent 55px, #000 56px) !important;
+  mask: radial-gradient(transparent 55px, #000 56px) !important;
+}
+.donut-chart::before {
+  display: none !important;
+}
+.donut-center {
+  position: absolute !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+}
+.donut-val {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+.donut-lbl {
+  font-size: 0.8rem !important;
+  color: #CBD5E1 !important;
+  margin-top: 2px !important;
+}
+
+.legend-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 0.9rem !important;
+  color: #94A3B8 !important;
+  margin-bottom: 6px !important;
+}
+.dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+</style>
+
