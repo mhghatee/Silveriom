@@ -1222,8 +1222,41 @@
         const res = await fetch('/data/silveriom_db.json?v=' + new Date().getTime());
         const db = await res.json();
         
-        const inquiries = db.inquiries || [];
-        const proposal = inquiries.find(p => p.id === proposalId);
+        let proposal;
+                if (proposalId === 'ALL_INVENTORY') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const filterVenue = urlParams.get('venue') || 'all';
+            const filterMedia = urlParams.get('media') || 'all';
+            
+            let availableMedias = (db.inventory || []).filter(m => m.status === 'available');
+            
+            if (filterVenue !== 'all') {
+                availableMedias = availableMedias.filter(m => m.location === filterVenue);
+            }
+            if (filterMedia !== 'all') {
+                if (filterMedia === 'net') availableMedias = availableMedias.filter(m => (m.title || '').includes('تور'));
+                else if (filterMedia === 'glass') availableMedias = availableMedias.filter(m => (m.title || '').includes('شیشه') || (m.title || '').includes('پدل'));
+                else if (filterMedia === 'video') availableMedias = availableMedias.filter(m => (m.title || '').includes('ویدئو') || (m.title || '').includes('دیجیتال'));
+                else if (filterMedia === 'vip') availableMedias = availableMedias.filter(m => (m.title || '').includes('VIP') || (m.title || '').includes('وی آی پی'));
+            }
+            
+            proposal = {
+                id: 'SVM-FULL-KIT',
+                brand: 'کاربر پورتال',
+                created_at: new Date().toISOString().split('T')[0],
+                total_tariff: availableMedias.reduce((sum, m) => {
+                    let num = parseFloat((m.tariff || '0').replace(/[^0-9]/g, ''));
+                    return sum + (isNaN(num) ? 0 : num);
+                }, 0) + ' میلیون تومان ',
+                discount: '0',
+                final_price: 'انتخابی',
+                medias: availableMedias,
+                status: 'pending'
+            };
+        } else {
+            const inquiries = db.inquiries || [];
+            proposal = inquiries.find(p => p.id === proposalId);
+        }
         
         if (!proposal) {
           document.getElementById('proposal-header-container').innerHTML = '<div style="text-align:center; padding: 50px; color:#ff6b6b"><h2 class="section-title">مدیاکیت یافت نشد یا حذف شده است.</h2></div>';
@@ -1312,8 +1345,12 @@
             }
         });
         
-        grid.innerHTML = html;
+        document.getElementById('productGrid').innerHTML = html;
         document.getElementById('actions').style.display = 'flex';
+        
+        if (new URLSearchParams(window.location.search).get('autoDownload') === '1') {
+            setTimeout(downloadPDF, 1500);
+        }
     }
 
     function setupActions(proposal) {

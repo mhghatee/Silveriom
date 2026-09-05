@@ -145,17 +145,13 @@ function togglePasswordVisibility(fieldId, iconEl) {
   if (window.lucide) lucide.createIcons();
 }
 
-function triggerMediaKitPDFDownload() {
-  showToast('در حال دریافت کاتالوگ مدیاکیت سیلوریوم...', 'success');
+function triggerMediaKitPDFDownload(venue = 'all', media = 'all') {
+  showToast('در حال آماده‌سازی و انتقال به پلتفرم مدیاکیت...', 'success');
   
-  // Create virtual download anchor
-  const a = document.createElement('a');
-  a.href = 'assets/silveriom_mediakit_2026.pdf';
-  a.download = 'Silveriom_Padel_MediaKit_2026.pdf';
-  a.target = '_blank';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  // Redirect to proposal page with ALL_INVENTORY and parameters
+  setTimeout(() => {
+    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&autoDownload=1`;
+  }, 800);
 }
 
 function setupAuthHandlers() {
@@ -333,7 +329,7 @@ function setupAuthHandlers() {
       showToast('پورتال مدیاکیت فعال گردید. کاتالوگ در حال دانلود است...', 'success');
       
       setTimeout(() => {
-        triggerMediaKitPDFDownload();
+        triggerMediaKitPDFDownload(venue, media);
       }, 1200);
     });
   }
