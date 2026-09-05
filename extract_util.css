@@ -1,0 +1,231 @@
+
+/* ==========================================
+   UTILIZATION & DEMOGRAPHICS SECTION
+   ========================================== */
+.util-section {
+  padding: 6rem 0;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+.util-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.util-heading {
+  font-size: 2.2rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: 'YekanBakh', sans-serif;
+  font-weight: 900;
+}
+.util-subheading {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 4rem;
+}
+
+/* Demographics Panel */
+.demo-panel {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.demo-card {
+  flex: 1;
+  background: rgba(2, 6, 18, 0.6);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+.demo-title {
+  color: #00F0FF;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.demo-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.demo-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.demo-bar-info {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.demo-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.demo-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+.fill-male { background: #00F0FF; box-shadow: 0 0 10px #00F0FF; }
+.fill-female { background: #CCFF00; box-shadow: 0 0 10px #CCFF00; }
+.fill-age1 { background: #CCFF00; box-shadow: 0 0 10px #CCFF00; }
+.fill-age2 { background: #00F0FF; box-shadow: 0 0 10px #00F0FF; }
+
+/* Location Cards Grid */
+.util-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 992px) {
+  .util-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .util-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .demo-panel { flex-direction: column; }
+}
+
+.util-card {
+  background: rgba(4, 15, 30, 0.8);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.util-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-color: rgba(0,240,255,0.3);
+}
+.util-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.util-loc-name {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.util-courts-badge {
+  background: rgba(0,240,255,0.15);
+  color: #00F0FF;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid rgba(0,240,255,0.3);
+}
+
+.util-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.time-segment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.time-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+.time-val {
+  font-weight: 700;
+  color: #fff;
+}
+.time-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.time-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  left: 0; top: 0;
+}
+/* Day: 10 to 17 */
+.fill-day {
+  background: rgba(204,255,0,0.8);
+  box-shadow: 0 0 10px rgba(204,255,0,0.4);
+}
+/* Night: 17 to 24 */
+.fill-night {
+  background: #00F0FF;
+  box-shadow: 0 0 10px rgba(0,240,255,0.8);
+}
+
+
+.visitor-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.stat-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-num {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #CCFF00;
+  font-family: 'YekanBakh', sans-serif;
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(204,255,0,0.3);
+}
+.stat-main .stat-label {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.stat-sub {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5rem;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+  padding-top: 1rem;
+}
+.stat-num-small {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00F0FF;
+  font-family: 'YekanBakh', sans-serif;
+}
+.stat-label-small {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+
+/* ==========================================
