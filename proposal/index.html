@@ -738,15 +738,13 @@
         
         /* PDF Background Fix */
         .pdf-mode {
-            background: #020617 !important;
-        }
-        .pdf-mode .cinematic-bg-container {
-            position: absolute !important;
-            height: 100% !important;
-            background: #020617 url('/assets/proposal_bg_pattern.jpg') repeat-y center top !important;
+            background-color: #020617 !important;
+            background-image: url('https://silveriom.ir/assets/proposal_bg_pattern.jpg') !important;
+            background-repeat: repeat-y !important;
+            background-position: center top !important;
             background-size: 100% auto !important;
         }
-        .pdf-mode .cinematic-bg-img {
+        .pdf-mode .cinematic-bg-container {
             display: none !important;
         }
         .pdf-mode .bento-line-chart path {
@@ -1357,7 +1355,8 @@
               scrollX: 0,
               scrollY: 0,
               width: contentWidth,
-              height: contentHeight
+              height: contentHeight,
+              allowTaint: true
           },
           jsPDF: {
               unit: 'mm',
@@ -1367,15 +1366,18 @@
           pagebreak: { mode: 'avoid-all' }
         };
 
-        html2pdf().set(opt).from(element).save().then(() => {
-            actionsBar.style.display = 'flex';
-            document.body.classList.remove('pdf-mode');
-        }).catch(err => {
-            console.error('PDF error:', err);
-            actionsBar.style.display = 'flex';
-            document.body.classList.remove('pdf-mode');
-            alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
-        });
+        // Wait a moment for the background image to load before capturing
+        setTimeout(() => {
+            html2pdf().set(opt).from(element).save().then(() => {
+                actionsBar.style.display = 'flex';
+                document.body.classList.remove('pdf-mode');
+            }).catch(err => {
+                console.error('PDF error:', err);
+                actionsBar.style.display = 'flex';
+                document.body.classList.remove('pdf-mode');
+                alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
+            });
+        }, 1000);
     }
 
     window.addEventListener('DOMContentLoaded', init);
