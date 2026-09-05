@@ -319,7 +319,7 @@
 
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -591,7 +591,7 @@
 /* Location Cards Grid */
 .util-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 @media (max-width: 992px) {
@@ -1381,53 +1381,78 @@
         });
         
         // Capture the entire body to include the background
-        const element = document.body;
+                // FORCE Desktop layout for pristine PDF rendering
         const pid = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
         const filename = `Silveriom_MediaKit_${pid}.pdf`;
 
-        // Measure actual content size for a single-page PDF with no breaks
-        const contentWidth  = document.getElementById('app-container').scrollWidth;
-        const contentHeight = document.getElementById('app-container').scrollHeight + 100; // add some padding
-        const pxToMm = 0.264583;
-        const widthMm  = contentWidth  * pxToMm;
-        const heightMm = contentHeight * pxToMm;
+        const appContainer = document.getElementById('app-container');
+        const origAppWidth = appContainer.style.width;
+        const origAppMaxWidth = appContainer.style.maxWidth;
+        const origAppMargin = appContainer.style.margin;
+        
+        // Force 1400px width on body and container to guarantee desktop media queries
+        document.body.style.width = '1400px';
+        appContainer.style.width = '1200px';
+        appContainer.style.maxWidth = '1200px';
+        appContainer.style.margin = '0 auto';
 
-        const opt = {
-          margin: 0,
-          filename: filename,
-          image: { type: 'jpeg', quality: 0.95 },
-          html2canvas: {
-              scale: 1.5,
-              useCORS: true,
-              windowWidth: contentWidth,
-              backgroundColor: '#020617',
-              scrollX: 0,
-              scrollY: 0,
-              width: contentWidth,
-              height: contentHeight,
-              allowTaint: true
-          },
-          jsPDF: {
-              unit: 'mm',
-              format: [widthMm, heightMm],
-              orientation: 'portrait'
-          },
-          pagebreak: { mode: 'avoid-all' }
-        };
-
-        // Wait a moment for the background image to load before capturing
         document.fonts.ready.then(() => {
-        setTimeout(() => {
-            html2pdf().set(opt).from(element).save().then(() => {
-                actionsBar.style.display = 'flex';
-                document.body.classList.remove('pdf-mode');
-            }).catch(err => {
-                console.error('PDF error:', err);
-                actionsBar.style.display = 'flex';
-                document.body.classList.remove('pdf-mode');
-                alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
-            });
-        }, 200);
+            setTimeout(() => {
+                // Now measure the stable desktop layout
+                const element = document.body;
+                const contentWidth = 1400; 
+                const contentHeight = element.scrollHeight + 150; 
+                
+                const pxToMm = 0.264583;
+                const widthMm  = contentWidth  * pxToMm;
+                const heightMm = contentHeight * pxToMm;
+
+                const opt = {
+                  margin: 0,
+                  filename: filename,
+                  image: { type: 'jpeg', quality: 1.0 },
+                  html2canvas: {
+                      scale: 1.5,
+                      useCORS: true,
+                      windowWidth: contentWidth,
+                      backgroundColor: '#020617',
+                      scrollX: 0,
+                      scrollY: 0,
+                      width: contentWidth,
+                      height: contentHeight,
+                      allowTaint: true
+                  },
+                  jsPDF: {
+                      unit: 'mm',
+                      format: [widthMm, heightMm],
+                      orientation: 'portrait'
+                  },
+                  pagebreak: { mode: 'avoid-all' }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    // Restore original styles
+                    document.body.style.width = '';
+                    appContainer.style.width = origAppWidth;
+                    appContainer.style.maxWidth = origAppMaxWidth;
+                    appContainer.style.margin = origAppMargin;
+                    
+                    actionsBar.style.display = 'flex';
+                    document.body.classList.remove('pdf-mode');
+                }).catch(err => {
+                    console.error('PDF error:', err);
+                    
+                    // Restore original styles
+                    document.body.style.width = '';
+                    appContainer.style.width = origAppWidth;
+                    appContainer.style.maxWidth = origAppMaxWidth;
+                    appContainer.style.margin = origAppMargin;
+                    
+                    actionsBar.style.display = 'flex';
+                    document.body.classList.remove('pdf-mode');
+                    alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
+                });
+            }, 300); // give DOM a moment to reflow the 1400px width
         });
     }
 
