@@ -765,9 +765,15 @@
             background-color: #020617 !important;
         }
         
-        .pdf-mode .luxury-pattern-bg {
+        .pdf-mode .luxury-pattern-bg, .pdf-mode .navy-overlay-layer, .pdf-mode .bg-energy-glow {
             display: block !important;
-            opacity: 0.75 !important;
+            width: 1200px !important;
+            min-width: 1200px !important;
+            height: 100% !important;
+            min-height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
         }
         .pdf-mode .bento-line-chart path {
             fill: #CCFF00 !important;
@@ -833,9 +839,15 @@
             background-color: #020617 !important;
         }
         
-        .pdf-mode .luxury-pattern-bg {
+        .pdf-mode .luxury-pattern-bg, .pdf-mode .navy-overlay-layer, .pdf-mode .bg-energy-glow {
             display: block !important;
-            opacity: 0.75 !important;
+            width: 1200px !important;
+            min-width: 1200px !important;
+            height: 100% !important;
+            min-height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
         }
         
         .pdf-mode .bg-energy-glow, .pdf-mode .navy-overlay-layer {
@@ -1466,12 +1478,15 @@
 
     window.addEventListener('DOMContentLoaded', init);
 
+    
     function downloadPDF() {
         const actionsBar = document.getElementById('actions');
         actionsBar.style.display = 'none';
+        
+        // Add pdf-mode class
         document.body.classList.add('pdf-mode');
 
-        // Pre-render donuts to Canvas (conic-gradient & CSS mask unsupported by html2canvas)
+        // Pre-render donuts
         const donutRestoreData = [];
         document.querySelectorAll('.donut-chart').forEach(donut => {
             if (donut.querySelector('canvas')) return;
@@ -1488,64 +1503,53 @@
             canvas.width = SIZE; canvas.height = SIZE;
             const ctx = canvas.getContext('2d');
 
-            ctx.beginPath();
-            ctx.arc(SIZE/2, SIZE/2, R, 0, 2 * Math.PI);
-            ctx.strokeStyle = color2 || '#1e293b';
-            ctx.lineWidth = LW;
-            ctx.stroke();
+            ctx.beginPath(); ctx.arc(SIZE/2, SIZE/2, R, 0, 2 * Math.PI);
+            ctx.strokeStyle = color2 || '#1e293b'; ctx.lineWidth = LW; ctx.stroke();
 
             ctx.beginPath();
             const start = -Math.PI / 2;
             ctx.arc(SIZE/2, SIZE/2, R, start, start + (perc / 100) * 2 * Math.PI);
-            ctx.strokeStyle = color1;
-            ctx.lineWidth = LW;
-            ctx.lineCap = 'round';
-            ctx.stroke();
+            ctx.strokeStyle = color1; ctx.lineWidth = LW; ctx.lineCap = 'round'; ctx.stroke();
 
             canvas.style.cssText = 'position:absolute;top:0;left:0;z-index:0;';
             donut.insertBefore(canvas, donut.firstChild);
 
-            donutRestoreData.push({ el: donut, canvas,
-                oldBg: donut.style.background,
-                oldMask: donut.style.mask,
-                oldWebkitMask: donut.style.webkitMask });
-
-            donut.style.background = 'none';
-            donut.style.mask = 'none';
-            donut.style.webkitMask = 'none';
+            donutRestoreData.push({ el: donut, canvas, oldBg: donut.style.background, oldMask: donut.style.mask, oldWebkitMask: donut.style.webkitMask });
+            donut.style.background = 'none'; donut.style.mask = 'none'; donut.style.webkitMask = 'none';
         });
 
-        // Capture #app-container directly
-        const appEl        = document.getElementById('app-container');
-        const pid          = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
-        const filename     = `Silveriom_MediaKit_${pid}.pdf`;
+        // FIX FOR LEFT-SHIFT AND WHITE BACKGROUND:
+        // We capture the body, but we temporarily force the body to be EXACTLY 1200px wide.
+        // This stops the layout from expanding beyond the PDF canvas.
+        const originalBodyWidth = document.body.style.width;
+        const originalBodyMargin = document.body.style.margin;
         
-        // Temporarily adjust app-container for perfect PDF capture
-        appEl.style.maxWidth = '1200px';
-        appEl.style.width = '1200px';
-        appEl.style.margin = '0 auto';
+        document.body.style.width = '1200px';
+        document.body.style.margin = '0';
         
-        // Wait a frame for styles to apply
+        // Wait a bit for layout to recalculate
         setTimeout(() => {
-            const contentWidth  = 1200;
-            const contentHeight = appEl.scrollHeight + 80;
-            const pxToMm        = 0.264583;
+            const element = document.body;
+            const pid = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
+            const filename = `Silveriom_MediaKit_${pid}.pdf`;
+            
+            const contentWidth = 1200;
+            const contentHeight = element.scrollHeight;
+            const pxToMm = 0.264583;
 
             const opt = {
               margin: 0,
               filename: filename,
-              image: { type: 'jpeg', quality: 0.97 },
+              image: { type: 'jpeg', quality: 0.98 },
               html2canvas: {
-                  scale: 1.5,
+                  scale: 1.5, // Reduced from 1.8 to prevent massive file sizes and black bottom issues
                   useCORS: true,
-                  allowTaint: true,
                   windowWidth: contentWidth,
-                  windowHeight: contentHeight,
-                  backgroundColor: '#020617',
-                  scrollX: 0,
-                  scrollY: -window.scrollY,
                   width: contentWidth,
-                  height: contentHeight
+                  height: contentHeight,
+                  scrollY: 0,
+                  scrollX: 0,
+                  backgroundColor: '#020617'
               },
               jsPDF: {
                   unit: 'mm',
@@ -1558,22 +1562,22 @@
             const restore = () => {
                 actionsBar.style.display = 'flex';
                 document.body.classList.remove('pdf-mode');
-                appEl.style.maxWidth = '';
-                appEl.style.width = '';
-                appEl.style.margin = '0 auto';
+                document.body.style.width = originalBodyWidth;
+                document.body.style.margin = originalBodyMargin;
                 donutRestoreData.forEach(d => {
                     d.canvas.remove();
-                    d.el.style.background  = d.oldBg;
-                    d.el.style.mask        = d.oldMask;
-                    d.el.style.webkitMask  = d.oldWebkitMask;
+                    d.el.style.background = d.oldBg;
+                    d.el.style.mask = d.oldMask;
+                    d.el.style.webkitMask = d.oldWebkitMask;
                 });
             };
 
-            html2pdf().set(opt).from(appEl).save()
+            html2pdf().set(opt).from(element).save()
                 .then(restore)
                 .catch(err => { console.error('PDF error:', err); restore(); alert('خطا در تولید PDF.'); });
         }, 300);
     }
+
 
 </script>
 </body>
