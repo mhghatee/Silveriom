@@ -1150,6 +1150,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
+    let proposalData = null;
     const urlParams = new URLSearchParams(window.location.search);
     const proposalId = urlParams.get('id');
 
@@ -1171,6 +1172,7 @@
           return;
         }
 
+        proposalData = proposal;
         const mediaInventory = db.mediaInventory || [];
         
         renderHeader(proposal);
@@ -1269,19 +1271,34 @@
     }
 
     function downloadPDF() {
-        document.body.classList.add('pdf-mode');
-        const element = document.body;
+        const brandName = (proposalData && proposalData.brand) ? proposalData.brand : 'Silveriom';
+        const actionsBar = document.getElementById('actions');
+        
+        // Hide actions bar for PDF capture
+        actionsBar.style.display = 'none';
+        
+        const element = document.getElementById('app-container');
         
         const opt = {
-          margin:       0.2,
-          filename:     `Silveriom_MediaKit_${proposal.brand || 'brand'}.pdf`,
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 1.5, useCORS: true, windowWidth: 1200 },
-          jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+          margin: [0.3, 0.3, 0.3, 0.3],
+          filename: `Silveriom_MediaKit_${brandName}.pdf`,
+          image: { type: 'jpeg', quality: 0.95 },
+          html2canvas: { 
+              scale: 1.5, 
+              useCORS: true, 
+              windowWidth: 1200,
+              backgroundColor: '#020617'
+          },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(element).save().then(() => {
-            document.body.classList.remove('pdf-mode');
+            // Restore actions bar after PDF is done
+            actionsBar.style.display = 'flex';
+        }).catch(err => {
+            console.error('PDF error:', err);
+            actionsBar.style.display = 'flex';
+            alert('خطا در تولید PDF. لطفاً مجدداً امتحان کنید.');
         });
     }
 
