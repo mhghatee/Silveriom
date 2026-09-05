@@ -53,6 +53,7 @@ $files = [
     "mediakit/index.html",
     "proposal/index.html",
     "assets/proposal_bg_pattern.jpg",
+    "assets/silveriom_network_map.jpg",
     "api/submit_proposal.php"
 ,
     "panel/admin.css",
