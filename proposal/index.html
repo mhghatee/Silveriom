@@ -1271,29 +1271,43 @@
     }
 
     function downloadPDF() {
-        const brandName = (proposalData && proposalData.brand) ? proposalData.brand : 'Silveriom';
         const actionsBar = document.getElementById('actions');
-        
-        // Hide actions bar for PDF capture
         actionsBar.style.display = 'none';
         
         const element = document.getElementById('app-container');
-        
+        const pid = (proposalData && proposalData.id) ? proposalData.id : 'mediakit';
+        const filename = `Silveriom_MediaKit_${pid}.pdf`;
+
+        // Measure actual content size for a single-page PDF with no breaks
+        const contentWidth  = element.scrollWidth;
+        const contentHeight = element.scrollHeight;
+        const pxToMm = 0.264583;
+        const widthMm  = contentWidth  * pxToMm;
+        const heightMm = contentHeight * pxToMm;
+
         const opt = {
-          margin: [0.3, 0.3, 0.3, 0.3],
-          filename: `Silveriom_MediaKit_${brandName}.pdf`,
+          margin: 0,
+          filename: filename,
           image: { type: 'jpeg', quality: 0.95 },
-          html2canvas: { 
-              scale: 1.5, 
-              useCORS: true, 
-              windowWidth: 1200,
-              backgroundColor: '#020617'
+          html2canvas: {
+              scale: 1.5,
+              useCORS: true,
+              windowWidth: contentWidth,
+              backgroundColor: '#020617',
+              scrollX: 0,
+              scrollY: 0,
+              width: contentWidth,
+              height: contentHeight
           },
-          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+          jsPDF: {
+              unit: 'mm',
+              format: [widthMm, heightMm],
+              orientation: 'portrait'
+          },
+          pagebreak: { mode: 'avoid-all' }
         };
 
         html2pdf().set(opt).from(element).save().then(() => {
-            // Restore actions bar after PDF is done
             actionsBar.style.display = 'flex';
         }).catch(err => {
             console.error('PDF error:', err);
