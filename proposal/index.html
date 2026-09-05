@@ -58,6 +58,17 @@
             opacity: 0.28;
             mix-blend-mode: screen;
         }
+        /* Soft Navy Tint Overlay over Pattern */
+        .navy-tint-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background: linear-gradient(180deg, rgba(4, 12, 32, 0.62) 0%, rgba(2, 6, 23, 0.72) 100%);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+        }
             color: #fff;
         }
         
@@ -126,7 +137,8 @@
   background: rgba(13, 22, 45, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(204, 255, 0, 0.32);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.03);
   border-radius: 20px;
   padding: 1.25rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -302,7 +314,8 @@
   background: rgba(18, 26, 47, 0.45);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(204, 255, 0, 0.32);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.03);
   border-radius: 24px;
   padding: 30px;
   display: flex;
@@ -512,7 +525,8 @@
 .demo-card {
   flex: 1;
   background: rgba(2, 6, 18, 0.6);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(204, 255, 0, 0.32);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.03);
   border-radius: 20px;
   padding: 2rem;
   backdrop-filter: blur(10px);
@@ -575,7 +589,8 @@
 
 .util-card {
   background: rgba(4, 15, 30, 0.8);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(204, 255, 0, 0.32);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.03);
   border-radius: 20px;
   padding: 2rem;
   display: flex;
@@ -748,6 +763,10 @@
         .pdf-mode {
             background-color: #020617 !important;
         }
+        .pdf-mode .navy-tint-overlay {
+            display: block !important;
+            background: rgba(4, 12, 32, 0.65) !important;
+        }
         .pdf-mode .luxury-pattern-bg {
             display: block !important;
             opacity: 0.32 !important;
@@ -796,6 +815,7 @@
 
     <!-- Luxury Watermark Pattern Background (Seamless & Full-Length) -->
     <div class="luxury-pattern-bg" id="luxury-pattern-bg"></div>
+    <div class="navy-tint-overlay" id="navy-tint-overlay"></div>
         <div class="navy-overlay-layer"></div>
     </div>
 
@@ -817,7 +837,7 @@
                 <span class="section-tag">درباره سیلوریوم</span>
                 <h2 class="section-title">سیلوریوم؛ رهبر تبلیغات ورزشی لوکس</h2>
               </div>
-              <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 2.2; text-align: justify; background: rgba(13,22,45,0.6); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+              <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 2.2; text-align: justify; background: rgba(13,22,45,0.6); padding: 2rem; border-radius: 20px; border: 1px solid rgba(204, 255, 0, 0.32); box-shadow: 0 0 20px rgba(204, 255, 0, 0.04); backdrop-filter: blur(10px);">
               سیلوریوم (Silveriom) به عنوان نخستین و تنها شبکه انحصاری رسانه‌ها و تبلیغات محیطی در برترین کلاب‌های تنیس و پدل ایران، نقطه‌ی تلاقی استراتژیکِ برندهای پیشرو و مخاطبان تراز اول (VIP) است. ما با در اختیار داشتن بیش از ۴۴ کورت فعال در لوکس‌ترین مجموعه‌های ورزشی پایتخت و شمال کشور، شبکه‌ای بی‌نظیر از رسانه‌های هدفمند را خلق کرده‌ایم. مخاطبان این مجموعه‌ها، مدیران ارشد، کارآفرینان و تصمیم‌گیرندگانی هستند که در زمان تفریح و ورزش، با ذهنی باز، بالاترین میزان مکثِ نگاه را به تبلیغات شما اختصاص می‌دهند. رسالت ما در سیلوریوم، عبور از تبلیغات سنتی و ایجاد یک پیوند عمیق، اثربخش و ماندگار میان ارزش‌های برند شما و جامعه‌ای خاص از مخاطبان است.
               </p>
            </div>
@@ -1209,7 +1229,7 @@
     function renderHeader(proposal) {
         const dateStr = proposal.created_at ? new Date(proposal.created_at).toLocaleDateString('fa-IR') : 'امروز';
         document.getElementById('proposal-header-container').innerHTML = `
-            <div style="background: rgba(13, 22, 45, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="background: rgba(13, 22, 45, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(204, 255, 0, 0.32); box-shadow: 0 0 20px rgba(204, 255, 0, 0.04); border-radius: 20px; padding: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
                 <div style="text-align: right;">
                     <h1 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 15px;">مدیاکیت اختصاصی رسانه‌ای</h1>
                     <p style="color: #cbd5e1; font-size: 1.1rem;">تهیه شده برای: <strong style="color: #CCFF00;">${proposal.brand || 'برند نامشخص'}</strong> (به نمایندگی ${proposal.name || 'نامشخص'})</p>
