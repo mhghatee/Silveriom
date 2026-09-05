@@ -1223,7 +1223,7 @@
         const db = await res.json();
         
         let proposal;
-                                if (proposalId === 'ALL_INVENTORY') {
+                                        if (proposalId === 'ALL_INVENTORY') {
             const urlParams = new URLSearchParams(window.location.search);
             const filterVenue = urlParams.get('venue') || 'all';
             const filterMedia = urlParams.get('media') || 'all';
@@ -1234,10 +1234,14 @@
                 availableMedias = availableMedias.filter(m => m.location === filterVenue);
             }
             if (filterMedia !== 'all') {
-                if (filterMedia === 'billboard') availableMedias = availableMedias.filter(m => (m.title || '').includes('تابلو') || (m.title || '').includes('بیلبورد') || (m.title || '').includes('پیشانی'));
-                else if (filterMedia === 'sticker') availableMedias = availableMedias.filter(m => (m.print_type || '').includes('استیکر') || (m.title || '').includes('آسانسور'));
-                else if (filterMedia === 'court') availableMedias = availableMedias.filter(m => (m.title || '').includes('تور') || (m.title || '').includes('شیشه') || (m.title || '').includes('پدل'));
-                else if (filterMedia === 'digital') availableMedias = availableMedias.filter(m => (m.title || '').includes('ویدئو') || (m.title || '').includes('دیجیتال') || (m.title || '').includes('نمایشگر'));
+                if (filterMedia === 'out_billboard') availableMedias = availableMedias.filter(m => (m.title || '').includes('بیلبورد') || (m.title || '').includes('بام') || (m.title || '').includes('پارکینگ'));
+                else if (filterMedia === 'in_backlight') availableMedias = availableMedias.filter(m => (m.title || '').includes('بکلایت') || ((m.title || '').includes('داخلی') && !(m.title || '').includes('فورلایت')));
+                else if (filterMedia === 'out_backlight') availableMedias = availableMedias.filter(m => (m.title || '').includes('بکلایت') && (m.title || '').includes('بیرونی'));
+                else if (filterMedia === 'in_fourlight') availableMedias = availableMedias.filter(m => (m.title || '').includes('فورلایت') && (m.title || '').includes('داخلی'));
+                else if (filterMedia === 'out_fourlight') availableMedias = availableMedias.filter(m => (m.title || '').includes('فورلایت') || ((m.title || '').includes('تابلو') && !(m.title || '').includes('داخلی') && !(m.title || '').includes('ورودی مجموعه') && !(m.title || '').includes('پارکینگ')));
+                else if (filterMedia === 'court_border') availableMedias = availableMedias.filter(m => (m.title || '').includes('دور') || (m.title || '').includes('حاشیه') || (m.title || '').includes('شیشه') || (m.title || '').includes('استیکر'));
+                else if (filterMedia === 'court_net') availableMedias = availableMedias.filter(m => (m.title || '').includes('تور'));
+                else if (filterMedia === 'court_entrance') availableMedias = availableMedias.filter(m => (m.title || '').includes('ورودی زمین') || (m.title || '').includes('ورودی کورت'));
             }
             
             proposal = {
