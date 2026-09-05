@@ -52,6 +52,7 @@ $files = [
     "clubs/asayesh.html",
     "mediakit/index.html",
     "proposal/index.html",
+    "assets/proposal_bg_pattern.jpg",
     "api/submit_proposal.php"
 ,
     "panel/admin.css",
