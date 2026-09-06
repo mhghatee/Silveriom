@@ -46,11 +46,6 @@ $files = [
     "audience-intelligence/index.html",
     "audience-intelligence/design_proposals.html",
     "tournament-calendar/index.html",
-    "clubs/t10.html",
-    "clubs/arena.html",
-    "clubs/iran-zamin.html",
-    "clubs/netra.html",
-    "clubs/asayesh.html",
     "mediakit/index.html",
     "proposal/index.html",
     "assets/proposal_bg_pattern.jpg",
@@ -69,21 +64,35 @@ $files = [
     "panel/xlsx.full.min.js"];
 
 $success = 0;
+$failed = [];
 foreach($files as $file) {
-    // Add cache busting
-    $url = "https://raw.githubusercontent.com/mhghatee/silveriom/main/" . str_replace(" ", "%20", $file) . "?v=" . time() . rand(1, 1000);
+    // Try curl first
+    $url = "https://raw.githubusercontent.com/mhghatee/Silveriom/main/" . str_replace(" ", "%20", $file) . "?v=" . time() . rand(1, 1000);
     
-    // Create directory if it doesn't exist
     $dir = dirname($file);
     if ($dir != "." && !is_dir($dir)) {
         mkdir($dir, 0777, true);
     }
     
-    $content = @file_get_contents($url);
-    if($content !== FALSE) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    $content = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    if($content !== FALSE && $httpcode == 200) {
         file_put_contents($file, $content);
         $success++;
+    } else {
+        $failed[] = $file . " (HTTP " . $httpcode . ")";
     }
 }
-echo "SYNC_SUCCESS: $success/" . count($files);
+echo "SYNC_SUCCESS: $success/" . count($files) . "\n";
+if (count($failed) > 0) {
+    echo "FAILED: \n" . implode("\n", $failed);
+}
 ?>
