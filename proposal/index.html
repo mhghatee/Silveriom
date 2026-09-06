@@ -1453,7 +1453,7 @@
             const filterVenue = urlParams.get('venue') || 'all';
             const filterMedia = urlParams.get('media') || 'all';
             
-            let availableMedias = (db.mediaInventory || []).filter(m => m.status === 'available');
+            let availableMedias = (db.mediaInventory || []);
             
             if (filterVenue !== 'all') {
                 availableMedias = availableMedias.filter(m => m.location === filterVenue);
