@@ -748,7 +748,7 @@ html {
         fillEl.style.width = Math.floor(currentPercent) + '%';
         pctEl.textContent = Math.floor(currentPercent) + '%';
         
-        setTimeout(advanceProgress, Math.random() * 250 + 100);
+        setTimeout(advanceProgress, Math.random() * 50 + 20);
       }
 
       advanceProgress();
@@ -757,7 +757,7 @@ html {
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
-          currentPercent += 2;
+          currentPercent += 15;
           
           if (currentPercent >= 100) {
             currentPercent = 100;
@@ -775,7 +775,7 @@ html {
               setTimeout(() => {
                 loaderWrapper.style.display = 'none'; 
               }, 600); 
-            }, 800);
+            }, 100);
           } else {
             fillEl.style.width = Math.floor(currentPercent) + '%';
             pctEl.textContent = Math.floor(currentPercent) + '%';

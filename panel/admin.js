@@ -383,7 +383,7 @@ function renderMedia() {
     <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px;">
       
       <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
-        <img src="${m.image && m.image.startsWith('/') ? m.image : (m.image ? '../'+m.image : '../assets/placeholder_media.jpg')}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" />
+        <img src="${m.image && m.image.startsWith('/') ? m.image : (m.image ? '../'+m.image : '../assets/placeholder_media.jpg')}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" loading="lazy" />
         <div style="position:absolute; bottom:5px; right:5px;">
            <label class="btn-glass-gold" style="cursor:pointer; font-size:11px; padding: 4px 8px;">
               <i data-lucide="upload" style="width:12px; height:12px;"></i> آپلود عکس

@@ -326,7 +326,7 @@ function setupAuthHandlers() {
       const successStep = document.getElementById('mediakit-success-step');
       if (successStep) successStep.style.display = 'block';
 
-      showToast('پورتال مدیاکیت فعال گردید. کاتالوگ در حال دانلود است...', 'success');
+      showToast('پورتال مدیاکیت فعال گردید. در حال انتقال به لینک مدیاکیت...', 'success');
       
       setTimeout(() => {
         const brandInput = document.getElementById('mk-brand'); const brand = (brandInput && brandInput.value.trim()) ? brandInput.value.trim() : name; triggerMediaKitPDFDownload(venue, media, name, brand);
