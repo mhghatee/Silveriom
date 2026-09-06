@@ -150,7 +150,7 @@ function triggerMediaKitPDFDownload(venue = 'all', media = 'all') {
   
   // Redirect to proposal page with ALL_INVENTORY and parameters
   setTimeout(() => {
-    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&autoDownload=1`;
+    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}`;
   }, 800);
 }
 
