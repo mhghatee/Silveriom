@@ -145,12 +145,12 @@ function togglePasswordVisibility(fieldId, iconEl) {
   if (window.lucide) lucide.createIcons();
 }
 
-function triggerMediaKitPDFDownload(venue = 'all', media = 'all') {
+function triggerMediaKitPDFDownload(venue = 'all', media = 'all', name = 'نامشخص', brand = 'کاربر پورتال') {
   showToast('در حال آماده‌سازی و انتقال به پلتفرم مدیاکیت...', 'success');
   
   // Redirect to proposal page with ALL_INVENTORY and parameters
   setTimeout(() => {
-    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}`;
+    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
   }, 800);
 }
 
@@ -329,7 +329,7 @@ function setupAuthHandlers() {
       showToast('پورتال مدیاکیت فعال گردید. کاتالوگ در حال دانلود است...', 'success');
       
       setTimeout(() => {
-        triggerMediaKitPDFDownload(venue, media);
+        const brandInput = document.getElementById('mk-brand'); const brand = (brandInput && brandInput.value.trim()) ? brandInput.value.trim() : name; triggerMediaKitPDFDownload(venue, media, name, brand);
       }, 1200);
     });
   }

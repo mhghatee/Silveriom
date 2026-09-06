@@ -1413,9 +1413,12 @@
                 else if (filterMedia === 'court_entrance') availableMedias = availableMedias.filter(m => (m.title || '').includes('ورودی زمین') || (m.title || '').includes('ورودی کورت'));
             }
             
+            const urlName = new URLSearchParams(window.location.search).get('name');
+            const urlBrand = new URLSearchParams(window.location.search).get('brand');
             proposal = {
                 id: 'SVM-FULL-KIT',
-                brand: 'کاربر پورتال',
+                brand: urlBrand ? urlBrand : 'کاربر پورتال',
+                name: urlName ? urlName : 'نامشخص',
                 created_at: new Date().toISOString().split('T')[0],
                 total_tariff: availableMedias.reduce((sum, m) => {
                     let num = parseFloat((m.tariff || '0').replace(/[^0-9]/g, ''));
