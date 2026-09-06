@@ -620,17 +620,41 @@ html {
 
         <!-- Success Step -->
         <div id="mediakit-success-step" style="display:none;text-align:center;padding:2rem 0;">
-          <div class="success-icon-wrapper" style="display: flex; justify-content: center; align-items: center; margin: 0 auto 1.5rem auto; width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, rgba(182, 255, 0, 0.2), rgba(0, 240, 200, 0.05)); border: 1px solid rgba(182, 255, 0, 0.4); box-shadow: 0 0 40px rgba(182, 255, 0, 0.15), inset 0 0 20px rgba(182, 255, 0, 0.1);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#B6FF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(182,255,0,0.6));">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-          <h3 style="color:#B6FF00;margin-bottom:0.5rem;">مدیاکیت آماده دانلود است</h3>
-          <p style="color:#94a3b8;font-size:0.9rem;margin-bottom:1.5rem;">اطلاعات شما ثبت شد و فایل در حال دانلود است</p>
+          <div class="slv-check-wrap" style="margin-bottom:1.5rem;">
+  <style>
+    /* ── Silveriom Animated Check ── فقط با پیشوند slv- ── */
+    .slv-check-wrap { display: flex; align-items: center; justify-content: center; }
+    .slv-ripple-wrap { position: relative; width: 110px; height: 110px; display: flex; align-items: center; justify-content: center; }
+    .slv-ripple { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #22c55e; opacity: 0; animation: slvRipple 2.4s ease-out infinite; }
+    .slv-ripple:nth-child(2) { animation-delay: 0.8s; }
+    .slv-ripple:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes slvRipple { 0% { transform: scale(0.7); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+    .slv-svg { width: 90px; height: 90px; position: relative; z-index: 2; }
+    .slv-circle-bg { fill: none; stroke: rgba(34,197,94,0.12); stroke-width: 4; }
+    .slv-circle-fill { fill: rgba(34,197,94,0); animation: slvFill 0.3s ease-out 1.1s forwards; }
+    @keyframes slvFill { to { fill: rgba(34,197,94,0.10); } }
+    .slv-circle-ring { fill: none; stroke: #22c55e; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 245; stroke-dashoffset: 245; transform-origin: 50% 50%; transform: rotate(-90deg); animation: slvRing 0.8s ease-out 0.1s forwards; filter: drop-shadow(0 0 8px rgba(34,197,94,0.8)); }
+    @keyframes slvRing { to { stroke-dashoffset: 0; } }
+    .slv-check { fill: none; stroke: #22c55e; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 70; stroke-dashoffset: 70; animation: slvCheck 0.45s ease-out 0.85s forwards; filter: drop-shadow(0 0 6px #22c55e); }
+    @keyframes slvCheck { to { stroke-dashoffset: 0; } }
+  </style>
+  <div class="slv-ripple-wrap">
+    <div class="slv-ripple"></div>
+    <div class="slv-ripple"></div>
+    <div class="slv-ripple"></div>
+    <svg class="slv-svg" viewBox="0 0 90 90">
+      <circle class="slv-circle-bg" cx="45" cy="45" r="39"/>
+      <circle class="slv-circle-fill" cx="45" cy="45" r="39"/>
+      <circle class="slv-circle-ring" cx="45" cy="45" r="39"/>
+      <path class="slv-check" d="M 26 45 L 38 57 L 64 33"/>
+    </svg>
+  </div>
+</div>
+          <h3 style="color:#B6FF00;margin-bottom:0.5rem;">لینک مدیاکیت شما آماده است</h3>
+          <p style="color:#94a3b8;font-size:0.9rem;margin-bottom:1.5rem;">اطلاعات شما با موفقیت ثبت شد و در حال انتقال هستید</p>
           <button type="button" class="btn-neon-submit" onclick="triggerMediaKitPDFDownload()">
             <i data-lucide="file-down"></i>
-            دانلود مجدد
+            مشاهده مدیاکیت
           </button>
         </div>
       </form>
