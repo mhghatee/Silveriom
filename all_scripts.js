@@ -1277,9 +1277,10 @@ window.renderMediaCard = function(media) {
     const printType = media.print_type || 'وینیل/مش';
     const audience = media.audience || 'عمومی';
     
-    const isReserved = media.status === 'reserved';
-    const statusText = isReserved ? 'رزرو شده' : 'موجود جهت اکران';
-    const statusClass = isReserved ? 'reserved' : '';
+    let statusClass = '';
+    let statusText = 'قابل رزرو / اکران';
+    if (media.status === 'reserved') { statusClass = 'reserved'; statusText = 'رزرو شده'; }
+    else if (media.status === 'active') { statusClass = 'active'; statusText = 'در حال اکران'; }
     
     // Lucide Calendar Plus Icon
     const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>`;
