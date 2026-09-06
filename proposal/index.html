@@ -903,7 +903,89 @@
             margin-bottom: 2rem !important;
         }
 
-</style>
+
+        /* =========================================
+           UNIFIED PDF MODE STYLES
+           ========================================= */
+        .pdf-mode .action-bar { display: none !important; }
+        
+        .pdf-mode {
+            background-color: #020617 !important;
+        }
+
+        /* 1. Backgrounds strictly clamped to 1200px width and 100% height */
+        .pdf-mode .luxury-pattern-bg, 
+        .pdf-mode .navy-overlay-layer, 
+        .pdf-mode .bg-energy-glow {
+            display: block !important;
+            width: 1200px !important;
+            min-width: 1200px !important;
+            height: 100% !important;
+            min-height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+
+        /* 2. Compact Horizontal Cards for Products */
+        .pdf-mode #productGrid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+
+        .pdf-mode article.media-showcase-card {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 15px !important;
+            padding: 12px !important;
+            border-radius: 12px !important;
+            min-height: unset !important;
+            height: auto !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+            background: rgba(13,22,45,0.9) !important;
+        }
+
+        .pdf-mode .msc-img-wrapper {
+            width: 120px !important;
+            height: 90px !important;
+            min-width: 120px !important;
+            margin-bottom: 0 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .pdf-mode h3.msc-title { font-size: 1rem !important; margin: 4px 0 !important; }
+        .pdf-mode .msc-tariff-box { padding: 4px 8px !important; margin: 6px 0 !important; }
+        
+        /* 3. Bento Grid - Force 2 Columns cleanly */
+        .pdf-mode .bento-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        
+        .pdf-mode .bento-card {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        
+        .pdf-mode .section {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        /* Chart line */
+        .pdf-mode .bento-line-chart path {
+            fill: #CCFF00 !important;
+            opacity: 0.15 !important;
+        }
+\n</style>
 </head>
 <body>
 
