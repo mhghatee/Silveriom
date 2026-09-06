@@ -764,8 +764,8 @@ window.renderMediaCard = function(media) {
 
 window.renderMediaShowcase = function(containerId, filterPageId) {
     // 1. Fetch JSON
-    fetch('/data/silveriom_db.json')
-        .then(res => res.json())
+    const promise = window.dbFetchPromise || fetch('/data/silveriom_db.json').then(res => res.json());
+    promise
         .then(db => {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -791,6 +791,7 @@ window.renderMediaShowcase = function(containerId, filterPageId) {
             });
             
             container.innerHTML = html;
+            if (typeof filterAssets === 'function') setTimeout(filterAssets, 50);
         })
         .catch(err => console.error('Failed to load media DB:', err));
 };

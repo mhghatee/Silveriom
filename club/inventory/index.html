@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+  <script>window.dbFetchPromise = fetch('/data/silveriom_db.json').then(r => r.json()).catch(()=>({mediaInventory:[]}));</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>سیلوریوم | پلتفرم تخصصی تبلیغات و رسانه‌های تنیس و پدل</title>
@@ -11718,8 +11719,8 @@ window.renderMediaCard = function(media) {
 
 window.renderMediaShowcase = function(containerId, filterPageId) {
     // 1. Fetch JSON
-    fetch('/data/silveriom_db.json')
-        .then(res => res.json())
+    const promise = window.dbFetchPromise || fetch('/data/silveriom_db.json').then(res => res.json());
+    promise
         .then(db => {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -11745,6 +11746,7 @@ window.renderMediaShowcase = function(containerId, filterPageId) {
             });
             
             container.innerHTML = html;
+            if (typeof filterAssets === 'function') setTimeout(filterAssets, 50);
         })
         .catch(err => console.error('Failed to load media DB:', err));
 };
