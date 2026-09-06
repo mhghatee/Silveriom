@@ -5,6 +5,7 @@ $files = [
     "index.html",
     "homepage.html",
     "media-planner.html",
+    "favicon.png",
     "native_loader.html",
     "live_about_us.html",
     "extracted_footer.html",
