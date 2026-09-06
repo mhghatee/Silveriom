@@ -211,8 +211,8 @@
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
 }
 .msc-status-badge.reserved {
-  background: #FF453A;
-  box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+  background: #FF9500;
+  box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
 }
 
 .msc-location {
@@ -1550,7 +1550,7 @@
                 else locDisplay = rawLoc;
 
                 let statusClass = '';
-                let statusText = 'قابل رزرو';
+                let statusText = 'قابل رزرو / اکران';
                 if (media.status === 'reserved') { statusClass = 'reserved'; statusText = 'رزرو شده'; }
                 else if (media.status === 'active') { statusClass = 'active'; statusText = 'در حال اکران'; }
                 

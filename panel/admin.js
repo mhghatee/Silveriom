@@ -404,8 +404,8 @@ function renderMedia() {
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top: auto;">
-        <span class="badge ${m.status === 'reserved' ? 'badge-danger' : (m.status === 'active' ? 'badge-info' : 'badge-gold')}" style="font-size: 11px; background: ${m.status === 'active' ? 'rgba(56, 189, 248, 0.2)' : ''}; color: ${m.status === 'active' ? '#38bdf8' : ''}; border: ${m.status === 'active' ? '1px solid rgba(56, 189, 248, 0.4)' : ''};">
-           ${m.status === 'reserved' ? 'رزرو شده' : (m.status === 'active' ? 'در حال اکران' : 'موجود')}
+        <span class="badge ${m.status === 'reserved' ? 'badge-warning' : (m.status === 'active' ? 'badge-info' : 'badge-success')}" style="font-size: 11px; ${m.status === 'active' ? 'background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);' : ''}">
+           ${m.status === 'reserved' ? 'رزرو شده' : (m.status === 'active' ? 'در حال اکران' : 'قابل رزرو / اکران')}
         </span>
         <div style="display:flex; gap:0.5rem;">
           <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
