@@ -404,8 +404,8 @@ function renderMedia() {
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top: auto;">
-        <span class="badge ${m.status === 'reserved' ? 'badge-danger' : 'badge-gold'}" style="font-size: 11px;">
-           ${m.status === 'reserved' ? 'رزرو شده' : 'موجود'}
+        <span class="badge ${m.status === 'reserved' ? 'badge-danger' : (m.status === 'active' ? 'badge-info' : 'badge-gold')}" style="font-size: 11px; background: ${m.status === 'active' ? 'rgba(56, 189, 248, 0.2)' : ''}; color: ${m.status === 'active' ? '#38bdf8' : ''}; border: ${m.status === 'active' ? '1px solid rgba(56, 189, 248, 0.4)' : ''};">
+           ${m.status === 'reserved' ? 'رزرو شده' : (m.status === 'active' ? 'در حال اکران' : 'موجود')}
         </span>
         <div style="display:flex; gap:0.5rem;">
           <button class="btn-glass-outline" style="padding:0.35rem 0.65rem;" onclick="openMediaModal('${m.id}')" title="ویرایش">
@@ -1910,23 +1910,41 @@ window.handleExcelUpload = function(event) {
     const worksheet = workbook.Sheets[firstSheetName];
     const json = XLSX.utils.sheet_to_json(worksheet);
     
-    pendingExcelMedia = json.map(row => {
-      return {
-        id: row['کد رسانه'] || 'SIL-' + Math.floor(Math.random()*10000),
-        code: row['کد رسانه'] || '',
+    const existingCodes = new Set((state.mediaInventory || []).map(m => m.code).filter(c => c));
+    const localCodes = new Set();
+    const newMedia = [];
+
+    json.forEach(row => {
+      const code = row['کد رسانه'];
+      if (!code) return; // Skip empty codes
+      
+      // Deduplication: Ignore if it already exists in DB or if it's duplicated inside the excel itself
+      if (existingCodes.has(code) || localCodes.has(code)) return;
+      
+      localCodes.add(code);
+      
+      let st = 'available';
+      if (row['وضعیت'] === 'رزرو شده') st = 'reserved';
+      else if (row['وضعیت'] === 'در حال اکران') st = 'active';
+
+      newMedia.push({
+        id: code,
+        code: code,
         title: row['عنوان سازه'] || '',
         tariff: row['تعرفه ماهانه'] || '',
         dimensions: row['ابعاد'] || '',
         views: row['بازدید ماهانه'] || '',
         print_type: row['نوع چاپ/متریال'] || '',
         audience: row['مخاطب'] || '',
-        status: row['وضعیت'] === 'رزرو شده' ? 'reserved' : 'available',
+        status: st,
         image: row['لینک تصویر'] || 'assets/placeholder_media.jpg',
         type: 'digital_board',
         location: 'enghelab',
         display_pages: ['inventory']
-      };
+      });
     });
+    
+    pendingExcelMedia = newMedia;
 
     renderExcelPreview();
   };

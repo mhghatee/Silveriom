@@ -687,14 +687,14 @@ html {
               <h3 style="color:#fff; font-size:1.15rem; font-weight:700;">سازه‌ها و سبد رسانه‌های تبلیغاتی</h3>
               <p style="color:var(--color-silver-dim); font-size:0.85rem; margin-top:0.25rem;">درون‌ریزی از طریق اکسل و مدیریت رسانه‌های نمایشی</p>
             </div>
-            <div style="display: flex; gap: 10px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
               <input type="file" id="media-excel-upload" accept=".xlsx, .xls, .csv" style="display: none;" onchange="handleExcelUpload(event)">
-              <button class="btn-glass" onclick="document.getElementById('media-excel-upload').click()" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.2);">
-                <i data-lucide="upload"></i>
+              <button class="btn-glass" onclick="document.getElementById('media-excel-upload').click()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.6rem 1.2rem; display: flex; align-items: center; gap: 8px; border-radius: 8px; font-size: 0.95rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                 <span>ایمپورت اکسل</span>
               </button>
-              <button class="btn-glass-gold" onclick="openMediaModal()">
-                <i data-lucide="plus"></i>
+              <button class="btn-glass-gold" onclick="openMediaModal()" style="background: #CCFF00; color: #000; border: none; padding: 0.6rem 1.2rem; display: flex; align-items: center; gap: 8px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 12px rgba(204,255,0,0.2);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 <span>تعریف دستی سازه</span>
               </button>
             </div>
@@ -1545,7 +1545,11 @@ html {
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
           <div class="form-group">
             <label class="form-label">وضعیت فضا (Availability)</label>
-            <input type="text" id="media-avail" class="glass-input-field" placeholder="آماده رزرو">
+            <select id="media-avail" class="glass-input-field" style="padding-right: 15px;">
+              <option value="available">قابل رزرو / اکران</option>
+              <option value="reserved">رزرو شده</option>
+              <option value="active">در حال اکران</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="form-label">میزان اثرگذاری و دید</label>

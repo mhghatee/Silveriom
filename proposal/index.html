@@ -206,6 +206,10 @@
   box-shadow: 0 4px 12px rgba(0, 210, 135, 0.4);
 }
 
+.msc-status-badge.active {
+  background: #38bdf8;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
 .msc-status-badge.reserved {
   background: #FF453A;
   box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
@@ -1545,8 +1549,10 @@
                 else if(rawLoc === "asayesh") locDisplay = "آسایش ساری";
                 else locDisplay = rawLoc;
 
-                const statusClass = media.status === 'available' ? '' : 'reserved';
-                const statusText = media.status === 'available' ? 'قابل رزرو' : 'رزرو شده';
+                let statusClass = '';
+                let statusText = 'قابل رزرو';
+                if (media.status === 'reserved') { statusClass = 'reserved'; statusText = 'رزرو شده'; }
+                else if (media.status === 'active') { statusClass = 'active'; statusText = 'در حال اکران'; }
                 
                 html += `
                 <article class="media-showcase-card">
