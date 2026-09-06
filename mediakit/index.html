@@ -9125,7 +9125,7 @@ html {
              }, 300);
           }
           if(fillEl) fillEl.style.width = pct + '%';
-          if(pctEl) pctEl.innerText = pct + '%';
+          if(pctEl) pctEl.innerText = pct.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]) + '%';
       }, 40);
   });
 </script>

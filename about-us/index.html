@@ -21478,7 +21478,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (currentPercent > 95) currentPercent = 95;
 
         fillEl.style.width = Math.floor(currentPercent) + '%';
-        pctEl.textContent = Math.floor(currentPercent) + '%';
+        pctEl.textContent = Math.floor(currentPercent).toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]) + '%';
         
         setTimeout(advanceProgress, Math.random() * 50 + 20);
       }
@@ -21495,7 +21495,7 @@ document.addEventListener("DOMContentLoaded", function() {
             currentPercent = 100;
             clearInterval(finishInterval);
             fillEl.style.width = '100%';
-            pctEl.textContent = '100%';
+            pctEl.textContent = '۱۰۰%';
             
             textEl.textContent = "خوش آمدید!";
             textEl.style.animation = "none";
@@ -21510,7 +21510,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
           } else {
             fillEl.style.width = Math.floor(currentPercent) + '%';
-            pctEl.textContent = Math.floor(currentPercent) + '%';
+            pctEl.textContent = Math.floor(currentPercent).toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]) + '%';
           }
         }, 15);
             });
