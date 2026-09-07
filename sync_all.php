@@ -4,7 +4,6 @@ $files = [
     "loader_concepts.html",
     "index.html",
     "assets/iran_padel_hud_map_v2.jpg",
-    "assets/silveriom_network_map_kish.jpg",
     "assets/iran_padel_hud_map_v2.webp",
     "homepage.html",
     "media-planner.html",
