@@ -6779,6 +6779,15 @@ section {
   flex: 1 1 calc(33.333% - 1.5rem);
   max-width: calc(33.333% - 1rem);
 }
+@media (min-width: 993px) {
+  .util-grid > .util-card:nth-child(1),
+  .util-grid > .util-card:nth-child(2),
+  .util-grid > .util-card:nth-child(6),
+  .util-grid > .util-card:nth-child(7) {
+    flex: 1 1 calc(50% - 1.5rem);
+    max-width: calc(50% - 0.75rem);
+  }
+}
 @media (max-width: 992px) {
   .util-grid > .util-card { flex: 1 1 calc(50% - 1.5rem); max-width: calc(50% - 1rem); }
 }
