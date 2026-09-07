@@ -440,6 +440,184 @@
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 
 
@@ -2670,6 +2848,184 @@
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -5559,6 +5915,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 <style id="island-header-overrides">
 .top-bar-badge {
@@ -5864,6 +6398,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 <style id="exact-grid-badge">
 
@@ -6163,6 +6875,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 <style>
 .featured-actions {
@@ -6400,6 +7290,184 @@ section {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -6642,6 +7710,184 @@ section {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -6974,6 +8220,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 <style id="silveriom-global-container-system">
   /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
@@ -7232,6 +8656,184 @@ section {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -7520,6 +9122,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 <style>
     @media (max-width: 768px) {
@@ -7756,6 +9536,184 @@ section {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -8034,6 +9992,184 @@ section {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -8372,6 +10508,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
     
 
@@ -8649,6 +10963,184 @@ section {
   backdrop-filter: blur(4px);
 }
 
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
 </style>
 
 
@@ -8914,6 +11406,184 @@ html {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -9364,6 +12034,184 @@ html {
   font-weight: 700;
   font-size: 0.9rem;
   backdrop-filter: blur(4px);
+}
+
+
+/* ====== T10 PHASE 2: ABOUT & FACILITIES ====== */
+.venue-profile-bento {
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+}
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .bento-container { grid-template-columns: 1fr; }
+}
+.bento-card {
+    background: rgba(4, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    direction: rtl;
+}
+.bento-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #CCFF00, transparent);
+    opacity: 0.5;
+}
+.bento-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-title i { color: #00f0ff; }
+.bento-text {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+.bento-highlight {
+    color: #CCFF00;
+    font-weight: 600;
+}
+
+.bento-media-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(4, 15, 30, 0.8));
+    border-color: rgba(0, 240, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bento-media-icon {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+}
+
+/* Cyber Cards */
+.cyber-facilities {
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+.cyber-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cyber-card {
+    background: rgba(10, 18, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    direction: rtl;
+}
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(204, 255, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: #CCFF00;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 15px #CCFF00;
+}
+.cyber-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204, 255, 0, 0.1);
+}
+.cyber-card:hover::before { opacity: 1; }
+.cyber-card:hover::after { width: 100%; }
+
+.cyber-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8b9bb4;
+    margin-bottom: 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+.cyber-card:hover .cyber-icon-box {
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+}
+.cyber-card-title {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.cyber-card-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Scanner Line */
+.scanner-line {
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.cyber-card:hover .scanner-line {
+    animation: cyberScan 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+@keyframes cyberScan {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
 }
 
 </style>
@@ -9830,130 +12678,95 @@ html {
 
 
 
-    <!-- Textbox Description & Quick Stats -->
-    <section class="relative z-10 pt-0 pb-4" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Description Box -->
-                <div class="lg:col-span-8">
-                    <div class="textbox h-full flex flex-col justify-center relative overflow-hidden">
-                        <!-- subtle glow -->
-                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-lime/5 blur-3xl rounded-full pointer-events-none"></div>
-                        
-                        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-info text-brand-cyan text-base"></i>
-                            درباره مجموعه
-                        </h3>
-                        <p class="text-justify mb-4">
-                            مجموعه ورزشی لوکس شمال پایتخت با امکانات رفاهی کامل، لانژ اختصاصی و محیطی عاری از دغدغه برای بازی و رویدادهای ویژه. مجهز به ۷ زمین پدل حرفه‌ای و ۳ زمین تنیس استاندارد، کانون اصلی ورزش‌های راکتی با حضور نخبگان ورزشی.
-                        </p>
-                        <p class="text-justify">
-                            فضای دلنشین و مخاطبان وفادار این مجموعه که اکثراً دارای قدرت خرید بالا و سبک زندگی مدرن هستند، این مجموعه را به یک <strong>مدیوم تبلیغاتی ایده‌آل</strong> برای برندهای لوکس تبدیل کرده است.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Stats Side -->
-                <div class="lg:col-span-4 flex flex-col gap-4">
-                    <div class="glass-card p-6 flex flex-col justify-center items-center text-center h-full">
-                        <div class="w-12 h-12 rounded-xl bg-brand-lime/10 text-brand-lime flex items-center justify-center text-xl mb-3">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <div class="stat-number text-white mb-1">
-                            <span class="text-brand-cyan">+</span>۳۰<span class="text-lg">K</span>
-                        </div>
-                        <div class="text-xs text-brand-textMuted">مخاطب ماهانه</div>
-                    </div>
-                    
-                    <div class="glass-card p-6 flex flex-col justify-center items-center text-center h-full">
-                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-xl mb-3">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div class="stat-number text-white mb-1">
-                            ۱۲۰<span class="text-base text-brand-textMuted font-normal mr-1">دقیقه</span>
-                        </div>
-                        <div class="text-xs text-brand-textMuted">میانگین زمان توقف</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Facilities Section -->
-    <section class="relative z-10 py-6 relative" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="section-title">
-                <div class="section-subtitle">زیرساخت‌ها و خدمات</div>
-                <h2 class="section-heading">امکانات رفاهی و تخصصی</h2>
+    
+    <!-- Cyber Profile Section (Phase 2) -->
+    <section class="venue-profile-bento">
+        <div class="bento-container">
+            <!-- Main About Card -->
+            <div class="bento-card">
+                <div class="bento-glow"></div>
+                <h3 class="bento-title"><i class="fa-solid fa-microchip"></i> پروفایل اختصاصی مجموعه</h3>
+                <p class="bento-text mb-4">
+                    مجموعه ورزشی لوکس شمال پایتخت با امکانات رفاهی کامل، لانژ اختصاصی و محیطی عاری از دغدغه برای بازی و رویدادهای ویژه. مجهز به ۷ زمین پدل حرفه‌ای و ۳ زمین تنیس استاندارد، این مجموعه کانون اصلی ورزش‌های راکتی با حضور نخبگان ورزشی محسوب می‌شود.
+                </p>
+                <p class="bento-text">
+                    فضای دلنشین و مخاطبان وفادار این مجموعه که اکثراً دارای قدرت خرید بالا و سبک زندگی مدرن هستند، T10 را به یک <span class="bento-highlight">مدیوم تبلیغاتی ایده‌آل و پریمیوم</span> برای برندهای تراز اول کشور تبدیل کرده است. قرارگیری برند شما در این اتمسفر، ضامن ارتباط عمیق با جامعه مخاطبان هدف است.
+                </p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
-                <!-- Facility 1 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-mug-hot text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">کافه رستوران</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">فضای باز و سرپوشیده</span>
-                </div>
-                
-                <!-- Facility 2 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-square-parking text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">پارکینگ اختصاصی</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">ظرفیت بالا + VIP</span>
-                </div>
-
-                <!-- Facility 3 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-store text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">پرو شاپ</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">تجهیزات حرفه‌ای تنیس</span>
-                </div>
-
-                <!-- Facility 4 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-shower text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">رختکن و دوش</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">مدرن و کاملاً بهداشتی</span>
-                </div>
-                
-                <!-- Facility 5 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-lime/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-lime/0 to-brand-lime/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-lime/40 group-hover:shadow-[0_0_20px_rgba(204,255,0,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-lightbulb text-2xl text-[#8b9bb4] group-hover:text-[#ccff00] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">نورپردازی استاندارد</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">استاندارد مسابقات شبانه</span>
-                </div>
-
-                <!-- Facility 6 -->
-                <div class="glass-card p-6 flex flex-col items-center text-center group cursor-pointer overflow-hidden relative border-white/5 hover:border-brand-cyan/50 hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute -inset-4 bg-gradient-to-b from-brand-cyan/0 to-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                    <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06080b] to-[#0d131f] border border-white/10 flex items-center justify-center mb-4 group-hover:border-brand-cyan/40 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all z-10">
-                        <i class="fa-solid fa-users-viewfinder text-2xl text-[#8b9bb4] group-hover:text-[#00f0ff] transition-colors"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-sm mb-1 z-10 relative">جایگاه تماشاچیان</h4>
-                    <span class="text-[10px] text-[#8b9bb4] z-10 relative">دید کامل به زمین‌ها</span>
-                </div>
+            <!-- Media Value Card -->
+            <div class="bento-card bento-media-card">
+                <i class="fa-solid fa-satellite-dish bento-media-icon"></i>
+                <h4 class="text-white font-bold text-xl mb-3">ارزش رسانه‌ای</h4>
+                <p class="text-[#8b9bb4] text-sm leading-relaxed">
+                    جایگاه‌سازی استراتژیک در ذهن مدیران ارشد و تصمیم‌گیرندگان. رسانه‌های محیطی و دیجیتال T10 بالاترین نرخ درگیری (Engagement) را در بین فضاهای ورزشی دارا هستند.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Cyber Facilities Section (Phase 2) -->
+    <section class="cyber-facilities">
+        <div class="container mx-auto px-6 mb-12 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 text-[#00f0ff] text-sm font-semibold tracking-wider">
+                <i class="fa-solid fa-server"></i>
+                زیرساخت‌ها و خدمات
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">امکانات رفاهی و تخصصی</h2>
+        </div>
+        
+        <div class="cyber-grid">
+            <!-- Card 1 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-mug-hot"></i></div>
+                <h4 class="cyber-card-title">کافه رستوران اختصاصی</h4>
+                <p class="cyber-card-desc">فضای باز و سرپوشیده با منوی متنوع، مکانی ایده‌آل برای استراحت و شبکه‌سازی مخاطبان پریمیوم.</p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-square-parking"></i></div>
+                <h4 class="cyber-card-title">پارکینگ اختصاصی</h4>
+                <p class="cyber-card-desc">ظرفیت بالای پارکینگ با امنیت کامل، ضامن آرامش خاطر مهمانان ویژه و مدیران در زمان حضور.</p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-store"></i></div>
+                <h4 class="cyber-card-title">پرو شاپ (Pro Shop)</h4>
+                <p class="cyber-card-desc">فروشگاه تخصصی تجهیزات پدل و تنیس از برترین برندهای جهانی با ارائه مشاوره‌های حرفه‌ای.</p>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-shower"></i></div>
+                <h4 class="cyber-card-title">رختکن و دوش مدرن</h4>
+                <p class="cyber-card-desc">فضای کاملاً بهداشتی و لوکس مجهز به لاکرهای اختصاصی و سیستم‌های تهویه مطبوع پیشرفته.</p>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+                <h4 class="cyber-card-title">نورپردازی استاندارد</h4>
+                <p class="cyber-card-desc">سیستم روشنایی حرفه‌ای مطابق با استانداردهای جهانی تورنمنت‌ها برای بازی‌های شبانه.</p>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="cyber-card">
+                <div class="scanner-line"></div>
+                <div class="cyber-icon-box"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <h4 class="cyber-card-title">جایگاه تماشاچیان VIP</h4>
+                <p class="cyber-card-desc">فضای اختصاصی با دید کامل به تمامی کورت‌ها، مناسب برای تماشای رویدادها و مسابقات مهم.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Gallery Section -->
     <section id="gallery" class="relative z-10 py-6 bg-white/[0.01] border-y border-white/[0.02] overflow-hidden" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
         <div class="container mx-auto px-6 mb-4">
             <div class="section-title">
