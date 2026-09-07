@@ -8604,7 +8604,69 @@ html {
 </style>
 
 </style>
+
+<!-- Navigation Scroll Fix -->
+<style id="silveriom-nav-scroll-fix">
+  .luxury-nav, .nav-container, .nav-links {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .luxury-nav::-webkit-scrollbar, .nav-container::-webkit-scrollbar, .nav-links::-webkit-scrollbar {
+    display: none !important;
+  }
+  @media (min-width: 1024px) {
+    .nav-links {
+      overflow: visible !important;
+      flex-wrap: nowrap !important;
+    }
+    .nav-item {
+      padding: 0.35rem 0.4rem !important;
+      font-size: 13px !important;
+      letter-spacing: -0.2px !important;
+      white-space: nowrap !important;
+    }
+  }
+</style>
+
+<!-- Sticky Menu Global Fix -->
+<style id="silveriom-sticky-menu-fix">
+  /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
+  .top-complex-bar {
+    position: absolute !important;
+    top: 0 !important;
+  }
+  
+  /* 2. Main luxury nav initially absolute (scrolls up with page) */
+  .luxury-nav {
+    position: absolute !important;
+    top: 50px !important; /* right below the top bar */
+  }
+  
+  /* 3. When scrolled, snap main nav to top and fix it */
+  .luxury-nav.scrolled {
+    position: fixed !important;
+    top: 0 !important;
+    background: rgba(2, 6, 18, 0.95) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  }
+
+  /* Ensure the fix works on mobile too */
+  @media (max-width: 1024px) {
+    .top-complex-bar {
+      display: none !important; /* Hide marquee on mobile usually */
+    }
+    .luxury-nav {
+      top: 0 !important;
+      position: absolute !important;
+    }
+    .luxury-nav.scrolled {
+      position: fixed !important;
+    }
+  }
+</style>
 </head>
+
+
 <style>
   .checkout-container {
     max-width: 1200px;
@@ -8855,6 +8917,7 @@ html {
             <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
             <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
             <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
+            <a href="https://silveriom.ir/clubs/kish.html" class="nav-dropdown-item">Olympic (کیش)</a>
           </div>
         </div>
         

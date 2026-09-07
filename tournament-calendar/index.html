@@ -5641,7 +5641,69 @@ html {
 }
 </style>
 
+
+<!-- Navigation Scroll Fix -->
+<style id="silveriom-nav-scroll-fix">
+  .luxury-nav, .nav-container, .nav-links {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .luxury-nav::-webkit-scrollbar, .nav-container::-webkit-scrollbar, .nav-links::-webkit-scrollbar {
+    display: none !important;
+  }
+  @media (min-width: 1024px) {
+    .nav-links {
+      overflow: visible !important;
+      flex-wrap: nowrap !important;
+    }
+    .nav-item {
+      padding: 0.35rem 0.4rem !important;
+      font-size: 13px !important;
+      letter-spacing: -0.2px !important;
+      white-space: nowrap !important;
+    }
+  }
+</style>
+
+<!-- Sticky Menu Global Fix -->
+<style id="silveriom-sticky-menu-fix">
+  /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
+  .top-complex-bar {
+    position: absolute !important;
+    top: 0 !important;
+  }
+  
+  /* 2. Main luxury nav initially absolute (scrolls up with page) */
+  .luxury-nav {
+    position: absolute !important;
+    top: 50px !important; /* right below the top bar */
+  }
+  
+  /* 3. When scrolled, snap main nav to top and fix it */
+  .luxury-nav.scrolled {
+    position: fixed !important;
+    top: 0 !important;
+    background: rgba(2, 6, 18, 0.95) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  }
+
+  /* Ensure the fix works on mobile too */
+  @media (max-width: 1024px) {
+    .top-complex-bar {
+      display: none !important; /* Hide marquee on mobile usually */
+    }
+    .luxury-nav {
+      top: 0 !important;
+      position: absolute !important;
+    }
+    .luxury-nav.scrolled {
+      position: fixed !important;
+    }
+  }
+</style>
 </head>
+
+
 
 <body class="luxury-body">
   <!-- ================= Silverium Loader HTML ================= -->
@@ -5753,6 +5815,7 @@ html {
             <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
             <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
             <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
+            <a href="https://silveriom.ir/clubs/kish.html" class="nav-dropdown-item">Olympic (کیش)</a>
           </div>
         </div>
         
@@ -5880,6 +5943,13 @@ html {
               <div style="display: flex; align-items: center; gap: 10px;">
                 <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
                 <span>Asayesh (ساری)</span>
+              </div>
+              <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="https://silveriom.ir/clubs/kish.html" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); text-decoration: none; color: #f8fafc; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px rgba(0,240,255,0.6);"></div>
+                <span>Olympic (کیش)</span>
               </div>
               <svg width="16" height="16" fill="none" stroke="#8b9bb4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
             </a>
@@ -6437,7 +6507,7 @@ html {
         <div class="network-container" style="position: relative; width: 100%; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column;">
           <div class="map-wrapper" style="position: relative; width: 100%;">
             <!-- Map Image -->
-            <img src="https://silveriom.ir/assets/network_map_tehran.jpg" alt="Silveriom Network Map" style="width: 100%; display: block;" loading="lazy">
+            <img src="../assets/iran_padel_hud_map_v2.webp" alt="Silveriom Network Map" style="width: 100%; display: block;" loading="lazy">
             
             <!-- Interactive Nodes Container -->
             <div id="network-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
@@ -7446,12 +7516,13 @@ html {
 
     <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const locations = [
-        { id: 'asayesh', name: 'آسایش مازندران', x: 85, y: 13, eventsCount: 5, types: 'پدل، تنیس', months: 'فروردین، شهریور' },
-        { id: 'netra', name: 'Netra لواسان', x: 97, y: 34, eventsCount: 2, types: 'پدل VIP', months: 'مرداد، اسفند' },
-        { id: 't10', name: 'T10 آجودانیه', x: 61, y: 28, eventsCount: 4, types: 'پدل، تنیس', months: 'اردیبهشت، شهریور، دی' },
-        { id: 'iranzamin', name: 'Iran Zamin شهرک غرب', x: 29.5, y: 51, eventsCount: 3, types: 'پدل', months: 'تیر، آبان' },
-        { id: 'arena', name: 'Arena آزادی', x: 33, y: 72, eventsCount: 6, types: 'پدل مسابقاتی', months: 'خرداد، مهر، بهمن' }
+            const locations = [
+        { id: 'asayesh', name: 'Asayesh مازندران', x: 63, y: 18, eventsCount: 5, types: 'پدل، تنیس', months: 'فروردین، شهریور' },
+        { id: 'netra', name: 'Netra لواسان', x: 53, y: 27, eventsCount: 2, types: 'پدل VIP', months: 'مرداد، اسفند' },
+        { id: 't10', name: 'T10 آجودانیه', x: 51, y: 29, eventsCount: 4, types: 'پدل، تنیس', months: 'اردیبهشت، شهریور، دی' },
+        { id: 'iranzamin', name: 'Iran Zamin شهرک غرب', x: 49, y: 32, eventsCount: 3, types: 'پدل', months: 'تیر، آبان' },
+        { id: 'arena', name: 'Arena آزادی', x: 47, y: 35, eventsCount: 6, types: 'پدل مسابقاتی', months: 'خرداد، مهر، بهمن' },
+        { id: 'kish', name: 'المپیک کیش', x: 61, y: 86, eventsCount: 3, types: 'پدل، تنیس', months: 'آذر، دی، بهمن' }
       ];
 
       const events = [
@@ -7466,7 +7537,8 @@ html {
         { id: 9, name: 'مسابقات آزاد شهرک غرب', month: 'آبان', monthIdx: 8, date: '۵ تا ۸ آبان ۱۴۰۵', locId: 'iranzamin', sport: 'padel', type: 'tournament', featured: false },
         { id: 10, name: 'مسابقات قهرمانی زمستان', month: 'دی', monthIdx: 10, date: '۲۰ دی ۱۴۰۵', locId: 't10', sport: 'tennis', type: 'tournament', featured: true },
         { id: 11, name: 'گرند اسلم آرنا', month: 'بهمن', monthIdx: 11, date: '۱۵ بهمن ۱۴۰۵', locId: 'arena', sport: 'padel', type: 'tournament', featured: true },
-        { id: 12, name: 'جشنواره پایان سال لواسان', month: 'اسفند', monthIdx: 12, date: '۲۰ اسفند ۱۴۰۵', locId: 'netra', sport: 'padel', type: 'vip', featured: false }
+        { id: 12, name: 'جشنواره پایان سال لواسان', month: 'اسفند', monthIdx: 12, date: '۲۰ اسفند ۱۴۰۵', locId: 'netra', sport: 'padel', type: 'vip', featured: false },
+        { id: 13, name: 'فستیوال ورزش‌های ساحلی کیش', month: 'دی', monthIdx: 10, date: '۱۰ تا ۱۵ دی ۱۴۰۵', locId: 'kish', sport: 'padel', type: 'tournament', featured: true }
       ];
 
       const netCanvas = document.getElementById('network-canvas');
