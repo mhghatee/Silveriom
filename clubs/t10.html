@@ -618,6 +618,178 @@
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 
 
@@ -3026,6 +3198,178 @@
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -6093,6 +6437,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 <style id="island-header-overrides">
 .top-bar-badge {
@@ -6576,6 +7092,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 <style id="exact-grid-badge">
 
@@ -7053,6 +7741,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 <style>
 .featured-actions {
@@ -7468,6 +8328,178 @@ section {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -7888,6 +8920,178 @@ section {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -8398,6 +9602,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 <style id="silveriom-global-container-system">
   /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
@@ -8834,6 +10210,178 @@ section {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -9300,6 +10848,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 <style>
     @media (max-width: 768px) {
@@ -9714,6 +11434,178 @@ section {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -10170,6 +12062,178 @@ section {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -10686,6 +12750,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
     
 
@@ -11141,6 +13377,178 @@ section {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 
 
@@ -11584,6 +13992,178 @@ html {
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { top: 110%; opacity: 0; }
+}
+
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
 }
 
 </style>
@@ -12214,6 +14794,178 @@ html {
     100% { top: 110%; opacity: 0; }
 }
 
+
+/* ====== T10 PHASE 3: GALLERY & DEMOGRAPHICS ====== */
+/* Cyber Gallery */
+.cyber-gallery {
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.cyber-gallery::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+.gallery-slide-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.5s;
+}
+.swiper-slide-active .gallery-slide-wrap {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.swiper-slide-active .gallery-slide-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,240,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, rgba(4,15,30,0.9) 0%, transparent 100%);
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.swiper-slide-active .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cyber Demographics */
+.cyber-demo {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 10;
+}
+.demo-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    direction: rtl;
+}
+@media (max-width: 992px) {
+    .demo-grid { grid-template-columns: 1fr; }
+}
+.demo-card {
+    background: rgba(10, 18, 32, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+}
+.cyber-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cyber-progress-label span:last-child {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.cyber-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.cyber-progress-fill {
+    position: absolute;
+    top: 0; left: 0; /* RTL adjusted below in inline styles */
+    right: 0;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px currentColor;
+}
+.cyber-progress-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Cyber Persona Card */
+.cyber-persona {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+.cyber-persona:hover {
+    border-color: rgba(204, 255, 0, 0.3);
+    background: linear-gradient(145deg, rgba(204,255,0,0.05), rgba(0,0,0,0.4));
+}
+.persona-icon {
+    width: 48px; height: 48px;
+    background: rgba(204, 255, 0, 0.1);
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #CCFF00;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+.cyber-persona.blue:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0,240,255,0.05), rgba(0,0,0,0.4));
+}
+.cyber-persona.blue .persona-icon {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.persona-title {
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.persona-desc {
+    font-size: 0.9rem;
+    color: #8b9bb4;
+    line-height: 1.7;
+}
+
 </style>
 
 </head>
@@ -12766,164 +15518,128 @@ html {
         </div>
     </section>
 
-<!-- Gallery Section -->
-    <section id="gallery" class="relative z-10 py-6 bg-white/[0.01] border-y border-white/[0.02] overflow-hidden" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
-        <div class="container mx-auto px-6 mb-4">
-            <div class="section-title">
-                <div class="section-subtitle">فضای مجموعه</div>
-                <h2 class="section-heading">گالری تصاویر اختصاصی</h2>
+
+    <!-- Cyber Gallery Section (Phase 3) -->
+    <section id="gallery" class="cyber-gallery">
+        <div class="container mx-auto px-6 mb-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 text-[#CCFF00] text-sm font-semibold tracking-wider">
+                <i class="fa-solid fa-camera"></i>
+                فضای مجموعه
             </div>
+            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">گالری تصاویر اختصاصی</h2>
         </div>
         
-        <div class="swiper mySwiper w-full pb-16 pt-4">
-                        <div class="swiper-wrapper">
-                <!-- Gallery Item 1 -->
-                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
-                    <a href="https://silveriom.ir/assets/padel_court_night.jpg" class="glightbox h-full block">
-                        <img src="https://silveriom.ir/assets/padel_court_night.jpg" alt="زمین پدل" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                            <span class="text-white font-bold text-lg md:text-xl">کورت‌های استاندارد در شب</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- Gallery Item 2 -->
-                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
-                    <a href="https://silveriom.ir/assets/padel_vip_lounge.jpg" class="glightbox h-full block">
-                        <img src="https://silveriom.ir/assets/padel_vip_lounge.jpg" alt="VIP Lounge" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                            <span class="text-white font-bold text-lg md:text-xl">لانژ اختصاصی و فضای VIP</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- Gallery Item 3 -->
-                <div class="swiper-slide w-[300px] md:w-[600px] h-[200px] md:h-[400px] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl">
-                    <a href="https://silveriom.ir/assets/padel_racket_glass.jpg" class="glightbox h-full block">
-                        <img src="https://silveriom.ir/assets/padel_racket_glass.jpg" alt="تجهیزات پدل" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                            <span class="text-white font-bold text-lg md:text-xl">تجهیزات و متریال پریمیوم</span>
-                        </div>
-                    </a>
-                </div>
-            </div></div>
-        </div>
-    </section>
-
-    
-    <!-- Enhanced Demographics Section -->
-    <section class="relative z-10 py-6 relative overflow-hidden" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
-        <!-- Ambient Glows -->
-        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00f0ff]/5 rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="section-title mb-2 text-center" style="margin-bottom: 1rem !important;"">
-                <div class="section-subtitle text-[#ccff00] text-sm font-bold tracking-widest uppercase mb-3">Audience Intelligence</div>
-                <h2 class="section-heading text-3xl md:text-5xl font-black text-white mb-4">تحلیل دقیق مخاطبان</h2>
-                <p class="text-[#8b9bb4] max-w-2xl mx-auto leading-relaxed text-sm">شناخت دقیق ترکیب جمعیتی و رفتاری مخاطبان مجموعه T10 (آجودانیه) برای هدف‌گذاری اثربخشِ برند شما.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                <!-- Age & Gender Card (Dashboard Style) -->
-                <div class="lg:col-span-7 glass-card p-8 md:p-12 relative overflow-hidden" style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px);">
-                    <div class="absolute -right-16 -top-16 opacity-5 pointer-events-none">
-                        <i class="fa-solid fa-chart-pie text-[200px] text-white"></i>
-                    </div>
-                    
-                    <h4 class="text-xl font-black mb-6 text-white flex items-center gap-3 relative z-10">
-                        <i class="fa-solid fa-mars-and-venus text-[#ccff00] text-2xl"></i> 
-                        ترکیب جنسیتی
-                    </h4>
-                    
-                    <!-- Gender Stats -->
-                    <div class="space-y-8 mb-2 relative" style="margin-bottom: 1rem !important;" z-10">
-                        <!-- Male -->
-                        <div>
-                            <div class="flex justify-between items-end mb-3">
-                                <span class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-mars text-[#00f0ff] w-5"></i> آقایان</span>
-                                <span class="font-black text-2xl text-white">۶۰٪</span>
-                            </div>
-                            <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full bg-[#00f0ff] rounded-full shadow-[0_0_15px_#00f0ff]" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <!-- Female -->
-                        <div>
-                            <div class="flex justify-between items-end mb-3">
-                                <span class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-venus text-[#ccff00] w-5"></i> بانوان</span>
-                                <span class="font-black text-2xl text-white">۴۰٪</span>
-                            </div>
-                            <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full bg-[#ccff00] rounded-full shadow-[0_0_15px_#ccff00]" style="width: 40%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10"></div>
-                    
-                    <h4 class="text-xl font-black mb-6 text-white flex items-center gap-3 relative z-10">
-                        <i class="fa-solid fa-user-clock text-[#00f0ff] text-2xl"></i> 
-                        رده‌بندی سنی
-                    </h4>
-                    
-                    <!-- Age Stats -->
-                    <div class="space-y-8 relative z-10">
-                        <!-- 18-35 -->
-                        <div>
-                            <div class="flex justify-between items-end mb-3">
-                                <span class="text-[#8b9bb4] font-medium text-sm">۱۸ تا ۳۵ سال <span class="text-white/40 text-xs mr-1">(جوانان و نسل جدید)</span></span>
-                                <span class="font-black text-2xl text-white">۸۰٪</span>
-                            </div>
-                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
-                                <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#ccff00] to-[#00f0ff] rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <!-- 35-45 -->
-                        <div>
-                            <div class="flex justify-between items-end mb-3">
-                                <span class="text-[#8b9bb4] font-medium text-sm">۳۵ تا ۴۵ سال <span class="text-white/40 text-xs mr-1">(مدیران و متخصصین)</span></span>
-                                <span class="font-black text-2xl text-white">۲۰٪</span>
-                            </div>
-                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden relative">
-                                <div class="absolute top-0 left-0 h-full bg-white/20 rounded-full" style="width: 20%"></div>
-                            </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="gallery-slide-wrap">
+                        <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Padel Court" class="w-full h-[400px] object-cover">
+                        <div class="gallery-caption">
+                            <h4 class="font-bold text-lg text-[#00f0ff]">تجهیزات و متریال پریمیوم</h4>
                         </div>
                     </div>
                 </div>
-
-                <!-- Persona Card -->
-                <div class="lg:col-span-5 flex flex-col gap-6">
-                    <!-- Insight Card 1 -->
-                    <div class="glass-card p-8 h-full flex flex-col justify-center relative overflow-hidden group transition-all duration-300 hover:bg-white/[0.05]" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px);">
-                        <div class="absolute top-0 right-0 w-1 bg-gradient-to-b from-[#ccff00] to-transparent h-0 group-hover:h-full transition-all duration-500 ease-out"></div>
-                        <div class="w-14 h-14 rounded-2xl bg-[#ccff00]/10 text-[#ccff00] flex items-center justify-center text-2xl mb-6 shadow-[0_0_20px_rgba(204,255,0,0.15)] group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-briefcase"></i>
+                <div class="swiper-slide">
+                    <div class="gallery-slide-wrap">
+                        <img src="https://silveriom.ir/assets/vip_lounge_example.jpg" onerror="this.src='https://silveriom.ir/assets/iran_zamin_hero_map_v3.jpg'" alt="VIP Lounge" class="w-full h-[400px] object-cover">
+                        <div class="gallery-caption">
+                            <h4 class="font-bold text-lg text-[#ccff00]">لانژ اختصاصی و فضای VIP</h4>
                         </div>
-                        <h5 class="text-white font-black text-xl mb-3">مدیران و کارآفرینان</h5>
-                        <p class="text-[13px] text-[#8b9bb4] leading-relaxed text-justify">
-                            بخش عمده‌ای از مراجعین ثابت این مجموعه را صاحبان کسب‌وکار، استارتاپ‌ها و مدیران ارشد مستقر در برج‌های مسکونی و تجاری منطقه تشکیل می‌دهند که این فضا را برای نتورکینگ و ورزش انتخاب کرده‌اند.
-                        </p>
                     </div>
-                    
-                    <!-- Insight Card 2 -->
-                    <div class="glass-card p-8 h-full flex flex-col justify-center relative overflow-hidden group transition-all duration-300 hover:bg-white/[0.05]" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px);">
-                        <div class="absolute top-0 right-0 w-1 bg-gradient-to-b from-[#00f0ff] to-transparent h-0 group-hover:h-full transition-all duration-500 ease-out"></div>
-                        <div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 text-[#00f0ff] flex items-center justify-center text-2xl mb-6 shadow-[0_0_20px_rgba(0,240,255,0.15)] group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-gem"></i>
+                </div>
+                <div class="swiper-slide">
+                    <div class="gallery-slide-wrap">
+                        <img src="https://silveriom.ir/assets/night_padel_example.jpg" onerror="this.src='https://silveriom.ir/assets/padel_cinematic_bg.jpg'" alt="Night Play" class="w-full h-[400px] object-cover">
+                        <div class="gallery-caption">
+                            <h4 class="font-bold text-lg text-[#00f0ff]">کورت‌های استاندارد در شب</h4>
                         </div>
-                        <h5 class="text-white font-black text-xl mb-3">مصرف‌کنندگان پریمیوم</h5>
-                        <p class="text-[13px] text-[#8b9bb4] leading-relaxed text-justify">
-                            مخاطبانی با قدرت خرید بسیار بالا و گرایش قوی به برندهای لوکس، خودروهای وارداتی و خدمات خاص (Premium). این گروه به تبلیغاتی که با سبک زندگی آن‌ها همخوانی دارد به شدت واکنش مثبت نشان می‌دهند.
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Cyber Demographics Section (Phase 3) -->
+    <section class="cyber-demo">
+        <div class="container mx-auto px-6 mb-12 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 text-[#00f0ff] text-sm font-semibold tracking-wider" style="letter-spacing: 0.1em; text-transform: uppercase;">
+                Audience Intelligence
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">تحلیل دقیق مخاطبان</h2>
+            <p class="text-[#8b9bb4] mt-4 max-w-2xl mx-auto">شناخت دقیق ترکیب جمعیتی و رفتاری مخاطبان مجموعه T10 آجودانیه؛ داده‌هایی حیاتی برای هدف‌گذاری اثربخش برند شما.</p>
+        </div>
+        
+        <div class="demo-grid">
+            <!-- Left Side: Stats/Charts -->
+            <div class="demo-card">
+                <h4 class="text-xl font-bold text-white mb-8 border-b border-white/10 pb-4"><i class="fa-solid fa-chart-pie text-[#00f0ff] ml-2"></i> ترکیب جمعیتی</h4>
+                
+                <!-- Gender -->
+                <div class="mb-10">
+                    <div class="cyber-progress-label">
+                        <span><i class="fa-solid fa-mars text-[#00f0ff] ml-2"></i> آقایان</span>
+                        <span class="text-[#00f0ff]">60%</span>
+                    </div>
+                    <div class="cyber-progress-track">
+                        <div class="cyber-progress-fill" style="width: 60%; background: linear-gradient(90deg, transparent, #00f0ff); right: 0; left: auto; color: #00f0ff;">
+                            <div class="cyber-progress-thumb" style="left: 0; top: 50%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="cyber-progress-label">
+                        <span><i class="fa-solid fa-venus text-[#ccff00] ml-2"></i> بانوان</span>
+                        <span class="text-[#ccff00]">40%</span>
+                    </div>
+                    <div class="cyber-progress-track">
+                        <div class="cyber-progress-fill" style="width: 40%; background: linear-gradient(90deg, transparent, #ccff00); right: 0; left: auto; color: #ccff00;">
+                            <div class="cyber-progress-thumb" style="left: 0; top: 50%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Media Opportunities -->
+                <h4 class="text-xl font-bold text-white mb-8 border-b border-white/10 pb-4"><i class="fa-solid fa-users text-[#00f0ff] ml-2"></i> رده‌بندی سنی</h4>
+                <!-- Age -->
+                <div>
+                    <div class="cyber-progress-label">
+                        <span class="text-sm">۱۸ تا ۳۵ سال <span class="text-[#8b9bb4] text-xs mr-1">(جوانان و نسل جدید)</span></span>
+                        <span class="text-[#00f0ff]">80%</span>
+                    </div>
+                    <div class="cyber-progress-track">
+                        <div class="cyber-progress-fill" style="width: 80%; background: linear-gradient(90deg, transparent, #00f0ff); right: 0; left: auto; color: #00f0ff;">
+                            <div class="cyber-progress-thumb" style="left: 0; top: 50%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="cyber-progress-label">
+                        <span class="text-sm">۳۵ تا ۴۵ سال <span class="text-[#8b9bb4] text-xs mr-1">(مدیران و متخصصین)</span></span>
+                        <span class="text-[#8b9bb4]">20%</span>
+                    </div>
+                    <div class="cyber-progress-track">
+                        <div class="cyber-progress-fill" style="width: 20%; background: linear-gradient(90deg, transparent, #8b9bb4); right: 0; left: auto; color: #8b9bb4;">
+                            <div class="cyber-progress-thumb" style="left: 0; top: 50%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Personas -->
+            <div class="flex flex-col h-full justify-center">
+                <div class="cyber-persona">
+                    <div class="persona-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h5 class="persona-title">مدیران و کارآفرینان</h5>
+                    <p class="persona-desc">بخش عمده‌ای از مراجعین ثابت این مجموعه را صاحبان کسب‌وکار، استارتاپ‌ها و مدیران ارشد مستقر در برج‌های مسکونی و تجاری منطقه تشکیل می‌دهند که این فضا را برای نتورکینگ و ورزش انتخاب کرده‌اند.</p>
+                </div>
+                
+                <div class="cyber-persona blue">
+                    <div class="persona-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h5 class="persona-title">مصرف‌کنندگان پریمیوم</h5>
+                    <p class="persona-desc">مخاطبانی با قدرت خرید بسیار بالا و گرایش قوی به برندهای لوکس، خودروهای وارداتی و خدمات خاص (Premium). این گروه به تبلیغاتی که با سبک زندگی آن‌ها همخوانی دارد به شدت واکنش مثبت نشان می‌دهند.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Media Opportunities -->
     <section id="media" class="relative z-10 py-6 relative" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
         <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         <div class="container mx-auto px-6">
