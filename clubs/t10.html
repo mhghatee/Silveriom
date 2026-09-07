@@ -894,6 +894,138 @@
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 
 
@@ -3578,6 +3710,138 @@
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -6921,6 +7185,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 <style id="island-header-overrides">
 .top-bar-badge {
@@ -7680,6 +8076,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 <style id="exact-grid-badge">
 
@@ -8433,6 +8961,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 <style>
 .featured-actions {
@@ -9124,6 +9784,138 @@ section {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -9820,6 +10612,138 @@ section {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -10606,6 +11530,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 <style id="silveriom-global-container-system">
   /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
@@ -11318,6 +12374,138 @@ section {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -12060,6 +13248,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 <style>
     @media (max-width: 768px) {
@@ -12750,6 +14070,138 @@ section {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -13482,6 +14934,138 @@ section {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -14274,6 +15858,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
     
 
@@ -15005,6 +16721,138 @@ section {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 
 
@@ -15724,6 +17572,138 @@ html {
 }
 .bento-gallery-item:hover::before {
     border-color: rgba(0, 240, 255, 0.4);
+}
+
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
 }
 
 </style>
@@ -16630,6 +18610,138 @@ html {
     border-color: rgba(0, 240, 255, 0.4);
 }
 
+
+/* ====== T10 MEDIA ASSET CARDS ====== */
+.media-asset-card {
+    background: #0f1623;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    direction: rtl;
+}
+.media-asset-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(204, 255, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(204, 255, 0, 0.05);
+}
+.mac-img-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 24px;
+}
+.mac-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mac-badge-code {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #CCFF00;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 24px;
+    border: 1px solid #CCFF00;
+    backdrop-filter: blur(5px);
+    font-family: 'Montserrat', yekan-bakh, sans-serif;
+}
+.mac-badge-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+.mac-location {
+    color: #00ffa3;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mac-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+.mac-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+}
+.mac-info-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+}
+.mac-info-value {
+    color: #CCFF00;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+.mac-specs-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+}
+.mac-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+.mac-spec-item i {
+    color: #94a3b8;
+}
+.mac-action-btn {
+    background: transparent;
+    color: #CCFF00;
+    border: 1px solid rgba(204,255,0,0.4);
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    width: 100%;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.mac-action-btn:hover {
+    background: rgba(204,255,0,0.05);
+    border-color: #CCFF00;
+    box-shadow: 0 0 20px rgba(204,255,0,0.1);
+}
+
 </style>
 
 </head>
@@ -17314,110 +19426,93 @@ html {
                 <h2 class="section-heading">رسانه‌های موجود در این مجموعه</h2>
             </div>
             
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Card 1: SIL-IZ-01 -->
-                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
-                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
-                    <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" alt="Iran Zamin Glass Wall" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
-                      کد: SIL-IZ-01
-                    </span>
-                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
-                      قابل رزرو / اکران
-                    </span>
+                <!-- Card 1: Entrance Sign -->
+                <div class="media-asset-card">
+                  <div class="mac-img-box">
+                    <img src="https://silveriom.ir/assets/night_padel_example.jpg" onerror="this.src='https://silveriom.ir/assets/padel_cinematic_bg.jpg'" alt="T10 Entrance" loading="lazy">
+                    <span class="mac-badge-code">کد: SVM-T10-109</span>
+                    <span class="mac-badge-status">در حال اکران</span>
                   </div>
 
-                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 (آجودانیه)</div>
-                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">دیواره شیشه‌ای کورت VIP</h3>
+                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> مجموعه T10 (آجودانیه)</div>
+                  <h3 class="mac-title">تابلوی ورودی T10</h3>
                   
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
-                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
-                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۵۰ میلیون تومان</span>
+                  <div class="mac-info-row">
+                    <span class="mac-info-label">تعرفه ماهانه:</span>
+                    <span class="mac-info-value">۳۰۰ میلیون تومان</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
-                    <div>📐 ابعاد: <strong>۱۲m × ۳m</strong></div>
-                    <div>👁️ بازدید: <strong>۱.۵M+</strong></div>
-                    <div>⚡ جنس: <strong>UV Glass</strong></div>
-                    <div>👥 مخاطب: <strong>مدیران ارشد</strong></div>
+                  <div class="mac-specs-row">
+                    <div class="mac-spec-item">ابعاد: <strong>6m x 3m</strong> <i class="fa-solid fa-expand"></i></div>
+                    <div class="mac-spec-item">چاپ: <strong>بنر</strong> <i class="fa-solid fa-bolt"></i></div>
                   </div>
 
-                  <button class="reserve-trigger-btn">
-                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
-                    <span>رزرو انحصاری رسانه</span>
+                  <button class="mac-action-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>اضافه کردن به مدیا کیت</span>
                   </button>
                 </div>
 
-                <!-- Card 2: SIL-IZ-02 (Based precisely on SIL-AJ-02 requested) -->
-                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
-                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
-                    <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" alt="Iran Zamin LED Stand" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
-                      کد: SIL-IZ-02
-                    </span>
-                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(16, 185, 129, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
-                      قابل رزرو / اکران
-                    </span>
+                <!-- Card 2: Glass Wall -->
+                <div class="media-asset-card">
+                  <div class="mac-img-box">
+                    <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" alt="T10 VIP Court" loading="lazy">
+                    <span class="mac-badge-code">کد: SVM-T10-110</span>
+                    <span class="mac-badge-status" style="background: linear-gradient(90deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">قابل رزرو</span>
                   </div>
 
-                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 (آجودانیه)</div>
-                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استند هوشمند ۴K LED ورودی لابی</h3>
+                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> مجموعه T10 (آجودانیه)</div>
+                  <h3 class="mac-title">دیواره شیشه‌ای کورت VIP</h3>
                   
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
-                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
-                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۱۳۵ میلیون تومان</span>
+                  <div class="mac-info-row">
+                    <span class="mac-info-label">تعرفه ماهانه:</span>
+                    <span class="mac-info-value">۱۵۰ میلیون تومان</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
-                    <div>📐 ابعاد: <strong>۷۵ اینچ ۴K</strong></div>
-                    <div>👁️ بازدید: <strong>۱.۳۵M+</strong></div>
-                    <div>⏱️ زمان: <strong>تیزر ۱۵ ثانیه</strong></div>
-                    <div>⚡ موقعیت: <strong>لابی اصلی</strong></div>
+                  <div class="mac-specs-row">
+                    <div class="mac-spec-item">ابعاد: <strong>12m x 3m</strong> <i class="fa-solid fa-expand"></i></div>
+                    <div class="mac-spec-item">چاپ: <strong>استیکر UV</strong> <i class="fa-solid fa-bolt"></i></div>
                   </div>
 
-                  <button class="reserve-trigger-btn">
-                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
-                    <span>رزرو انحصاری رسانه</span>
+                  <button class="mac-action-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>اضافه کردن به مدیا کیت</span>
                   </button>
                 </div>
 
-                <!-- Card 3: SIL-IZ-03 -->
-                <div class="glass-card product-asset-card" style="padding: 22px; border-radius: 26px; background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.12);">
-                  <div style="position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 16px; height: 190px;">
-                    <img src="https://silveriom.ir/assets/padel_mammut_court.jpg" alt="Iran Zamin Floor Sticker" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(7, 10, 17, 0.9); color: #CCFF00; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(204, 255, 0, 0.4);">
-                      کد: SIL-IZ-03
-                    </span>
-                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(245, 158, 11, 0.95); color: #ffffff; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 14px;">
-                      رزرو محدود
-                    </span>
+                <!-- Card 3: LED Stand -->
+                <div class="media-asset-card">
+                  <div class="mac-img-box">
+                    <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" alt="LED Stand" loading="lazy">
+                    <span class="mac-badge-code">کد: SVM-T10-111</span>
+                    <span class="mac-badge-status" style="background: linear-gradient(90deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">قابل رزرو</span>
                   </div>
 
-                  <div style="color: #CCFF00; font-size: 11.5px; font-weight: 800; margin-bottom: 4px;">📍 T10 (آجودانیه)</div>
-                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; line-height: 1.3;">استیکر کف زمین (Logo)</h3>
+                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> مجموعه T10 (آجودانیه)</div>
+                  <h3 class="mac-title">استند هوشمند 4K LED</h3>
                   
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: rgba(204,255,0,0.08); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(204,255,0,0.2);">
-                    <span style="color: #CBD5E1; font-size: 12px;">تعرفه ماهانه:</span>
-                    <span style="color: #CCFF00; font-weight: 900; font-size: 15px;">۹۰ میلیون تومان</span>
+                  <div class="mac-info-row">
+                    <span class="mac-info-label">تعرفه ماهانه:</span>
+                    <span class="mac-info-value">۲۰۰ میلیون تومان</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; background: rgba(255,255,255,0.04); padding: 10px; border-radius: 12px; font-size: 11.5px; color: #E2E8F0; margin-bottom: 16px;">
-                    <div>📐 ابعاد: <strong>۴m × ۲m</strong></div>
-                    <div>👁️ بازدید: <strong>۱M+</strong></div>
-                    <div>⚡ جنس: <strong>ضد لغزش</strong></div>
-                    <div>📍 موقعیت: <strong>داخل کورت</strong></div>
+                  <div class="mac-specs-row">
+                    <div class="mac-spec-item">ابعاد: <strong>1.5m x 2.5m</strong> <i class="fa-solid fa-expand"></i></div>
+                    <div class="mac-spec-item">فرمت: <strong>ویدیو MP4</strong> <i class="fa-solid fa-bolt"></i></div>
                   </div>
 
-                  <button class="reserve-trigger-btn">
-                    <i class="fa-solid fa-calendar-plus" style="font-size: 14px;"></i>
-                    <span>رزرو انحصاری رسانه</span>
+                  <button class="mac-action-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>اضافه کردن به مدیا کیت</span>
                   </button>
                 </div>
 
             </div>
-        </div>
-    </section>
+
+        </section>
 
     <footer class="luxury-mega-footer" id="main-footer">
   <div class="editorial-wide-container">
