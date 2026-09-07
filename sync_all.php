@@ -52,6 +52,7 @@ $files = [
     "proposal/index.html",
     "assets/proposal_bg_pattern.jpg",
     "assets/silveriom_network_map.jpg",
+    "assets/kish_map_thumb.jpg",
     "api/submit_proposal.php"
 ,
     "panel/admin.css",
