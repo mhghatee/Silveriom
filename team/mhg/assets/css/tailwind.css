@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   فونت وزیرمتن (ارقام فارسی) — میزبانی محلی، بدون CDN
+------------------------------------------------------------------ */
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn FD";
+  src: url("../fonts/Vazirmatn-FD-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  /* ------------------------------------------------------------------
+     توکن‌های تم — Midnight Jade: اسلیت سرد + لهجه یشم
+  ------------------------------------------------------------------ */
+  :root {
+    --ink-950: 6 10 14;
+    --ink-900: 10 16 24;
+    --ink-800: 16 24 36;
+    --ink-700: 24 36 52;
+    --ink-600: 36 52 72;
+    --cream: 232 240 244;
+    --cream-dim: 168 184 198;
+    --cream-mute: 110 128 146;
+    color-scheme: dark;
+  }
+
+  /* تم روشن — مه آبی سرد (نه کرمی گرم) */
+  [data-theme="light"] {
+    --ink-950: 236 242 246;
+    --ink-900: 255 255 255;
+    --ink-800: 226 234 240;
+    --ink-700: 214 224 232;
+    --ink-600: 198 210 220;
+    --cream: 12 22 34;
+    --cream-dim: 55 72 90;
+    --cream-mute: 100 120 140;
+    color-scheme: light;
+  }
+
+  html {
+    direction: rtl;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink-950 text-cream font-vazir overflow-x-hidden;
+    background-image: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(20, 184, 166, 0.08),
+      transparent
+    );
+    transition: background-color 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+      color 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.85);
+    color: #06101a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060a0e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1c2534;
+    border-radius: 8px;
+    border: 2px solid #060a0e;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3a4c;
+  }
+
+  /* اصلاحات تم روشن */
+  [data-theme="light"] ::-webkit-scrollbar-track {
+    background: #ecf2f6;
+  }
+  [data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #c6d2dc;
+    border-color: #ecf2f6;
+  }
+  /* خوانایی لهجه یشم روی زمینه روشن */
+  [data-theme="light"] .text-amber-400,
+  [data-theme="light"] .text-amber-300 {
+    color: #0f766e;
+  }
+  [data-theme="light"] .hover\:text-amber-300:hover,
+  [data-theme="light"] .hover\:text-amber-400:hover,
+  [data-theme="light"] .group:hover .group-hover\:text-amber-300 {
+    color: #0f766e;
+  }
+  [data-theme="light"] .shadow-card {
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+      0 24px 60px -12px rgba(28, 64, 80, 0.16),
+      0 4px 16px -4px rgba(28, 64, 80, 0.1);
+  }
+  [data-theme="light"] .shadow-glow,
+  [data-theme="light"] .hover\:shadow-glow:hover {
+    box-shadow:
+      0 0 0 1px rgba(15, 118, 110, 0.28),
+      0 8px 40px -8px rgba(15, 118, 110, 0.32);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(45, 212, 191, 0.7);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* متن روی سطوح یشم — همیشه تیره، در هر دو تم */
+  .text-on-accent {
+    color: #042f2e;
+  }
+
+  /* ─── چرخش کارت (پشت و رو) ─── */
+  .flip-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .flip-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+  .card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .card-face--back {
+    transform: rotateY(180deg);
+  }
+
+  /* لایه دانه‌ی فیلم (grain) روی کل صفحه */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 60;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    animation: grain-shift 0.9s steps(4) infinite;
+  }
+
+  /* حلقه چرخان دور آواتار */
+  .avatar-ring {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      rgba(45, 212, 191, 0.95) 12%,
+      rgba(31, 138, 122, 0.55) 22%,
+      transparent 34%,
+      transparent 100%
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  }
+
+  /* افکت نور دنبال‌کننده موس روی ردیف‌ها */
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      240px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgba(45, 212, 191, 0.1),
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* برق لبه کارت */
+  .card-border-glow {
+    position: relative;
+  }
+  .card-border-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      rgba(45, 212, 191, 0) 0%,
+      rgba(45, 212, 191, 0.55) 10%,
+      rgba(232, 240, 244, 0.22) 16%,
+      rgba(45, 212, 191, 0) 26%,
+      rgba(45, 212, 191, 0) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: border-rotate 6s linear infinite;
+  }
+
+  /* انیمیشن ورود پلکانی — ease-out نمایی، بدون bounce */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  /* نمایش کلمه‌به‌کلمه نام */
+  .word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+  .word-mask > span {
+    display: inline-block;
+    transform: translateY(110%) rotate(3deg);
+  }
+  .is-in .word-mask > span {
+    transform: translateY(0) rotate(0);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 3%); }
+  50% { transform: translate(3%, -2%); }
+  75% { transform: translate(-3%, -3%); }
+  100% { transform: translate(2%, 2%); }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
+/* احترام به کاهش حرکت */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal,
+  .word-mask > span {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
