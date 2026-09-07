@@ -19599,11 +19599,54 @@ html {
             });
           });
 
+
+          // --- Add Drag/Swipe Support ---
+          const sliderContainer = document.getElementById('slider');
+          let startX = 0;
+          let isDragging = false;
+          
+          sliderContainer.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+          });
+          window.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            let diffX = e.clientX - startX;
+            if (diffX > 50) {
+              logicalIndex--;
+              updateTeamCards();
+              resetTeamAutoPlay();
+            } else if (diffX < -50) {
+              logicalIndex++;
+              updateTeamCards();
+              resetTeamAutoPlay();
+            }
+          });
+          
+          sliderContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+          }, {passive: true});
+          sliderContainer.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            let diffX = endX - startX;
+            if (diffX > 50) {
+              logicalIndex--;
+              updateTeamCards();
+              resetTeamAutoPlay();
+            } else if (diffX < -50) {
+              logicalIndex++;
+              updateTeamCards();
+              resetTeamAutoPlay();
+            }
+          });
+          // ------------------------------
+          
           function startTeamAutoPlay() {
             teamAutoPlayInterval = setInterval(() => {
               logicalIndex++;
               updateTeamCards();
-            }, 10000); // 10 seconds per card
+            }, 5000); // 5 seconds per card
           }
           
           function resetTeamAutoPlay() {
