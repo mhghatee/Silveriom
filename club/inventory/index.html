@@ -10205,19 +10205,19 @@ html {
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <label class="custom-checkbox-label">
                 <input type="checkbox" class="custom-checkbox-input media-cb" value="glass" checked onchange="filterAssets()">
-                <span class="cb-text">🪟 دیواره شیشه‌ای پانورامیک</span>
+                <span class="cb-text"><i data-lucide="layout-panel-top" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> دیواره شیشه‌ای پانورامیک</span>
               </label>
               <label class="custom-checkbox-label">
                 <input type="checkbox" class="custom-checkbox-input media-cb" value="led" checked onchange="filterAssets()">
-                <span class="cb-text">📺 استند ۴K LED دیجیتال</span>
+                <span class="cb-text"><i data-lucide="tv" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> استند ۴K LED دیجیتال</span>
               </label>
               <label class="custom-checkbox-label">
                 <input type="checkbox" class="custom-checkbox-input media-cb" value="tournament" checked onchange="filterAssets()">
-                <span class="cb-text">🏅 نوار تور و استیج مسابقه</span>
+                <span class="cb-text"><i data-lucide="award" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> نوار تور و استیج مسابقه</span>
               </label>
               <label class="custom-checkbox-label">
                 <input type="checkbox" class="custom-checkbox-input media-cb" value="vip" checked onchange="filterAssets()">
-                <span class="cb-text">🍸 VIP لانژ و سمپلینگ</span>
+                <span class="cb-text"><i data-lucide="glass-water" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> VIP لانژ و سمپلینگ</span>
               </label>
             </div>
           </div>
@@ -10365,7 +10365,7 @@ html {
       <!-- Step 1: Calendar Date Selection -->
       <div style="margin-bottom: 24px; background: rgba(255,255,255,0.04); padding: 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
         <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px; margin-bottom: 10px;">
-          📅 ۱. انتخاب بازه و تاریخ شروع اکران کمپین:
+          <i data-lucide="calendar" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> ۱. انتخاب بازه و تاریخ شروع اکران کمپین:
         </label>
         <div style="display: flex; justify-content: space-between; font-size: 12px; color: #CCFF00; margin-bottom: 8px; font-weight: 700;">
           <span>ماه جاری (سال ۱۴۰۵ / ۲۰۲۶)</span>
@@ -10408,7 +10408,7 @@ html {
       <!-- Step 2: Form Inputs (نام برند | نام و نام خانوادگی درخواست دهنده | شماره همراه) -->
       <form id="modalReserveForm" onsubmit="submitReservationForm(event)" style="display: flex; flex-direction: column; gap: 14px;">
         <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px;">
-          📝 ۲. اطلاعات درخواست‌دهنده رزرو:
+          <i data-lucide="file-text" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> ۲. اطلاعات درخواست‌دهنده رزرو:
         </label>
 
         <input type="text" id="reserveBrand" required placeholder="نام برند / شرکت *" style="width: 100%; background: #070D1B; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 12px; color: #ffffff; font-size: 13px; outline: none;">
@@ -11916,6 +11916,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>if(typeof lucide !== "undefined"){lucide.createIcons();}</script>
 </body>
 
 

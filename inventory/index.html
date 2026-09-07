@@ -9416,7 +9416,7 @@ html {
       <!-- Step 1: Calendar Date Selection -->
       <div style="margin-bottom: 24px; background: rgba(255,255,255,0.04); padding: 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
         <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px; margin-bottom: 10px;">
-          📅 ۱. انتخاب بازه و تاریخ شروع اکران کمپین:
+          <i data-lucide="calendar" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> ۱. انتخاب بازه و تاریخ شروع اکران کمپین:
         </label>
         <div style="display: flex; justify-content: space-between; font-size: 12px; color: #CCFF00; margin-bottom: 8px; font-weight: 700;">
           <span>ماه جاری (سال ۱۴۰۵ / ۲۰۲۶)</span>
@@ -9459,7 +9459,7 @@ html {
       <!-- Step 2: Form Inputs (نام برند | نام و نام خانوادگی درخواست دهنده | شماره همراه) -->
       <form id="modalReserveForm" onsubmit="submitReservationForm(event)" style="display: flex; flex-direction: column; gap: 14px;">
         <label style="display: block; color: #ffffff; font-weight: 800; font-size: 13.5px;">
-          📝 ۲. اطلاعات درخواست‌دهنده رزرو:
+          <i data-lucide="file-text" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> ۲. اطلاعات درخواست‌دهنده رزرو:
         </label>
 
         <input type="text" id="reserveBrand" required placeholder="نام برند / شرکت *" style="width: 100%; background: #070D1B; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 12px; color: #ffffff; font-size: 13px; outline: none;">
@@ -11147,6 +11147,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>if(typeof lucide !== "undefined"){lucide.createIcons();}</script>
 </body>
 
 
