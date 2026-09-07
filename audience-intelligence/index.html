@@ -6770,15 +6770,20 @@ section {
 
 /* Location Cards Grid */
 .util-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
 }
+.util-grid > .util-card {
+  flex: 1 1 calc(33.333% - 1.5rem);
+  max-width: calc(33.333% - 1rem);
+}
 @media (max-width: 992px) {
-  .util-grid { grid-template-columns: repeat(2, 1fr); }
+  .util-grid > .util-card { flex: 1 1 calc(50% - 1.5rem); max-width: calc(50% - 1rem); }
 }
 @media (max-width: 768px) {
-  .util-grid { grid-template-columns: 1fr; }
+  .util-grid > .util-card { flex: 1 1 100%; max-width: 100%; }
 }
 @media (max-width: 768px) {
   .demo-panel { flex-direction: column; }
@@ -9271,6 +9276,33 @@ html {
                 <div class="time-bar-bg">
                   <div class="time-bar-fill fill-day" style="width: 20%; position: absolute; left: 0;"></div>
                   <div class="time-bar-fill fill-night" style="width: 80%; position: absolute; right: 0;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kish -->
+          <div class="util-card">
+            <div class="util-card-header">
+              <div class="util-loc-name">المپیک (کیش)</div>
+              <div class="util-courts-badge">۱۴ زمین</div>
+            </div>
+            <div class="visitor-stats">
+              <div class="stat-main">
+                <span class="stat-num">۱۰,۰۸۰</span>
+                <span class="stat-label">بازدید ماهانه</span>
+              </div>
+              <div class="stat-sub">
+                <span class="stat-num-small">۶۰,۴۸۰</span>
+                <span class="stat-label-small">بازدید ۶ماهه</span>
+              </div>
+            </div>
+            <div class="util-timeline">
+              <div class="time-segment">
+                <div class="time-header"><span>میانگین تراکم (روز / شب)</span><span class="time-val">۴۰٪ / ۶۰٪</span></div>
+                <div class="time-bar-bg">
+                  <div class="time-bar-fill fill-day" style="width: 40%; position: absolute; left: 0;"></div>
+                  <div class="time-bar-fill fill-night" style="width: 60%; position: absolute; right: 0;"></div>
                 </div>
               </div>
             </div>
