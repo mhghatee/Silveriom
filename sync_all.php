@@ -3,6 +3,8 @@ $files = [
     "mobile_html_debug.html",
     "loader_concepts.html",
     "index.html",
+    "assets/iran_padel_hud_map_v2.jpg",
+    "assets/iran_padel_hud_map_v2.webp",
     "homepage.html",
     "media-planner.html",
     "favicon.png",
