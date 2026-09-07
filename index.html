@@ -6061,6 +6061,30 @@ html {
   font-size: 0.92rem !important;
 }
 </style>
+
+<style>
+/* ---- MAP CARD HEIGHT = MAP IMAGE HEIGHT ---- */
+.map-canvas-box {
+  flex: 1.4;
+}
+.map-info-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.map-canvas-box .map-bg-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  min-height: 350px;
+}
+.map-interactive-wrapper {
+  align-items: stretch !important;
+}
+</style>
 </head>
 
 <body>
