@@ -6038,6 +6038,8 @@ html {
         <span class="top-c-sep">•</span>
         <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
         <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
       </div>
       <div class="marquee-group">
         <span class="top-bar-badge">🎾 شبکه انحصاری پدل سیلوریوم:</span>
@@ -6050,6 +6052,8 @@ html {
         <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
         <span class="top-c-sep">•</span>
         <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
         <span class="top-c-sep">•</span>
       </div>
     </div>
@@ -6643,15 +6647,16 @@ html {
           <button class="map-filter-btn" data-pin="iranzamin">مجموعه Iran Zamin (شهرک غرب)</button>
           <button class="map-filter-btn" data-pin="netra">مجموعه Netra (لواسان)</button>
           <button class="map-filter-btn" data-pin="asayesh">مجموعه Asayesh (ساری)</button>
+          <button class="map-filter-btn" data-pin="kish">مجموعه المپیک (کیش)</button>
         </div>
 
         <div class="map-interactive-wrapper">
           <div class="map-canvas-box">
-            <img src="assets/iran_padel_hud_map.jpg" alt="نقشه کورت‌ها و رسانه‌های اختصاصی سیلوریوم" class="map-bg-img" loading="lazy">
+            <img src="assets/iran_padel_hud_map_v2.webp" alt="نقشه کورت‌ها و رسانه‌های اختصاصی سیلوریوم" class="map-bg-img" loading="lazy">
             
             <!-- Interactive Location Beacons Centered Exactly Over Map Pin Heads -->
             <!-- 1. T10 (Ajudaniyeh) -->
-            <div class="map-hotspot pin-t10 active" data-zone="t10" style="top: 35.5%; left: 59.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه T10 آجودانیه">
+            <div class="map-hotspot pin-t10 active" data-zone="t10" style="top: 29%; left: 51%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه T10 آجودانیه">
               <div class="map-pin-beacon">
                 <div class="beacon-pulse-ring"></div>
                 <div class="beacon-dot"></div>
@@ -6660,7 +6665,7 @@ html {
             </div>
 
             <!-- 2. Arena (Azadi) -->
-            <div class="map-hotspot pin-arena" data-zone="arena" style="top: 60%; left: 19.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Arena آزادی">
+            <div class="map-hotspot pin-arena" data-zone="arena" style="top: 35%; left: 47%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Arena آزادی">
               <div class="map-pin-beacon">
                 <div class="beacon-pulse-ring"></div>
                 <div class="beacon-dot"></div>
@@ -6669,7 +6674,7 @@ html {
             </div>
 
             <!-- 3. Iran Zamin (Shahrak Gharb) -->
-            <div class="map-hotspot pin-iranzamin" data-zone="iranzamin" style="top: 36.5%; left: 24.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Iran Zamin شهرک غرب">
+            <div class="map-hotspot pin-iranzamin" data-zone="iranzamin" style="top: 32%; left: 49%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Iran Zamin شهرک غرب">
               <div class="map-pin-beacon">
                 <div class="beacon-pulse-ring"></div>
                 <div class="beacon-dot"></div>
@@ -6678,7 +6683,7 @@ html {
             </div>
 
             <!-- 4. Netra (Lavasan) -->
-            <div class="map-hotspot pin-netra" data-zone="netra" style="top: 23.5%; left: 81.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Netra لواسان">
+            <div class="map-hotspot pin-netra" data-zone="netra" style="top: 27%; left: 53%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Netra لواسان">
               <div class="map-pin-beacon">
                 <div class="beacon-pulse-ring"></div>
                 <div class="beacon-dot"></div>
@@ -6687,13 +6692,23 @@ html {
             </div>
 
             <!-- 5. Asayesh (Sari) -->
-            <div class="map-hotspot pin-asayesh" data-zone="asayesh" style="top: 13.5%; left: 91.5%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Asayesh ساری">
+            <div class="map-hotspot pin-asayesh" data-zone="asayesh" style="top: 18%; left: 63%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه Asayesh ساری">
               <div class="map-pin-beacon">
                 <div class="beacon-pulse-ring"></div>
                 <div class="beacon-dot"></div>
                 <span class="beacon-tooltip">مجموعه Asayesh (ساری) 🎯</span>
               </div>
             </div>
+
+            <!-- 6. Kish Island -->
+            <div class="map-hotspot pin-kish" data-zone="kish" style="top: 86%; left: 61%; width: 56px; height: 56px; transform: translate(-50%, -50%);" title="مجموعه المپیک کیش">
+              <div class="map-pin-beacon">
+                <div class="beacon-pulse-ring"></div>
+                <div class="beacon-dot"></div>
+                <span class="beacon-tooltip">مجموعه المپیک (کیش) 🎯</span>
+              </div>
+            </div>
+
           </div>
 
           <!-- Live Spot Detail Card -->
@@ -7893,13 +7908,22 @@ html {
       media: "کورت تمام شیشه‌ای + سمپلینگ VIP"
     },
     asayesh: {
-      badge: "قطب ورزش‌های راکتی شمال • مازندران",
+      badge: "کانون اصلی شمال کشور • مازندران",
       title: "مجموعه Asayesh (ساری)",
-      loc: "مازندران، ساری، مجموعه ورزشی آسایش",
-      desc: "نخستین و مجهزترین کانون ورزش‌های راکتی استان مازندران با ۴ کورت پدل و ۱۲ زمین تنیس مسابقاتی. پوشش مخاطبان ورزش‌دوست و توریست‌های فصلی استان با ضریب دید بالا.",
+      loc: "ساری، کیلومتر ۵ جاده فرح‌آباد، مجتمع تفریحی ورزشی آسایش",
+      desc: "نخستین و مجهزترین کانون ورزش‌های راکتی استان مازندران با ۴ کورت پدل و ۱۲ زمین تنیس مسابقاتی. پوشش مخاطبان بومی و توریست‌های فصلی.",
       courts: "۴ پدل + ۱۲ تنیس",
-      impressions: "+۴۰,۰۰۰",
-      media: "برندینگ تور + دیواره شیشه‌ای"
+      impressions: "+۶۰,۰۰۰",
+      media: "تورنمنت فصلی + دیواره شیشه"
+    },
+    kish: {
+      badge: "مرکز رویدادهای بین‌المللی • جزیره کیش",
+      title: "مجموعه تنیس المپیک (کیش)",
+      loc: "کیش، شهرک المپیک، بلوار کاریز",
+      desc: "تنها مرکز تخصصی برگزاری تورنمنت‌های ملی و بین‌المللی در جزیره کیش. پاتوقی ایده‌آل برای توریست‌ها و علاقه‌مندان به ورزش‌های راکتی با ضریب دید بالا در تمام فصول.",
+      courts: "۴ زمین هارد + ۱۰ زمین خاک",
+      impressions: "+۱۲۰,۰۰۰",
+      media: "بیلبورد + تور مسابقه + دیواره"
     }
   };
 
