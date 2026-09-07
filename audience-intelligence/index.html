@@ -9009,7 +9009,22 @@ html {
         </div>
         
         
-        <div class="loc-tabs" id="loc-tabs" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 3rem;">
+        
+        <style>
+          #loc-tabs {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important;
+          }
+          @media (max-width: 900px) {
+            #loc-tabs { grid-template-columns: repeat(2, 1fr) !important; }
+          }
+          @media (max-width: 600px) {
+            #loc-tabs { grid-template-columns: 1fr !important; }
+          }
+          #loc-tabs .loc-tab { width: 100% !important; max-width: none !important; }
+        </style>
+        <div class="loc-tabs" id="loc-tabs" style="margin-bottom: 3rem;">
           <button class="loc-tab active" data-loc="t10">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>T10 آجودانیه</span>
@@ -9029,6 +9044,10 @@ html {
           <button class="loc-tab" data-loc="arena">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             <span>آرنا آزادی</span>
+          </button>
+          <button class="loc-tab" data-loc="kish">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>المپیک کیش</span>
           </button>
         </div>
 
@@ -9400,7 +9419,8 @@ html {
         netra: { courts: "رده A (پریمیوم)", reach: "Ultra-Premium", type: "مخاطب بسیار خاص / VIP", tags: ["کالای لوکس", "خودرو", "ایونت‌های اختصاصی"] },
         asayesh: { courts: "رده A (پریمیوم)", reach: "Premium Flagship", type: "مخاطب سطح بالا + تجربه لوکس", tags: ["خودرو", "سفر و گردشگری", "خدمات بانکی VIP"] },
         iranzamin: { courts: "رده B (شهری)", reach: "Young Urban Premium", type: "مخاطب جوان و مدرن / Digital", tags: ["تکنولوژی", "مد و پوشاک", "پرمصرف روزانه"] },
-        arena: { courts: "رده B (شهری)", reach: "High Traffic Urban", type: "حجم بالای بازدید / عمومی", tags: ["پرمصرف روزانه", "برندهای صنایع غذایی", "تکنولوژی"] }
+        arena: { courts: "رده B (شهری)", reach: "High Traffic Urban", type: "حجم بالای بازدید / عمومی", tags: ["پرمصرف روزانه", "برندهای صنایع غذایی", "تکنولوژی"] },
+        kish: { courts: "رده A (پریمیوم)", reach: "Ultra-Premium", type: "مخاطب بسیار خاص / VIP", tags: ["کالای لوکس", "خودرو", "ایونت‌های اختصاصی"] }
       };
 
       const locTabs = document.querySelectorAll('.loc-tab');
