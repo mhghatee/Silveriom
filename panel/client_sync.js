@@ -33,12 +33,18 @@
         const linkedinUrl = member.linkedin || '#';
         const showIcons = member.linkedin || member.contact || memberIdx === 1;
         const iconsHtml = showIcons ? `
-              <div style="position:absolute;bottom:12px;left:0;width:100%;display:flex;justify-content:center;gap:18px;z-index:20;">
-                <a href="${linkedinUrl}" target="_blank" onclick="event.stopPropagation();" style="display:inline-flex;line-height:1;">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <div style="position:absolute;bottom:14px;left:0;width:100%;display:flex;justify-content:center;gap:10px;z-index:20;">
+                <a href="${linkedinUrl}" target="_blank" onclick="event.stopPropagation();"
+                   style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);transition:all 0.25s;text-decoration:none;"
+                   onmouseover="this.style.background='rgba(204,255,0,0.2)';this.style.borderColor='#CCFF00';"
+                   onmouseout="this.style.background='rgba(255,255,255,0.12)';this.style.borderColor='rgba(255,255,255,0.25)';">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
-                <a href="javascript:void(0);" onclick="event.stopPropagation();" style="display:inline-flex;line-height:1;">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect width="18" height="18" x="3" y="4" rx="2"/><circle cx="12" cy="10" r="2"/><line x1="8" x2="8" y1="2" y2="4"/><line x1="16" x2="16" y1="2" y2="4"/></svg>
+                <a href="javascript:void(0);" onclick="event.stopPropagation();"
+                   style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(6px);transition:all 0.25s;text-decoration:none;"
+                   onmouseover="this.style.background='rgba(204,255,0,0.2)';this.style.borderColor='#CCFF00';"
+                   onmouseout="this.style.background='rgba(255,255,255,0.12)';this.style.borderColor='rgba(255,255,255,0.25)';">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect width="18" height="18" x="3" y="4" rx="2"/><circle cx="12" cy="10" r="2"/><line x1="8" x2="8" y1="2" y2="4"/><line x1="16" x2="16" y1="2" y2="4"/></svg>
                 </a>
               </div>` : '';
 
