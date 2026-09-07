@@ -5701,6 +5701,26 @@ html {
     }
   }
 </style>
+<!-- Footer Social Pills (Style 3) CSS -->
+<style>
+.footer-social-pill-container { display: flex; gap: 12px; }
+.social-pill-btn {
+  display: inline-flex; align-items: center; height: 45px; padding: 0 15px; border-radius: 25px; 
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); 
+  color: #fff !important; text-decoration: none !important; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+  overflow: hidden;
+}
+.social-pill-btn .social-svg { transition: transform 0.4s ease; fill: #fff; stroke: none; }
+.social-pill-text { 
+  max-width: 0; opacity: 0; white-space: nowrap; transition: all 0.4s ease; 
+  font-weight: 600; font-family: 'Space Grotesk', sans-serif; margin-right: 0; font-size: 15px; letter-spacing: 0.5px;
+}
+.social-pill-btn:hover { 
+  background: #CCFF00 !important; color: #000 !important; border-color: #CCFF00 !important; box-shadow: 0 0 20px rgba(204,255,0,0.3); 
+}
+.social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
+.social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
+</style>
 </head>
 
 
