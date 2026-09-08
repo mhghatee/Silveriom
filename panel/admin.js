@@ -1963,10 +1963,14 @@ function renderExcelPreview() {
   if(area) area.style.display = 'block';
   
   const typeOptions = `
-            <option value="glass_border">برندینگ دور کورت‌ها (نوار دور شیشه)</option>
-    <option value="net">برندینگ تور مسابقات</option>
-    <option value="entrance">برندینگ حاشیه درب ورودی کورت</option>
-    <option value="sampling">جایگاه سمپلینگ</option>
+    <option value="outdoor_billboard">بیلبورد بیرونی</option>
+    <option value="indoor_backlight">بکلایت داخلی</option>
+    <option value="outdoor_backlight">بکلایت بیرونی</option>
+    <option value="indoor_frontlight">فورلایت داخلی</option>
+    <option value="outdoor_frontlight">فورلایت بیرونی</option>
+    <option value="court_border">برندینگ حاشیه کورت</option>
+    <option value="court_net">برندینگ تور</option>
+    <option value="court_entrance">برندینگ ورودی کورت</option>
   `;
   const locationOptions = `
     <option value="azadi">آرنا (آزادی)</option>
