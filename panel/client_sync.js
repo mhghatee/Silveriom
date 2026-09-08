@@ -16,8 +16,7 @@
       if (heroBadge && s.heroBadge) heroBadge.textContent = s.heroBadge;
 
       const heroTitle = document.querySelector('.hero-title');
-      if (heroTitle && s.heroTitle) heroTitle.innerHTML = s.heroTitle.replace(/
-/g, '<br>');
+      if (heroTitle && s.heroTitle) heroTitle.innerHTML = s.heroTitle.replace(/\n/g, '<br>');
 
       const heroSub = document.querySelector('.hero-subtitle');
       if (heroSub && s.heroSubtitle) heroSub.textContent = s.heroSubtitle;
