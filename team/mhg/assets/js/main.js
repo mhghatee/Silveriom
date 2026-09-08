@@ -280,8 +280,9 @@ function initSkillsMarquee() {
   if (!track) return;
 
   const skills = [
-    "رابط کاربری", "تجربه کاربری", "سیستم طراحی", "طراحی حرکت",
-    "HTML / CSS", "جاوااسکریپت", "Tailwind", "فیگما", "طراحی واکنش‌گرا", "دسترسی‌پذیری",
+    "T10 آجودانیه", "Arena آزادی", "Iran Zamin شهرک غرب",
+    "Netra لواسان", "Asayesh مازندران", "Olympic کیش",
+    "T10 آجودانیه", "Arena آزادی", "Iran Zamin شهرک غرب",
   ];
 
   const chip = (label) =>
