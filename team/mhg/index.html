@@ -187,7 +187,7 @@
     }
     #save-contact:hover { filter: brightness(1.1) !important; box-shadow: 0 6px 28px rgba(204,255,0,0.5) !important; }
 
-    #flip-to-back, #top-right-logo {
+    #flip-to-back, #top-right-logo, #qr-center-badge {
       background: rgba(204,255,0,0.08) !important;
       border: 1px solid rgba(204,255,0,0.25) !important;
       color: #CCFF00 !important;
@@ -197,7 +197,7 @@
     #top-right-logo { right: 1.5rem !important; }
     #flip-to-back:hover, #top-right-logo:hover { background: rgba(204,255,0,0.15) !important; }
     
-    #top-right-logo img {
+    #top-right-logo img, #qr-center-badge img {
       width: 36px !important;
       height: 36px !important;
       object-fit: contain;
@@ -449,7 +449,7 @@
               <div class="relative rounded-3xl bg-[#EEF4F7] p-4 shadow-glow">
                 <canvas id="qr-canvas" width="232" height="232" class="block h-52 w-52 sm:h-56 sm:w-56" role="img" aria-label="کد کیوآر کارت ویزیت"></canvas>
                 <!-- نشان مرکزی -->
-                <div class="absolute right-1/2 top-1/2 flex h-12 w-12 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-2xl bg-white/80 backdrop-blur-md border border-white/50 shadow-lg"><img src="assets/glass-logo.webp" alt="Silveriom" class="w-9 h-9 object-contain drop-shadow-md"/></div>
+                <div id="qr-center-badge" class="absolute right-1/2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-xl"><img src="assets/glass-logo.webp" alt="Silveriom" style="filter: drop-shadow(0 0 4px rgba(204,255,0,0.4));"/></div>
               </div>
 
               <p class="mt-6 text-center text-base font-bold text-cream">کارت را اسکن کنید</p>
