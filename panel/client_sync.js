@@ -16,7 +16,8 @@
       if (heroBadge && s.heroBadge) heroBadge.textContent = s.heroBadge;
 
       const heroTitle = document.querySelector('.hero-title');
-      if (heroTitle && s.heroTitle) heroTitle.innerHTML = s.heroTitle.replace(/\n/g, '<br>');
+      if (heroTitle && s.heroTitle) heroTitle.innerHTML = s.heroTitle.replace(/
+/g, '<br>');
 
       const heroSub = document.querySelector('.hero-subtitle');
       if (heroSub && s.heroSubtitle) heroSub.textContent = s.heroSubtitle;
@@ -30,7 +31,8 @@
       db.aboutUs.team.forEach((member, memberIdx) => {
         let imgSrc = member.image ? (member.image.startsWith('http') || member.image.startsWith('/') ? member.image : '/panel/' + member.image) : 'https://via.placeholder.com/600x600?text=No+Image';
         
-        const linkedinUrl = memberIdx === 1 ? 'https://www.linkedin.com/in/mohammad-hosein-ghatee-21a2b1152/' : (member.linkedin || '#');\n        const vcardUrl = memberIdx === 1 ? 'https://silveriom.ir/team/mhg' : (member.contact || '#');
+        const linkedinUrl = memberIdx === 1 ? 'https://www.linkedin.com/in/mohammad-hosein-ghatee-21a2b1152/' : (member.linkedin || '#');
+        const vcardUrl = memberIdx === 1 ? 'https://silveriom.ir/team/mhg' : (member.contact || '#');
         const showIcons = member.linkedin || member.contact || memberIdx === 1;
         const iconsHtml = showIcons ? `
               <div style="position:absolute;bottom:14px;left:0;width:100%;display:flex;justify-content:center;gap:10px;z-index:20;">
