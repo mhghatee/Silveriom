@@ -10836,31 +10836,36 @@ html {
                 <i data-lucide="map-pin" style="color: var(--color-neon); width: 18px; height: 18px;"></i>
                 <span>۱. انتخاب مجتمع‌های ورزشی انحصاری مد نظر:</span>
               </label>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
                 
-                <div class="planner-option-card selected" onclick="toggleOption(this, 'venue', 700000)" data-value="ajudaniyeh" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 14px; margin-bottom: 4px;">T10 آجودانیه</div>
-                  <div style="color: var(--color-neon); font-size: 11px; font-weight: 700;">۷ پدل + ۳ تنیس</div>
+                <div class="planner-option-card selected" onclick="toggleOption(this, 'venue', 700000)" data-value="ajudaniyeh" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">T10 (آجودانیه)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">۷ پدل + ۳ تنیس</div>
                 </div>
 
-                <div class="planner-option-card selected" onclick="toggleOption(this, 'venue', 850000)" data-value="azadi" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 14px; margin-bottom: 4px;">Arena آزادی</div>
-                  <div style="color: var(--color-neon); font-size: 11px; font-weight: 700;">۸ پدل مسابقاتی</div>
+                <div class="planner-option-card selected" onclick="toggleOption(this, 'venue', 850000)" data-value="azadi" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">Arena (آزادی)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">۸ پدل مسابقاتی</div>
                 </div>
 
-                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 500000)" data-value="shahrak" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 14px; margin-bottom: 4px;">شهرک غرب</div>
-                  <div style="color: var(--color-neon); font-size: 11px; font-weight: 700;">۶ پدل پانورامیک</div>
+                <div class="planner-option-card selected" onclick="toggleOption(this, 'venue', 500000)" data-value="shahrak" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">Iran Zamin (شهرک غرب)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">۶ پدل پانورامیک</div>
                 </div>
 
-                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 450000)" data-value="lavasan" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-size: 14px; font-weight: 800; margin-bottom: 4px;">Netra لواسان</div>
-                  <div style="color: var(--color-neon); font-size: 11px; font-weight: 700;">۷ پدل VIP</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 450000)" data-value="lavasan" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-size: 13px; font-weight: 800; margin-bottom: 4px;">Netra (لواسان)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">۷ پدل VIP</div>
                 </div>
 
-                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 550000)" data-value="sari" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-size: 14px; font-weight: 800; margin-bottom: 4px;">ساری (مازندران)</div>
-                  <div style="color: var(--color-neon); font-size: 11px; font-weight: 700;">۴ پدل + ۱۲ تنیس</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 550000)" data-value="sari" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-size: 13px; font-weight: 800; margin-bottom: 4px;">Asayesh (ساری)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">۴ پدل + ۱۲ تنیس</div>
+                </div>
+
+                <div class="planner-option-card" onclick="toggleOption(this, 'venue', 600000)" data-value="kish" style="padding: 12px; text-align: center;">
+                  <div style="color: #ffffff; font-size: 13px; font-weight: 800; margin-bottom: 4px;">Olympic (کیش)</div>
+                  <div style="color: var(--color-neon); font-size: 10px; font-weight: 700;">قطب پدل جزیره</div>
                 </div>
 
               </div>
@@ -10872,29 +10877,60 @@ html {
                 <i data-lucide="tv" style="color: var(--color-neon); width: 18px; height: 18px;"></i>
                 <span>۲. نوع سازه و فرمت اکران:</span>
               </label>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
                 
-                <div class="planner-option-card selected" onclick="toggleOption(this, 'media', 1.2)" data-value="glass_stickers" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">استیکر شیشه‌ها</div>
-                  <div style="color: var(--color-silver-dim); font-size: 11px;">دید ۳۶۰ درجه بازی</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.3)" data-value="outdoor_billboard" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">بیلبورد بیرونی</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">پوشش شهری</div>
                 </div>
 
-                <div class="planner-option-card selected" onclick="toggleOption(this, 'media', 1.4)" data-value="led_screens" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">استندهای ۴K LED</div>
-                  <div style="color: var(--color-silver-dim); font-size: 11px;">پخش تیزر مسابقات</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.4)" data-value="indoor_backlight" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">بک‌لایت داخلی</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">فضای VIP</div>
                 </div>
 
-                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.3)" data-value="tournament_stage" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">تور و استیج مسابقات</div>
-                  <div style="color: var(--color-silver-dim); font-size: 11px;">پوشش ویدیویی آنلاین</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.3)" data-value="outdoor_backlight" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">بک‌لایت بیرونی</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">اکران شبانه</div>
                 </div>
 
-                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.1)" data-value="vip_sampling" style="padding: 16px; text-align: center;">
-                  <div style="color: #ffffff; font-weight: 800; font-size: 13px; margin-bottom: 4px;">سمپلینگ و VIP لانژ</div>
-                  <div style="color: var(--color-silver-dim); font-size: 11px;">لمس مستقیم محصول</div>
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.2)" data-value="indoor_frontlight" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">فورلایت داخلی</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">نور متمرکز</div>
+                </div>
+
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.2)" data-value="outdoor_frontlight" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">فورلایت بیرونی</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">دید از دور</div>
+                </div>
+
+                <div class="planner-option-card selected" onclick="toggleOption(this, 'media', 1.5)" data-value="court_border" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">حاشیه کورت</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">نوار ۳۶۰ درجه شیشه</div>
+                </div>
+
+                <div class="planner-option-card selected" onclick="toggleOption(this, 'media', 1.4)" data-value="court_net" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">برندینگ تور</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">مرکز توجه بازی</div>
+                </div>
+
+                <div class="planner-option-card" onclick="toggleOption(this, 'media', 1.2)" data-value="court_entrance" style="padding: 10px 8px; text-align: center;">
+                  <div style="color: #ffffff; font-weight: 800; font-size: 11px; margin-bottom: 2px;">ورودی کورت</div>
+                  <div style="color: var(--color-silver-dim); font-size: 9px;">اولین نقطه تماس</div>
                 </div>
 
               </div>
+              <!-- Mobile responsive fix for the tight grids -->
+              <style>
+                @media (max-width: 768px) {
+                  .field-group > div[style*="repeat(4, 1fr)"] {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                  }
+                  .field-group > div[style*="repeat(3, 1fr)"] {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                  }
+                }
+              </style>
             </div>
 
             <!-- Step 3: Select Duration -->
