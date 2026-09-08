@@ -26,9 +26,200 @@
 
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2314B8A6'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23042F2E' font-family='sans-serif' font-weight='bold'%3E%D8%AD%3C/text%3E%3C/svg%3E" />
+
+  <!-- Silveriom Cyberpunk Theme Override -->
+  <style>
+    /* ── Base ── */
+    html { background: #02040a !important; }
+    body { background: transparent !important; }
+
+    /* ── Cinematic Background ── */
+    #cinematic-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #cinematic-bg img {
+      position: absolute;
+      top: -5%; left: -5%;
+      width: 110%; height: 110%;
+      object-fit: cover;
+      opacity: 0.28;
+      filter: contrast(1.15) brightness(0.8) saturate(1.2);
+    }
+    /* Chess-grid overlay */
+    #cinematic-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(204,255,0,0.03) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(204,255,0,0.03) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(circle at 20% 20%, rgba(0,240,200,0.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(204,255,0,0.06) 0%, transparent 50%);
+      z-index: 2;
+    }
+    /* Dark gradient overlay for readability */
+    #cinematic-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+        rgba(2,6,18,0.82) 0%,
+        rgba(4,12,28,0.70) 50%,
+        rgba(2,6,18,0.88) 100%);
+      z-index: 3;
+    }
+
+    /* ── Main content above bg ── */
+    body > * { position: relative; z-index: 10; }
+
+    /* ── Card ── */
+    #card {
+      background: rgba(6, 14, 32, 0.72) !important;
+      border: 1px solid rgba(204, 255, 0, 0.15) !important;
+      box-shadow:
+        0 0 0 1px rgba(204,255,0,0.08),
+        0 25px 60px rgba(0,0,0,0.7),
+        0 0 80px rgba(204,255,0,0.04) !important;
+      backdrop-filter: blur(24px) saturate(180%) !important;
+    }
+
+    /* Card glow ring */
+    .card-border-glow::before {
+      background: conic-gradient(
+        from var(--glow-angle, 0deg),
+        transparent 0deg,
+        rgba(204,255,0,0.5) 60deg,
+        rgba(0,240,200,0.4) 120deg,
+        transparent 180deg
+      ) !important;
+    }
+
+    /* ── Avatar ring ── */
+    .avatar-ring {
+      background: conic-gradient(
+        from var(--ring-angle, 0deg),
+        #CCFF00,
+        #00F0C8,
+        #CCFF00
+      ) !important;
+    }
+
+    /* ── Accent colors: amber → neon green (#CCFF00) ── */
+    .text-amber-400, .text-amber-300 { color: #CCFF00 !important; }
+    .bg-amber-500\/10, .bg-amber-500\/15, .bg-amber-500\/20 { background: rgba(204,255,0,0.1) !important; }
+    .hover\:text-amber-300:hover, .hover\:text-amber-400:hover { color: #CCFF00 !important; }
+    .hover\:bg-amber-500\/15:hover { background: rgba(204,255,0,0.12) !important; }
+    .bg-gradient-to-b.from-amber-300.to-amber-500,
+    .bg-gradient-to-br.from-amber-300 {
+      background: linear-gradient(135deg, #CCFF00, #99CC00) !important;
+    }
+    .text-amber-500\/60 { color: rgba(204,255,0,0.6) !important; }
+    .shadow-glow { box-shadow: 0 0 30px rgba(204,255,0,0.25) !important; }
+    .shadow-btn  { box-shadow: 0 4px 14px rgba(204,255,0,0.3) !important; }
+    .hover\:shadow-glow:hover { box-shadow: 0 0 30px rgba(204,255,0,0.4) !important; }
+    .border-amber-500\/20 { border-color: rgba(204,255,0,0.2) !important; }
+
+    /* ── Floating blobs → neon colors ── */
+    .bg-amber-500\/15 { background: rgba(204,255,0,0.08) !important; }
+    .bg-copper-500\/15 { background: rgba(0,240,200,0.06) !important; }
+    .bg-amber-300\/8 { background: rgba(204,255,0,0.05) !important; }
+
+    /* ── Contact rows ── */
+    .spotlight.group, .spotlight {
+      background: rgba(6,18,40,0.65) !important;
+      border: 1px solid rgba(204,255,0,0.08) !important;
+      transition: border-color 0.3s, background 0.3s !important;
+    }
+    .spotlight.group:hover, .spotlight:hover {
+      background: rgba(12,30,60,0.75) !important;
+      border-color: rgba(204,255,0,0.2) !important;
+    }
+
+    /* ── Action buttons ── */
+    #save-contact {
+      background: linear-gradient(135deg, #CCFF00 0%, #88BB00 100%) !important;
+      color: #020617 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 4px 20px rgba(204,255,0,0.35) !important;
+    }
+    #save-contact:hover { filter: brightness(1.1) !important; box-shadow: 0 6px 28px rgba(204,255,0,0.5) !important; }
+
+    #flip-to-back {
+      background: rgba(204,255,0,0.08) !important;
+      border: 1px solid rgba(204,255,0,0.25) !important;
+      color: #CCFF00 !important;
+    }
+    #flip-to-back:hover { background: rgba(204,255,0,0.15) !important; }
+
+    /* ── Social icon buttons ── */
+    .bg-ink-800\/70 {
+      background: rgba(6,18,40,0.7) !important;
+      border: 1px solid rgba(255,255,255,0.08) !important;
+    }
+
+    /* ── Skills ticker ── */
+    .bg-ink-800\/60 { background: rgba(4,12,28,0.6) !important; }
+    .rounded-full.bg-ink-700\/70 {
+      background: rgba(204,255,0,0.08) !important;
+      border: 1px solid rgba(204,255,0,0.2) !important;
+      color: #CCFF00 !important;
+    }
+
+    /* ── Theme toggle ── */
+    .bg-ink-800\/80 {
+      background: rgba(6,14,32,0.8) !important;
+      border: 1px solid rgba(204,255,0,0.15) !important;
+    }
+
+    /* ── Status badge ── */
+    .bg-ink-800\/95 {
+      background: rgba(4,10,24,0.95) !important;
+      border: 1px solid rgba(204,255,0,0.2) !important;
+    }
+    .animate-pulse-dot { background: #CCFF00 !important; }
+
+    /* ── QR center badge ── */
+    .bg-gradient-to-br.from-amber-300.to-amber-500 {
+      background: linear-gradient(135deg, #CCFF00, #88BB00) !important;
+    }
+    #flip-to-front {
+      background: rgba(204,255,0,0.1) !important;
+      border: 1px solid rgba(204,255,0,0.25) !important;
+      color: #CCFF00 !important;
+    }
+
+    /* ── Scanline flicker on card (cyberpunk touch) ── */
+    #card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 2rem;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(204,255,0,0.012) 3px,
+        rgba(204,255,0,0.012) 4px
+      );
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+
 </head>
 
 <body class="grain min-h-screen">
+  <!-- Cinematic background from Silveriom -->
+  <div id="cinematic-bg" aria-hidden="true">
+    <img src="assets/padel_cinematic_bg.jpg" alt="" />
+  </div>
+
 
   <!-- ═══════════ پس‌زمینه شفق متحرک ═══════════ -->
   <div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
