@@ -1963,11 +1963,10 @@ function renderExcelPreview() {
   if(area) area.style.display = 'block';
   
   const typeOptions = `
-        <option value="net">نوار و تور مسابقات (دید مستقیم ۹۴٪)</option>
-    <option value="glass">دیواره شیشه‌ای پانورامیک</option>
-    <option value="digital">نمایشگر دیجیتال LED محیطی</option>
-    <option value="turf">درج لوگو در چمن کورت</option>
-    <option value="lounge">جایگاه سمپلینگ و VIP لانژ</option>
+            <option value="glass_border">برندینگ دور کورت‌ها (نوار دور شیشه)</option>
+    <option value="net">برندینگ تور مسابقات</option>
+    <option value="entrance">برندینگ حاشیه درب ورودی کورت</option>
+    <option value="sampling">جایگاه سمپلینگ</option>
   `;
   const locationOptions = `
     <option value="azadi">آرنا (آزادی)</option>

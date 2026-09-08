@@ -2007,8 +2007,8 @@ body {
   text-decoration: none !important;
   border: 1px solid transparent !important;
   border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   transition: all 0.3s ease !important;
 }
@@ -2031,10 +2031,10 @@ body {
   backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(204, 255, 0, 0.4) !important;
   border-radius: 50px !important;
-  padding: 5px 10px !important;
+  padding: 8px 12px !important;
   color: #ffffff !important;
   font-weight: 800 !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -2049,6 +2049,166 @@ body {
   color: #CCFF00 !important;
 }
 
+
+  /* Dual Range Slider CSS */
+  .price-slider-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-top: 15px;
+  }
+  .price-slider-track {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  .slider-track-fill {
+    background-color: #CCFF00;
+    position: absolute;
+    height: 4px;
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-moz-range-track {
+    -moz-appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-ms-track {
+    appearance: none;
+    height: 4px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: #CCFF00;
+    cursor: pointer;
+    margin-top: -7px;
+    pointer-events: auto;
+    border-radius: 50%;
+    border: 2px solid #000;
+    z-index: 2;
+    position: relative;
+  }
+  input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: #CCFF00;
+    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: auto;
+    border: 2px solid #000;
+    z-index: 2;
+    position: relative;
+  }
+  .price-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #94A3B8;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .price-values span {
+    color: #CCFF00;
+    font-weight: 700;
+  }
+
+  .msc-reserve-btn.in-cart {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .msc-reserve-btn.in-cart:hover {
+    background: rgba(255, 100, 100, 0.2);
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+  }
+
+  /* Floating Cart Widget */
+  .floating-cart {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(204, 255, 0, 0.3);
+    border-radius: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9999;
+  }
+  .floating-cart.visible {
+    bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    .floating-cart.visible {
+      bottom: 100px;
+    }
+  }
+  .fc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fc-count {
+    color: #CCFF00;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .fc-text {
+    color: #94A3B8;
+    font-size: 11px;
+  }
+  .fc-btn {
+    background: #CCFF00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(204, 255, 0, 0.4);
+  }
 </style>
 <style id="silveriom-master-styles">
 
@@ -2098,7 +2258,7 @@ body {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 1rem !important;
+  padding: 0 !important;
 }
 
 .nav-brand {
@@ -3179,7 +3339,7 @@ section {
 .complex-card-courts-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-  gap: 0.4rem !important;
+  gap: 0.85rem !important;
   margin-top: auto !important;
 }
 
@@ -3229,7 +3389,7 @@ section {
 .why-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 0.5rem !important;
+  gap: 1.5rem !important;
 }
 
 @media (max-width: 1024px) {
@@ -3349,7 +3509,7 @@ section {
 .stats-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 0.5rem !important;
+  gap: 1.5rem !important;
   max-width: 1280px !important;
   margin: 0 auto !important;
 }
@@ -4011,7 +4171,7 @@ section {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 0.5rem !important;
+  gap: 1.5rem !important;
 }
 
 .blueprint-container {
@@ -4768,8 +4928,8 @@ section {
   text-decoration: none !important;
   border: 1px solid transparent !important;
   border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   transition: all 0.3s ease !important;
 }
@@ -4791,10 +4951,10 @@ section {
   backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(204, 255, 0, 0.4) !important;
   border-radius: 50px !important;
-  padding: 5px 10px !important;
+  padding: 8px 12px !important;
   color: #ffffff !important;
   font-weight: 800 !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -4815,7 +4975,7 @@ section {
 .featured-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 0.5rem !important;
+  gap: 1.5rem !important;
   max-width: 1280px !important;
   margin: 0 auto !important;
 }
@@ -4872,7 +5032,7 @@ section {
   right: 12px !important;
   background: #0B1326 !important;
   color: #CCFF00 !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
   font-weight: 900 !important;
   padding: 8px 16px !important;
   border-radius: 24px !important;
@@ -4982,7 +5142,7 @@ section {
   .sidebar-filter-card::-webkit-scrollbar-thumb:hover {
     background: rgba(204, 255, 0, 0.5);
   }
-  
+
   /* Collapsible Accordion */
   .accordion-item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -5015,42 +5175,15 @@ section {
   }
 
   /* Custom Checkbox */
-    .custom-checkbox-label {
+  .custom-checkbox-label {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     color: #CBD5E1;
-    font-size: 13.5px;
+    font-size: 13px;
     cursor: pointer;
     user-select: none;
     transition: all 0.2s ease;
-  }
-  .custom-checkbox-label:hover { color: #ffffff; }
-  .cb-text { padding-top: 2px; }
-  .custom-checkbox-input {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4.5px;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
-    margin: 0;
-  }
-  .custom-checkbox-input:checked {
-    background: #CCFF00;
-    border-color: #CCFF00;
-  }
-  .custom-checkbox-input:checked::after {
-    content: '¹4';
-    position: absolute;
-    color: #000;
-    font-size: 13px;
-    font-weight: 900;
-    left: 2px;
-    top: 0px;
   }
   .custom-checkbox-label:hover {
     color: #ffffff;
@@ -5107,16 +5240,14 @@ section {
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(204, 255, 0, 0.25) !important;
   }
 
-  /* Reserve Button (Glassmorphic) */
+  /* Reserve Button */
   .reserve-trigger-btn {
-    background: rgba(204, 255, 0, 0.12);
-    color: #CCFF00;
+    background: #CCFF00;
+    color: #070A11;
     font-weight: 900;
     padding: 12px;
     border-radius: 14px;
-    border: 1px solid rgba(204, 255, 0, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border: none;
     font-size: 13.5px;
     cursor: pointer;
     width: 100%;
@@ -5124,13 +5255,11 @@ section {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 0 20px rgba(204, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
     transition: all 0.3s ease;
   }
   .reserve-trigger-btn:hover {
-    background: rgba(204, 255, 0, 0.25);
-    border-color: #CCFF00;
-    box-shadow: 0 0 35px rgba(204, 255, 0, 0.4);
+    box-shadow: 0 0 35px rgba(204, 255, 0, 0.6);
     transform: translateY(-2px);
   }
 
@@ -7675,7 +7804,7 @@ body {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 1rem !important;
+  padding: 0 !important;
 }
 .nav-links {
   background: rgba(13, 22, 45, 0.6) !important;
@@ -7918,48 +8047,42 @@ body {
       }
 
             /* --- REDESIGNED MOBILE FILTER BAR --- */
-      /* Default Mobile (Collapsed) */
+      .sidebar-filter-card .desktop-only-header {
+        display: none !important;
+      }
       .sidebar-filter-card {
-        padding: 10px !important;
-        border-radius: 18px !important; 
-        width: 100% !important; 
+        padding: 12px !important;
+        border-radius: 24px !important; 
+        width: 92% !important; 
+        margin-left: auto !important;
+        margin-right: auto !important;
         margin-bottom: 24px !important;
-        position: static !important;
-        transition: all 0.3s ease;
+        position: sticky;
+        top: 66px; 
+        z-index: 900;
+        background: rgba(13, 22, 45, 0.95) !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
       }
-      .sidebar-filter-card .desktop-only-header { display: none !important; }
-      .sidebar-filter-card #mobileFilterWrapper { display: none !important; }
-      .sidebar-filter-card .search-and-toggle-container { margin-bottom: 0 !important; }
-      
-      /* Expanded Mobile */
-      .sidebar-filter-card.expanded {
-        padding: 22px !important;
-        border-radius: 24px !important;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
-      }
-      .sidebar-filter-card.expanded .desktop-only-header {
-        display: flex !important;
-        margin-bottom: 20px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-        padding-bottom: 20px !important;
-      }
-      .sidebar-filter-card.expanded .desktop-only-header h3 {
-        line-height: 1.4;
-        max-width: 140px;
-      }
-      .sidebar-filter-card.expanded .desktop-only-header span {
-        text-align: center;
-        line-height: 1.4;
-      }
-      .sidebar-filter-card.expanded #mobileFilterWrapper {
-        display: block !important;
-        margin-top: 20px !important;
-        padding-top: 20px !important;
-        border-top: 1px solid rgba(255,255,255,0.08) !important;
-        animation: fadeInDown 0.3s ease;
-      }
-      .sidebar-filter-card.expanded .search-and-toggle-container {
+      .search-and-toggle-container {
         margin-bottom: 0 !important;
+      }
+      .mobile-filter-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+      .desktop-always-visible {
+        display: none;
+      }
+      .desktop-always-visible.show-filters {
+        display: block;
+        margin-top: 16px;
+        padding-top: 16px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        animation: fadeInDown 0.3s ease;
       }
       @keyframes fadeInDown {
         from { opacity: 0; transform: translateY(-10px); }
@@ -7978,7 +8101,7 @@ body {
 
       /* 4. Search and Filter Controls */
       .sidebar-filter-card input[type="text"] {
-        font-size: 13px !important;
+        font-size: 14px !important;
         padding: 10px 14px 10px 35px !important;
       }
       
@@ -8191,992 +8314,6 @@ body {
 }
 </style>
 
-    
-    
-
-<style id="silveriom-nav-dropdown-styles">
-/* Navigation Dropdown */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-.nav-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background: rgba(6, 11, 19, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-align: right;
-}
-.nav-dropdown:hover .nav-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.nav-dropdown-item {
-  color: #CBD5E1;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: inherit;
-}
-.nav-dropdown-item:hover {
-  background: rgba(204, 255, 0, 0.1);
-  color: #CCFF00;
-}
-</style>
-
-<style id="liquid-glass-reserve-btn">
-/* iOS/VisionOS Liquid Glass Design for Reserve Buttons */
-.reserve-trigger-btn {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(204, 255, 0, 0.25) 0%, rgba(204, 255, 0, 0.05) 100%) !important;
-    backdrop-filter: blur(40px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
-    border: 1px solid rgba(204, 255, 0, 0.4) !important;
-    border-top: 1px solid rgba(204, 255, 0, 0.6) !important; /* Top highlight for liquid volume */
-    border-radius: 20px !important;
-    padding: 16px !important;
-    color: #CCFF00 !important;
-    font-weight: 900 !important;
-    font-size: 16px !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;
-    box-shadow: 
-        0 8px 32px 0 rgba(0, 0, 0, 0.3),
-        inset 0 1px 1px rgba(255, 255, 255, 0.15), /* Inner top highlight */
-        inset 0 -2px 10px rgba(204, 255, 0, 0.1) !important; /* Inner bottom glow */
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.reserve-trigger-btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; width: 50%; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-    transform: skewX(-25deg);
-    transition: all 0.5s ease;
-}
-
-.reserve-trigger-btn:hover {
-    background: linear-gradient(135deg, rgba(204, 255, 0, 0.35) 0%, rgba(204, 255, 0, 0.15) 100%) !important;
-    border-color: rgba(204, 255, 0, 0.8) !important;
-    box-shadow: 
-        0 12px 40px 0 rgba(204, 255, 0, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -2px 10px rgba(204, 255, 0, 0.2) !important;
-    transform: translateY(-3px) scale(1.02) !important;
-}
-
-.reserve-trigger-btn:hover::before {
-    left: 200%;
-}
-
-.reserve-trigger-btn:active {
-    transform: translateY(1px) scale(0.98) !important;
-}
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style id="cinematic-grid-bg">
-/* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
-body {
-    background: transparent !important;
-}
-html {
-    background: #02040a !important;
-}
-
-/* Overlay ON TOP of the cinematic background container */
-#cinematic-bg-container::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-    background: 
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
-        radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
-        radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
-}
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style id="ultimate-menu-enforcer-final">
-
-/* --- ANTI-PILL SAFEGUARD FOR THESE 3 PAGES --- */
-.luxury-nav, .nav-container {
-    border-radius: 0 !important;
-    border: none !important;
-}
-.nav-links {
-    border-radius: 50px !important;
-}
-
-/* 2. Floating Navbar & Glass Container */
-/* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important; /* Positioned below the 50px marquee ticker */
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
-
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
-
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
-
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: flex !important; justify-content: center !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
-
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
-}
-
-/* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
-
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
-
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
-}
-}
-
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
-}
-
-
-
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
-
-/* 4. Left Action Section & Buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
-
-.glass-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  flex-shrink: 0 !important;
-}
-
-.glass-phone-btn:hover {
-  background: rgba(182, 255, 0, 0.2) !important;
-  border-color: var(--color-neon) !important;
-  color: var(--color-neon) !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.5) !important;
-  transform: translateY(-1px) !important;
-}
-
-.glass-phone-icon {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50% !important;
-  background: rgba(182, 255, 0, 0.22) !important;
-  color: var(--color-neon) !important;
-  box-shadow: 0 0 10px rgba(182, 255, 0, 0.35) !important;
-  flex-shrink: 0 !important;
-}
-
-.phone-pulse-dot {
-  position: absolute !important;
-  top: -1px !important;
-  right: -1px !important;
-  width: 7px !important;
-  height: 7px !important;
-  background: var(--color-neon) !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 8px var(--color-neon) !important;
-  animation: pulseRing 1.8s infinite !important;
-}
-
-.glass-phone-num {
-  direction: ltr !important;
-  letter-spacing: 0.04em !important;
-  font-size: 0.94rem !important;
-  font-weight: 800 !important;
-}
-
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
-
-#open-kit-btn:hover, .luxury-btn-outline:hover {
-  background: rgba(182, 255, 0, 0.28) !important;
-  border-color: var(--color-neon) !important;
-  color: var(--color-neon) !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.55) !important;
-  transform: translateY(-1px) !important;
-}
-
-.luxury-btn-solid {
-  background: #b6ff00 !important;
-  color: #020617 !important;
-  border: none !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 0 25px rgba(182, 255, 0, 0.45) !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.luxury-btn-solid:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 0 35px rgba(182, 255, 0, 0.65) !important;
-}
-
-.luxury-btn-ghost {
-  background: rgba(6, 18, 42, 0.65) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  padding: 0.9rem 2.2rem !important;
-  border-radius: 9999px !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.luxury-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: #ffffff !important;
-  transform: translateY(-1px) !important;
-}
-
-@keyframes pulseRing {
-  0% { transform: scale(0.6); opacity: 0.9; }
-  80% { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.4); opacity: 0; }
-}
-
-/* 5. Hero Section Spacing & Right-Aligned Content */
-#hero.hero-section {
-  position: relative !important;
-  z-index: 20 !important;
-  min-height: auto !important;
-  padding-top: 173px !important;
-  padding-bottom: 50px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  box-sizing: border-box !important;
-}
-
-.hero-content {
-  position: relative !important;
-  z-index: 25 !important;
-  max-width: 780px !important;
-  margin-right: 5% !important;
-  margin-left: auto !important;
-  margin-top: 25px !important;
-  text-align: right !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  transform: none !important;
-}
-
-.luxury-badge {
-  align-self: flex-start !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-bottom: 1rem !important;
-}
-
-.hero-title {
-  text-align: right !important;
-  margin-bottom: 1.25rem !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: clamp(2.5rem, 5.2vw, 4.5rem) !important;
-  font-weight: 900 !important;
-  line-height: 1.15 !important;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.85) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #ffffff !important;
-}
-
-.hero-subtitle {
-  text-align: right !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-bottom: 2.2rem !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: clamp(1rem, 1.8vw, 1.25rem) !important;
-  line-height: 1.8 !important;
-  font-weight: 500 !important;
-}
-
-.hero-actions {
-  display: flex !important;
-
-/* ==========================================================================
-   MOBILE HAMBURGER TOGGLE BUTTON
-   ========================================================================== */
-.mobile-toggle {
-  display: none !important;
-}
-
-@media (max-width: 900px) {
-  .mobile-toggle {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    width: 28px !important;
-    height: 18px !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    z-index: 1050 !important;
-    box-sizing: border-box !important;
-  }
-  
-  .mobile-toggle span {
-    display: flex !important; justify-content: center !important;
-    width: 100% !important;
-    height: 2.5px !important;
-    background: var(--color-neon) !important;
-    border-radius: 4px !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 0 8px rgba(182, 255, 0, 0.4) !important;
-  }
-}
-
-/* ==========================================================================
-   MOBILE HEADER ACTION HIDING & ENHANCED GLASS DRAWER
-   ========================================================================== */
-@media (max-width: 900px) {
-  .luxury-nav .glass-phone-btn,
-  .luxury-nav #open-kit-btn {
-    display: none !important;
-  }
-}
-
-.mobile-drawer {
-  background: rgba(6, 18, 42, 0.55) !important;
-  backdrop-filter: blur(40px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7), inset 1px 0 0 rgba(255, 255, 255, 0.05) !important;
-}
-
-/* ==========================================================================
-   HIGH-TECH STAGGERED MOBILE DRAWER MENU
-   ========================================================================== */
-.mobile-drawer {
-  border-radius: 36px 0 0 36px !important;
-  padding: 2.2rem 1.8rem !important;
-}
-
-.drawer-brand-area {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.4rem !important;
-  width: 100% !important;
-}
-
-.drawer-status-bar {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.05) !important;
-  border: 1px solid rgba(182, 255, 0, 0.15) !important;
-  padding: 0.35rem 0.8rem !important;
-  border-radius: 99px !important;
-  margin-top: 0.3rem !important;
-}
-
-.status-indicator-ping {
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 50% !important;
-  background: var(--color-neon) !important;
-  box-shadow: 0 0 8px var(--color-neon) !important;
-  animation: status-pulse-glow 2s infinite !important;
-}
-
-@keyframes status-pulse-glow {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.6; }
-}
-
-.status-label {
-  font-size: 0.68rem !important;
-  color: var(--color-neon) !important;
-  font-weight: 800 !important;
-  font-family: "YekanBakh", sans-serif !important;
-}
-
-.mobile-nav {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-  margin: 1.5rem 0 !important;
-  overflow-y: auto !important;
-  padding-right: 0.2rem !important;
-}
-
-.mobile-nav::-webkit-scrollbar {
-  width: 3px !important;
-}
-.mobile-nav::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 99px !important;
-}
-
-.mobile-nav-card {
-  background: rgba(255, 255, 255, 0.01) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: 16px !important;
-  padding: 0.9rem 1.1rem !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  text-decoration: none !important;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  opacity: 0;
-  transform: translateX(25px);
-}
-
-.mobile-overlay.active .mobile-nav-card {
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-}
-
-.mobile-nav-card:nth-child(1) { transition-delay: 0.05s !important; }
-.mobile-nav-card:nth-child(2) { transition-delay: 0.1s !important; }
-.mobile-nav-card:nth-child(3) { transition-delay: 0.15s !important; }
-.mobile-nav-card:nth-child(4) { transition-delay: 0.2s !important; }
-.mobile-nav-card:nth-child(5) { transition-delay: 0.25s !important; }
-.mobile-nav-card:nth-child(6) { transition-delay: 0.3s !important; }
-
-.mobile-nav-card:hover, .mobile-nav-card.active {
-  background: rgba(182, 255, 0, 0.03) !important;
-  border-color: rgba(182, 255, 0, 0.35) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
-}
-
-.nav-card-right {
-  display: flex !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  text-align: right !important;
-}
-
-.nav-card-icon-box {
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 10px !important;
-  background: rgba(255, 255, 255, 0.02) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #94a3b8 !important;
-  transition: all 0.3s ease !important;
-}
-
-.mobile-nav-card:hover .nav-card-icon-box, 
-.mobile-nav-card.active .nav-card-icon-box {
-  background: rgba(182, 255, 0, 0.08) !important;
-  border-color: var(--color-neon) !important;
-  color: var(--color-neon) !important;
-  box-shadow: 0 0 10px rgba(182, 255, 0, 0.15) !important;
-}
-
-.nav-card-text {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.15rem !important;
-}
-
-.nav-card-title {
-  font-size: 0.95rem !important;
-  font-weight: 800 !important;
-  color: #f1f5f9 !important;
-  transition: color 0.3s ease !important;
-}
-
-.mobile-nav-card:hover .nav-card-title,
-.mobile-nav-card.active .nav-card-title {
-  color: #ffffff !important;
-}
-
-.nav-card-desc {
-  font-size: 0.72rem !important;
-  color: #64748b !important;
-  font-weight: 500 !important;
-}
-
-.nav-card-chevron {
-  width: 14px !important;
-  height: 14px !important;
-  color: #475569 !important;
-  transition: all 0.3s ease !important;
-}
-
-.mobile-nav-card:hover .nav-card-chevron,
-.mobile-nav-card.active .nav-card-chevron {
-  color: var(--color-neon) !important;
-  transform: translateX(-3px) !important;
-}
-/* Neon Down Arrow Animation */
-.neon-arrow-down {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  animation: neon-bounce 2s infinite ease-in-out;
-  filter: drop-shadow(0 0 5px var(--color-neon)) drop-shadow(0 0 15px var(--color-neon));
-  cursor: pointer;
-}
-
-@keyframes neon-bounce {
-  0%, 100% {
-    transform: translateY(0);
-    opacity: 0.7;
-    filter: drop-shadow(0 0 5px var(--color-neon));
-  }
-  50% {
-    transform: translateY(15px);
-    opacity: 1;
-    filter: drop-shadow(0 0 8px var(--color-neon)) drop-shadow(0 0 20px var(--color-neon));
-  }
-}
-
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style id="mobile-menu-final-polish-v8">
-/* ==========================================================================
-   MOBILE MENU MASTER GRID SYSTEM - SHOW ALL ARROWS V8
-   ========================================================================== */
-
-/* 1. Reset and hide scrollbars */
-.mobile-drawer, .mobile-nav, .mobile-submenu, .mobile-drawer * {
-    scrollbar-width: none !important;
-}
-.mobile-drawer::-webkit-scrollbar, .mobile-drawer *::-webkit-scrollbar {
-    display: none !important;
-}
-.mobile-drawer {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-}
-
-/* 2. Containers */
-.mobile-nav {
-    display: block !important; 
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-}
-.mobile-nav-group {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    margin-bottom: 16px !important; 
-}
-
-/* 3. Base Grid for Cards (UNIFORM 3-COLUMN FOR ALL) */
-.mobile-nav a.mobile-nav-card,
-.nav-group-header {
-    display: grid !important;
-    grid-template-columns: 42px 1fr 22px !important; 
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 14px 16px !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: 16px !important;
-    gap: 18px !important; 
-    text-decoration: none !important;
-    direction: rtl !important;
-    margin: 0 !important;
-    margin-bottom: 16px !important; 
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-}
-
-/* Make active (Home) card have neon border */
-.mobile-nav a.mobile-nav-card.active,
-.mobile-nav a.mobile-nav-card:nth-of-type(1) {
-    border: 1px solid rgba(204, 255, 0, 0.3) !important;
-    background: rgba(204, 255, 0, 0.03) !important;
-}
-
-/* 4. Flatten inconsistent HTML */
-.mobile-nav .nav-card-right,
-.nav-group-header > div:first-child {
-    display: contents !important;
-}
-
-/* 5. Handle Arrows - SHOW ALL */
-.mobile-nav .nav-card-chevron,
-.mobile-nav a.mobile-nav-card > svg:last-child {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    width: 22px !important;
-    height: 22px !important;
-    color: #64748b !important;
-    margin: 0 auto !important;
-}
-
-/* Neon chevron for Home ONLY */
-.mobile-nav a[href="https://silveriom.ir"] > svg:last-child,
-.mobile-nav a[href="https://silveriom.ir"] .nav-card-chevron {
-    color: #ccff00 !important;
-}
-
-
-
-/* Ensure accordion chevron is visible */
-.nav-group-header .chevron-icon {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    width: 22px !important;
-    height: 22px !important;
-    color: #64748b !important;
-    margin: 0 auto !important;
-}
-
-/* 6. Text Formatting */
-.mobile-nav .nav-card-text {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    text-align: right !important;
-    width: 100% !important;
-    overflow: hidden !important;
-}
-
-.mobile-nav .nav-card-text > span:first-child,
-.nav-group-header > div:first-child > span {
-    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: 800 !important;
-    color: #f1f5f9 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    width: 100% !important;
-    text-align: right !important;
-    line-height: 1.4 !important;
-}
-
-.mobile-nav .nav-card-text > span:last-child:not(:first-child),
-.mobile-nav .nav-card-text > small {
-    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-    font-size: 0.75rem !important;
-    font-weight: 500 !important;
-    color: #94a3b8 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    width: 100% !important;
-    text-align: right !important;
-    line-height: 1.4 !important;
-}
-
-/* 7. Icon Boxes */
-.mobile-nav .nav-card-icon-box {
-    width: 42px !important;
-    height: 42px !important;
-    border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: #8b9bb4 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex-shrink: 0 !important;
-}
-
-.mobile-nav .nav-card-icon-box svg:not(.lucide-arrow-left) {
-    width: 20px !important;
-    height: 20px !important;
-}
-
-/* 8. Submenu Grid */
-.mobile-submenu {
-    flex-direction: column !important;
-    gap: 8px !important; 
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 0 !important;
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
-}
-
-.mobile-submenu a {
-    display: grid !important;
-    grid-template-columns: 8px 1fr 22px !important; 
-    align-items: center !important;
-    gap: 14px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.04) !important;
-    border-radius: 12px !important;
-    text-decoration: none !important;
-    direction: rtl !important;
-}
-
-.mobile-submenu a > div:first-child {
-    display: contents !important;
-}
-
-.mobile-submenu a > div:first-child > div {
-    width: 8px !important;
-    height: 8px !important;
-    border-radius: 50% !important;
-    background: #00f0ff !important;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
-    margin: 0 !important;
-}
-
-.mobile-submenu a > div:first-child > span {
-    font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    color: #f8fafc !important;
-    direction: ltr !important; 
-    unicode-bidi: isolate !important; 
-    text-align: right !important;
-    display: flex !important;
-    justify-content: flex-end !important;
-}
-
-/* Hide submenu chevrons if desired */
-.mobile-submenu a > svg {
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
-</style>
-
-
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
@@ -9288,6 +8425,32 @@ html {
 
 
 
+
+
+<style id="cinematic-grid-bg">
+/* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
+body {
+    background: transparent !important;
+}
+html {
+    background: #02040a !important;
+}
+
+/* Overlay ON TOP of the cinematic background container */
+#cinematic-bg-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 60px 60px,
+        radial-gradient(circle at 15% 25%, rgba(0, 240, 200, 0.08) 0%, transparent 45%) 0 0 / 100% 100%,
+        radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
+}
+</style>
 
 
 <style>
@@ -9558,9 +8721,8 @@ html {
     </div>
   </div>
 
-  
-  </div>
 
+<!-- SILVERIOM MINIMAL LOADER DOM & JS -->
 
 
 
@@ -9630,7 +8792,6 @@ html {
     </div>
   </div>
 
-  <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
   <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
@@ -9938,187 +9099,6 @@ html {
     </div>
   </div>
 
-<div id="mobile-menu" class="mobile-overlay">
-    <div class="mobile-backdrop" id="mobile-backdrop"></div>
-    <div class="mobile-drawer">
-      <div class="mobile-head">
-        <div class="drawer-brand-area">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img" style="height:36px;" loading="lazy">
-          <div class="drawer-status-bar">
-            <span class="status-indicator-ping"></span>
-            <span class="status-label">پلتفرم اکران فعال رسانه‌ای</span>
-          </div>
-        </div>
-        <button id="close-mobile-menu" class="mobile-close-btn">&times;</button>
-      </div>
-      
-      <nav class="mobile-nav">
-        
-        <!-- Link 01: Home -->
-        <a href="https://silveriom.ir" class="mobile-nav-card active">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box" style="background: rgba(204, 255, 0, 0.05); border-color: rgba(204, 255, 0, 0.3); color: #ccff00;">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">خانه</span>
-              <span class="nav-card-desc">صفحه اصلی و آغاز مسیر</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 02: Media -->
-        <a href="https://silveriom.ir/#inventory" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">رسانه ها</span>
-              <span class="nav-card-desc">فضاهای تبلیغاتی و واگذاری</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 03: Portfolio -->
-        <a href="https://silveriom.ir/tournament-calendar/" class="mobile-nav-card">
-          <div class="nav-card-icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-          </div>
-          <div class="nav-card-text">
-            <span>تقویم مسابقات</span>
-            <small>رویدادها و لیگ‌ها</small>
-          </div>
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            </div>
-          </div>
-
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 04: Blog -->
-        <a href="https://silveriom.ir/blog/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">مجله تخصصی</span>
-              <span class="nav-card-desc">اخبار و مقالات</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-        <a href="https://silveriom.ir/portfolio/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">نمونه کارها</span>
-              <span class="nav-card-desc">گزارش و نتایج کمپین‌ها</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 04: Planner -->
-        <a href="https://silveriom.ir/#planner" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">مدیاپلنر</span>
-              <span class="nav-card-desc">برنامه‌ریزی هوشمند کمپین</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 05: About -->
-        <a href="https://silveriom.ir/about-us/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">درباره ما</span>
-              <span class="nav-card-desc">داستان و ماموریت سیلوریوم</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-        <!-- Link 06: Contact -->
-        <a href="https://silveriom.ir/contact-us/" class="mobile-nav-card">
-          <div class="nav-card-right">
-            <div class="nav-card-icon-box">
-              <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
-            </div>
-            <div class="nav-card-text">
-              <span class="nav-card-title">تماس با ما</span>
-              <span class="nav-card-desc">ارتباط فوری با کارشناسان</span>
-            </div>
-          </div>
-          <svg class="nav-card-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </a>
-
-      </nav>
-      
-      <div class="mobile-footer">
-        <a href="tel:09121127415" class="glass-phone-btn" style="width: 100% !important; display: inline-flex !important; justify-content: center; align-items: center; margin-bottom: 1rem; padding: 0.9rem !important; border-radius: 9999px !important; text-decoration: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;" title="تماس فوری و مشاوره تبلیغات">
-          <span class="glass-phone-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span class="phone-pulse-dot"></span>
-          </span>
-          <span class="glass-phone-num" style="color: #ffffff !important; margin-right: 0.6rem !important;">۰۹۱۲۱۱۲۷۴۱۵ (مشاوره)</span>
-        </a>
-        <button class="luxury-btn-solid" style="width:100%;" onclick="document.getElementById('open-kit-btn').click(); document.getElementById('close-mobile-menu').click();">
-          دریافت مدیا کیت
-        </button>
-      </div>
-    </div>
-  </div>
-
 <main class="main-inventory-page" style="position: relative; z-index: 10; padding-top: 200px; padding-bottom: 120px;">
   <div class="editorial-wide-container">
     
@@ -10141,91 +9121,142 @@ html {
     <div class="inventory-main-layout">
       
       <!-- 1. RIGHT SIDEBAR FILTER PANEL -->
-      <aside class="sidebar-filter-card" style="border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(10, 15, 28, 0.9) !important; border-radius: 24px !important; padding: 22px !important;">
+      <aside class="sidebar-filter-card">
         
-        <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px;">
-          <h3 style="color: #CCFF00; font-weight: 900; font-size: 15px; margin: 0; font-family: 'YekanBakh', sans-serif;">فیلتر هوشمند رسانه‌ها</h3>
-          <span id="activeCountBadge" style="background: rgba(45, 74, 34, 0.6); color: #B6FF00; font-size: 11.5px; font-weight: 800; padding: 5px 12px; border-radius: 20px;">
-            ۱۲ سازه فعال
+        <div class="desktop-only-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; color: #CCFF00; font-weight: 900; font-size: 15px;">
+            <i data-lucide="sliders-horizontal" style="width: 17px; height: 17px;"></i>
+            <span>فیلتر هوشمند رسانه‌ها</span>
+          </div>
+          <span id="activeCountBadge" style="background: rgba(204, 255, 0, 0.15); color: #CCFF00; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">
+            ۱۵ سازه فعال
           </span>
         </div>
 
-        <div class="search-and-toggle-container" style="display: flex; gap: 10px; margin-bottom: 25px;">
-          <button id="mobileFilterToggleBtn" class="mobile-filter-btn" onclick="document.querySelector('.sidebar-filter-card').classList.toggle('expanded')" style="background: #CCFF00; color: #020612; border: none; border-radius: 12px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 900; font-size: 14px; padding: 0 15px; width: 35%; cursor: pointer; font-family: 'YekanBakh', sans-serif;">
+        <!-- Search Input & Mobile Filter Toggle -->
+        <div class="search-and-toggle-container" style="display: flex; align-items: center; gap: 8px; margin-bottom: 0;">
+          
+          <!-- Search Input Container -->
+          <div style="display: flex; align-items: center; flex: 1; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; height: 50px; padding: 0 14px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 18px;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="sidebarSearchInput" onkeyup="filterAssets()" placeholder="جستجوی کد یا نام..." style="width: 100%; height: 100%; background: transparent; border: none; color: #ffffff; padding: 0 12px; font-size: 14px; outline: none; font-family: 'YekanBakh', sans-serif;">
+          </div>
+
+          <!-- Filter Button (Neon Primary) -->
+          <button id="mobileFilterToggleBtn" class="mobile-filter-btn" onclick="document.getElementById('mobileFilterWrapper').classList.toggle('show-filters')" style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 50px; padding: 0 20px; border-radius: 16px; background: #CCFF00; color: #020612; border: none; font-family: 'YekanBakh', sans-serif; font-size: 14px; font-weight: 900; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 15px rgba(204, 255, 0, 0.2);">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h16M7 12h10M10 18h4"/>
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="7" y1="12" x2="17" y2="12"></line>
+              <line x1="10" y1="18" x2="14" y2="18"></line>
             </svg>
             <span style="padding-top: 2px;">فیلترها</span>
           </button>
           
-          <div style="flex: 1; background: #070B14; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; display: flex; align-items: center; padding: 0 12px; height: 44px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" id="sidebarSearchInput" onkeyup="filterAssets()" placeholder="جستجوی کد یا نام..." style="width: 100%; height: 100%; background: transparent; border: none; color: #ffffff; padding: 0 12px 0 0; font-size: 13.5px; outline: none; font-family: 'YekanBakh', sans-serif;">
-          </div>
         </div>
 
         <div id="mobileFilterWrapper" class="desktop-always-visible">
-          <!-- Venues -->
-          <div style="margin-bottom: 25px;">
-            <div style="color: #fff; font-size: 15px; font-weight: 800; padding: 0 0 18px 0; text-align: right; cursor: default;">
+        <!-- ACCORDION 3: VENUES CHECKBOXES (۵ مجموعه) -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <i data-lucide="building-2" style="width: 15px; height: 15px; color: #CCFF00;"></i>
               <span>انتخاب ورزشگاه‌ها</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input venue-cb" value="ajudaniyeh" checked onchange="filterAssets()">
-                <span class="cb-text">T10 آجودانیه (تهران)</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input venue-cb" value="azadi" checked onchange="filterAssets()">
-                <span class="cb-text">Arena آزادی (تهران)</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input venue-cb" value="shahrak" checked onchange="filterAssets()">
-                <span class="cb-text">Iran Zamin شهرک غرب</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input venue-cb" value="lavasan" checked onchange="filterAssets()">
-                <span class="cb-text">Netra لواسان</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input venue-cb" value="sari" checked onchange="filterAssets()">
-                <span class="cb-text">Asayesh ساری (مازندران)</span>
-              </label>
-            </div>
+            </span>
+            <i data-lucide="chevron-down" style="width: 15px; height: 15px;" class="acc-arrow"></i>
           </div>
 
-          <!-- Media Format -->
-          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; margin-bottom: 0;">
-            <div style="color: #fff; font-size: 15px; font-weight: 800; padding: 0 0 18px 0; text-align: right; cursor: default;">
-              <span>فرمت سازه تبلیغاتی</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input media-cb" value="glass" checked onchange="filterAssets()">
-                <span class="cb-text"><i data-lucide="layout-panel-top" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> دیواره شیشه‌ای پانورامیک</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input media-cb" value="led" checked onchange="filterAssets()">
-                <span class="cb-text"><i data-lucide="tv" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> استند ۴K LED دیجیتال</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input media-cb" value="tournament" checked onchange="filterAssets()">
-                <span class="cb-text"><i data-lucide="award" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> نوار تور و استیج مسابقه</span>
-              </label>
-              <label class="custom-checkbox-label">
-                <input type="checkbox" class="custom-checkbox-input media-cb" value="vip" checked onchange="filterAssets()">
-                <span class="cb-text"><i data-lucide="glass-water" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> VIP لانژ و سمپلینگ</span>
-              </label>
-            </div>
+          <div class="accordion-body">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input venue-cb" value="ajudaniyeh" checked onchange="filterAssets()">
+              <span>T10 آجودانیه (تهران)</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input venue-cb" value="azadi" checked onchange="filterAssets()">
+              <span>Arena آزادی (تهران)</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input venue-cb" value="shahrak" checked onchange="filterAssets()">
+              <span>Iran Zamin شهرک غرب</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input venue-cb" value="lavasan" checked onchange="filterAssets()">
+              <span>Netra لواسان</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input venue-cb" value="sari" checked onchange="filterAssets()">
+              <span>Asayesh ساری (مازندران)</span>
+            </label>
           </div>
-
-          <button onclick="resetSidebarFilters()" style="margin-top: 30px; width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; height: 48px; border-radius: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; text-align: center; font-family: 'YekanBakh', sans-serif; transition: all 0.2s ease;">
-            بازنشانی فیلترها
-          </button>
         </div>
+
+        <!-- ACCORDION 4: MEDIA FORMAT CHECKBOXES -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <i data-lucide="monitor" style="width: 15px; height: 15px; color: #CCFF00;"></i>
+              <span>نوع رسانه تبلیغاتی</span>
+            </span>
+            <i data-lucide="chevron-down" style="width: 15px; height: 15px;" class="acc-arrow"></i>
+          </div>
+
+                              <div class="accordion-body">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input media-cb" value="glass_border" checked onchange="filterAssets()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M4 6h16M4 18h16M6 6v12M18 6v12"></path></svg>
+              <span>برندینگ دور کورت‌ها</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input media-cb" value="net" checked onchange="filterAssets()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M4 12h16M4 8h16M4 16h16"></path></svg>
+              <span>برندینگ تور مسابقه</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input media-cb" value="entrance" checked onchange="filterAssets()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M3 12h2m4 0h12M13 4h3a2 2 0 0 1 2 2v14M2 20h3M13 20h9M10 12v.01"></path></svg>
+              <span>برندینگ حاشیه درب ورودی</span>
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" class="custom-checkbox-input media-cb" value="sampling" checked onchange="filterAssets()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+              <span>جایگاه سمپلینگ</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ACCORDION 5: PRICE FILTER -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>محدوده قیمت (ماهانه)</span>
+            </span>
+            <svg class="acc-arrow" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="accordion-body">
+             <div class="price-slider-container">
+                <div class="price-slider-track"></div>
+                <div class="slider-track-fill" id="sliderTrackFill"></div>
+                <input type="range" min="20" max="1000" value="20" id="priceMin" oninput="updatePriceSlider(event)">
+                <input type="range" min="20" max="1000" value="1000" id="priceMax" oninput="updatePriceSlider(event)">
+             </div>
+             <div class="price-values">
+                <span id="priceValMinStr">۲۰ میلیون</span>
+                <span id="priceValMaxStr">۱ میلیارد</span>
+             </div>
+             <div style="font-size:11px; color:#64748b; margin-top:12px; text-align:center;">تعرفه‌های «تماس بگیرید» همواره نمایش داده می‌شوند</div>
+          </div>
+        </div>
+
+        <!-- Reset Button -->
+        <button onclick="resetSidebarFilters()" style="margin-top: 10px; width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #94A3B8; padding: 9px; border-radius: 14px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <i data-lucide="rotate-ccw" style="width: 13px; height: 13px;"></i>
+          <span>بازنشانی فیلترها</span>
+        </button>
+        </div> <!-- End of mobileFilterWrapper -->
+
       </aside>
 
       <!-- 2. LEFT PRODUCT CATALOG AREA (DENSE PRODUCT GRID - 15 MEDIA CARDS) -->
@@ -10242,7 +9273,7 @@ html {
 <script>
   document.addEventListener('DOMContentLoaded', () => {
       if (window.renderMediaShowcase) {
-          window.renderMediaShowcase('productGrid', 'club-enghelab');
+          window.renderMediaShowcase('productGrid', 'inventory'); setTimeout(filterAssets, 500);
       }
   });
 </script>
@@ -10553,32 +9584,125 @@ html {
     document.querySelectorAll('.venue-cb').forEach(cb => cb.checked = true);
     document.querySelectorAll('.media-cb').forEach(cb => cb.checked = true);
     document.getElementById('sidebarSearchInput').value = '';
+    
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    if (minSlider) minSlider.value = 20;
+    if (maxSlider) maxSlider.value = 1000;
+    updatePriceSlider();
+    
     filterAssets();
+  }
+
+  
+  // --- DUAL PRICE SLIDER LOGIC ---
+  function updatePriceSlider(event) {
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    if(!minSlider || !maxSlider) return;
+
+    let minVal = parseInt(minSlider.value);
+    let maxVal = parseInt(maxSlider.value);
+
+    // Prevent crossing
+    if (minVal > maxVal - 10) {
+      if (event && event.target && event.target.id === "priceMin") {
+        minSlider.value = maxVal - 10;
+        minVal = maxVal - 10;
+      } else if (event && event.target && event.target.id === "priceMax") {
+        maxSlider.value = minVal + 10;
+        maxVal = minVal + 10;
+      } else {
+        // Fallback if no event
+        minSlider.value = maxVal - 10;
+        minVal = maxVal - 10;
+      }
+    }
+
+    // Fill track
+    let minPercent = ((minVal - 20) / (1000 - 20)) * 100;
+    let maxPercent = ((maxVal - 20) / (1000 - 20)) * 100;
+    let fill = document.getElementById("sliderTrackFill");
+    if(fill) {
+      fill.style.left = minPercent + "%";
+      fill.style.width = (maxPercent - minPercent) + "%";
+    }
+
+    // Update text
+    document.getElementById("priceValMinStr").innerText = minVal >= 1000 ? "۱ میلیارد" : minVal + " میلیون";
+    document.getElementById("priceValMaxStr").innerText = maxVal >= 1000 ? "۱ میلیارد" : maxVal + " میلیون";
+
+    // Trigger filter
+    filterAssets();
+  }
+
+  function parseTariffToMillions(text) {
+    if (!text || text.includes('تماس')) return null;
+    const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+    const arabicNumbers  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+    let englishText = text;
+    for(let i=0; i<10; i++) {
+        englishText = englishText.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+    }
+    const match = englishText.match(/[\d\.]+/);
+    if (!match) return null;
+    let val = parseFloat(match[0]);
+    if (englishText.includes('میلیارد')) val *= 1000;
+    return val;
   }
 
   function filterAssets() {
     const searchInput = document.getElementById('sidebarSearchInput');
     const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
     
-    // Checked venues
     const checkedVenues = Array.from(document.querySelectorAll('.venue-cb:checked')).map(cb => cb.value);
-    // Checked media formats
     const checkedMedias = Array.from(document.querySelectorAll('.media-cb:checked')).map(cb => cb.value);
     
-    const cards = document.querySelectorAll('.product-asset-card');
+    // Read price bounds
+    let minSlider = document.getElementById("priceMin");
+    let maxSlider = document.getElementById("priceMax");
+    let priceMin = minSlider ? parseInt(minSlider.value) : 20;
+    let priceMax = maxSlider ? parseInt(maxSlider.value) : 1000;
+    
+    const cards = document.querySelectorAll('.media-showcase-card');
     let visibleCount = 0;
 
     cards.forEach(card => {
-      const cardVenue = card.getAttribute('data-venue');
-      const cardMedia = card.getAttribute('data-media');
-      const cardTitle = card.getAttribute('data-title').toLowerCase();
+      const locEl = card.querySelector('.msc-location');
+      const titleEl = card.querySelector('.msc-title');
+      const tariffEl = card.querySelector('.msc-tariff-value');
+      
+      const cardVenueText = locEl ? locEl.textContent : '';
+      const cardTitle = titleEl ? titleEl.textContent.toLowerCase() : '';
+      const cardTariff = tariffEl ? tariffEl.textContent : '';
+      let cardType = card.dataset.type || '';
+      if (cardType === 'court_net') cardType = 'net';
+      else if (['court_border', 'outdoor_billboard', 'indoor_backlight', 'outdoor_backlight', 'indoor_frontlight', 'outdoor_frontlight', 'court_entrance'].includes(cardType)) {
+          cardType = 'glass'; // Map old types to glass to remain visible
+      }
+      else if (cardType === 'digital_board') cardType = 'digital';
+      
+      let cardVenue = '';
+      if(cardVenueText.includes('آزادی') || cardVenueText.includes('arena')) cardVenue = 'azadi';
+      else if(cardVenueText.includes('لواسان') || cardVenueText.includes('netra')) cardVenue = 'lavasan';
+      else if(cardVenueText.includes('آجودانیه') || cardVenueText.includes('t10')) cardVenue = 'ajudaniyeh';
+      else if(cardVenueText.includes('شهرک غرب') || cardVenueText.includes('iran')) cardVenue = 'shahrak';
+      else if(cardVenueText.includes('ساری') || cardVenueText.includes('asayesh')) cardVenue = 'sari';
+      else if(cardVenueText.includes('انقلاب')) cardVenue = 'enghelab';
 
-      const matchesVenue = checkedVenues.includes(cardVenue);
-      const matchesMedia = checkedMedias.includes(cardMedia);
+      const matchesVenue = checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
+      const matchesMedia = checkedMedias.includes(cardType) || checkedMedias.length === 0;
       const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
+      
+      // Price Check
+      let matchesPrice = true;
+      const parsedPrice = parseTariffToMillions(cardTariff);
+      if (parsedPrice !== null) {
+          matchesPrice = (parsedPrice >= priceMin && parsedPrice <= priceMax);
+      }
 
-      if (matchesVenue && matchesMedia && matchesSearch) {
-        card.style.setProperty('display', 'block', 'important');
+      if (matchesVenue && matchesMedia && matchesSearch && matchesPrice) {
+        card.style.setProperty('display', 'flex', 'important');
         card.style.setProperty('opacity', '1', 'important');
         card.style.setProperty('visibility', 'visible', 'important');
         visibleCount++;
@@ -11692,9 +10816,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-  
-
-
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
     (function() {
@@ -11728,6 +10849,28 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       advanceProgress();
+
+      setTimeout(function() {
+        if(!isSiteFullyLoaded) {
+           isSiteFullyLoaded = true;
+           let finishInterval = setInterval(() => {
+             currentPercent += 15;
+             if (currentPercent >= 100) {
+               currentPercent = 100;
+               fillEl.style.width = '100%';
+               pctEl.innerText = '100%';
+               clearInterval(finishInterval);
+               setTimeout(() => {
+                 loaderWrapper.style.opacity = '0';
+                 setTimeout(() => { loaderWrapper.style.display = 'none'; }, 600);
+               }, 200);
+             } else {
+               fillEl.style.width = Math.floor(currentPercent) + '%';
+               pctEl.innerText = Math.floor(currentPercent) + '%';
+             }
+           }, 20);
+        }
+      }, 200); // 1.5 seconds max loader time
 
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;
@@ -11767,6 +10910,7 @@ window.renderMediaCard = function(media) {
     // Defaults
     const title = media.title || media.name || 'بدون عنوان';
     const code = media.code || 'SIL-000';
+    const type = media.type || '';
     let rawLoc = media.location || 'تهران';
     let location = rawLoc;
     
@@ -11800,8 +10944,18 @@ window.renderMediaCard = function(media) {
     const dimsIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>`;
     const printIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
 
-    return `
-    <article class="media-showcase-card" data-id="${media.id || code}">
+            
+        const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+        const isInCart = cart.includes(code);
+        const btnClass = isInCart ? 'msc-reserve-btn in-cart' : 'msc-reserve-btn';
+        const btnIcon = isInCart 
+            ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`
+            : plusIcon;
+        const btnText = isInCart ? 'حذف از مدیا کیت' : 'اضافه کردن به مدیا کیت';
+
+        return `
+    <article class="media-showcase-card" data-id="${media.id || code}" data-type="${type}">
+        <!-- card content -->
         <div class="msc-img-wrapper">
             <img src="${image}" alt="${title}" loading="lazy">
             <span class="msc-code-badge">کد: ${code}</span>
@@ -11821,12 +10975,13 @@ window.renderMediaCard = function(media) {
             <div style="display: flex; align-items: center; gap: 6px;">${printIcon} <span>چاپ: <strong>${printType}</strong></span></div>
         </div>
         
-        <button class="msc-reserve-btn" onclick="openMainReservationModal('${code}', '${title}')">
-            ${plusIcon}
-            <span>اضافه کردن به مدیا کیت</span>
+        <button class="${btnClass}" onclick="toggleCartItem('${code}')">
+            ${btnIcon}
+            <span>${btnText}</span>
         </button>
     </article>
     `;
+
 };
 
 window.renderMediaShowcase = function(containerId, filterPageId) {
@@ -11865,6 +11020,67 @@ window.renderMediaShowcase = function(containerId, filterPageId) {
 </script>
 
 </script>
+
+  <!-- FLOATING CART -->
+  <div class="floating-cart" id="floatingCart">
+    <div class="fc-info">
+      <div class="fc-count"><span id="fcCount">0</span> سازه</div>
+      <div class="fc-text">انتخاب شده</div>
+    </div>
+    <button class="fc-btn" onclick="window.location.href='/mediakit/'">نهایی کردن مدیا کیت</button>
+  </div>
+
+<script>
+  // --- MEDIA KIT CART LOGIC ---
+  function toggleCartItem(code) {
+    let cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const index = cart.indexOf(code);
+    if (index > -1) {
+      cart.splice(index, 1);
+    } else {
+      cart.push(code);
+    }
+    localStorage.setItem('silveriom_cart', JSON.stringify(cart));
+    
+    // Update the button directly
+    const cards = document.querySelectorAll('.media-showcase-card');
+    cards.forEach(c => {
+      if(c.dataset.id === code) {
+         const btn = c.querySelector('.msc-reserve-btn');
+         const isInCart = cart.includes(code);
+         if(isInCart) {
+            btn.className = 'msc-reserve-btn in-cart';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>حذف از مدیا کیت</span>`;
+         } else {
+            btn.className = 'msc-reserve-btn';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>اضافه کردن به مدیا کیت</span>`;
+         }
+      }
+    });
+
+    updateFloatingCart();
+  }
+
+  window.updateFloatingCart = function() {
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const widget = document.getElementById('floatingCart');
+    const countEl = document.getElementById('fcCount');
+    if(!widget || !countEl) return;
+
+    if (cart.length > 0) {
+      countEl.innerText = cart.length.toLocaleString('fa-IR');
+      widget.classList.add('visible');
+    } else {
+      widget.classList.remove('visible');
+    }
+  }
+
+  // Initialize on load
+  window.addEventListener('load', () => {
+    updateFloatingCart();
+  });
+</script>
+
 
 <!-- Dynamic Menu Activator -->
 <script>

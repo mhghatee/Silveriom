@@ -6628,13 +6628,12 @@ html {
             <label class="finder-label">
               <svg class="finder-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> نوع رسانه تبلیغاتی
             </label>
-            <select id="finder-media" class="finder-select">
+                        <select id="finder-media" class="finder-select">
               <option value="all">همه فضاهای تبلیغاتی (۳۶۰ درجه)</option>
-              <option value="net">نوار و تور مسابقات (دید مستقیم ۹۴٪)</option>
-              <option value="glass">دیواره شیشه‌ای پانورامیک</option>
-              <option value="digital">نمایشگر دیجیتال LED محیطی</option>
-              <option value="turf">درج لوگو در چمن کورت</option>
-              <option value="sampling">جایگاه سمپلینگ و VIP لانژ</option>
+              <option value="glass_border">برندینگ دور کورت‌ها (نوار دور شیشه)</option>
+              <option value="net">برندینگ تور مسابقات</option>
+              <option value="entrance">برندینگ حاشیه درب ورودی کورت</option>
+              <option value="sampling">جایگاه سمپلینگ</option>
             </select>
           </div>
 
@@ -7257,7 +7256,7 @@ html {
           <div class="inventory-details-card" id="media-card">
             
             <!-- Court Blueprint Visualization -->
-            <div class="blueprint-container">
+                        <div class="blueprint-container">
               <svg class="court-blueprint" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <pattern id="blueprint-grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -7266,32 +7265,25 @@ html {
                 </defs>
                 <rect width="100%" height="100%" fill="url(#blueprint-grid)" rx="10" />
                 
-                <!-- Court boundaries outline -->
-                <rect x="25" y="15" width="150" height="90" rx="4" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+                <!-- 1. Court Border / Glass (برندینگ دور کورت‌ها) -->
+                <rect id="bp-glass-border" class="bp-element" x="25" y="15" width="150" height="90" rx="4" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
                 
-                <!-- Side Glass Walls -->
-                <path id="bp-glass-left" class="bp-element" d="M 25 15 L 25 105" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
-                <path id="bp-glass-right" class="bp-element" d="M 175 15 L 175 105" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
-                
-                <!-- Service Lines -->
+                <!-- Service Lines (Static) -->
                 <line x1="55" y1="15" x2="55" y2="105" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="2,2" />
                 <line x1="145" y1="15" x2="145" y2="105" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="2,2" />
+                <line x1="25" y1="60" x2="55" y2="60" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                <line x1="145" y1="60" x2="175" y2="60" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
                 
-                <!-- Service Boxes Center Lines (Turf Inlay Area) -->
-                <line id="bp-turf-center-1" class="bp-element" x1="25" y1="60" x2="55" y2="60" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <line id="bp-turf-center-2" class="bp-element" x1="145" y1="60" x2="175" y2="60" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                
-                <!-- Net Line -->
+                <!-- 2. Net Branding (برندینگ تور) -->
                 <line id="bp-net" class="bp-element active-net" x1="100" y1="12" x2="100" y2="108" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2.5" />
-                <circle cx="100" cy="12" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
-                <circle cx="100" cy="108" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
+                <circle id="bp-net-node1" class="bp-element active-net" cx="100" cy="12" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
+                <circle id="bp-net-node2" class="bp-element active-net" cx="100" cy="108" r="2.5" fill="rgba(255, 255, 255, 0.3)" />
 
-                <!-- Digital Screens (represented by glowing rectangles outside) -->
-                <rect id="bp-digital-1" class="bp-element" x="45" y="6" width="18" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <rect id="bp-digital-2" class="bp-element" x="135" y="6" width="18" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
-                <rect id="bp-digital-3" class="bp-element" x="90" y="110" width="20" height="4" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+                <!-- 3. Entrance Door Branding (برندینگ حاشیه درب ورودی) -->
+                <rect id="bp-entrance-1" class="bp-element" x="98" y="10" width="4" height="20" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+                <rect id="bp-entrance-2" class="bp-element" x="98" y="90" width="4" height="20" rx="1" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
 
-                <!-- VIP Sampling Lounge (represented by a glowing capsule) -->
+                <!-- 4. VIP Sampling Lounge (جایگاه سمپلینگ) -->
                 <rect id="bp-sampling" class="bp-element" x="6" y="45" width="12" height="30" rx="3" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
               </svg>
             </div>
@@ -7321,73 +7313,57 @@ html {
           </div>
 
           <!-- Right tabs column -->
-          <div class="inventory-tabs">
+                    <div class="inventory-tabs">
             
-            <!-- Tab 01: Net -->
-            <div class="inventory-tab active" data-media="net">
+            <!-- Tab 01: Glass Border -->
+            <div class="inventory-tab active" data-media="glass_border">
               <div class="tab-content-wrapper">
                 <div class="tab-icon-box">
                   <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 18h16M6 6v12M18 6v12"></path>
                   </svg>
                 </div>
                 <div class="tab-text-col">
-                  <h4 class="tab-title">برندینگ نوار و تور مسابقه</h4>
-                  <p class="tab-desc">Net Branding</p>
+                  <h4 class="tab-title">برندینگ دور کورت‌ها</h4>
+                  <p class="tab-desc">Court Border Branding</p>
                 </div>
               </div>
               <span class="tab-index-badge">۰۱</span>
             </div>
 
-            <!-- Tab 02: Glass -->
-            <div class="inventory-tab" data-media="glass">
+            <!-- Tab 02: Net -->
+            <div class="inventory-tab" data-media="net">
               <div class="tab-content-wrapper">
                 <div class="tab-icon-box">
                   <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 8h16M4 16h16"></path>
                   </svg>
                 </div>
                 <div class="tab-text-col">
-                  <h4 class="tab-title">دیواره‌های پانورامیک شیشه‌ای</h4>
-                  <p class="tab-desc">Glass Wall Branding</p>
+                  <h4 class="tab-title">برندینگ تور</h4>
+                  <p class="tab-desc">Net Branding</p>
                 </div>
               </div>
               <span class="tab-index-badge">۰۲</span>
             </div>
 
-            <!-- Tab 03: Turf -->
-            <div class="inventory-tab" data-media="turf">
+            <!-- Tab 03: Entrance -->
+            <div class="inventory-tab" data-media="entrance">
               <div class="tab-content-wrapper">
                 <div class="tab-icon-box">
                   <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h2m4 0h12M13 4h3a2 2 0 0 1 2 2v14M2 20h3M13 20h9M10 12v.01"></path>
                   </svg>
                 </div>
                 <div class="tab-text-col">
-                  <h4 class="tab-title">درج لوگو در چمن کورت</h4>
-                  <p class="tab-desc">Court Turf Inlay</p>
+                  <h4 class="tab-title">برندینگ حاشیه درب ورودی</h4>
+                  <p class="tab-desc">Entrance Branding</p>
                 </div>
               </div>
               <span class="tab-index-badge">۰۳</span>
             </div>
 
-            <!-- Tab 04: Digital -->
-            <div class="inventory-tab" data-media="digital">
-              <div class="tab-content-wrapper">
-                <div class="tab-icon-box">
-                  <svg class="tab-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4"></path>
-                  </svg>
-                </div>
-                <div class="tab-text-col">
-                  <h4 class="tab-title">نمایشگرهای دیجیتال و LED محیطی</h4>
-                  <p class="tab-desc">Digital Screens</p>
-                </div>
-              </div>
-              <span class="tab-index-badge">۰۴</span>
-            </div>
-
-            <!-- Tab 05: Sampling -->
+            <!-- Tab 04: Sampling -->
             <div class="inventory-tab" data-media="sampling">
               <div class="tab-content-wrapper">
                 <div class="tab-icon-box">
@@ -7396,11 +7372,11 @@ html {
                   </svg>
                 </div>
                 <div class="tab-text-col">
-                  <h4 class="tab-title">جایگاه سمپلینگ و لانژ اختصاصی</h4>
+                  <h4 class="tab-title">جایگاه سمپلینگ</h4>
                   <p class="tab-desc">Sampling Areas</p>
                 </div>
               </div>
-              <span class="tab-index-badge">۰۵</span>
+              <span class="tab-index-badge">۰۴</span>
             </div>
 
           </div>
@@ -8245,51 +8221,41 @@ html {
   });
 
   // 5. Interactive Media Inventory Tabs & Blueprint Dynamic Highlights
-  const inventoryData = {
+    const inventoryData = {
     net: {
       tag: "موقعیت: نوار مرکزی و پایه‌های تور کورت",
-      title: "برندینگ نوار و پایه‌های تور",
-      desc: "این موقعیت دقیقاً در نقطه ثقل دید مخاطبان، داور و زاویه اصلی پخش مسابقات قرار دارد. بیش از ۹۴٪ زمان مسابقه، نگاه تماشاگران به طور مستقیم از روی تور عبور می‌کند.",
+      title: "برندینگ تور",
+      desc: "این موقعیت دقیقاً در نقطه ثقل دید مخاطبان، داور و زاویه اصلی پخش مسابقات قرار دارد. نگاه تماشاگران به طور مداوم از روی تور عبور می‌کند.",
       m1: "۹۴٪", m1_lbl: "نرخ مکث نگاه",
       m2: "+۱۸۰K", m2_lbl: "ایمپرشن ماهانه",
       m3: "دوطرفه", m3_lbl: "قالب اجرا",
       bp_class: "active-net",
-      bp_ids: ["bp-net"]
+      bp_ids: ["bp-net", "bp-net-node1", "bp-net-node2"]
     },
-    glass: {
-      tag: "موقعیت: دیواره‌های شیشه‌ای پیرامون کورت",
-      title: "دیواره‌های پانورامیک شیشه‌ای",
-      desc: "پوشش سراسری شیشه‌های پشت و بغل کورت با وینیل‌های شفاف یک‌طرفه با وضوح فوق‌العاده بالا. دید مستقیم برای تماشاگران حاضر در باشگاه و لنز دوربین‌های فیلم‌برداری.",
-      m1: "۸۸٪", m1_lbl: "وضوح دید شیشه",
+    glass_border: {
+      tag: "موقعیت: نوار دور شیشه‌های کورت",
+      title: "برندینگ دور کورت‌ها",
+      desc: "پوشش سراسری نوار بالا و حاشیه‌های دیواره‌های شیشه‌ای پیرامون کورت با کیفیت و وضوح بالا. دید مستقیم برای تماشاگران حاضر و لنز دوربین‌های فیلم‌برداری.",
+      m1: "۸۸٪", m1_lbl: "پوشش محیطی",
       m2: "+۲۲۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "تک‌جهته", m3_lbl: "قالب اجرا",
+      m3: "سراسری", m3_lbl: "قالب اجرا",
       bp_class: "active-glass",
-      bp_ids: ["bp-glass-left", "bp-glass-right"]
+      bp_ids: ["bp-glass-border"]
     },
-    turf: {
-      tag: "موقعیت: چمن کورت پدل",
-      title: "درج لوگو در چمن کورت",
-      desc: "درج لوگوی برند با استفاده از چمن مصنوعی رنگی یا برش‌های باکیفیت بالا در زیر تور و باکس‌های سرویس. بیشترین نرخ نمایش در زاویه دید مستقیم دوربین مرکزی.",
-      m1: "۸۵٪", m1_lbl: "ثبت در ذهن",
+    entrance: {
+      tag: "موقعیت: ورودی‌های جانبی کورت",
+      title: "برندینگ حاشیه درب ورودی",
+      desc: "حضور پررنگ برند در نقاط استراتژیک ورود و خروج بازیکنان. مکانی طلایی که در زمان‌های استراحت بازیکنان و تعویض زمین بالاترین توجه را به خود جلب می‌کند.",
+      m1: "۸۵٪", m1_lbl: "نرخ توجه ویژه",
       m2: "+۱۴۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "چاپ لیزری", m3_lbl: "قالب اجرا",
-      bp_class: "active-turf",
-      bp_ids: ["bp-turf-center-1", "bp-turf-center-2"]
-    },
-    digital: {
-      tag: "موقعیت: مانیتورها و LEDهای محیطی",
-      title: "نمایشگرهای دیجیتال و LED",
-      desc: "نمایش تیزرهای ویدیویی و موشن گرافیک‌های پویا بر روی نمایشگرهای هوشمند حاشیه کورت‌ها، همگام‌سازی شده با لحظات حساس بازی و تغییرات زنده امتیازات.",
-      m1: "۹۲٪", m1_lbl: "نرخ جذب مخاطب",
-      m2: "+۳۰۰K", m2_lbl: "ایمپرشن ماهانه",
-      m3: "موشن/ویدیو", m3_lbl: "فرمت محتوا",
+      m3: "دوگانه", m3_lbl: "قالب اجرا",
       bp_class: "active-digital",
-      bp_ids: ["bp-digital-1", "bp-digital-2", "bp-digital-3"]
+      bp_ids: ["bp-entrance-1", "bp-entrance-2"]
     },
     sampling: {
-      tag: "موقعیت: ورودی کورت‌ها و لانژ VIP",
-      title: "سمپلینگ و پذیرایی اختصاصی",
-      desc: "ایجاد کانترهای نمونه‌سازی، دمو و سمپلینگ محصولات در لابی‌های مجلل و لانژ‌های تفریحی پرتردد کلوپ‌ها جهت ارتباط رودررو و صمیمی با مخاطبان کارآفرین و مدیر ارشد.",
+      tag: "موقعیت: لانژ و فضای استراحت باشگاه",
+      title: "جایگاه سمپلینگ",
+      desc: "ایجاد کانترهای نمونه‌سازی، دمو و سمپلینگ محصولات در فضاهای تفریحی پرتردد کلوپ‌ها جهت ارتباط رودررو و صمیمی با مخاطبان کارآفرین و مدیر ارشد.",
       m1: "۹۵٪", m1_lbl: "نرخ تعامل",
       m2: "+۴۵K", m2_lbl: "مخاطب حضوری",
       m3: "تجربه‌ای", m3_lbl: "نوع تعامل",
