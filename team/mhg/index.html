@@ -191,8 +191,17 @@
       background: rgba(204,255,0,0.08) !important;
       border: 1px solid rgba(204,255,0,0.25) !important;
       color: #CCFF00 !important;
+      top: 1.5rem !important;
     }
+    #flip-to-back { left: 1.5rem !important; }
+    #top-right-logo { right: 1.5rem !important; }
     #flip-to-back:hover, #top-right-logo:hover { background: rgba(204,255,0,0.15) !important; }
+    
+    #top-right-logo img {
+      width: 17px !important;
+      height: 17px !important;
+      object-fit: contain;
+    }
 
     /* ── Social icon buttons ── */
     .bg-ink-800\/70 {
@@ -299,14 +308,14 @@
 
             <!-- دکمه مشاهده QR -->
             <button type="button" id="flip-to-back" aria-label="نمایش کد کیوآر"
-              class="absolute left-7 top-7 z-20 flex h-10 w-10 items-center justify-center rounded-xl bg-ink-800/70 text-cream-mute transition-all duration-300 ease-out-soft hover:scale-105 hover:text-amber-400">
+              class="absolute z-20 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ease-out-soft hover:scale-105">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M21 14v3"/><path d="M18 21h3"/><path d="M14 21h-0"/></svg>
             </button>
 
             <!-- لوگو شیشه‌ای -->
             <a href="https://silveriom.ir" target="_blank" id="top-right-logo"
-              class="absolute right-7 top-7 z-20 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ease-out-soft hover:scale-105">
-              <img src="assets/glass-logo.webp" alt="Silveriom" class="w-[18px] h-auto object-contain" style="filter: drop-shadow(0 0 4px rgba(204,255,0,0.4));" />
+              class="absolute z-20 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ease-out-soft hover:scale-105">
+              <img src="assets/glass-logo.webp" alt="Silveriom" style="filter: drop-shadow(0 0 4px rgba(204,255,0,0.4));" />
             </a>
 
             <div class="relative z-10 flex flex-col items-center px-7 pb-9 pt-12 sm:px-10">
