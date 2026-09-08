@@ -116,10 +116,10 @@
     const plannerBtn = document.getElementById('planner-submit-btn') || document.querySelector('#planner .luxury-btn-solid');
     if (plannerBtn) {
       plannerBtn.addEventListener('click', async (e) => {
-        const impression = document.getElementById('calc-impression')?.textContent || '';
-        const venues = document.getElementById('calc-venues-text')?.textContent || '';
-        const courts = document.getElementById('calc-courts-count')?.textContent || '';
-        const duration = document.getElementById('calc-duration-text')?.textContent || '';
+        const impression = (document.getElementById('calc-impression') ? document.getElementById('calc-impression').textContent : '') || '';
+        const venues = (document.getElementById('calc-venues-text') ? document.getElementById('calc-venues-text').textContent : '') || '';
+        const courts = (document.getElementById('calc-courts-count') ? document.getElementById('calc-courts-count').textContent : '') || '';
+        const duration = (document.getElementById('calc-duration-text') ? document.getElementById('calc-duration-text').textContent : '') || '';
         
         alert(`ثبت استعلام کمپین با ${impression} امپرشن انجام شد.`);
       });
