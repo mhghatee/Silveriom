@@ -276,14 +276,7 @@
     <div class="absolute inset-0 opacity-[0.35]" style="background-image: linear-gradient(rgba(100,140,160,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(100,140,160,0.07) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);"></div>
   </div>
 
-  <!-- ═══════════ دکمه تغییر تم ═══════════ -->
-  <button type="button" id="theme-toggle" data-magnetic aria-label="تغییر حالت روشن و تیره"
-    class="fixed left-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-ink-800/80 text-cream-dim shadow-card backdrop-blur-md transition-colors duration-300 ease-out-soft hover:text-amber-400 sm:left-8 sm:top-8">
-    <!-- خورشید (در تم تیره نمایش داده می‌شود) -->
-    <svg id="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-    <!-- ماه -->
-    <svg id="icon-moon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-  </button>
+  
 
   <!-- ═══════════ ساختار صفحه ═══════════ -->
   <main class="relative flex min-h-screen flex-col items-center justify-center px-4 py-14 sm:px-6">
@@ -410,11 +403,11 @@
 
               <!-- دکمه‌های اقدام -->
               <div class="reveal mt-8 grid w-full grid-cols-2 gap-3" style="--reveal-delay: 960ms">
-                <button type="button" id="save-contact" data-magnetic
-                  class="text-on-accent flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-amber-300 to-amber-500 px-4 py-3.5 text-sm font-bold shadow-btn transition-[box-shadow,filter] duration-300 ease-out-soft hover:shadow-glow hover:brightness-105 active:brightness-95">
+                <a href="assets/mhg.vcf" download="Mohammad_Hossein_Ghatei.vcf" id="save-contact-btn" data-magnetic
+                  class="text-on-accent flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-amber-300 to-amber-500 px-2 sm:px-4 py-3.5 text-[12px] sm:text-sm font-bold whitespace-nowrap shadow-btn transition-[box-shadow,filter] duration-300 ease-out-soft hover:shadow-glow hover:brightness-105 active:brightness-95">
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                  ذخیره در مخاطبین
-                </button>
+                  ذخیره مخاطب
+                </a>
                 <button type="button" id="share-card" data-magnetic
                   class="flex items-center justify-center gap-2 rounded-2xl bg-ink-700/80 px-4 py-3.5 text-sm font-bold text-cream transition-colors duration-300 ease-out-soft hover:bg-ink-600">
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg>
