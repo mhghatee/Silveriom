@@ -1042,6 +1042,79 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+<!-- Dynamic Package Form Styler -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const packageType = urlParams.get('package');
+    const action = urlParams.get('action');
+
+    if ((action === 'mediakit' || window.location.href.includes('mediakit')) && packageType) {
+        const titleEl = document.querySelector('.auth-title');
+        const subtitleEl = document.getElementById('auth-subtitle-text');
+        const submitBtn = document.querySelector('#mediakit-form .btn-neon-submit');
+        const glassCard = document.querySelector('.auth-glass-card');
+        
+        let pName = "مدیاکیت";
+        let color = "#bcff00"; 
+        let shadow = "rgba(204,255,0,0.3)";
+
+        if (packageType === 'gold') {
+            pName = "پکیج گلد (Title Partner)";
+            color = "#CCFF00";
+            shadow = "rgba(204,255,0,0.5)";
+        } else if (packageType === 'silver') {
+            pName = "پکیج سیلور (Strategic Partner)";
+            color = "#E2E8F0";
+            shadow = "rgba(226,232,240,0.4)";
+        } else if (packageType === 'bronze') {
+            pName = "پکیج برنز (Official Partner)";
+            color = "#CD7F32";
+            shadow = "rgba(205,127,50,0.5)";
+        }
+
+        if (titleEl) {
+            titleEl.textContent = "درخواست مشاوره " + pName.split(' ')[1];
+            titleEl.style.color = color;
+            titleEl.style.textShadow = `0 0 20px ${shadow}`;
+        }
+        if (subtitleEl) {
+            subtitleEl.innerHTML = `شما در حال ثبت درخواست برای <strong>${pName}</strong> هستید. فرم را تکمیل کنید.`;
+            subtitleEl.style.color = "#fff";
+        }
+        if (submitBtn) {
+            submitBtn.innerHTML = `<i data-lucide="check-circle" style="width:18px;height:18px;margin-left:8px;vertical-align:middle;"></i> تایید و ثبت درخواست ${pName.split(' ')[1]}`;
+            submitBtn.style.background = packageType === 'gold' ? color : 'transparent';
+            submitBtn.style.color = packageType === 'gold' ? '#000' : color;
+            submitBtn.style.border = `2px solid ${color}`;
+            submitBtn.style.boxShadow = `0 0 25px ${shadow}`;
+        }
+        if (glassCard) {
+            glassCard.style.border = `1px solid ${color}`;
+            glassCard.style.boxShadow = `0 10px 40px ${shadow}, inset 0 0 20px rgba(0,0,0,0.5)`;
+        }
+
+        // Add hidden input to form
+        const form = document.getElementById('mediakit-form');
+        if (form) {
+            let input = document.getElementById('requested-package');
+            if (!input) {
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'requested_package';
+                input.id = 'requested-package';
+                form.appendChild(input);
+            }
+            input.value = packageType;
+        }
+
+        setTimeout(() => {
+            if (window.lucide) lucide.createIcons();
+        }, 100);
+    }
+});
+</script>
 </body>
 
 </html>
