@@ -5,7 +5,7 @@
 
 (async function() {
   try {
-    const res = await fetch('/panel/api.php?action=load');
+    const res = await fetch('https://panel.silveriom.ir/api.php?action=load');
     if (!res.ok) return;
     const db = await res.json();
 
@@ -100,7 +100,7 @@
         };
 
         try {
-          await fetch('/panel/api.php?action=load'); // Mocked
+          await fetch('https://panel.silveriom.ir/api.php?action=load'); // Mocked
           alert('درخواست شما با موفقیت ثبت شد. تیم سیلوریوم به‌زودی با شما تماس خواهد گرفت.');
           const modal = document.getElementById('kit-modal');
           if (modal) modal.classList.remove('active');
