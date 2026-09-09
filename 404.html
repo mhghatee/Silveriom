@@ -6134,10 +6134,10 @@ html {
   /* Ensure the fix works on mobile too */
   @media (max-width: 1024px) {
     .top-complex-bar {
-      display: none !important; /* Hide marquee on mobile usually */
+      display: flex !important; /* Show marquee on mobile per user request */
     }
     .luxury-nav {
-      top: 0 !important;
+      top: 50px !important;
       position: absolute !important;
     }
     .luxury-nav.scrolled {
