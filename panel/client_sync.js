@@ -30,9 +30,10 @@
       db.aboutUs.team.forEach((member, memberIdx) => {
         let imgSrc = member.image ? (member.image.startsWith('http') || member.image.startsWith('/') ? member.image : '/panel/' + member.image) : 'https://via.placeholder.com/600x600?text=No+Image';
         
-        const linkedinUrl = memberIdx === 1 ? 'https://www.linkedin.com/in/mohammad-hosein-ghatee-21a2b1152/' : (member.linkedin || '#');
-        const vcardUrl = memberIdx === 1 ? 'https://silveriom.ir/team/mhg' : (member.contact || '#');
-        const showIcons = member.linkedin || member.contact || memberIdx === 1;
+                        const isCEO = member.name && member.name.includes('قطعی');
+        const linkedinUrl = isCEO ? 'https://www.linkedin.com/in/mohammad-hosein-ghatee-21a2b1152/' : (member.linkedin || '#');
+        const vcardUrl = isCEO ? 'https://silveriom.ir/team/mhg' : (member.contact || '#');
+        const showIcons = member.linkedin || member.contact || isCEO;
         const iconsHtml = showIcons ? `
               <div style="position:absolute;bottom:14px;left:0;width:100%;display:flex;justify-content:center;gap:10px;z-index:20;">
                 <a href="${linkedinUrl}" target="_blank" onclick="event.stopPropagation();"
@@ -76,7 +77,98 @@
       // Re-initialize GSAP slider logic globally if defined
       if (typeof window.initTeamSlider === 'function') {
         window.initTeamSlider();
+        
+        // Add navigation arrows dynamically
+        const progressContainer = document.getElementById('progress');
+        if (progressContainer && progressContainer.parentElement && !document.getElementById('team-prev-btn')) {
+            const navControls = progressContainer.parentElement;
+            navControls.style.display = 'flex';
+            navControls.style.alignItems = 'center';
+            navControls.style.justifyContent = 'center';
+            navControls.style.gap = '15px';
+            
+            // Override GSAP slider functions safely if they aren't exposed
+            const originalInit = window.initTeamSlider.toString();
+            if(!window.nextTeamCard && originalInit.includes('logicalIndex')) {
+                // If they are not exposed, we simulate a click on the next/prev dots or cards
+                window.nextTeamCard = () => {
+                    const cards = document.querySelectorAll('.team-card-custom');
+                    if(cards.length > 1) {
+                        let activeIdx = -1;
+                        document.querySelectorAll('.progress-dot').forEach((d, i) => { if(d.classList.contains('active')) activeIdx = i; });
+                        if(activeIdx >= 0) {
+                            let nextIdx = (activeIdx + 1) % cards.length;
+                            cards[nextIdx].click();
+                        }
+                    }
+                };
+                window.prevTeamCard = () => {
+                    const cards = document.querySelectorAll('.team-card-custom');
+                    if(cards.length > 1) {
+                        let activeIdx = -1;
+                        document.querySelectorAll('.progress-dot').forEach((d, i) => { if(d.classList.contains('active')) activeIdx = i; });
+                        if(activeIdx >= 0) {
+                            let prevIdx = (activeIdx - 1 + cards.length) % cards.length;
+                            cards[prevIdx].click();
+                        }
+                    }
+                };
+            }
+            
+            const prevBtn = document.createElement('button');
+            prevBtn.id = 'team-prev-btn';
+            prevBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+            prevBtn.style.background = 'transparent';
+            prevBtn.style.border = '1px solid rgba(255,255,255,0.1)';
+            prevBtn.style.borderRadius = '50%';
+            prevBtn.style.width = '44px';
+            prevBtn.style.height = '44px';
+            prevBtn.style.cursor = 'pointer';
+            prevBtn.style.display = 'flex';
+            prevBtn.style.alignItems = 'center';
+            prevBtn.style.justifyContent = 'center';
+            prevBtn.style.transition = 'all 0.3s ease';
+            prevBtn.onmouseover = () => { prevBtn.style.background = 'rgba(204,255,0,0.1)'; prevBtn.style.borderColor = '#CCFF00'; };
+            prevBtn.onmouseout = () => { prevBtn.style.background = 'transparent'; prevBtn.style.border = '1px solid rgba(255,255,255,0.1)'; };
+            
+            const nextBtn = prevBtn.cloneNode(true);
+            nextBtn.id = 'team-next-btn';
+            nextBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+            nextBtn.onmouseover = () => { nextBtn.style.background = 'rgba(204,255,0,0.1)'; nextBtn.style.borderColor = '#CCFF00'; };
+            nextBtn.onmouseout = () => { nextBtn.style.background = 'transparent'; nextBtn.style.border = '1px solid rgba(255,255,255,0.1)'; };
+            
+            navControls.insertBefore(prevBtn, progressContainer);
+            navControls.appendChild(nextBtn);
+            
+            prevBtn.addEventListener('click', () => { if(window.prevTeamCard) window.prevTeamCard(); });
+            nextBtn.addEventListener('click', () => { if(window.nextTeamCard) window.nextTeamCard(); });
+        }
       }
+    }
+
+    // 2b. Sync Brands Section
+    const brandsGrid = document.querySelector('.ios26-card') ? document.querySelector('.ios26-card').closest('[style*="grid-template-columns"]') : null;
+    if (brandsGrid && db.aboutUs && db.aboutUs.brands && db.aboutUs.brands.length > 0) {
+      brandsGrid.innerHTML = '';
+      db.aboutUs.brands.forEach(brand => {
+        const imgSrc = brand.image || '';
+        const isLive = brand.status === 'live';
+        const statusBadge = isLive
+          ? `<span class="status-badge status-live"><span class="dot-live"></span> LIVE</span>`
+          : `<span class="status-badge status-finished"><span class="dot-finished"></span> FINISHED</span>`;
+        brandsGrid.innerHTML += `
+          <div class="ios26-card">
+            <div class="ios26-banner" style="background-image: url('${imgSrc}');"></div>
+            <div class="ios26-content">
+              <h3 class="ios26-title">${brand.name || ''}</h3>
+              <p class="ios26-desc">${brand.desc || ''}</p>
+              <div class="ios26-meta">
+                <span class="ios26-date">${brand.date || ''}</span>
+                ${statusBadge}
+              </div>
+            </div>
+          </div>`;
+      });
     }
 
     // 3. Form Submission Interceptors (Kit Modal & Planner Forms)

@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Liquid Glass Dashboard</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @font-face {
+      font-family: 'YekanBakh';
+      src: url('https://silveriom.ir/fonts/YekanBakh-Regular.woff2') format('woff2');
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'YekanBakh';
+      src: url('https://silveriom.ir/fonts/YekanBakh-Bold.woff2') format('woff2');
+      font-weight: bold;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'YekanBakh', sans-serif !important; }
+
+    body {
+      background-color: #02040a; 
+      background-image: 
+        radial-gradient(circle at top right, rgba(204, 255, 0, 0.08), transparent 50%),
+        radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.05), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+      background-attachment: fixed;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Ambient Luxury Glowing Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      animation: floatOrb 15s infinite ease-in-out alternate;
+    }
+    .orb-1 { width: 400px; height: 400px; background: rgba(204, 255, 0, 0.06); top: -100px; left: -100px; }
+    .orb-2 { width: 500px; height: 500px; background: rgba(255, 255, 255, 0.02); bottom: -200px; right: -100px; animation-delay: -5s; }
+
+    @keyframes floatOrb { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, -30px); } }
+
+    /* --- RIGHT SIDEBAR (Vertical Tabs) --- */
+    .glass-sidebar {
+      width: 280px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .sidebar-brand {
+      padding: 0 25px 20px 25px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sidebar-brand img {
+      max-width: 100%;
+      height: auto;
+      max-height: 50px;
+      filter: drop-shadow(0 0 10px rgba(204,255,0,0.3));
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 15px;
+    }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      color: #94a3b8;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      transition: all 0.3s;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: right;
+    }
+    .sidebar-item i { width: 20px; height: 20px; }
+    .sidebar-item:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+    .sidebar-item.active {
+      border-right: 4px solid #ccff00;
+      background: rgba(204, 255, 0, 0.05);
+      color: #ccff00;
+      font-weight: bold;
+    }
+
+    /* --- MAIN CONTENT AREA --- */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav-bar {
+      width: 100%;
+      background: rgba(2, 4, 10, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-right, .nav-left { display: flex; align-items: center; gap: 20px; }
+    .page-title { font-size: 1.2rem; font-weight: bold; color: #fff; }
+    .live-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(204, 255, 0, 0.05); border: 1px solid rgba(204, 255, 0, 0.2);
+      padding: 5px 12px; border-radius: 20px; color: #ccff00; font-size: 0.75rem;
+    }
+    .pulse-dot { width: 6px; height: 6px; background: #ccff00; border-radius: 50%; box-shadow: 0 0 10px #ccff00; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } 100% { opacity: 1; transform: scale(1); } }
+    
+    .search-box { position: relative; display: flex; align-items: center; }
+    .search-box input { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 35px 8px 15px; color: #fff; font-family: inherit; font-size: 0.85rem; width: 250px; }
+    .search-box i { position: absolute; right: 10px; width: 16px; height: 16px; color: #64748b; }
+    
+    .user-profile-badge { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 4px 6px 4px 15px; border-radius: 30px; }
+    .user-avatar { width: 34px; height: 34px; background: #ccff00; color: #000; font-weight: bold; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .user-info { display: flex; flex-direction: column; text-align: left; line-height: 1.2; }
+    .user-name { font-size: 0.8rem; font-weight: bold; color: #fff; }
+    .user-role { font-size: 0.65rem; color: #ccff00; }
+
+    /* Dashboard Container */
+    .dashboard-container { padding: 40px 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* Content Switching Logic */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* LIQUID GLASS SQUARE TILES */
+    .section-title {
+      font-size: 1.4rem; color: #f8fafc; margin: 0 0 25px 0;
+      display: flex; align-items: center; gap: 10px;
+      padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .section-title i { color: #ccff00; width: 24px; height: 24px; }
+
+    .glass-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+      gap: 25px; 
+      margin-bottom: 50px; 
+    }
+
+    .glass-card {
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+      backdrop-filter: blur(25px) saturate(120%);
+      -webkit-backdrop-filter: blur(25px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      text-decoration: none; 
+      color: #fff; 
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 15px rgba(255,255,255,0.02);
+    }
+
+    /* Subtle glow behind the card on hover */
+    .glass-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(204,255,0,0.1) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s ease; z-index: 0;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(204, 255, 0, 0.4);
+      box-shadow: 0 15px 35px rgba(204, 255, 0, 0.15), inset 0 0 20px rgba(255,255,255,0.05);
+      transform: translateY(-8px);
+    }
+    .glass-card:hover::before { opacity: 1; }
+
+    .icon-liquid-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 70px; height: 70px; 
+      background: transparent;
+      display: flex; align-items: center; justify-content: center; 
+      margin-bottom: 20px; 
+      border-radius: 50%; 
+      transition: all 0.4s ease;
+    }
+    
+    .glass-card:hover .icon-liquid-wrapper { 
+      transform: scale(1.15);
+    }
+    
+    .icon-liquid-wrapper svg { 
+      width: 36px; height: 36px; 
+      color: #94a3b8; 
+      transition: all 0.4s ease; 
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    
+    .glass-card:hover .icon-liquid-wrapper svg { 
+      color: #ccff00; 
+      filter: drop-shadow(0 0 12px rgba(204,255,0,0.6));
+    }
+    
+    .card-title { 
+      position: relative; z-index: 1;
+      font-size: 1.1rem; font-weight: bold; color: #e2e8f0; text-align: center; 
+      transition: color 0.3s ease;
+    }
+    .glass-card:hover .card-title {
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Background -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- RIGHT SIDEBAR (Acts as vertical tabs) -->
+  <aside class="glass-sidebar">
+    <div class="sidebar-brand">
+      <img src="file:///Users/ghatee/.gemini/antigravity/brain/ed7cc9e9-5956-411d-875b-cdab6de466f7/logo_uploaded.png" alt="Silveriom Logo">
+    </div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-item active" onclick="switchTab('tab-ops', this)">
+        <i data-lucide="activity"></i> عملیات و آمار کلان
+      </button>
+      <button class="sidebar-item" onclick="switchTab('tab-inventory', this)">
+        <i data-lucide="layers"></i> موجودی رسانه‌ها
+      </button>
+      <button class="sidebar-item" onclick="switchTab('tab-pages', this)">
+        <i data-lucide="monitor"></i> صفحات سایت
+      </button>
+      <button class="sidebar-item" onclick="switchTab('tab-courts', this)">
+        <i data-lucide="map-pin"></i> کورت‌ها
+      </button>
+      <button class="sidebar-item" onclick="switchTab('tab-blog', this)">
+        <i data-lucide="settings"></i> بلاگ و تنظیمات
+      </button>
+    
+      <button class="sidebar-item" onclick="switchTab('tab-about-cms', this)">
+        <i data-lucide="file-text"></i> محتوای درباره ما
+      </button>
+      <button class="sidebar-item" onclick="switchTab('tab-team-brands', this)">
+        <i data-lucide="users"></i> تیم و برندها
+      </button>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+    
+    <!-- Header -->
+    <header class="top-nav-bar">
+      <div class="nav-right">
+        <div class="page-title" id="dynamic-title">عملیات و آمار کلان</div>
+        <div class="live-badge"><span class="pulse-dot"></span> متصل به سیستم جامع</div>
+      </div>
+      <div class="nav-left">
+        <div class="search-box"><i data-lucide="search"></i><input type="text" placeholder="جستجوی سریع..."></div>
+        <div class="user-profile-badge">
+          <div class="user-info"><span class="user-name">مدیر ارشد سیستم</span><span class="user-role">Super Admin</span></div>
+          <div class="user-avatar">S</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      
+      <!-- ========================================== -->
+      <!-- TAB 1: OPERATIONS & STATS -->
+      <!-- ========================================== -->
+      <div id="tab-ops" class="tab-content active">
+        <h2 class="section-title"><i data-lucide="activity"></i> عملیات و آمار کلان</h2>
+        <div class="glass-grid">
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="layout-dashboard"></i></div>
+            <div class="card-title">آمار کلی</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="mail-open"></i></div>
+            <div class="card-title">لیدها</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="list-todo"></i></div>
+            <div class="card-title">مدیریت تسک‌ها</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="users"></i></div>
+            <div class="card-title">کاربران</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 2: MEDIA INVENTORY -->
+      <!-- ========================================== -->
+      <div id="tab-inventory" class="tab-content">
+        <h2 class="section-title"><i data-lucide="layers"></i> موجودی رسانه‌ها</h2>
+        <div class="glass-grid">
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="table"></i></div>
+            <div class="card-title">مدیریت کل رسانه‌ها</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 3: SITE PAGES -->
+      <!-- ========================================== -->
+      <div id="tab-pages" class="tab-content">
+        <h2 class="section-title"><i data-lucide="monitor"></i> صفحات سایت</h2>
+        <div class="glass-grid">
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="home"></i></div>
+            <div class="card-title">صفحه اصلی</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="calculator"></i></div>
+            <div class="card-title">مدیاپلنر</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="award"></i></div>
+            <div class="card-title">نمونه‌کارها</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="calendar"></i></div>
+            <div class="card-title">تقویم مسابقات</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="pie-chart"></i></div>
+            <div class="card-title">هوش مخاطب</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="phone"></i></div>
+            <div class="card-title">تماس با ما</div>
+          </a>
+          <a class="glass-card" onclick="switchTab(\'tab-about-cms\', this)" style="cursor:pointer;">
+            <div class="icon-liquid-wrapper"><i data-lucide="info"></i></div>
+            <div class="card-title">درباره ما</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="briefcase"></i></div>
+            <div class="card-title">پروپوزال سازمانی</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="image"></i></div>
+            <div class="card-title">آرشیو رسانه‌ها</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="id-card"></i></div>
+            <div class="card-title">کارت ویزیت</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 4: COURTS -->
+      <!-- ========================================== -->
+      <div id="tab-courts" class="tab-content">
+        <h2 class="section-title"><i data-lucide="map-pin"></i> مدیریت کورت‌ها</h2>
+        <div class="glass-grid">
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="map"></i></div>
+            <div class="card-title">مدیریت کل باشگاه‌ها</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت تی‌تن (T10)</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت آرنا (Arena)</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت ایران‌زمین</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت نترا (Netra)</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت آسایش</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="tent"></i></div>
+            <div class="card-title">کورت کیش</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB 5: BLOG & SETTINGS -->
+      <!-- ========================================== -->
+      <div id="tab-blog" class="tab-content">
+        <h2 class="section-title"><i data-lucide="settings"></i> بلاگ و تنظیمات</h2>
+        <div class="glass-grid">
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="newspaper"></i></div>
+            <div class="card-title">مجله تخصصی</div>
+          </a>
+          <a class="glass-card">
+            <div class="icon-liquid-wrapper"><i data-lucide="sliders"></i></div>
+            <div class="card-title">تنظیمات کلی</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  
+      <!-- ========================================== -->
+      <!-- TAB: ABOUT US CMS -->
+      <!-- ========================================== -->
+      <div id="tab-about-cms" class="tab-content" style="padding: 20px; max-width: 1200px; margin: 0 auto; height:100%; overflow-y:auto; padding-bottom:100px;">
+        <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:20px;">
+            <h2 class="section-title" style="margin:0;"><i data-lucide="edit-3"></i> ویرایش محتوای: درباره ما</h2>
+            <button onclick="saveAboutUs(event)" style="background:#ccff00; color:#000; padding:12px 30px; border-radius:12px; font-weight:900; font-family:'YekanBakh', sans-serif; cursor:pointer; border:none; display:flex; align-items:center; gap:8px;">
+                <i data-lucide="save"></i> ذخیره اطلاعات صفحه
+            </button>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: هیرو (بخش اصلی)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">درباره آژانس رسانه‌ای و تبلیغاتی سیلوریوم</label>
+                    <input type="text" id="text_1" value="درباره آژانس رسانه‌ای و تبلیغاتی سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: خلق پرستیژ و دیده‌شدن برندها درکانون توجه جامعه نخ</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">خلق پرستیژ و دیده‌شدن برندها در</label>
+                    <input type="text" id="text_2" value="خلق پرستیژ و دیده‌شدن برندها در" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">کانون توجه جامعه نخبه و ورزش کشور</label>
+                    <input type="text" id="text_3" value="کانون توجه جامعه نخبه و ورزش کشور" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">سیلوریوم، نخستین آژانس پیشگام در مهندسی رسانه، اکر...</label>
+                    <textarea id="text_4" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">سیلوریوم، نخستین آژانس پیشگام در مهندسی رسانه، اکران ۳بعدی و توسعه فضاهای تبلیغاتی انحصاری در مجتمع‌های برتر تنیس و پدل ایران است.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">شاخص‌های کلیدی اثرگذاری سیلوریوم</label>
+                    <input type="text" id="text_5" value="شاخص‌های کلیدی اثرگذاری سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: داشبورد گرافیکی و تحلیل رسانه‌ایسیلوریوم</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">داشبورد گرافیکی و تحلیل رسانه‌ای</label>
+                    <input type="text" id="text_6" value="داشبورد گرافیکی و تحلیل رسانه‌ای" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">سیلوریوم</label>
+                    <input type="text" id="text_7" value="سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">نرخ دیده‌شدن یکپارچه (High-Impact Impressions)</label>
+                    <input type="text" id="text_8" value="نرخ دیده‌شدن یکپارچه (High-Impact Impressions)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">آمار ماهانه شبکه</label>
+                    <input type="text" id="text_9" value="آمار ماهانه شبکه" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۲,۵۰۰,۰۰۰+</label>
+                    <input type="text" id="text_10" value="۲,۵۰۰,۰۰۰+" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">نمایش موفق پیام برند</label>
+                    <input type="text" id="text_11" value="نمایش موفق پیام برند" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">اکران انحصاری بر روی دیواره‌های پانورامیک شیشه‌ای،...</label>
+                    <textarea id="text_12" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">اکران انحصاری بر روی دیواره‌های پانورامیک شیشه‌ای، استندهای هوشمند LED و استیج مسابقات کشوری با بیشترین نرخ بازخوانی برند (Brand Recall) در میان مخاطبان نخبه.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">رشد ماهانه دیده‌شدن کمپین‌ها</label>
+                    <input type="text" id="text_13" value="رشد ماهانه دیده‌شدن کمپین‌ها" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">↑ ٪۴۵ افزایش ماهانه</label>
+                    <input type="text" id="text_14" value="↑ ٪۴۵ افزایش ماهانه" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">شبکه جغرافیایی</label>
+                    <input type="text" id="text_15" value="شبکه جغرافیایی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۱۰+</label>
+                    <input type="text" id="text_16" value="۱۰+" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: مجموعه ورزشی انحصاری</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مجموعه ورزشی انحصاری</label>
+                    <input type="text" id="text_17" value="مجموعه ورزشی انحصاری" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">پوشش کامل کورت‌های برتر تهران (آجودانیه، آزادی، شه...</label>
+                    <textarea id="text_18" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">پوشش کامل کورت‌های برتر تهران (آجودانیه، آزادی، شهرک غرب، لواسان) و مازندران (ساری).</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">آجودانیه</label>
+                    <input type="text" id="text_19" value="آجودانیه" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">آزادی</label>
+                    <input type="text" id="text_20" value="آزادی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">شهرک غرب</label>
+                    <input type="text" id="text_21" value="شهرک غرب" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">لواسان</label>
+                    <input type="text" id="text_22" value="لواسان" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">ساری</label>
+                    <input type="text" id="text_23" value="ساری" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">پانورامیک و VIP</label>
+                    <input type="text" id="text_24" value="پانورامیک و VIP" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۵۰+</label>
+                    <input type="text" id="text_25" value="۵۰+" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: کورت تنیس و پدل فعال</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">کورت تنیس و پدل فعال</label>
+                    <input type="text" id="text_26" value="کورت تنیس و پدل فعال" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مجهز به شیشه‌های ضدبازتاب، نورپردازی استاندارد و ز...</label>
+                    <textarea id="text_27" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">مجهز به شیشه‌های ضدبازتاب، نورپردازی استاندارد و زاویه دید ۳۶۰ درجه.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">٪۷۰ کورت‌های پدل</label>
+                    <input type="text" id="text_28" value="٪۷۰ کورت‌های پدل" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">٪۳۰ کورت‌های تنیس</label>
+                    <input type="text" id="text_29" value="٪۳۰ کورت‌های تنیس" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">Brand Recall</label>
+                    <input type="text" id="text_30" value="Brand Recall" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">٪۹۸</label>
+                    <input type="text" id="text_31" value="٪۹۸" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: نرخ یادآوری و ماندگاری پیام</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">نرخ یادآوری و ماندگاری پیام</label>
+                    <input type="text" id="text_32" value="نرخ یادآوری و ماندگاری پیام" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تضمین ماندگاری ذهنیت برند پس از پایان اکران کمپین‌...</label>
+                    <input type="text" id="text_33" value="تضمین ماندگاری ذهنیت برند پس از پایان اکران کمپین‌ها." style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">استراتژی ۳۶۰°</label>
+                    <input type="text" id="text_34" value="استراتژی ۳۶۰°" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۳۶۰°</label>
+                    <input type="text" id="text_35" value="۳۶۰°" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: مشاوره و طراحی تخصصی کمپین</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مشاوره و طراحی تخصصی کمپین</label>
+                    <input type="text" id="text_36" value="مشاوره و طراحی تخصصی کمپین" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تدوین استراتژی رسانه‌ای، شبیه‌سازی سه بعدی سازه‌ها...</label>
+                    <textarea id="text_37" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">تدوین استراتژی رسانه‌ای، شبیه‌سازی سه بعدی سازه‌ها و اکران هدفمند بر اساس پرسونای مخاطب.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تحلیل نیازمندی ➔ دیزاین ۳بعدی ➔ اکران</label>
+                    <input type="text" id="text_38" value="تحلیل نیازمندی ➔ دیزاین ۳بعدی ➔ اکران" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مأموریت و سوابق سیلوریوم</label>
+                    <input type="text" id="text_39" value="مأموریت و سوابق سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: روایتی از مهندسی رسانه و پرستیژ تبلیغاتی</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">روایتی از مهندسی رسانه و پرستیژ تبلیغاتی</label>
+                    <input type="text" id="text_40" value="روایتی از مهندسی رسانه و پرستیژ تبلیغاتی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">سیلوریوم با تمرکز بر فضاهای ورزشی تراز اول، بستر ب...</label>
+                    <textarea id="text_41" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">سیلوریوم با تمرکز بر فضاهای ورزشی تراز اول، بستر بی‌بدیلی برای نمایش برندها در فضایی فارغ از شلوغی‌های روزمره شهری خلق کرده است. کورت‌های پدل و تنیس به دلیل حضور مستمر مخاطبان پردرآمد، کارآفرینان و مدیران ارشد، نقطه‌ی طلایی برای اکران پیام برندهای فاخر به شمار می‌روند.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">از طراحی سازه‌های ۳بعدی تا نصب استندهای هوشمند دیج...</label>
+                    <textarea id="text_42" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">از طراحی سازه‌های ۳بعدی تا نصب استندهای هوشمند دیجیتال و برندینگ اختصاصی تورنمنت‌های کشوری، سیلوریوم تمام زنجیره ارزش رسانه را با بالاترین کیفیت اجرا ارائه می‌دهد.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر گستره جغرافیایی سیلو</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_43" value="../assets/mission_map.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_43_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_43')" />
+                        <button type="button" onclick="document.getElementById('img_43_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_43_preview" src="../assets/mission_map.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">شبکه رسانه‌ای کشور</label>
+                    <input type="text" id="text_44" value="شبکه رسانه‌ای کشور" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: مجموعه‌هایانحصاری سیلوریوم</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مجموعه‌های</label>
+                    <input type="text" id="text_45" value="مجموعه‌های" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">انحصاری سیلوریوم</label>
+                    <input type="text" id="text_46" value="انحصاری سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">معرفی برترین کورت‌های پدل و تنیس تحت پوشش سیلوریوم...</label>
+                    <textarea id="text_47" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">معرفی برترین کورت‌های پدل و تنیس تحت پوشش سیلوریوم همراه با نقشه و ظرفیت‌های دقیق</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر مجموعه T10 آجودانیه</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_48" value="https://silveriom.ir/assets/padel_map_ajudaniyeh.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_48_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_48')" />
+                        <button type="button" onclick="document.getElementById('img_48_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_48_preview" src="https://silveriom.ir/assets/padel_map_ajudaniyeh.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۷ پدل + ۳ تنیس</label>
+                    <input type="text" id="text_49" value="۷ پدل + ۳ تنیس" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: T10 (آجودانیه)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">T10 (آجودانیه)</label>
+                    <input type="text" id="text_50" value="T10 (آجودانیه)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">لوکس‌ترین کلاب پدل شمال تهران با کورت‌های پانورامی...</label>
+                    <textarea id="text_51" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">لوکس‌ترین کلاب پدل شمال تهران با کورت‌های پانورامیک شیشه‌ای، نورپردازی تراز اول و کانون حضور مدیران ارشد و نخبگان.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: استیکر دیواره، استند دیجیتال</label>
+                    <input type="text" id="text_52" value="فرصت اکران: استیکر دیواره، استند دیجیتال" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تهران (آجودانیه)</label>
+                    <input type="text" id="text_53" value="تهران (آجودانیه)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر Arena آزادی</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_54" value="https://silveriom.ir/assets/padel_map_azadi.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_54_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_54')" />
+                        <button type="button" onclick="document.getElementById('img_54_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_54_preview" src="https://silveriom.ir/assets/padel_map_azadi.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۸ پدل مسابقاتی</label>
+                    <input type="text" id="text_55" value="۸ پدل مسابقاتی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: آرنا (آزادی)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">آرنا (آزادی)</label>
+                    <input type="text" id="text_56" value="آرنا (آزادی)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">بزرگ‌ترین کلاب مسابقاتی کشور، مرکز میزبانی لیگ‌های...</label>
+                    <textarea id="text_57" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">بزرگ‌ترین کلاب مسابقاتی کشور، مرکز میزبانی لیگ‌های کشوری پدل و بیشترین میزان دیده شدن در رسانه‌های تصویری.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: برندینگ استیج، اسپانسرینگ</label>
+                    <input type="text" id="text_58" value="فرصت اکران: برندینگ استیج، اسپانسرینگ" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تهران (آزادی)</label>
+                    <input type="text" id="text_59" value="تهران (آزادی)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر Iran Zamin شهرک غرب</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_60" value="https://silveriom.ir/assets/padel_map_shahrak_gharb.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_60_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_60')" />
+                        <button type="button" onclick="document.getElementById('img_60_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_60_preview" src="https://silveriom.ir/assets/padel_map_shahrak_gharb.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۶ پدل پانورامیک</label>
+                    <input type="text" id="text_61" value="۶ پدل پانورامیک" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: ایران زمین (شهرک غرب)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">ایران زمین (شهرک غرب)</label>
+                    <input type="text" id="text_62" value="ایران زمین (شهرک غرب)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مجموعه مدرن غرب تهران با استندهای دیجیتال هوشمند، ...</label>
+                    <textarea id="text_63" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">مجموعه مدرن غرب تهران با استندهای دیجیتال هوشمند، سمپلینگ اختصاصی و مخاطبان پردرآمد منطقه‌ای.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: نمایشگر LED، سمپلینگ VIP</label>
+                    <input type="text" id="text_64" value="فرصت اکران: نمایشگر LED، سمپلینگ VIP" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تهران (شهرک غرب)</label>
+                    <input type="text" id="text_65" value="تهران (شهرک غرب)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر Netra لواسان</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_66" value="https://silveriom.ir/assets/padel_map_lavasan.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_66_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_66')" />
+                        <button type="button" onclick="document.getElementById('img_66_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_66_preview" src="https://silveriom.ir/assets/padel_map_lavasan.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۷ پدل VIP</label>
+                    <input type="text" id="text_67" value="۷ پدل VIP" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: نترا (لواسان)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">نترا (لواسان)</label>
+                    <input type="text" id="text_68" value="نترا (لواسان)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فضای اختصاصی VIP لواسان، کانون دیدارهای مدیران ارش...</label>
+                    <textarea id="text_69" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">فضای اختصاصی VIP لواسان، کانون دیدارهای مدیران ارشد، کارآفرینان و شخصیت‌های برجسته کشور.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: بنر اختصاصی، VIP لانژ</label>
+                    <input type="text" id="text_70" value="فرصت اکران: بنر اختصاصی، VIP لانژ" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">لواسان</label>
+                    <input type="text" id="text_71" value="لواسان" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر Asayesh مازندران (سا</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_72" value="https://silveriom.ir/assets/padel_map_sari.jpg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_72_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_72')" />
+                        <button type="button" onclick="document.getElementById('img_72_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_72_preview" src="https://silveriom.ir/assets/padel_map_sari.jpg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۴ پدل + ۱۲ تنیس</label>
+                    <input type="text" id="text_73" value="۴ پدل + ۱۲ تنیس" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: آسایش (ساری)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">آسایش (ساری)</label>
+                    <input type="text" id="text_74" value="آسایش (ساری)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">بزرگ‌ترین کلاب تنیس و پدل شمال کشور (ساری)، مرکز ا...</label>
+                    <textarea id="text_75" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">بزرگ‌ترین کلاب تنیس و پدل شمال کشور (ساری)، مرکز اکران کمپین‌های کشوری و گردشگری در فصول مختلف سال.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: تبلیغات کشوری، بیلبورد ورزشی</label>
+                    <input type="text" id="text_76" value="فرصت اکران: تبلیغات کشوری، بیلبورد ورزشی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">مازندران (ساری)</label>
+                    <input type="text" id="text_77" value="مازندران (ساری)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تصویر المپیک (کیش)</label>
+
+                    <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                        <input type="text" id="img_78" value="https://silveriom.ir/assets/uploads/media_1788787153_296.jpeg" placeholder="لینک تصویر..." style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                        <input type="file" id="img_78_file" accept="image/*" style="display:none;" onchange="uploadCmsImage(this, 'img_78')" />
+                        <button type="button" onclick="document.getElementById('img_78_file').click()" style="background:#ccff00; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:800; cursor:pointer; font-family:'YekanBakh', sans-serif; white-space:nowrap;">📷 آپلود</button>
+                    </div>
+                    <img id="img_78_preview" src="https://silveriom.ir/assets/uploads/media_1788787153_296.jpeg" style="max-width:150px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); display:block;" onerror="this.style.opacity=0.3" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">۱۴ کورت مسابقاتی</label>
+                    <input type="text" id="text_79" value="۱۴ کورت مسابقاتی" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: المپیک (کیش)</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">المپیک (کیش)</label>
+                    <input type="text" id="text_80" value="المپیک (کیش)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تنها مرکز تخصصی برگزاری تورنمنت‌های ملی و بین‌المل...</label>
+                    <textarea id="text_81" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">تنها مرکز تخصصی برگزاری تورنمنت‌های ملی و بین‌المللی در جزیره کیش. پاتوقی ایده‌آل برای توریست‌ها و علاقه‌مندان به ورزش‌های راکتی با ضریب دید بالا در تمام فصول.</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">فرصت اکران: بیلبورد، تور مسابقه، دیواره</label>
+                    <input type="text" id="text_82" value="فرصت اکران: بیلبورد، تور مسابقه، دیواره" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">هرمزگان (جزیره کیش)</label>
+                    <input type="text" id="text_83" value="هرمزگان (جزیره کیش)" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تیم ارشد سیلوریوم</label>
+                    <input type="text" id="text_84" value="تیم ارشد سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: معرفی اعضایتیم و دپارتمان‌ها</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">معرفی اعضای</label>
+                    <input type="text" id="text_85" value="معرفی اعضای" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">تیم و دپارتمان‌ها</label>
+                    <input type="text" id="text_86" value="تیم و دپارتمان‌ها" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">استراتژیست‌ها، مدیران ارشد اکران و طراحان سازه‌های...</label>
+                    <textarea id="text_87" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;">استراتژیست‌ها، مدیران ارشد اکران و طراحان سازه‌های هوشمند سیلوریوم</textarea>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">برندهای معتبر</label>
+                    <input type="text" id="text_88" value="برندهای معتبر" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:20px; backdrop-filter: blur(10px);">
+            <h3 style="margin-bottom:15px; color:#ccff00; font-size:18px;">بخش: همکاری بابرندهای پیشرو</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">همکاری با</label>
+                    <input type="text" id="text_89" value="همکاری با" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">برندهای پیشرو</label>
+                    <input type="text" id="text_90" value="برندهای پیشرو" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size:14px; color:#aaa;">گوشه‌ای از پروژه‌ها و اکران‌های تبلیغاتی سیلوریوم</label>
+                    <input type="text" id="text_91" value="گوشه‌ای از پروژه‌ها و اکران‌های تبلیغاتی سیلوریوم" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:12px; border-radius:8px; font-family:'YekanBakh', sans-serif;" />
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB: TEAM & BRANDS -->
+      <!-- ========================================== -->
+      <div id="tab-team-brands" class="tab-content" style="padding: 20px; max-width: 1200px; margin: 0 auto; height:100%; overflow-y:auto; padding-bottom:100px;">
+        <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:20px;">
+            <h2 class="section-title" style="margin:0;"><i data-lucide="users"></i> مدیریت اعضای تیم و شرکای تجاری (برندها)</h2>
+            <button onclick="saveTeamAndBrands(event)" style="background:#ccff00; color:#000; padding:12px 30px; border-radius:12px; font-weight:900; font-family:'YekanBakh', sans-serif; cursor:pointer; border:none; display:flex; align-items:center; gap:8px;">
+                <i data-lucide="save"></i> ذخیره تیم و برندها
+            </button>
+        </div>
+        
+        <!-- TEAM SECTION -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; margin-bottom:30px; backdrop-filter: blur(10px);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3 style="color:#ccff00; font-size:18px; margin:0;">اعضای تیم سیلوریوم</h3>
+                <button onclick="addTeamMember()" style="background:rgba(204,255,0,0.15); border:1px solid rgba(204,255,0,0.3); color:#ccff00; padding:8px 15px; border-radius:8px; font-family:'YekanBakh',sans-serif; cursor:pointer; display:flex; align-items:center; gap:5px;">
+                    <i data-lucide="plus" style="width:16px; height:16px;"></i> افزودن عضو جدید
+                </button>
+            </div>
+            <div id="team-members-list" style="display:flex; flex-direction:column; gap:15px;">
+                <!-- Team cards rendered via JS -->
+            </div>
+        </div>
+
+        <!-- BRANDS SECTION -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; backdrop-filter: blur(10px);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3 style="color:#ccff00; font-size:18px; margin:0;">شرکای تجاری و برندها</h3>
+                <button onclick="addBrand()" style="background:rgba(204,255,0,0.15); border:1px solid rgba(204,255,0,0.3); color:#ccff00; padding:8px 15px; border-radius:8px; font-family:'YekanBakh',sans-serif; cursor:pointer; display:flex; align-items:center; gap:5px;">
+                    <i data-lucide="plus" style="width:16px; height:16px;"></i> افزودن برند جدید
+                </button>
+            </div>
+            <div id="brands-list" style="display:flex; flex-direction:column; gap:15px;">
+                <!-- Brand cards rendered via JS -->
+            </div>
+        </div>
+      </div>
+
+  </main>
+
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+
+    function resolveImg(path) {
+      if (!path) return '';
+      if (path.startsWith('http')) return path;
+      if (path.startsWith('/')) return 'https://silveriom.ir' + path;
+      if (path.startsWith('assets/')) return 'https://panel.silveriom.ir/' + path;
+      return path;
+    }
+
+    async function uploadCmsImage(input, targetId) {
+        if(!input.files || input.files.length === 0) return;
+        const file = input.files[0];
+        const btn = input.nextElementSibling;
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="loader" class="animate-spin" style="width:18px;height:18px;"></i> در حال آپلود...';
+        if(window.lucide) lucide.createIcons();
+        
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        try {
+            const res = await fetch('upload_media.php', { method: 'POST', body: formData });
+            const result = await res.json();
+            if(result.success) {
+                document.getElementById(targetId).value = result.url;
+                document.getElementById(targetId + '_preview').src = result.url;
+                btn.innerHTML = '<i data-lucide="check" style="width:18px;height:18px;color:green;"></i> آپلود شد';
+            } else {
+                alert(result.error || 'خطا در آپلود');
+                btn.innerHTML = oldText;
+            }
+        } catch(e) {
+            alert('خطا در ارتباط با سرور');
+            btn.innerHTML = oldText;
+        }
+        if(window.lucide) lucide.createIcons();
+    }
+
+    function switchTab(tabId, clickedBtn) {
+      document.querySelectorAll('.sidebar-item').forEach(btn => btn.classList.remove('active'));
+      if(clickedBtn) clickedBtn.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      const targetTab = document.getElementById(tabId);
+      if(targetTab) targetTab.classList.add('active');
+      if(clickedBtn) document.getElementById('dynamic-title').innerText = clickedBtn.innerText.trim();
+      else if(tabId === 'tab-about-cms') document.getElementById('dynamic-title').innerText = 'درباره ما';
+      
+      if(tabId === 'tab-about-cms') loadAboutUs();
+      if(tabId === 'tab-team-brands') loadTeamAndBrands();
+    }
+
+    function openAboutCMS() {
+      switchTab('tab-about-cms');
+    }
+
+    // =======================================
+    // ABOUT US CMS LOGIC
+    // =======================================
+    function loadAboutUs() {
+        fetch('api_about.php?action=load')
+        .then(res => res.json())
+        .then(data => {
+            if(data.aboutUs) {
+                if(document.getElementById('text_1') && data.aboutUs['text_1']) {
+                    document.getElementById('text_1').value = data.aboutUs['text_1'];
+                }
+                if(document.getElementById('text_2') && data.aboutUs['text_2']) {
+                    document.getElementById('text_2').value = data.aboutUs['text_2'];
+                }
+                if(document.getElementById('text_3') && data.aboutUs['text_3']) {
+                    document.getElementById('text_3').value = data.aboutUs['text_3'];
+                }
+                if(document.getElementById('text_4') && data.aboutUs['text_4']) {
+                    document.getElementById('text_4').value = data.aboutUs['text_4'];
+                }
+                if(document.getElementById('text_5') && data.aboutUs['text_5']) {
+                    document.getElementById('text_5').value = data.aboutUs['text_5'];
+                }
+                if(document.getElementById('text_6') && data.aboutUs['text_6']) {
+                    document.getElementById('text_6').value = data.aboutUs['text_6'];
+                }
+                if(document.getElementById('text_7') && data.aboutUs['text_7']) {
+                    document.getElementById('text_7').value = data.aboutUs['text_7'];
+                }
+                if(document.getElementById('text_8') && data.aboutUs['text_8']) {
+                    document.getElementById('text_8').value = data.aboutUs['text_8'];
+                }
+                if(document.getElementById('text_9') && data.aboutUs['text_9']) {
+                    document.getElementById('text_9').value = data.aboutUs['text_9'];
+                }
+                if(document.getElementById('text_10') && data.aboutUs['text_10']) {
+                    document.getElementById('text_10').value = data.aboutUs['text_10'];
+                }
+                if(document.getElementById('text_11') && data.aboutUs['text_11']) {
+                    document.getElementById('text_11').value = data.aboutUs['text_11'];
+                }
+                if(document.getElementById('text_12') && data.aboutUs['text_12']) {
+                    document.getElementById('text_12').value = data.aboutUs['text_12'];
+                }
+                if(document.getElementById('text_13') && data.aboutUs['text_13']) {
+                    document.getElementById('text_13').value = data.aboutUs['text_13'];
+                }
+                if(document.getElementById('text_14') && data.aboutUs['text_14']) {
+                    document.getElementById('text_14').value = data.aboutUs['text_14'];
+                }
+                if(document.getElementById('text_15') && data.aboutUs['text_15']) {
+                    document.getElementById('text_15').value = data.aboutUs['text_15'];
+                }
+                if(document.getElementById('text_16') && data.aboutUs['text_16']) {
+                    document.getElementById('text_16').value = data.aboutUs['text_16'];
+                }
+                if(document.getElementById('text_17') && data.aboutUs['text_17']) {
+                    document.getElementById('text_17').value = data.aboutUs['text_17'];
+                }
+                if(document.getElementById('text_18') && data.aboutUs['text_18']) {
+                    document.getElementById('text_18').value = data.aboutUs['text_18'];
+                }
+                if(document.getElementById('text_19') && data.aboutUs['text_19']) {
+                    document.getElementById('text_19').value = data.aboutUs['text_19'];
+                }
+                if(document.getElementById('text_20') && data.aboutUs['text_20']) {
+                    document.getElementById('text_20').value = data.aboutUs['text_20'];
+                }
+                if(document.getElementById('text_21') && data.aboutUs['text_21']) {
+                    document.getElementById('text_21').value = data.aboutUs['text_21'];
+                }
+                if(document.getElementById('text_22') && data.aboutUs['text_22']) {
+                    document.getElementById('text_22').value = data.aboutUs['text_22'];
+                }
+                if(document.getElementById('text_23') && data.aboutUs['text_23']) {
+                    document.getElementById('text_23').value = data.aboutUs['text_23'];
+                }
+                if(document.getElementById('text_24') && data.aboutUs['text_24']) {
+                    document.getElementById('text_24').value = data.aboutUs['text_24'];
+                }
+                if(document.getElementById('text_25') && data.aboutUs['text_25']) {
+                    document.getElementById('text_25').value = data.aboutUs['text_25'];
+                }
+                if(document.getElementById('text_26') && data.aboutUs['text_26']) {
+                    document.getElementById('text_26').value = data.aboutUs['text_26'];
+                }
+                if(document.getElementById('text_27') && data.aboutUs['text_27']) {
+                    document.getElementById('text_27').value = data.aboutUs['text_27'];
+                }
+                if(document.getElementById('text_28') && data.aboutUs['text_28']) {
+                    document.getElementById('text_28').value = data.aboutUs['text_28'];
+                }
+                if(document.getElementById('text_29') && data.aboutUs['text_29']) {
+                    document.getElementById('text_29').value = data.aboutUs['text_29'];
+                }
+                if(document.getElementById('text_30') && data.aboutUs['text_30']) {
+                    document.getElementById('text_30').value = data.aboutUs['text_30'];
+                }
+                if(document.getElementById('text_31') && data.aboutUs['text_31']) {
+                    document.getElementById('text_31').value = data.aboutUs['text_31'];
+                }
+                if(document.getElementById('text_32') && data.aboutUs['text_32']) {
+                    document.getElementById('text_32').value = data.aboutUs['text_32'];
+                }
+                if(document.getElementById('text_33') && data.aboutUs['text_33']) {
+                    document.getElementById('text_33').value = data.aboutUs['text_33'];
+                }
+                if(document.getElementById('text_34') && data.aboutUs['text_34']) {
+                    document.getElementById('text_34').value = data.aboutUs['text_34'];
+                }
+                if(document.getElementById('text_35') && data.aboutUs['text_35']) {
+                    document.getElementById('text_35').value = data.aboutUs['text_35'];
+                }
+                if(document.getElementById('text_36') && data.aboutUs['text_36']) {
+                    document.getElementById('text_36').value = data.aboutUs['text_36'];
+                }
+                if(document.getElementById('text_37') && data.aboutUs['text_37']) {
+                    document.getElementById('text_37').value = data.aboutUs['text_37'];
+                }
+                if(document.getElementById('text_38') && data.aboutUs['text_38']) {
+                    document.getElementById('text_38').value = data.aboutUs['text_38'];
+                }
+                if(document.getElementById('text_39') && data.aboutUs['text_39']) {
+                    document.getElementById('text_39').value = data.aboutUs['text_39'];
+                }
+                if(document.getElementById('text_40') && data.aboutUs['text_40']) {
+                    document.getElementById('text_40').value = data.aboutUs['text_40'];
+                }
+                if(document.getElementById('text_41') && data.aboutUs['text_41']) {
+                    document.getElementById('text_41').value = data.aboutUs['text_41'];
+                }
+                if(document.getElementById('text_42') && data.aboutUs['text_42']) {
+                    document.getElementById('text_42').value = data.aboutUs['text_42'];
+                }
+                if(document.getElementById('img_43') && data.aboutUs['img_43']) {
+                    document.getElementById('img_43').value = data.aboutUs['img_43'];
+                    var pr=document.getElementById('img_43_preview'); if(pr) pr.src=data.aboutUs['img_43'];
+                }
+                if(document.getElementById('text_44') && data.aboutUs['text_44']) {
+                    document.getElementById('text_44').value = data.aboutUs['text_44'];
+                }
+                if(document.getElementById('text_45') && data.aboutUs['text_45']) {
+                    document.getElementById('text_45').value = data.aboutUs['text_45'];
+                }
+                if(document.getElementById('text_46') && data.aboutUs['text_46']) {
+                    document.getElementById('text_46').value = data.aboutUs['text_46'];
+                }
+                if(document.getElementById('text_47') && data.aboutUs['text_47']) {
+                    document.getElementById('text_47').value = data.aboutUs['text_47'];
+                }
+                if(document.getElementById('img_48') && data.aboutUs['img_48']) {
+                    document.getElementById('img_48').value = data.aboutUs['img_48'];
+                    var pr=document.getElementById('img_48_preview'); if(pr) pr.src=data.aboutUs['img_48'];
+                }
+                if(document.getElementById('text_49') && data.aboutUs['text_49']) {
+                    document.getElementById('text_49').value = data.aboutUs['text_49'];
+                }
+                if(document.getElementById('text_50') && data.aboutUs['text_50']) {
+                    document.getElementById('text_50').value = data.aboutUs['text_50'];
+                }
+                if(document.getElementById('text_51') && data.aboutUs['text_51']) {
+                    document.getElementById('text_51').value = data.aboutUs['text_51'];
+                }
+                if(document.getElementById('text_52') && data.aboutUs['text_52']) {
+                    document.getElementById('text_52').value = data.aboutUs['text_52'];
+                }
+                if(document.getElementById('text_53') && data.aboutUs['text_53']) {
+                    document.getElementById('text_53').value = data.aboutUs['text_53'];
+                }
+                if(document.getElementById('img_54') && data.aboutUs['img_54']) {
+                    document.getElementById('img_54').value = data.aboutUs['img_54'];
+                    var pr=document.getElementById('img_54_preview'); if(pr) pr.src=data.aboutUs['img_54'];
+                }
+                if(document.getElementById('text_55') && data.aboutUs['text_55']) {
+                    document.getElementById('text_55').value = data.aboutUs['text_55'];
+                }
+                if(document.getElementById('text_56') && data.aboutUs['text_56']) {
+                    document.getElementById('text_56').value = data.aboutUs['text_56'];
+                }
+                if(document.getElementById('text_57') && data.aboutUs['text_57']) {
+                    document.getElementById('text_57').value = data.aboutUs['text_57'];
+                }
+                if(document.getElementById('text_58') && data.aboutUs['text_58']) {
+                    document.getElementById('text_58').value = data.aboutUs['text_58'];
+                }
+                if(document.getElementById('text_59') && data.aboutUs['text_59']) {
+                    document.getElementById('text_59').value = data.aboutUs['text_59'];
+                }
+                if(document.getElementById('img_60') && data.aboutUs['img_60']) {
+                    document.getElementById('img_60').value = data.aboutUs['img_60'];
+                    var pr=document.getElementById('img_60_preview'); if(pr) pr.src=data.aboutUs['img_60'];
+                }
+                if(document.getElementById('text_61') && data.aboutUs['text_61']) {
+                    document.getElementById('text_61').value = data.aboutUs['text_61'];
+                }
+                if(document.getElementById('text_62') && data.aboutUs['text_62']) {
+                    document.getElementById('text_62').value = data.aboutUs['text_62'];
+                }
+                if(document.getElementById('text_63') && data.aboutUs['text_63']) {
+                    document.getElementById('text_63').value = data.aboutUs['text_63'];
+                }
+                if(document.getElementById('text_64') && data.aboutUs['text_64']) {
+                    document.getElementById('text_64').value = data.aboutUs['text_64'];
+                }
+                if(document.getElementById('text_65') && data.aboutUs['text_65']) {
+                    document.getElementById('text_65').value = data.aboutUs['text_65'];
+                }
+                if(document.getElementById('img_66') && data.aboutUs['img_66']) {
+                    document.getElementById('img_66').value = data.aboutUs['img_66'];
+                    var pr=document.getElementById('img_66_preview'); if(pr) pr.src=data.aboutUs['img_66'];
+                }
+                if(document.getElementById('text_67') && data.aboutUs['text_67']) {
+                    document.getElementById('text_67').value = data.aboutUs['text_67'];
+                }
+                if(document.getElementById('text_68') && data.aboutUs['text_68']) {
+                    document.getElementById('text_68').value = data.aboutUs['text_68'];
+                }
+                if(document.getElementById('text_69') && data.aboutUs['text_69']) {
+                    document.getElementById('text_69').value = data.aboutUs['text_69'];
+                }
+                if(document.getElementById('text_70') && data.aboutUs['text_70']) {
+                    document.getElementById('text_70').value = data.aboutUs['text_70'];
+                }
+                if(document.getElementById('text_71') && data.aboutUs['text_71']) {
+                    document.getElementById('text_71').value = data.aboutUs['text_71'];
+                }
+                if(document.getElementById('img_72') && data.aboutUs['img_72']) {
+                    document.getElementById('img_72').value = data.aboutUs['img_72'];
+                    var pr=document.getElementById('img_72_preview'); if(pr) pr.src=data.aboutUs['img_72'];
+                }
+                if(document.getElementById('text_73') && data.aboutUs['text_73']) {
+                    document.getElementById('text_73').value = data.aboutUs['text_73'];
+                }
+                if(document.getElementById('text_74') && data.aboutUs['text_74']) {
+                    document.getElementById('text_74').value = data.aboutUs['text_74'];
+                }
+                if(document.getElementById('text_75') && data.aboutUs['text_75']) {
+                    document.getElementById('text_75').value = data.aboutUs['text_75'];
+                }
+                if(document.getElementById('text_76') && data.aboutUs['text_76']) {
+                    document.getElementById('text_76').value = data.aboutUs['text_76'];
+                }
+                if(document.getElementById('text_77') && data.aboutUs['text_77']) {
+                    document.getElementById('text_77').value = data.aboutUs['text_77'];
+                }
+                if(document.getElementById('img_78') && data.aboutUs['img_78']) {
+                    document.getElementById('img_78').value = data.aboutUs['img_78'];
+                    var pr=document.getElementById('img_78_preview'); if(pr) pr.src=data.aboutUs['img_78'];
+                }
+                if(document.getElementById('text_79') && data.aboutUs['text_79']) {
+                    document.getElementById('text_79').value = data.aboutUs['text_79'];
+                }
+                if(document.getElementById('text_80') && data.aboutUs['text_80']) {
+                    document.getElementById('text_80').value = data.aboutUs['text_80'];
+                }
+                if(document.getElementById('text_81') && data.aboutUs['text_81']) {
+                    document.getElementById('text_81').value = data.aboutUs['text_81'];
+                }
+                if(document.getElementById('text_82') && data.aboutUs['text_82']) {
+                    document.getElementById('text_82').value = data.aboutUs['text_82'];
+                }
+                if(document.getElementById('text_83') && data.aboutUs['text_83']) {
+                    document.getElementById('text_83').value = data.aboutUs['text_83'];
+                }
+                if(document.getElementById('text_84') && data.aboutUs['text_84']) {
+                    document.getElementById('text_84').value = data.aboutUs['text_84'];
+                }
+                if(document.getElementById('text_85') && data.aboutUs['text_85']) {
+                    document.getElementById('text_85').value = data.aboutUs['text_85'];
+                }
+                if(document.getElementById('text_86') && data.aboutUs['text_86']) {
+                    document.getElementById('text_86').value = data.aboutUs['text_86'];
+                }
+                if(document.getElementById('text_87') && data.aboutUs['text_87']) {
+                    document.getElementById('text_87').value = data.aboutUs['text_87'];
+                }
+                if(document.getElementById('text_88') && data.aboutUs['text_88']) {
+                    document.getElementById('text_88').value = data.aboutUs['text_88'];
+                }
+                if(document.getElementById('text_89') && data.aboutUs['text_89']) {
+                    document.getElementById('text_89').value = data.aboutUs['text_89'];
+                }
+                if(document.getElementById('text_90') && data.aboutUs['text_90']) {
+                    document.getElementById('text_90').value = data.aboutUs['text_90'];
+                }
+                if(document.getElementById('text_91') && data.aboutUs['text_91']) {
+                    document.getElementById('text_91').value = data.aboutUs['text_91'];
+                }
+
+            }
+        })
+        .catch(err => { console.log(err); })
+    }
+
+    async function saveAboutUs(event) {
+        const btn = event.currentTarget;
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> در حال ذخیره...';
+        lucide.createIcons();
+
+        const data = {
+            text_1: document.getElementById('text_1') ? document.getElementById('text_1').value : '',
+            text_2: document.getElementById('text_2') ? document.getElementById('text_2').value : '',
+            text_3: document.getElementById('text_3') ? document.getElementById('text_3').value : '',
+            text_4: document.getElementById('text_4') ? document.getElementById('text_4').value : '',
+            text_5: document.getElementById('text_5') ? document.getElementById('text_5').value : '',
+            text_6: document.getElementById('text_6') ? document.getElementById('text_6').value : '',
+            text_7: document.getElementById('text_7') ? document.getElementById('text_7').value : '',
+            text_8: document.getElementById('text_8') ? document.getElementById('text_8').value : '',
+            text_9: document.getElementById('text_9') ? document.getElementById('text_9').value : '',
+            text_10: document.getElementById('text_10') ? document.getElementById('text_10').value : '',
+            text_11: document.getElementById('text_11') ? document.getElementById('text_11').value : '',
+            text_12: document.getElementById('text_12') ? document.getElementById('text_12').value : '',
+            text_13: document.getElementById('text_13') ? document.getElementById('text_13').value : '',
+            text_14: document.getElementById('text_14') ? document.getElementById('text_14').value : '',
+            text_15: document.getElementById('text_15') ? document.getElementById('text_15').value : '',
+            text_16: document.getElementById('text_16') ? document.getElementById('text_16').value : '',
+            text_17: document.getElementById('text_17') ? document.getElementById('text_17').value : '',
+            text_18: document.getElementById('text_18') ? document.getElementById('text_18').value : '',
+            text_19: document.getElementById('text_19') ? document.getElementById('text_19').value : '',
+            text_20: document.getElementById('text_20') ? document.getElementById('text_20').value : '',
+            text_21: document.getElementById('text_21') ? document.getElementById('text_21').value : '',
+            text_22: document.getElementById('text_22') ? document.getElementById('text_22').value : '',
+            text_23: document.getElementById('text_23') ? document.getElementById('text_23').value : '',
+            text_24: document.getElementById('text_24') ? document.getElementById('text_24').value : '',
+            text_25: document.getElementById('text_25') ? document.getElementById('text_25').value : '',
+            text_26: document.getElementById('text_26') ? document.getElementById('text_26').value : '',
+            text_27: document.getElementById('text_27') ? document.getElementById('text_27').value : '',
+            text_28: document.getElementById('text_28') ? document.getElementById('text_28').value : '',
+            text_29: document.getElementById('text_29') ? document.getElementById('text_29').value : '',
+            text_30: document.getElementById('text_30') ? document.getElementById('text_30').value : '',
+            text_31: document.getElementById('text_31') ? document.getElementById('text_31').value : '',
+            text_32: document.getElementById('text_32') ? document.getElementById('text_32').value : '',
+            text_33: document.getElementById('text_33') ? document.getElementById('text_33').value : '',
+            text_34: document.getElementById('text_34') ? document.getElementById('text_34').value : '',
+            text_35: document.getElementById('text_35') ? document.getElementById('text_35').value : '',
+            text_36: document.getElementById('text_36') ? document.getElementById('text_36').value : '',
+            text_37: document.getElementById('text_37') ? document.getElementById('text_37').value : '',
+            text_38: document.getElementById('text_38') ? document.getElementById('text_38').value : '',
+            text_39: document.getElementById('text_39') ? document.getElementById('text_39').value : '',
+            text_40: document.getElementById('text_40') ? document.getElementById('text_40').value : '',
+            text_41: document.getElementById('text_41') ? document.getElementById('text_41').value : '',
+            text_42: document.getElementById('text_42') ? document.getElementById('text_42').value : '',
+            img_43: document.getElementById('img_43') ? document.getElementById('img_43').value : '',
+            text_44: document.getElementById('text_44') ? document.getElementById('text_44').value : '',
+            text_45: document.getElementById('text_45') ? document.getElementById('text_45').value : '',
+            text_46: document.getElementById('text_46') ? document.getElementById('text_46').value : '',
+            text_47: document.getElementById('text_47') ? document.getElementById('text_47').value : '',
+            img_48: document.getElementById('img_48') ? document.getElementById('img_48').value : '',
+            text_49: document.getElementById('text_49') ? document.getElementById('text_49').value : '',
+            text_50: document.getElementById('text_50') ? document.getElementById('text_50').value : '',
+            text_51: document.getElementById('text_51') ? document.getElementById('text_51').value : '',
+            text_52: document.getElementById('text_52') ? document.getElementById('text_52').value : '',
+            text_53: document.getElementById('text_53') ? document.getElementById('text_53').value : '',
+            img_54: document.getElementById('img_54') ? document.getElementById('img_54').value : '',
+            text_55: document.getElementById('text_55') ? document.getElementById('text_55').value : '',
+            text_56: document.getElementById('text_56') ? document.getElementById('text_56').value : '',
+            text_57: document.getElementById('text_57') ? document.getElementById('text_57').value : '',
+            text_58: document.getElementById('text_58') ? document.getElementById('text_58').value : '',
+            text_59: document.getElementById('text_59') ? document.getElementById('text_59').value : '',
+            img_60: document.getElementById('img_60') ? document.getElementById('img_60').value : '',
+            text_61: document.getElementById('text_61') ? document.getElementById('text_61').value : '',
+            text_62: document.getElementById('text_62') ? document.getElementById('text_62').value : '',
+            text_63: document.getElementById('text_63') ? document.getElementById('text_63').value : '',
+            text_64: document.getElementById('text_64') ? document.getElementById('text_64').value : '',
+            text_65: document.getElementById('text_65') ? document.getElementById('text_65').value : '',
+            img_66: document.getElementById('img_66') ? document.getElementById('img_66').value : '',
+            text_67: document.getElementById('text_67') ? document.getElementById('text_67').value : '',
+            text_68: document.getElementById('text_68') ? document.getElementById('text_68').value : '',
+            text_69: document.getElementById('text_69') ? document.getElementById('text_69').value : '',
+            text_70: document.getElementById('text_70') ? document.getElementById('text_70').value : '',
+            text_71: document.getElementById('text_71') ? document.getElementById('text_71').value : '',
+            img_72: document.getElementById('img_72') ? document.getElementById('img_72').value : '',
+            text_73: document.getElementById('text_73') ? document.getElementById('text_73').value : '',
+            text_74: document.getElementById('text_74') ? document.getElementById('text_74').value : '',
+            text_75: document.getElementById('text_75') ? document.getElementById('text_75').value : '',
+            text_76: document.getElementById('text_76') ? document.getElementById('text_76').value : '',
+            text_77: document.getElementById('text_77') ? document.getElementById('text_77').value : '',
+            img_78: document.getElementById('img_78') ? document.getElementById('img_78').value : '',
+            text_79: document.getElementById('text_79') ? document.getElementById('text_79').value : '',
+            text_80: document.getElementById('text_80') ? document.getElementById('text_80').value : '',
+            text_81: document.getElementById('text_81') ? document.getElementById('text_81').value : '',
+            text_82: document.getElementById('text_82') ? document.getElementById('text_82').value : '',
+            text_83: document.getElementById('text_83') ? document.getElementById('text_83').value : '',
+            text_84: document.getElementById('text_84') ? document.getElementById('text_84').value : '',
+            text_85: document.getElementById('text_85') ? document.getElementById('text_85').value : '',
+            text_86: document.getElementById('text_86') ? document.getElementById('text_86').value : '',
+            text_87: document.getElementById('text_87') ? document.getElementById('text_87').value : '',
+            text_88: document.getElementById('text_88') ? document.getElementById('text_88').value : '',
+            text_89: document.getElementById('text_89') ? document.getElementById('text_89').value : '',
+            text_90: document.getElementById('text_90') ? document.getElementById('text_90').value : '',
+            text_91: document.getElementById('text_91') ? document.getElementById('text_91').value : '',
+
+        };
+
+        try {
+            const res = await fetch('api_about.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ aboutUs: data })
+            });
+            const result = await res.json();
+            if(result.success) {
+                btn.innerHTML = '<i data-lucide="check"></i> ذخیره شد!';
+                lucide.createIcons();
+                setTimeout(() => { btn.innerHTML = oldText; lucide.createIcons(); }, 2000);
+            }
+        } catch(e) {
+            alert('خطا در ارتباط با سرور');
+            btn.innerHTML = oldText;
+            lucide.createIcons();
+        }
+    }
+
+    // =======================================
+    // TEAM & BRANDS LOGIC
+    // =======================================
+    let teamData = [];
+    let brandsData = [];
+
+    async function loadTeamAndBrands() {
+      try {
+        const res = await fetch('api.php?action=load');
+        const db = await res.json();
+        teamData = (db.aboutUs && db.aboutUs.team) ? db.aboutUs.team : [];
+        brandsData = (db.aboutUs && db.aboutUs.brands) ? db.aboutUs.brands : [];
+        renderTeam();
+        renderBrands();
+      } catch(e) { console.error(e); }
+    }
+
+    function renderTeam() {
+      const container = document.getElementById('team-members-list');
+      container.innerHTML = '';
+      teamData.forEach((member, idx) => {
+        const imgSrc = resolveImg(member.image);
+        const imgHtml = imgSrc
+          ? `<img id="team_preview_${idx}" src="${imgSrc}" style="width:90px; height:90px; object-fit:cover; border-radius:12px; border:2px solid rgba(204,255,0,0.4); display:block;" / onclick="document.getElementById(\'team_file_input_${idx}\').click()" style="cursor:pointer;" />`
+          : `<div id="team_preview_${idx}" style="width:90px; height:90px; border-radius:12px; border:2px dashed rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; color:#666; font-size:11px; text-align:center;" onclick="document.getElementById(\'team_file_input_${idx}\').click()" style="cursor:pointer;">بدون<br>عکس</div>`;
+        container.innerHTML += `
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:20px; display:grid; grid-template-columns:110px 1fr 1fr 1fr auto; gap:15px; align-items:start;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+              ${imgHtml}
+              <label style="background:#ccff00; color:#000; border:none; border-radius:8px; padding:8px 12px; font-size:12px; font-weight:800; cursor:pointer; width:100%; font-family:\'YekanBakh\',sans-serif; display:flex; align-items:center; justify-content:center; gap:5px; box-sizing:border-box; text-align:center;"><input type="file" id="team_file_input_${idx}" accept="image/*" style="display:none;" onchange="uploadTeamImage(this, ${idx})" />📷 تغییر عکس</label>
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">نام</label>
+              <input type="text" value="${member.name || ''}" onchange="teamData[${idx}].name=this.value" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif;" />
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">سمت / نقش</label>
+              <input type="text" value="${member.role || ''}" onchange="teamData[${idx}].role=this.value" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif;" />
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">بیوگرافی کوتاه</label>
+              <textarea onchange="teamData[${idx}].bio=this.value" rows="3" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif; resize:vertical;">${member.bio || ''}</textarea>
+            </div>
+            <button onclick="removeTeamMember(${idx})" title="حذف عضو" style="background:rgba(255,50,50,0.15); border:1px solid rgba(255,50,50,0.3); color:#ff6b6b; padding:10px 14px; border-radius:10px; cursor:pointer; font-size:18px; margin-top:22px;">✕</button>
+          </div>`;
+      });
+      lucide.createIcons();
+    }
+
+    function renderBrands() {
+      const container = document.getElementById('brands-list');
+      container.innerHTML = '';
+      brandsData.forEach((brand, idx) => {
+        const imgSrc = resolveImg(brand.image);
+        const isLive = brand.status === 'live';
+        const brandImgStyle = imgSrc
+          ? `background-image:url('${imgSrc}'); background-size:cover; background-position:center;`
+          : `background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;`;
+        const brandImgContent = imgSrc ? '' : '<span style="color:#666;font-size:11px;">بدون تصویر</span>';
+        container.innerHTML += `
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:20px; display:grid; grid-template-columns:130px 1fr 1fr 1fr auto; gap:15px; align-items:start;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="width:120px; height:80px; border-radius:10px; border:2px solid rgba(204,255,0,0.3); overflow:hidden; ${brandImgStyle}">${brandImgContent}</div>
+              <label style="background:#ccff00; color:#000; border:none; border-radius:8px; padding:8px 12px; font-size:12px; font-weight:800; cursor:pointer; width:100%; font-family:\'YekanBakh\',sans-serif; display:flex; align-items:center; justify-content:center; gap:5px; box-sizing:border-box; text-align:center;"><input type="file" accept="image/*" style="display:none;" onchange="uploadBrandImage(this, ${idx})" />🖼 تغییر عکس</label>
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">نام برند</label>
+              <input type="text" value="${brand.name || ''}" onchange="brandsData[${idx}].name=this.value" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif;" />
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">توضیح پروژه</label>
+              <textarea onchange="brandsData[${idx}].desc=this.value" rows="3" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif; resize:vertical;">${brand.desc || ''}</textarea>
+            </div>
+            <div>
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">تاریخ</label>
+              <input type="text" value="${brand.date || ''}" onchange="brandsData[${idx}].date=this.value" placeholder="مثلاً: شهریور ۱۴۰۵" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; margin-bottom:10px; font-family:'YekanBakh',sans-serif;" />
+              <label style="color:#aaa; font-size:12px; display:block; margin-bottom:5px;">وضعیت</label>
+              <select onchange="brandsData[${idx}].status=this.value" style="width:100%; background:#111; border:1px solid rgba(255,255,255,0.1); color:#fff; padding:10px; border-radius:8px; font-family:'YekanBakh',sans-serif;">
+                <option value="live" ${isLive ? 'selected' : ''}>LIVE (فعال)</option>
+                <option value="finished" ${!isLive ? 'selected' : ''}>FINISHED (پایان‌یافته)</option>
+              </select>
+            </div>
+            <button onclick="removeBrand(${idx})" title="حذف برند" style="background:rgba(255,50,50,0.15); border:1px solid rgba(255,50,50,0.3); color:#ff6b6b; padding:10px 14px; border-radius:10px; cursor:pointer; font-size:18px; margin-top:22px;">✕</button>
+          </div>`;
+      });
+      lucide.createIcons();
+    }
+
+    function addTeamMember() {
+      teamData.push({ id: 'tm_' + Date.now(), name: '', role: '', bio: '', image: '' });
+      renderTeam();
+    }
+
+    function removeTeamMember(idx) {
+      teamData.splice(idx, 1);
+      renderTeam();
+    }
+
+    function addBrand() {
+      brandsData.push({ id: 'br_' + Date.now(), name: '', desc: '', date: '', status: 'live', image: '' });
+      renderBrands();
+    }
+
+    function removeBrand(idx) {
+      brandsData.splice(idx, 1);
+      renderBrands();
+    }
+
+    async function uploadTeamImage(input, idx) {
+      if (!input.files || input.files.length === 0) return;
+      const formData = new FormData();
+      formData.append('image', input.files[0]);
+      try {
+        const res = await fetch('upload_media.php', { method: 'POST', body: formData });
+        const result = await res.json();
+        if (result.success) {
+          teamData[idx].image = result.url;
+          renderTeam();
+        } else { alert(result.error || 'خطا در آپلود'); }
+      } catch(e) { alert('خطا در ارتباط با سرور'); }
+    }
+
+    async function uploadBrandImage(input, idx) {
+      if (!input.files || input.files.length === 0) return;
+      const formData = new FormData();
+      formData.append('image', input.files[0]);
+      try {
+        const res = await fetch('upload_media.php', { method: 'POST', body: formData });
+        const result = await res.json();
+        if (result.success) {
+          brandsData[idx].image = result.url;
+          renderBrands();
+        } else { alert(result.error || 'خطا در آپلود'); }
+      } catch(e) { alert('خطا در ارتباط با سرور'); }
+    }
+
+    async function saveTeamAndBrands(event) {
+      const btn = event.currentTarget;
+      const oldText = btn.innerHTML;
+      btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> در حال ذخیره...';
+      lucide.createIcons();
+
+      try {
+        const loadRes = await fetch('api.php?action=load');
+        const db = await loadRes.json();
+        if (!db.aboutUs) db.aboutUs = {};
+        db.aboutUs.team = teamData;
+        db.aboutUs.brands = brandsData;
+
+        const saveRes = await fetch('api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'save_all', state: db })
+        });
+        const result = await saveRes.json();
+        if (result.success) {
+          btn.innerHTML = '<i data-lucide="check"></i> ذخیره شد!';
+          lucide.createIcons();
+          setTimeout(() => { btn.innerHTML = oldText; lucide.createIcons(); }, 2500);
+        }
+      } catch(e) {
+        alert('خطا در ذخیره‌سازی');
+        btn.innerHTML = oldText;
+        lucide.createIcons();
+      }
+    }
+  </script>
+
+</body>
+</html>

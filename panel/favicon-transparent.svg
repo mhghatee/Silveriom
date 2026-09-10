@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="silverGradTrans" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#D1D5DB" />
+    </linearGradient>
+  </defs>
+
+  <g>
+    <!-- Silver Arc (Top Left Arc) -->
+    <path d="M 400 198 A 155 155 0 1 0 142 361" 
+          fill="none" 
+          stroke="url(#silverGradTrans)" 
+          stroke-width="16" 
+          stroke-linecap="round" />
+
+    <!-- Neon Lime Green Arc (Bottom Right Arc) -->
+    <path d="M 235 410 A 155 155 0 0 0 411 256" 
+          fill="none" 
+          stroke="#BCE500" 
+          stroke-width="16" 
+          stroke-linecap="round" />
+
+    <!-- Diagonal Silver Line -->
+    <line x1="140" y1="372" x2="350" y2="162" 
+          stroke="url(#silverGradTrans)" 
+          stroke-width="16" 
+          stroke-linecap="round" />
+
+    <!-- Top-Right Neon Lime Green Dot -->
+    <circle cx="372" cy="140" r="32" fill="#BCE500" />
+  </g>
+</svg>

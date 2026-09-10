@@ -3,21 +3,21 @@
 <head>
 
   <!-- Standard Favicon -->
-  <link rel="icon" type="image/png" href="https://silveriom.ir/favicon.png?v=3" sizes="any">
-  <link rel="apple-touch-icon" href="https://silveriom.ir/favicon.png?v=3">
+  <link rel="icon" type="image/png" href="https://panel.silveriom.ir/favicon.png?v=1789065935" sizes="any">
+  <link rel="apple-touch-icon" href="https://panel.silveriom.ir/favicon.png?v=1789065935">
 
 
   <!-- Standard Favicon -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>پورتال سیلوریوم | ورود و مدیاکیت</title>
+  <title>ورود به پنل مدیریت | سیلوریوم</title>
 
   <!-- Favicon -->
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Auth CSS (contains all styling for galaxy, orbits, card, forms) -->
-  <link rel="stylesheet" href="auth.css?v=1788762421">
+  <link rel="stylesheet" href="auth.css?v=200">
 
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
@@ -883,7 +883,7 @@ html {
   </div>
 
   <!-- Auth JS -->
-  <script src="auth.js?v=1788762421"></script>
+  <script src="auth.js?v=500"></script>
 
   <script>
     // Initialize Lucide icons
@@ -957,6 +957,7 @@ html {
       }
 
       advanceProgress();
+      setTimeout(() => { if(!isSiteFullyLoaded) { isSiteFullyLoaded = true; window.dispatchEvent(new Event('load')); } }, 4000);
 
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;

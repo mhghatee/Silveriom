@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SILVERIOM | Futuristic Sports Marketing & 360° Brand Experiences</title>
+  <meta name="description" content="SILVERIOM is a specialized 360° sports marketing and advertising agency focused on professional Tennis and Padel ecosystems. Every impact creates a brand movement.">
+  <meta name="keywords" content="Silveriom, Sports Marketing, Tennis Sponsorship, Padel Advertising, Court Branding, Sports Agency, Brand Activation">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="SILVERIOM | Futuristic Sports Marketing">
+  <meta property="og:description" content="Specialized 360° sports marketing for Tennis & Padel ecosystems. Experience the journey of the ball.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://silveriom.ir/3d/">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800;900&family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Three.js & Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-carbon text-silver antialiased overflow-x-hidden selection:bg-neon selection:text-black">
+
+  <!-- Custom Futuristic Cursor -->
+  <div id="cursor-dot" class="cursor-dot"></div>
+  <div id="cursor-ring" class="cursor-ring"></div>
+
+  <!-- Audio Engine & Sound Synthesizer UI -->
+  <div class="audio-control fixed bottom-6 left-6 z-50 flex items-center gap-3 glass-panel px-4 py-2 rounded-full cursor-pointer transition-all duration-300 hover:border-neon" id="audio-toggle">
+    <div class="sound-bars flex items-end gap-1 h-3 w-4">
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </div>
+    <span class="text-xs uppercase tracking-wider font-mono text-zinc-400" id="audio-label">SOUND: OFF</span>
+  </div>
+
+  <!-- Telemetry / Live 3D HUD (Top Right) -->
+  <div class="fixed top-24 right-6 z-40 hidden md:flex flex-col gap-1 text-[10px] font-mono text-zinc-400 glass-panel px-3 py-2 rounded-lg border border-white/5 pointer-events-none" id="telemetry-hud">
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-zinc-500">SYSTEM:</span>
+      <span class="text-neon flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neon animate-pulse"></span> ONLINE</span>
+    </div>
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-zinc-500">ENGINE:</span>
+      <span class="text-zinc-300">THREE.JS / WEBGL 2.0</span>
+    </div>
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-zinc-500">FPS:</span>
+      <span class="text-neon font-bold" id="hud-fps">60.0</span>
+    </div>
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-zinc-500">ACTIVE OBJ:</span>
+      <span class="text-zinc-200" id="hud-obj">TENNIS BALL (01)</span>
+    </div>
+  </div>
+
+  <!-- 3D WebGL Background Canvas -->
+  <canvas id="webgl-canvas" class="fixed inset-0 w-full h-full pointer-events-auto z-0"></canvas>
+
+  <!-- Interactive 3D Orbit Control Prompt -->
+  <div class="fixed bottom-6 right-6 z-30 hidden sm:flex items-center gap-2 glass-panel px-3 py-1.5 rounded-full text-xs font-mono text-zinc-400 border border-white/10 pointer-events-none">
+    <i data-lucide="move-3d" class="w-3.5 h-3.5 text-neon"></i>
+    <span>DRAG TO ROTATE 3D • SCROLL TO JOURNEY</span>
+  </div>
+
+  <!-- Initial Preloader Screen -->
+  <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-carbon text-white transition-opacity duration-700">
+    <div class="relative flex flex-col items-center gap-6 max-w-sm w-full px-6">
+      <div class="relative w-20 h-20 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-2 border-white/10 border-t-neon animate-spin"></div>
+        <div class="w-10 h-10 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center">
+          <div class="w-3 h-3 rounded-full bg-neon animate-ping"></div>
+        </div>
+      </div>
+      <div class="text-center">
+        <h2 class="font-syne text-xl font-bold tracking-widest text-white">SILVERIOM</h2>
+        <p class="font-mono text-xs text-zinc-500 mt-1 uppercase tracking-wider">3D Sports Universe Initializing</p>
+      </div>
+      <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+        <div id="loader-bar" class="h-full bg-neon w-0 transition-all duration-300"></div>
+      </div>
+      <span id="loader-percent" class="font-mono text-xs text-neon">0%</span>
+    </div>
+  </div>
+
+  <!-- Main Floating Header Navigation -->
+  <header class="fixed top-0 left-0 w-full z-40 px-6 py-5 flex items-center justify-between transition-all duration-300" id="main-nav">
+    <a href="#hero" class="brand-logo flex items-center gap-2 group">
+      <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-white/15 flex items-center justify-center group-hover:border-neon transition-colors">
+        <span class="font-syne font-black text-sm text-white">S</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-neon ml-0.5"></span>
+      </div>
+      <span class="font-syne text-lg font-extrabold tracking-wider text-white">SILVERIOM</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 glass-panel px-6 py-2.5 rounded-full border border-white/10">
+      <a href="#hero" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">The Ball</a>
+      <a href="#impact" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">Signature Impact</a>
+      <a href="#story" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">Brand Story</a>
+      <a href="#services" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">Services</a>
+      <a href="#court-branding" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">Arena Branding</a>
+      <a href="#cases" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">Case Studies</a>
+      <a href="#engine" class="nav-link text-xs uppercase tracking-widest font-mono text-zinc-400 hover:text-neon transition-colors">The Engine</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <button id="open-campaign-modal" class="magnetic-btn group relative px-5 py-2.5 rounded-full overflow-hidden bg-neon text-black font-mono text-xs uppercase font-bold tracking-wider hover:shadow-[0_0_20px_rgba(182,255,0,0.5)] transition-all">
+        <span class="relative z-10 flex items-center gap-1.5">
+          Start A Campaign
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        </span>
+      </button>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg glass-panel text-white">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-8 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="flex items-center justify-between">
+      <span class="font-syne text-xl font-extrabold text-white">SILVERIOM</span>
+      <button id="close-mobile-menu" class="p-2 rounded-full glass-panel text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div class="flex flex-col gap-6 text-2xl font-syne font-bold">
+      <a href="#hero" class="mobile-nav-link text-zinc-400 hover:text-neon">The Ball</a>
+      <a href="#impact" class="mobile-nav-link text-zinc-400 hover:text-neon">Signature Impact</a>
+      <a href="#story" class="mobile-nav-link text-zinc-400 hover:text-neon">Brand Story</a>
+      <a href="#services" class="mobile-nav-link text-zinc-400 hover:text-neon">Services 3D</a>
+      <a href="#court-branding" class="mobile-nav-link text-zinc-400 hover:text-neon">Arena Branding</a>
+      <a href="#cases" class="mobile-nav-link text-zinc-400 hover:text-neon">Case Studies</a>
+      <a href="#engine" class="mobile-nav-link text-zinc-400 hover:text-neon">The Engine</a>
+    </div>
+    <div>
+      <button class="w-full py-4 rounded-xl bg-neon text-black font-bold font-mono uppercase tracking-wider" onclick="document.getElementById('open-campaign-modal').click(); document.getElementById('close-mobile-menu').click();">
+        Start A Campaign
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive Experience Container (Scroll Driven) -->
+  <main class="relative z-10 w-full">
+
+    <!-- ==================== SECTION 01: HERO ==================== -->
+    <section id="hero" class="relative min-h-screen w-full flex flex-col justify-between px-6 md:px-16 pt-32 pb-12">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-panel border border-neon/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-neon">SPECIALIZED 360° SPORTS MARKETING</span>
+        </div>
+        
+        <h1 class="font-syne font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.88] tracking-tighter text-white uppercase select-none">
+          SPORTS.<br>
+          <span class="text-zinc-400 hover:text-white transition-colors">BRANDS.</span><br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon via-white to-zinc-300">EXPERIENCES.</span>
+        </h1>
+
+        <p class="font-sans text-base sm:text-xl text-zinc-300 max-w-xl mt-6 font-light leading-relaxed">
+          360° Sports Marketing Solutions For <strong class="text-white font-semibold">Tennis</strong> & <strong class="text-white font-semibold">Padel</strong> Ecosystems.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a href="#impact" class="magnetic-btn px-8 py-4 rounded-full bg-white text-black font-mono text-xs uppercase font-bold tracking-wider hover:bg-neon hover:shadow-[0_0_30px_rgba(182,255,0,0.6)] transition-all flex items-center gap-2">
+            Explore The Experience
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </a>
+          <button class="launch-modal-trigger px-8 py-4 rounded-full glass-panel border border-white/15 text-white font-mono text-xs uppercase font-semibold tracking-wider hover:border-neon hover:text-neon transition-all flex items-center gap-2">
+            Start A Campaign
+            <i data-lucide="sparkles" class="w-4 h-4 text-neon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Bottom Bar -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 pt-8 border-t border-white/10">
+        <div class="flex items-center gap-6">
+          <div>
+            <p class="font-mono text-[10px] uppercase text-zinc-500">Core Ecosystem</p>
+            <p class="font-sans text-sm font-semibold text-white">Tennis & Padel Grand Slams</p>
+          </div>
+          <div class="w-px h-8 bg-white/10"></div>
+          <div>
+            <p class="font-mono text-[10px] uppercase text-zinc-500">Impact Guarantee</p>
+            <p class="font-sans text-sm font-semibold text-neon">100% Brand Recall</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 text-xs font-mono text-zinc-400 animate-bounce">
+          <span>SCROLL TO SERVE THE BALL</span>
+          <i data-lucide="arrow-down" class="w-4 h-4 text-neon"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SIGNATURE IMPACT MOMENT ==================== -->
+    <section id="impact" class="relative min-h-[140vh] w-full flex items-center justify-center px-6 md:px-16 py-24">
+      <div class="max-w-4xl text-center z-10 flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-neon/30 mb-6">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-neon"></i>
+          <span class="font-mono text-xs uppercase tracking-widest text-neon">THE SIGNATURE MOMENT</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-7xl leading-tight text-white tracking-tight uppercase">
+          "Every Impact Creates<br>
+          <span class="text-neon text-glow">A Brand Movement."</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base sm:text-lg max-w-2xl mt-6 leading-relaxed">
+          The high-velocity trajectory of the tennis ball meets the precision carbon-fiber padel racket. 
+          The point of collision is where sports passion transforms into measurable commercial power.
+        </p>
+
+        <!-- Dynamic Impact Telemetry Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-3xl mt-12">
+          <div class="glass-card p-4 rounded-xl border border-white/10 text-left hover:border-neon/40 transition-all">
+            <span class="font-mono text-[10px] uppercase text-zinc-500">COLLISION VELOCITY</span>
+            <p class="font-syne text-2xl font-bold text-white mt-1">190 <span class="text-xs font-mono text-neon">KM/H</span></p>
+            <p class="text-[11px] text-zinc-400 mt-1">Instantaneous Kinetic Force</p>
+          </div>
+          <div class="glass-card p-4 rounded-xl border border-white/10 text-left hover:border-neon/40 transition-all">
+            <span class="font-mono text-[10px] uppercase text-zinc-500">AUDIENCE ATTENTION</span>
+            <p class="font-syne text-2xl font-bold text-white mt-1">98.4<span class="text-xs font-mono text-neon">%</span></p>
+            <p class="text-[11px] text-zinc-400 mt-1">Focused Court Engagement</p>
+          </div>
+          <div class="glass-card p-4 rounded-xl border border-white/10 text-left hover:border-neon/40 transition-all">
+            <span class="font-mono text-[10px] uppercase text-zinc-500">CARBON FIBER</span>
+            <p class="font-syne text-2xl font-bold text-white mt-1">12K <span class="text-xs font-mono text-neon">WEAVE</span></p>
+            <p class="text-[11px] text-zinc-400 mt-1">Pro-Grade Rigidity</p>
+          </div>
+          <div class="glass-card p-4 rounded-xl border border-white/10 text-left hover:border-neon/40 transition-all">
+            <span class="font-mono text-[10px] uppercase text-zinc-500">ENERGY HARVEST</span>
+            <p class="font-syne text-2xl font-bold text-white mt-1">100<span class="text-xs font-mono text-neon">X</span></p>
+            <p class="text-[11px] text-zinc-400 mt-1">Multi-Channel Amplification</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 02: BRAND STORY & 3 WORLDS ==================== -->
+    <section id="story" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-white/10 mb-4">
+          <span class="font-mono text-xs text-zinc-400 uppercase tracking-widest">// 01 — THE ODYSSEY</span>
+        </div>
+        
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-tight">
+          From Every Serve,<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-neon">A Brand Story Begins.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base sm:text-lg max-w-2xl mt-4">
+          SILVERIOM connects global and high-growth brands with passionate sports audiences through unmatched strategy, world-class creativity, and flawless execution across three interconnected worlds.
+        </p>
+
+        <!-- 3 Worlds Tabs / Trigger Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          
+          <!-- World 1 -->
+          <div class="world-card group relative p-6 rounded-2xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer" data-world="tennis">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="trophy" class="w-5 h-5"></i>
+            </div>
+            <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">WORLD 01</span>
+            <h3 class="font-syne text-xl font-bold text-white mt-1 group-hover:text-neon transition-colors">Professional Tennis Court</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-3 leading-relaxed">
+              Grand slam tournament prestige, high-net-worth demographic density, court-side LED perimeter saturation, and VIP hospitality environments.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-zinc-500 group-hover:text-white">
+              <span>EXPLORE SCENE</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-neon"></i>
+            </div>
+          </div>
+
+          <!-- World 2 -->
+          <div class="world-card group relative p-6 rounded-2xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer" data-world="padel">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">WORLD 02</span>
+            <h3 class="font-syne text-xl font-bold text-white mt-1 group-hover:text-neon transition-colors">Professional Padel Arena</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-3 leading-relaxed">
+              The world's fastest-growing racket sport. Glass arena wrap advertising, high-intensity social buzz, modern executive lifestyle affinity.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-zinc-500 group-hover:text-white">
+              <span>EXPLORE SCENE</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-neon"></i>
+            </div>
+          </div>
+
+          <!-- World 3 -->
+          <div class="world-card group relative p-6 rounded-2xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer" data-world="universe">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="orbit" class="w-5 h-5"></i>
+            </div>
+            <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">WORLD 03</span>
+            <h3 class="font-syne text-xl font-bold text-white mt-1 group-hover:text-neon transition-colors">Brand Experience Universe</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-3 leading-relaxed">
+              Digital content engine, athlete ambassador campaigns, viral sports storytelling, and interactive live audience activations.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-zinc-500 group-hover:text-white">
+              <span>EXPLORE SCENE</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-neon"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 03: SERVICES EXPERIENCE ==================== -->
+    <section id="services" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-white/10 mb-4">
+          <span class="font-mono text-xs text-zinc-400 uppercase tracking-widest">// 02 — HOLOGRAPHIC ECOSYSTEM</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-tight">
+          Engineered For Impact.<br>
+          <span class="text-neon">360° Sports Marketing Services.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base max-w-2xl mt-4">
+          Each capability acts as a high-precision force multiplier, designed to integrate seamlessly into championship tournaments, private clubs, and digital media channels.
+        </p>
+
+        <!-- Service Accordion / Holographic Showcase -->
+        <div class="flex flex-col gap-4 mt-12">
+
+          <!-- Service 01 -->
+          <div class="service-item glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/50 transition-all duration-300 cursor-pointer" data-service-idx="0">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <span class="font-mono text-sm text-neon font-bold">01</span>
+                <div>
+                  <h3 class="font-syne text-xl font-bold text-white">SPORTS SPONSORSHIP</h3>
+                  <p class="font-sans text-xs text-zinc-400 mt-1 max-w-xl">
+                    Strategic partnerships with elite tennis and padel tournaments, national circuits, prestigious country clubs, and influential athlete communities.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <span class="text-[11px] font-mono uppercase text-zinc-400 bg-white/5 px-3 py-1 rounded-full">Tournaments • Clubs</span>
+                <i data-lucide="plus" class="w-5 h-5 text-neon transition-transform duration-300 service-icon"></i>
+              </div>
+            </div>
+            <div class="service-details hidden pt-4 mt-4 border-t border-white/5 text-xs text-zinc-300 font-sans grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">TITLE & PRESENTING</span>
+                Primary naming rights, trophy presentation, center court prominence.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">OFFICIAL PARTNERSHIP</span>
+                Category exclusivity (Automotive, Banking, Luxury, Tech, Beverage).
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">HOSPITALITY ACCESS</span>
+                VIP boxes, player lounge access, corporate pro-am tournaments.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 02 -->
+          <div class="service-item glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/50 transition-all duration-300 cursor-pointer" data-service-idx="1">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <span class="font-mono text-sm text-neon font-bold">02</span>
+                <div>
+                  <h3 class="font-syne text-xl font-bold text-white">360° CAMPAIGN MANAGEMENT</h3>
+                  <p class="font-sans text-xs text-zinc-400 mt-1 max-w-xl">
+                    End-to-end campaign execution encompassing brand strategy, creative concepts, multi-format production, live on-ground activation, and real-time ROI measurement.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <span class="text-[11px] font-mono uppercase text-zinc-400 bg-white/5 px-3 py-1 rounded-full">Strategy • Creative • Analytics</span>
+                <i data-lucide="plus" class="w-5 h-5 text-neon transition-transform duration-300 service-icon"></i>
+              </div>
+            </div>
+            <div class="service-details hidden pt-4 mt-4 border-t border-white/5 text-xs text-zinc-300 font-sans grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">MARKET INTELLIGENCE</span>
+                Deep demographic analysis of tennis & padel player/viewer bases.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">OMNICHANNEL ROLLOUT</span>
+                Synchronized broadcast, digital, physical, and influencer pacing.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">IMPACT ATTRIBUTION</span>
+                Audience sentiment, brand lift, sales conversion, and media value calculations.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 03 -->
+          <div class="service-item glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/50 transition-all duration-300 cursor-pointer" data-service-idx="2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <span class="font-mono text-sm text-neon font-bold">03</span>
+                <div>
+                  <h3 class="font-syne text-xl font-bold text-white">COURT & VENUE BRANDING</h3>
+                  <p class="font-sans text-xs text-zinc-400 mt-1 max-w-xl">
+                    Transforming stadiums, glass padel courts, net banners, wall perimeters, and LED screens into immersive, high-visibility canvases.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <span class="text-[11px] font-mono uppercase text-zinc-400 bg-white/5 px-3 py-1 rounded-full">Glass Arena • Net • Turf</span>
+                <i data-lucide="plus" class="w-5 h-5 text-neon transition-transform duration-300 service-icon"></i>
+              </div>
+            </div>
+            <div class="service-details hidden pt-4 mt-4 border-t border-white/5 text-xs text-zinc-300 font-sans grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">GLASS WALL BRANDING</span>
+                Optically transparent one-way vinyl for maximum camera visibility.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">COURT TURF INLAYS</span>
+                High-contrast laser-etched turf branding directly inside service boxes.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">LED PERIMETER RIBBONS</span>
+                High-refresh rate dynamic LED banner sequences synced with game moments.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 04 -->
+          <div class="service-item glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/50 transition-all duration-300 cursor-pointer" data-service-idx="3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <span class="font-mono text-sm text-neon font-bold">04</span>
+                <div>
+                  <h3 class="font-syne text-xl font-bold text-white">SPORTS CONTENT STUDIO</h3>
+                  <p class="font-sans text-xs text-zinc-400 mt-1 max-w-xl">
+                    High-octane photography, 4K cinematic film production, athlete portraiture, high-speed slow-motion match coverage, and viral short-form social reels.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <span class="text-[11px] font-mono uppercase text-zinc-400 bg-white/5 px-3 py-1 rounded-full">Cinema 4K • Social • Docs</span>
+                <i data-lucide="plus" class="w-5 h-5 text-neon transition-transform duration-300 service-icon"></i>
+              </div>
+            </div>
+            <div class="service-details hidden pt-4 mt-4 border-t border-white/5 text-xs text-zinc-300 font-sans grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">MATCH CINEMATOGRAPHY</span>
+                Phantom 1000fps slow-motion capture of racket impacts and athlete emotion.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">ATHLETE DOCUMENTARIES</span>
+                Intimate behind-the-scenes narratives showcasing athlete grit and brand values.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">VIRAL REELS ENGINE</span>
+                Rapid 1-hour turnarounds during live matches for maximum TikTok/IG engagement.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 05 -->
+          <div class="service-item glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/50 transition-all duration-300 cursor-pointer" data-service-idx="4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <span class="font-mono text-sm text-neon font-bold">05</span>
+                <div>
+                  <h3 class="font-syne text-xl font-bold text-white">BRAND ACTIVATION</h3>
+                  <p class="font-sans text-xs text-zinc-400 mt-1 max-w-xl">
+                    Creating unforgettable spectator & community experiences through VIP pop-up lounges, racket testing test-benches, interactive radar speed booths, and celebrity pro-ams.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <span class="text-[11px] font-mono uppercase text-zinc-400 bg-white/5 px-3 py-1 rounded-full">Fan Zones • VIP Lounges</span>
+                <i data-lucide="plus" class="w-5 h-5 text-neon transition-transform duration-300 service-icon"></i>
+              </div>
+            </div>
+            <div class="service-details hidden pt-4 mt-4 border-t border-white/5 text-xs text-zinc-300 font-sans grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">INTERACTIVE RADAR BOOTHS</span>
+                Serve-speed measurement challenges with instant branded social shares.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">VIP BRANDED LOUNGES</span>
+                Curated mixology, recovery lounges, luxury massage stations for attendees.
+              </div>
+              <div class="bg-black/40 p-3 rounded-lg border border-white/5">
+                <span class="text-neon font-mono text-[10px] block mb-1">SAMPLING & GEAR TRIALS</span>
+                Direct hands-on interaction with target consumer segments in peak athletic focus.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 03.5: INTERACTIVE ARENA BRANDING EXPLORER ==================== -->
+    <section id="court-branding" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-neon/30 mb-4">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-neon"></i>
+          <span class="font-mono text-xs text-neon uppercase tracking-widest">3D INTERACTIVE ARENA CANVAS</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-tight">
+          Explore Arena Canvas.<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon via-white to-zinc-400">High-Visibility Sponsorship Hotspots.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base max-w-2xl mt-4">
+          Select a hotspot zone below to orient the 3D stadium camera and inspect the exact placement, broadcast visibility angle, and estimated audience impact.
+        </p>
+
+        <!-- Hotspot Zone Buttons -->
+        <div class="flex flex-wrap gap-3 mt-8" id="hotspot-buttons">
+          <button class="hotspot-btn active px-4 py-2 rounded-xl glass-panel text-xs font-mono uppercase tracking-wider text-white border border-white/10 hover:border-neon transition-all" data-zone="net">
+            <span class="w-2 h-2 rounded-full bg-neon inline-block mr-1.5"></span> 01. Net & Band Branding
+          </button>
+          <button class="hotspot-btn px-4 py-2 rounded-xl glass-panel text-xs font-mono uppercase tracking-wider text-zinc-400 border border-white/10 hover:border-neon transition-all" data-zone="glass">
+            <span class="w-2 h-2 rounded-full bg-zinc-600 inline-block mr-1.5"></span> 02. Panoramic Glass Wall
+          </button>
+          <button class="hotspot-btn px-4 py-2 rounded-xl glass-panel text-xs font-mono uppercase tracking-wider text-zinc-400 border border-white/10 hover:border-neon transition-all" data-zone="turf">
+            <span class="w-2 h-2 rounded-full bg-zinc-600 inline-block mr-1.5"></span> 03. Court Turf Inlay
+          </button>
+          <button class="hotspot-btn px-4 py-2 rounded-xl glass-panel text-xs font-mono uppercase tracking-wider text-zinc-400 border border-white/10 hover:border-neon transition-all" data-zone="led">
+            <span class="w-2 h-2 rounded-full bg-zinc-600 inline-block mr-1.5"></span> 04. LED Perimeter Ribbon
+          </button>
+          <button class="hotspot-btn px-4 py-2 rounded-xl glass-panel text-xs font-mono uppercase tracking-wider text-zinc-400 border border-white/10 hover:border-neon transition-all" data-zone="umpire">
+            <span class="w-2 h-2 rounded-full bg-zinc-600 inline-block mr-1.5"></span> 05. Umpire & Player Bench
+          </button>
+        </div>
+
+        <!-- Dynamic Hotspot Info Card -->
+        <div id="hotspot-card" class="mt-8 glass-card p-6 md:p-8 rounded-2xl border border-neon/30 max-w-3xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span id="zone-tag" class="font-mono text-xs text-neon px-2.5 py-0.5 rounded bg-neon/10 border border-neon/30">ZONE: NET_BAND_CENTER</span>
+              <span class="font-mono text-xs text-zinc-400">BROADCAST PRIMARY</span>
+            </div>
+            <span class="font-mono text-xs text-neon flex items-center gap-1">
+              <i data-lucide="activity" class="w-3.5 h-3.5"></i> 94% TV DWELL TIME
+            </span>
+          </div>
+
+          <h3 id="zone-title" class="font-syne text-2xl font-bold text-white mt-3">Center Net Tape & Post Branding</h3>
+          <p id="zone-desc" class="font-sans text-sm text-zinc-300 mt-2 leading-relaxed">
+            Positioned at the absolute focal point of every rally, serve, and winning shot. Guarantees uninterrupted screen time during close-up player reaction shots and television broadcast replays.
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 uppercase">Avg Impressions / Match</span>
+              <p id="zone-stat-1" class="font-syne text-lg font-bold text-white mt-0.5">1.4M Viewers</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 uppercase">Recall Score</span>
+              <p id="zone-stat-2" class="font-syne text-lg font-bold text-neon mt-0.5">92.8%</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 uppercase">Format</span>
+              <p id="zone-stat-3" class="font-syne text-lg font-bold text-white mt-0.5">Double-Sided Vinyl</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 04: CASE STUDIES ==================== -->
+    <section id="cases" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-6xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-white/10 mb-4">
+          <span class="font-mono text-xs text-zinc-400 uppercase tracking-widest">// 03 — PROVEN VICTORIES</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-tight">
+          Stories Of Impact.<br>
+          <span class="text-white">Stadium Case Studies.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base max-w-2xl mt-4">
+          Explore how SILVERIOM propelled brands into the epicenter of sports culture with measurable commercial triumphs.
+        </p>
+
+        <!-- Case Studies Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+
+          <!-- Case 01: Featured Sunstar -->
+          <div class="case-card group relative p-8 rounded-3xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer overflow-hidden" data-case="sunstar">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all font-syne font-black text-8xl text-neon select-none pointer-events-none">
+              01
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-neon mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-neon"></span>
+              <span>FEATURED CAMPAIGN</span>
+            </div>
+
+            <h3 class="font-syne text-3xl font-extrabold text-white group-hover:text-neon transition-colors">
+              SUNSTAR × PADEL
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-wider text-zinc-400 mt-1 font-mono">
+              National Tournament Title Sponsorship & 360° Activation
+            </p>
+
+            <p class="font-sans text-sm text-zinc-300 mt-4 leading-relaxed">
+              Complete takeover of the Premier Padel Championship: From custom panoramic glass court wrap to VIP athlete lounges, 4K viral content series, and on-ground sampling to 45,000+ attendees.
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 font-mono">
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Reach</span>
+                <span class="text-lg font-bold text-white font-syne">+1.8M</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Brand Recall</span>
+                <span class="text-lg font-bold text-neon font-syne">+340%</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Sales Lift</span>
+                <span class="text-lg font-bold text-white font-syne">+42%</span>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2 text-xs font-mono text-neon font-bold">
+              <span>VIEW FULL CASE STUDY</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Case 02: Rolex Luxury Tennis -->
+          <div class="case-card group relative p-8 rounded-3xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer overflow-hidden" data-case="rolex">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all font-syne font-black text-8xl text-neon select-none pointer-events-none">
+              02
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+              <span>LUXURY HERITAGE</span>
+            </div>
+
+            <h3 class="font-syne text-3xl font-extrabold text-white group-hover:text-neon transition-colors">
+              ROLEX MASTER TENNIS
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-wider text-zinc-400 mt-1 font-mono">
+              VIP Hospitality & Precision Match Timekeeping
+            </p>
+
+            <p class="font-sans text-sm text-zinc-300 mt-4 leading-relaxed">
+              Curating an ultra-exclusive hospitality suite for VIP collectors and tournament patrons, synchronized with custom physical-digital match chronometers and private player meet-and-greets.
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 font-mono">
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">HNW Guests</span>
+                <span class="text-lg font-bold text-white font-syne">1,200+</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Sentiment</span>
+                <span class="text-lg font-bold text-neon font-syne">99.2%</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">VIP Leads</span>
+                <span class="text-lg font-bold text-white font-syne">380+</span>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2 text-xs font-mono text-zinc-400 group-hover:text-neon font-bold">
+              <span>VIEW FULL CASE STUDY</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Case 03: Wilson Next Gen -->
+          <div class="case-card group relative p-8 rounded-3xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer overflow-hidden" data-case="wilson">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all font-syne font-black text-8xl text-neon select-none pointer-events-none">
+              03
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+              <span>EQUIPMENT LAUNCH</span>
+            </div>
+
+            <h3 class="font-syne text-3xl font-extrabold text-white group-hover:text-neon transition-colors">
+              WILSON NEXT GEN
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-wider text-zinc-400 mt-1 font-mono">
+              Grassroots Padel Tour & Viral Social Production
+            </p>
+
+            <p class="font-sans text-sm text-zinc-300 mt-4 leading-relaxed">
+              Launch campaign for the new Carbon Elite pro padel line across 12 premier clubs with interactive speed cages, social media trick-shot challenges, and direct pro-shop retail integrations.
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 font-mono">
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Racket Trials</span>
+                <span class="text-lg font-bold text-white font-syne">8,400+</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Social Views</span>
+                <span class="text-lg font-bold text-neon font-syne">4.2M</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Sell-Out</span>
+                <span class="text-lg font-bold text-white font-syne">14 Days</span>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2 text-xs font-mono text-zinc-400 group-hover:text-neon font-bold">
+              <span>VIEW FULL CASE STUDY</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Case 04: Red Bull Night Matches -->
+          <div class="case-card group relative p-8 rounded-3xl glass-card border border-white/10 hover:border-neon transition-all duration-500 cursor-pointer overflow-hidden" data-case="redbull">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all font-syne font-black text-8xl text-neon select-none pointer-events-none">
+              04
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+              <span>NIGHT EXPERIENCE</span>
+            </div>
+
+            <h3 class="font-syne text-3xl font-extrabold text-white group-hover:text-neon transition-colors">
+              RED BULL NIGHT SESSIONS
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-wider text-zinc-400 mt-1 font-mono">
+              Electrifying Neon Night Padel Arena & Live Broadcast
+            </p>
+
+            <p class="font-sans text-sm text-zinc-300 mt-4 leading-relaxed">
+              Transforming traditional court lighting into a UV neon spectacle with live electronic DJs, glowing balls, and high-energy exhibition matches broadcasted across Twitch and YouTube Live.
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 font-mono">
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Livestream</span>
+                <span class="text-lg font-bold text-white font-syne">620K</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Engagement</span>
+                <span class="text-lg font-bold text-neon font-syne">14.8%</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Media Value</span>
+                <span class="text-lg font-bold text-white font-syne">$850K</span>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2 text-xs font-mono text-zinc-400 group-hover:text-neon font-bold">
+              <span>VIEW FULL CASE STUDY</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 05: WHY SILVERIOM (THE DIGITAL ENGINE) ==================== -->
+    <section id="engine" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-neon/30 mb-4">
+          <i data-lucide="cpu" class="w-3.5 h-3.5 text-neon"></i>
+          <span class="font-mono text-xs text-neon uppercase tracking-widest">// 04 — THE ARCHITECTURE</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-7xl text-white tracking-tight uppercase leading-tight">
+          More Than Advertising.<br>
+          <span class="text-neon text-glow">We Build Sports Movements.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
+          Behind the aesthetics lies the SILVERIOM Engine — a proprietary hybrid of sports intelligence, VIP relationships, and elite creative technology that ensures guaranteed brand supremacy.
+        </p>
+
+        <!-- 4 Engine Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+          
+          <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/40 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-4 font-mono font-bold">
+              01
+            </div>
+            <h3 class="font-syne text-xl font-bold text-white">Dedicated Racket Sports Focus</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-2 leading-relaxed">
+              Unlike generalist agencies, we live and breathe the nuances, player mentalities, and court dynamics of Tennis and Padel. No learning curve — just instant authority.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/40 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-4 font-mono font-bold">
+              02
+            </div>
+            <h3 class="font-syne text-xl font-bold text-white">Direct Ecosystem Access</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-2 leading-relaxed">
+              Direct pipelines to tournament sanctioning bodies, top-tier venue owners, private sports clubs, and top pro players for seamless contract negotiation and activation.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/40 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-4 font-mono font-bold">
+              03
+            </div>
+            <h3 class="font-syne text-xl font-bold text-white">Awwwards-Grade Production</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-2 leading-relaxed">
+              Every graphic, physical structure, video cut, and digital asset is crafted with luxury precision. Your brand is showcased with Rolex-tier prestige and Nike-tier energy.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-neon/40 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon mb-4 font-mono font-bold">
+              04
+            </div>
+            <h3 class="font-syne text-xl font-bold text-white">Measurable Commercial ROI</h3>
+            <p class="font-sans text-xs text-zinc-400 mt-2 leading-relaxed">
+              We track real-time broadcast seconds, foot-traffic dwell time, QR redemption rates, and post-event brand affinity lift. Transparency at every step.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 06: PARTNERS NETWORK (3D ORBIT) ==================== -->
+    <section id="partners" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-center">
+      <div class="max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border border-white/10 mb-4">
+          <span class="font-mono text-xs text-zinc-400 uppercase tracking-widest">// 05 — GLOBAL ECOSYSTEM</span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight uppercase leading-tight">
+          Powered By Elite Alliances.<br>
+          <span class="text-zinc-400">Global Sports Network.</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base max-w-2xl mt-4">
+          Collaborating with the most respected names in racket sports manufacturing, tournament circuits, broadcast networks, and performance venues.
+        </p>
+
+        <!-- Partner Badges Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 font-syne font-bold text-center text-sm">
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="award" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">PREMIER PADEL</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Official Circuit</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="globe" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">ITF TENNIS</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Global Federation</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="zap" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">WILSON SPORTING</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Equipment Partner</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="shield-check" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">HEAD PADEL</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Tour Endorsement</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="target" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">BULLPADEL</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Pro Tour Gear</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="flame" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">BABOLAT</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Grand Slam Legacy</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="layers" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">SUNSTAR GROUP</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Corporate Partner</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neon transition-all flex flex-col items-center justify-center gap-2">
+            <i data-lucide="tv" class="w-6 h-6 text-neon"></i>
+            <span class="text-white tracking-wider">BEIN SPORTS</span>
+            <span class="font-mono text-[10px] text-zinc-500 font-normal">Broadcast Network</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 07: BRAND SIGNATURE ENDING & CTA ==================== -->
+    <section id="contact" class="relative min-h-screen w-full px-6 md:px-16 py-28 flex flex-col justify-between">
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center my-auto">
+        <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-white/20 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(182,255,0,0.3)]">
+          <span class="font-syne font-black text-2xl text-white">S</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-neon ml-1 animate-ping"></span>
+        </div>
+
+        <h2 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-8xl text-white tracking-tighter uppercase leading-[0.9]">
+          READY TO SERVE<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon via-white to-zinc-300">YOUR BRAND?</span>
+        </h2>
+
+        <p class="font-sans text-zinc-300 text-base sm:text-xl max-w-xl mt-6 leading-relaxed">
+          Let's engineer an unforgettable sports marketing campaign that commands global attention and drives exponential growth.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
+          <button class="launch-modal-trigger magnetic-btn px-10 py-5 rounded-full bg-neon text-black font-mono text-sm uppercase font-extrabold tracking-wider hover:shadow-[0_0_40px_rgba(182,255,0,0.8)] transition-all flex items-center gap-3">
+            <span>Launch Your Campaign</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <a href="mailto:contact@silveriom.ir" class="px-8 py-5 rounded-full glass-panel border border-white/15 text-white font-mono text-sm uppercase tracking-wider hover:border-white transition-all flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>contact@silveriom.ir</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <footer class="w-full pt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+        <div class="flex items-center gap-2">
+          <span class="text-white font-bold font-syne">SILVERIOM</span>
+          <span>© 2026. ALL RIGHTS RESERVED.</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#hero" class="hover:text-neon transition-colors">TOP ↑</a>
+          <a href="https://silveriom.ir" target="_blank" class="hover:text-neon transition-colors">SILVERIOM.IR</a>
+          <span class="text-zinc-600">TEHRAN • DUBAI • MADRID</span>
+        </div>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ==================== INTERACTIVE CAMPAIGN LAUNCH MODAL ==================== -->
+  <div id="campaign-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="glass-card border border-white/15 rounded-3xl p-6 sm:p-10 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative text-white">
+      <button id="close-campaign-modal" class="absolute top-6 right-6 p-2 rounded-full glass-panel hover:border-neon text-zinc-400 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/30 text-neon font-mono text-xs mb-4">
+        <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
+        <span>CAMPAIGN BRIEF CONFIGURATOR</span>
+      </div>
+
+      <h3 class="font-syne text-2xl sm:text-3xl font-extrabold uppercase">Launch Your Sports Campaign</h3>
+      <p class="font-sans text-xs text-zinc-400 mt-1">Submit your vision and our sports marketing directors will construct a custom strategy within 24 hours.</p>
+
+      <form id="campaign-form" class="mt-6 flex flex-col gap-4 font-sans text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-mono uppercase text-zinc-400 mb-1">Company / Brand Name *</label>
+            <input type="text" required placeholder="e.g. Acme Corp" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-neon">
+          </div>
+          <div>
+            <label class="block font-mono uppercase text-zinc-400 mb-1">Contact Name & Title *</label>
+            <input type="text" required placeholder="e.g. John Doe, CMO" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-neon">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-mono uppercase text-zinc-400 mb-1">Email Address *</label>
+            <input type="email" required placeholder="name@company.com" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-neon">
+          </div>
+          <div>
+            <label class="block font-mono uppercase text-zinc-400 mb-1">Phone / WhatsApp</label>
+            <input type="tel" placeholder="+98 / +971 ..." class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-neon">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono uppercase text-zinc-400 mb-1">Target Sports Ecosystem</label>
+          <div class="grid grid-cols-3 gap-2 font-mono">
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 bg-black/30 cursor-pointer hover:border-neon has-[:checked]:border-neon has-[:checked]:bg-neon/10">
+              <input type="checkbox" name="sport" value="tennis" checked class="accent-neon">
+              <span>TENNIS</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 bg-black/30 cursor-pointer hover:border-neon has-[:checked]:border-neon has-[:checked]:bg-neon/10">
+              <input type="checkbox" name="sport" value="padel" checked class="accent-neon">
+              <span>PADEL</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 bg-black/30 cursor-pointer hover:border-neon has-[:checked]:border-neon has-[:checked]:bg-neon/10">
+              <input type="checkbox" name="sport" value="both" class="accent-neon">
+              <span>HYBRID 360</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono uppercase text-zinc-400 mb-1">Campaign Objective & Vision</label>
+          <textarea rows="3" placeholder="Describe your target objectives, timeline, or preferred activations..." class="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-neon"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-neon text-black font-mono font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_30px_rgba(182,255,0,0.6)] transition-all flex items-center justify-center gap-2 mt-2">
+          <span>Submit Campaign Request</span>
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CASE STUDY DETAIL MODAL ==================== -->
+  <div id="case-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="glass-card border border-white/15 rounded-3xl p-6 sm:p-10 max-w-3xl w-full max-h-[90vh] overflow-y-auto relative text-white">
+      <button id="close-case-modal" class="absolute top-6 right-6 p-2 rounded-full glass-panel hover:border-neon text-zinc-400 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/30 text-neon font-mono text-xs mb-4">
+        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+        <span id="case-modal-tag">CASE STUDY MATRIX</span>
+      </div>
+
+      <h3 id="case-modal-title" class="font-syne text-3xl font-extrabold uppercase">SUNSTAR × PADEL</h3>
+      <p id="case-modal-subtitle" class="font-mono text-xs text-zinc-400 mt-1 uppercase">National Championship Title Sponsorship</p>
+
+      <div class="flex flex-col gap-6 mt-8 font-sans text-sm">
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+          <h4 class="font-mono text-xs text-neon uppercase font-bold mb-1">01. THE BRAND CHALLENGE</h4>
+          <p id="case-modal-challenge" class="text-zinc-300 leading-relaxed text-xs">
+            Sunstar sought to penetrate the affluent, active demographic of racket sports enthusiasts and position their brand as the premier partner of vitality and peak athletic performance.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+          <h4 class="font-mono text-xs text-neon uppercase font-bold mb-1">02. SILVERIOM STRATEGY & CREATIVE</h4>
+          <p id="case-modal-strategy" class="text-zinc-300 leading-relaxed text-xs">
+            Engineered a complete sensory arena takeover: 3D glass court branding, high-energy product sampling bar at court entrance, branded match balls, and customized slow-motion broadcast replays.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+          <h4 class="font-mono text-xs text-neon uppercase font-bold mb-1">03. EXECUTION & RESULTS</h4>
+          <p id="case-modal-results" class="text-zinc-300 leading-relaxed text-xs">
+            Generated over 1.8M verified broadcast and social impressions, 45,000 in-person product trials, and a 340% increase in brand recall among tournament attendees.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

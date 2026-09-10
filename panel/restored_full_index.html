@@ -1,0 +1,30 @@
+python3 -c '
+import json
+
+log_path = "/Users/ghatee/.gemini/antigravity/brain/135507f1-d44a-4899-8234-5b7b76e3af03/.system_generated/logs/transcript_full.jsonl"
+
+full_htmls = []
+
+with open(log_path, "r", encoding="utf-8") as f:
+    for line_no, line in enumerate(f):
+        if "</html>" in line and "<!DOCTYPE html>" in line:
+            try:
+                data = json.loads(line)
+                tcs = data.get("tool_calls", [])
+                for tc in tcs:
+                    args = tc.get("args", {})
+                    for k, v in args.items():
+                        if isinstance(v, str) and "<!DOCTYPE html>" in v and "</html>" in v:
+                            full_htmls.append((line_no, len(v), v))
+                            print(f"Found full HTML in line {line_no}, length: {len(v)}")
+            except:
+                pass
+
+print("Total full HTMLs found in transcript:", len(full_htmls))
+
+if full_htmls:
+    last_line, last_len, last_content = full_htmls[-1]
+    with open("restored_full_index.html", "w", encoding="utf-8") as out:
+        out.write(last_content)
+    print(f"🎉 RESTORED FULL INDEX.HTML FROM LINE {last_line} (length={last_len}) SUCCESS!")
+'

@@ -4301,6 +4301,7 @@ html {
       }
 
       advanceProgress();
+      setTimeout(() => { if(!isSiteFullyLoaded) { isSiteFullyLoaded = true; window.dispatchEvent(new Event('load')); } }, 4000);
 
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;

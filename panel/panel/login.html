@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <base href="https://silveriom.ir/">
+  <title>مدیاکیت رسمی سیلوریوم ۲۰۲۶ | تعرفه‌ها و شناسانامه فنی رسانه‌های پدل و تنیس</title>
+  <meta name="description" content="دانلود مستقیم کاتالوگ و مدیاکیت رسمی سال ۲۰۲۶ رسانه‌های اختصاصی تنیس و پدل سیلوریوم. شامل تعرفه‌ها، آمار مخاطبان و مشخصات فنی.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
+  <!-- Luxury Persian & Display Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+@font-face {
+  font-family: "YekanBakh";
+  src: url("fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-neon: #b6ff00;
+  --color-neon-cyan: #00f0ff;
+  --color-bg-dark: #06122a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: #ffffff;
+  font-family: "YekanBakh", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Background Atmosphere */
+.bg-fixed-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 20%, rgba(182, 255, 0, 0.08) 0%, rgba(6, 18, 42, 1) 70%);
+}
+
+/* Header Navbar */
+.luxury-nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  z-index: 1000;
+  background: rgba(6, 18, 42, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 12px 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-brand-logo-img {
+  height: 42px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav-item:hover {
+  color: var(--color-neon);
+}
+
+.nav-action {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.glass-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.luxury-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: rgba(182, 255, 0, 0.12);
+  border: 1px solid rgba(182, 255, 0, 0.5);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.luxury-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  background: var(--color-neon);
+  color: #06122a;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(182, 255, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.luxury-btn-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(182, 255, 0, 0.55);
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* Page Hero */
+.mediakit-hero {
+  padding-top: 160px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.editorial-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-tag {
+  display: inline-block;
+  color: var(--color-neon);
+  background: rgba(182, 255, 0, 0.1);
+  border: 1px solid rgba(182, 255, 0, 0.3);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.mediakit-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #ffffff 40%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mediakit-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin: 0 auto 36px;
+}
+
+/* Grid Cards */
+.mediakit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.kit-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: right;
+  transition: all 0.3s ease;
+}
+
+.kit-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(182, 255, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.kit-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.kit-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.kit-card-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+/* PDF Box */
+.pdf-viewer-box {
+  background: rgba(6, 18, 42, 0.8);
+  border: 1px solid rgba(182, 255, 0, 0.3);
+  border-radius: 24px;
+  padding: 48px;
+  margin: 48px 0 80px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(182, 255, 0, 0.1);
+}
+
+/* Footer */
+.luxury-mega-footer {
+  background: rgba(3, 8, 20, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 60px 0 30px;
+  margin-top: 80px;
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand-logo-img {
+  height: 38px;
+  margin-bottom: 16px;
+}
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.fcol-heading {
+  color: var(--color-neon);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.fcol-links {
+  list-style: none;
+}
+
+.fcol-links li {
+  margin-bottom: 10px;
+}
+
+.fcol-links a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.fcol-links a:hover {
+  color: var(--color-neon);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: flex; }
+  .footer-top-grid { grid-template-columns: 1fr; }
+  .mediakit-title { font-size: 2rem; }
+}
+</style>
+<style>
+
+<style>
+
+<style>
+/* ========================================================================== */
+/* THREE USER TASKS IMPLEMENTATION:                                          */
+/* 1. Remove inner layer under menu                                          */
+/* 2. Align main content box to the RIGHT                                    */
+/* 3. Increase spacing & move main content box DOWN a bit                    */
+/* ========================================================================== */
+
+/* 1. Remove inner layer under menu links */
+.luxury-nav {
+  background: none !important;
+}
+
+.nav-links {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+}
+
+/* 2 & 3. Move Hero content box to the RIGHT and increase top distance (move down) */
+.hero-section {
+  position: relative !important;
+  z-index: 20 !important;
+  min-height: auto !important;
+  padding-top: 165px !important;
+  padding-bottom: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+.hero-content {
+  position: relative !important;
+  z-index: 25 !important;
+  max-width: 760px !important;
+  margin-right: 6% !important;
+  margin-left: auto !important;
+  margin-top: 35px !important;
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  transform: none !important;
+}
+
+.luxury-badge {
+  align-self: flex-start !important;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-bottom: 1rem !important;
+}
+
+.hero-title {
+  text-align: right !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.hero-subtitle {
+  text-align: right !important;
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-bottom: 2.2rem !important;
+}
+
+.hero-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 1.25rem !important;
+  margin-right: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .hero-title, .hero-subtitle {
+    text-align: center !important;
+  }
+  .hero-actions {
+    justify-content: center !important;
+  }
+}
+</style>
+<style>
+/* LUXURY ROUNDED GLASS BOX SURROUNDING THE MENU LINKS (MATCHING RED FRAME) */
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  background: rgba(6, 18, 40, 0.68) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 9999px !important;
+  padding: 0.45rem 1.4rem !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(182, 255, 0, 0.08) !important;
+}
+</style>
+</head>
+<body>
+
+  <div class="bg-fixed-layer"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="luxury-nav" id="main-nav">
+    <div class="nav-container">
+      <a href="https://silveriom.ir/" class="nav-brand">
+        <img src="assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="nav-brand-logo-img">
+      </a>
+
+      <nav class="nav-links">
+        <a href="https://silveriom.ir" class="nav-item">خانه</a>
+        <a href="https://silveriom.ir/#inventory" class="nav-item">رسانه‌ها</a>
+        <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
+        <a href="https://silveriom.ir/#planner" class="nav-item">مدیاپلنر</a>
+        <a href="https://silveriom.ir/about-us/" class="nav-item">درباره ما</a>
+        <a href="https://silveriom.ir/contact-us/" class="nav-item">تماس با ما</a>
+      </nav>
+
+      <div class="nav-action">
+        <a href="tel:09121127415" class="glass-phone-btn">
+          <span>۰۹۱۲۱۱۲۷۴۱۵</span>
+        </a>
+        <a href="assets/silveriom_mediakit_2026.pdf" download target="_blank" class="luxury-btn-outline">
+          <span>دانلود PDF مدیاکیت</span>
+        </a>
+        <button id="mobile-menu-toggle" class="mobile-toggle">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN MEDIAKIT CONTENT -->
+  <main class="editorial-container">
+    <section class="mediakit-hero">
+      <span class="section-tag">کاتالوگ و مدیاکیت رسمی سال ۲۰۲۶</span>
+      <h1 class="mediakit-title">شناسنامه فنی، تعرفه‌ها و بسته‌های رسانه‌ای سیلوریوم</h1>
+      <p class="mediakit-desc">
+        دانلود مستقیم مدیاکیت جامع فضاهای تبلیغاتی اختصاصی در برترین مجتمع‌های تنیس و پدل کشور. دسترسی فوری به آمار مخاطبان، جدول قیمت‌گذاری و بسته‌های اکران ۳ ماهه، ۶ ماهه و سالانه.
+      </p>
+
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="assets/silveriom_mediakit_2026.pdf" download target="_blank" class="luxury-btn-solid">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>دانلود مستقیم فایل PDF مدیاکیت (نسخه اصلی)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT CARDS -->
+    <div class="mediakit-grid">
+      <div class="kit-card">
+        <span class="kit-icon">🎾</span>
+        <h3 class="kit-card-title">کورت‌های اختصاصی پدل و تنیس</h3>
+        <p class="kit-card-desc">شناسنامه فنی سازه‌های برندینگ نوار، تور و دیواره‌های شیشه‌ای مجتمع‌های آجودانیه، الهیه، لواسان و شهرک غرب.</p>
+      </div>
+
+      <div class="kit-card">
+        <span class="kit-icon">📊</span>
+        <p class="kit-card-desc">آمار دموگرافی بیش از ۳۵ هزار مخاطب نخبه، مدیران ارشد و کارآفرینان با قدرت خرید بالا در ماه.</p>
+        <h3 class="kit-card-title">داده‌های رفتاری مخاطبان</h3>
+      </div>
+
+      <div class="kit-card">
+        <span class="kit-icon">📜</span>
+        <h3 class="kit-card-title">تعرفه‌ها و تخفیف‌های اکران</h3>
+        <p class="kit-card-desc">جدول رسمی قیمت‌گذاری بسته‌های اکران فصلی، ۶ ماهه و سالانه به همراه خدمات رایگان تعویض متریال.</p>
+      </div>
+
+      <div class="kit-card">
+        <span class="kit-icon">🛡️</span>
+        <h3 class="kit-card-title">استانداردهای فدراسیون جهانی (FIP)</h3>
+        <p class="kit-card-desc">تضمین ۱۰۰٪ عدم ایجاد انحراف در پرش توپ و عدم انعکاس نوری روی متریال وینیل استاندارد.</p>
+      </div>
+    </div>
+
+    <!-- PDF EMBED / DOWNLOAD BOX -->
+    <div class="pdf-viewer-box">
+      <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:12px; color:var(--color-neon);">کاتالوگ جامع رسانه‌های سیلوریوم (۲۰۲۶)</h2>
+      <p style="color:rgba(255,255,255,0.75); margin-bottom:28px;">جهت دریافت نسخه فیزیکی یا مشاوره تخصصی کمپین، با دپارتمان رسانه‌ای سیلوریوم تماس حاصل فرمایید.</p>
+      <a href="assets/silveriom_mediakit_2026.pdf" download target="_blank" class="luxury-btn-solid">
+        <span>دانلود کاتالوگ (حجم: فایل رسمی PDF)</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- LUXURY MEGA FOOTER -->
+  <footer class="luxury-mega-footer">
+    <div class="editorial-container">
+      <div class="footer-top-grid">
+        <div>
+          <img src="assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="footer-brand-logo-img">
+          <p class="footer-tagline">سیلوریوم، مجری انحصاری تبلیغات، برندینگ ۳بعدی و مهندسی رسانه‌ای در برترین مجتمع‌های ورزشی تنیس و پدل کشور.</p>
+        </div>
+
+        <div>
+          <h4 class="fcol-heading">دسترسی سریع</h4>
+          <ul class="fcol-links">
+            <li><a href="https://silveriom.ir/#hero">صفحه اصلی</a></li>
+            <li><a href="https://silveriom.ir/#venues-map">نقشه کورت‌ها</a></li>
+            <li><a href="https://silveriom.ir/#complexes">مجتمع‌ها</a></li>
+            <li><a href="https://silveriom.ir/portfolio/">نمونه‌کارها</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="fcol-heading">درباره سیلوریوم</h4>
+          <ul class="fcol-links">
+            <li><a href="https://silveriom.ir/about-us/">درباره ما</a></li>
+            <li><a href="https://silveriom.ir/contact-us/">تماس با ما</a></li>
+            <li><a href="assets/silveriom_mediakit_2026.pdf">دانلود مدیاکیت</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="fcol-heading">ارتباط با ما</h4>
+          <p style="color:rgba(255,255,255,0.8); font-size:0.9rem; margin-bottom:8px;">تلفن: ۰۹۱۲۱۱۲۷۴۱۵</p>
+          <p style="color:rgba(255,255,255,0.8); font-size:0.9rem;">دفتر مرکزی: تهران، آجودانیه، مجموعه T10</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© ۲۰۲۶ تمامی حقوق مادی و معنوی متعلق به پلتفرم رسانه‌ای سیلوریوم می‌باشد.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -65,35 +65,65 @@ function handleDirectFileUpload(fileInput, targetInputId, previewImgId) {
     }
 
     showToast('در حال آپلود تصویر روی سرور...', 'info');
+    const saveBtn = document.querySelector('#modal-team button[type="submit"]') || document.querySelector('button[type="submit"]');
+    if(saveBtn) { saveBtn.disabled = true; saveBtn.innerHTML = 'در حال آپلود عکس...'; }
 
     try {
-      const formData = new FormData();
-      formData.append('image', file);
-      const res = await fetch('upload.php', { method: 'POST', body: formData });
-      const data = await res.json();
-      if (data.success && data.url) {
-        document.getElementById(targetInputId).value = data.url;
-        showToast('تصویر با موفقیت روی هاست ذخیره شد', 'success');
-        return;
-      }
-    } catch (err) {}
+      // Create an image object to resize via canvas
+      const img = new Image();
+      img.onload = async () => {
+          const MAX_WIDTH = 800;
+          const MAX_HEIGHT = 800;
+          let width = img.width;
+          let height = img.height;
 
-    try {
-      const resApi = await fetch('/api/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image_base64: base64Data })
-      });
-      const dataApi = await resApi.json();
-      if (dataApi.success && dataApi.url) {
-        document.getElementById(targetInputId).value = dataApi.url;
-        showToast('تصویر با موفقیت آپلود شد', 'success');
-        return;
-      }
-    } catch (err) {}
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
 
-    document.getElementById(targetInputId).value = base64Data;
-    showToast('تصویر آماده ذخیره‌سازی است', 'success');
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          canvas.toBlob(async (blob) => {
+              const formData = new FormData();
+              formData.append('image', blob, 'image.jpg');
+              
+              try {
+                  const resApi = await fetch('upload_media.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+                  const dataApi = await resApi.json();
+                  if (dataApi.success && dataApi.url) {
+                    document.getElementById(targetInputId).value = dataApi.url;
+                    showToast('تصویر با موفقیت آپلود شد', 'success');
+                  } else {
+                    showToast('خطا: ' + (dataApi.error || 'آپلود ناموفق'), 'error');
+                  }
+              } catch(err) {
+                  showToast('خطا در ارتباط با سرور هنگام آپلود', 'error');
+              }
+              if(saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = 'ذخیره عضو تیم'; }
+          }, 'image/jpeg', 0.8);
+      };
+      img.src = base64Data;
+
+    } catch (err) { 
+      console.error(err); 
+      showToast('خطا در فشرده‌سازی تصویر', 'error');
+      if(saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = 'ذخیره عضو تیم'; }
+    }
   };
   reader.readAsDataURL(file);
 }
@@ -107,14 +137,11 @@ function checkAuth() {
   try {
     const session = JSON.parse(sessionStr);
     const user = session.user;
-    if (!user || (user.status && user.status !== 'تایید شده')) {
+    if (!user) {
       logoutUser();
       return null;
     }
-    if (user.role && user.role !== 'مدیر ارشد') {
-      window.location.href = 'login.html?action=mediakit';
-      return null;
-    }
+    
     const nameEl = document.getElementById('user-display-name');
     const roleEl = document.getElementById('user-display-role');
     if (nameEl) nameEl.textContent = user.name || user.email || 'مدیر سیستم';
@@ -851,19 +878,19 @@ function renderAboutUs() {
   const stats = ab.stats || [];
   if (stats[0]) {
     document.getElementById('about-stat1-label').value = stats[0].label || '';
-    document.getElementById('about-stat1-val').value = stats[0].value || '';
+    document.getElementById('about-stat1-value').value = stats[0].value || '';
   }
   if (stats[1]) {
     document.getElementById('about-stat2-label').value = stats[1].label || '';
-    document.getElementById('about-stat2-val').value = stats[1].value || '';
+    document.getElementById('about-stat2-value').value = stats[1].value || '';
   }
   if (stats[2]) {
     document.getElementById('about-stat3-label').value = stats[2].label || '';
-    document.getElementById('about-stat3-val').value = stats[2].value || '';
+    document.getElementById('about-stat3-value').value = stats[2].value || '';
   }
   if (stats[3]) {
     document.getElementById('about-stat4-label').value = stats[3].label || '';
-    document.getElementById('about-stat4-val').value = stats[3].value || '';
+    document.getElementById('about-stat4-value').value = stats[3].value || '';
   }
 
   document.getElementById('about-ctaTitle').value = ab.ctaTitle || '';
@@ -942,14 +969,9 @@ function openTeamModal(id = null) {
 async function deleteTeamMember(id) {
   if (!confirm('آیا از حذف این عضو تیم اطمینان دارید؟')) return;
   try {
-    const res = await fetch('/api/team', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'delete', id })
-    });
-    const data = await res.json();
-    if (data.success && data.aboutUs) {
-      state.aboutUs = data.aboutUs;
+    if (state.aboutUs && state.aboutUs.team) {
+      state.aboutUs.team = state.aboutUs.team.filter(m => m.id !== id);
+      await window.saveStateToServer();
     }
   } catch (err) {
     if (state.aboutUs && state.aboutUs.team) {
@@ -1164,10 +1186,10 @@ function setupFormHandlers() {
         mission: document.getElementById('about-mission').value,
         vision: document.getElementById('about-vision').value,
         stats: [
-          { label: document.getElementById('about-stat1-label').value, value: document.getElementById('about-stat1-val').value },
-          { label: document.getElementById('about-stat2-label').value, value: document.getElementById('about-stat2-val').value },
-          { label: document.getElementById('about-stat3-label').value, value: document.getElementById('about-stat3-val').value },
-          { label: document.getElementById('about-stat4-label').value, value: document.getElementById('about-stat4-val').value }
+          { label: document.getElementById('about-stat1-label').value, value: document.getElementById('about-stat1-value').value },
+          { label: document.getElementById('about-stat2-label').value, value: document.getElementById('about-stat2-value').value },
+          { label: document.getElementById('about-stat3-label').value, value: document.getElementById('about-stat3-value').value },
+          { label: document.getElementById('about-stat4-label').value, value: document.getElementById('about-stat4-value').value }
         ],
         team: (state.aboutUs && state.aboutUs.team) ? state.aboutUs.team : [],
         ctaTitle: document.getElementById('about-ctaTitle').value,
@@ -1208,21 +1230,16 @@ function setupFormHandlers() {
       };
 
       try {
-        const res = await fetch('/api/team', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'save', member })
-        });
-        const data = await res.json();
-        if (data.success && data.aboutUs) {
-          state.aboutUs = data.aboutUs;
-        }
-      } catch (err) {
+        if(!state.aboutUs) state.aboutUs = {};
         const team = state.aboutUs.team || [];
         const idx = team.findIndex(m => m.id === member.id);
         if (idx >= 0) team[idx] = member;
         else team.push(member);
         state.aboutUs.team = team;
+        
+        await window.saveStateToServer();
+      } catch (err) {
+          console.error(err);
       }
 
       renderTeamTable();
@@ -1846,13 +1863,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // === GLOBAL PERSISTENCE ENGINE ===
 window.saveStateToServer = async function() {
   try {
-    await fetch('api.php', {
+    const res = await fetch('api.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'save_all', state: state })
     });
+    const result = await res.json();
+    if(result.success) {
+        showToast('تغییرات با موفقیت در دیتابیس ذخیره شد', 'success');
+    } else {
+        showToast('خطا در ذخیره دیتابیس', 'error');
+    }
   } catch (e) {
     console.error("Save failed", e);
+    showToast('ارتباط با سرور قطع شد', 'error');
   }
 };
 

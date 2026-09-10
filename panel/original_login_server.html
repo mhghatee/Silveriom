@@ -32,7 +32,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=200">
 
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
@@ -1634,6 +1634,7 @@ html {
       }
 
       advanceProgress();
+      setTimeout(() => { if(!isSiteFullyLoaded) { isSiteFullyLoaded = true; window.dispatchEvent(new Event('load')); } }, 4000);
 
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;

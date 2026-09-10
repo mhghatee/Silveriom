@@ -3,8 +3,8 @@
 <head>
 
   <!-- Standard Favicon -->
-  <link rel="icon" type="image/png" href="https://silveriom.ir/favicon.png?v=3" sizes="any">
-  <link rel="apple-touch-icon" href="https://silveriom.ir/favicon.png?v=3">
+  <link rel="icon" type="image/png" href="https://panel.silveriom.ir/favicon.png?v=1789065935" sizes="any">
+  <link rel="apple-touch-icon" href="https://panel.silveriom.ir/favicon.png?v=1789065935">
 
 
   <!-- Standard Favicon -->
@@ -17,7 +17,7 @@
   <script src="xlsx.full.min.js"></script>
 
   <!-- Admin Stylesheet -->
-  <link rel="stylesheet" href="admin.css?v=15">
+  <link rel="stylesheet" href="admin.css?v=200">
 
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
@@ -1934,7 +1934,7 @@ html {
   <div class="toast-container" id="toast-container"></div>
 
   <!-- JS Dependencies -->
-  <script src="admin.js?v=24"></script>
+  <script src="admin.js?v=200"></script>
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
@@ -1979,6 +1979,7 @@ html {
       }
 
       advanceProgress();
+      setTimeout(() => { if(!isSiteFullyLoaded) { isSiteFullyLoaded = true; window.dispatchEvent(new Event('load')); } }, 4000);
 
       window.addEventListener('load', function() {
         isSiteFullyLoaded = true;

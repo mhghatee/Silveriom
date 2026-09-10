@@ -1,0 +1,5 @@
+[10-Sep-2026 08:40:33 Europe/London] PHP Fatal error:  Uncaught Error: Call to undefined function shell_exec() in /home/h417440/panel.silveriom.ir/run_cmd.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/h417440/panel.silveriom.ir/run_cmd.php on line 2
+[10-Sep-2026 08:41:06 Europe/London] PHP Warning:  symlink(): File exists in /home/h417440/panel.silveriom.ir/symlink.php on line 2
