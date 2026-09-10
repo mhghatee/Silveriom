@@ -522,10 +522,100 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+
+  <style id="marquee-bar-styles">
+  .top-complex-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    background: rgba(10, 15, 30, 0.95);
+    border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+    overflow: hidden;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    font-family: 'Yekan Bakh', 'IRANSans', Tahoma, sans-serif;
+    direction: rtl;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeContinuous 38s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @keyframes marqueeContinuous {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .top-bar-badge {
+    color: #CCFF00;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 18px;
+  }
+  .top-c-item {
+    color: #94a3b8;
+    font-size: 11px;
+    text-decoration: none;
+    padding: 0 14px;
+    transition: color 0.2s;
+  }
+  .top-c-item strong { color: #e2e8f0; font-weight: 600; }
+  .top-c-item:hover { color: #CCFF00; }
+  .top-c-sep { color: rgba(204,255,0,0.35); font-size: 10px; margin: 0 4px; }
+  #silverium-loader { top: 36px !important; height: calc(100vh - 36px) !important; }
+  </style>
 </head>
 
 
 <body>
+
+  <!-- ===== Top Marquee Bar ===== -->
+  <div class="top-complex-bar" id="top-complex-bar">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span class="top-bar-badge">● شبکه انحصاری سیلوریوم:</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+      </div>
+      <div class="marquee-group">
+        <span class="top-bar-badge">● شبکه انحصاری سیلوریوم:</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- ================= Silverium Loader HTML ================= -->
   <div id="silverium-loader">
