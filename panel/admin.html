@@ -1782,6 +1782,20 @@ html {
           <label class="form-label">مشخصات فنی و ابعاد</label>
           <input type="text" id="media-specs" class="glass-input-field" placeholder="طول ۱۰ متر، دو طرفه">
         </div>
+        
+        <div class="form-group">
+          <label class="form-label">نمایش در صفحات (چند انتخاب با Ctrl/Cmd)</label>
+          <select id="media-display-pages" class="glass-input-field" multiple style="height: 120px; font-family: 'YekanBakh', sans-serif;">
+            <option value="home">صفحه اصلی (Home)</option>
+            <option value="inventory">نمایشگاه (Inventory)</option>
+            <option value="club-azadi">مجموعه آرنا (آزادی)</option>
+            <option value="club-lavasan">مجموعه نترا (لواسان)</option>
+            <option value="club-ajudaniyeh">مجموعه T10 (آجودانیه)</option>
+            <option value="club-shahrak">مجموعه ایران زمین (شهرک غرب)</option>
+            <option value="club-sari">مجموعه آسایش (ساری)</option>
+            <option value="club-olympic">مجموعه المپیک (کیش)</option>
+          </select>
+        </div>
 
         <div class="modal-footer">
           <button type="button" class="btn-glass-outline" onclick="closeModal('modal-media')">انصراف</button>
@@ -2041,7 +2055,7 @@ html {
   <div class="toast-container" id="toast-container"></div>
 
   <!-- JS Dependencies -->
-  <script src="admin.js?v=206"></script>
+  <script src="admin.js?v=207"></script>
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">

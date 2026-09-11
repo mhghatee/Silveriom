@@ -604,6 +604,13 @@ function openMediaModal(id = null) {
       if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
       if(document.getElementById('media-venue')) document.getElementById('media-venue').value = m.venue || '';
       if(document.getElementById('media-structure-type')) document.getElementById('media-structure-type').value = m.structureType || '';
+      if(document.getElementById('media-display-pages')) {
+         const select = document.getElementById('media-display-pages');
+         Array.from(select.options).forEach(opt => {
+             opt.selected = (m.display_pages && m.display_pages.includes(opt.value));
+         });
+      }
+
 
     }
   } else {
@@ -1123,6 +1130,11 @@ function setupFormHandlers() {
     if(document.getElementById('media-desc')) mediaObj.desc = document.getElementById('media-desc').value;
     if(document.getElementById('media-venue')) mediaObj.venue = document.getElementById('media-venue').value;
     if(document.getElementById('media-structure-type')) mediaObj.structureType = document.getElementById('media-structure-type').value;
+    if(document.getElementById('media-display-pages')) {
+         const select = document.getElementById('media-display-pages');
+         mediaObj.display_pages = Array.from(select.selectedOptions).map(opt => opt.value);
+    }
+
 
 
     if (mIndex > -1) {
