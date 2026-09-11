@@ -526,7 +526,6 @@ window.resetMediaFilters = function() {
   if (document.getElementById('filter-structure')) document.getElementById('filter-structure').value = 'all';
   renderMedia();
 }
-}
 
 window.compressAndUploadMediaImage = async function(event, mediaId) {
   const file = event.target.files[0];
