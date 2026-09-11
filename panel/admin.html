@@ -522,7 +522,44 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+
+  <!-- Modern PWA Cache Manager (Service Worker) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          
+          // Force update check on load
+          registration.update();
+          
+          // Listen for new service worker installation
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New update available, force reload to bust cache
+                console.log('New update available! Reloading...');
+                window.location.reload();
+              }
+            });
+          });
+        }).catch(err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+      
+      // Handle controller change
+      let refreshing;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+    }
+  </script>
 </head>
+
 
 
 <body>
