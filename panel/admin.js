@@ -400,13 +400,43 @@ function renderMedia() {
   const grid = document.getElementById('media-cards-grid');
   if (!grid) return;
   const media = state.mediaInventory || [];
+  
+  // Filter Logic
+  const venueFilter = document.getElementById('filter-venue') ? document.getElementById('filter-venue').value : 'all';
+  const structureFilter = document.getElementById('filter-structure') ? document.getElementById('filter-structure').value : 'all';
+  
+  const filteredMedia = media.filter(m => {
+    let matchVenue = true;
+    let matchStruct = true;
+    if (venueFilter !== 'all') {
+       matchVenue = (m.venue === venueFilter);
+    }
+    if (structureFilter !== 'all') {
+       matchStruct = (m.structureType === structureFilter);
+    }
+    return matchVenue && matchStruct;
+  });
 
-  if (media.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--color-silver-dim); padding:2rem;">هیچ رسانه/سازه‌ای ثبت نشده است.</div>`;
+  const countEl = document.getElementById('media-result-count');
+  if (countEl) {
+    if (filteredMedia.length === media.length) {
+       countEl.textContent = `نمایش همه ${media.length} سازه`;
+    } else {
+       countEl.textContent = `${filteredMedia.length} سازه نمایش داده می‌شود`;
+    }
+  }
+
+  if (filteredMedia.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column:1/-1; text-align:center; color:var(--color-silver-dim); padding:3rem 2rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 15px; color: #64748b; opacity: 0.5;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <p style="margin-bottom: 15px; font-size: 1.1rem;">سازه‌ای با این مشخصات پیدا نشد.</p>
+        <button onclick="resetMediaFilters()" class="btn-glass-gold" style="padding: 8px 20px;">پاک کردن فیلترها</button>
+      </div>`;
     return;
   }
 
-  grid.innerHTML = media.map(m => `
+  grid.innerHTML = filteredMedia.map(m => `
     <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px;">
       
       <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
@@ -423,8 +453,40 @@ function renderMedia() {
         <div class="inventory-tag" style="font-size: 10px;">${m.code || m.id} | ${m.location || 'لوکیشن نامشخص'}</div>
         <h3 class="inventory-title" style="font-size: 14px; margin-top:5px;">${m.title}</h3>
       </div>
+      
+      <!-- INLINE EDITORS FOR VENUE AND STRUCTURE TYPE -->
+      <div style="display:flex; flex-direction:column; gap:8px; margin-top: 5px; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+           <span style="font-size:11px; color:#94a3b8;">مجموعه:</span>
+           <select onchange="updateMediaProp('${m.id}', 'venue', this.value)" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 4px; border-radius: 4px; font-size: 11px; width:140px; font-family:'YekanBakh', sans-serif;">
+              <option value="" ${!m.venue ? 'selected' : ''}>انتخاب کنید...</option>
+              <option value="t10" ${m.venue === 't10' ? 'selected' : ''}>مجموعه T10</option>
+              <option value="arena" ${m.venue === 'arena' ? 'selected' : ''}>مجموعه Arena</option>
+              <option value="iran-zamin" ${m.venue === 'iran-zamin' ? 'selected' : ''}>مجموعه Iran Zamin</option>
+              <option value="netra" ${m.venue === 'netra' ? 'selected' : ''}>مجموعه Netra</option>
+              <option value="asayesh" ${m.venue === 'asayesh' ? 'selected' : ''}>مجموعه Asayesh</option>
+              <option value="olympic" ${m.venue === 'olympic' ? 'selected' : ''}>مجموعه Olympic</option>
+           </select>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+           <span style="font-size:11px; color:#94a3b8;">نوع سازه:</span>
+           <select onchange="updateMediaProp('${m.id}', 'structureType', this.value)" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 4px; border-radius: 4px; font-size: 11px; width:140px; font-family:'YekanBakh', sans-serif;">
+              <option value="" ${!m.structureType ? 'selected' : ''}>انتخاب کنید...</option>
+              <option value="outdoor-billboard" ${m.structureType === 'outdoor-billboard' ? 'selected' : ''}>بیلبورد بیرونی</option>
+              <option value="indoor-backlit" ${m.structureType === 'indoor-backlit' ? 'selected' : ''}>بکلایت داخلی</option>
+              <option value="outdoor-backlit" ${m.structureType === 'outdoor-backlit' ? 'selected' : ''}>بکلایت بیرونی</option>
+              <option value="indoor-frontlit" ${m.structureType === 'indoor-frontlit' ? 'selected' : ''}>فورلایت داخلی</option>
+              <option value="outdoor-frontlit" ${m.structureType === 'outdoor-frontlit' ? 'selected' : ''}>فورلایت بیرونی</option>
+              <option value="court-edge-branding" ${m.structureType === 'court-edge-branding' ? 'selected' : ''}>برندینگ حاشیه کورت</option>
+              <option value="net-branding" ${m.structureType === 'net-branding' ? 'selected' : ''}>برندینگ تور</option>
+              <option value="court-entrance-branding" ${m.structureType === 'court-entrance-branding' ? 'selected' : ''}>ورودی کورت</option>
+              <option value="building-glass-branding" ${m.structureType === 'building-glass-branding' ? 'selected' : ''}>روی شیشه‌ها</option>
+              <option value="elevator-door-branding" ${m.structureType === 'elevator-door-branding' ? 'selected' : ''}>درب آسانسورها</option>
+           </select>
+        </div>
+      </div>
 
-      <div style="display:flex; flex-wrap: wrap; gap: 5px; font-size: 11px; color: #94a3b8; margin: 10px 0;">
+      <div style="display:flex; flex-wrap: wrap; gap: 5px; font-size: 11px; color: #94a3b8; margin: 5px 0;">
           <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">تعرفه: ${m.tariff || '?'}</span>
           <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">ابعاد: ${m.dimensions || '?'}</span>
           <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">صفحات: ${(m.display_pages || []).join(', ')}</span>
@@ -447,6 +509,23 @@ function renderMedia() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+}
+
+window.updateMediaProp = async function(id, prop, value) {
+  const mIndex = state.mediaInventory.findIndex(item => item.id === id);
+  if (mIndex > -1) {
+    state.mediaInventory[mIndex][prop] = value;
+    await window.saveStateToServer();
+    renderMedia(); // re-render to apply filters immediately if any active
+    showToast('تغییرات با موفقیت ذخیره شد', 'success');
+  }
+}
+
+window.resetMediaFilters = function() {
+  if (document.getElementById('filter-venue')) document.getElementById('filter-venue').value = 'all';
+  if (document.getElementById('filter-structure')) document.getElementById('filter-structure').value = 'all';
+  renderMedia();
+}
 }
 
 window.compressAndUploadMediaImage = async function(event, mediaId) {
