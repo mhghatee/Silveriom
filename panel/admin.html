@@ -1696,6 +1696,37 @@ html {
           <label class="form-label">توضیحات و ویژگی‌های رسانه</label>
           <textarea id="media-desc" class="glass-input-field" placeholder="توضیح موقعیت و شانس حضور در ویدئوها..."></textarea>
         </div>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">مجموعه (Venue)</label>
+            <select id="media-venue" class="glass-input-field" style="padding-right: 15px; font-family: 'YekanBakh', sans-serif;">
+              <option value="">انتخاب کنید...</option>
+              <option value="t10">مجموعه T10 (آجودانیه)</option>
+              <option value="arena">مجموعه Arena (آزادی)</option>
+              <option value="iran-zamin">مجموعه Iran Zamin (شهرک غرب)</option>
+              <option value="netra">مجموعه Netra (لواسان)</option>
+              <option value="asayesh">مجموعه Asayesh (ساری)</option>
+              <option value="olympic">مجموعه Olympic (کیش)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">نوع سازه</label>
+            <select id="media-structure-type" class="glass-input-field" style="padding-right: 15px; font-family: 'YekanBakh', sans-serif;">
+              <option value="">انتخاب کنید...</option>
+              <option value="outdoor-billboard">بیلبورد بیرونی</option>
+              <option value="indoor-backlit">بکلایت داخلی</option>
+              <option value="outdoor-backlit">بکلایت بیرونی</option>
+              <option value="indoor-frontlit">فورلایت داخلی</option>
+              <option value="outdoor-frontlit">فورلایت بیرونی</option>
+              <option value="court-edge-branding">برندینگ حاشیه کورت</option>
+              <option value="net-branding">برندینگ تور</option>
+              <option value="court-entrance-branding">برندینگ ورودی کورت</option>
+              <option value="building-glass-branding">برندینگ روی شیشه‌های ساختمان</option>
+              <option value="elevator-door-branding">برندینگ درب آسانسورها</option>
+            </select>
+          </div>
+        </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
           <div class="form-group">
             <label class="form-label">وضعیت فضا (Availability)</label>

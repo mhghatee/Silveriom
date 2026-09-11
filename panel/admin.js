@@ -603,6 +603,9 @@ function openMediaModal(id = null) {
       if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
       if(document.getElementById('media-avail')) document.getElementById('media-avail').value = m.avail || m.status || '';
       if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
+      if(document.getElementById('media-venue')) document.getElementById('media-venue').value = m.venue || '';
+      if(document.getElementById('media-structure-type')) document.getElementById('media-structure-type').value = m.structureType || '';
+
     }
   } else {
     title.textContent = 'افزودن سازه تبلیغاتی جدید';
@@ -1119,6 +1122,9 @@ function setupFormHandlers() {
         mediaObj.status = mediaObj.avail;
     }
     if(document.getElementById('media-desc')) mediaObj.desc = document.getElementById('media-desc').value;
+    if(document.getElementById('media-venue')) mediaObj.venue = document.getElementById('media-venue').value;
+    if(document.getElementById('media-structure-type')) mediaObj.structureType = document.getElementById('media-structure-type').value;
+
 
     if (mIndex > -1) {
         state.mediaInventory[mIndex] = mediaObj;
