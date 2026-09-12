@@ -8,7 +8,7 @@
 
 
   <!-- Standard Favicon -->
-  <script>window.dbFetchPromise = fetch('/data/silveriom_db.json').then(r => r.json()).catch(()=>({mediaInventory:[]}));</script>
+  <script>window.dbFetchPromise = fetch('/data/silveriom_db.json?t=' + new Date().getTime()).then(r => r.json()).catch(()=>({mediaInventory:[]}));</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>سیلوریوم | پلتفرم تخصصی تبلیغات و رسانه‌های تنیس و پدل</title>

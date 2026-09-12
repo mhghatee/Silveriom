@@ -687,7 +687,12 @@ function openMediaModal(id = null) {
       if(document.getElementById('media-display-pages')) {
          const select = document.getElementById('media-display-pages');
          Array.from(select.options).forEach(opt => {
-             opt.selected = (m.display_pages && m.display_pages.includes(opt.value));
+             // If m has display_pages, use them. If new (no display_pages), default to 'inventory'
+             if (m.display_pages) {
+                 opt.selected = m.display_pages.includes(opt.value);
+             } else {
+                 opt.selected = (opt.value === 'inventory');
+             }
          });
       }
 
