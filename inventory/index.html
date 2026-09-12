@@ -9705,7 +9705,7 @@ html {
       else if(cardVenueText.includes('ساری') || cardVenueText.includes('asayesh')) cardVenue = 'sari';
       else if(cardVenueText.includes('انقلاب')) cardVenue = 'enghelab';
 
-      const matchesVenue = checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
+      const matchesVenue = cardVenue === '' || checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
       const matchesMedia = checkedMedias.includes(cardType) || checkedMedias.length === 0;
       const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
       
