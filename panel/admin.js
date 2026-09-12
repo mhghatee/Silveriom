@@ -440,7 +440,7 @@ function renderMedia() {
     <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px;">
       
       <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
-        <img src="${m.image && m.image.startsWith('/') ? m.image : (m.image ? '../'+m.image : 'https://silveriom.ir/assets/placeholder_media.jpg')}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" loading="lazy" />
+        <img src="${m.image ? (m.image.startsWith('http') ? m.image : 'https://silveriom.ir/' + m.image.replace('../', '').replace(/^\//, '')) : 'https://silveriom.ir/assets/placeholder_media.jpg'}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" loading="lazy" />
         <div style="position:absolute; bottom:5px; right:5px;">
            <label class="btn-glass-gold" style="cursor:pointer; font-size:11px; padding: 4px 8px;">
               <i data-lucide="upload" style="width:12px; height:12px;"></i> آپلود عکس
@@ -569,7 +569,7 @@ window.compressAndUploadMediaImage = async function(event, mediaId) {
            if (mIndex > -1) {
              state.mediaInventory[mIndex].image = data.url;
              await window.saveStateToServer(); 
-             document.getElementById('media-img-' + mediaId).src = data.url.startsWith('/') ? data.url : '../' + data.url;
+             document.getElementById('media-img-' + mediaId).src = data.url.startsWith('http') ? data.url : 'https://silveriom.ir/' + data.url.replace('../', '').replace(/^\//, '');
              showToast('تصویر با موفقیت فشرده و آپلود شد!', 'success');
            }
         } else {

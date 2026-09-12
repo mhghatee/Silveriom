@@ -1,10 +1,17 @@
 <?php
 header('Content-Type: application/json');
 
-// Ensure upload directory exists
-$uploadDir = '../assets/uploads/';
+// Path to the main site's upload directory (accessible via silveriom.ir/assets/uploads)
+// The panel is at /home/h417440/panel.silveriom.ir/
+// The main site is at /home/h417440/public_html/
+$uploadDir = '../public_html/assets/uploads/';
+
 if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
+    // Fallback if public_html doesn't exist relative to panel
+    $uploadDir = '../assets/uploads/';
+    if (!is_dir($uploadDir)) {
+        @mkdir($uploadDir, 0777, true);
+    }
 }
 
 $inputJSON = file_get_contents('php://input');
@@ -28,8 +35,11 @@ if (isset($input['image_base64'])) {
         $filepath = $uploadDir . $filename;
         
         if (file_put_contents($filepath, $data)) {
-            // Return relative path from root
+            // Return relative path from root of silveriom.ir
             echo json_encode(['success' => true, 'url' => 'assets/uploads/' . $filename]);
+            exit;
+        } else {
+            echo json_encode(['success' => false, 'error' => 'File write failed to ' . $filepath]);
             exit;
         }
     }
