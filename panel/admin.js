@@ -202,6 +202,7 @@ function renderAll() {
   renderHomePage();
   renderMediaPlanner();
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function setupTabNavigation() {
@@ -257,6 +258,7 @@ function switchTab(tabId) {
   if (sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
   if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 /* --------------------------------------------------------------------------
@@ -337,6 +339,7 @@ function renderVenues() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openVenueModal(id = null) {
@@ -374,6 +377,7 @@ function openVenueModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deleteVenue(id) {
@@ -396,6 +400,47 @@ async function deleteVenue(id) {
 /* --------------------------------------------------------------------------
    TAB 3: MEDIA INVENTORY RENDER
    -------------------------------------------------------------------------- */
+
+window.selectedMediaIds = new Set();
+
+window.toggleMediaSelection = function(checkbox, id) {
+    if (checkbox.checked) {
+        window.selectedMediaIds.add(id);
+    } else {
+        window.selectedMediaIds.delete(id);
+    }
+    updateBulkActionsUI();
+}
+
+window.updateBulkActionsUI = function() {
+    const bulkDiv = document.getElementById('media-bulk-actions');
+    const countSpan = document.getElementById('media-bulk-count');
+    if (bulkDiv && countSpan) {
+        if (window.selectedMediaIds.size > 0) {
+            bulkDiv.style.display = 'flex';
+            countSpan.textContent = window.selectedMediaIds.size + ' مورد انتخاب شده';
+        } else {
+            bulkDiv.style.display = 'none';
+        }
+    }
+}
+
+window.bulkDeleteMedia = async function() {
+    if (window.selectedMediaIds.size === 0) return;
+    if (!confirm('آیا از حذف ' + window.selectedMediaIds.size + ' سازه انتخاب‌شده اطمینان دارید؟')) return;
+    
+    try {
+        state.mediaInventory = state.mediaInventory.filter(m => !window.selectedMediaIds.has(m.id));
+        await window.saveStateToServer();
+        window.selectedMediaIds.clear();
+        updateBulkActionsUI();
+        renderMedia();
+        showToast('آیتم‌های انتخاب‌شده با موفقیت حذف شدند.', 'success');
+    } catch (err) {
+        showToast('خطا در حذف گروهی: ' + err.message, 'error');
+    }
+}
+
 function renderMedia() {
   const grid = document.getElementById('media-cards-grid');
   if (!grid) return;
@@ -437,7 +482,11 @@ function renderMedia() {
   }
 
   grid.innerHTML = filteredMedia.map(m => `
-    <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px;">
+    <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px; position:relative;">
+      <!-- Bulk Checkbox -->
+      <div style="position:absolute; top:10px; left:10px; z-index:10;">
+         <input type="checkbox" class="media-bulk-checkbox" onchange="toggleMediaSelection(this, '${m.id}')" ${window.selectedMediaIds && window.selectedMediaIds.has(m.id) ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer; accent-color: #ef4444;">
+      </div>
       
       <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
         <img src="${m.image ? (m.image.startsWith('http') ? m.image : 'https://silveriom.ir/' + m.image.replace('../', '').replace(/^\//, '')) : 'https://silveriom.ir/assets/placeholder_media.jpg'}" style="width:100%; height:100%; object-fit:cover;" id="media-img-${m.id}" loading="lazy" />
@@ -509,6 +558,7 @@ function renderMedia() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 window.updateMediaProp = async function(id, prop, value) {
@@ -620,6 +670,7 @@ function openMediaModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deleteMedia(id) {
@@ -680,6 +731,7 @@ function renderPortfolio() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openPortfolioModal(id = null) {
@@ -714,6 +766,7 @@ function openPortfolioModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deletePortfolio(id) {
@@ -765,6 +818,7 @@ function renderInquiries() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function updateInquiryStatus(id, status) {
@@ -837,6 +891,7 @@ function renderUsers() {
   }).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openUserModal(id = null) {
@@ -868,6 +923,7 @@ function openUserModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function approveUser(id) {
@@ -911,6 +967,7 @@ function openPasswordModal(id) {
   document.getElementById('password-form').reset();
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deleteUser(id) {
@@ -1019,6 +1076,7 @@ function renderTeamTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openTeamModal(id = null) {
@@ -1052,6 +1110,7 @@ function openTeamModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deleteTeamMember(id) {
@@ -1668,6 +1727,7 @@ function renderPlannerTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openPlannerModal(id = null) {
@@ -1696,6 +1756,7 @@ function openPlannerModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deletePlannerPackage(id) {
@@ -1809,6 +1870,7 @@ function renderCampaignsTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 function openCampaignModal(id = null) {
@@ -1846,6 +1908,7 @@ function openCampaignModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
 async function deleteCampaign(id) {
