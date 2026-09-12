@@ -1732,6 +1732,16 @@ html {
       </div>
       <form id="media-form">
         <input type="hidden" id="media-id">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">شناسه سازه (کد اختصاصی)</label>
+            <input type="text" id="media-code" class="glass-input-field" placeholder="مثلاً: SVM-AJ-109">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">موقعیت دقیق (Location)</label>
+            <input type="text" id="media-location" class="glass-input-field" placeholder="مثلاً: تقاطع اصلی، ورودی غربی">
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-label">عنوان سازه یا رسانه</label>
           <input type="text" id="media-title" class="glass-input-field" required placeholder="مثلاً: نوار تور کورت پدل">

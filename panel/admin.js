@@ -674,6 +674,8 @@ function openMediaModal(id = null) {
     if (m) {
       title.textContent = 'ویرایش سازه تبلیغاتی';
       if(document.getElementById('media-id')) document.getElementById('media-id').value = m.id || '';
+      if(document.getElementById('media-code')) document.getElementById('media-code').value = m.code || '';
+      if(document.getElementById('media-location')) document.getElementById('media-location').value = m.location || '';
       if(document.getElementById('media-title')) document.getElementById('media-title').value = m.title || m.name || '';
       if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
       if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
@@ -1230,6 +1232,8 @@ function setupFormHandlers() {
     let mIndex = state.mediaInventory.findIndex(m => m.id === id);
     let mediaObj = mIndex > -1 ? state.mediaInventory[mIndex] : { id: id };
     
+    if(document.getElementById('media-code')) mediaObj.code = document.getElementById('media-code').value;
+    if(document.getElementById('media-location')) mediaObj.location = document.getElementById('media-location').value;
     if(document.getElementById('media-title')) mediaObj.title = document.getElementById('media-title').value;
     if(document.getElementById('media-tag')) mediaObj.tag = document.getElementById('media-tag').value;
     if(document.getElementById('media-impact')) mediaObj.impact = document.getElementById('media-impact').value;
