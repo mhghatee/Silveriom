@@ -202,6 +202,9 @@ function renderAll() {
   renderHomePage();
   renderMediaPlanner();
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -258,6 +261,9 @@ function switchTab(tabId) {
   if (sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
   if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -339,6 +345,9 @@ function renderVenues() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -377,6 +386,9 @@ function openVenueModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -402,6 +414,19 @@ async function deleteVenue(id) {
    -------------------------------------------------------------------------- */
 
 window.selectedMediaIds = new Set();
+
+window.toggleSelectAllMedia = function(mainCheckbox) {
+    const checkboxes = document.querySelectorAll('.media-bulk-checkbox');
+    checkboxes.forEach(cb => {
+        cb.checked = mainCheckbox.checked;
+        if (mainCheckbox.checked) {
+            window.selectedMediaIds.add(cb.value);
+        } else {
+            window.selectedMediaIds.delete(cb.value);
+        }
+    });
+    updateBulkActionsUI();
+}
 
 window.toggleMediaSelection = function(checkbox, id) {
     if (checkbox.checked) {
@@ -485,7 +510,7 @@ function renderMedia() {
     <div class="inventory-card" style="display:flex; flex-direction:column; gap: 10px; position:relative;">
       <!-- Bulk Checkbox -->
       <div style="position:absolute; top:10px; left:10px; z-index:10;">
-         <input type="checkbox" class="media-bulk-checkbox" onchange="toggleMediaSelection(this, '${m.id}')" ${window.selectedMediaIds && window.selectedMediaIds.has(m.id) ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer; accent-color: #ef4444;">
+         <input type="checkbox" class="media-bulk-checkbox" value="${m.id}" onchange="toggleMediaSelection(this, '${m.id}')" ${window.selectedMediaIds && window.selectedMediaIds.has(m.id) ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer; accent-color: #ef4444;">
       </div>
       
       <div style="position:relative; width:100%; height:140px; border-radius:10px; overflow:hidden; background:#0f172a; border: 1px solid rgba(255,255,255,0.1);">
@@ -558,6 +583,9 @@ function renderMedia() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -670,6 +698,9 @@ function openMediaModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -731,6 +762,9 @@ function renderPortfolio() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -766,6 +800,9 @@ function openPortfolioModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -818,6 +855,9 @@ function renderInquiries() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -891,6 +931,9 @@ function renderUsers() {
   }).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -923,6 +966,9 @@ function openUserModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -967,6 +1013,9 @@ function openPasswordModal(id) {
   document.getElementById('password-form').reset();
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1076,6 +1125,9 @@ function renderTeamTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1110,6 +1162,9 @@ function openTeamModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1727,6 +1782,9 @@ function renderPlannerTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1756,6 +1814,9 @@ function openPlannerModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1870,6 +1931,9 @@ function renderCampaignsTable() {
   `).join('');
 
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 
@@ -1908,6 +1972,9 @@ function openCampaignModal(id = null) {
 
   modal.classList.add('active');
   if (typeof lucide !== "undefined") lucide.createIcons();
+  if (document.getElementById('select-all-media')) {
+      document.getElementById('select-all-media').checked = false;
+  }
   if (typeof updateBulkActionsUI === 'function') updateBulkActionsUI();
 }
 

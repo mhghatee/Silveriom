@@ -913,7 +913,11 @@ html {
                 حذف انتخاب‌شده‌ها
               </button>
             </div>
-            <div style="margin-top: auto;" id="media-result-wrapper">
+            <div style="margin-top: auto; display: flex; align-items: center; gap: 15px;" id="media-result-wrapper">
+              <div style="display:flex; align-items:center; gap: 8px;">
+                <input type="checkbox" id="select-all-media" onchange="toggleSelectAllMedia(this)" style="width: 16px; height: 16px; cursor: pointer; accent-color: #ef4444;">
+                <label for="select-all-media" style="font-size: 0.85rem; color: #94a3b8; cursor: pointer;">انتخاب همه</label>
+              </div>
               <span id="media-result-count" style="font-size: 0.9rem; color: #CCFF00; font-weight: bold;"></span>
             </div>
           </div>
@@ -2062,7 +2066,7 @@ html {
   <div class="toast-container" id="toast-container"></div>
 
   <!-- JS Dependencies -->
-  <script src="admin.js?v=208"></script>
+  <script src="admin.js?v=209"></script>
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
