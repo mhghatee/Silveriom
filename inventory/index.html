@@ -9697,16 +9697,25 @@ html {
       const cardTariff = tariffEl ? tariffEl.textContent : '';
       const cardType = card.dataset.type || '';
       
-      let cardVenue = '';
-      if(cardVenueText.includes('آزادی') || cardVenueText.includes('arena')) cardVenue = 'azadi';
-      else if(cardVenueText.includes('لواسان') || cardVenueText.includes('netra')) cardVenue = 'lavasan';
-      else if(cardVenueText.includes('آجودانیه') || cardVenueText.includes('t10')) cardVenue = 'ajudaniyeh';
-      else if(cardVenueText.includes('شهرک غرب') || cardVenueText.includes('iran')) cardVenue = 'shahrak';
-      else if(cardVenueText.includes('ساری') || cardVenueText.includes('asayesh')) cardVenue = 'sari';
-      else if(cardVenueText.includes('انقلاب')) cardVenue = 'enghelab';
+      // Use data-venue attribute first (reliable), fallback to text-based detection
+      let cardVenue = card.dataset.venue || '';
+      if (!cardVenue) {
+        if(cardVenueText.includes('آزادی') || cardVenueText.includes('arena')) cardVenue = 'azadi';
+        else if(cardVenueText.includes('لواسان') || cardVenueText.includes('netra')) cardVenue = 'lavasan';
+        else if(cardVenueText.includes('آجودانیه') || cardVenueText.includes('t10') || cardVenueText.includes('T10')) cardVenue = 'ajudaniyeh';
+        else if(cardVenueText.includes('شهرک غرب') || cardVenueText.includes('iran')) cardVenue = 'shahrak';
+        else if(cardVenueText.includes('ساری') || cardVenueText.includes('asayesh')) cardVenue = 'sari';
+        else if(cardVenueText.includes('انقلاب')) cardVenue = 'enghelab';
+      }
+      // Map admin values to sidebar filter values
+      if (cardVenue === 't10') cardVenue = 'ajudaniyeh';
+      if (cardVenue === 'arena') cardVenue = 'azadi';
+      if (cardVenue === 'iran-zamin') cardVenue = 'shahrak';
+      if (cardVenue === 'netra') cardVenue = 'lavasan';
+      if (cardVenue === 'asayesh') cardVenue = 'sari';
 
       const matchesVenue = cardVenue === '' || checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
-      const matchesMedia = checkedMedias.includes(cardType) || checkedMedias.length === 0;
+      const matchesMedia = cardType === '' || checkedMedias.includes(cardType) || checkedMedias.includes(cardType.replace(/-/g,'_')) || checkedMedias.length === 0;
       const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
       
       // Price Check
@@ -10925,8 +10934,9 @@ window.renderMediaCard = function(media) {
     // Defaults
     const title = media.title || media.name || 'بدون عنوان';
     const code = media.code || 'SIL-000';
-    const type = media.type || '';
-    let rawLoc = media.location || 'تهران';
+    const type = media.type || media.structureType || '';
+    const venueId = media.venue || '';
+    let rawLoc = media.location || media.venue || 'تهران';
     let location = rawLoc;
     
     // Map to Persian names
@@ -10969,7 +10979,7 @@ window.renderMediaCard = function(media) {
         const btnText = isInCart ? 'حذف از مدیا کیت' : 'اضافه کردن به مدیا کیت';
 
         return `
-    <article class="media-showcase-card" data-id="${media.id || code}" data-type="${type}">
+    <article class="media-showcase-card" data-id="${media.id || code}" data-type="${type}" data-venue="${venueId}">
         <!-- card content -->
         <div class="msc-img-wrapper">
             <img src="${image}" alt="${title}" loading="lazy">
