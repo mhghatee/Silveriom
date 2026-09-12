@@ -9675,8 +9675,13 @@ html {
     const searchInput = document.getElementById('sidebarSearchInput');
     const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
     
+    const allVenueCbs = document.querySelectorAll('.venue-cb');
     const checkedVenues = Array.from(document.querySelectorAll('.venue-cb:checked')).map(cb => cb.value);
+    const allVenuesChecked = allVenueCbs.length === checkedVenues.length;
+
+    const allMediaCbs = document.querySelectorAll('.media-cb');
     const checkedMedias = Array.from(document.querySelectorAll('.media-cb:checked')).map(cb => cb.value);
+    const allMediasChecked = allMediaCbs.length === checkedMedias.length;
     
     // Read price bounds
     let minSlider = document.getElementById("priceMin");
@@ -9714,8 +9719,8 @@ html {
       if (cardVenue === 'netra') cardVenue = 'lavasan';
       if (cardVenue === 'asayesh') cardVenue = 'sari';
 
-      const matchesVenue = cardVenue === '' || checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
-      const matchesMedia = cardType === '' || checkedMedias.includes(cardType) || checkedMedias.includes(cardType.replace(/-/g,'_')) || checkedMedias.length === 0;
+      const matchesVenue = allVenuesChecked || cardVenue === '' || checkedVenues.includes(cardVenue) || checkedVenues.length === 0;
+      const matchesMedia = allMediasChecked || cardType === '' || checkedMedias.includes(cardType) || checkedMedias.includes(cardType.replace(/-/g,'_')) || checkedMedias.length === 0;
       const matchesSearch = (searchVal === '' || cardTitle.includes(searchVal));
       
       // Price Check
