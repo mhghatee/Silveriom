@@ -152,10 +152,13 @@ function triggerMediaKitPDFDownload(venue = 'all', media = 'all', name = 'نام
     const urlParams = new URLSearchParams(window.location.search);
     const cart = urlParams.get('cart');
     
+    const isLivePanel = window.location.hostname === 'panel.silveriom.ir';
+    const baseUrl = isLivePanel ? 'https://silveriom.ir/proposal/index.html' : '../proposal/index.html';
+    
     if (cart) {
-        window.location.href = `../proposal/index.html?id=CUSTOM_CART&cart=${encodeURIComponent(cart)}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+        window.location.href = `${baseUrl}?id=CUSTOM_CART&cart=${encodeURIComponent(cart)}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
     } else {
-        window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+        window.location.href = `${baseUrl}?id=ALL_INVENTORY&venue=${venue}&media=${media}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
     }
   }, 800);
 }
