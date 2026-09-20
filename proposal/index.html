@@ -1574,6 +1574,29 @@
                 cart: availableMedias.map(m => m.code || m.id),
                 status: 'pending'
             };
+        } else if (proposalId === 'CUSTOM_CART') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cartStr = urlParams.get('cart') || '';
+            const cartItems = cartStr.split(',').filter(Boolean);
+            
+            let availableMedias = (db.mediaInventory || []).filter(m => cartItems.includes(m.code) || cartItems.includes(m.id));
+            
+            const urlName = urlParams.get('name');
+            const urlBrand = urlParams.get('brand');
+            proposal = {
+                id: 'SVM-CUSTOM-KIT',
+                brand: urlBrand ? urlBrand : 'کاربر پورتال',
+                name: urlName ? urlName : 'نامشخص',
+                created_at: new Date().toISOString().split('T')[0],
+                total_tariff: availableMedias.reduce((sum, m) => {
+                    let num = parseFloat((m.tariff || '0').replace(/[^0-9]/g, ''));
+                    return sum + (isNaN(num) ? 0 : num);
+                }, 0) + ' میلیون تومان ',
+                discount: '0',
+                final_price: 'انتخابی',
+                cart: availableMedias.map(m => m.code || m.id),
+                status: 'pending'
+            };
         } else {
             const inquiries = db.inquiries || [];
             proposal = inquiries.find(p => p.id === proposalId);

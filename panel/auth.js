@@ -148,9 +148,15 @@ function togglePasswordVisibility(fieldId, iconEl) {
 function triggerMediaKitPDFDownload(venue = 'all', media = 'all', name = 'نامشخص', brand = 'کاربر پورتال') {
   showToast('در حال آماده‌سازی و انتقال به پلتفرم مدیاکیت...', 'success');
   
-  // Redirect to proposal page with ALL_INVENTORY and parameters
   setTimeout(() => {
-    window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const cart = urlParams.get('cart');
+    
+    if (cart) {
+        window.location.href = `../proposal/index.html?id=CUSTOM_CART&cart=${encodeURIComponent(cart)}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+    } else {
+        window.location.href = `../proposal/index.html?id=ALL_INVENTORY&venue=${venue}&media=${media}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+    }
   }, 800);
 }
 
