@@ -1493,19 +1493,6 @@
     </section>
 
 
-        <!-- Tournaments Section -->
-        <section class="section" id="tournaments-section" style="display: none;">
-           <div class="editorial-wide-container">
-              <div class="section-header">
-                <span class="section-tag">فهرست رویدادها</span>
-                <h2 class="section-title">تورنومنتها و رویدادهای پیشنهادی</h2>
-                <p class="section-lead">لیست رویدادهای پیشنهادی که برای مدیاکیت اختصاصی برند شما در نظر گرفته شده است.</p>
-              </div>
-              <div id="tournaments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 20px;">
-              </div>
-           </div>
-        </section>
-
         <!-- 4. Selected Media Grid -->
         <section class="section">
            <div class="editorial-wide-container">
@@ -1531,6 +1518,21 @@
               </div>
            </div>
         </section>
+
+<!-- Tournaments Section -->
+        <section class="section" id="tournaments-section" style="display: none;">
+           <div class="editorial-wide-container">
+              <div class="section-header">
+                <span class="section-tag">فهرست رویدادها</span>
+                <h2 class="section-title">تورنومنتها و رویدادهای پیشنهادی</h2>
+                <p class="section-lead">لیست رویدادهای پیشنهادی که برای مدیاکیت اختصاصی برند شما در نظر گرفته شده است.</p>
+              </div>
+              <div id="tournaments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 20px;">
+              </div>
+           </div>
+        </section>
+
+        
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -1753,8 +1755,8 @@
             const tGrid = document.getElementById('tournaments-grid');
             
             const imgMap = {
-                'tennis': 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&q=80&w=600',
-                'padel': 'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?auto=format&fit=crop&q=80&w=600'
+                'tennis': 'https://silveriom.ir/assets/crystal_poster.jpg',
+                'padel': 'https://silveriom.ir/assets/mammut_poster.jpg'
             };
 
             tGrid.innerHTML = filteredEvents.map(ev => {
