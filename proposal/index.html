@@ -1902,7 +1902,14 @@
             let availableMedias = (db.mediaInventory || []);
             
             if (filterVenue !== 'all') {
-                availableMedias = availableMedias.filter(m => m.location === filterVenue);
+                let v = filterVenue;
+                if (v === 'azadi') v = 'arena';
+                if (v === 'lavasan') v = 'netra';
+                if (v === 'shahrak' || v === 'iran-zamin') v = 'iranzamin';
+                if (v === 'sari') v = 'asayesh';
+                if (v === 'olympic') v = 'kish';
+                if (v === 'ajudaniyeh') v = 't10';
+                availableMedias = availableMedias.filter(m => m.location === v || m.location === filterVenue);
             }
             if (filterMedia !== 'all') {
                 if (filterMedia === 'out_billboard') availableMedias = availableMedias.filter(m => (m.title || '').includes('بیلبورد') || (m.title || '').includes('بام') || (m.title || '').includes('پارکینگ'));
@@ -2063,11 +2070,19 @@
 
         const locMap = {
             'arena': ['arena'],
+            'azadi': ['arena'],
             'enghelab': ['enghelab'],
             't10': ['t10'],
             'ajudaniyeh': ['t10'],
             'netra': ['netra'],
-            'kish': ['kish']
+            'lavasan': ['netra'],
+            'kish': ['kish'],
+            'olympic': ['kish'],
+            'iranzamin': ['iranzamin'],
+            'iran-zamin': ['iranzamin'],
+            'shahrak': ['iranzamin'],
+            'asayesh': ['asayesh'],
+            'sari': ['asayesh']
         };
 
         const eventLocIds = new Set();
