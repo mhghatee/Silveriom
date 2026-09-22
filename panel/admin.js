@@ -17,7 +17,8 @@ let state = {
   mediaInventory: [],
   portfolio: [],
   inquiries: [],
-  users: []
+  users: [],
+  blogs: []
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -188,6 +189,7 @@ async function fetchState() {
 }
 
 function renderAll() {
+  updateHeaderAvatar();
   renderOverview();
   renderVenues();
   renderMedia();
@@ -200,6 +202,7 @@ function renderAll() {
   renderPortfolioPage();
   renderAudience();
   renderHomePage();
+  renderBlogs();
   renderMediaPlanner();
   if (typeof lucide !== "undefined") lucide.createIcons();
   if (document.getElementById('select-all-media')) {
@@ -677,6 +680,7 @@ function openMediaModal(id = null) {
       if(document.getElementById('media-code')) document.getElementById('media-code').value = m.code || '';
       if(document.getElementById('media-location')) document.getElementById('media-location').value = m.location || '';
       if(document.getElementById('media-title')) document.getElementById('media-title').value = m.title || m.name || '';
+      if(document.getElementById('media-tariff')) document.getElementById('media-tariff').value = m.tariff || '';
       if(document.getElementById('media-tag')) document.getElementById('media-tag').value = m.tag || '';
       if(document.getElementById('media-impact')) document.getElementById('media-impact').value = m.impact || '';
       if(document.getElementById('media-specs')) document.getElementById('media-specs').value = m.specs || m.dimensions || '';
@@ -684,14 +688,14 @@ function openMediaModal(id = null) {
       if(document.getElementById('media-desc')) document.getElementById('media-desc').value = m.desc || '';
       if(document.getElementById('media-venue')) document.getElementById('media-venue').value = m.venue || '';
       if(document.getElementById('media-structure-type')) document.getElementById('media-structure-type').value = m.structureType || '';
-      if(document.getElementById('media-display-pages')) {
-         const select = document.getElementById('media-display-pages');
-         Array.from(select.options).forEach(opt => {
-             // If m has display_pages, use them. If new (no display_pages), default to 'inventory'
+      const dpGrid = document.getElementById('media-display-pages-grid');
+      if(dpGrid) {
+         const checkboxes = dpGrid.querySelectorAll('input.dp-checkbox');
+         checkboxes.forEach(cb => {
              if (m.display_pages) {
-                 opt.selected = m.display_pages.includes(opt.value);
+                 cb.checked = m.display_pages.includes(cb.value);
              } else {
-                 opt.selected = (opt.value === 'inventory');
+                 cb.checked = (cb.value === 'inventory');
              }
          });
       }
@@ -957,6 +961,7 @@ function openUserModal(id = null) {
       title.textContent = 'ویرایش مشخصات کاربر';
       document.getElementById('user-id').value = u.id;
       document.getElementById('user-name').value = u.name || '';
+      if(document.getElementById('user-avatar')) document.getElementById('user-avatar').value = u.avatar || '';
       document.getElementById('user-email').value = u.email || '';
       document.getElementById('user-phone').value = u.phone || '';
       document.getElementById('user-role').value = u.role || 'کاربر پنل';
@@ -967,6 +972,7 @@ function openUserModal(id = null) {
   } else {
     title.textContent = 'افزودن کاربر جدید';
     document.getElementById('user-id').value = '';
+    if(document.getElementById('user-avatar')) document.getElementById('user-avatar').value = '';
     if (passGroup) passGroup.style.display = 'block';
     document.getElementById('user-password').setAttribute('required', 'true');
   }
@@ -1240,6 +1246,7 @@ function setupFormHandlers() {
     if(document.getElementById('media-code')) mediaObj.code = document.getElementById('media-code').value;
     if(document.getElementById('media-location')) mediaObj.location = document.getElementById('media-location').value;
     if(document.getElementById('media-title')) mediaObj.title = document.getElementById('media-title').value;
+    if(document.getElementById('media-tariff')) mediaObj.tariff = document.getElementById('media-tariff').value;
     if(document.getElementById('media-tag')) mediaObj.tag = document.getElementById('media-tag').value;
     if(document.getElementById('media-impact')) mediaObj.impact = document.getElementById('media-impact').value;
     if(document.getElementById('media-specs')) {
@@ -1253,9 +1260,10 @@ function setupFormHandlers() {
     if(document.getElementById('media-desc')) mediaObj.desc = document.getElementById('media-desc').value;
     if(document.getElementById('media-venue')) mediaObj.venue = document.getElementById('media-venue').value;
     if(document.getElementById('media-structure-type')) mediaObj.structureType = document.getElementById('media-structure-type').value;
-    if(document.getElementById('media-display-pages')) {
-         const select = document.getElementById('media-display-pages');
-         mediaObj.display_pages = Array.from(select.selectedOptions).map(opt => opt.value);
+    const dpGrid = document.getElementById('media-display-pages-grid');
+    if(dpGrid) {
+         const checkboxes = dpGrid.querySelectorAll('input.dp-checkbox:checked');
+         mediaObj.display_pages = Array.from(checkboxes).map(cb => cb.value);
     }
 
 
@@ -1314,6 +1322,7 @@ function setupFormHandlers() {
     const user_item = {
       id: id || ('u_' + Date.now()),
       name: document.getElementById('user-name').value,
+      avatar: document.getElementById('user-avatar') ? document.getElementById('user-avatar').value : '',
       email: normalizeDigits(document.getElementById('user-email').value).toLowerCase(),
       phone: normalizeDigits(document.getElementById('user-phone').value),
       role: document.getElementById('user-role').value,
@@ -2309,4 +2318,215 @@ window.saveExcelData = async function() {
   } catch (error) {
     showToast('خطا در ذخیره‌سازی: ' + error.message, 'error');
   }
+}
+
+
+// === BLOG CMS LOGIC ===
+function renderBlogs() {
+  const container = document.getElementById('blogs-list');
+  if (!container) return;
+  container.innerHTML = '';
+  
+  if (!state.blogs) state.blogs = [];
+  
+  if (state.blogs.length === 0) {
+    container.innerHTML = '<p style="color:#aaa; text-align:center; grid-column:1/-1; padding:40px;">هیچ مقاله‌ای یافت نشد.</p>';
+    return;
+  }
+  
+  state.blogs.forEach((blog, idx) => {
+    const imgSrc = blog.image ? (blog.image.startsWith('http') ? blog.image : '../' + blog.image) : '';
+    container.innerHTML += `
+      <div class="glass-card" style="display:flex; flex-direction:column; padding:0; overflow:hidden;">
+        <div style="height: 180px; background: url('${imgSrc}') center/cover; position:relative;">
+            <div style="position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.7); padding:4px 8px; border-radius:8px; border:1px solid #00f0ff; color:#00f0ff; font-size:11px;">${blog.category || 'بدون دسته'}</div>
+        </div>
+        <div style="padding:20px; display:flex; flex-direction:column; flex-grow:1;">
+            <div style="font-size:12px; color:#94a3b8; margin-bottom:10px;">${blog.date || ''}</div>
+            <h4 style="font-size:16px; font-weight:800; color:#fff; margin-bottom:10px;">${blog.title || 'بدون عنوان'}</h4>
+            <p style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:20px; flex-grow:1;">${blog.summary || ''}</p>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-glass-outline" style="flex:1; padding:8px;" onclick="openBlogModal(${idx})">ویرایش</button>
+                <button class="btn-glass-outline" style="padding:8px; border-color:#ff4444; color:#ff4444;" onclick="deleteBlog(${idx})"><i data-lucide="trash-2" style="width:16px; height:16px;"></i></button>
+            </div>
+        </div>
+      </div>
+    `;
+  });
+  if (typeof lucide !== "undefined") lucide.createIcons();
+}
+
+function openBlogModal(idx = null) {
+  document.getElementById('blog-modal').classList.add('active');
+  if (idx !== null) {
+    document.getElementById('blog-modal-title').innerText = 'ویرایش مقاله';
+    const blog = state.blogs[idx];
+    document.getElementById('blog-id').value = blog.id;
+    document.getElementById('blog-title').value = blog.title || '';
+    document.getElementById('blog-category').value = blog.category || '';
+    document.getElementById('blog-date').value = blog.date || '';
+    document.getElementById('blog-image').value = blog.image || '';
+    document.getElementById('blog-summary').value = blog.summary || '';
+    document.getElementById('blog-content').value = blog.content || '';
+  } else {
+    document.getElementById('blog-modal-title').innerText = 'افزودن مقاله جدید';
+    document.getElementById('blog-id').value = 'blog_' + Date.now();
+    document.getElementById('blog-title').value = '';
+    document.getElementById('blog-category').value = '';
+    document.getElementById('blog-date').value = '';
+    document.getElementById('blog-image').value = '';
+    document.getElementById('blog-summary').value = '';
+    document.getElementById('blog-content').value = '';
+  }
+}
+
+function closeBlogModal() {
+  document.getElementById('blog-modal').classList.remove('active');
+}
+
+async function uploadBlogImage(input) {
+  if (!input.files || input.files.length === 0) return;
+  const formData = new FormData();
+  formData.append('image', input.files[0]);
+  try {
+    const res = await fetch('upload_media.php', { method: 'POST', body: formData });
+    const result = await res.json();
+    if (result.success) {
+      document.getElementById('blog-image').value = result.url;
+    } else {
+      alert(result.error || 'خطا در آپلود');
+    }
+  } catch(e) {
+    alert('خطا در ارتباط با سرور');
+  }
+}
+
+async function saveBlog() {
+  if (!state.blogs) state.blogs = [];
+  
+  const id = document.getElementById('blog-id').value;
+  const title = document.getElementById('blog-title').value;
+  
+  if (!title) {
+      alert("عنوان مقاله الزامی است.");
+      return;
+  }
+  
+  const blogData = {
+      id: id,
+      title: title,
+      category: document.getElementById('blog-category').value,
+      date: document.getElementById('blog-date').value,
+      image: document.getElementById('blog-image').value,
+      summary: document.getElementById('blog-summary').value,
+      content: document.getElementById('blog-content').value
+  };
+  
+  const existingIdx = state.blogs.findIndex(b => b.id === id);
+  if (existingIdx !== -1) {
+      state.blogs[existingIdx] = blogData;
+  } else {
+      state.blogs.unshift(blogData); // Add to top
+  }
+  
+  closeBlogModal();
+  renderBlogs();
+  
+  // Save to backend
+  if (typeof window.saveStateToServer === 'function') {
+      window.saveStateToServer();
+      showToast('مقاله با موفقیت ذخیره شد', 'success');
+  }
+}
+
+async function deleteBlog(idx) {
+  if (!confirm('آیا از حذف این مقاله اطمینان دارید؟')) return;
+  state.blogs.splice(idx, 1);
+  renderBlogs();
+  if (typeof window.saveStateToServer === 'function') {
+      window.saveStateToServer();
+      showToast('مقاله حذف شد', 'success');
+  }
+}
+
+
+async function uploadUserAvatar(input) {
+  if (!input.files || input.files.length === 0) return;
+  
+  showToast('در حال آپلود...', 'info');
+  const file = input.files[0];
+  const reader = new FileReader();
+  
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = async function() {
+      const canvas = document.createElement('canvas');
+      const MAX_SIZE = 300;
+      let width = img.width;
+      let height = img.height;
+      if (width > height && width > MAX_SIZE) {
+        height = Math.round((height * MAX_SIZE) / width);
+        width = MAX_SIZE;
+      } else if (height > MAX_SIZE) {
+        width = Math.round((width * MAX_SIZE) / height);
+        height = MAX_SIZE;
+      } else if (width === height && width > MAX_SIZE) {
+        width = MAX_SIZE;
+        height = MAX_SIZE;
+      }
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      
+      const webpBase64 = canvas.toDataURL('image/webp', 0.8);
+      
+      try {
+        const res = await fetch('upload.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image_base64: webpBase64 })
+        });
+        const data = await res.json();
+        if (data.success && data.url) {
+          document.getElementById('user-avatar').value = data.url;
+          showToast('عکس پروفایل با موفقیت آپلود شد!', 'success');
+        } else {
+          showToast('خطا در آپلود عکس', 'error');
+        }
+      } catch (err) {
+        showToast('خطای شبکه در آپلود', 'error');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+
+function updateHeaderAvatar() {
+  const sessionStr = localStorage.getItem('silveriom_session') || sessionStorage.getItem('silveriom_session');
+  if (!sessionStr) return;
+  try {
+    const session = JSON.parse(sessionStr);
+    const currentUser = session.user;
+    if (!currentUser || !state.users) return;
+    
+    // Find matching user in state by email or phone
+    const dbUser = state.users.find(u => 
+      (u.email && currentUser.email && u.email === currentUser.email) || 
+      (u.phone && currentUser.phone && u.phone === currentUser.phone) ||
+      (u.name && currentUser.name && u.name === currentUser.name)
+    );
+    
+    const avatarEl = document.getElementById('user-avatar-initial');
+    if (avatarEl && dbUser && dbUser.avatar) {
+      const imgSrc = dbUser.avatar.startsWith('http') ? dbUser.avatar : '../' + dbUser.avatar;
+      avatarEl.innerHTML = `<img src="${imgSrc}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+      avatarEl.style.background = 'transparent';
+      avatarEl.style.color = 'transparent';
+    } else if (avatarEl) {
+      avatarEl.innerHTML = currentUser.name ? currentUser.name.charAt(0) : 'S';
+    }
+  } catch (e) {}
 }

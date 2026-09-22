@@ -17,7 +17,7 @@
   <script src="xlsx.full.min.js"></script>
 
   <!-- Admin Stylesheet -->
-  <link rel="stylesheet" href="admin.css?v=200">
+  <link rel="stylesheet" href="admin.css?v=218">
 
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
@@ -126,7 +126,37 @@
       0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
     }
-    </style>
+    
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 5px;
+}
+.glass-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(13, 22, 45, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+.glass-checkbox:hover {
+    background: rgba(182, 255, 0, 0.1);
+    border-color: rgba(182, 255, 0, 0.3);
+}
+.glass-checkbox input[type="checkbox"] {
+    accent-color: #B6FF00;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+</style>
     
 
 <style id="silveriom-nav-dropdown-styles">
@@ -477,7 +507,7 @@ html {
   /* 2. Main luxury nav initially absolute (scrolls up with page) */
   .luxury-nav {
     position: absolute !important;
-    top: 50px !important; /* right below the top bar */
+    top: 0 !important; /* right below the top bar */
   }
   
   /* 3. When scrolled, snap main nav to top and fix it */
@@ -494,7 +524,7 @@ html {
       display: flex !important; /* Show marquee on mobile per user request */
     }
     .luxury-nav {
-      top: 50px !important;
+      top: 0 !important;
       position: absolute !important;
     }
     .luxury-nav.scrolled {
@@ -514,7 +544,7 @@ html {
 .social-pill-btn .social-svg { transition: transform 0.4s ease; fill: #fff; stroke: none; }
 .social-pill-text { 
   max-width: 0; opacity: 0; white-space: nowrap; transition: all 0.4s ease; 
-  font-weight: 600; font-family: 'Space Grotesk', sans-serif; margin-right: 0; font-size: 15px; letter-spacing: 0.5px;
+  font-weight: 600;  margin-right: 0; font-size: 15px; letter-spacing: 0.5px;
 }
 .social-pill-btn:hover { 
   background: #CCFF00 !important; color: #000 !important; border-color: #CCFF00 !important; box-shadow: 0 0 20px rgba(204,255,0,0.3); 
@@ -558,6 +588,261 @@ html {
       });
     }
   </script>
+
+
+
+
+<!-- Global Top Bar & Loader Fix -->
+<style id="silveriom-global-loader-topbar">
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('fonts/YekanBakhFaNum-Heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  /* 1. Top Complex Bar */
+  .top-complex-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 50px !important;
+    z-index: 9999999 !important;
+    background: rgba(6, 16, 32, 0.95) !important;
+    backdrop-filter: blur(36px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    direction: ltr !important;
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+  }
+  .top-complex-bar:hover .marquee-track {
+    animation-play-state: paused !important;
+  }
+  .marquee-track {
+    display: flex !important;
+    align-items: center !important;
+    width: max-content !important;
+    animation: marqueeContinuous 38s linear infinite !important;
+  }
+  .top-bar-badge {
+    background: rgba(204, 255, 0, 0.1) !important;
+    border: 1px solid rgba(204, 255, 0, 0.5) !important;
+    border-radius: 50px !important;
+    padding: 4px 16px !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 800 !important;
+    margin-left: 15px !important;
+    font-size: 14px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    font-size: 15px !important;
+    padding: 0.2rem 0.65rem !important;
+    border-radius: 8px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item strong {
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-left: 4px !important;
+    font-family: inherit !important;
+  }
+  .top-c-item:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  .top-c-sep {
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-weight: 800 !important;
+    margin: 0 4px !important;
+    font-size: 14px !important;
+  }
+  
+  /* 2. Loader Alignment */
+  #silverium-loader {
+    top: 0 !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+  }
+  
+  /* 3. Luxury Nav Alignment */
+  .luxury-nav {
+    top: 0 !important;
+  }
+  .luxury-nav.scrolled {
+    top: 0 !important;
+  }
+  
+  /* Ensure mobile overrides */
+  @media (max-width: 1024px) {
+    .top-complex-bar {
+      height: 40px !important;
+    }
+    .top-bar-badge, .top-c-item {
+      font-size: 13px !important;
+      padding: 2px 8px !important;
+    }
+    #silverium-loader {
+      top: 0 !important;
+      height: 100vh !important;
+    }
+    .luxury-nav {
+      top: 0 !important;
+    }
+  }
+
+  /* Loader Text Uniformity */
+  #silverium-loader .loading-text {
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+</style>
+
+
+<style>
+/* Kanban Board */
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0 20px 0;
+  min-height: 70vh;
+}
+.kanban-column {
+  flex: 1;
+  min-width: 260px;
+  background: rgba(20, 25, 40, 0.4);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.kanban-column.drag-over {
+  background: rgba(204, 255, 0, 0.05);
+  border-color: rgba(204, 255, 0, 0.3);
+}
+.kanban-column-header {
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.k-col-count {
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+.kanban-cards {
+  flex: 1;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kanban-card {
+  background: rgba(30, 35, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: grab;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+.kanban-card:active {
+  cursor: grabbing;
+}
+.kanban-card:hover {
+  border-color: rgba(204, 255, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+.kanban-card.dragging {
+  opacity: 0.5;
+}
+.k-card-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+.k-card-info {
+  font-size: 12px;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.k-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.k-priority-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.k-priority-high { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+.k-priority-medium { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+.k-priority-low { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.k-delete-btn {
+  background: none;
+  border: none;
+  color: #64748B;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.k-delete-btn:hover {
+  color: #EF4444;
+}
+</style>
+
 </head>
 
 
@@ -597,6 +882,12 @@ html {
   <div class="admin-wrapper">
     
     <!-- Sidebar Navigation -->
+    
+  <!-- Collapse Sidebar Button -->
+  <button class="sidebar-toggle-btn" onclick="toggleSidebarCollapse()" title="جمع/باز کردن منو">
+    <i data-lucide="chevron-right"></i>
+  </button>
+
     <aside class="admin-sidebar" id="sidebar">
       <div class="sidebar-header">
         <img src="assets/silveriom_logo_transparent.png" alt="Silveriom" class="sidebar-logo" onerror="this.style.display='none'" loading="lazy">
@@ -655,6 +946,15 @@ html {
           <i data-lucide="settings" class="icon"></i>
           <span>تنظیمات عمومی سایت</span>
         </a>
+        <a href="#" class="menu-item" data-tab="tab-blogs">
+          <i data-lucide="newspaper" class="icon"></i>
+          <span>مدیریت مقالات (بلاگ)</span>
+        </a>
+        <a href="#" class="menu-item" data-tab="tab-tasks">
+          <i data-lucide="list-todo" class="icon"></i>
+          <span>مدیریت تسک‌ها</span>
+        </a>
+
       </nav>
 
       <div class="sidebar-footer">
@@ -1644,7 +1944,74 @@ html {
         </section>
 
       </div>
-    </main>
+    
+        <!-- TAB BLOGS -->
+        <section class="tab-panel" id="tab-blogs">
+          <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:20px;">
+            <h2 class="section-title" style="margin:0;"><i data-lucide="newspaper"></i> مدیریت مقالات (بلاگ)</h2>
+            <button class="btn-glass-gold" style="display:flex; align-items:center; gap:8px;" onclick="openBlogModal()">
+                <i data-lucide="plus"></i> افزودن مقاله جدید
+            </button>
+          </div>
+          <div id="blogs-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:20px;">
+             <!-- Blogs Rendered Here via admin.js -->
+          </div>
+        </section>
+
+
+        <!-- TAB: TASKS -->
+        <section class="tab-panel" id="tab-tasks">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 5px;">مدیریت تسک‌ها</h2>
+              <p style="color: #94A3B8; font-size: 13px;">تسک‌های روزانه تیم را اینجا مدیریت کنید.</p>
+            </div>
+            <button class="btn-glass-gold" onclick="openTaskModal()" style="display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="plus" style="width: 18px;"></i>
+              تسک جدید
+            </button>
+          </div>
+
+          <div class="kanban-board">
+            <!-- New Tasks -->
+            <div class="kanban-column" id="col-new" data-status="new">
+              <div class="kanban-column-header">
+                <span><i data-lucide="circle-dashed" style="width:16px; display:inline-block; vertical-align:-3px; margin-left:4px; color:#94A3B8;"></i> کارهای جدید</span>
+                <span class="k-col-count" id="count-new">0</span>
+              </div>
+              <div class="kanban-cards" ondrop="dropTask(event)" ondragover="allowDropTask(event)" ondragenter="dragEnterTask(event)" ondragleave="dragLeaveTask(event)"></div>
+            </div>
+            
+            <!-- In Progress -->
+            <div class="kanban-column" id="col-progress" data-status="progress">
+              <div class="kanban-column-header">
+                <span><i data-lucide="loader-2" style="width:16px; display:inline-block; vertical-align:-3px; margin-left:4px; color:#3B82F6;"></i> در حال انجام</span>
+                <span class="k-col-count" id="count-progress">0</span>
+              </div>
+              <div class="kanban-cards" ondrop="dropTask(event)" ondragover="allowDropTask(event)" ondragenter="dragEnterTask(event)" ondragleave="dragLeaveTask(event)"></div>
+            </div>
+            
+            <!-- Pending -->
+            <div class="kanban-column" id="col-pending" data-status="pending">
+              <div class="kanban-column-header">
+                <span><i data-lucide="clock" style="width:16px; display:inline-block; vertical-align:-3px; margin-left:4px; color:#F59E0B;"></i> منتظر انجام</span>
+                <span class="k-col-count" id="count-pending">0</span>
+              </div>
+              <div class="kanban-cards" ondrop="dropTask(event)" ondragover="allowDropTask(event)" ondragenter="dragEnterTask(event)" ondragleave="dragLeaveTask(event)"></div>
+            </div>
+            
+            <!-- Done -->
+            <div class="kanban-column" id="col-done" data-status="done">
+              <div class="kanban-column-header">
+                <span><i data-lucide="check-circle-2" style="width:16px; display:inline-block; vertical-align:-3px; margin-left:4px; color:#10B981;"></i> انجام شده</span>
+                <span class="k-col-count" id="count-done">0</span>
+              </div>
+              <div class="kanban-cards" ondrop="dropTask(event)" ondragover="allowDropTask(event)" ondragenter="dragEnterTask(event)" ondragleave="dragLeaveTask(event)"></div>
+            </div>
+          </div>
+        </section>
+
+</main>
 
   </div>
 
@@ -1747,6 +2114,11 @@ html {
           <input type="text" id="media-title" class="glass-input-field" required placeholder="مثلاً: نوار تور کورت پدل">
         </div>
         <div class="form-group">
+          <label class="form-label">تعرفه (قیمت)</label>
+          <input type="text" id="media-tariff" class="glass-input-field" placeholder="مثلاً: 90 میلیون تومان">
+        </div>
+
+        <div class="form-group">
           <label class="form-label">تگ پرستیژ (Badge)</label>
           <input type="text" id="media-tag" class="glass-input-field" placeholder="مثلاً: دید فوق‌العاده بالینی">
         </div>
@@ -1805,17 +2177,17 @@ html {
         </div>
         
         <div class="form-group">
-          <label class="form-label">نمایش در صفحات (چند انتخاب با Ctrl/Cmd)</label>
-          <select id="media-display-pages" class="glass-input-field" multiple style="height: 120px; font-family: 'YekanBakh', sans-serif;">
-            <option value="home">صفحه اصلی (Home)</option>
-            <option value="inventory">نمایشگاه (Inventory)</option>
-            <option value="club-azadi">مجموعه آرنا (آزادی)</option>
-            <option value="club-lavasan">مجموعه نترا (لواسان)</option>
-            <option value="club-ajudaniyeh">مجموعه T10 (آجودانیه)</option>
-            <option value="club-shahrak">مجموعه ایران زمین (شهرک غرب)</option>
-            <option value="club-sari">مجموعه آسایش (ساری)</option>
-            <option value="club-olympic">مجموعه المپیک (کیش)</option>
-          </select>
+          <label class="form-label">نمایش در صفحات (امکان انتخاب چند گزینه)</label>
+          <div class="checkbox-grid" id="media-display-pages-grid">
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="home"><span>صفحه اصلی</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="inventory"><span>نمایشگاه</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-azadi"><span>آرنا (آزادی)</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-lavasan"><span>نترا (لواسان)</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-ajudaniyeh"><span>T10 (آجودانیه)</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-shahrak"><span>ایران زمین (شهرک غرب)</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-sari"><span>آسایش (ساری)</span></label>
+            <label class="glass-checkbox"><input type="checkbox" class="dp-checkbox" value="club-olympic"><span>المپیک (کیش)</span></label>
+          </div>
         </div>
 
         <div class="modal-footer">
@@ -1959,7 +2331,16 @@ html {
       </div>
       <form id="user-form">
         <input type="hidden" id="user-id">
+        
         <div class="form-group">
+          <label class="form-label">تصویر پروفایل (آواتار)</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="user-avatar" class="glass-input-field" placeholder="لینک عکس یا خالی بگذارید" style="flex:1;" />
+            <button type="button" onclick="document.getElementById('user-upload').click()" class="btn-glass-outline" style="padding: 0 15px;">آپلود عکس</button>
+            <input type="file" id="user-upload" style="display:none;" accept="image/*" onchange="uploadUserAvatar(this)" />
+          </div>
+        </div>
+<div class="form-group">
           <label class="form-label">نام و نام خانوادگی</label>
           <input type="text" id="user-name" class="glass-input-field" required placeholder="مثلاً: علی احمدی">
         </div>
@@ -2037,7 +2418,16 @@ html {
       </div>
       <form id="team-form">
         <input type="hidden" id="team-id">
+        
         <div class="form-group">
+          <label class="form-label">تصویر پروفایل (آواتار)</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="user-avatar" class="glass-input-field" placeholder="لینک عکس یا خالی بگذارید" style="flex:1;" />
+            <button type="button" onclick="document.getElementById('user-upload').click()" class="btn-glass-outline" style="padding: 0 15px;">آپلود عکس</button>
+            <input type="file" id="user-upload" style="display:none;" accept="image/*" onchange="uploadUserAvatar(this)" />
+          </div>
+        </div>
+<div class="form-group">
           <label class="form-label">نام و نام خانوادگی</label>
           <input type="text" id="team-name" class="glass-input-field" required placeholder="مثلاً: مهندس علیرضا رضایی">
         </div>
@@ -2076,7 +2466,7 @@ html {
   <div class="toast-container" id="toast-container"></div>
 
   <!-- JS Dependencies -->
-  <script src="admin.js?v=209"></script>
+  <script src="admin.js?v=220"></script>
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
@@ -2210,6 +2600,270 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>if(typeof lucide !== "undefined"){lucide.createIcons();}</script>
+
+  
+  <!-- BLOG MODAL -->
+  <div class="glass-modal-overlay" id="blog-modal">
+    <div class="glass-modal-content" style="max-width: 800px; width: 95%;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="blog-modal-title">افزودن مقاله</h3>
+        <button class="close-modal-btn" onclick="closeBlogModal()">&times;</button>
+      </div>
+      <form id="blog-form">
+        <input type="hidden" id="blog-id" />
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+          <div class="form-group">
+            <label class="form-label">عنوان مقاله</label>
+            <input type="text" id="blog-title" class="glass-input-field" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">دسته‌بندی</label>
+            <input type="text" id="blog-category" class="glass-input-field" placeholder="مثال: اخبار کلاب‌ها" required />
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+          <div class="form-group">
+            <label class="form-label">تاریخ</label>
+            <input type="text" id="blog-date" class="glass-input-field" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">کاور مقاله</label>
+            <div style="display:flex; gap:10px;">
+              <input type="text" id="blog-image" class="glass-input-field" placeholder="لینک عکس" style="flex:1;" />
+              <button type="button" onclick="document.getElementById('blog-upload').click()" class="btn-glass-outline" style="padding: 0 15px;">آپلود</button>
+              <input type="file" id="blog-upload" style="display:none;" accept="image/*" onchange="uploadBlogImage(this)" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">خلاصه مقاله (توضیح کوتاه)</label>
+            <textarea id="blog-summary" class="glass-input-field" rows="2" required></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-label">محتوای کامل (پشتیبانی از HTML)</label>
+            <textarea id="blog-content" class="glass-input-field" rows="8" required style="direction:rtl; text-align:right; font-family: monospace;"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-glass-outline" onclick="closeBlogModal()">انصراف</button>
+          <button type="submit" class="btn-glass-gold">ذخیره مقاله</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- Task Modal -->
+  <div class="glass-modal-overlay" id="taskModal">
+    <div class="glass-modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 id="taskModalTitle">تسک جدید</h3>
+        <button class="close-modal-btn" onclick="closeTaskModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="taskForm" onsubmit="saveTask(event)">
+          <input type="hidden" id="taskId">
+          
+          <div class="form-group">
+            <label>عنوان تسک *</label>
+            <input type="text" id="taskTitle" class="glass-input-field" required placeholder="مثال: طراحی صفحه اصلی">
+          </div>
+          
+          <div class="form-group">
+            <label>مسئول انجام *</label>
+            <input type="text" id="taskAssignee" class="glass-input-field" required placeholder="نام شخص مسئول">
+          </div>
+          
+          <div class="form-row" style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+              <label>تاریخ انجام</label>
+              <input type="date" id="taskDate" class="glass-input-field" style="color-scheme: dark;">
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>اولویت</label>
+              <select id="taskPriority" class="glass-input-field">
+                <option value="low">کم</option>
+                <option value="medium" selected>متوسط</option>
+                <option value="high">زیاد</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+            <button type="button" class="btn-glass-outline" onclick="closeTaskModal()">انصراف</button>
+            <button type="submit" class="btn-glass-gold">ذخیره تسک</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+// Kanban Task Logic
+let tasks = JSON.parse(localStorage.getItem('silveriom_admin_tasks')) || [];
+
+function saveTasksToStorage() {
+  localStorage.setItem('silveriom_admin_tasks', JSON.stringify(tasks));
+  renderTasks();
+}
+
+function openTaskModal() {
+  document.getElementById('taskForm').reset();
+  document.getElementById('taskId').value = '';
+  document.getElementById('taskModalTitle').innerText = 'تسک جدید';
+  document.getElementById('taskModal').classList.add('active');
+}
+
+function closeTaskModal() {
+  document.getElementById('taskModal').classList.remove('active');
+}
+
+function saveTask(e) {
+  e.preventDefault();
+  const id = document.getElementById('taskId').value;
+  const title = document.getElementById('taskTitle').value;
+  const assignee = document.getElementById('taskAssignee').value;
+  const date = document.getElementById('taskDate').value;
+  const priority = document.getElementById('taskPriority').value;
+  
+  if (id) {
+    // Edit
+    const taskIndex = tasks.findIndex(t => t.id === id);
+    if (taskIndex > -1) {
+      tasks[taskIndex] = { ...tasks[taskIndex], title, assignee, date, priority };
+    }
+  } else {
+    // Add
+    tasks.push({
+      id: 'task_' + Date.now(),
+      title,
+      assignee,
+      date,
+      priority,
+      status: 'new'
+    });
+  }
+  
+  closeTaskModal();
+  saveTasksToStorage();
+}
+
+function deleteTask(id) {
+  if(confirm('آیا از حذف این تسک مطمئن هستید؟')) {
+    tasks = tasks.filter(t => t.id !== id);
+    saveTasksToStorage();
+  }
+}
+
+function getPriorityLabel(p) {
+  if(p === 'high') return 'زیاد';
+  if(p === 'medium') return 'متوسط';
+  return 'کم';
+}
+
+function renderTasks() {
+  const cols = ['new', 'progress', 'pending', 'done'];
+  cols.forEach(status => {
+    const container = document.querySelector(`#col-${status} .kanban-cards`);
+    if(container) container.innerHTML = '';
+    
+    let count = 0;
+    tasks.filter(t => t.status === status).forEach(task => {
+      count++;
+      const card = document.createElement('div');
+      card.className = 'kanban-card';
+      card.draggable = true;
+      card.id = task.id;
+      card.ondragstart = dragStartTask;
+      card.ondragend = dragEndTask;
+      
+      const priorityLabel = getPriorityLabel(task.priority);
+      const dateStr = task.date ? new Date(task.date).toLocaleDateString('fa-IR') : 'نامشخص';
+      
+      card.innerHTML = `
+        <div class="k-card-title">${task.title}</div>
+        <div class="k-card-info">
+          <i data-lucide="user" style="width:14px;"></i> ${task.assignee}
+        </div>
+        <div class="k-card-info">
+          <i data-lucide="calendar" style="width:14px;"></i> ${dateStr}
+        </div>
+        <div class="k-card-footer">
+          <span class="k-priority-badge k-priority-${task.priority}">${priorityLabel}</span>
+          <button class="k-delete-btn" onclick="deleteTask('${task.id}')" title="حذف"><i data-lucide="trash-2" style="width:16px;"></i></button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    
+    document.getElementById(`count-${status}`).innerText = count;
+  });
+  
+  if(window.lucide) {
+    lucide.createIcons();
+  }
+}
+
+// Drag & Drop
+let draggedTaskId = null;
+
+function dragStartTask(e) {
+  draggedTaskId = e.target.id;
+  e.target.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', e.target.id);
+  // required for firefox
+}
+
+function dragEndTask(e) {
+  e.target.classList.remove('dragging');
+  document.querySelectorAll('.kanban-column').forEach(c => c.classList.remove('drag-over'));
+}
+
+function allowDropTask(e) {
+  e.preventDefault();
+}
+
+function dragEnterTask(e) {
+  e.preventDefault();
+  const col = e.target.closest('.kanban-column');
+  if(col) col.classList.add('drag-over');
+}
+
+function dragLeaveTask(e) {
+  const col = e.target.closest('.kanban-column');
+  if(col) col.classList.remove('drag-over');
+}
+
+function dropTask(e) {
+  e.preventDefault();
+  const col = e.target.closest('.kanban-column');
+  if(col) {
+    col.classList.remove('drag-over');
+    const newStatus = col.getAttribute('data-status');
+    const taskId = e.dataTransfer.getData('text/plain') || draggedTaskId;
+    
+    if(taskId && newStatus) {
+      const taskIndex = tasks.findIndex(t => t.id === taskId);
+      if(taskIndex > -1 && tasks[taskIndex].status !== newStatus) {
+        tasks[taskIndex].status = newStatus;
+        saveTasksToStorage();
+      }
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderTasks();
+});
+
+function toggleSidebarCollapse() {
+  document.body.classList.toggle('sidebar-collapsed');
+}
+
+</script>
+
 </body>
 
 </html>

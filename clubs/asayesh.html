@@ -2170,30 +2170,6 @@
   }
 }
 
-  
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border: 1px solid transparent !important;
-  border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  transition: all 0.3s ease !important;
-}
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
-  color: #CCFF00 !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
-  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
-}
-
 
 .nav-btn.primary, .phone-link {
   background: rgba(13, 22, 45, 0.6) !important;
@@ -2226,15 +2202,7 @@
 /* ========================================================================== */
 
 /* 1. Brand Logo Strict Sizing (Prevent giant image expansion) */
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
-}
+
 
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
@@ -2246,118 +2214,31 @@
 
 /* 2. Floating Navbar & Glass Container */
 /* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important; /* Positioned below the 50px marquee ticker */
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
 
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
 
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
 
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
 
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
-}
+
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
 
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
-}
+
+
 
 @media (min-width: 1024px) {
-  .nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+  
 
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
-}
-}
 
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
 }
 
 
 
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
+
+
+
 
 /* 4. Left Action Section & Buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
+
 
 .glass-phone-btn {
   display: inline-flex !important;
@@ -4475,25 +4356,11 @@ section {
 /* ==========================================================================
    STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-.luxury-nav {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
 
-.luxury-nav.scrolled {
-  background: rgba(2, 6, 18, 0.88) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border-bottom: 1px solid rgba(182, 255, 0, 0.15) !important;
-  top: 0 !important;
-  padding: 0.6rem 2.5rem !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-}
 
-@media (max-width: 900px) {
-  .luxury-nav.scrolled {
-    padding: 0.6rem 1.5rem !important;
-  }
-}
+
+
+
 
 .mobile-overlay {
   display: block !important;
@@ -4678,12 +4545,7 @@ section {
 /* ==========================================================================
    MOBILE HEADER ACTION HIDING & ENHANCED GLASS DRAWER
    ========================================================================== */
-@media (max-width: 900px) {
-  .luxury-nav .glass-phone-btn,
-  .luxury-nav #open-kit-btn {
-    display: none !important;
-  }
-}
+
 
 .mobile-drawer {
   background: rgba(6, 18, 42, 0.55) !important;
@@ -4892,46 +4754,6 @@ section {
   gap: 8px !important;
   font-weight: 800 !important;
   margin-left: 15px !important;
-}
-
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
-
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
-}
-
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border: 1px solid transparent !important;
-  border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  transition: all 0.3s ease !important;
-}
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
-  color: #CCFF00 !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
-  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
 }
 
 .nav-btn.primary, .phone-link {
@@ -5161,14 +4983,7 @@ section {
 </style>
 <style id="silveriom-global-container-system">
   /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
-  .luxury-nav, 
-  .luxury-nav.scrolled {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
   /* 2. Apply the Inventory absolute reference to ALL main layout components */
-  .nav-container,
   .editorial-wide-container,
   .editorial-container,
   .blueprint-container,
@@ -10684,25 +10499,7 @@ html {
 
 <!-- Navigation Scroll Fix -->
 <style id="silveriom-nav-scroll-fix">
-  .luxury-nav, .nav-container, .nav-links {
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
-  }
-  .luxury-nav::-webkit-scrollbar, .nav-container::-webkit-scrollbar, .nav-links::-webkit-scrollbar {
-    display: none !important;
-  }
-  @media (min-width: 1024px) {
-    .nav-links {
-      overflow: visible !important;
-      flex-wrap: nowrap !important;
-    }
-    .nav-item {
-      padding: 0.35rem 0.4rem !important;
-      font-size: 13px !important;
-      letter-spacing: -0.2px !important;
-      white-space: nowrap !important;
-    }
-  }
+  
 </style>
 
 <!-- Sticky Menu Global Fix -->
@@ -10714,31 +10511,18 @@ html {
   }
   
   /* 2. Main luxury nav initially absolute (scrolls up with page) */
-  .luxury-nav {
-    position: absolute !important;
-    top: 50px !important; /* right below the top bar */
-  }
+  
   
   /* 3. When scrolled, snap main nav to top and fix it */
-  .luxury-nav.scrolled {
-    position: fixed !important;
-    top: 0 !important;
-    background: rgba(2, 6, 18, 0.95) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-  }
+  
 
   /* Ensure the fix works on mobile too */
   @media (max-width: 1024px) {
     .top-complex-bar {
       display: flex !important; /* Show marquee on mobile per user request */
     }
-    .luxury-nav {
-      top: 50px !important;
-      position: absolute !important;
-    }
-    .luxury-nav.scrolled {
-      position: fixed !important;
-    }
+    
+    
   }
 </style>
 <!-- Footer Social Pills (Style 3) CSS -->
@@ -10761,6 +10545,8 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+  <!-- Centralized Navigation CSS -->
+  <link rel="stylesheet" href="/assets/css/global-nav.css?v=100">
 </head>
 
 
@@ -10837,19 +10623,79 @@ html {
 
       <nav class="nav-links">
         <a href="https://silveriom.ir" class="nav-item active">خانه</a>
-        <div class="nav-dropdown">
-          <a href="#" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+        <div class="nav-wrapper relative" style="position: relative; display: inline-block;">
+          <a href="https://silveriom.ir/inventory" class="nav-item" style="display:flex; align-items:center; gap:4px;">
             رسانه‌ها
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><path d="m6 9 6 6 6-6"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px; transition: transform 0.3s;" class="mega-caret"><path d="m6 9 6 6 6-6"/></svg>
           </a>
-          <div class="nav-dropdown-menu">
-            <a href="https://silveriom.ir/inventory" class="nav-dropdown-item">آرشیو رسانه ها</a>
-            <a href="https://silveriom.ir/clubs/t10.html" class="nav-dropdown-item">T10 (آجودانیه)</a>
-            <a href="https://silveriom.ir/clubs/arena.html" class="nav-dropdown-item">Arena (آزادی)</a>
-            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
-            <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
-            <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
-            <a href="https://silveriom.ir/clubs/kish.html" class="nav-dropdown-item">Olympic (کیش)</a>
+
+          <!-- Mega Menu Dropdown -->
+          <div class="mega-menu absolute glass-panel-mega" style="position: absolute; top: calc(100% + 16px); right: 0; width: 900px; height: 540px; display: flex; padding: 1.5rem; gap: 2.5rem; flex-direction: row; cursor: default;">
+            
+            <!-- Right Column (Links list) -->
+            <div style="width: 55%; display: flex; flex-direction: column; padding-top: 0.5rem; height: 100%;">
+              <span style="font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; padding: 0 0.5rem; font-weight: 600;">بخش‌ها و باشگاه‌های تحت پوشش</span>
+
+              <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; padding: 0 0.5rem 0.5rem 0.5rem;">
+                
+                <!-- NEW ITEM 1: Archive -->
+                <a href="https://silveriom.ir/inventory" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Archive Icon" class="highlight-icon" style="width: 44px; height: 44px; object-fit: contain;">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.1rem; font-weight: 800; color: #CCFF00; margin: 0; transition: color 0.3s; font-family: 'YekanBakh', sans-serif !important;">آرشیو جامع رسانه‌ها</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/netra.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل نترا (لواسان)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/t10.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل T10 (آجودانیه)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل ایران زمین (شهرک غرب)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/arena.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل آرنا (آزادی)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/asayesh.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل و تنیس آسایش (ساری)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/kish.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه تنیس المپیک (جزیره کیش)</h4>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- Left Column (Featured Image) -->
+            <a href="https://silveriom.ir/inventory" class="left-image-group" style="width: 45%; height: 100%; border-radius: 1rem; position: relative; cursor: pointer; overflow: hidden; display: block; text-decoration: none;">
+              <img src="https://silveriom.ir/assets/mega_menu_featured.jpg" alt="Featured Media" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+
           </div>
         </div>
         
@@ -11438,89 +11284,235 @@ html {
         <div class="container mx-auto px-6">
             <div class="section-title">
                 <div class="section-subtitle">فضاهای تبلیغاتی اختصاصی</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <div class="media-asset-card">
-                  <div class="mac-img-box">
-                    <img src="https://silveriom.ir/assets/padel_blubank_court.jpg" loading="lazy">
-                    <span class="mac-badge-code">کد: SVM-IZ-01</span>
-                    <span class="mac-badge-status" style="linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%); box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);">قابل رزرو / اکران</span>
-                  </div>
-
-                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> Asayesh (ساری)</div>
-                  <h3 class="mac-title">دیواره شیشه‌ای کورت VIP</h3>
-                  
-                  <div class="mac-info-row">
-                    <span class="mac-info-label">تعرفه ماهانه:</span>
-                    <span class="mac-info-value">۱۵۰ میلیون تومان</span>
-                  </div>
-
-                  <div class="mac-specs-row">
-                    <div class="mac-spec-item">ابعاد: <strong>۱۲m × ۳m</strong> <i class="fa-solid fa-expand"></i></div>
-                    <div class="mac-spec-item">ویژگی: <strong>UV Glass</strong> <i class="fa-solid fa-bolt"></i></div>
-                  </div>
-
-                  <button class="mac-action-btn">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>اضافه کردن به مدیا کیت</span>
-                  </button>
-                </div>
-
-                <div class="media-asset-card">
-                  <div class="mac-img-box">
-                    <img src="https://silveriom.ir/assets/padel_crystal_court.jpg" loading="lazy">
-                    <span class="mac-badge-code">کد: SVM-IZ-02</span>
-                    <span class="mac-badge-status" style="linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%); box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);">قابل رزرو / اکران</span>
-                  </div>
-
-                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> Asayesh (ساری)</div>
-                  <h3 class="mac-title">استند هوشمند ۴K LED ورودی لابی</h3>
-                  
-                  <div class="mac-info-row">
-                    <span class="mac-info-label">تعرفه ماهانه:</span>
-                    <span class="mac-info-value">۱۳۵ میلیون تومان</span>
-                  </div>
-
-                  <div class="mac-specs-row">
-                    <div class="mac-spec-item">ابعاد: <strong>۷۵ اینچ ۴K</strong> <i class="fa-solid fa-expand"></i></div>
-                    <div class="mac-spec-item">زمان: <strong>تیزر ۱۵ ثانیه</strong> <i class="fa-solid fa-bolt"></i></div>
-                  </div>
-
-                  <button class="mac-action-btn">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>اضافه کردن به مدیا کیت</span>
-                  </button>
-                </div>
-
-                <div class="media-asset-card">
-                  <div class="mac-img-box">
-                    <img src="https://silveriom.ir/assets/padel_mammut_court.jpg" loading="lazy">
-                    <span class="mac-badge-code">کد: SVM-IZ-03</span>
-                    <span class="mac-badge-status" style="linear-gradient(90deg, #f59e0b, #d97706); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);">رزرو محدود</span>
-                  </div>
-
-                  <div class="mac-location"><i class="fa-solid fa-location-dot"></i> Asayesh (ساری)</div>
-                  <h3 class="mac-title">استیکر کف زمین (Logo)</h3>
-                  
-                  <div class="mac-info-row">
-                    <span class="mac-info-label">تعرفه ماهانه:</span>
-                    <span class="mac-info-value">۹۰ میلیون تومان</span>
-                  </div>
-
-                  <div class="mac-specs-row">
-                    <div class="mac-spec-item">ابعاد: <strong>۴m × ۲m</strong> <i class="fa-solid fa-expand"></i></div>
-                    <div class="mac-spec-item">ویژگی: <strong>ضد لغزش</strong> <i class="fa-solid fa-bolt"></i></div>
-                  </div>
-
-                  <button class="mac-action-btn">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>اضافه کردن به مدیا کیت</span>
-                  </button>
-                </div>
-            </div>
+                <div id="club-inventory-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            
     </section>
 
-    <footer class="luxury-mega-footer" id="main-footer">
+    
+<!-- Club Events Static Section -->
+<section id="club-events" class="relative py-24 z-10" style="background: rgba(10, 20, 35, 0.4); backdrop-filter: blur(20px);">
+    <div class="container mx-auto px-6">
+        <div class="section-title text-center mb-16">
+            <h2 class="title-glow text-3xl md:text-4xl font-black text-white mb-4 tracking-wider" style="font-family: 'YekanBakh', sans-serif;">رویداد ها و مسابقات مجموعه</h2>
+            <p style="color: #94A3B8; font-size: 1.1rem; font-family: 'YekanBakh', sans-serif;">مسابقات و رویدادهای پیش‌رو در مجموعه ورزشی آسایش – ساری</p>
+        </div>
+        
+        <style>
+          .ne-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; font-family: 'YekanBakh', sans-serif; direction: rtl; }
+          .ne-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; overflow: hidden; transition: all 0.3s ease;
+            cursor: pointer; display: flex; flex-direction: column; text-align: right;
+          }
+          .ne-card:hover { transform: translateY(-8px); border-color: rgba(204,255,0,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(204,255,0,0.1); }
+          .ne-poster { width: 100%; aspect-ratio: 1/1; position: relative; overflow: hidden; }
+          .ne-poster img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease; }
+          .ne-card:hover .ne-poster img { transform: scale(1.05); }
+          .ne-badge { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 8px; color: #CCFF00; font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(204,255,0,0.2); }
+          .ne-content { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+          .ne-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 16px; }
+          .ne-meta-item { display: flex; align-items: center; gap: 10px; color: #94A3B8; font-size: 0.95rem; margin-bottom: 8px; }
+          .ne-cta { margin-top: auto; padding-top: 20px; color: #fff; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: gap 0.3s ease; }
+          .ne-card:hover .ne-cta { color: #CCFF00; gap: 12px; }
+        </style>
+
+        <div class="ne-grid">
+
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/tennis_age.png" alt="رده‌های سنی کشور" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">رده‌های سنی کشور</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۱۶–۲۵ مهر ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/basketball_3x3.png" alt="بسکتبال" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">بسکتبال</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۵–۱۴ آبان ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/crossfit.png" alt="راکس کراس‌فیت" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">راکس کراس‌فیت</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۲۴ آبان–۳ آذر ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/tennis_gp.png" alt="تنیس جایزه بزرگ آقایان" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">تنیس جایزه بزرگ آقایان</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۱۳–۲۲ آذر ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/tennis_gp.png" alt="تنیس جایزه بزرگ بانوان" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">تنیس جایزه بزرگ بانوان</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۲–۱۱ دی ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/tennis_beach.png" alt="تنیس ساحلی" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">تنیس ساحلی</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۲۱–۳۰ دی ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/padel_gp.png" alt="جایزه بزرگ پدل" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">جایزه بزرگ پدل</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۱۰–۱۹ بهمن ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/basketball_3x3.png" alt="بسکتبال" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">بسکتبال</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۳۰ بهمن–۹ اسفند ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ne-card" onclick="window.location.href='/tournament-calendar/index.html'">
+                <div class="ne-poster">
+                    <img src="https://silveriom.ir/tournament-calendar/basketball_3x3.png" alt="بسکتبال" loading="lazy">
+                    <div class="ne-badge">ASAYESH</div>
+                </div>
+                <div class="ne-content">
+                    <h3 class="ne-title">بسکتبال</h3>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-calendar" style="color: #CCFF00;"></i>
+                        <span>۲۰–۲۹ اسفند ۱۴۰۵</span>
+                    </div>
+                    <div class="ne-meta-item">
+                        <i class="fa-regular fa-clock" style="color: #CCFF00;"></i>
+                        <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                    </div>
+                    <div class="ne-cta">
+                        <span>رزرو رویداد</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="luxury-mega-footer" id="main-footer">
   <div class="editorial-wide-container">
     <div class="footer-top-grid">
       <!-- Column 1: Main Brand with Transparent Logo -->
@@ -11993,7 +11985,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let hrefPath = '';
             try { hrefPath = new URL(href).pathname; } catch(e) { hrefPath = href; }
             let cleanHref = hrefPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
-            if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/'))) {
+            if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/')) || (cleanCurrent.startsWith('/clubs') && cleanHref === '/inventory')) {
                 el.classList.add('active');
                 const parentDropdown = el.closest('.nav-dropdown');
                 if (parentDropdown) {
@@ -12013,7 +12005,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let hrefPath = '';
             try { hrefPath = new URL(href, window.location.origin).pathname; } catch(e) { hrefPath = href; }
             let cleanHref = hrefPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
-            if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/'))) {
+            if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/')) || (cleanCurrent.startsWith('/clubs') && cleanHref === '/inventory')) {
                 el.classList.add('active');
                 matched = true;
             }
@@ -12028,6 +12020,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>if(typeof lucide !== "undefined"){lucide.createIcons();}</script>
+
+    <!-- Silveriom Cards Script -->
+    <script src="/assets/js/silveriom-cards.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (typeof renderMediaShowcase === 'function') {
+          renderMediaShowcase("club-inventory-container", "asayesh");
+        }
+      });
+    </script>
+    
 </body>
 
 

@@ -7880,6 +7880,238 @@ section {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+
+
+
+
+<!-- Global Top Bar & Loader Fix -->
+<style id="silveriom-global-loader-topbar">
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  /* 1. Top Complex Bar */
+  .top-complex-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 50px !important;
+    z-index: 9999999 !important;
+    background: rgba(6, 16, 32, 0.95) !important;
+    backdrop-filter: blur(36px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    direction: ltr !important;
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+  }
+  .top-complex-bar:hover .marquee-track {
+    animation-play-state: paused !important;
+  }
+  .marquee-track {
+    display: flex !important;
+    align-items: center !important;
+    width: max-content !important;
+    animation: marqueeContinuous 38s linear infinite !important;
+  }
+  .top-bar-badge {
+    background: rgba(204, 255, 0, 0.1) !important;
+    border: 1px solid rgba(204, 255, 0, 0.5) !important;
+    border-radius: 50px !important;
+    padding: 4px 16px !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 800 !important;
+    margin-left: 15px !important;
+    font-size: 14px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    font-size: 15px !important;
+    padding: 0.2rem 0.65rem !important;
+    border-radius: 8px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item strong {
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-left: 4px !important;
+    font-family: inherit !important;
+  }
+  .top-c-item:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  .top-c-sep {
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-weight: 800 !important;
+    margin: 0 4px !important;
+    font-size: 14px !important;
+  }
+  
+  /* 2. Loader Alignment */
+  #silverium-loader {
+    top: 50px !important;
+    height: calc(100vh - 50px) !important;
+    z-index: 999999 !important;
+  }
+  
+  /* 3. Luxury Nav Alignment */
+  .luxury-nav {
+    top: 50px !important;
+  }
+  .luxury-nav.scrolled {
+    top: 50px !important;
+  }
+  
+  /* Ensure mobile overrides */
+  @media (max-width: 1024px) {
+    .top-complex-bar {
+      height: 40px !important;
+    }
+    .top-bar-badge, .top-c-item {
+      font-size: 13px !important;
+      padding: 2px 8px !important;
+    }
+    #silverium-loader {
+      top: 40px !important;
+      height: calc(100vh - 40px) !important;
+    }
+    .luxury-nav {
+      top: 40px !important;
+    }
+  }
+
+  /* Loader Text Uniformity */
+  #silverium-loader .loading-text {
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+</style>
+
+<style id="silveriom-megamenu-styles">
+  .glass-panel-mega {
+    background: #0a0f1a !important;
+    backdrop-filter: blur(32px) !important;
+    -webkit-backdrop-filter: blur(32px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  }
+  .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(15px) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99999 !important;
+  }
+  .nav-wrapper:hover .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+  .nav-wrapper:hover .mega-caret {
+    transform: rotate(180deg) !important;
+  }
+  .mega-item {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+  .mega-item:hover .mega-icon {
+    color: #CCFF00 !important;
+    transform: scale(1.1) !important;
+  }
+  .mega-item:hover .mega-title {
+    color: #CCFF00 !important;
+  }
+  .mega-icon {
+    transition: transform 0.3s ease !important;
+  }
+  .img-action-btn {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #000 !important;
+    transition: all 0.3s ease !important;
+  }
+  .left-image-group:hover .img-action-btn {
+    background: #CCFF00 !important;
+    transform: scale(1.05) !important;
+  }
+  .mega-title {
+    font-family: "YekanBakh", sans-serif !important;
+  }
+  @keyframes icon-pulse-glow {
+    0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
+    50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); }
+    100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
+  }
+  .highlight-icon {
+    animation: icon-pulse-glow 2.5s infinite ease-in-out !important;
+  }
+</style>
+<style id="silveriom-nav-clip-fix">
+  /* Remove backdrop and background from nav-links to avoid webkit border-radius clipping bug */
+  .luxury-nav .nav-links {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+    border: none !important;
+    position: relative !important;
+  }
+  
+  /* Apply the glass effect to a pseudo-element behind the items */
+  .luxury-nav .nav-links::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13, 22, 45, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Ensure the dropdown renders above everything */
+  .nav-dropdown-menu {
+    z-index: 99999 !important;
+  }
+</style>
 </head>
 
 
@@ -7950,6 +8182,8 @@ section {
         <span class="top-c-sep">•</span>
         <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
         <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
       </div>
       <div class="marquee-group">
         <span class="top-bar-badge"><i data-lucide="circle-dot" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> شبکه انحصاری پدل سیلوریوم:</span>
@@ -7963,10 +8197,12 @@ section {
         <span class="top-c-sep">•</span>
         <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
         <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
+        <span class="top-c-sep">•</span>
       </div>
     </div>
   </div>
-  <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
+
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
@@ -7975,19 +8211,80 @@ section {
 
       <nav class="nav-links">
         <a href="https://silveriom.ir" class="nav-item active">خانه</a>
-        <div class="nav-dropdown">
-          <a href="#" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+                                        <!-- Mega Menu Wrapper -->
+        <div class="nav-wrapper relative" style="position: relative; display: inline-block;">
+          <a href="https://silveriom.ir/inventory" class="nav-item" style="display:flex; align-items:center; gap:4px;">
             رسانه‌ها
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><path d="m6 9 6 6 6-6"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px; transition: transform 0.3s;" class="mega-caret"><path d="m6 9 6 6 6-6"/></svg>
           </a>
-          <div class="nav-dropdown-menu">
-            <a href="https://silveriom.ir/inventory" class="nav-dropdown-item">آرشیو رسانه ها</a>
-            <a href="https://silveriom.ir/clubs/t10.html" class="nav-dropdown-item">T10 (آجودانیه)</a>
-            <a href="https://silveriom.ir/clubs/arena.html" class="nav-dropdown-item">Arena (آزادی)</a>
-            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
-            <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
-            <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
-            <a href="https://silveriom.ir/clubs/kish.html" class="nav-dropdown-item">Olympic (کیش)</a>
+
+          <!-- Mega Menu Dropdown -->
+          <div class="mega-menu absolute glass-panel-mega" style="position: absolute; top: calc(100% + 16px); right: 0; width: 900px; height: 540px; display: flex; padding: 1.5rem; gap: 2.5rem; flex-direction: row; cursor: default;">
+            
+            <!-- Right Column (Links list) -->
+            <div style="width: 55%; display: flex; flex-direction: column; padding-top: 0.5rem; height: 100%;">
+              <span style="font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; padding: 0 0.5rem; font-weight: 600;">بخش‌ها و باشگاه‌های تحت پوشش</span>
+
+              <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; padding: 0 0.5rem 0.5rem 0.5rem;">
+                
+                <!-- NEW ITEM 1: Archive -->
+                <a href="https://silveriom.ir/inventory" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Archive Icon" class="highlight-icon" style="width: 44px; height: 44px; object-fit: contain;">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.1rem; font-weight: 800; color: #CCFF00; margin: 0; transition: color 0.3s; font-family: 'YekanBakh', sans-serif !important;">آرشیو جامع رسانه‌ها</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/netra.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل نترا (لواسان)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/t10.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل T10 (آجودانیه)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل ایران زمین (شهرک غرب)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/arena.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل آرنا (آزادی)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/asayesh.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل و تنیس آسایش (ساری)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/kish.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه تنیس المپیک (جزیره کیش)</h4>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- Left Column (Featured Image) -->
+            <a href="https://silveriom.ir/inventory" class="left-image-group" style="width: 45%; height: 100%; border-radius: 1rem; position: relative; cursor: pointer; overflow: hidden; display: block; text-decoration: none;">
+              <img src="https://silveriom.ir/assets/mega_menu_featured.jpg" alt="Featured Media" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+
           </div>
         </div>
         

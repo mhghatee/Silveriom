@@ -1,0 +1,469 @@
+/* =========================================
+   SILVERIOM GLOBAL NAVIGATION STYLES
+   ========================================= */
+
+/* 1. Main Nav Bar */
+.luxury-nav {
+  position: fixed !important;
+  top: 50px !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  padding: 0.85rem 2.5rem !important;
+  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
+  box-sizing: border-box !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: visible !important;
+}
+
+.luxury-nav.scrolled {
+  background: rgba(2, 6, 18, 0.88) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid rgba(182, 255, 0, 0.15) !important;
+  top: 0 !important;
+  padding: 0.6rem 2.5rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 2. Container */
+.nav-container {
+  position: relative !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* 3. Nav Links Wrapper (The Pill) */
+.nav-links {
+  background: rgba(13, 22, 45, 0.25) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+  overflow: visible !important;
+  
+  
+
+}
+
+/* 4. Nav Items */
+.nav-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  padding: 0.35rem 0.5rem !important;
+  border-radius: 9999px !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  letter-spacing: -0.3px !important;
+  white-space: nowrap !important;
+  border: 1px solid transparent !important;
+}
+
+.nav-item:hover {
+  color: #CCFF00 !important;
+  background: rgba(204, 255, 0, 0.05) !important;
+}
+
+.nav-item.active {
+  color: #CCFF00 !important;
+  background: rgba(204, 255, 0, 0.08) !important;
+  border: 1px solid rgba(204, 255, 0, 0.2) !important;
+}
+
+/* 5. Nav Wrapper and Mega Menu */
+.nav-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: visible !important;
+}
+
+.mega-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(15px) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 99999 !important;
+  overflow: visible !important;
+  position: absolute !important;
+  top: calc(100% + 16px) !important;
+  right: 0 !important;
+  background: #0a0f1a !important;
+  backdrop-filter: blur(32px) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+
+.nav-wrapper:hover .mega-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.nav-wrapper:hover .mega-caret {
+  transform: rotate(180deg) !important;
+}
+
+.mega-item {
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.mega-item:hover .mega-icon {
+  color: #CCFF00 !important;
+  transform: scale(1.1) !important;
+}
+.mega-item:hover .mega-title {
+  color: #CCFF00 !important;
+}
+
+/* 6. Mobile & Desktop Adjustments */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+  .luxury-nav {
+    top: 50px !important;
+    padding: 0.6rem 1.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-item {
+    padding: 0.35rem 0.4rem !important;
+    font-size: 13px !important;
+    letter-spacing: -0.2px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Loader Fix (To ensure menu stays below loader but above main content) */
+#silverium-loader {
+  z-index: 9999999 !important;
+}
+
+/* =========================================
+   BULLETPROOF MATHEMATICAL CENTERING 
+   ========================================= */
+/* 
+  Layout: [nav-brand (flex:1)] [nav-links (flex:0)] [nav-action (flex:1)]
+  Both sides get equal flex:1 so nav-links is always mathematically centered.
+*/
+.nav-container {
+  justify-content: space-between !important;
+}
+.nav-brand {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  justify-content: flex-start !important; /* RTL: logo anchors to right within its zone */
+  align-items: center !important;
+}
+.nav-links {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  transform: none !important;
+  left: auto !important;
+  margin: 0 16px !important;
+}
+.nav-action {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important; /* RTL: buttons anchor to left within their zone */
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+/* =========================================
+   LOGO & BRAND
+   ========================================= */
+.nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+}
+
+.nav-brand-logo-img,
+img.nav-brand-logo-img {
+  height: 42px !important;
+  max-height: 42px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
+
+.nav-brand:hover .nav-brand-logo-img {
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
+}
+
+/* =========================================
+   ACTION BUTTONS (Phone + Media Kit)
+   ========================================= */
+.nav-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  flex-shrink: 0 !important;
+}
+
+.glass-phone-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  background: rgba(6, 18, 38, 0.68) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 50px !important;
+  padding: 0.45rem 1rem !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  transition: all 0.25s ease !important;
+}
+
+.glass-phone-btn:hover {
+  background: rgba(6, 18, 38, 0.9) !important;
+  border-color: rgba(204, 255, 0, 0.3) !important;
+}
+
+.glass-phone-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.phone-pulse-dot {
+  position: absolute !important;
+  top: -2px !important;
+  right: -2px !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #CCFF00 !important;
+  border-radius: 50% !important;
+  animation: navPulse 1.5s infinite !important;
+}
+
+@keyframes navPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+.luxury-btn-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #CCFF00 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 0.5rem 1.25rem !important;
+  color: #000 !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.luxury-btn-outline:hover {
+  background: #d4ff1a !important;
+  transform: scale(1.03) !important;
+}
+
+/* Hide phone/kit buttons on mobile (≤900px) */
+@media (max-width: 900px) {
+  .glass-phone-btn,
+  .luxury-btn-outline {
+    display: none !important;
+  }
+}
+
+/* Mobile toggle button */
+.mobile-toggle {
+  display: none !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
+}
+.mobile-toggle span {
+  display: block !important;
+  width: 24px !important;
+  height: 2px !important;
+  background: white !important;
+  border-radius: 2px !important;
+  transition: all 0.3s ease !important;
+}
+@media (max-width: 1024px) {
+  .mobile-toggle {
+    display: flex !important;
+  }
+}
+
+
+/* Perfect centering min-width on desktop only */
+@media (min-width: 1025px) {
+  .nav-brand, .nav-action {
+    min-width: 200px !important;
+  }
+}
+
+/* Fix mobile navbar layout */
+@media (max-width: 1024px) {
+  .nav-brand {
+    flex: 0 0 auto !important;
+  }
+  .nav-action {
+    flex: 0 0 auto !important;
+    justify-content: flex-start !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+  }
+}
+
+/* Critical Fix: Hide the open kit button completely on mobile to prevent overflow */
+@media (max-width: 1024px) {
+  #open-kit-btn, .luxury-btn-outline {
+    display: none !important;
+  }
+  .nav-container {
+    padding: 0.6rem 1rem !important;
+  }
+}
+
+
+/* The ultimate absolute mobile fix */
+@media (max-width: 1024px) {
+  .nav-container {
+    position: relative !important;
+    display: block !important;
+    height: 50px !important;
+    padding: 0 !important;
+  }
+  .nav-brand {
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: block !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+  .nav-brand-logo-img {
+    height: 35px !important;
+    width: auto !important;
+    display: block !important;
+  }
+  .nav-action {
+    position: absolute !important;
+    left: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+    width: 28px !important;
+    height: 20px !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: transparent !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .mobile-toggle span {
+    display: block !important;
+    width: 100% !important;
+    height: 3px !important;
+    background-color: #ccff00 !important;
+    border-radius: 2px !important;
+  }
+  #open-kit-btn, .luxury-btn-outline {
+    display: none !important;
+  }
+  .luxury-nav {
+    display: block !important;
+  }
+}
+
+
+
+/* =========================================
+   PERFECT iOS-SAFE NAV SYSTEM
+   ========================================= */
+
+/* On Mobile */
+@media (max-width: 1024px) {
+  /* 1. Top Bar: Absolute so it scrolls away naturally */
+  #top-complex-bar.top-complex-bar,
+  .top-complex-bar {
+    position: absolute !important;
+    top: 0 !important;
+    height: 40px !important;
+    z-index: 999 !important;
+  }
+
+  /* 2. Main Nav: Absolute and placed right below top bar initially */
+  header#main-nav.luxury-nav,
+  .luxury-nav {
+    position: absolute !important;
+    top: 40px !important;
+    z-index: 1000 !important;
+    transition: background 0.3s ease, padding 0.3s ease !important;
+  }
+
+  /* 3. When scrolled past 40px, JS adds .scrolled -> Make it FIXED at top 0! */
+  header#main-nav.luxury-nav.scrolled,
+  .luxury-nav.scrolled {
+    position: fixed !important;
+    top: 0 !important;
+    padding: 0.5rem 1.5rem !important; /* Keep mobile padding tight */
+    background: rgba(2, 6, 18, 0.95) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+/* FORCE OVERRIDE ALL INLINE STYLES */
+@media (max-width: 1024px) {
+  html body div#top-complex-bar.top-complex-bar {
+    position: absolute !important;
+    top: 0 !important;
+    height: 40px !important;
+    z-index: 999 !important;
+  }
+}

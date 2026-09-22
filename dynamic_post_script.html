@@ -1,0 +1,71 @@
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
+    
+    if (!blogId) {
+        document.querySelector('.blog-single-layout').innerHTML = '<h2 style="color:#fff; text-align:center;">مقاله‌ای یافت نشد</h2>';
+        return;
+    }
+
+    try {
+        const res = await fetch('/data/silveriom_db.json?t=' + Date.now());
+        const db = await res.json();
+        const blogs = db.blogs || [];
+        
+        const blog = blogs.find(b => b.id === blogId);
+        
+        if (!blog) {
+            document.querySelector('.blog-single-layout').innerHTML = '<h2 style="color:#fff; text-align:center;">مقاله‌ای یافت نشد</h2>';
+            return;
+        }
+
+        const imgSrc = blog.image ? (blog.image.startsWith('http') ? blog.image : '../' + blog.image) : '';
+
+        // Update elements
+        document.title = (blog.title || 'مقاله') + ' | وبلاگ سیلوریوم';
+        
+        const breadcrumbEl = document.getElementById('breadcrumb-title');
+        if (breadcrumbEl) breadcrumbEl.textContent = blog.title || '';
+        
+        const coverImgEl = document.getElementById('post-cover-image');
+        if (coverImgEl) coverImgEl.src = imgSrc;
+        
+        const categoryBadgeEl = document.getElementById('post-category-badge');
+        if (categoryBadgeEl) categoryBadgeEl.textContent = blog.category || 'مقاله';
+        
+        const mainTitleEl = document.getElementById('post-main-title');
+        if (mainTitleEl) mainTitleEl.textContent = blog.title || '';
+        
+        const dateEl = document.getElementById('post-date');
+        if (dateEl) dateEl.textContent = blog.date || '';
+
+        const innerTitleEl = document.getElementById('post-inner-title');
+        if (innerTitleEl) innerTitleEl.textContent = blog.title || '';
+
+        const contentEl = document.getElementById('post-content');
+        if (contentEl) contentEl.innerHTML = blog.content || (blog.summary || '');
+
+        // Render Sidebar
+        const sidebarEl = document.getElementById('sidebar-other-posts');
+        if (sidebarEl) {
+            let sidebarHTML = '<h4 style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;">سایر مقالات</h4>';
+            const otherBlogs = blogs.filter(b => b.id !== blogId).slice(0, 4);
+            otherBlogs.forEach(b => {
+                const bImgSrc = b.image ? (b.image.startsWith('http') ? b.image : '../' + b.image) : '';
+                sidebarHTML += `
+                <a href="post.html?id=${b.id}" style="display: flex; gap: 15px; text-decoration: none; margin-bottom: 20px;">
+                  <div style="width: 60px; height: 60px; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                    <img src="${bImgSrc}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                  </div>
+                  <div><h5 style="color: #fff; font-size: 13px; font-weight: 700; margin: 0; line-height: 1.5;">${b.title}</h5></div>
+                </a>`;
+            });
+            sidebarEl.innerHTML = sidebarHTML;
+        }
+
+    } catch (e) {
+        console.error(e);
+    }
+});
+</script>

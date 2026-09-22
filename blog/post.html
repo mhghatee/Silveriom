@@ -12,40 +12,25 @@
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
-    font-weight: 400 500;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400 500; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
-    font-weight: 700 800;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 700 800; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-ExtraBold.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 900; font-style: normal; font-display: swap;
   }
-
   *, *::before, *::after, html, body, main, section, div, p, span, a, h1, h2, h3, h4, h5, h6,
   input, select, textarea, button, label, li, ul, ol, option, optgroup, form, table, td, th {
     font-family: 'YekanBakh', 'Yekan Bakh', sans-serif !important;
   }
-  
-  /* Additional Styles for Blog Content */
   .post-content h2, .post-content h3 { font-family: 'YekanBakh', sans-serif !important; }
   .post-content p { font-family: 'YekanBakh', sans-serif !important; }
   .post-content ul li { font-family: 'YekanBakh', sans-serif !important; }
-  
-  @media(max-width: 991px) {
-    .main-single-post > div > div:nth-child(3) {
-      grid-template-columns: 1fr !important;
-    }
-  }
 
 /* Responsive Single Blog Layout */
 @media (min-width: 1025px) {
@@ -4845,7 +4830,7 @@ section {
 
 
 
-<title>چگونه کمپین سان‌استار رکورد شکست؟ | وبلاگ سیلوریوم</title>
+<title>انقلاب نئونی: تبلیغات محیطی در کورت‌های پدل | وبلاگ سیلوریوم</title>
 
     <!-- ================= Silverium Loader CSS ================= -->
     <style id="silverium-loader-styles">
@@ -5005,7 +4990,6 @@ section {
   color: #CCFF00;
 }
 </style>
-
 
 
 
@@ -5350,11 +5334,242 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+
+
+
+
+<!-- Global Top Bar & Loader Fix -->
+<style id="silveriom-global-loader-topbar">
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  /* 1. Top Complex Bar */
+  .top-complex-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 50px !important;
+    z-index: 9999999 !important;
+    background: rgba(6, 16, 32, 0.95) !important;
+    backdrop-filter: blur(36px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    direction: ltr !important;
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+  }
+  .top-complex-bar:hover .marquee-track {
+    animation-play-state: paused !important;
+  }
+  .marquee-track {
+    display: flex !important;
+    align-items: center !important;
+    width: max-content !important;
+    animation: marqueeContinuous 38s linear infinite !important;
+  }
+  .top-bar-badge {
+    background: rgba(204, 255, 0, 0.1) !important;
+    border: 1px solid rgba(204, 255, 0, 0.5) !important;
+    border-radius: 50px !important;
+    padding: 4px 16px !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 800 !important;
+    margin-left: 15px !important;
+    font-size: 14px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    font-size: 15px !important;
+    padding: 0.2rem 0.65rem !important;
+    border-radius: 8px !important;
+    font-family: 'YekanBakh', sans-serif !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.5 !important;
+  }
+  .top-c-item strong {
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-left: 4px !important;
+    font-family: inherit !important;
+  }
+  .top-c-item:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  .top-c-sep {
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-weight: 800 !important;
+    margin: 0 4px !important;
+    font-size: 14px !important;
+  }
+  
+  /* 2. Loader Alignment */
+  #silverium-loader {
+    top: 50px !important;
+    height: calc(100vh - 50px) !important;
+    z-index: 999999 !important;
+  }
+  
+  /* 3. Luxury Nav Alignment */
+  .luxury-nav {
+    top: 50px !important;
+  }
+  .luxury-nav.scrolled {
+    top: 50px !important;
+  }
+  
+  /* Ensure mobile overrides */
+  @media (max-width: 1024px) {
+    .top-complex-bar {
+      height: 40px !important;
+    }
+    .top-bar-badge, .top-c-item {
+      font-size: 13px !important;
+      padding: 2px 8px !important;
+    }
+    #silverium-loader {
+      top: 40px !important;
+      height: calc(100vh - 40px) !important;
+    }
+    .luxury-nav {
+      top: 40px !important;
+    }
+  }
+
+  /* Loader Text Uniformity */
+  #silverium-loader .loading-text {
+    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+</style>
+
+<style id="silveriom-megamenu-styles">
+  .glass-panel-mega {
+    background: #0a0f1a !important;
+    backdrop-filter: blur(32px) !important;
+    -webkit-backdrop-filter: blur(32px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  }
+  .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(15px) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99999 !important;
+  }
+  .nav-wrapper:hover .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+  .nav-wrapper:hover .mega-caret {
+    transform: rotate(180deg) !important;
+  }
+  .mega-item {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+  .mega-item:hover .mega-icon {
+    color: #CCFF00 !important;
+    transform: scale(1.1) !important;
+  }
+  .mega-item:hover .mega-title {
+    color: #CCFF00 !important;
+  }
+  .mega-icon {
+    transition: transform 0.3s ease !important;
+  }
+  .img-action-btn {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #000 !important;
+    transition: all 0.3s ease !important;
+  }
+  .left-image-group:hover .img-action-btn {
+    background: #CCFF00 !important;
+    transform: scale(1.05) !important;
+  }
+  .mega-title {
+    font-family: "YekanBakh", sans-serif !important;
+  }
+  @keyframes icon-pulse-glow {
+    0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
+    50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); }
+    100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
+  }
+  .highlight-icon {
+    animation: icon-pulse-glow 2.5s infinite ease-in-out !important;
+  }
+</style>
+<style id="silveriom-nav-clip-fix">
+  /* Remove backdrop and background from nav-links to avoid webkit border-radius clipping bug */
+  .luxury-nav .nav-links {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+    border: none !important;
+    position: relative !important;
+  }
+  
+  /* Apply the glass effect to a pseudo-element behind the items */
+  .luxury-nav .nav-links::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13, 22, 45, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Ensure the dropdown renders above everything */
+  .nav-dropdown-menu {
+    z-index: 99999 !important;
+  }
+</style>
 </head>
 
 
 <body class="luxury-body">
-
   <!-- ================= Silverium Loader HTML ================= -->
   <div id="silverium-loader">
     <div class="bg-grid"></div>
@@ -5377,51 +5592,49 @@ html {
   </div>
 
 
-
-  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
   <div class="cinematic-bg-container" id="cinematic-bg-container">
     <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
     <div class="bg-energy-glow"></div>
     <div class="navy-overlay-layer"></div>
   </div>
-
-  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
   <canvas id="webgl-canvas"></canvas>
-
-  <!-- Balanced Navy Blue Soft Overlay Layer -->
   <div class="navy-readability-overlay" style="position: fixed !important; inset: 0 !important; z-index: 5 !important; background: radial-gradient(circle at 50% 30%, rgba(6, 14, 30, 0.45) 0%, rgba(4, 9, 20, 0.62) 60%, rgba(2, 6, 14, 0.78) 100%) !important; pointer-events: none !important;"></div>
 
 <div class="top-complex-bar" id="top-complex-bar">
     <div class="marquee-track">
       <div class="marquee-group">
         <span class="top-bar-badge"><i data-lucide="circle-dot" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> شبکه انحصاری پدل سیلوریوم:</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
         <span class="top-c-sep">•</span>
       </div>
       <div class="marquee-group">
         <span class="top-bar-badge"><i data-lucide="circle-dot" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> شبکه انحصاری پدل سیلوریوم:</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
         <span class="top-c-sep">•</span>
-        <a href="https://silveriom.ir/#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+        <span class="top-c-sep">•</span>
+        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
         <span class="top-c-sep">•</span>
       </div>
     </div>
   </div>
-<!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
+
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
@@ -5430,19 +5643,80 @@ html {
 
       <nav class="nav-links">
         <a href="https://silveriom.ir" class="nav-item active">خانه</a>
-        <div class="nav-dropdown">
-          <a href="#" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+                                        <!-- Mega Menu Wrapper -->
+        <div class="nav-wrapper relative" style="position: relative; display: inline-block;">
+          <a href="https://silveriom.ir/inventory" class="nav-item" style="display:flex; align-items:center; gap:4px;">
             رسانه‌ها
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px;"><path d="m6 9 6 6 6-6"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px; transition: transform 0.3s;" class="mega-caret"><path d="m6 9 6 6 6-6"/></svg>
           </a>
-          <div class="nav-dropdown-menu">
-            <a href="https://silveriom.ir/inventory" class="nav-dropdown-item">آرشیو رسانه ها</a>
-            <a href="https://silveriom.ir/clubs/t10.html" class="nav-dropdown-item">T10 (آجودانیه)</a>
-            <a href="https://silveriom.ir/clubs/arena.html" class="nav-dropdown-item">Arena (آزادی)</a>
-            <a href="https://silveriom.ir/clubs/iran-zamin.html" class="nav-dropdown-item">Iran Zamin (شهرک غرب)</a>
-            <a href="https://silveriom.ir/clubs/netra.html" class="nav-dropdown-item">Netra (لواسان)</a>
-            <a href="https://silveriom.ir/clubs/asayesh.html" class="nav-dropdown-item">Asayesh (ساری)</a>
-            <a href="https://silveriom.ir/clubs/kish.html" class="nav-dropdown-item">Olympic (کیش)</a>
+
+          <!-- Mega Menu Dropdown -->
+          <div class="mega-menu absolute glass-panel-mega" style="position: absolute; top: calc(100% + 16px); right: 0; width: 900px; height: 540px; display: flex; padding: 1.5rem; gap: 2.5rem; flex-direction: row; cursor: default;">
+            
+            <!-- Right Column (Links list) -->
+            <div style="width: 55%; display: flex; flex-direction: column; padding-top: 0.5rem; height: 100%;">
+              <span style="font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; padding: 0 0.5rem; font-weight: 600;">بخش‌ها و باشگاه‌های تحت پوشش</span>
+
+              <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; padding: 0 0.5rem 0.5rem 0.5rem;">
+                
+                <!-- NEW ITEM 1: Archive -->
+                <a href="https://silveriom.ir/inventory" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Archive Icon" class="highlight-icon" style="width: 44px; height: 44px; object-fit: contain;">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.1rem; font-weight: 800; color: #CCFF00; margin: 0; transition: color 0.3s; font-family: 'YekanBakh', sans-serif !important;">آرشیو جامع رسانه‌ها</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/netra.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل نترا (لواسان)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/t10.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل T10 (آجودانیه)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل ایران زمین (شهرک غرب)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/arena.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل آرنا (آزادی)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/asayesh.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل و تنیس آسایش (ساری)</h4>
+                </a>
+
+                <a href="https://silveriom.ir/clubs/kish.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
+                  </div>
+                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه تنیس المپیک (جزیره کیش)</h4>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- Left Column (Featured Image) -->
+            <a href="https://silveriom.ir/inventory" class="left-image-group" style="width: 45%; height: 100%; border-radius: 1rem; position: relative; cursor: pointer; overflow: hidden; display: block; text-decoration: none;">
+              <img src="https://silveriom.ir/assets/mega_menu_featured.jpg" alt="Featured Media" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+
           </div>
         </div>
         
@@ -5727,214 +6001,133 @@ html {
     </div>
   </div>
 
+    <main class="main-single-post" style="position: relative; z-index: 10; padding-top: 180px; padding-bottom: 120px; font-family: 'YekanBakh', sans-serif !important;">
+      <div class="editorial-wide-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <div style="margin-bottom: 30px; font-size: 14px; font-weight: 500; color: #94A3B8;">
+          <a href="https://silveriom.ir/" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#94A3B8'">خانه</a> 
+          <span style="margin: 0 8px;">/</span> 
+          <a href="./index.html" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#94A3B8'">مجله تخصصی</a> 
+          <span style="margin: 0 8px;">/</span> 
+          <span style="color: #CCFF00;" id="breadcrumb-title">...</span>
+        </div>
 
-<main class="main-single-post" style="position: relative; z-index: 10; padding-top: 180px; padding-bottom: 120px; font-family: 'YekanBakh', sans-serif !important;">
-  <div class="editorial-wide-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    
-    <!-- Breadcrumb -->
-    <div style="margin-bottom: 30px; font-size: 14px; font-weight: 500; color: #94A3B8;">
-      <a href="https://silveriom.ir/" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#94A3B8'">خانه</a> 
-      <span style="margin: 0 8px;">/</span> 
-      <a href="./index.html" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#94A3B8'">مجله تخصصی</a> 
-      <span style="margin: 0 8px;">/</span> 
-      <a href="#" style="color: #94A3B8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#94A3B8'">تحلیل کمپین</a>
-      <span style="margin: 0 8px;">/</span> 
-      <span style="color: #CCFF00;">چگونه کمپین سان‌استار رکورد شکست؟</span>
-    </div>
-
-    <!-- Post Header / Hero -->
-    <div style="position: relative; border-radius: 32px; overflow: hidden; margin-bottom: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255, 255, 255, 0.1);">
-      <div style="height: 500px; position: relative;">
-        <img src="https://silveriom.ir/assets/sunstar-preview.jpg" alt="Post Hero" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 0.4) 50%, rgba(2, 6, 15, 0.1) 100%);"></div>
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 50px;">
-          <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-            <span style="background: #CCFF00; color: #000; font-weight: 800; padding: 6px 16px; border-radius: 20px; font-size: 13px;">ویژه</span>
-            <span style="background: rgba(0,0,0,0.6); border: 1px solid #00F0FF; color: #00F0FF; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; backdrop-filter: blur(4px);">تحلیل کمپین</span>
-          </div>
-          <h1 style="font-size: 3.2rem; font-weight: 900; color: #fff; margin-bottom: 24px; line-height: 1.3; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">
-            چگونه کمپین سان‌استار در آرنا آزادی رکورد بازدید را شکست؟
-          </h1>
-          <div style="display: flex; align-items: center; gap: 30px; color: #CBD5E1; font-size: 15px; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid #CCFF00;">
-                 <img src="https://silveriom.ir/assets/sunstar.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover; background: #fff;" loading="lazy">
+        <div style="position: relative; border-radius: 32px; overflow: hidden; margin-bottom: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255, 255, 255, 0.1);">
+          <div style="height: 500px; position: relative;">
+            <img id="post-cover-image" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 0.4) 50%, rgba(2, 6, 15, 0.1) 100%);"></div>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 50px;">
+              <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <span id="post-category-badge" style="background: rgba(0,0,0,0.6); border: 1px solid #00F0FF; color: #00F0FF; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; backdrop-filter: blur(4px);">...</span>
               </div>
-              <div>
-                <div style="color: #fff; font-weight: 700;">دپارتمان تحلیل سیلوریوم</div>
-                <div style="font-size: 13px; color: #94A3B8;">۱۲ اردیبهشت ۱۴۰۵</div>
+              <h1 id="post-main-title" style="font-size: 3.2rem; font-weight: 900; color: #fff; margin-bottom: 24px; line-height: 1.3; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">...</h1>
+              <div style="display: flex; align-items: center; gap: 30px; color: #CBD5E1; font-size: 15px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid #CCFF00;">
+                     <img src="https://silveriom.ir/assets/sunstar.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover; background: #fff;" loading="lazy">
+                  </div>
+                  <div>
+                    <div style="color: #fff; font-weight: 700;">تحریریه سیلوریوم</div>
+                    <div id="post-date" style="font-size: 13px; color: #94A3B8;">...</div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-right: auto;">
+                   <span><i data-lucide="timer" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i>️ زمان مطالعه: ۵ دقیقه</span>
+                </div>
               </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-right: auto;">
-               <span><i data-lucide="timer" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i>️ زمان مطالعه: ۸ دقیقه</span>
+          </div>
+        </div>
+
+        <div class="blog-single-layout" style="display: grid; gap: 50px;">
+          <div>
+            <div id="post-content" class="glass-card post-content" style="padding: 50px; border-radius: 32px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 50px; color:#CBD5E1; font-size: 1.2rem; line-height: 2;">در حال بارگذاری...</div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 50px;">
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; padding: 8px 16px; border-radius: 8px; font-size: 14px;">#سیلوریوم</span>
+                <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; padding: 8px 16px; border-radius: 8px; font-size: 14px;">#تحلیل_کمپین</span>
+              </div>
             </div>
           </div>
+
+          <aside><div id="sidebar-other-posts" class="glass-card" style="padding: 30px; border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08);">...</div></aside>
         </div>
       </div>
-    </div>
-
-    <!-- Main Content Layout -->
-    <div class="blog-single-layout" style="display: grid; gap: 50px;">
-      
-      <!-- Left Article Content -->
-      <div>
-        <div class="glass-card post-content" style="padding: 50px; border-radius: 32px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 50px;">
-          
-          <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 24px; margin-top: 0; line-height: 1.5;">استراتژی اکران محیطی در رویدادهای لوکس</h2>
-          
-          <p style="color: #CBD5E1; font-size: 1.2rem; line-height: 2; margin-bottom: 30px;">
-            ورود برندهای پیشرو به صنعت ورزش‌های راکتی، به ویژه پدل، در سال‌های اخیر رشد چشمگیری داشته است. سان‌استار به عنوان یکی از برندهای برتر FMCG، با اکران یک کمپین همه‌جانبه در مجموعه آرنا آزادی، توانست توجه جامعه نخبگان و ورزشکاران حرفه‌ای را به طور کامل جلب کند.
-          </p>
-          
-          <div style="background: linear-gradient(90deg, rgba(204,255,0,0.1), transparent); border-right: 4px solid #CCFF00; padding: 24px 30px; border-radius: 12px 0 0 12px; margin: 40px 0;">
-            <p style="color: #CCFF00; font-size: 1.3rem; font-weight: 800; margin: 0; line-height: 1.7; font-style: italic;">
-              "حضور در آرنا آزادی صرفاً یک تبلیغ نبود، بلکه خلق یک تجربه برند (Brand Experience) برای مخاطبانی بود که بیشترین حساسیت را به کیفیت و لوکس بودن دارند."
-            </p>
-          </div>
-
-          <h3 style="font-size: 1.6rem; font-weight: 800; color: #00F0FF; margin-bottom: 20px; margin-top: 40px;">نقاط تماس اصلی (Touchpoints)</h3>
-          
-          <p style="color: #CBD5E1; font-size: 1.15rem; line-height: 2; margin-bottom: 20px;">
-            در این کمپین، دپارتمان مدیاپلنینگ سیلوریوم ۳ نقطه تماس طلایی را برای سان‌استار طراحی کرد:
-          </p>
-          <ul style="color: #CBD5E1; font-size: 1.15rem; line-height: 2; margin-bottom: 40px; padding-right: 20px;">
-            <li style="margin-bottom: 12px;"><strong>برندینگ سازه شیشه‌ای کورت:</strong> نصب استیکرهای باکیفیت بالا بر روی دیواره‌های شیشه‌ای پانورامیک که در تمام تصاویر ثبت شده از بازی‌ها دیده می‌شد.</li>
-            <li style="margin-bottom: 12px;"><strong>استندهای دیجیتال تعاملی:</strong> پخش ویدیوهای باکیفیت در لحظات استراحت بین ست‌ها.</li>
-            <li style="margin-bottom: 12px;"><strong>سمپلینگ VIP:</strong> ارائه محصولات ویژه سان‌استار به صورت مستقیم به بازیکنان و تماشاگران ردیف اول.</li>
-          </ul>
-
-          <div style="border-radius: 20px; overflow: hidden; margin: 40px 0; border: 1px solid rgba(255,255,255,0.1);">
-             <img src="https://silveriom.ir/assets/sunstar-preview.jpg" alt="گزارش تصویری" style="width: 100%; display: block;" loading="lazy">
-             <div style="background: rgba(0,0,0,0.5); padding: 12px; text-align: center; color: #94A3B8; font-size: 14px;">تصویر اکران سان‌استار در مسابقات کشوری - مجموعه آرنا آزادی</div>
-          </div>
-
-          <h3 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 20px; margin-top: 40px;">نتایج و بازگشت سرمایه (ROI)</h3>
-          
-          <p style="color: #CBD5E1; font-size: 1.15rem; line-height: 2; margin-bottom: 30px;">
-            بر اساس گزارش‌های تحلیل داده سیلوریوم، این کمپین موفق شد در طول یک هفته برگزاری مسابقات، بیش از <strong>۴۵,۰۰۰ ایمپرشن مستقیم</strong> از مخاطبان حضوری و بیش از <strong>۱.۲ میلیون بازدید</strong> از طریق پوشش زنده شبکه‌های اجتماعی دریافت کند. نرخ یادآوری برند (Brand Recall) در میان شرکت‌کنندگان بیش از ۷۸٪ ارزیابی شد که برای کمپین‌های محیطی یک عدد خارق‌العاده است.
-          </p>
-          
-        </div>
-        
-        <!-- Tags & Share -->
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 50px;">
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; padding: 8px 16px; border-radius: 8px; font-size: 14px;">#سان_استار</span>
-            <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; padding: 8px 16px; border-radius: 8px; font-size: 14px;">#تبلیغات_پدل</span>
-            <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; padding: 8px 16px; border-radius: 8px; font-size: 14px;">#ROI</span>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <span style="color: #94A3B8; font-size: 15px; font-weight: 700;">اشتراک‌گذاری:</span>
-            <button style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#CCFF00'; this.style.color='#000'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'">in</button>
-            <button style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#00F0FF'; this.style.color='#000'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'">X</button>
-            <button style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#A855F7'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'">tg</button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Sidebar -->
-      <aside>
-        
-        <!-- Author Info -->
-        <div class="glass-card" style="padding: 30px; border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(204, 255, 0, 0.2); margin-bottom: 40px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 3px solid #CCFF00;">
-             <img src="https://silveriom.ir/assets/sunstar.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover; background: #fff;" loading="lazy">
-          </div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 8px;">دپارتمان تحلیل سیلوریوم</h4>
-          <p style="color: #94A3B8; font-size: 13px; line-height: 1.8; margin-bottom: 20px;">
-            تیم تخصصی بررسی بازگشت سرمایه و ارزیابی اثربخشی کمپین‌های محیطی و دیجیتال در اکوسیستم پدل ایران.
-          </p>
-          <a href="#" style="display: block; width: 100%; background: rgba(204,255,0,0.1); border: 1px solid #CCFF00; color: #CCFF00; font-weight: 700; padding: 12px 0; border-radius: 12px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#CCFF00'; this.style.color='#000'" onmouseout="this.style.background='rgba(204,255,0,0.1)'; this.style.color='#CCFF00'">همه مقالات نویسنده</a>
-        </div>
-
-        <!-- Latest Posts Widget -->
-        <div class="glass-card" style="padding: 30px; border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08);">
-          <h4 style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;">محبوب‌ترین مقالات</h4>
-          
-          <a href="#" style="display: flex; gap: 15px; text-decoration: none; margin-bottom: 20px; group">
-            <div style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
-              <img src="https://silveriom.ir/assets/pmn.png" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-            </div>
-            <div>
-              <div style="color: #00F0FF; font-size: 11px; font-weight: 700; margin-bottom: 6px;">اخبار تورنمنت‌ها</div>
-              <h5 style="color: #fff; font-size: 14px; font-weight: 700; margin: 0; line-height: 1.5;">افتتاح کورت‌های جدید در مجموعه ایران زمین</h5>
-            </div>
-          </a>
-
-          <a href="#" style="display: flex; gap: 15px; text-decoration: none; margin-bottom: 20px;">
-            <div style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
-              <img src="https://silveriom.ir/assets/og-preview.jpg" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-            </div>
-            <div>
-              <div style="color: #A855F7; font-size: 11px; font-weight: 700; margin-bottom: 6px;">آموزش پدل</div>
-              <h5 style="color: #fff; font-size: 14px; font-weight: 700; margin: 0; line-height: 1.5;">آشنایی با راکت‌های حرفه‌ای پدل</h5>
-            </div>
-          </a>
-
-          <a href="#" style="display: flex; gap: 15px; text-decoration: none;">
-            <div style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: linear-gradient(45deg, #020617, #0f172a); display: flex; align-items: center; justify-content: center; font-size: 24px;">
-              <i data-lucide="trophy" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i>
-            </div>
-            <div>
-              <div style="color: #CCFF00; font-size: 11px; font-weight: 700; margin-bottom: 6px;">تحلیل کمپین</div>
-              <h5 style="color: #fff; font-size: 14px; font-weight: 700; margin: 0; line-height: 1.5;">بررسی بازگشت سرمایه در تبلیغات محیطی</h5>
-            </div>
-          </a>
-
-        </div>
-
-      </aside>
-    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
     
-    <!-- Related Posts Section -->
-    <div style="margin-top: 80px;">
-      <h2 style="font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 40px;">مقالات مرتبط</h2>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+    if (!blogId) {
+        document.querySelector('.blog-single-layout').innerHTML = '<h2 style="color:#fff; text-align:center;">مقاله‌ای یافت نشد</h2>';
+        return;
+    }
+
+    try {
+        const res = await fetch('/data/silveriom_db.json?t=' + Date.now());
+        const db = await res.json();
+        const blogs = db.blogs || [];
         
-        <!-- Card 1 -->
-        <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(0,240,255,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-          <div style="height: 200px; overflow: hidden; position: relative;">
-            <img src="https://silveriom.ir/assets/pmn.png" alt="Blog 1" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-          </div>
-          <div style="padding: 24px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">نقش تبلیغات محیطی ۳بعدی در جذب مخاطب</h3>
-            <div style="color: #00F0FF; font-weight: 700; font-size: 13px;">مطالعه مقاله <i data-lucide="arrow-up-right" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i></div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(204,255,0,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-          <div style="height: 200px; overflow: hidden; position: relative;">
-            <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #020617, #0f172a); display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 50px;"><i data-lucide="trending-up" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i></span>
-            </div>
-          </div>
-          <div style="padding: 24px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">بررسی بازگشت سرمایه (ROI) در تبلیغات محیطی لوکس</h3>
-            <div style="color: #CCFF00; font-weight: 700; font-size: 13px;">مطالعه مقاله <i data-lucide="arrow-up-right" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i></div>
-          </div>
-        </div>
+        const blog = blogs.find(b => b.id === blogId);
         
-        <!-- Card 3 -->
-        <div class="glass-card blog-card" style="border-radius: 24px; background: rgba(11, 19, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='rgba(168,85,247,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-          <div style="height: 200px; overflow: hidden; position: relative;">
-            <img src="https://silveriom.ir/assets/12.png" alt="Blog 3" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-          </div>
-          <div style="padding: 24px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.5;">استراتژی‌های نوین پروموشن در باشگاه‌های پدل</h3>
-            <div style="color: #A855F7; font-weight: 700; font-size: 13px;">مطالعه مقاله <i data-lucide="arrow-up-right" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i></div>
-          </div>
-        </div>
+        if (!blog) {
+            document.querySelector('.blog-single-layout').innerHTML = '<h2 style="color:#fff; text-align:center;">مقاله‌ای یافت نشد</h2>';
+            return;
+        }
 
-      </div>
-    </div>
+        const imgSrc = blog.image ? (blog.image.startsWith('http') ? blog.image : '../' + blog.image) : '';
 
-  </div>
+        // Update elements
+        document.title = (blog.title || 'مقاله') + ' | وبلاگ سیلوریوم';
+        
+        const breadcrumbEl = document.getElementById('breadcrumb-title');
+        if (breadcrumbEl) breadcrumbEl.textContent = blog.title || '';
+        
+        const coverImgEl = document.getElementById('post-cover-image');
+        if (coverImgEl) coverImgEl.src = imgSrc;
+        
+        const categoryBadgeEl = document.getElementById('post-category-badge');
+        if (categoryBadgeEl) categoryBadgeEl.textContent = blog.category || 'مقاله';
+        
+        const mainTitleEl = document.getElementById('post-main-title');
+        if (mainTitleEl) mainTitleEl.textContent = blog.title || '';
+        
+        const dateEl = document.getElementById('post-date');
+        if (dateEl) dateEl.textContent = blog.date || '';
+
+        const innerTitleEl = document.getElementById('post-inner-title');
+        if (innerTitleEl) innerTitleEl.textContent = blog.title || '';
+
+        const contentEl = document.getElementById('post-content');
+        if (contentEl) contentEl.innerHTML = blog.content || (blog.summary || '');
+
+        // Render Sidebar
+        const sidebarEl = document.getElementById('sidebar-other-posts');
+        if (sidebarEl) {
+            let sidebarHTML = '<h4 style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;">سایر مقالات</h4>';
+            const otherBlogs = blogs.filter(b => b.id !== blogId).slice(0, 4);
+            otherBlogs.forEach(b => {
+                const bImgSrc = b.image ? (b.image.startsWith('http') ? b.image : '../' + b.image) : '';
+                sidebarHTML += `
+                <a href="post.html?id=${b.id}" style="display: flex; gap: 15px; text-decoration: none; margin-bottom: 20px;">
+                  <div style="width: 60px; height: 60px; border-radius: 12px; overflow: hidden; flex-shrink: 0;">
+                    <img src="${bImgSrc}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                  </div>
+                  <div><h5 style="color: #fff; font-size: 13px; font-weight: 700; margin: 0; line-height: 1.5;">${b.title}</h5></div>
+                </a>`;
+            });
+            sidebarEl.innerHTML = sidebarHTML;
+        }
+
+    } catch (e) {
+        console.error(e);
+    }
+});
+</script>
+
 </main>
-
-
+    
 <footer class="luxury-mega-footer" id="main-footer">
   <div class="editorial-wide-container">
     <div class="footer-top-grid">
@@ -6025,7 +6218,6 @@ html {
     </div>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -6592,7 +6784,6 @@ html {
   });
 })();
 </script>
-
 
   <!-- ================= Silverium Loader JS ================= -->
   <script id="silverium-loader-script">
