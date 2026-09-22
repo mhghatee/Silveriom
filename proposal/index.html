@@ -1902,14 +1902,24 @@
             let availableMedias = (db.mediaInventory || []);
             
             if (filterVenue !== 'all') {
-                let v = filterVenue;
-                if (v === 'azadi') v = 'arena';
-                if (v === 'lavasan') v = 'netra';
-                if (v === 'shahrak' || v === 'iran-zamin') v = 'iranzamin';
-                if (v === 'sari') v = 'asayesh';
-                if (v === 'olympic') v = 'kish';
-                if (v === 'ajudaniyeh') v = 't10';
-                availableMedias = availableMedias.filter(m => m.location === v || m.location === filterVenue);
+                const normalizeStr = str => (str || '').toLowerCase().replace(/[\s\-_\.]/g, '');
+                const targetLoc = normalizeStr(filterVenue);
+                
+                availableMedias = availableMedias.filter(m => {
+                    const loc = normalizeStr(m.location);
+                    if (loc === targetLoc) return true;
+                    
+                    // Cross match
+                    if (targetLoc.includes('azadi') || targetLoc.includes('arena')) return loc.includes('azadi') || loc.includes('arena');
+                    if (targetLoc.includes('lavasan') || targetLoc.includes('netra')) return loc.includes('lavasan') || loc.includes('netra');
+                    if (targetLoc.includes('shahrak') || targetLoc.includes('iranzamin')) return loc.includes('shahrak') || loc.includes('iranzamin') || loc.includes('iran');
+                    if (targetLoc.includes('sari') || targetLoc.includes('asayesh')) return loc.includes('sari') || loc.includes('asayesh');
+                    if (targetLoc.includes('kish') || targetLoc.includes('olympic')) return loc.includes('kish') || loc.includes('olympic');
+                    if (targetLoc.includes('ajudaniyeh') || targetLoc.includes('t10')) return loc.includes('ajudaniyeh') || loc.includes('t10');
+                    if (targetLoc.includes('enghelab')) return loc.includes('enghelab');
+                    
+                    return false;
+                });
             }
             if (filterMedia !== 'all') {
                 if (filterMedia === 'out_billboard') availableMedias = availableMedias.filter(m => (m.title || '').includes('بیلبورد') || (m.title || '').includes('بام') || (m.title || '').includes('پارکینگ'));
@@ -2068,26 +2078,32 @@
         const selectedMedias = proposal.cart.map(code => inventory.find(m => m.code === code || m.id === code)).filter(Boolean);
         const selectedLocations = [...new Set(selectedMedias.map(m => m.location))];
 
+        const normalizeStr = str => (str || '').toLowerCase().replace(/[\s\-_\.]/g, '');
+
         const locMap = {
-            'arena': ['arena'],
-            'azadi': ['arena'],
-            'enghelab': ['enghelab'],
-            't10': ['t10'],
-            'ajudaniyeh': ['t10'],
-            'netra': ['netra'],
-            'lavasan': ['netra'],
-            'kish': ['kish'],
-            'olympic': ['kish'],
-            'iranzamin': ['iranzamin'],
-            'iran-zamin': ['iranzamin'],
-            'shahrak': ['iranzamin'],
-            'asayesh': ['asayesh'],
-            'sari': ['asayesh']
+            'arena': 'arena', 'azadi': 'arena', 'azadicomplex': 'arena',
+            'enghelab': 'enghelab', 
+            'iranzamin': 'iranzamin', 'shahrak': 'iranzamin', 'shahrakgharb': 'iranzamin', 'shahrakcomplex': 'iranzamin',
+            't10': 't10', 'ajudaniyeh': 't10',
+            'netra': 'netra', 'lavasan': 'netra',
+            'kish': 'kish', 'olympic': 'kish',
+            'asayesh': 'asayesh', 'sari': 'asayesh'
         };
 
         const eventLocIds = new Set();
-        selectedLocations.forEach(loc => {
-            if (locMap[loc]) locMap[loc].forEach(id => eventLocIds.add(id));
+        selectedLocations.forEach(rawLoc => {
+            const loc = normalizeStr(rawLoc);
+            if (locMap[loc]) {
+                eventLocIds.add(locMap[loc]);
+            } else {
+                if(loc.includes('azadi') || loc.includes('arena')) eventLocIds.add('arena');
+                else if(loc.includes('enghelab')) eventLocIds.add('enghelab');
+                else if(loc.includes('shahrak') || loc.includes('iranzamin') || loc.includes('iran')) eventLocIds.add('iranzamin');
+                else if(loc.includes('ajudaniyeh') || loc.includes('t10')) eventLocIds.add('t10');
+                else if(loc.includes('lavasan') || loc.includes('netra')) eventLocIds.add('netra');
+                else if(loc.includes('sari') || loc.includes('asayesh')) eventLocIds.add('asayesh');
+                else if(loc.includes('kish') || loc.includes('olympic')) eventLocIds.add('kish');
+            }
         });
 
         const eventsData = window.eventsData || [];
