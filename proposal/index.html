@@ -1129,237 +1129,89 @@
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
-
-
-
-
-<!-- Global Top Bar & Loader Fix -->
-<style id="silveriom-global-loader-topbar">
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Heavy.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-  }
-
-  /* 1. Top Complex Bar */
-  .top-complex-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 50px !important;
-    z-index: 9999999 !important;
-    background: rgba(6, 16, 32, 0.95) !important;
-    backdrop-filter: blur(36px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: #f8fafc !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    direction: ltr !important;
-    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
-  }
-  .top-complex-bar:hover .marquee-track {
-    animation-play-state: paused !important;
-  }
-  .marquee-track {
-    display: flex !important;
-    align-items: center !important;
-    width: max-content !important;
-    animation: marqueeContinuous 38s linear infinite !important;
-  }
-  .top-bar-badge {
-    background: rgba(204, 255, 0, 0.1) !important;
-    border: 1px solid rgba(204, 255, 0, 0.5) !important;
-    border-radius: 50px !important;
-    padding: 4px 16px !important;
-    color: #fff !important;
-    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-weight: 800 !important;
-    margin-left: 15px !important;
-    font-size: 14px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    line-height: 1.5 !important;
-  }
-  .top-c-item {
-    color: rgba(255, 255, 255, 0.92) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    font-size: 15px !important;
-    padding: 0.2rem 0.65rem !important;
-    border-radius: 8px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    line-height: 1.5 !important;
-  }
-  .top-c-item strong {
-    font-weight: 800 !important;
-    color: #ffffff !important;
-    margin-left: 4px !important;
-    font-family: inherit !important;
-  }
-  .top-c-item:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.14) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-  }
-  .top-c-sep {
-    color: rgba(255, 255, 255, 0.3) !important;
-    font-weight: 800 !important;
-    margin: 0 4px !important;
-    font-size: 14px !important;
-  }
-  
-  /* 2. Loader Alignment */
-  #silverium-loader {
-    top: 50px !important;
-    height: calc(100vh - 50px) !important;
-    z-index: 999999 !important;
-  }
-  
-  /* 3. Luxury Nav Alignment */
-  .luxury-nav {
-    top: 50px !important;
-  }
-  .luxury-nav.scrolled {
-    top: 50px !important;
-  }
-  
-  /* Ensure mobile overrides */
-  @media (max-width: 1024px) {
-    .top-complex-bar {
-      height: 40px !important;
-    }
-    .top-bar-badge, .top-c-item {
-      font-size: 13px !important;
-      padding: 2px 8px !important;
-    }
-    #silverium-loader {
-      top: 40px !important;
-      height: calc(100vh - 40px) !important;
-    }
-    .luxury-nav {
-      top: 40px !important;
-    }
-  }
-
-  /* Loader Text Uniformity */
-  #silverium-loader .loading-text {
-    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-</style>
-
-<style id="silveriom-megamenu-styles">
-  .glass-panel-mega {
-    background: #0a0f1a !important;
-    backdrop-filter: blur(32px) !important;
-    -webkit-backdrop-filter: blur(32px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 28px !important;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
-  }
-  .mega-menu {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(15px) !important;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    z-index: 99999 !important;
-  }
-  .nav-wrapper:hover .mega-menu {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-  }
-  .nav-wrapper:hover .mega-caret {
-    transform: rotate(180deg) !important;
-  }
-  .mega-item {
-    transition: all 0.3s ease !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-  }
-  .mega-item:hover .mega-icon {
-    color: #CCFF00 !important;
-    transform: scale(1.1) !important;
-  }
-  .mega-item:hover .mega-title {
-    color: #CCFF00 !important;
-  }
-  .mega-icon {
-    transition: transform 0.3s ease !important;
-  }
-  .img-action-btn {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(10px) !important;
-    color: #000 !important;
-    transition: all 0.3s ease !important;
-  }
-  .left-image-group:hover .img-action-btn {
-    background: #CCFF00 !important;
-    transform: scale(1.05) !important;
-  }
-  .mega-title {
-    font-family: "YekanBakh", sans-serif !important;
-  }
-  @keyframes icon-pulse-glow {
-    0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-    50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); }
-    100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-  }
-  .highlight-icon {
-    animation: icon-pulse-glow 2.5s infinite ease-in-out !important;
-  }
-</style>
-<style id="silveriom-nav-clip-fix">
-  /* Remove backdrop and background from nav-links to avoid webkit border-radius clipping bug */
-  .luxury-nav .nav-links {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: transparent !important;
-    border: none !important;
-    position: relative !important;
-  }
-  
-  /* Apply the glass effect to a pseudo-element behind the items */
-  .luxury-nav .nav-links::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13, 22, 45, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  /* Ensure the dropdown renders above everything */
-  .nav-dropdown-menu {
-    z-index: 99999 !important;
-  }
+<style>
+      /* TOURNAMENT CARDS CSS */
+      .feat-card {
+        height: 560px;
+        border-radius: 30px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(10, 20, 35, 0.4);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+      }
+      .feat-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(204,255,0,0.3);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(204,255,0,0.1);
+      }
+      .feat-card.blue:hover {
+        border-color: rgba(0,240,255,0.3);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(0,240,255,0.1);
+      }
+      .fc-poster {
+        height: 220px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background: rgba(0,0,0,0.3);
+      }
+      .fc-poster-img {
+        width: 100%; height: 100%; object-fit: cover;
+        opacity: 0.7; transition: transform 0.7s ease, opacity 0.5s ease;
+      }
+      .feat-card:hover .fc-poster-img {
+        transform: scale(1.08); opacity: 1;
+      }
+      .fc-poster-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(10, 20, 35, 1) 0%, rgba(10, 20, 35, 0) 100%);
+      }
+      .fc-loc-badge {
+        position: absolute; top: 20px; right: 20px;
+        padding: 6px 14px;
+        background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+        color: #fff; font-size: 0.8rem; font-weight: 700;
+        z-index: 5; display: flex; align-items: center; gap: 6px;
+      }
+      .feat-card.blue .fc-loc-badge { color: #00F0FF; border-color: rgba(0,240,255,0.3); background: rgba(0,240,255,0.1); }
+      .feat-card.neon .fc-loc-badge { color: #CCFF00; border-color: rgba(204,255,0,0.3); background: rgba(204,255,0,0.1); }
+      .fc-content {
+        padding: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .fc-title {
+        font-size: 2.2rem; font-weight: 900; color: #fff;
+        margin-bottom: 15px; line-height: 1.2;
+      }
+      .fc-meta {
+        display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;
+      }
+      .fc-meta-item {
+        color: #94A3B8; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;
+      }
+      .feat-card.blue .fc-meta-item svg { color: #00F0FF; }
+      .feat-card.neon .fc-meta-item svg { color: #CCFF00; }
+      .fc-desc {
+        color: #E2E8F0; font-size: 1rem; line-height: 1.7; opacity: 0.8;
+        margin-bottom: 20px; flex: 1;
+      }
+      .fc-cta {
+        display: inline-flex; align-items: center; gap: 8px;
+        color: #fff; font-weight: 700; font-size: 0.95rem;
+        text-transform: uppercase; letter-spacing: 1px; transition: gap 0.3s ease;
+      }
+      .feat-card:hover .fc-cta { gap: 12px; }
+      .feat-card.neon:hover .fc-cta { color: #CCFF00; }
+      .feat-card.blue:hover .fc-cta { color: #00F0FF; }
 </style>
 </head>
 
@@ -1750,9 +1602,25 @@
               </div>
            </div>
         </section>
+
+<!-- Tournaments Section -->
+        <section class="section" id="tournaments-section" style="display: none;">
+           <div class="editorial-wide-container">
+              <div class="section-header">
+                <span class="section-tag">فهرست رویدادها</span>
+                <h2 class="section-title">تورنومنتها و رویدادهای پیشنهادی</h2>
+                <p class="section-lead">لیست رویدادهای پیشنهادی که برای مدیاکیت اختصاصی برند شما در نظر گرفته شده است.</p>
+              </div>
+              <div id="tournaments-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 20px;">
+              </div>
+           </div>
+        </section>
+
+        
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="/tournament-calendar/club_events.js"></script>
 <script>
     let proposalData = null;
     const urlParams = new URLSearchParams(window.location.search);
@@ -1806,6 +1674,29 @@
                 cart: availableMedias.map(m => m.code || m.id),
                 status: 'pending'
             };
+        } else if (proposalId === 'CUSTOM_CART') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cartStr = urlParams.get('cart') || '';
+            const cartItems = cartStr.split(',').filter(Boolean);
+            
+            let availableMedias = (db.mediaInventory || []).filter(m => cartItems.includes(m.code) || cartItems.includes(m.id));
+            
+            const urlName = urlParams.get('name');
+            const urlBrand = urlParams.get('brand');
+            proposal = {
+                id: 'SVM-CUSTOM-KIT',
+                brand: urlBrand ? urlBrand : 'کاربر پورتال',
+                name: urlName ? urlName : 'نامشخص',
+                created_at: new Date().toISOString().split('T')[0],
+                total_tariff: availableMedias.reduce((sum, m) => {
+                    let num = parseFloat((m.tariff || '0').replace(/[^0-9]/g, ''));
+                    return sum + (isNaN(num) ? 0 : num);
+                }, 0) + ' میلیون تومان ',
+                discount: '0',
+                final_price: 'انتخابی',
+                cart: availableMedias.map(m => m.code || m.id),
+                status: 'pending'
+            };
         } else {
             const inquiries = db.inquiries || [];
             proposal = inquiries.find(p => p.id === proposalId);
@@ -1821,6 +1712,7 @@
         
         renderHeader(proposal);
         renderProductCards(proposal, mediaInventory);
+        renderTournaments(proposal, mediaInventory);
         setupActions(proposal);
       } catch (err) {
         console.error(err);
@@ -1904,6 +1796,108 @@
         document.getElementById('actions').style.display = 'flex';
         
         
+    }
+
+    function renderTournaments(proposal, inventory) {
+        // Collect unique locations from the selected media
+        const selectedMedias = proposal.cart.map(code => inventory.find(m => m.code === code || m.id === code)).filter(Boolean);
+        const selectedLocations = [...new Set(selectedMedias.map(m => m.location))];
+
+        const locMap = {
+            'arena': ['arena'],
+            'enghelab': ['enghelab'],
+            't10': ['t10'],
+            'ajudaniyeh': ['t10'],
+            'netra': ['netra'],
+            'kish': ['kish']
+        };
+
+        const eventLocIds = new Set();
+        selectedLocations.forEach(loc => {
+            if (locMap[loc]) locMap[loc].forEach(id => eventLocIds.add(id));
+        });
+
+        const eventsData = window.eventsData || [];
+
+        const filteredEvents = eventsData.filter(ev => eventLocIds.has(ev.locId));
+
+        if (filteredEvents.length > 0) {
+            document.getElementById('tournaments-section').style.display = 'block';
+            const tGrid = document.getElementById('tournaments-grid');
+            
+const typeMap = {
+                'tennis_age': 'مسابقات تنیس رده‌های سنی',
+                'tennis_gp': 'مسابقات تنیس جایزه بزرگ',
+                'tennis_beach': 'مسابقات تنیس ساحلی',
+                'tennis_1000': 'مسابقات تنیس هزار امتیازی',
+                'padel_gp': 'مسابقات پدل جایزه بزرگ',
+                'tennis_league': 'مسابقات لیگ تنیس',
+                'padel_league': 'مسابقات لیگ پدل',
+                'padel_adineh': 'مسابقات پدل آدینه',
+                'tennis_adineh': 'مسابقات تنیس آدینه',
+                'crossfit': 'مسابقات کراس‌فیت',
+                'basketball_3x3': 'مسابقات بسکتبال ۳ نفره'
+            };
+
+            function getPosterForEvent(ev) {
+                let imgUrl = `https://silveriom.ir/tournament-calendar/${ev.type}.png`;
+                if (ev.type === 'tournament' || ev.type === 'league' || ev.type === 'vip') {
+                    imgUrl = ev.sport === 'tennis' ? 'https://silveriom.ir/assets/crystal_poster.jpg' : 'https://silveriom.ir/assets/mammut_poster.jpg';
+                }
+                return imgUrl;
+            }
+
+            tGrid.innerHTML = filteredEvents.map(ev => {
+                const badgeLoc = ev.locId.toUpperCase() + ' COMPLEX';
+                
+                let locDisplay = ev.locId;
+                if(ev.locId === "arena") locDisplay = "آرنا آزادی";
+                else if(ev.locId === "t10") locDisplay = "مجموعه T10 - آجودانیه";
+                else if(ev.locId === "enghelab") locDisplay = "باشگاه انقلاب";
+                else if(ev.locId === "iranzamin") locDisplay = "ایران‌زمین شهرک غرب";
+                else if(ev.locId === "netra") locDisplay = "نترا لواسان";
+                else if(ev.locId === "kish") locDisplay = "دهکده ورزشی کیش";
+                else if(ev.locId === "asayesh") locDisplay = "آسایش ساری";
+
+                return `
+                <article class="media-showcase-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                    <div style="position: relative; width: 100%; height: 280px;">
+                        <img src="${getPosterForEvent(ev)}" alt="${ev.name}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; top: 15px; right: 15px; background: rgba(0, 150, 180, 0.85); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.2);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span dir="ltr">${badgeLoc}</span>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 24px; display: flex; flex-direction: column; flex: 1;">
+                        <h3 style="font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 20px;">${ev.name}</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+                            <div style="display: flex; align-items: center; gap: 10px; color: #94A3B8; font-size: 0.95rem;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span>${ev.date}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; color: #94A3B8; font-size: 0.95rem;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span>ساعت ۱۸:۰۰ الی ۲۳:۰۰</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; color: #94A3B8; font-size: 0.95rem;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span>${locDisplay}</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: auto; display: flex; justify-content: flex-end;">
+                            <a href="#" style="display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                                رزرو رویداد
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                `;
+            }).join('');
+        }
     }
 
     function setupActions(proposal) {
