@@ -6118,6 +6118,66 @@ html {
 
   <!-- Centralized Navigation CSS -->
   <link rel="stylesheet" href="/assets/css/global-nav.css?v=100">
+
+<style id="silveriom-floating-cart-css">
+  .floating-cart {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(204, 255, 0, 0.3);
+    border-radius: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9999;
+  }
+  .floating-cart.visible {
+    bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    .floating-cart.visible {
+      bottom: 100px;
+    }
+  }
+  .fc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fc-count {
+    color: #CCFF00;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .fc-text {
+    color: #94A3B8;
+    font-size: 11px;
+  }
+  .fc-btn {
+    background: #CCFF00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(204, 255, 0, 0.4);
+  }
+</style>
 </head>
 
 
@@ -8565,9 +8625,75 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="/assets/js/silveriom-cards.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  window.renderMediaShowcase('homepage-featured-grid', 'home', { btnMode: 'reserve' });
+  window.renderMediaShowcase('homepage-featured-grid', 'home', { btnMode: 'cart' });
 });
 </script>
+
+<!-- ================= Floating Cart Widget ================= -->
+<div class="floating-cart" id="floatingCart">
+  <div class="fc-info">
+    <div class="fc-count"><span id="fcCount">0</span> سازه</div>
+    <div class="fc-text">انتخاب شده</div>
+  </div>
+  <button class="fc-btn" onclick="openMediakitModal()">نهایی کردن مدیا کیت</button>
+</div>
+
+<script>
+  function toggleCartItem(code) {
+    let cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const index = cart.indexOf(code);
+    if (index > -1) {
+      cart.splice(index, 1);
+    } else {
+      cart.push(code);
+    }
+    localStorage.setItem('silveriom_cart', JSON.stringify(cart));
+    
+    // Update the button directly
+    const cards = document.querySelectorAll('.media-showcase-card');
+    cards.forEach(c => {
+      if(c.dataset.id === code) {
+         const btn = c.querySelector('.msc-reserve-btn');
+         const isInCart = cart.includes(code);
+         if(isInCart) {
+            btn.className = 'msc-reserve-btn in-cart';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>حذف از مدیا کیت</span>`;
+         } else {
+            btn.className = 'msc-reserve-btn';
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>اضافه کردن به مدیا کیت</span>`;
+         }
+      }
+    });
+
+    updateFloatingCart();
+  }
+
+  window.updateFloatingCart = function() {
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const widget = document.getElementById('floatingCart');
+    const countEl = document.getElementById('fcCount');
+    if(!widget || !countEl) return;
+
+    if (cart.length > 0) {
+      countEl.innerText = cart.length.toLocaleString('fa-IR');
+      widget.classList.add('visible');
+    } else {
+      widget.classList.remove('visible');
+    }
+  }
+
+  function openMediakitModal() {
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const cartStr = encodeURIComponent(cart.join(','));
+    window.location.href = '/panel/login.html?action=mediakit&cart=' + cartStr;
+  }
+
+  window.addEventListener('load', () => {
+    updateFloatingCart();
+  });
+</script>
+<!-- ======================================================= -->
+
 </body>
 
 </html>
