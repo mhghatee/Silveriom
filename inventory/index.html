@@ -11318,7 +11318,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="fc-count"><span id="fcCount">0</span> سازه</div>
       <div class="fc-text">انتخاب شده</div>
     </div>
-    <button class="fc-btn" onclick="window.location.href='/mediakit/'">نهایی کردن مدیا کیت</button>
+    <button class="fc-btn" onclick="openMediakitModal()">نهایی کردن مدیا کیت</button>
   </div>
 
 <script>
@@ -11426,6 +11426,151 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>if(typeof lucide !== "undefined"){lucide.createIcons();}</script>
+<!-- MEDIAKIT CHECKOUT MODAL -->
+<div id="mediakitCheckoutModal" class="reserve-modal-backdrop" style="display: none; z-index: 99999;">
+  <div class="checkout-container" style="background: rgba(20, 25, 35, 0.95); padding: 30px; border-radius: 20px; border: 1px solid rgba(204, 255, 0, 0.3); max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; direction: rtl;">
+    <button onclick="closeMediakitModal()" style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1); border: none; color: #ffffff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px;">✕</button>
+    
+    <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+      
+      <!-- FORM -->
+      <div class="form-box">
+        <h2 style="color: #fff; font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          اطلاعات رزروکننده
+        </h2>
+        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 25px;">لطفاً اطلاعات خود را وارد کنید تا لینک اختصاصی مدیاکیت برای شما صادر شود.</p>
+        
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; color: #94A3B8; font-size: 13px; margin-bottom: 8px;">نام و نام خانوادگی</label>
+          <input type="text" id="mkModalName" placeholder="مثلاً: علی احمدی" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; outline: none; font-family: 'YekanBakh', sans-serif;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; color: #94A3B8; font-size: 13px; margin-bottom: 8px;">نام شرکت / برند</label>
+          <input type="text" id="mkModalBrand" placeholder="مثلاً: شرکت سیلوریوم" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; outline: none; font-family: 'YekanBakh', sans-serif;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #94A3B8; font-size: 13px; margin-bottom: 8px;">شماره موبایل</label>
+          <input type="tel" id="mkModalPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" style="text-align: right; width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; outline: none; font-family: 'YekanBakh', sans-serif;">
+        </div>
+        
+        <button class="submit-btn" id="modalSubmitBtn" onclick="submitModalMediaKit()" style="width: 100%; background: #CCFF00; color: #020612; font-weight: 800; padding: 14px; border-radius: 12px; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 0 20px rgba(204,255,0,0.3); font-family: 'YekanBakh', sans-serif;">تولید لینک مدیا کیت</button>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-box">
+        <h2 style="color: #fff; font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          سبد سازه‌های انتخابی
+        </h2>
+        <div id="modalCartItemsContainer">
+          <div class="empty-cart" style="color: #94A3B8;">در حال بارگذاری...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openMediakitModal() {
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const cartStr = encodeURIComponent(cart.join(','));
+    window.location.href = '../panel/login.html?action=mediakit&cart=' + cartStr;
+  }
+
+  function renderModalCart() {
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    const container = document.getElementById('modalCartItemsContainer');
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="color: #94A3B8; text-align: right; padding: 20px;">سبد شما خالی است.</div>';
+      return;
+    }
+    
+    const promise = window.dbFetchPromise || fetch('/data/silveriom_db.json').then(r => r.json());
+    promise.then(db => {
+       const inventory = db.mediaInventory || [];
+       let html = '';
+       cart.forEach(code => {
+          const media = inventory.find(m => m.code === code || m.id === code);
+          if (media) {
+             let image = media.image || 'assets/placeholder_media.jpg';
+             if (!image.startsWith('/') && !image.startsWith('http') && !image.startsWith('../')) {
+                 image = '/' + image;
+             }
+             html += `
+               <div style="display: flex; gap: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); align-items: center;">
+                 <img src="${image}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                 <div style="flex-grow: 1; text-align: right;">
+                   <div style="color: #fff; font-weight: 700; font-size: 14px; margin-bottom: 4px;">${media.title}</div>
+                   <div style="color: #94A3B8; font-size: 12px;">کد: ${media.code}</div>
+                 </div>
+                 <button onclick="removeFromModalCart('${code}')" style="background: rgba(239,68,68,0.1); color: #EF4444; border: none; padding: 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+               </div>
+             `;
+          }
+       });
+       container.innerHTML = html;
+    }).catch(err => {
+       console.error(err);
+       container.innerHTML = '<div style="color: #94A3B8;">خطا در دریافت اطلاعات.</div>';
+    });
+  }
+
+  function removeFromModalCart(code) {
+    if (typeof toggleCartItem === 'function') {
+        toggleCartItem(code);
+    } else {
+        let cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+        cart = cart.filter(c => c !== code);
+        localStorage.setItem('silveriom_cart', JSON.stringify(cart));
+    }
+    renderModalCart();
+  }
+
+  async function submitModalMediaKit() {
+    const name = document.getElementById('mkModalName').value;
+    const brand = document.getElementById('mkModalBrand').value;
+    const phone = document.getElementById('mkModalPhone').value;
+    const cart = JSON.parse(localStorage.getItem('silveriom_cart') || '[]');
+    
+    if(!name || !phone) {
+        alert("لطفاً حداقل نام و شماره موبایل را وارد کنید.");
+        return;
+    }
+    if(cart.length === 0) {
+        alert("سبد مدیاکیت شما خالی است.");
+        return;
+    }
+    
+    const btn = document.getElementById('modalSubmitBtn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'در حال ساخت پروپوزال...';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('/api/submit_proposal.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, brand, phone, cart })
+        });
+        
+        const data = await response.json();
+        if(data.success) {
+            localStorage.removeItem('silveriom_cart');
+            window.location.href = '/proposal/?id=' + data.id;
+        } else {
+            alert('خطا: ' + (data.error || 'ناشناخته'));
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    } catch (err) {
+        console.error(err);
+        alert('خطا در ارتباط با سرور');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+  }
+</script>
 </body>
 
 
