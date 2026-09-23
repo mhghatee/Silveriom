@@ -8936,6 +8936,7 @@ html {
     z-index: 99999 !important;
   }
 </style>
+  <link rel="stylesheet" href="/assets/css/global-nav.css?v=100">
 </head>
 
 
@@ -9038,6 +9039,71 @@ html {
     </div>
   </div>
 
+  <!-- ================= Silverium Loader HTML ================= -->
+  <div id="silverium-loader">
+    <div class="bg-grid"></div>
+    <div class="content-wrapper">
+      <div class="video-container" style="position: relative;">
+        <img src="/loading_poster.png" id="silverium-video-poster" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); mix-blend-mode: screen; -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%); z-index: 2; pointer-events: none;" alt="Loading">
+        <video id="silverium-main-video" autoplay loop muted playsinline preload="auto" >
+          <source src="loading_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="progress-section">
+        <div class="percentage" id="loader-percentage">0%</div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="loader-progress-fill"></div>
+        </div>
+        <div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 3D WebGL Background Canvas -->
+  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
+  <div class="cinematic-bg-container" id="cinematic-bg-container">
+    <img src="assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
+    <div class="bg-energy-glow">    <div class="bg-energy-glow"></div>
+    <div class="navy-overlay-layer"></div>
+  </div>
+  </div>
+
+  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Deep Navy Blue Readability Overlay Layer -->
+  <div class="navy-readability-overlay"></div>
+
+  <!-- Top Neon Green Padel Complexes Announcement Bar -->
+    <!-- Top Infinite Seamless Marquee Ticker for Padel Complexes -->
+    <!-- Top Infinite Seamless Continuous Marquee Ticker -->
+
+
+  <!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
   <header class="luxury-nav" id="main-nav">
     <div class="nav-container">
       <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
@@ -9045,10 +9111,10 @@ html {
       </a>
 
       <nav class="nav-links">
-        <a href="https://silveriom.ir" class="nav-item active">خانه</a>
+        <a href="https://silveriom.ir" class="nav-item">خانه</a>
                                         <!-- Mega Menu Wrapper -->
         <div class="nav-wrapper relative" style="position: relative; display: inline-block;">
-          <a href="https://silveriom.ir/inventory" class="nav-item" style="display:flex; align-items:center; gap:4px;">
+          <a href="https://silveriom.ir/inventory" class="nav-item active" style="display:flex; align-items:center; gap:4px;">
             رسانه‌ها
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px; transition: transform 0.3s;" class="mega-caret"><path d="m6 9 6 6 6-6"/></svg>
           </a>
@@ -9174,7 +9240,7 @@ html {
       <nav class="mobile-nav">
         
         <!-- Link 01: Home -->
-        <a href="https://silveriom.ir" class="mobile-nav-card active">
+        <a href="https://silveriom.ir" class="mobile-nav-card">
           <div class="nav-card-right">
             <div class="nav-card-icon-box" style="background: rgba(204, 255, 0, 0.05); border-color: rgba(204, 255, 0, 0.3); color: #ccff00;">
               <svg class="mobile-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -9397,12 +9463,14 @@ html {
           </span>
           <span class="glass-phone-num" style="color: #ffffff !important; margin-right: 0.6rem !important;">۰۹۱۲۱۱۲۷۴۱۵ (مشاوره)</span>
         </a>
-        <button class="luxury-btn-solid" style="width:100%;" onclick="document.getElementById('open-kit-btn').click(); document.getElementById('close-mobile-menu').click();">
+        <button class="luxury-btn-solid" style="width:100%;" onclick="window.location.href='https://panel.silveriom.ir/login.html?action=mediakit'">
           دریافت مدیا کیت
         </button>
       </div>
     </div>
   </div>
+
+  <!-- Main Experience Container -->
 
 <main class="main-inventory-page" style="position: relative; z-index: 10; padding-top: 200px; padding-bottom: 120px;">
   <div class="editorial-wide-container">
