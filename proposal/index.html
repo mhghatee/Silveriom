@@ -1052,40 +1052,23 @@
 
 <!-- Navigation Scroll Fix -->
 <style id="silveriom-nav-scroll-fix">
-  .luxury-nav, .nav-container, .nav-links {
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
-  }
+  .luxury-nav, .nav-container, 
   .luxury-nav::-webkit-scrollbar, .nav-container::-webkit-scrollbar, .nav-links::-webkit-scrollbar {
     display: none !important;
   }
   @media (min-width: 1024px) {
-    .nav-links {
-      overflow: visible !important;
-      flex-wrap: nowrap !important;
-    }
-    .nav-item {
-      padding: 0.35rem 0.4rem !important;
-      font-size: 13px !important;
-      letter-spacing: -0.2px !important;
-      white-space: nowrap !important;
-    }
+    
+    
   }
 </style>
 
 <!-- Sticky Menu Global Fix -->
 <style id="silveriom-sticky-menu-fix">
   /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
-  .top-complex-bar {
-    position: absolute !important;
-    top: 0 !important;
-  }
+  
   
   /* 2. Main luxury nav initially absolute (scrolls up with page) */
-  .luxury-nav {
-    position: absolute !important;
-    top: 50px !important; /* right below the top bar */
-  }
+  
   
   /* 3. When scrolled, snap main nav to top and fix it */
   .luxury-nav.scrolled {
@@ -1097,13 +1080,8 @@
 
   /* Ensure the fix works on mobile too */
   @media (max-width: 1024px) {
-    .top-complex-bar {
-      display: flex !important; /* Show marquee on mobile per user request */
-    }
-    .luxury-nav {
-      top: 50px !important;
-      position: absolute !important;
-    }
+    
+    
     .luxury-nav.scrolled {
       position: fixed !important;
     }
@@ -2332,25 +2310,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const cleanCurrent = currentPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
 
     document.querySelectorAll('.nav-links .nav-item, .mobile-nav .mobile-nav-card').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.nav-dropdown-item').forEach(el => el.classList.remove('active'));
-    
-    let matched = false;
-
-    document.querySelectorAll('.nav-dropdown-item').forEach(el => {
-        const href = el.getAttribute('href');
-        if (href) {
-            let hrefPath = '';
-            try { hrefPath = new URL(href).pathname; } catch(e) { hrefPath = href; }
+    document.querySelectorAll(' catch(e) { hrefPath = href; }
             let cleanHref = hrefPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
             if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/'))) {
                 el.classList.add('active');
-                const parentDropdown = el.closest('.nav-dropdown');
-                if (parentDropdown) {
-                    const parentNav = parentDropdown.querySelector('.nav-item');
-                    if (parentNav) {
-                        parentNav.classList.add('active');
-                        matched = true;
-                    }
+                const parentDropdown = el.closest('
                 }
             }
         }

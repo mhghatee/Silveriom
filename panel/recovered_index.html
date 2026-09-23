@@ -110,32 +110,11 @@ body {
 /* ==========================================================================
    HEADER (APPLE-STYLE MINIMAL GLASS WITH NEON TRIM)
    ========================================================================== */
-.luxury-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  padding: 1.25rem 2.5rem;
-  background: linear-gradient(180deg, rgba(2, 4, 10, 0.95) 0%, rgba(2, 4, 10, 0) 100%);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
-.nav-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  text-decoration: none;
-  color: #ffffff;
-}
+
+
+
 
 .brand-monogram {
   font-family: 'Cinzel', serif;
@@ -161,43 +140,17 @@ body {
   color: #ffffff;
 }
 
-.nav-links {
-  display: none;
-  align-items: center;
-  gap: 2.2rem;
-  background: var(--glass-nav);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 0.65rem 2.2rem;
-  border-radius: 9999px;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
+
 
 @media (min-width: 960px) {
-  .nav-links {
-    display: flex;
-  }
+  
 }
 
-.nav-item {
-  color: var(--color-silver-dim);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  transition: all 0.3s;
-}
 
-.nav-item:hover {
-  color: var(--color-neon);
-  text-shadow: 0 0 10px rgba(182, 255, 0, 0.5);
-}
 
-.nav-action {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+
+
+
 
 /* ==========================================================================
    BUTTONS
@@ -227,20 +180,7 @@ body {
   transform: translateY(-2px);
 }
 
-.luxury-btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  color: #ffffff;
-  font-size: 0.82rem;
-  font-weight: 500;
-  padding: 0.65rem 1.5rem;
-  border-radius: 9999px;
-  border: 1px solid var(--border-neon);
-  cursor: pointer;
-  transition: all 0.3s;
-}
+
 
 .luxury-btn-outline:hover {
   background: rgba(182, 255, 0, 0.12);
@@ -1115,26 +1055,7 @@ body {
   }
 
   /* 1. Top Complex Bar */
-  .top-complex-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 50px !important;
-    z-index: 9999999 !important;
-    background: rgba(6, 16, 32, 0.95) !important;
-    backdrop-filter: blur(36px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: #f8fafc !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    direction: ltr !important;
-    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
-  }
+  
   .top-complex-bar:hover .marquee-track {
     animation-play-state: paused !important;
   }
@@ -1144,34 +1065,8 @@ body {
     width: max-content !important;
     animation: marqueeContinuous 38s linear infinite !important;
   }
-  .top-bar-badge {
-    background: rgba(204, 255, 0, 0.1) !important;
-    border: 1px solid rgba(204, 255, 0, 0.5) !important;
-    border-radius: 50px !important;
-    padding: 4px 16px !important;
-    color: #fff !important;
-    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-weight: 800 !important;
-    margin-left: 15px !important;
-    font-size: 14px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    line-height: 1.5 !important;
-  }
-  .top-c-item {
-    color: rgba(255, 255, 255, 0.92) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    font-size: 15px !important;
-    padding: 0.2rem 0.65rem !important;
-    border-radius: 8px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    line-height: 1.5 !important;
-  }
+  
+  
   .top-c-item strong {
     font-weight: 800 !important;
     color: #ffffff !important;
@@ -1198,29 +1093,20 @@ body {
   }
   
   /* 3. Luxury Nav Alignment */
-  .luxury-nav {
-    top: 50px !important;
-  }
+  
   .luxury-nav.scrolled {
     top: 50px !important;
   }
   
   /* Ensure mobile overrides */
   @media (max-width: 1024px) {
-    .top-complex-bar {
-      height: 40px !important;
-    }
-    .top-bar-badge, .top-c-item {
-      font-size: 13px !important;
-      padding: 2px 8px !important;
-    }
+    
+    .top-bar-badge, 
     #silverium-loader {
       top: 40px !important;
       height: calc(100vh - 40px) !important;
     }
-    .luxury-nav {
-      top: 40px !important;
-    }
+    
   }
 
   /* Loader Text Uniformity */

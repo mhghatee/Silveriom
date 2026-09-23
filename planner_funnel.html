@@ -1995,28 +1995,9 @@ body {
 }
 
   
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border: 1px solid transparent !important;
-  border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  transition: all 0.3s ease !important;
-}
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
-  color: #CCFF00 !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
-  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
-}
+
+
+
 
 
 .nav-btn.primary, .phone-link {
@@ -2086,15 +2067,7 @@ body {
 /* ========================================================================== */
 
 /* 1. Brand Logo Strict Sizing (Prevent giant image expansion) */
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
-}
+
 
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
@@ -2106,138 +2079,41 @@ body {
 
 /* 2. Floating Navbar & Glass Container */
 /* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important; /* Positioned below the 50px marquee ticker */
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
 
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
 
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
 
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
 
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
-}
+
+
+
+
+
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
 }
 
 @media (min-width: 1024px) {
-  .nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+  
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
 }
-}
-
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
 }
 
 
 
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
+
+
+
 
 /* 4. Left Action Section & Buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
 
-.glass-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  flex-shrink: 0 !important;
-}
+
+
 
 .glass-phone-btn:hover {
   background: rgba(182, 255, 0, 0.2) !important;
@@ -2280,27 +2156,7 @@ body {
   font-weight: 800 !important;
 }
 
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+#open-kit-btn, 
 
 #open-kit-btn:hover, .luxury-btn-outline:hover {
   background: rgba(182, 255, 0, 0.28) !important;
@@ -2459,27 +2315,7 @@ body {
 /* ==========================================================================
    TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
    ========================================================================== */
-.top-complex-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  z-index: 9999999 !important;
-  background: rgba(6, 16, 32, 0.78);
-  backdrop-filter: blur(36px) saturate(220%);
-  -webkit-backdrop-filter: blur(36px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f8fafc;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  direction: ltr !important;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-}
+
 
 .marquee-track {
   display: flex;
@@ -2511,28 +2347,9 @@ body {
   100% { transform: translate3d(-50%, 0, 0); }
 }
 
-.top-bar-badge {
-  background: rgba(204, 255, 0, 0.1) !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  border-radius: 50px !important;
-  padding: 4px 16px !important;
-  color: #fff !important;
-  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  font-weight: 800 !important;
-  margin-left: 15px !important;
-}
 
-.top-c-item {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  font-size: 0.90rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 8px;
-}
+
+
 
 .top-c-item strong {
   font-weight: 800;
@@ -4356,9 +4173,7 @@ section {
 /* ==========================================================================
    STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-.luxury-nav {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
+
 
 .luxury-nav.scrolled {
   background: rgba(2, 6, 18, 0.88) !important;
@@ -4783,59 +4598,17 @@ section {
 
     </style>
 <style id="island-header-overrides">
-.top-bar-badge {
-  background: rgba(204, 255, 0, 0.1) !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  border-radius: 50px !important;
-  padding: 4px 16px !important;
-  color: #fff !important;
-  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  font-weight: 800 !important;
-  margin-left: 15px !important;
-}
 
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+
+
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
 }
 
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border: 1px solid transparent !important;
-  border-radius: 50px !important;
-  padding: 5px 10px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  transition: all 0.3s ease !important;
-}
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
-  color: #CCFF00 !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
-  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
-}
+
+
+
 
 .nav-btn.primary, .phone-link {
   background: rgba(13, 22, 45, 0.6) !important;
@@ -7118,9 +6891,7 @@ body {
 /* ==========================================================================
    STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-.luxury-nav {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
+
 
 .luxury-nav.scrolled {
   background: rgba(2, 6, 18, 0.88) !important;
@@ -7592,27 +7363,7 @@ body {
 
 TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
    ========================================================================== */
-.top-complex-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  z-index: 9999999 !important;
-  background: rgba(6, 16, 32, 0.78);
-  backdrop-filter: blur(36px) saturate(220%);
-  -webkit-backdrop-filter: blur(36px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f8fafc;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  direction: ltr !important;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-}
+
 
 .marquee-track {
   display: flex;
@@ -7644,32 +7395,9 @@ TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
   100% { transform: translate3d(-50%, 0, 0); }
 }
 
-.top-bar-badge {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #ffffff;
-  padding: 0.22rem 0.95rem;
-  border-radius: 9999px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 14px rgba(182, 255, 0, 0.25);
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.top-c-item {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  font-size: 0.90rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 8px;
-}
+
+
 
 .top-c-item strong {
   font-weight: 800;
@@ -7690,127 +7418,33 @@ TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
 
 Floating Navbar & Glass Container */
 /* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important; /* Positioned below the 50px marquee ticker */
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
 
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
 
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
 
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
 
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
-}
+
+
+
+
+
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  display: none !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 30px rgba(0, 0, 0, 0.5) !important;
-  flex-shrink: 0 !important;
-}
+
 
 @media (min-width: 1024px) {
-  .nav-links { display: flex !important; }
+  
 }
 
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
-}
 
-.nav-item:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.14) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-color: rgba(255, 255, 255, 0.22) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 15px rgba(182, 255, 0, 0.25) !important;
-}
 
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
+
+
+
 
 /* 4. Left Action Section & Buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
 
-.glass-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  flex-shrink: 0 !important;
-}
+
+
 
 .glass-phone-btn:hover {
   background: rgba(182, 255, 0, 0.2) !important;
@@ -7853,27 +7487,7 @@ Floating Navbar & Glass Container */
   font-weight: 800 !important;
 }
 
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+#open-kit-btn, 
 
 #open-kit-btn:hover, .luxury-btn-outline:hover {
   background: rgba(182, 255, 0, 0.28) !important;
@@ -8031,9 +7645,7 @@ Floating Navbar & Glass Container */
 
 STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-.luxury-nav {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
+
 
 .luxury-nav.scrolled {
   background: rgba(2, 6, 18, 0.88) !important;
@@ -8387,15 +7999,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
 /* ========================================================================== */
 
 /* 1. Brand Logo Strict Sizing (Prevent giant image expansion) */
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
-}
+
 
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
@@ -8406,60 +8010,16 @@ CYBER-LUXURY MEGA FOOTER STYLING
 }
 
 /* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 28px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0 1rem !important;
-  background: none !important;
-  box-sizing: border-box !important;
-}
 
-.nav-container {
-  max-width: 95% !important;
-  width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 1.2rem !important;
-  background: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  border-radius: 9999px !important;
-  padding: 0.55rem 1.6rem !important;
-  box-shadow: none !important;
-}
+
+
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  background: rgba(6, 18, 40, 0.68) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-radius: 9999px !important;
-  padding: 0.45rem 1.4rem !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(182, 255, 0, 0.08) !important;
-}
 
-.nav-item {
-  color: rgba(255, 255, 255, 0.9) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 500 !important;
-  transition: color 0.25s ease !important;
-}
 
-.nav-item:hover {
-  color: var(--color-neon) !important;
-}
+
+
+
 
 /* 4. Left Nav CTA Links Styling */
 .nav-cta a.luxury-btn-solid {
@@ -8627,9 +8187,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
   }
 
   /* Strict CSS Fix for Spacing: Navbar is placed exactly 28px below the 50px top bar (total top offset = 78px) */
-  .luxury-nav {
-    top: 78px !important;
-  }
+  
 
 /* Old spacing override removed */
 /* Solid and Outline Button Styling */
@@ -8656,26 +8214,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
     color: #02040a !important;
   }
 
-  .luxury-btn-outline {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
-    background: rgba(182, 255, 0, 0.14) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border: 1px solid rgba(182, 255, 0, 0.5) !important;
-    padding: 0.5rem 1.25rem !important;
-    border-radius: 9999px !important;
-    color: #ffffff !important;
-    font-size: 0.88rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.25s ease !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    white-space: nowrap !important;
-    text-decoration: none !important;
-  }
+  
   .luxury-btn-outline:hover {
     background: rgba(182, 255, 0, 0.28) !important;
     border-color: var(--color-neon) !important;
@@ -8685,24 +8224,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
   }
 
   /* Glass Phone Button and Icons Styling */
-  .glass-phone-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.55rem !important;
-    background: rgba(6, 18, 38, 0.68) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border: 1px solid rgba(182, 255, 0, 0.45) !important;
-    padding: 0.5rem 1.15rem !important;
-    border-radius: 9999px !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-    font-size: 0.88rem !important;
-    font-weight: 700 !important;
-    transition: all 0.25s ease !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    flex-shrink: 0 !important;
-  }
+  
   .glass-phone-btn:hover {
     background: rgba(182, 255, 0, 0.2) !important;
     border-color: var(--color-neon) !important;
@@ -8757,27 +8279,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
   }
 
   /* Top Infinite Seamless Marquee Ticker Styling */
-  .top-complex-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 50px !important;
-    z-index: 102 !important;
-    background: rgba(6, 16, 32, 0.78) !important;
-    backdrop-filter: blur(36px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: #f8fafc !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    direction: ltr !important;
-    mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%) !important;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%) !important;
-  }
+  
   .marquee-track {
     display: flex !important;
     align-items: center !important;
@@ -8803,31 +8305,8 @@ CYBER-LUXURY MEGA FOOTER STYLING
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
   }
-  .top-bar-badge {
-    background: rgba(255, 255, 255, 0.12) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.22) !important;
-    color: #ffffff !important;
-    padding: 0.22rem 0.95rem !important;
-    border-radius: 9999px !important;
-    font-size: 0.82rem !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.02em !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 14px rgba(182, 255, 0, 0.25) !important;
-    flex-shrink: 0 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-  }
-  .top-c-item {
-    color: rgba(255, 255, 255, 0.92) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    font-size: 0.90rem !important;
-    padding: 0.2rem 0.65rem !important;
-    border-radius: 8px !important;
-  }
+  
+  
   .top-c-item strong {
     font-weight: 800 !important;
     color: #ffffff !important;
@@ -9089,60 +8568,13 @@ CYBER-LUXURY MEGA FOOTER STYLING
 /* ========================================================================== */
 
 /* Top bar gap fix & Luxury Nav standardization for ALL pages */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+
+
+
 
 /* 1. Brand Logo Strict Sizing */
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
-}
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
+
+
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
   max-height: 42px !important;
@@ -9152,37 +8584,15 @@ CYBER-LUXURY MEGA FOOTER STYLING
 }
 
 /* 3. Nav Items */
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
-}
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
+
+
 
 /* 4. Action buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
+
 
 /* 5. Desktop: nav-links visible, toggle hidden */
 @media (min-width: 1025px) {
-  .nav-links {
-    display: flex !important;
-  }
+  
   .mobile-toggle {
     display: none !important;
   }
@@ -9190,9 +8600,7 @@ CYBER-LUXURY MEGA FOOTER STYLING
 
 /* 6. Mobile: hide desktop nav, phone/CTA */
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
   .luxury-nav .glass-phone-btn,
   .luxury-nav #open-kit-btn {
     display: none !important;
@@ -9509,51 +8917,11 @@ CYBER-LUXURY MEGA FOOTER STYLING
 
 <style>
 /* Navigation Dropdown */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-.nav-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background: rgba(6, 11, 19, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-align: right;
-}
-.nav-dropdown:hover .nav-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.nav-dropdown-item {
-  color: #CBD5E1;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: inherit;
-}
-.nav-dropdown-item:hover {
-  background: rgba(204, 255, 0, 0.1);
-  color: #CCFF00;
-}
+
+
+
+
+
 
       @media (max-width: 768px) {
         .responsive-grid {
@@ -9712,51 +9080,11 @@ CYBER-LUXURY MEGA FOOTER STYLING
 
 <style id="silveriom-nav-dropdown-styles">
 /* Navigation Dropdown */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-.nav-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background: rgba(6, 11, 19, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-align: right;
-}
-.nav-dropdown:hover .nav-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.nav-dropdown-item {
-  color: #CBD5E1;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: inherit;
-}
-.nav-dropdown-item:hover {
-  background: rgba(204, 255, 0, 0.1);
-  color: #CCFF00;
-}
+
+
+
+
+
 
       @media (max-width: 768px) {
         .responsive-grid {
@@ -9859,148 +9187,46 @@ html {
 <style id="ultimate-menu-enforcer-final">
 
 /* --- ANTI-PILL SAFEGUARD FOR THESE 3 PAGES --- */
-.luxury-nav, .nav-container {
-    border-radius: 0 !important;
-    border: none !important;
-}
-.nav-links {
-    border-radius: 50px !important;
-}
+.luxury-nav, 
+
 
 /* 2. Floating Navbar & Glass Container */
 /* 2. Floating Navbar & Glass Container */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important; /* Positioned below the 50px marquee ticker */
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
-  box-sizing: border-box !important;
-}
 
-.nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 1rem !important;
-}
 
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
 
-.nav-brand-logo-img {
-  height: 48px !important;
-  max-height: 52px !important;
-  width: auto !important;
-  max-width: 160px !important;
-  object-fit: contain !important;
-  display: flex !important; justify-content: center !important;
-  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
 
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
-}
+
+
+
+
+
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
 }
 
 @media (min-width: 1024px) {
-  .nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
+  
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none !important;
-  }
+  
 }
-}
-
-.nav-item {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
 }
 
 
 
-.nav-item.active {
-  color: var(--color-neon) !important;
-  background: rgba(182, 255, 0, 0.16) !important;
-  border-color: rgba(182, 255, 0, 0.45) !important;
-}
+
+
+
 
 /* 4. Left Action Section & Buttons */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
 
-.glass-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  flex-shrink: 0 !important;
-}
+
+
 
 .glass-phone-btn:hover {
   background: rgba(182, 255, 0, 0.2) !important;
@@ -10043,27 +9269,7 @@ html {
   font-weight: 800 !important;
 }
 
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+#open-kit-btn, 
 
 #open-kit-btn:hover, .luxury-btn-outline:hover {
   background: rgba(182, 255, 0, 0.28) !important;
@@ -10726,24 +9932,13 @@ html {
 
 <!-- Navigation Scroll Fix -->
 <style id="silveriom-nav-scroll-fix">
-  .luxury-nav, .nav-container, .nav-links {
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
-  }
+  .luxury-nav, .nav-container, 
   .luxury-nav::-webkit-scrollbar, .nav-container::-webkit-scrollbar, .nav-links::-webkit-scrollbar {
     display: none !important;
   }
   @media (min-width: 1024px) {
-    .nav-links {
-      overflow: visible !important;
-      flex-wrap: nowrap !important;
-    }
-    .nav-item {
-      padding: 0.35rem 0.4rem !important;
-      font-size: 13px !important;
-      letter-spacing: -0.2px !important;
-      white-space: nowrap !important;
-    }
+    
+    
   }
 
       @media (max-width: 768px) {
@@ -10772,16 +9967,10 @@ html {
 <!-- Sticky Menu Global Fix -->
 <style id="silveriom-sticky-menu-fix">
   /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
-  .top-complex-bar {
-    position: absolute !important;
-    top: 0 !important;
-  }
+  
   
   /* 2. Main luxury nav initially absolute (scrolls up with page) */
-  .luxury-nav {
-    position: absolute !important;
-    top: 50px !important; /* right below the top bar */
-  }
+  
   
   /* 3. When scrolled, snap main nav to top and fix it */
   .luxury-nav.scrolled {
@@ -10793,13 +9982,8 @@ html {
 
   /* Ensure the fix works on mobile too */
   @media (max-width: 1024px) {
-    .top-complex-bar {
-      display: flex !important; /* Show marquee on mobile per user request */
-    }
-    .luxury-nav {
-      top: 50px !important;
-      position: absolute !important;
-    }
+    
+    
     .luxury-nav.scrolled {
       position: fixed !important;
     }
@@ -10895,26 +10079,7 @@ html {
   }
 
   /* 1. Top Complex Bar */
-  .top-complex-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 50px !important;
-    z-index: 9999999 !important;
-    background: rgba(6, 16, 32, 0.95) !important;
-    backdrop-filter: blur(36px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(36px) saturate(220%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: #f8fafc !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    direction: ltr !important;
-    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
-  }
+  
   .top-complex-bar:hover .marquee-track {
     animation-play-state: paused !important;
   }
@@ -10924,34 +10089,8 @@ html {
     width: max-content !important;
     animation: marqueeContinuous 38s linear infinite !important;
   }
-  .top-bar-badge {
-    background: rgba(204, 255, 0, 0.1) !important;
-    border: 1px solid rgba(204, 255, 0, 0.5) !important;
-    border-radius: 50px !important;
-    padding: 4px 16px !important;
-    color: #fff !important;
-    box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-weight: 800 !important;
-    margin-left: 15px !important;
-    font-size: 14px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    line-height: 1.5 !important;
-  }
-  .top-c-item {
-    color: rgba(255, 255, 255, 0.92) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    font-size: 15px !important;
-    padding: 0.2rem 0.65rem !important;
-    border-radius: 8px !important;
-    font-family: 'YekanBakh', sans-serif !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    line-height: 1.5 !important;
-  }
+  
+  
   .top-c-item strong {
     font-weight: 800 !important;
     color: #ffffff !important;
@@ -10978,29 +10117,20 @@ html {
   }
   
   /* 3. Luxury Nav Alignment */
-  .luxury-nav {
-    top: 50px !important;
-  }
+  
   .luxury-nav.scrolled {
     top: 50px !important;
   }
   
   /* Ensure mobile overrides */
   @media (max-width: 1024px) {
-    .top-complex-bar {
-      height: 40px !important;
-    }
-    .top-bar-badge, .top-c-item {
-      font-size: 13px !important;
-      padding: 2px 8px !important;
-    }
+    
+    .top-bar-badge, 
     #silverium-loader {
       top: 40px !important;
       height: calc(100vh - 40px) !important;
     }
-    .luxury-nav {
-      top: 40px !important;
-    }
+    
   }
 
   /* Loader Text Uniformity */
@@ -11020,21 +10150,8 @@ html {
     border-radius: 28px !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
   }
-  .mega-menu {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(15px) !important;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    z-index: 99999 !important;
-  }
-  .nav-wrapper:hover .mega-menu {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-  }
-  .nav-wrapper:hover .mega-caret {
-    transform: rotate(180deg) !important;
-  }
+  
+  
   .mega-item {
     transition: all 0.3s ease !important;
     cursor: pointer !important;
@@ -11074,13 +10191,7 @@ html {
 </style>
 <style id="silveriom-nav-clip-fix">
   /* Remove backdrop and background from nav-links to avoid webkit border-radius clipping bug */
-  .luxury-nav .nav-links {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: transparent !important;
-    border: none !important;
-    position: relative !important;
-  }
+  .luxury-nav 
   
   /* Apply the glass effect to a pseudo-element behind the items */
   .luxury-nav .nav-links::before {
@@ -11097,9 +10208,7 @@ html {
   }
   
   /* Ensure the dropdown renders above everything */
-  .nav-dropdown-menu {
-    z-index: 99999 !important;
-  }
+  
 </style>
 </head>
 
@@ -13274,25 +12383,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const cleanCurrent = currentPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
 
     document.querySelectorAll('.nav-links .nav-item, .mobile-nav .mobile-nav-card').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.nav-dropdown-item').forEach(el => el.classList.remove('active'));
-    
-    let matched = false;
-
-    document.querySelectorAll('.nav-dropdown-item').forEach(el => {
-        const href = el.getAttribute('href');
-        if (href) {
-            let hrefPath = '';
-            try { hrefPath = new URL(href).pathname; } catch(e) { hrefPath = href; }
+    document.querySelectorAll(' catch(e) { hrefPath = href; }
             let cleanHref = hrefPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
             if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/'))) {
                 el.classList.add('active');
-                const parentDropdown = el.closest('.nav-dropdown');
-                if (parentDropdown) {
-                    const parentNav = parentDropdown.querySelector('.nav-item');
-                    if (parentNav) {
-                        parentNav.classList.add('active');
-                        matched = true;
-                    }
+                const parentDropdown = el.closest('
                 }
             }
         }
