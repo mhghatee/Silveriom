@@ -18367,7 +18367,6 @@ html {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-/* ZERO HORIZONTAL PADDING ON THE NAV ITSELF, JUST LIKE INVENTORY */
 .luxury-nav {
   position: fixed !important;
   top: 50px !important;
@@ -18391,12 +18390,8 @@ html {
   top: 0 !important;
   padding-top: 0.6rem !important;
   padding-bottom: 0.6rem !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
 
-/* 1280px MAX-WIDTH AND CLAMP PADDING ON THE CONTAINER, JUST LIKE INVENTORY */
 .nav-container {
   width: 100% !important;
   max-width: 1280px !important;
@@ -18423,11 +18418,12 @@ html {
   flex-shrink: 0 !important;
 }
 
+/* Reduced logo size to prevent overlap */
 .nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
+  height: 38px !important;
+  max-height: 42px !important;
   width: auto !important;
-  max-width: 180px !important;
+  max-width: 150px !important;
   object-fit: contain !important;
   display: block !important;
   filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
@@ -18445,7 +18441,7 @@ html {
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 50px !important;
-  padding: 4px 8px !important;
+  padding: 4px 6px !important;
   display: flex !important;
   align-items: center !important;
   gap: 0px !important;
@@ -18457,13 +18453,14 @@ html {
   .nav-links { display: none !important; }
 }
 
+/* Reduced font size and padding to prevent overlap */
 .nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
   color: rgba(255, 255, 255, 0.85) !important;
   text-decoration: none !important;
   font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 13px !important;
+  font-size: 12.5px !important;
   font-weight: 600 !important;
-  padding: 0.35rem 0.4rem !important;
+  padding: 0.25rem 0.35rem !important;
   border-radius: 9999px !important;
   border: 1px solid transparent !important;
   transition: all 0.25s ease !important;
@@ -18496,16 +18493,17 @@ html {
 .nav-dropdown-item { color: #CBD5E1; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; white-space: nowrap; font-family: "YekanBakh", "Yekan Bakh", sans-serif; }
 .nav-dropdown-item:hover { background: rgba(204, 255, 0, 0.1); color: #CCFF00; }
 
-.nav-action { display: flex !important; align-items: center !important; gap: 0.4rem !important; flex-shrink: 0 !important; }
+.nav-action { display: flex !important; align-items: center !important; gap: 0.35rem !important; flex-shrink: 0 !important; }
 
+/* Reduced padding on action buttons to save space */
 .glass-phone-btn {
-  display: inline-flex !important; align-items: center !important; gap: 0.55rem !important;
+  display: inline-flex !important; align-items: center !important; gap: 0.4rem !important;
   background: rgba(6, 18, 38, 0.68) !important; backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important; padding: 0.5rem 1.15rem !important;
+  border: 1px solid rgba(182, 255, 0, 0.45) !important; padding: 0.45rem 0.95rem !important;
   border-radius: 9999px !important; color: #ffffff !important; text-decoration: none !important;
   font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important; font-weight: 700 !important; transition: all 0.25s ease !important;
+  font-size: 0.85rem !important; font-weight: 700 !important; transition: all 0.25s ease !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
   flex-shrink: 0 !important;
   white-space: nowrap !important;
@@ -18514,21 +18512,21 @@ html {
 
 .glass-phone-icon {
   position: relative !important; display: flex !important; align-items: center !important;
-  justify-content: center !important; width: 24px !important; height: 24px !important;
+  justify-content: center !important; width: 22px !important; height: 22px !important;
   border-radius: 50% !important; background: rgba(182, 255, 0, 0.22) !important;
   color: #b6ff00 !important; box-shadow: 0 0 10px rgba(182, 255, 0, 0.35) !important; flex-shrink: 0 !important;
 }
 
-.phone-pulse-dot { position: absolute !important; top: -1px !important; right: -1px !important; width: 7px !important; height: 7px !important; background: #b6ff00 !important; border-radius: 50% !important; box-shadow: 0 0 8px #b6ff00 !important; animation: pulseRing 1.8s infinite !important; }
+.phone-pulse-dot { position: absolute !important; top: -1px !important; right: -1px !important; width: 6px !important; height: 6px !important; background: #b6ff00 !important; border-radius: 50% !important; box-shadow: 0 0 8px #b6ff00 !important; animation: pulseRing 1.8s infinite !important; }
 
-.glass-phone-num { direction: ltr !important; letter-spacing: 0.04em !important; font-size: 0.94rem !important; font-weight: 800 !important; white-space: nowrap !important; }
+.glass-phone-num { direction: ltr !important; letter-spacing: 0.04em !important; font-size: 0.9rem !important; font-weight: 800 !important; white-space: nowrap !important; }
 
 #open-kit-btn, .luxury-btn-outline {
   display: inline-flex !important; align-items: center !important; justify-content: center !important;
-  gap: 0.5rem !important; background: rgba(182, 255, 0, 0.14) !important; backdrop-filter: blur(24px) !important;
+  gap: 0.4rem !important; background: rgba(182, 255, 0, 0.14) !important; backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important; border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important; border-radius: 9999px !important; color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important; font-size: 0.88rem !important;
+  padding: 0.45rem 1rem !important; border-radius: 9999px !important; color: #ffffff !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important; font-size: 0.85rem !important;
   font-weight: 700 !important; cursor: pointer !important; transition: all 0.25s ease !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
   white-space: nowrap !important; text-decoration: none !important; flex-shrink: 0 !important;
