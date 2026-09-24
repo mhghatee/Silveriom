@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+
+<html dir="rtl" lang="fa">
 <head>
-
-  <!-- Standard Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png?v=3" sizes="any">
-  <link rel="apple-touch-icon" href="/favicon.png?v=3">
-
-
-  <!-- Standard Favicon -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سیلوریوم | پلتفرم تخصصی تبلیغات و رسانه‌های تنیس و پدل</title>
-  <meta name="description" content="سیلوریوم، مجری انحصاری رسانه‌ها و تبلیغات محیطی در برترین مجتمع‌های تنیس و پدل. برندها را در نقطه اوج توجه ورزشی قرار دهید.">
-  
-  
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <!-- GLOBAL CSS (Source of Truth: index.html) -->
-  <style>
+<!-- Standard Favicon -->
+<link href="/favicon.png?v=3" rel="icon" sizes="any" type="image/png"/>
+<link href="/favicon.png?v=3" rel="apple-touch-icon"/>
+<!-- Standard Favicon -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>سیلوریوم | پلتفرم تخصصی تبلیغات و رسانه‌های تنیس و پدل</title>
+<meta content="سیلوریوم، مجری انحصاری رسانه‌ها و تبلیغات محیطی در برترین مجتمع‌های تنیس و پدل. برندها را در نقطه اوج توجه ورزشی قرار دهید." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- GLOBAL CSS (Source of Truth: index.html) -->
+<style>
 
 @font-face {
   font-family: "YekanBakh";
@@ -2001,9 +1996,28 @@ body {
 }
 
   
-
-
-
+.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 50px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+.nav-item:hover {
+  color: #CCFF00 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
+  color: #CCFF00 !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(204, 255, 0, 0.5) !important;
+  background: rgba(204, 255, 0, 0.05) !important;
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
+}
 
 
 .nav-btn.primary, .phone-link {
@@ -2192,7 +2206,15 @@ body {
 /* ========================================================================== */
 
 /* 1. Brand Logo Strict Sizing (Prevent giant image expansion) */
-
+.nav-brand-logo-img, img.nav-brand-logo-img {
+  height: 42px !important;
+  max-height: 45px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
+}
 
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
@@ -2204,41 +2226,138 @@ body {
 
 /* 2. Floating Navbar & Glass Container */
 /* 2. Floating Navbar & Glass Container */
+.luxury-nav {
+  position: fixed !important;
+  top: 50px !important; /* Positioned below the 50px marquee ticker */
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  padding: 0.85rem 2.5rem !important;
+  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
+  box-sizing: border-box !important;
+}
 
+.nav-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
 
+.nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+}
 
+.nav-brand-logo-img {
+  height: 48px !important;
+  max-height: 52px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
 
-
-
-
-
-
+.nav-brand:hover .nav-brand-logo-img {
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
+}
 
 /* 3. Glass Capsule Menu surrounding 6 Links */
-
+.nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+}
 
 @media (max-width: 1024px) {
-  
+  .nav-links {
+    display: none !important;
+  }
 }
 
 @media (min-width: 1024px) {
-  
+  .nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+}
 
 @media (max-width: 1024px) {
-  
+  .nav-links {
+    display: none !important;
+  }
 }
 }
 
+.nav-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.5rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+}
 
 
 
-
-
+.nav-item.active {
+  color: var(--color-neon) !important;
+  background: rgba(182, 255, 0, 0.16) !important;
+  border-color: rgba(182, 255, 0, 0.45) !important;
+}
 
 /* 4. Left Action Section & Buttons */
+.nav-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  flex-shrink: 0 !important;
+}
 
-
-
+.glass-phone-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  background: rgba(6, 18, 38, 0.68) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182, 255, 0, 0.45) !important;
+  padding: 0.5rem 1.15rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  flex-shrink: 0 !important;
+}
 
 .glass-phone-btn:hover {
   background: rgba(182, 255, 0, 0.2) !important;
@@ -2281,7 +2400,27 @@ body {
   font-weight: 800 !important;
 }
 
-#open-kit-btn, 
+#open-kit-btn, .luxury-btn-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: rgba(182, 255, 0, 0.14) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182, 255, 0, 0.5) !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
 
 #open-kit-btn:hover, .luxury-btn-outline:hover {
   background: rgba(182, 255, 0, 0.28) !important;
@@ -2440,7 +2579,27 @@ body {
 /* ==========================================================================
    TOP INFINITE SEAMLESS MARQUEE TICKER (Continuous Right-to-Left Flow)
    ========================================================================== */
-
+.top-complex-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 9999999 !important;
+  background: rgba(6, 16, 32, 0.78);
+  backdrop-filter: blur(36px) saturate(220%);
+  -webkit-backdrop-filter: blur(36px) saturate(220%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f8fafc;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  direction: ltr !important;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+}
 
 .marquee-track {
   display: flex;
@@ -2472,9 +2631,28 @@ body {
   100% { transform: translate3d(-50%, 0, 0); }
 }
 
+.top-bar-badge {
+  background: rgba(204, 255, 0, 0.1) !important;
+  border: 1px solid rgba(204, 255, 0, 0.5) !important;
+  border-radius: 50px !important;
+  padding: 4px 16px !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-weight: 800 !important;
+  margin-left: 15px !important;
+}
 
-
-
+.top-c-item {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.90rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 8px;
+}
 
 .top-c-item strong {
   font-weight: 800;
@@ -4298,7 +4476,9 @@ section {
 /* ==========================================================================
    STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-
+.luxury-nav {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 
 .luxury-nav.scrolled {
   background: rgba(2, 6, 18, 0.88) !important;
@@ -4701,17 +4881,59 @@ section {
 }
 </style>
 <style id="island-header-overrides">
-
-
-
-
-@media (max-width: 1024px) {
-  
+.top-bar-badge {
+  background: rgba(204, 255, 0, 0.1) !important;
+  border: 1px solid rgba(204, 255, 0, 0.5) !important;
+  border-radius: 50px !important;
+  padding: 4px 16px !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-weight: 800 !important;
+  margin-left: 15px !important;
 }
 
+.nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+}
 
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+}
 
-
+.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 50px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+.nav-item:hover {
+  color: #CCFF00 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
+  color: #CCFF00 !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(204, 255, 0, 0.5) !important;
+  background: rgba(204, 255, 0, 0.05) !important;
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
+}
 
 .nav-btn.primary, .phone-link {
   background: rgba(13, 22, 45, 0.6) !important;
@@ -4835,9 +5057,8 @@ section {
   margin: 0 !important;
 }
 </style>
-
-  <!-- PAGE-SPECIFIC STYLES -->
-  <style>
+<!-- PAGE-SPECIFIC STYLES -->
+<style>
   @font-face {
     font-family: 'YekanBakh';
     src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
@@ -5175,7 +5396,9 @@ section {
 /* ==========================================================================
    STICKY HEADER & DIGIKALA MOBILE MENU DRAWER
    ========================================================================== */
-
+.luxury-nav {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 
 .luxury-nav.scrolled {
   background: rgba(2, 6, 18, 0.88) !important;
@@ -7538,24 +7761,67 @@ body {
 }
 
   </style>
-
-  
-
-
-  <!-- SILVERIOM MASTER PERFECT STYLES & JS — matches index.html (VERIFIED) -->
-  <style id="silveriom-master-nav-fix">
+<!-- SILVERIOM MASTER PERFECT STYLES & JS — matches index.html (VERIFIED) -->
+<style id="silveriom-master-nav-fix">
 /* ========================================================================== */
 /* SILVERIOM MASTER PERFECT STYLES & LAYOUT OVERRIDES                         */
 /* ========================================================================== */
 
 /* Top bar gap fix & Luxury Nav standardization for ALL pages */
-
-
-
+.luxury-nav {
+  position: fixed !important;
+  top: 50px !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  padding: 0.85rem 2.5rem !important;
+  background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
+  box-sizing: border-box !important;
+}
+.nav-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.nav-links {
+  background: rgba(13, 22, 45, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+}
 
 /* 1. Brand Logo Strict Sizing */
-
-
+.nav-brand-logo-img, img.nav-brand-logo-img {
+  height: 42px !important;
+  max-height: 45px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
+}
+.nav-brand-logo-img {
+  height: 48px !important;
+  max-height: 52px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 0 12px rgba(182, 255, 0, 0.5)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
 .footer-brand-logo-img, img.footer-brand-logo-img {
   height: 38px !important;
   max-height: 42px !important;
@@ -7565,15 +7831,37 @@ body {
 }
 
 /* 3. Nav Items */
-
-
+.nav-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.5rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+}
+.nav-item.active {
+  color: var(--color-neon) !important;
+  background: rgba(182, 255, 0, 0.16) !important;
+  border-color: rgba(182, 255, 0, 0.45) !important;
+}
 
 /* 4. Action buttons */
-
+.nav-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  flex-shrink: 0 !important;
+}
 
 /* 5. Desktop: nav-links visible, toggle hidden */
 @media (min-width: 1025px) {
-  
+  .nav-links {
+    display: flex !important;
+  }
   .mobile-toggle {
     display: none !important;
   }
@@ -7581,7 +7869,9 @@ body {
 
 /* 6. Mobile: hide desktop nav, phone/CTA */
 @media (max-width: 1024px) {
-  
+  .nav-links {
+    display: none !important;
+  }
   .luxury-nav .glass-phone-btn,
   .luxury-nav #open-kit-btn {
     display: none !important;
@@ -7617,8 +7907,7 @@ body {
   }
 }
   </style>
-
-  <script id="silveriom-route-detection">
+<script id="silveriom-route-detection">
     document.addEventListener("DOMContentLoaded", function() {
       // 1. Get current normalized path
       let currentPath = window.location.pathname;
@@ -7661,8 +7950,6 @@ body {
       });
     });
   </script>
-
-
 <!-- ==================================================================== -->
 <!-- SILVERIOM UNIFIED GLOBAL CONTAINER SYSTEM                            -->
 <!-- Absolute Reference: inventory/index.html .editorial-wide-container   -->
@@ -7701,11 +7988,8 @@ body {
     padding-right: 0 !important;
   }
 </style>
-
-  
-
-  <!-- GLOBAL FAVICON CONFIGURATION V2 -->
-  <style id="mobile-inventory-fixes">
+<!-- GLOBAL FAVICON CONFIGURATION V2 -->
+<style id="mobile-inventory-fixes">
     /* ==========================================================================
        MOBILE RESPONSIVE SYSTEM FOR INVENTORY PAGE (320px to 768px)
        ========================================================================== */
@@ -7924,11 +8208,8 @@ body {
       }
     }
   </style>
-
-
-
-  <!-- UNIFIED HERO SPACING FIX (Based on Portfolio Reference) -->
-  <style>
+<!-- UNIFIED HERO SPACING FIX (Based on Portfolio Reference) -->
+<style>
     @media (max-width: 768px) {
       .hero-section, 
       .main-portfolio-page, 
@@ -7939,37 +8220,56 @@ body {
       }
     }
   </style>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
 /* Navigation Dropdown */
-
-
-
-
-
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(6, 11, 19, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: right;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-item {
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.nav-dropdown-item:hover {
+  background: rgba(204, 255, 0, 0.1);
+  color: #CCFF00;
+}
 </style>
-
-    <!-- ================= Silverium Loader CSS ================= -->
-    <style id="silverium-loader-styles">
+<!-- ================= Silverium Loader CSS ================= -->
+<style id="silverium-loader-styles">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
     
     #silverium-loader {
@@ -8076,11 +8376,6 @@ body {
       50% { opacity: 1; }
     }
     </style>
-
-
-
-
-
 <style id="cinematic-grid-bg">
 /* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
 body {
@@ -8105,8 +8400,6 @@ html {
         radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
 }
 </style>
-
-
 <style>
 .media-showcase-card {
   background: rgba(13, 22, 45, 0.4);
@@ -8263,18 +8556,21 @@ html {
 }
 </style>
 
-</style>
-
 <!-- Navigation Scroll Fix -->
-
 
 <!-- Sticky Menu Global Fix -->
 <style id="silveriom-sticky-menu-fix">
   /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
-  
+  .top-complex-bar {
+    position: absolute !important;
+    top: 0 !important;
+  }
   
   /* 2. Main luxury nav initially absolute (scrolls up with page) */
-  
+  .luxury-nav {
+    position: absolute !important;
+    top: 50px !important; /* right below the top bar */
+  }
   
   /* 3. When scrolled, snap main nav to top and fix it */
   .luxury-nav.scrolled {
@@ -8286,8 +8582,13 @@ html {
 
   /* Ensure the fix works on mobile too */
   @media (max-width: 1024px) {
-    
-    
+    .top-complex-bar {
+      display: flex !important; /* Show marquee on mobile per user request */
+    }
+    .luxury-nav {
+      top: 50px !important;
+      position: absolute !important;
+    }
     .luxury-nav.scrolled {
       position: fixed !important;
     }
@@ -8313,167 +8614,314 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 </style>
+<style>
+/* ===================================================================
+   SILVERIOM — CANONICAL DESKTOP MENU CSS
+   Source: inventory/index.html
+   Do NOT add other nav rules elsewhere in this file.
+   =================================================================== */
 
+/* --- Keyframes --- */
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 1; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
 
+/* --- Header / Luxury Nav --- */
+.luxury-nav {
+  position: fixed !important;
+  top: 50px !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  padding: 0.85rem 2.5rem !important;
+  background: linear-gradient(180deg, rgba(2,6,18,0.85) 0%, rgba(2,6,18,0.4) 60%, rgba(2,6,18,0) 100%) !important;
+  box-sizing: border-box !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.luxury-nav::-webkit-scrollbar { display: none !important; }
 
+.luxury-nav.scrolled {
+  background: rgba(2,6,18,0.88) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid rgba(182,255,0,0.15) !important;
+  top: 0 !important;
+  padding: 0.6rem 2.5rem !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+@media (max-width: 900px) {
+  .luxury-nav.scrolled { padding: 0.6rem 1.5rem !important; }
+}
 
-<!-- Global Top Bar & Loader Fix -->
-<style id="silveriom-global-loader-topbar">
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'YekanBakh';
-    src: url('https://silveriom.ir/fonts/YekanBakhFaNum-Heavy.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-  }
+/* --- Nav Container --- */
+.nav-container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
+  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.nav-container::-webkit-scrollbar { display: none !important; }
 
-  /* 1. Top Complex Bar */
-  
-  .top-complex-bar:hover .marquee-track {
-    animation-play-state: paused !important;
-  }
-  .marquee-track {
+/* --- Logo --- */
+.nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+}
+.nav-brand-logo-img, img.nav-brand-logo-img {
+  height: 42px !important;
+  max-height: 45px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 8px rgba(182,255,0,0.3)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
+}
+.nav-brand:hover .nav-brand-logo-img {
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 0 20px rgba(182,255,0,0.75)) !important;
+}
+
+/* --- Nav Links (pill container) --- */
+.nav-links {
+  background: rgba(13,22,45,0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+  overflow: visible !important;
+  flex-wrap: nowrap !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.nav-links::-webkit-scrollbar { display: none !important; }
+
+@media (max-width: 1024px) {
+  .nav-links { display: none !important; }
+}
+
+/* --- Nav Items --- */
+.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.4rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.2px !important;
+}
+.nav-item:hover {
+  color: #CCFF00 !important;
+  background: rgba(255,255,255,0.05) !important;
+}
+.nav-item.active, a.nav-item.active {
+  color: #b6ff00 !important;
+  background: rgba(182,255,0,0.16) !important;
+  border-color: rgba(182,255,0,0.45) !important;
+}
+
+/* --- Dropdown --- */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(6,11,19,0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1001;
+  text-align: right;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-item {
+  color: #CBD5E1;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
+}
+.nav-dropdown-item:hover {
+  background: rgba(204,255,0,0.1);
+  color: #CCFF00;
+}
+
+/* --- Action buttons area --- */
+.nav-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* --- Phone button --- */
+.glass-phone-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  background: rgba(6,18,38,0.68) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182,255,0,0.45) !important;
+  padding: 0.5rem 1.15rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4), 0 0 12px rgba(182,255,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  flex-shrink: 0 !important;
+}
+.glass-phone-btn:hover {
+  background: rgba(182,255,0,0.2) !important;
+  border-color: #b6ff00 !important;
+  color: #b6ff00 !important;
+  box-shadow: 0 0 25px rgba(182,255,0,0.5) !important;
+  transform: translateY(-1px) !important;
+}
+.glass-phone-icon {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: rgba(182,255,0,0.22) !important;
+  color: #b6ff00 !important;
+  box-shadow: 0 0 10px rgba(182,255,0,0.35) !important;
+  flex-shrink: 0 !important;
+}
+.phone-pulse-dot {
+  position: absolute !important;
+  top: -1px !important;
+  right: -1px !important;
+  width: 7px !important;
+  height: 7px !important;
+  background: #b6ff00 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px #b6ff00 !important;
+  animation: pulseRing 1.8s infinite !important;
+}
+.glass-phone-num {
+  direction: ltr !important;
+  letter-spacing: 0.04em !important;
+  font-size: 0.94rem !important;
+  font-weight: 800 !important;
+}
+
+/* --- Mediakit button --- */
+#open-kit-btn, .luxury-btn-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: rgba(182,255,0,0.14) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(182,255,0,0.5) !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4), 0 0 14px rgba(182,255,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
+#open-kit-btn:hover, .luxury-btn-outline:hover {
+  background: rgba(182,255,0,0.28) !important;
+  border-color: #b6ff00 !important;
+  color: #b6ff00 !important;
+  box-shadow: 0 0 25px rgba(182,255,0,0.55) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* --- Mobile hamburger --- */
+.mobile-toggle {
+  display: none !important;
+}
+@media (max-width: 900px) {
+  .mobile-toggle {
     display: flex !important;
-    align-items: center !important;
-    width: max-content !important;
-    animation: marqueeContinuous 38s linear infinite !important;
-  }
-  
-  
-  .top-c-item strong {
-    font-weight: 800 !important;
-    color: #ffffff !important;
-    margin-left: 4px !important;
-    font-family: inherit !important;
-  }
-  .top-c-item:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.14) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-  }
-  .top-c-sep {
-    color: rgba(255, 255, 255, 0.3) !important;
-    font-weight: 800 !important;
-    margin: 0 4px !important;
-    font-size: 14px !important;
-  }
-  
-  /* 2. Loader Alignment */
-  #silverium-loader {
-    top: 50px !important;
-    height: calc(100vh - 50px) !important;
-    z-index: 999999 !important;
-  }
-  
-  /* 3. Luxury Nav Alignment */
-  
-  .luxury-nav.scrolled {
-    top: 50px !important;
-  }
-  
-  /* Ensure mobile overrides */
-  @media (max-width: 1024px) {
-    
-    .top-bar-badge, 
-    #silverium-loader {
-      top: 40px !important;
-      height: calc(100vh - 40px) !important;
-    }
-    
-  }
-
-  /* Loader Text Uniformity */
-  #silverium-loader .loading-text {
-    font-family: 'YekanBakh', 'Vazirmatn', Tahoma, sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-</style>
-
-<style id="silveriom-megamenu-styles">
-  .glass-panel-mega {
-    background: #0a0f1a !important;
-    backdrop-filter: blur(32px) !important;
-    -webkit-backdrop-filter: blur(32px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 28px !important;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
-  }
-  
-  
-  .mega-item {
-    transition: all 0.3s ease !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    width: 28px !important;
+    height: 18px !important;
+    background: transparent !important;
+    border: none !important;
     cursor: pointer !important;
-    text-decoration: none !important;
+    padding: 0 !important;
+    z-index: 1050 !important;
+    box-sizing: border-box !important;
   }
-  .mega-item:hover .mega-icon {
-    color: #CCFF00 !important;
-    transform: scale(1.1) !important;
-  }
-  .mega-item:hover .mega-title {
-    color: #CCFF00 !important;
-  }
-  .mega-icon {
-    transition: transform 0.3s ease !important;
-  }
-  .img-action-btn {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(10px) !important;
-    color: #000 !important;
+  .mobile-toggle span {
+    display: block !important;
+    width: 100% !important;
+    height: 2.5px !important;
+    background: #b6ff00 !important;
+    border-radius: 4px !important;
     transition: all 0.3s ease !important;
+    box-shadow: 0 0 8px rgba(182,255,0,0.4) !important;
   }
-  .left-image-group:hover .img-action-btn {
-    background: #CCFF00 !important;
-    transform: scale(1.05) !important;
+  .luxury-nav .glass-phone-btn,
+  .luxury-nav #open-kit-btn {
+    display: none !important;
   }
-  .mega-title {
-    font-family: "YekanBakh", sans-serif !important;
-  }
-  @keyframes icon-pulse-glow {
-    0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-    50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); }
-    100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-  }
-  .highlight-icon {
-    animation: icon-pulse-glow 2.5s infinite ease-in-out !important;
-  }
-</style>
-<style id="silveriom-nav-clip-fix">
-  /* Remove backdrop and background from nav-links to avoid webkit border-radius clipping bug */
-  .luxury-nav 
-  
-  /* Apply the glass effect to a pseudo-element behind the items */
-  .luxury-nav .nav-links::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13, 22, 45, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  /* Ensure the dropdown renders above everything */
-  
-</style>
-  <link rel="stylesheet" href="/assets/css/global-nav.css?v=400">
-</head>
-
-
+}
+</style></head>
 <style>
   .checkout-container {
     max-width: 1200px;
@@ -8610,352 +9058,240 @@ html {
     padding: 40px 0;
   }
 </style>
-
 <body class="luxury-body">
-
-  <!-- ================= Silverium Loader HTML ================= -->
-  <div id="silverium-loader">
-    <div class="bg-grid"></div>
-    <div class="content-wrapper">
-      <div class="video-container">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="https://silveriom.ir/loading_video.mp4" type="video/mp4">
-        </video>
-      </div>
-      
-      <div class="progress-section">
-        <div class="percentage" id="loader-percentage">0%</div>
-        <div class="progress-bar-container">
-          <div class="progress-fill" id="loader-progress-fill"></div>
-        </div>
-        <div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
-      </div>
-    </div>
-  </div>
-
-
+<!-- ================= Silverium Loader HTML ================= -->
+<div id="silverium-loader">
+<div class="bg-grid"></div>
+<div class="content-wrapper">
+<div class="video-container">
+<video autoplay="" loop="" muted="" playsinline="" preload="auto">
+<source src="https://silveriom.ir/loading_video.mp4" type="video/mp4"/>
+</video>
+</div>
+<div class="progress-section">
+<div class="percentage" id="loader-percentage">0%</div>
+<div class="progress-bar-container">
+<div class="progress-fill" id="loader-progress-fill"></div>
+</div>
+<div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+</div>
+</div>
+</div>
 <!-- SILVERIOM MINIMAL LOADER DOM & JS -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- 3D WebGL Background Canvas -->
-  <!-- Fixed Dynamic Cinematic 3D Background Layer -->
-  <div class="cinematic-bg-container" id="cinematic-bg-container">
-    <img src="https://silveriom.ir/assets/padel_cinematic_bg.jpg" alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img">
-    <div class="bg-energy-glow">    <div class="bg-energy-glow"></div>
-    <div class="navy-overlay-layer"></div>
-  </div>
-  </div>
-
-  <!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
-  <canvas id="webgl-canvas"></canvas>
-
-  <!-- Deep Navy Blue Readability Overlay Layer -->
-  <div class="navy-readability-overlay"></div>
-
-
-
-  <div class="top-complex-bar" id="top-complex-bar">
-    <div class="marquee-track">
-      <div class="marquee-group">
-        <span class="top-bar-badge"><i data-lucide="circle-dot" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> شبکه انحصاری پدل سیلوریوم:</span>
-        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
-        <span class="top-c-sep">•</span>
-      </div>
-      <div class="marquee-group">
-        <span class="top-bar-badge"><i data-lucide="circle-dot" style="width: 1.2em; height: 1.2em; vertical-align: text-bottom; display: inline-block;"></i> شبکه انحصاری پدل سیلوریوم:</span>
-        <a href="#venues-map" class="top-c-item"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
-        <span class="top-c-sep">•</span>
-        <a href="#venues-map" class="top-c-item"><strong>Olympic کیش</strong> (۱۴ کورت مسابقاتی)</a>
-        <span class="top-c-sep">•</span>
-      </div>
-    </div>
-  </div>
-
-  <header class="luxury-nav" id="main-nav">
-    <div class="nav-container">
-      <a href="#hero" class="nav-brand" title="SILVERIOM Padel Media Agency">
-        <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img" loading="lazy">
-      </a>
-
-      <nav class="nav-links">
-        <a href="https://silveriom.ir" class="nav-item">خانه</a>
-                                        <!-- Mega Menu Wrapper -->
-        <div class="nav-wrapper relative" style="position: relative; display: inline-block;">
-          <a href="https://silveriom.ir/inventory" class="nav-item" style="display:flex; align-items:center; gap:4px;">
-            رسانه‌ها
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px; margin-top:2px; transition: transform 0.3s;" class="mega-caret"><path d="m6 9 6 6 6-6"/></svg>
-          </a>
-
-          <!-- Mega Menu Dropdown -->
-          <div class="mega-menu absolute glass-panel-mega" style="position: absolute; top: calc(100% + 16px); right: 0; width: 900px; height: 540px; display: flex; padding: 1.5rem; gap: 2.5rem; flex-direction: row; cursor: default;">
-            
-            <!-- Right Column (Links list) -->
-            <div style="width: 55%; display: flex; flex-direction: column; padding-top: 0.5rem; height: 100%;">
-              <span style="font-size: 0.875rem; color: #94a3b8; margin-bottom: 1rem; padding: 0 0.5rem; font-weight: 600;">بخش‌ها و باشگاه‌های تحت پوشش</span>
-
-              <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; padding: 0 0.5rem 0.5rem 0.5rem;">
-                
-                <!-- NEW ITEM 1: Archive -->
-                <a href="https://silveriom.ir/inventory" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Archive Icon" class="highlight-icon" style="width: 44px; height: 44px; object-fit: contain;">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.1rem; font-weight: 800; color: #CCFF00; margin: 0; transition: color 0.3s; font-family: 'YekanBakh', sans-serif !important;">آرشیو جامع رسانه‌ها</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/netra.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل نترا (لواسان)</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/t10.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل T10 (آجودانیه)</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/iran-zamin.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل ایران زمین (شهرک غرب)</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/arena.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل آرنا (آزادی)</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/asayesh.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه پدل و تنیس آسایش (ساری)</h4>
-                </a>
-
-                <a href="https://silveriom.ir/clubs/kish.html" class="mega-item group" style="display: flex; align-items: center; gap: 1.25rem;">
-                  <div class="mega-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://silveriom.ir/assets/glass_icon.webp" alt="Icon" style="width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(204,255,0,0.5));">
-                  </div>
-                  <h4 class="mega-title" style="font-size: 1.05rem; font-weight: 700; color: white; margin: 0; transition: color 0.3s;">مجموعه تنیس المپیک (جزیره کیش)</h4>
-                </a>
-
-              </div>
-            </div>
-
-            <!-- Left Column (Featured Image) -->
-            <a href="https://silveriom.ir/inventory" class="left-image-group" style="width: 45%; height: 100%; border-radius: 1rem; position: relative; cursor: pointer; overflow: hidden; display: block; text-decoration: none;">
-              <img src="https://silveriom.ir/assets/mega_menu_featured.jpg" alt="Featured Media" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            </a>
-
-          </div>
-        </div>
-        
-        <a href="https://silveriom.ir/audience-intelligence/" class="nav-item">مخاطبین</a>
-        <a href="https://silveriom.ir/tournament-calendar/" class="nav-item">تقویم مسابقات</a>
-        <a href="https://silveriom.ir/portfolio/" class="nav-item">نمونه کارها</a>
-        <a href="https://silveriom.ir/media-planner/" class="nav-item">مدیاپلنر</a>
-        <a href="https://silveriom.ir/blog/" class="nav-item">مجله تخصصی</a>
-        <a href="https://silveriom.ir/about-us/" class="nav-item">درباره ما</a>
-        <a href="https://silveriom.ir/contact-us/" class="nav-item">تماس با ما</a>
-      </nav>
-
-      <div class="nav-action">
-        <a href="tel:09121127415" class="glass-phone-btn" title="تماس فوری و مشاوره تبلیغات">
-          <span class="glass-phone-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span class="phone-pulse-dot"></span>
-          </span>
-          <span class="glass-phone-num">۰۹۱۲۱۱۲۷۴۱۵</span>
-        </a>
-
-        <a href="https://panel.silveriom.ir/login.html?action=mediakit" id="open-kit-btn" class="luxury-btn-outline" style="padding: 0.5rem 1.25rem; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center;">
-          <span>دریافت مدیا کیت</span>
-        </a>
-
-        <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="منو">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+<!-- 3D WebGL Background Canvas -->
+<!-- Fixed Dynamic Cinematic 3D Background Layer -->
+<div class="cinematic-bg-container" id="cinematic-bg-container">
+<img alt="Ultra-Futuristic Luxury Padel Racket and Ball" class="cinematic-bg-img" id="cinematic-bg-img" src="https://silveriom.ir/assets/padel_cinematic_bg.jpg"/>
+<div class="bg-energy-glow"> <div class="bg-energy-glow"></div>
+<div class="navy-overlay-layer"></div>
+</div>
+</div>
+<!-- Real-time 3D WebGL Canvas for Particles and Dynamic Energy Rings -->
+<canvas id="webgl-canvas"></canvas>
+<!-- Deep Navy Blue Readability Overlay Layer -->
+<div class="navy-readability-overlay"></div>
+<div class="top-complex-bar" id="top-complex-bar">
+<div class="marquee-track">
+<div class="marquee-group">
+<span class="top-bar-badge">شبکه انحصاری پدل سیلوریوم:</span>
+<a class="top-c-item" href="#venues-map"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+<span class="top-c-sep">•</span>
+</div>
+<div class="marquee-group">
+<span class="top-bar-badge">شبکه انحصاری پدل سیلوریوم:</span>
+<a class="top-c-item" href="#venues-map"><strong>T10 آجودانیه</strong> (۷ پدل + ۳ تنیس)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Arena آزادی</strong> (۸ پدل مسابقاتی)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Iran Zamin شهرک غرب</strong> (۶ پدل پانورامیک)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Netra لواسان</strong> (۷ پدل VIP)</a>
+<span class="top-c-sep">•</span>
+<a class="top-c-item" href="#venues-map"><strong>Asayesh مازندران</strong> (۴ پدل + ۱۲ تنیس)</a>
+<span class="top-c-sep">•</span>
+</div>
+</div>
+</div>
+<!-- Luxury Minimal Header with Glass Phone Button & Yekan Bakh Buttons -->
+<header class="luxury-nav" id="main-nav">
+<div class="nav-container">
+<a class="nav-brand" href="https://silveriom.ir" title="SILVERIOM Padel Media Agency">
+<img alt="SILVERIOM Padel Media Agency" class="nav-brand-logo-img" loading="lazy" src="https://silveriom.ir/assets/silveriom_logo_transparent.png"/>
+</a>
+<nav class="nav-links">
+<a class="nav-item" href="https://silveriom.ir">خانه</a>
+<div class="nav-dropdown">
+<a class="nav-item" href="#" style="display:flex; align-items:center; gap:4px;">
+          رسانه‌ها
+          <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="margin-right:2px; margin-top:2px;" viewbox="0 0 24 24" width="12"><path d="m6 9 6 6 6-6"></path></svg>
+</a>
+<div class="nav-dropdown-menu">
+<a class="nav-dropdown-item" href="https://silveriom.ir/inventory">آرشیو رسانه ها</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/t10.html">T10 (آجودانیه)</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/arena.html">Arena (آزادی)</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/iran-zamin.html">Iran Zamin (شهرک غرب)</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/netra.html">Netra (لواسان)</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/asayesh.html">Asayesh (ساری)</a>
+<a class="nav-dropdown-item" href="https://silveriom.ir/clubs/kish.html">Olympic (کیش)</a>
+</div>
+</div>
+<a class="nav-item" href="https://silveriom.ir/audience-intelligence/">مخاطبین</a>
+<a class="nav-item" href="https://silveriom.ir/tournament-calendar/">تقویم مسابقات</a>
+<a class="nav-item" href="https://silveriom.ir/portfolio/">نمونه کارها</a>
+<a class="nav-item" href="https://silveriom.ir/media-planner/">مدیاپلنر</a>
+<a class="nav-item" href="https://silveriom.ir/blog/">مجله تخصصی</a>
+<a class="nav-item" href="https://silveriom.ir/about-us/">درباره ما</a>
+<a class="nav-item" href="https://silveriom.ir/contact-us/">تماس با ما</a>
+</nav>
+<div class="nav-action">
+<a class="glass-phone-btn" href="tel:09121127415" title="تماس فوری و مشاوره تبلیغات">
+<span class="glass-phone-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" viewbox="0 0 24 24" width="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<span class="phone-pulse-dot"></span>
+</span>
+<span class="glass-phone-num">۰۹۱۲۱۱۲۷۴۱۵</span>
+</a>
+<a class="luxury-btn-outline" href="https://panel.silveriom.ir/login.html?action=mediakit" id="open-kit-btn" style="padding: 0.5rem 1.25rem; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center;">
+<span>دریافت مدیا کیت</span>
+</a>
+<button aria-label="منو" class="mobile-toggle" id="mobile-menu-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
 <div class="checkout-container">
-  <!-- FORM -->
-  <div class="form-box">
-    <h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+<!-- FORM -->
+<div class="form-box">
+<h2>
+<svg fill="none" height="24" stroke="#CCFF00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
       اطلاعات رزروکننده
     </h2>
-    <p style="color: #94A3B8; font-size: 13px; margin-bottom: 25px;">لطفاً اطلاعات خود را وارد کنید تا لینک اختصاصی مدیاکیت برای شما صادر شود.</p>
-    
-    <div class="form-group">
-      <label>نام و نام خانوادگی</label>
-      <input type="text" id="mkName" placeholder="مثلاً: علی احمدی">
-    </div>
-    <div class="form-group">
-      <label>نام شرکت / برند</label>
-      <input type="text" id="mkBrand" placeholder="مثلاً: شرکت سیلوریوم">
-    </div>
-    <div class="form-group">
-      <label>شماره موبایل</label>
-      <input type="tel" id="mkPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" style="text-align: right;">
-    </div>
-    
-    <button class="submit-btn" onclick="submitMediaKit()">تولید لینک مدیا کیت</button>
-  </div>
-
-  <!-- SUMMARY -->
-  <div class="summary-box">
-    <h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CCFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+<p style="color: #94A3B8; font-size: 13px; margin-bottom: 25px;">لطفاً اطلاعات خود را وارد کنید تا لینک اختصاصی مدیاکیت برای شما صادر شود.</p>
+<div class="form-group">
+<label>نام و نام خانوادگی</label>
+<input id="mkName" placeholder="مثلاً: علی احمدی" type="text"/>
+</div>
+<div class="form-group">
+<label>نام شرکت / برند</label>
+<input id="mkBrand" placeholder="مثلاً: شرکت سیلوریوم" type="text"/>
+</div>
+<div class="form-group">
+<label>شماره موبایل</label>
+<input dir="ltr" id="mkPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" style="text-align: right;" type="tel"/>
+</div>
+<button class="submit-btn" onclick="submitMediaKit()">تولید لینک مدیا کیت</button>
+</div>
+<!-- SUMMARY -->
+<div class="summary-box">
+<h2>
+<svg fill="none" height="24" stroke="#CCFF00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
       سبد سازه‌های انتخابی
     </h2>
-    <div id="cartItemsContainer">
-      <div class="empty-cart">در حال بارگذاری...</div>
-    </div>
-  </div>
+<div id="cartItemsContainer">
+<div class="empty-cart">در حال بارگذاری...</div>
+</div>
+</div>
 </div>
 <footer class="luxury-mega-footer" id="main-footer">
-  <div class="editorial-wide-container">
-    <div class="footer-top-grid">
-      <!-- Column 1: Main Brand with Transparent Logo -->
-      <div class="footer-col-main">
-        <a href="https://silveriom.ir/#hero" class="footer-logo-link">
-          <img src="https://silveriom.ir/assets/silveriom_logo_transparent.png" alt="SILVERIOM" class="footer-brand-logo-img" loading="lazy">
-        </a>
-        <p class="footer-tagline">
+<div class="editorial-wide-container">
+<div class="footer-top-grid">
+<!-- Column 1: Main Brand with Transparent Logo -->
+<div class="footer-col-main">
+<a class="footer-logo-link" href="https://silveriom.ir/#hero">
+<img alt="SILVERIOM" class="footer-brand-logo-img" loading="lazy" src="https://silveriom.ir/assets/silveriom_logo_transparent.png"/>
+</a>
+<p class="footer-tagline">
           سیلوریوم، پلتفرم پیشگام تبلیغات، برندینگ ۳بعدی و مهندسی رسانه‌ای در برترین مجتمع‌های ورزشی تنیس و پدل ایران. برندهای تراز اول را در کانون توجه تصمیم‌گیرندگان و جامعه نخبه کشور قرار دهید.
         </p>
 <div class="footer-social-pill-container" style="margin-top: 25px;">
-          <a href="https://www.linkedin.com/company/silveriom/" target="_blank" rel="noopener noreferrer" class="social-pill-btn">
-            <svg class="social-svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-            <span class="social-pill-text">LinkedIn</span>
-          </a>
-          <a href="https://www.instagram.com/silveriom.ir" target="_blank" rel="noopener noreferrer" class="social-pill-btn">
-            <svg class="social-svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-            <span class="social-pill-text">Instagram</span>
-          </a>
-          <a href="https://wa.me/989121127415" target="_blank" rel="noopener noreferrer" class="social-pill-btn">
-            <svg class="social-svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-            </svg>
-            <span class="social-pill-text">WhatsApp</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Column 2: Quick Links -->
-      <div class="footer-col">
-        <h4 class="fcol-heading">دسترسی سریع</h4>
-        <ul class="fcol-links">
-          <li><a href="https://silveriom.ir/#hero">صفحه اصلی</a></li>
-          <li><a href="https://silveriom.ir/#venues-map">نقشه هوشمند کورت‌ها</a></li>
-          <li><a href="https://silveriom.ir/#complexes">مجتمع‌های همکار</a></li>
-          <li><a href="https://silveriom.ir/#inventory">سبد رسانه‌های تبلیغاتی</a></li>
-          <li><a href="https://silveriom.ir/#process">فرآیند اکران کمپین</a></li>
-          <li><a href="https://silveriom.ir/portfolio/">نمونه‌کارها و پروژه‌ها</a></li>
-          <li><a href="https://silveriom.ir/#planner">مدیاپلنر و صدور پیش‌فاکتور</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Media & Services -->
-      <div class="footer-col">
-        <h4 class="fcol-heading">رسانه‌ها و خدمات</h4>
-        <ul class="fcol-links">
-          <li><a href="https://silveriom.ir/#inventory">برندینگ اختصاصی نوار و تور</a></li>
-          <li><a href="https://silveriom.ir/#inventory">دیواره‌های پانورامیک شیشه</a></li>
-          <li><a href="https://silveriom.ir/#inventory">نمایشگرهای هوشمند دیجیتال LED</a></li>
-          <li><a href="https://silveriom.ir/#inventory">جایگاه سمپلینگ و VIP لانژ</a></li>
-          <li><a href="https://silveriom.ir/#process">شبیه‌سازی ۳بعدی سازه و نورپردازی</a></li>
-          <li><a href="https://silveriom.ir/portfolio/">کمپین‌های موفق برندهای برتر</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4: Contact & Office -->
-      <div class="footer-col">
-        <h4 class="fcol-heading">ارتباط و پشتیبانی</h4>
-        <div class="footer-contact-box">
-          <a href="tel:09121127415" class="footer-phone-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<a class="social-pill-btn" href="https://www.linkedin.com/company/silveriom/" rel="noopener noreferrer" target="_blank">
+<svg class="social-svg" fill="currentColor" height="20" viewbox="0 0 24 24" width="20">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+</svg>
+<span class="social-pill-text">LinkedIn</span>
+</a>
+<a class="social-pill-btn" href="https://www.instagram.com/silveriom.ir" rel="noopener noreferrer" target="_blank">
+<svg class="social-svg" fill="currentColor" height="20" viewbox="0 0 24 24" width="20">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
+</svg>
+<span class="social-pill-text">Instagram</span>
+</a>
+<a class="social-pill-btn" href="https://wa.me/989121127415" rel="noopener noreferrer" target="_blank">
+<svg class="social-svg" fill="currentColor" height="20" viewbox="0 0 24 24" width="20">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path>
+</svg>
+<span class="social-pill-text">WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="footer-col">
+<h4 class="fcol-heading">دسترسی سریع</h4>
+<ul class="fcol-links">
+<li><a href="https://silveriom.ir/#hero">صفحه اصلی</a></li>
+<li><a href="https://silveriom.ir/#venues-map">نقشه هوشمند کورت‌ها</a></li>
+<li><a href="https://silveriom.ir/#complexes">مجتمع‌های همکار</a></li>
+<li><a href="https://silveriom.ir/#inventory">سبد رسانه‌های تبلیغاتی</a></li>
+<li><a href="https://silveriom.ir/#process">فرآیند اکران کمپین</a></li>
+<li><a href="https://silveriom.ir/portfolio/">نمونه‌کارها و پروژه‌ها</a></li>
+<li><a href="https://silveriom.ir/#planner">مدیاپلنر و صدور پیش‌فاکتور</a></li>
+</ul>
+</div>
+<!-- Column 3: Media & Services -->
+<div class="footer-col">
+<h4 class="fcol-heading">رسانه‌ها و خدمات</h4>
+<ul class="fcol-links">
+<li><a href="https://silveriom.ir/#inventory">برندینگ اختصاصی نوار و تور</a></li>
+<li><a href="https://silveriom.ir/#inventory">دیواره‌های پانورامیک شیشه</a></li>
+<li><a href="https://silveriom.ir/#inventory">نمایشگرهای هوشمند دیجیتال LED</a></li>
+<li><a href="https://silveriom.ir/#inventory">جایگاه سمپلینگ و VIP لانژ</a></li>
+<li><a href="https://silveriom.ir/#process">شبیه‌سازی ۳بعدی سازه و نورپردازی</a></li>
+<li><a href="https://silveriom.ir/portfolio/">کمپین‌های موفق برندهای برتر</a></li>
+</ul>
+</div>
+<!-- Column 4: Contact & Office -->
+<div class="footer-col">
+<h4 class="fcol-heading">ارتباط و پشتیبانی</h4>
+<div class="footer-contact-box">
+<a class="footer-phone-btn" href="tel:09121127415">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             ۰۹۱۲۱۱۲۷۴۱۵
           </a>
-          <p class="footer-address">
-            <span>دفتر مرکزی:</span> تهران، آجودانیه، مجموعه اختصاصی پدل T10 • دپارتمان رسانه‌ای سیلوریوم
+<p class="footer-address">
+<span>دفتر مرکزی:</span> تهران، آجودانیه، مجموعه اختصاصی پدل T10 • دپارتمان رسانه‌ای سیلوریوم
           </p>
-          <p class="footer-email">
-            <span>ایمیل سازمانی:</span> contact@silveriom.ir
+<p class="footer-email">
+<span>ایمیل سازمانی:</span> contact@silveriom.ir
           </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom Copyright Bar -->
-    <div class="footer-bottom-bar">
-      <p class="copyright-text">© ۲۰۲۶ تمامی حقوق مادی و معنوی متعلق به پلتفرم رسانه‌ای سیلوریوم (SILVERIOM) می‌باشد.</p>
-      <div class="footer-bottom-actions">
-        <a href="https://silveriom.ir/#hero" class="back-to-top-btn" aria-label="بازگشت به بالا">
-          <span>بازگشت به بالا</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+<!-- Bottom Copyright Bar -->
+<div class="footer-bottom-bar">
+<p class="copyright-text">© ۲۰۲۶ تمامی حقوق مادی و معنوی متعلق به پلتفرم رسانه‌ای سیلوریوم (SILVERIOM) می‌باشد.</p>
+<div class="footer-bottom-actions">
+<a aria-label="بازگشت به بالا" class="back-to-top-btn" href="https://silveriom.ir/#hero">
+<span>بازگشت به بالا</span>
+<svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><path d="M18 15l-6-6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
 </footer>
 <script>
   let allMedia = [];
 
   document.addEventListener('DOMContentLoaded', () => {
-    fetch('/data/silveriom_db.json?t=' + new Date().getTime())
+    fetch('/data/silveriom_db.json')
       .then(r => r.json())
       .then(db => {
          allMedia = db.mediaInventory || []; // FIX: Use db.mediaInventory instead of raw object
@@ -9054,13 +9390,11 @@ html {
     }
   }
 </script>
-
 <!-- ================= CORE SCRIPTS ================= -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
 </script>
-
 <script>
   window.addEventListener('DOMContentLoaded', () => {
       let pct = 0;
@@ -9084,8 +9418,6 @@ html {
       }, 40);
   });
 </script>
-
-
 <!-- Dynamic Menu Activator -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -9094,11 +9426,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const cleanCurrent = currentPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
 
     document.querySelectorAll('.nav-links .nav-item, .mobile-nav .mobile-nav-card').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll(' catch(e) { hrefPath = href; }
+    document.querySelectorAll('.nav-dropdown-item').forEach(el => el.classList.remove('active'));
+    
+    let matched = false;
+
+    document.querySelectorAll('.nav-dropdown-item').forEach(el => {
+        const href = el.getAttribute('href');
+        if (href) {
+            let hrefPath = '';
+            try { hrefPath = new URL(href).pathname; } catch(e) { hrefPath = href; }
             let cleanHref = hrefPath.replace(/\/index\.html$/, '').replace(/\/$/, '');
             if ((cleanHref.length > 0 && cleanCurrent === cleanHref) || (cleanHref.length > 0 && cleanCurrent.startsWith(cleanHref + '/'))) {
                 el.classList.add('active');
-                const parentDropdown = el.closest('
+                const parentDropdown = el.closest('.nav-dropdown');
+                if (parentDropdown) {
+                    const parentNav = parentDropdown.querySelector('.nav-item');
+                    if (parentNav) {
+                        parentNav.classList.add('active');
+                        matched = true;
+                    }
                 }
             }
         }
@@ -9123,5 +9469,4 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 </body>
-
 </html>
