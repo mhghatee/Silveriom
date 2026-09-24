@@ -9936,313 +9936,6 @@ html {
 </style>
 <style>
 /* ===================================================================
-   SILVERIOM — CANONICAL DESKTOP MENU CSS
-   Source: inventory/index.html
-   Do NOT add other nav rules elsewhere in this file.
-   =================================================================== */
-
-/* --- Keyframes --- */
-@keyframes pulseRing {
-  0%   { transform: scale(1);   opacity: 1; }
-  70%  { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-/* --- Header / Luxury Nav --- */
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
-  background: linear-gradient(180deg, rgba(2,6,18,0.85) 0%, rgba(2,6,18,0.4) 60%, rgba(2,6,18,0) 100%) !important;
-  box-sizing: border-box !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-.luxury-nav::-webkit-scrollbar { display: none !important; }
-
-.luxury-nav.scrolled {
-  background: rgba(2,6,18,0.88) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border-bottom: 1px solid rgba(182,255,0,0.15) !important;
-  top: 0 !important;
-  padding: 0.6rem 2.5rem !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-@media (max-width: 900px) {
-  .luxury-nav.scrolled { padding: 0.6rem 1.5rem !important; }
-}
-
-/* --- Nav Container --- */
-.nav-container {
-  width: 100% !important;
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 0.5rem !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  box-sizing: border-box !important;
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-.nav-container::-webkit-scrollbar { display: none !important; }
-
-/* --- Logo --- */
-.nav-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  flex-shrink: 0 !important;
-}
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px !important;
-  max-height: 45px !important;
-  width: auto !important;
-  max-width: 180px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: drop-shadow(0 2px 8px rgba(182,255,0,0.3)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease !important;
-}
-.nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05) !important;
-  filter: drop-shadow(0 0 20px rgba(182,255,0,0.75)) !important;
-}
-
-/* --- Nav Links (pill container) --- */
-.nav-links {
-  background: rgba(13,22,45,0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-  overflow: visible !important;
-  flex-wrap: nowrap !important;
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-.nav-links::-webkit-scrollbar { display: none !important; }
-
-@media (max-width: 1024px) {
-  .nav-links { display: none !important; }
-}
-
-/* --- Nav Items --- */
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: rgba(255,255,255,0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.4rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
-  letter-spacing: -0.2px !important;
-}
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255,255,255,0.05) !important;
-}
-.nav-item.active, a.nav-item.active {
-  color: #b6ff00 !important;
-  background: rgba(182,255,0,0.16) !important;
-  border-color: rgba(182,255,0,0.45) !important;
-}
-
-/* --- Dropdown --- */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-.nav-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background: rgba(6,11,19,0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1001;
-  text-align: right;
-}
-.nav-dropdown:hover .nav-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-.nav-dropdown-item {
-  color: #CBD5E1;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif;
-}
-.nav-dropdown-item:hover {
-  background: rgba(204,255,0,0.1);
-  color: #CCFF00;
-}
-
-/* --- Action buttons area --- */
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
-
-/* --- Phone button --- */
-.glass-phone-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  background: rgba(6,18,38,0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182,255,0,0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.4), 0 0 12px rgba(182,255,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2) !important;
-  flex-shrink: 0 !important;
-}
-.glass-phone-btn:hover {
-  background: rgba(182,255,0,0.2) !important;
-  border-color: #b6ff00 !important;
-  color: #b6ff00 !important;
-  box-shadow: 0 0 25px rgba(182,255,0,0.5) !important;
-  transform: translateY(-1px) !important;
-}
-.glass-phone-icon {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50% !important;
-  background: rgba(182,255,0,0.22) !important;
-  color: #b6ff00 !important;
-  box-shadow: 0 0 10px rgba(182,255,0,0.35) !important;
-  flex-shrink: 0 !important;
-}
-.phone-pulse-dot {
-  position: absolute !important;
-  top: -1px !important;
-  right: -1px !important;
-  width: 7px !important;
-  height: 7px !important;
-  background: #b6ff00 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 8px #b6ff00 !important;
-  animation: pulseRing 1.8s infinite !important;
-}
-.glass-phone-num {
-  direction: ltr !important;
-  letter-spacing: 0.04em !important;
-  font-size: 0.94rem !important;
-  font-weight: 800 !important;
-}
-
-/* --- Mediakit button --- */
-#open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182,255,0,0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182,255,0,0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.4), 0 0 14px rgba(182,255,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
-#open-kit-btn:hover, .luxury-btn-outline:hover {
-  background: rgba(182,255,0,0.28) !important;
-  border-color: #b6ff00 !important;
-  color: #b6ff00 !important;
-  box-shadow: 0 0 25px rgba(182,255,0,0.55) !important;
-  transform: translateY(-1px) !important;
-}
-
-/* --- Mobile hamburger --- */
-.mobile-toggle {
-  display: none !important;
-}
-@media (max-width: 900px) {
-  .mobile-toggle {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    width: 28px !important;
-    height: 18px !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    z-index: 1050 !important;
-    box-sizing: border-box !important;
-  }
-  .mobile-toggle span {
-    display: block !important;
-    width: 100% !important;
-    height: 2.5px !important;
-    background: #b6ff00 !important;
-    border-radius: 4px !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 0 8px rgba(182,255,0,0.4) !important;
-  }
-  .luxury-nav .glass-phone-btn,
-  .luxury-nav #open-kit-btn {
-    display: none !important;
-  }
-}
-</style><style>
-/* ===================================================================
    SILVERIOM — CANONICAL DESKTOP MENU CSS (Exact copy from inventory)
    =================================================================== */
 @keyframes pulseRing {
@@ -10251,13 +9944,17 @@ html {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
+/* ZERO HORIZONTAL PADDING ON THE NAV ITSELF, JUST LIKE INVENTORY */
 .luxury-nav {
   position: fixed !important;
   top: 50px !important;
   left: 0 !important;
   width: 100% !important;
   z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+  padding-left: 0 !important; 
+  padding-right: 0 !important;
   background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
   box-sizing: border-box !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -10269,17 +9966,19 @@ html {
   -webkit-backdrop-filter: blur(24px) !important;
   border-bottom: 1px solid rgba(182, 255, 0, 0.15) !important;
   top: 0 !important;
-  padding: 0.6rem 2.5rem !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
 
-@media (max-width: 900px) {
-  .luxury-nav.scrolled { padding: 0.6rem 1.5rem !important; }
-}
-
+/* 1280px MAX-WIDTH AND CLAMP PADDING ON THE CONTAINER, JUST LIKE INVENTORY */
 .nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -10287,7 +9986,10 @@ html {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 !important;
+  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
+  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   box-sizing: border-box !important;
 }
 

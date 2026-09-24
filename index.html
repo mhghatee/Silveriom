@@ -6039,13 +6039,17 @@ html {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
+/* ZERO HORIZONTAL PADDING ON THE NAV ITSELF, JUST LIKE INVENTORY */
 .luxury-nav {
   position: fixed !important;
   top: 50px !important;
   left: 0 !important;
   width: 100% !important;
   z-index: 1000 !important;
-  padding: 0.85rem 2.5rem !important;
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+  padding-left: 0 !important; 
+  padding-right: 0 !important;
   background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
   box-sizing: border-box !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -6057,17 +6061,19 @@ html {
   -webkit-backdrop-filter: blur(24px) !important;
   border-bottom: 1px solid rgba(182, 255, 0, 0.15) !important;
   top: 0 !important;
-  padding: 0.6rem 2.5rem !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
 
-@media (max-width: 900px) {
-  .luxury-nav.scrolled { padding: 0.6rem 1.5rem !important; }
-}
-
+/* 1280px MAX-WIDTH AND CLAMP PADDING ON THE CONTAINER, JUST LIKE INVENTORY */
 .nav-container {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -6075,7 +6081,10 @@ html {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 !important;
+  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
+  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   box-sizing: border-box !important;
 }
 
