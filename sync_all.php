@@ -1,5 +1,6 @@
 <?php
 $files = [
+    "assets/css/global-nav.css",
     "mobile_html_debug.html",
     "loader_concepts.html",
     "index.html",
