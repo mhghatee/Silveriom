@@ -13,21 +13,22 @@
   background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
   box-sizing: border-box !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .luxury-nav.scrolled {
-  background: rgba(2, 6, 18, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(182, 255, 0, 0.15);
-  top: 0;
-  padding: 0.6rem 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: rgba(2, 6, 18, 0.88) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid rgba(182, 255, 0, 0.15) !important;
+  top: 0 !important;
+  padding: 0.6rem 2.5rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* 2. Container */
 .nav-container {
+  position: relative !important;
   max-width: 1400px !important;
   margin: 0 auto !important;
   display: flex !important;
@@ -37,83 +38,123 @@
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 !important;
+  overflow: visible !important;
 }
 
 /* 3. Nav Links Wrapper (The Pill) */
+.nav-links {
+  background: rgba(13, 22, 45, 0.25) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0px !important;
+  overflow: visible !important;
+  
+  
 
+}
 
 /* 4. Nav Items */
+.nav-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  border-radius: 9999px !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  letter-spacing: -0.3px !important;
+  white-space: nowrap !important;
+  border: 1px solid transparent !important;
+}
 
+.nav-item:hover {
+  color: #CCFF00 !important;
+  background: rgba(204, 255, 0, 0.05) !important;
+}
 
-
-
-
+.nav-item.active {
+  color: #CCFF00 !important;
+  background: rgba(204, 255, 0, 0.08) !important;
+  border: 1px solid rgba(204, 255, 0, 0.2) !important;
+}
 
 /* 5. Nav Wrapper and Mega Menu */
 .nav-wrapper {
   position: relative;
   display: inline-block;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .mega-menu {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 99999;
-  overflow: visible;
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  background: #0a0f1a;
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 28px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(15px) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 99999 !important;
+  overflow: visible !important;
+  position: absolute !important;
+  top: calc(100% + 16px) !important;
+  right: 0 !important;
+  background: #0a0f1a !important;
+  backdrop-filter: blur(32px) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important;
 }
 
 .nav-wrapper:hover .mega-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
 
 .nav-wrapper:hover .mega-caret {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
 }
 
 .mega-item {
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
 }
 .mega-item:hover .mega-icon {
-  color: #CCFF00;
-  transform: scale(1.1);
+  color: #CCFF00 !important;
+  transform: scale(1.1) !important;
 }
 .mega-item:hover .mega-title {
-  color: #CCFF00;
+  color: #CCFF00 !important;
 }
 
 /* 6. Mobile & Desktop Adjustments */
 @media (max-width: 1024px) {
-  
+  .nav-links {
+    display: none !important;
+  }
   .luxury-nav {
-    top: 50px;
-    padding: 0.6rem 1.5rem;
+    top: 50px !important;
+    padding: 0.6rem 1.5rem !important;
   }
 }
 
 @media (min-width: 1024px) {
-  
+  .nav-item {
+    padding: 0.35rem 0.4rem !important;
+    font-size: 13px !important;
+    letter-spacing: -0.2px !important;
+    white-space: nowrap !important;
+  }
 }
 
 /* Loader Fix (To ensure menu stays below loader but above main content) */
 #silverium-loader {
-  z-index: 9999999;
+  z-index: 9999999 !important;
 }
 
 /* =========================================
@@ -124,8 +165,34 @@
   Both sides get equal flex:1 so nav-links is always mathematically centered.
 */
 .nav-container {
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
+.nav-brand {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  justify-content: flex-start !important; /* RTL: logo anchors to right within its zone */
+  align-items: center !important;
+}
+.nav-links {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  transform: none !important;
+  left: auto !important;
+  margin: 0 16px !important;
+}
+.nav-action {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important; /* RTL: buttons anchor to left within their zone */
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+/* =========================================
+   LOGO & BRAND
+   ========================================= */
 .nav-brand {
   display: flex !important;
   align-items: center !important;
@@ -133,37 +200,20 @@
   flex-shrink: 0 !important;
 }
 
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-}
-
-/* =========================================
-   LOGO & BRAND
-   ========================================= */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
 .nav-brand-logo-img,
 img.nav-brand-logo-img {
   height: 42px !important;
-  max-height: 45px !important;
+  max-height: 42px !important;
   width: auto !important;
-  max-width: 180px !important;
+  max-width: 160px !important;
   object-fit: contain !important;
-  display: block !important;
   filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease !important;
 }
 
 .nav-brand:hover .nav-brand-logo-img {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75));
+  transform: scale(1.05) !important;
+  filter: drop-shadow(0 0 20px rgba(182, 255, 0, 0.75)) !important;
 }
 
 /* =========================================
@@ -174,7 +224,6 @@ img.nav-brand-logo-img {
   align-items: center !important;
   gap: 0.4rem !important;
   flex-shrink: 0 !important;
-  justify-content: flex-end;
 }
 
 .glass-phone-btn {
@@ -182,42 +231,39 @@ img.nav-brand-logo-img {
   align-items: center !important;
   gap: 0.55rem !important;
   background: rgba(6, 18, 38, 0.68) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.45) !important;
-  padding: 0.5rem 1.15rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 50px !important;
+  padding: 0.45rem 1rem !important;
+  color: white !important;
   text-decoration: none !important;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
   transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(182, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  flex-shrink: 0 !important;
 }
 
 .glass-phone-btn:hover {
-  background: rgba(6, 18, 38, 0.9);
-  border-color: rgba(204, 255, 0, 0.3);
+  background: rgba(6, 18, 38, 0.9) !important;
+  border-color: rgba(204, 255, 0, 0.3) !important;
 }
 
 .glass-phone-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
 }
 
 .phone-pulse-dot {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 6px;
-  height: 6px;
-  background: #CCFF00;
-  border-radius: 50%;
-  animation: navPulse 1.5s infinite;
+  position: absolute !important;
+  top: -2px !important;
+  right: -2px !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #CCFF00 !important;
+  border-radius: 50% !important;
+  animation: navPulse 1.5s infinite !important;
 }
 
 @keyframes navPulse {
@@ -228,77 +274,55 @@ img.nav-brand-logo-img {
 .luxury-btn-outline {
   display: inline-flex !important;
   align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
+  gap: 8px !important;
+  background: #CCFF00 !important;
+  border: none !important;
+  border-radius: 50px !important;
   padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
+  color: #000 !important;
   text-decoration: none !important;
+  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
 }
 
 .luxury-btn-outline:hover {
-  background: #d4ff1a;
-  transform: scale(1.03);
+  background: #d4ff1a !important;
+  transform: scale(1.03) !important;
 }
 
 /* Hide phone/kit buttons on mobile (≤900px) */
 @media (max-width: 900px) {
   .glass-phone-btn,
   .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+    display: none !important;
+  }
 }
 
 /* Mobile toggle button */
 .mobile-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
+  display: none !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
 }
 .mobile-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  display: block !important;
+  width: 24px !important;
+  height: 2px !important;
+  background: white !important;
+  border-radius: 2px !important;
+  transition: all 0.3s ease !important;
 }
 @media (max-width: 1024px) {
   .mobile-toggle {
-    display: flex;
+    display: flex !important;
   }
 }
 
@@ -306,56 +330,31 @@ img.nav-brand-logo-img {
 /* Perfect centering min-width on desktop only */
 @media (min-width: 1025px) {
   .nav-brand, .nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-  justify-content: flex-end;
-}
+    min-width: 200px !important;
+  }
 }
 
 /* Fix mobile navbar layout */
 @media (max-width: 1024px) {
   .nav-brand {
-    flex: 0 0 auto;
+    flex: 0 0 auto !important;
   }
   .nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-  justify-content: flex-end;
-}
+    flex: 0 0 auto !important;
+    justify-content: flex-start !important;
+  }
   .mobile-toggle {
-    display: flex;
+    display: flex !important;
   }
 }
 
 /* Critical Fix: Hide the open kit button completely on mobile to prevent overflow */
 @media (max-width: 1024px) {
   #open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+    display: none !important;
+  }
   .nav-container {
-    padding: 0.6rem 1rem;
+    padding: 0.6rem 1rem !important;
   }
 }
 
@@ -363,74 +362,60 @@ img.nav-brand-logo-img {
 /* The ultimate absolute mobile fix */
 @media (max-width: 1024px) {
   .nav-container {
-    position: relative;
-    display: block;
-    height: 50px;
-    padding: 0;
+    position: relative !important;
+    display: block !important;
+    height: 50px !important;
+    padding: 0 !important;
   }
   .nav-brand {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: block;
-    margin: 0;
-    min-width: 0;
-    flex: none;
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: block !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    flex: none !important;
   }
   .nav-brand-logo-img {
-    height: 35px;
-    width: auto;
-    display: block;
+    height: 35px !important;
+    width: auto !important;
+    display: block !important;
   }
   .nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-  justify-content: flex-end;
-}
+    position: absolute !important;
+    left: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
   .mobile-toggle {
-    display: flex;
-    width: 28px;
-    height: 20px;
-    flex-direction: column;
-    justify-content: space-between;
-    background: transparent;
-    padding: 0;
-    opacity: 1;
-    visibility: visible;
+    display: flex !important;
+    width: 28px !important;
+    height: 20px !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: transparent !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   .mobile-toggle span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #ccff00;
-    border-radius: 2px;
+    display: block !important;
+    width: 100% !important;
+    height: 3px !important;
+    background-color: #ccff00 !important;
+    border-radius: 2px !important;
   }
   #open-kit-btn, .luxury-btn-outline {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  background: rgba(182, 255, 0, 0.14) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(182, 255, 0, 0.5) !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 9999px !important;
-  color: #ffffff !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(182, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-}
+    display: none !important;
+  }
   .luxury-nav {
-    display: block;
+    display: block !important;
   }
 }
 
@@ -445,285 +430,40 @@ img.nav-brand-logo-img {
   /* 1. Top Bar: Absolute so it scrolls away naturally */
   #top-complex-bar.top-complex-bar,
   .top-complex-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  z-index: 9999999 !important;
-  background: rgba(6, 16, 32, 0.78);
-  backdrop-filter: blur(36px) saturate(220%);
-  -webkit-backdrop-filter: blur(36px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f8fafc;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  direction: ltr !important;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-}
+    position: absolute !important;
+    top: 0 !important;
+    height: 40px !important;
+    z-index: 999 !important;
+  }
 
   /* 2. Main Nav: Absolute and placed right below top bar initially */
   header#main-nav.luxury-nav,
   .luxury-nav {
-    position: absolute;
-    top: 40px;
-    z-index: 1000;
-    transition: background 0.3s ease, padding 0.3s ease;
+    position: absolute !important;
+    top: 40px !important;
+    z-index: 1000 !important;
+    transition: background 0.3s ease, padding 0.3s ease !important;
   }
 
   /* 3. When scrolled past 40px, JS adds .scrolled -> Make it FIXED at top 0! */
   header#main-nav.luxury-nav.scrolled,
   .luxury-nav.scrolled {
-    position: fixed;
-    top: 0;
-    padding: 0.5rem 1.5rem; /* Keep mobile padding tight */
-    background: rgba(2, 6, 18, 0.95);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: fixed !important;
+    top: 0 !important;
+    padding: 0.5rem 1.5rem !important; /* Keep mobile padding tight */
+    background: rgba(2, 6, 18, 0.95) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
   }
 }
 
 /* FORCE OVERRIDE ALL INLINE STYLES */
 @media (max-width: 1024px) {
   html body div#top-complex-bar.top-complex-bar {
-    position: absolute;
-    top: 0;
-    height: 40px;
-    z-index: 999;
+    position: absolute !important;
+    top: 0 !important;
+    height: 40px !important;
+    z-index: 999 !important;
   }
-}
-
-
-
-/* =========================================
-   INVENTORY TRUE SOURCE CSS
-   ========================================= */
-
-.nav-links {
-  background: rgba(13, 22, 45, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
-}
-
-.nav-item, a.nav-item, a.nav-item:link, a.nav-item:visited, a.nav-item:active {
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  padding: 0.35rem 0.5rem !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  transition: all 0.25s ease !important;
-  white-space: nowrap !important;
-}
-
-.nav-item:hover {
-  color: #CCFF00 !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
-.nav-item.active, a.nav-item.active, a.nav-item.active:link, a.nav-item.active:visited {
-  color: #CCFF00 !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  background: rgba(204, 255, 0, 0.05) !important;
-  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3) !important;
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.1) inset !important;
-}
-
-.nav-brand-logo-img, img.nav-brand-logo-img {
-  height: 42px;
-  max-height: 45px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3));
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.nav-action {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  flex-shrink: 0 !important;
-  justify-content: flex-end;
-}
-
-/* Base CSS for top-complex-bar missing from earlier strip */
-.top-complex-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  z-index: 9999999 !important;
-  background: rgba(6, 16, 32, 0.78);
-  backdrop-filter: blur(36px) saturate(220%);
-  -webkit-backdrop-filter: blur(36px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f8fafc;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  direction: ltr !important;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
-}
-
-
-/* =========================================
-   INJECTED DESKTOP NAV & DROPDOWN FIXES
-   Extracted directly from inventory/index.html
-   ========================================= */
-
-@keyframes marqueeContinuous {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  will-change: transform;
-  animation: marqueeContinuous 38s linear infinite;
-}
-
-.top-complex-bar:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-group {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  padding: 0 1.4rem;
-  flex-shrink: 0;
-  white-space: nowrap;
-  direction: rtl;
-  font-family: "YekanBakh FaNum", "YekanBakh", "Yekan Bakh", sans-serif;
-  font-size: 0.90rem;
-  font-weight: 600;
-}
-
-.top-bar-badge {
-  background: rgba(204, 255, 0, 0.1) !important;
-  border: 1px solid rgba(204, 255, 0, 0.5) !important;
-  border-radius: 50px !important;
-  padding: 4px 16px !important;
-  color: #fff !important;
-  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  font-weight: 800 !important;
-  margin-left: 15px !important;
-}
-
-.top-c-item {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  font-size: 0.90rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 8px;
-}
-
-.top-c-item strong {
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.top-c-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.top-c-sep {
-  color: rgba(255, 255, 255, 0.3);
-  font-weight: 800;
-}
-
-/* Dropdown CSS */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.nav-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 10px;
-  background: rgba(6, 11, 19, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-align: right;
-}
-
-.nav-dropdown:hover .nav-dropdown-menu {
-  position: absolute !important;
-  top: 100% !important;
-  right: 0 !important;
-  margin-top: 10px !important;
-  background: rgba(6, 11, 19, 0.95) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 8px !important;
-  min-width: 200px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-  z-index: 1000 !important;
-  text-align: right !important;
-}
-
-.nav-dropdown-item {
-  color: #CBD5E1;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  font-family: inherit;
-}
-
-.nav-dropdown-item:hover {
-  background: rgba(204, 255, 0, 0.1);
-  color: #CCFF00;
 }

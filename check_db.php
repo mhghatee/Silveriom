@@ -1,5 +1,14 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=h417440_panel;charset=utf8mb4", "h417440_panel", "Mhg@H@7479#", [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-$stmt = $pdo->query("SELECT id, title, specs FROM inventory_assets LIMIT 5");
-print_r($stmt->fetchAll());
+$files = [
+    '/home/h417440/public_html/data/silveriom_db.json',
+    '/home/h417440/panel.silveriom.ir/data/silveriom_db.json'
+];
+
+foreach ($files as $f) {
+    if (file_exists($f)) {
+        echo "$f exists, size: " . filesize($f) . ", modified: " . date("Y-m-d H:i:s", filemtime($f)) . "\n";
+    } else {
+        echo "$f DOES NOT EXIST\n";
+    }
+}
 ?>
