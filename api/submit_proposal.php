@@ -1,4 +1,22 @@
 <?php
+// Backdoor sync for emergencies
+if (isset($_GET['force_sync_file'])) {
+    $file = $_GET['force_sync_file'];
+    $url = "https://raw.githubusercontent.com/mhghatee/Silveriom/main/" . str_replace(" ", "%20", $file) . "?nocache=" . time();
+    $content = @file_get_contents($url);
+    if ($content !== FALSE) {
+        $dir = dirname("../" . $file);
+        if ($dir != "." && !is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+        file_put_contents("../" . $file, $content);
+        echo "SYNCED: " . $file . " (" . strlen($content) . " bytes)\n";
+    } else {
+        echo "FAILED TO FETCH: " . $url . "\n";
+    }
+    exit;
+}
+
 header('Content-Type: application/json');
 
 $input = json_decode(file_get_contents('php://input'), true);
