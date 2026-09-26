@@ -5682,14 +5682,11 @@ html {
     left: 0 !important;
     width: 100% !important;
     z-index: 1000 !important;
-    padding-top: 0 !important;
+    padding-top: 0.85rem !important;
     padding-bottom: 0.85rem !important;
     padding-left: 0 !important; 
     padding-right: 0 !important;
-    background: rgba(2, 6, 18, 0.88) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border-bottom: 1px solid rgba(182, 255, 0, 0.05) !important;
+    background: linear-gradient(180deg, rgba(2, 6, 18, 0.85) 0%, rgba(2, 6, 18, 0.4) 60%, rgba(2, 6, 18, 0) 100%) !important;
     box-sizing: border-box !important;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     border: none !important;
@@ -5758,6 +5755,8 @@ html {
   header#main-nav.luxury-nav .nav-item,
   header#main-nav.luxury-nav a.nav-item {
     font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-decoration: none !important;
     padding: 8px 12px !important;
     letter-spacing: -0.2px !important;
     font-weight: 600 !important;
@@ -5800,22 +5799,6 @@ html {
   @keyframes icon-pulse-glow { 0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } 50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); } 100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } }
   .highlight-icon { animation: icon-pulse-glow 2.5s infinite ease-in-out !important; }
 </style>
-<style>
-  header#main-nav.luxury-nav,
-  .luxury-nav {
-    background: #0B1120 !important; /* Solid dark navy to completely hide any gap */
-    padding-top: 0 !important;
-  }
-  
-  header#main-nav.luxury-nav .nav-item,
-  header#main-nav.luxury-nav a.nav-item,
-  .luxury-nav .nav-item {
-    font-size: 14px !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-    text-decoration: none !important;
-  }
-</style>
-
 </head>
 <body class="luxury-body">
   <!-- ================= Silverium Loader HTML ================= -->
