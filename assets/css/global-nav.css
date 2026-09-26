@@ -464,3 +464,51 @@ img.nav-brand-logo-img {
     z-index: 999 !important;
   }
 }
+
+/* DESKTOP MENU SYNC FIX (Matches index.html exactly) */
+@media (min-width: 1025px) {
+  /* 1. Unify container width to match Home */
+  .luxury-nav .nav-container {
+    max-width: 1280px !important;
+    padding-left: clamp(2rem, 5vw, 4.5rem) !important;
+    padding-right: clamp(2rem, 5vw, 4.5rem) !important;
+  }
+  
+  /* 2. Unify logo size to match Home */
+  .luxury-nav .nav-brand-logo-img,
+  .luxury-nav img.nav-brand-logo-img {
+    height: 38px !important;
+    max-height: 42px !important;
+    max-width: 150px !important;
+  }
+  
+  /* 3. Unify nav links wrapper to match Home */
+  .luxury-nav .nav-links {
+    gap: 0px !important;
+    padding: 4px 6px !important;
+  }
+  
+  /* 4. Unify nav items to match Home */
+  .luxury-nav .nav-item, 
+  .luxury-nav a.nav-item,
+  .luxury-nav a.nav-item:link,
+  .luxury-nav a.nav-item:visited {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    letter-spacing: -0.2px !important;
+    font-weight: 600 !important;
+  }
+  
+  /* 5. Unify button paddings to match Home */
+  .luxury-nav .glass-phone-btn {
+    font-size: 0.85rem !important;
+    padding: 0.45rem 0.95rem !important;
+    gap: 0.4rem !important;
+  }
+  .luxury-nav #open-kit-btn, 
+  .luxury-nav .luxury-btn-outline {
+    font-size: 0.85rem !important;
+    padding: 0.45rem 1rem !important;
+    gap: 0.4rem !important;
+  }
+}
