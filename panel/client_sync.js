@@ -25,6 +25,14 @@
     // 2. Sync About Us Team
     const sliderContainer = document.getElementById('slider');
     if (sliderContainer && db.aboutUs && db.aboutUs.team && db.aboutUs.team.length > 0) {
+      // OVERRIDE: Remove Amir Mohazabnia and update Ghatee's role
+      db.aboutUs.team = db.aboutUs.team.filter(m => !m.name || !m.name.includes('مهذب'));
+      db.aboutUs.team.forEach(m => {
+        if (m.name && m.name.includes('قطعی')) {
+          m.role = 'مدیرعامل و بنیان‌گذار';
+        }
+      });
+      
       sliderContainer.innerHTML = '';
       
       db.aboutUs.team.forEach((member, memberIdx) => {
