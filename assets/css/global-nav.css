@@ -43,39 +43,35 @@
 
 /* 3. Nav Links Wrapper (The Pill) */
 .nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.2rem !important;
   background: rgba(13, 22, 45, 0.25) !important;
   backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 50px !important;
-  padding: 4px 8px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0px !important;
+  padding: 0.25rem 0.4rem !important;
+  box-shadow: none !important;
   overflow: visible !important;
-  
-  
-
 }
 
 /* 4. Nav Items */
 .nav-item {
   color: rgba(255, 255, 255, 0.85) !important;
   text-decoration: none !important;
-  font-weight: 600 !important;
-  font-size: 14px !important;
-  padding: 8px 12px !important;
-  border-radius: 9999px !important;
-  transition: all 0.25s ease !important;
-  position: relative !important;
   font-family: "YekanBakh", "Yekan Bakh", sans-serif !important;
-  letter-spacing: -0.3px !important;
-  white-space: nowrap !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.5rem !important;
+  border-radius: 9999px !important;
   border: 1px solid transparent !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
 }
 
 .nav-item:hover {
   color: #CCFF00 !important;
-  background: rgba(204, 255, 0, 0.05) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 .nav-item.active {
@@ -143,14 +139,7 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .nav-item {
-    padding: 0.35rem 0.4rem !important;
-    font-size: 13px !important;
-    letter-spacing: -0.2px !important;
-    white-space: nowrap !important;
-  }
-}
+
 
 /* Loader Fix (To ensure menu stays below loader but above main content) */
 #silverium-loader {
