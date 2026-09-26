@@ -512,23 +512,3 @@ img.nav-brand-logo-img {
     gap: 0.4rem !important;
   }
 }
-
-/* MEGA MENU EXTRA STYLES */
-.img-action-btn {
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(10px) !important;
-  color: #000 !important;
-  transition: all 0.3s ease !important;
-}
-.left-image-group:hover .img-action-btn {
-  background: #CCFF00 !important;
-  transform: scale(1.05) !important;
-}
-@keyframes icon-pulse-glow {
-  0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-  50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); }
-  100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); }
-}
-.highlight-icon {
-  animation: icon-pulse-glow 2.5s infinite ease-in-out !important;
-}
