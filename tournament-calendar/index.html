@@ -5693,13 +5693,12 @@ html {
     position: relative !important;
   }
 
-  /* Logo zone: flex:1 so it occupies equal space to action zone */
+  /* Logo zone: flex-shrink 0 to match index.html */
   header#main-nav.luxury-nav .nav-brand {
-    flex: 1 1 0% !important;
-    min-width: 200px !important;
     display: flex !important;
     align-items: center !important;
     text-decoration: none !important;
+    flex-shrink: 0 !important;
   }
 
   header#main-nav.luxury-nav .nav-brand-logo-img,
@@ -5713,20 +5712,18 @@ html {
     filter: drop-shadow(0 2px 8px rgba(182, 255, 0, 0.3)) !important;
   }
 
-  /* Nav links: flex:0 so it stays at its natural size (centered by equal sides) */
+  /* Nav links */
   header#main-nav.luxury-nav .nav-links {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0px !important;
-    padding: 4px 6px !important;
     background: rgba(13, 22, 45, 0.6) !important;
     backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 50px !important;
+    padding: 4px 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0px !important;
     overflow: visible !important;
     flex-wrap: nowrap !important;
-    transform: translateX(2px) !important;
   }
 
   header#main-nav.luxury-nav .nav-item,
@@ -5737,13 +5734,10 @@ html {
     font-weight: 600 !important;
   }
 
-  /* Action zone: flex:1 matching logo zone, items pushed to far end */
+  /* Action zone */
   header#main-nav.luxury-nav .nav-action {
-    flex: 1 1 0% !important;
-    min-width: 200px !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-end !important;
     gap: 0.35rem !important;
     flex-shrink: 0 !important;
   }
