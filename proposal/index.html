@@ -114,6 +114,35 @@
             margin-bottom: 10px;
         }
         
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .about-img-col {
+                order: -1;
+                min-height: 250px;
+            }
+            .about-text-col {
+                padding: 1.5rem !important;
+            }
+            .about-text-col h2 {
+                font-size: 1.6rem !important;
+            }
+            .about-text-col p {
+                font-size: 1rem !important;
+                line-height: 1.8 !important;
+            }
+        }
+
         .section-title {
             font-size: 2rem;
             font-weight: 900;
@@ -1061,10 +1090,10 @@
         <!-- 2. About Us Text -->
         <section class="section">
            <div class="editorial-wide-container">
-              <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: stretch;">
+              <div class="about-grid">
                   
                   <!-- Right Column (Text) - First in RTL Grid -->
-                  <div style="display: flex; flex-direction: column; justify-content: center; background: rgba(13,22,45,0.4); padding: 3rem; border-radius: 20px; border: 1px solid rgba(182,255,0,0.3); backdrop-filter: blur(10px); height: 100%;">
+                  <div class="about-text-col" style="display: flex; flex-direction: column; justify-content: center; background: rgba(13,22,45,0.4); padding: 3rem; border-radius: 20px; border: 1px solid rgba(182,255,0,0.3); backdrop-filter: blur(10px); height: 100%;">
                       <div class="section-header" style="text-align: right; margin-bottom: 2rem;">
                         <span class="section-tag" style="display: inline-block; padding: 4px 12px; background: rgba(182,255,0,0.1); border: 1px solid rgba(182,255,0,0.3); color: #B6FF00; border-radius: 50px; font-size: 0.9rem; margin-bottom: 15px;">درباره سیلوریوم</span>
                         <h2 class="section-title" style="margin:0; font-size: 2.2rem;">سیلوریوم؛ رهبر تبلیغات ورزشی لوکس</h2>
@@ -1075,7 +1104,7 @@
                   </div>
 
                   <!-- Left Column (Image) - Second in RTL Grid -->
-                  <div style="border-radius: 20px; border: 1px solid rgba(182,255,0,0.3); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6); height: 100%;">
+                  <div class="about-img-col" style="border-radius: 20px; border: 1px solid rgba(182,255,0,0.3); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6); height: 100%;">
                       <img src="/assets/about_hero_image.jpg" alt="Silveriom About" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                   </div>
                   
