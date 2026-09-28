@@ -6227,8 +6227,67 @@ html {
   @keyframes icon-pulse-glow { 0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } 50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); } 100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } }
   .highlight-icon { animation: icon-pulse-glow 2.5s infinite ease-in-out !important; }
 </style>
+
+<style id="fix-mega-menu-visibility">
+  header#main-nav.luxury-nav {
+    z-index: 9000 !important;
+  }
+  header#main-nav.luxury-nav,
+  header#main-nav.luxury-nav .nav-container,
+  header#main-nav.luxury-nav .nav-links,
+  header#main-nav.luxury-nav .nav-wrapper {
+    overflow: visible !important;
+  }
+  /* Fix Safari Backdrop-Filter clipping bug */
+  header#main-nav.luxury-nav .nav-links {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    position: relative !important;
+  }
+  header#main-nav.luxury-nav .nav-links::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50px !important;
+    background: rgba(13, 22, 45, 0.6) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    z-index: -1 !important;
+    pointer-events: none;
+  }
+  header#main-nav.luxury-nav .nav-wrapper {
+    z-index: 9001 !important;
+  }
+  header#main-nav.luxury-nav .mega-menu {
+    z-index: 9002 !important;
+    overflow: visible !important;
+  }
+</style>
 </head>
 <body>
+
+<!-- ================= Silverium Loader HTML ================= -->
+<div id="silverium-loader">
+<div class="bg-grid"></div>
+<div class="content-wrapper">
+<div class="video-container" style="position: relative;">
+<img alt="Loading" id="silverium-video-poster" src="/loading_poster.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); mix-blend-mode: screen; -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 65%); z-index: 2; pointer-events: none;"/>
+<video autoplay="" id="silverium-main-video" loop="" muted="" playsinline="" preload="auto">
+<source src="/loading_video.mp4" type="video/mp4"/>
+</video>
+</div>
+<div class="progress-section">
+<div class="percentage" id="loader-percentage">0%</div>
+<div class="progress-bar-container">
+<div class="progress-fill" id="loader-progress-fill"></div>
+</div>
+<div class="loading-text" id="loader-text">در حال ورود به زمین سیلوریوم...</div>
+</div>
+</div>
+</div>
+
 
 <!-- INJECT_DESKTOP_NAV_START -->
 <div class="top-complex-bar" id="top-complex-bar">
@@ -6366,13 +6425,7 @@ html {
 <a class="nav-item" href="https://silveriom.ir/contact-us/">تماس با ما</a>
 </nav>
 <div class="nav-action">
-<a class="glass-phone-btn" href="tel:09121127415" title="تماس فوری و مشاوره تبلیغات">
-<span class="glass-phone-icon">
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" viewbox="0 0 24 24" width="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-<span class="phone-pulse-dot"></span>
-</span>
-<span class="glass-phone-num">۰۹۱۲۱۱۲۷۴۱۵</span>
-</a>
+
 <a class="luxury-btn-outline" href="https://panel.silveriom.ir/login.html?action=mediakit" id="open-kit-btn" style="padding: 0.5rem 1.25rem; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center;">
 <span>دریافت مدیا کیت</span>
 </a>
@@ -6605,15 +6658,7 @@ html {
 </a>
 </nav>
 <div class="mobile-footer">
-<a class="glass-phone-btn" href="tel:09121127415" style="width: 100% !important; display: inline-flex !important; justify-content: center; align-items: center; margin-bottom: 1rem; padding: 0.9rem !important; border-radius: 9999px !important; text-decoration: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;" title="تماس فوری و مشاوره تبلیغات">
-<span class="glass-phone-icon">
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" viewbox="0 0 24 24" width="14">
-<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-</svg>
-<span class="phone-pulse-dot"></span>
-</span>
-<span class="glass-phone-num" style="color: #ffffff !important; margin-right: 0.6rem !important;">۰۹۱۲۱۱۲۷۴۱۵ (مشاوره)</span>
-</a>
+
 <button class="luxury-btn-solid" onclick="window.location.href='https://panel.silveriom.ir/login.html?action=mediakit'" style="width:100%;">
           دریافت مدیا کیت
         </button>
