@@ -115,6 +115,75 @@
         }
         
         
+        
+        .actions-wrapper {
+            display: none; /* toggled by JS */
+            margin-top: 60px;
+            margin-bottom: 40px;
+            justify-content: center;
+            width: 100%;
+        }
+        .actions-pill {
+            background: rgba(13,22,45,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px;
+            padding: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .action-btn {
+            padding: 12px 32px;
+            border-radius: 100px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-wa {
+            background: #1CD06D;
+            color: #ffffff;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(28,208,109,0.3);
+        }
+        .btn-copy {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 700;
+            margin: 0;
+            outline: none;
+        }
+        .action-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .actions-pill {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 15px;
+                width: 90%;
+            }
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 1.05rem;
+                padding: 14px 20px;
+            }
+            .action-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1.3fr 1fr;
@@ -123,7 +192,76 @@
         }
         
         @media (max-width: 768px) {
-            .about-grid {
+            
+        .actions-wrapper {
+            display: none; /* toggled by JS */
+            margin-top: 60px;
+            margin-bottom: 40px;
+            justify-content: center;
+            width: 100%;
+        }
+        .actions-pill {
+            background: rgba(13,22,45,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px;
+            padding: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .action-btn {
+            padding: 12px 32px;
+            border-radius: 100px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-wa {
+            background: #1CD06D;
+            color: #ffffff;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(28,208,109,0.3);
+        }
+        .btn-copy {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 700;
+            margin: 0;
+            outline: none;
+        }
+        .action-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .actions-pill {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 15px;
+                width: 90%;
+            }
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 1.05rem;
+                padding: 14px 20px;
+            }
+            .action-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .about-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -1459,16 +1597,16 @@
               <div id="tournamentsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 20px;">
               </div>
 
-              <div id="actions" style="display: none; margin-top: 60px; margin-bottom: 40px; justify-content: center; width: 100%;">
-                <div style="background: rgba(13,22,45,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; padding: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
-                    <a href="#" id="waBtn" target="_blank" style="background: #1CD06D; color: #ffffff; padding: 12px 32px; border-radius: 100px; font-weight: 800; font-size: 1.15rem; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: all 0.3s; box-shadow: 0 0 20px rgba(28,208,109,0.3);">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <div id="actions" class="actions-wrapper">
+                <div class="actions-pill">
+                    <a href="#" id="waBtn" target="_blank" class="action-btn btn-wa">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12.01 2.01c-5.52 0-9.99 4.47-9.99 9.99 0 1.96.56 3.79 1.52 5.34L2.17 22l4.81-1.3c1.51.89 3.24 1.4 5.03 1.4 5.52 0 10.01-4.48 10.01-10s-4.49-10.01-10.01-10.01zm5.2 14.5c-.24.67-1.37 1.25-1.93 1.34-.51.08-1.15.15-3.32-.75-2.61-1.08-4.29-3.77-4.42-3.95-.13-.17-1.05-1.4-1.05-2.67s.67-1.9 1.1-2.35c.2-.21.43-.26.57-.26.14 0 .28 0 .4.01.13.01.3-.05.47.36.17.43.59 1.43.64 1.54.05.1.09.23.01.39-.08.16-.13.26-.26.41-.13.15-.28.32-.39.43-.13.14-.28.3-.11.59.16.29.73 1.22 1.57 1.97.98.88 1.88 1.16 2.16 1.3.29.14.46.12.63-.08.17-.2.72-.85.92-1.14.2-.29.39-.24.66-.14.28.1 1.77.84 2.07.99.3.15.51.23.58.35.07.12.07.72-.17 1.39z" />
                         </svg>
                         ارسال در واتس‌اپ
                     </a>
-                    <button onclick="copyLink()" style="background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 12px 32px; border-radius: 100px; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.3s; margin: 0; outline: none;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <button onclick="copyLink()" class="action-btn btn-copy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
@@ -1522,7 +1660,7 @@
 
         renderHeader(proposal);
         renderProductCards(proposal, mediaInventory);
-        renderTournaments();
+        renderTournaments(proposal, mediaInventory);
         setupActions(proposal);
       } catch (err) {
         console.error(err);
@@ -1615,11 +1753,28 @@ function renderProductCards(proposal, inventory) {
     }
 
 
-    function renderTournaments() {
+    function renderTournaments(proposal, inventory) {
         const grid = document.getElementById('tournamentsGrid');
         if (!grid) return;
         
-        const events = [
+        const selectedLocations = new Set();
+        if (proposal && proposal.cart && inventory) {
+            proposal.cart.forEach(code => {
+                const media = inventory.find(m => m.code === code || m.id === code);
+                if(media) {
+                    let rawLoc = media.location;
+                    if(rawLoc === "t10") selectedLocations.add("T10 آجودانیه");
+                    else if(rawLoc === "arena") selectedLocations.add("آرنا آزادی");
+                    else if(rawLoc === "enghelab") selectedLocations.add("انقلاب");
+                    else if(rawLoc === "netra") selectedLocations.add("نترا لواسان");
+                    else if(rawLoc === "iranzamin") selectedLocations.add("ایران‌زمین");
+                    else if(rawLoc === "asayesh") selectedLocations.add("ساری");
+                    else if(rawLoc === "kish") selectedLocations.add("کیش");
+                }
+            });
+        }
+        
+        const allEvents = [
             { id: 1, name: 'رده‌های سنی کشور', month: 'مهر', monthIdx: 7, date: '۱۶–۲۵ مهر', locId: 'ساری', sport: 'tennis', type: 'tennis_age', featured: false },
             { id: 2, name: 'تنیس رده‌های سنی کشور', month: 'مهر', monthIdx: 7, date: '۲۶ مهر–۵ آبان', locId: 'کیش', sport: 'tennis', type: 'tennis_age', featured: true },
             { id: 3, name: 'پدل آدینه', month: 'آبان', monthIdx: 8, date: '۱ آبان', locId: 'آرنا آزادی', sport: 'padel', type: 'padel_adineh', featured: false },
@@ -1637,6 +1792,17 @@ function renderProductCards(proposal, inventory) {
             { id: 15, name: 'پدل آدینه', month: 'آذر', monthIdx: 9, date: '۲۰ آذر', locId: 'ایران‌زمین', sport: 'padel', type: 'padel_adineh', featured: false },
             { id: 16, name: 'تنیس رده‌های سنی کشور', month: 'آذر', monthIdx: 9, date: '۲۳ آذر–۲ دی', locId: 'کیش', sport: 'tennis', type: 'tennis_age', featured: true }
         ];
+        
+        let events = allEvents;
+        if (selectedLocations.size > 0) {
+            events = allEvents.filter(ev => selectedLocations.has(ev.locId));
+        }
+        
+        if (events.length === 0) {
+            const section = document.getElementById('tournamentsGrid').parentElement;
+            if (section) section.style.display = 'none';
+            return;
+        }
         
         let html = '';
         events.forEach(ev => {

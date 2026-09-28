@@ -9357,16 +9357,13 @@ html {
             body: JSON.stringify({ name, brand, phone, cart })
         });
         
-        const data = await response.json();
-        if(data.success) {
-            // keep or clear cart? let's clear it so it's clean
-            localStorage.removeItem('silveriom_cart');
-            window.location.href = '/proposal/?id=' + data.id;
-        } else {
-            alert('خطا: ' + (data.error || 'ناشناخته'));
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }
+        await response.json(); // We don't care about the DB id because of caching!
+        
+        // Pass everything via URL params to bypass LiteSpeed Cache!
+        const urlCart = cart.join(',');
+        localStorage.removeItem('silveriom_cart');
+        window.location.href = `/proposal/?id=CUSTOM_CART&cart=${urlCart}&name=${encodeURIComponent(name)}&brand=${encodeURIComponent(brand)}`;
+        
     } catch (err) {
         console.error(err);
         alert('خطا در ارتباط با سرور');
