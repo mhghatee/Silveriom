@@ -1,5 +1,7 @@
 <?php
 $files = [
+    "presentation/index.html",
+    "presentation/hero-bg.jpg",
     "assets/css/global-nav.css",
     "mobile_html_debug.html",
     "loader_concepts.html",
