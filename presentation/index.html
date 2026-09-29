@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروپوزال رسمی | سیلوریوم</title>
+    
+    <!-- فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- کتابخانه آیکون Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- کتابخانه انیمیشن AOS -->
+    <style>
+    :root {
+        /* Kept for backward compatibility with inline styles */
+        --silveriom-black: #08101e;
+        --silveriom-charcoal: #0c182e;
+        --silveriom-silver: #a1a1aa;
+        --silveriom-neon: #B6FF00;
+        --alert-color: #FF3366;
+        
+        /* New Premium Variables */
+        --bg-main: #08101e;
+        --bg-card: rgba(12, 22, 45, 0.6);
+        --border-card: rgba(255, 255, 255, 0.06);
+        --text-main: #ffffff;
+        --text-muted: #a1a1aa;
+        --accent-glow: rgba(182, 255, 0, 0.15);
+        --alert-glow: rgba(255, 51, 102, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-muted);
+        line-height: 2.2;
+        font-size: 15px;
+        overflow-x: hidden;
+
+    }
+
+    /* Ambient Glowing Orbs */
+    .ambient-light {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(150px);
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.5;
+        animation: pulse-light 10s infinite alternate;
+    }
+    
+    .light-1 { width: 50vw; height: 50vw; background: rgba(182, 255, 0, 0.05); top: -25vw; left: -25vw; }
+    .light-2 { width: 40vw; height: 40vw; background: rgba(0, 100, 255, 0.05); bottom: -20vw; right: -20vw; animation-delay: -5s; }
+    .light-3 { width: 60vw; height: 60vw; background: rgba(255, 255, 255, 0.02); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    @keyframes pulse-light {
+        0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+        100% { transform: scale(1.2) translate(2%, 2%); opacity: 0.6; }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; position: relative; z-index: 1; }
+
+    h1, h2, h3, h4, h5 {
+        color: var(--text-main);
+        font-weight: 900;
+        line-height: 1.4;
+        letter-spacing: -0.5px;
+    }
+
+    .header-title {
+        text-align: center;
+        padding: 120px 20px 80px;
+        margin-bottom: 20px;
+    }
+
+    .header-title h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        background: linear-gradient(135deg, #fff 20%, #71717a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        position: relative;
+    }
+
+    .header-title h1::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 6px;
+        background: var(--silveriom-neon);
+        border-radius: 10px;
+        box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+    }
+
+    /* Premium Bento Glass Panels */
+    .glass-panel {
+        background: var(--bg-card);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--border-card);
+        border-radius: 32px;
+        padding: 48px;
+        margin-bottom: 32px;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        isolation: isolate;
+    }
+
+    /* Interactive Mouse Spotlight */
+    .glass-panel::before, .value-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .glass-panel:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+    .glass-panel:hover::before, .value-card:hover::before { opacity: 1; }
+
+    .glass-panel.alert {
+        background: linear-gradient(145deg, rgba(255, 51, 102, 0.05) 0%, rgba(20, 20, 22, 0.6) 100%);
+        border: 1px solid rgba(255, 51, 102, 0.2);
+        box-shadow: inset 0 1px 1px rgba(255, 51, 102, 0.1), 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .glass-panel.alert:hover {
+        border-color: rgba(255, 51, 102, 0.5);
+        box-shadow: 0 0 30px var(--alert-glow), 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .section-title i {
+        color: var(--silveriom-neon);
+        filter: drop-shadow(0 0 8px var(--accent-glow));
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+        background: rgba(182, 255, 0, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(182, 255, 0, 0.2);
+    }
+
+    .section-title.alert-title i {
+        color: var(--alert-color);
+        filter: drop-shadow(0 0 8px var(--alert-glow));
+        background: rgba(255, 51, 102, 0.1);
+        border-color: rgba(255, 51, 102, 0.2);
+    }
+    .section-title.alert-title {
+        color: var(--alert-color);
+    }
+
+    .glass-panel p {
+        margin-bottom: 16px;
+        text-align: justify;
+        font-size: 1.05rem;
+        color: #d4d4d8;
+    }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 32px; margin-bottom: 32px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 60px; }
+
+    /* Roadmap */
+    .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px; }
+    .roadmap-box {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 32px;
+        transition: all 0.3s ease;
+    }
+    .roadmap-box:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--silveriom-neon);
+        transform: translateY(-4px);
+    }
+    .roadmap-box h4 {
+        color: var(--silveriom-neon);
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Values */
+    .value-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(20, 20, 22, 0.8) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .value-card:hover { 
+        transform: translateY(-12px); 
+        border-color: rgba(182, 255, 0, 0.3);
+        background: linear-gradient(180deg, rgba(182, 255, 0, 0.05) 0%, rgba(20, 20, 22, 0.9) 100%);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px var(--accent-glow);
+    }
+    .value-card .lucide-icon-lg { 
+        width: 56px; height: 56px; 
+        color: var(--silveriom-neon); 
+        margin-bottom: 24px;
+        filter: drop-shadow(0 0 10px var(--accent-glow));
+    }
+    .value-card h4 { color: #fff; font-size: 1.4rem; margin-bottom: 16px; }
+
+    /* Custom Lists with new sharp markers */
+    .custom-list { list-style: none; margin-bottom: 16px; }
+    .custom-list li {
+        position: relative;
+        padding-right: 36px;
+        margin-bottom: 14px;
+        color: #e4e4e7;
+        display: flex;
+        align-items: center;
+    }
+    .custom-list li::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 22px;
+        height: 22px;
+        background-color: var(--silveriom-neon);
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        filter: drop-shadow(0 0 4px var(--accent-glow));
+    }
+
+    .alert-list li::before {
+        background-color: var(--alert-color);
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 15-6-6-6 6'/%3E%3C/svg%3E");
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 15-6-6-6 6'/%3E%3C/svg%3E");
+        transform: rotate(90deg);
+    }
+
+    /* Flowcharts Modernized */
+    .flow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 32px;
+        border-radius: 24px;
+        margin: 32px 0;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .flow-item {
+        font-weight: 700;
+        color: #fff;
+        padding: 14px 28px;
+        background: linear-gradient(145deg, rgba(40, 40, 45, 0.8) 0%, rgba(20, 20, 22, 0.9) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+    .flow-item:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .flow-arrow {
+        color: var(--text-muted);
+        width: 24px;
+        height: 24px;
+        opacity: 0.5;
+    }
+
+    @media screen and (max-width: 900px) {
+        .grid-2 { grid-template-columns: 1fr; }
+    }
+    @media screen and (max-width: 768px) {
+        .flow-container { flex-direction: column; }
+        .flow-arrow { transform: rotate(-90deg); margin: 8px 0; }
+        .glass-panel { padding: 32px; border-radius: 24px; }
+        .header-title { padding: 80px 20px 40px; }
+    }
+
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        width: 100vw;
+        height: 70vh;
+        min-height: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 80px;
+        margin-left: calc(-50vw + 50%); /* Break out of any parent container to be full width */
+    }
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 0;
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(8,16,30,0.1) 40%, rgba(8,16,30,0.7) 80%, rgba(8,16,30,1) 100%);
+        z-index: 1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        animation: heroFadeIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .hero-logo {
+        max-width: 500px;
+        width: 80%;
+        filter: drop-shadow(0 0 40px rgba(182, 255, 0, 0.6));
+    }
+    @keyframes heroFadeIn {
+        from { opacity: 0; transform: translateY(40px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+
+    /* Contact Pills Style */
+    .contact-pills-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: -10px;
+        margin-bottom: 50px;
+        position: relative;
+        z-index: 10;
+    }
+    .contact-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #23301a; /* Dark olive background matching screenshot */
+        border: 1px solid var(--silveriom-neon, #B6FF00);
+        border-radius: 50px;
+        padding: 6px 20px;
+        color: #ffffff;
+        font-family: 'Vazirmatn', -apple-system, sans-serif;
+        font-size: 13.5px;
+        font-weight: 400;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .contact-pill:hover {
+        background: rgba(182, 255, 0, 0.15);
+        box-shadow: 0 0 20px rgba(182, 255, 0, 0.3);
+        transform: translateY(-2px);
+    }
+    .contact-pill i {
+        width: 15px;
+        height: 15px;
+        color: var(--silveriom-neon, #B6FF00);
+    }
+
+
+    /* Print to PDF (A4) Optimizations */
+    @media print {
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        body {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            background: #08101e !important;
+        }
+        .hero-section {
+            height: 100vh !important;
+            page-break-after: always;
+            break-after: page;
+        }
+        .glass-panel, .value-card, .grid-4, .bento-item {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        h1, h2, h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        /* Hide things that shouldn't be in a static PDF */
+        .cursor-glow, .scroll-indicator {
+            display: none !important;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- افکت‌های نوری پس‌زمینه -->
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+    <div class="ambient-light light-3"></div>
+
+    
+    <!-- هیرو سکشن -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="file:///Users/michael/.gemini/antigravity/brain/615a3fff-7aad-44f9-8f45-5c2b01ca8d2e/.user_uploaded/media_1790631002494.png" alt="لوگوی سیلوریوم" class="hero-logo">
+        </div>
+    </section>
+
+    <main class="container">
+
+    <div class="contact-pills-container">
+        <a href="tel:09121127415" class="contact-pill" dir="ltr">
+            <i data-lucide="phone"></i> 09121127415
+        </a>
+        <a href="https://www.silveriom.ir" target="_blank" class="contact-pill" dir="ltr">
+            <i data-lucide="globe"></i> www.silveriom.ir
+        </a>
+
+    </div>
+
+        
+        <!-- ==================== بخش اول ==================== -->
+        <header class="header-title">
+            <h1>سیلوریوم | رسانه تخصصی ورزش‌های خاص ایران</h1>
+        </header>
+        
+        <section class="glass-panel">
+            <h2 class="section-title"><i data-lucide="info"></i> سیلوریوم چیست؟</h2>
+            <p>سیلوریوم یک پلتفرم تخصصی رسانه و تبلیغات در حوزه ورزش‌های خاص ایران است که با هدف ایجاد ارتباط میان مجموعه‌های ورزشی، برندها، رسانه‌ها، رویدادها و مخاطبان تخصصی شکل گرفته است.</p>
+            <p>سیلوریوم ظرفیت‌های تبلیغاتی مجموعه‌های ورزشی را شناسایی و معرفی می‌کند و آنها را به شبکه‌ای از برندهای متقاضی تبلیغات متصل می‌سازد.</p>
+            <p>در این مدل، مجموعه ورزشی تنها محل برگزاری فعالیت ورزشی نیست؛ بلکه مجموعه‌ای از ظرفیت‌های رسانه‌ای و تجاری در اختیار دارد که می‌توانند به یک منبع درآمد پایدار و قابل توسعه تبدیل شوند.</p>
+            <p>فعالیت سیلوریوم در مرحله نخست با تمرکز بر تنیس، پدل و تنیس ساحلی آغاز می‌شود و در ادامه، حوزه‌هایی مانند گلف و اسب‌سواری نیز به این شبکه اضافه خواهند شد.</p>
+        </section>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="target"></i> مأموریت سیلوریوم</h2>
+                <p>ایجاد یک زیرساخت تخصصی برای شناسایی، سازمان‌دهی و تجاری‌سازی ظرفیت‌های رسانه‌ای مجموعه‌های ورزشی و ایجاد ارتباط میان این ظرفیت‌ها و بازار برندها.</p>
+                <p>هدف سیلوریوم این است که مجموعه‌های ورزشی بتوانند بدون ایجاد ساختار فروش مستقل، از ظرفیت‌های تبلیغاتی موجود در مجموعه خود بهره اقتصادی بیشتری ایجاد کنند.</p>
+            </section>
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="eye"></i> چشم‌انداز</h2>
+                <p>تبدیل شدن به شبکه تخصصی رسانه و تبلیغات ورزش‌های خاص ایران؛ شبکه‌ای که مجموعه‌های ورزشی را به یک بازار گسترده از برندها و فرصت‌های تبلیغاتی متصل کند.</p>
+                <p>در این چشم‌انداز، هر مجموعه می‌تواند بخشی از یک شبکه بزرگ‌تر باشد و از حضور برندهایی بهره ببرد که به صورت معمول دسترسی به آنها برای یک مجموعه مستقل دشوار است.</p>
+            </section>
+        </div>
+
+        <section class="glass-panel">
+            <h2 class="section-title"><i data-lucide="route"></i> مسیر توسعه</h2>
+            <div class="roadmap-grid">
+                <div class="roadmap-box">
+                    <h4>مرحله نخست</h4>
+                    <ul class="custom-list">
+                        <li>تنیس</li>
+                        <li>پدل</li>
+                        <li>تنیس ساحلی</li>
+                    </ul>
+                </div>
+                <div class="roadmap-box">
+                    <h4>مرحله دوم</h4>
+                    <ul class="custom-list">
+                        <li>گلف</li>
+                        <li>اسب‌سواری</li>
+                    </ul>
+                </div>
+                <div class="roadmap-box">
+                    <h4>مراحل بعدی</h4>
+                    <ul class="custom-list">
+                        <li>سایر ورزش‌های خاص و تخصصی</li>
+                        <li>ورزش‌های دارای مخاطبان ویژه</li>
+                        <li>ورزش‌های مرتبط با سبک زندگی</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel">
+            <h2 class="section-title"><i data-lucide="network"></i> جایگاه سیلوریوم برای مجموعه‌های ورزشی</h2>
+            <p>سیلوریوم نقش یک واسط تخصصی میان مجموعه و بازار تبلیغات را ایفا می‌کند:</p>
+            
+            <div class="flow-container">
+                <div class="flow-item">مجموعه ورزشی</div>
+                <i data-lucide="arrow-left" class="flow-arrow"></i>
+                <div class="flow-item">ظرفیت‌های تبلیغاتی</div>
+                <i data-lucide="arrow-left" class="flow-arrow"></i>
+                <div class="flow-item" style="color: var(--silveriom-charcoal); background: var(--silveriom-neon); border-color: var(--silveriom-neon);">سیلوریوم</div>
+                <i data-lucide="arrow-left" class="flow-arrow"></i>
+                <div class="flow-item">برندها</div>
+            </div>
+
+            <p style="margin-top: 20px;">این ارتباط می‌تواند به مجموعه کمک کند تا:</p>
+            <ul class="custom-list">
+                <li>ظرفیت‌های تبلیغاتی خود را بهتر شناسایی کند</li>
+                <li>فضای تبلیغاتی خود را حرفه‌ای‌تر عرضه کند</li>
+                <li>به برندهای بیشتری معرفی شود</li>
+                <li>فرصت‌های تبلیغاتی و حمایت مالی بیشتری جذب کند</li>
+                <li>از ظرفیت‌های موجود درآمد بیشتری ایجاد کند</li>
+                <li>بدون درگیر شدن با فرآیندهای پیچیده فروش، از خدمات تخصصی سیلوریوم استفاده کند</li>
+            </ul>
+        </section>
+
+
+        <!-- ==================== بخش دوم ==================== -->
+        <header class="header-title">
+            <h1>مسئله مجموعه‌های ورزشی در حوزه تبلیغات</h1>
+        </header>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">استفاده‌نشدن از تمام ظرفیت‌های موجود</h2>
+                <p>بسیاری از مجموعه‌های ورزشی علاوه بر فعالیت اصلی خود، فضاهایی دارند که می‌توانند در اختیار تبلیغات قرار گیرند؛ اما همه این ظرفیت‌ها شناسایی، قیمت‌گذاری و عرضه نمی‌شوند.</p>
+                <p>دیواره‌ها، ورودی‌ها، کورت‌ها، فضاهای انتظار، نمایشگرها و رویدادها می‌توانند هر کدام یک ظرفیت درآمدی مستقل باشند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">دشواری پیدا کردن برند</h2>
+                <p>برای بسیاری از مجموعه‌ها، پیدا کردن برند مناسب به اندازه ایجاد فضای تبلیغاتی اهمیت دارد.</p>
+                <p>داشتن یک فضای تبلیغاتی به تنهایی کافی نیست؛ مجموعه نیاز دارد به برندی دسترسی داشته باشد که:</p>
+                <ul class="custom-list alert-list">
+                    <li>مخاطب آن با مجموعه همخوانی داشته باشد</li>
+                    <li>توان مالی مناسب داشته باشد</li>
+                    <li>برای حضور مستمر برنامه داشته باشد</li>
+                    <li>استانداردهای حرفه‌ای تبلیغات را رعایت کند</li>
+                </ul>
+                <p>ایجاد چنین ارتباطی برای هر مجموعه به صورت مستقل، نیازمند زمان، ارتباطات و نیروی فروش است.</p>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">نبود تیم تخصصی فروش رسانه</h2>
+                <p>فروش فضای تبلیغاتی یک فعالیت تخصصی است و با فروش خدمات ورزشی مجموعه تفاوت دارد.</p>
+                <p>معمولاً مجموعه‌ها باید تمرکز خود را بر مدیریت ورزش، مشتریان و عملیات روزانه حفظ کنند و ایجاد یک ساختار مستقل برای فروش رسانه برای آنها همیشه منطقی یا مقرون‌به‌صرفه نیست.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">پراکندگی ظرفیت‌ها</h2>
+                <p>در بسیاری از مجموعه‌ها، ظرفیت‌های تبلیغاتی به صورت موردی عرضه می‌شوند و هر فرصت باید جداگانه معرفی و مذاکره شود.</p>
+                <p>این موضوع باعث می‌شود:</p>
+                <ul class="custom-list alert-list">
+                    <li>فرصت‌های تبلیغاتی دیرتر به فروش برسند</li>
+                    <li>بخشی از ظرفیت‌ها دیده نشوند</li>
+                    <li>فرآیند مذاکره طولانی شود</li>
+                    <li>امکان مقایسه و ارائه منظم کاهش پیدا کند</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">نبود استاندارد در ارائه رسانه</h2>
+                <p>برای یک برند، اطلاعات دقیق درباره هر فضای تبلیغاتی اهمیت زیادی دارد.</p>
+                <p>نبود اطلاعات استاندارد درباره:</p>
+                <ul class="custom-list alert-list">
+                    <li>محل رسانه</li>
+                    <li>ابعاد</li>
+                    <li>نوع سازه</li>
+                    <li>تصویر</li>
+                    <li>شرایط اجرا</li>
+                    <li>بازه اکران</li>
+                    <li>هزینه</li>
+                </ul>
+                <p>می‌تواند روند تصمیم‌گیری را طولانی کند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title" style="color: #fff;">از دست رفتن فرصت‌های رویدادی</h2>
+                <p>مسابقات و رویدادهای مجموعه می‌توانند علاوه بر فعالیت ورزشی، فرصت‌هایی برای:</p>
+                <ul class="custom-list alert-list">
+                    <li>جذب حامی مالی</li>
+                    <li>تبلیغات</li>
+                    <li>حضور برندها</li>
+                    <li>فعالیت‌های جانبی</li>
+                    <li>افزایش درآمد رویداد</li>
+                </ul>
+                <p>ایجاد کنند. اما زمانی که این فرصت‌ها از قبل معرفی و برنامه‌ریزی نشوند، ممکن است بخش قابل توجهی از ظرفیت آنها از بین برود.</p>
+            </section>
+        </div>
+
+        <section class="glass-panel">
+            <h2 class="section-title" style="color: #fff;">چالش مدیریت تبلیغات در مجموعه</h2>
+            <p>حضور برند در یک مجموعه تنها به فروش فضا محدود نمی‌شود. مجموعه باید با موضوعاتی مانند:</p>
+            <ul class="custom-list alert-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                <li>نوع تبلیغ</li>
+                <li>محل اجرا</li>
+                <li>طراحی</li>
+                <li>اندازه</li>
+                <li>کیفیت اجرا</li>
+                <li>زمان نصب</li>
+                <li>جمع‌آوری</li>
+                <li>هماهنگی با فعالیت روزانه مجموعه</li>
+            </ul>
+            <p style="margin-top: 16px;">نیز مواجه شود. بنابراین وجود یک ساختار تخصصی برای مدیریت این فرآیند می‌تواند بخشی از بار اجرایی مجموعه را کاهش دهد.</p>
+            
+            <div class="glass-panel alert" style="margin: 30px 0 0 0; padding: 25px;">
+                <h3 class="section-title alert-title" style="margin-bottom: 10px; font-size: 3rem;">
+                    <i data-lucide="triangle-alert"></i>
+                    مسئله اصلی
+                </h3>
+                <p style="color: #fff; font-weight: 400; font-size: 1.1rem; line-height: 1.8; margin-bottom: 0;">
+                    مجموعه‌های ورزشی ظرفیت‌های رسانه‌ای و درآمدی ارزشمندی در اختیار دارند، اما این ظرفیت‌ها برای تبدیل شدن به یک جریان درآمدی منظم، به معرفی حرفه‌ای، دسترسی به برندها و مدیریت تخصصی نیاز دارند.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==================== بخش سوم ==================== -->
+        <header class="header-title">
+            <h1>راهکار سیلوریوم برای مجموعه‌های ورزشی</h1>
+        </header>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="coins"></i> تبدیل ظرفیت تبلیغاتی به درآمد</h2>
+                <p>سیلوریوم ظرفیت‌های موجود در مجموعه را شناسایی و در قالب فرصت‌های تبلیغاتی قابل ارائه به برندها سازمان‌دهی می‌کند.</p>
+                <p>در این مدل، مجموعه می‌تواند از فضاهایی که پیش از این صرفاً بخشی از محیط مجموعه بوده‌اند، ارزش اقتصادی جدید ایجاد کند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="id-card"></i> معرفی حرفه‌ای مجموعه</h2>
+                <p>هر مجموعه در شبکه سیلوریوم می‌تواند دارای صفحه و مشخصات اختصاصی باشد که اطلاعات مربوط به:</p>
+                <ul class="custom-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <li>معرفی مجموعه</li>
+                    <li>موقعیت</li>
+                    <li>امکانات</li>
+                    <li>ورزش‌های فعال</li>
+                    <li>تعداد و نوع کورت‌ها</li>
+                    <li>مخاطبان</li>
+                    <li>رسانه‌های قابل ارائه</li>
+                    <li>مسابقات و رویدادها</li>
+                </ul>
+                <p style="margin-top: 16px;">را در اختیار برندها قرار دهد. این کار باعث می‌شود مجموعه تنها با نام خود معرفی نشود، بلکه ظرفیت کامل تجاری و رسانه‌ای آن نیز دیده شود.</p>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="zap"></i> ایجاد مسیر مستقیم برای جذب برند</h2>
+                <p>سیلوریوم مجموعه را در معرض شبکه‌ای از برندهایی قرار می‌دهد که به دنبال فرصت‌های تبلیغاتی در ورزش‌های خاص هستند.</p>
+                <p>در نتیجه، مجموعه به جای جست‌وجوی مستقل برای پیدا کردن برند، می‌تواند از یک مسیر تخصصی برای معرفی ظرفیت‌های خود استفاده کند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="layers"></i> مدیریت و سامان‌دهی رسانه‌ها</h2>
+                <p>سیلوریوم می‌تواند رسانه‌های مجموعه را به صورت منظم دسته‌بندی و معرفی کند تا هر فضای تبلیغاتی دارای مشخصات روشن و قابل ارائه باشد.</p>
+                <p>این ساختار شامل:</p>
+                <ul class="custom-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <li>شناسایی رسانه</li>
+                    <li>ثبت مشخصات</li>
+                    <li>تعیین شرایط</li>
+                    <li>معرفی به برند</li>
+                    <li>هماهنگی استفاده</li>
+                    <li>مدیریت اکران</li>
+                </ul>
+            </section>
+        </div>
+
+        <section class="glass-panel">
+            <h2 class="section-title"><i data-lucide="calendar-star"></i> استفاده از ظرفیت رویدادها</h2>
+            <p>مسابقات و رویدادهای مجموعه نیز می‌توانند در کنار رسانه‌های ثابت عرضه شوند. برای مثال:</p>
+            <div class="flow-container">
+                <div class="flow-item">مجموعه</div>
+                <i data-lucide="plus" class="flow-arrow"></i>
+                <div class="flow-item">تبلیغات محیطی</div>
+                <i data-lucide="plus" class="flow-arrow"></i>
+                <div class="flow-item">مسابقه</div>
+                <i data-lucide="plus" class="flow-arrow"></i>
+                <div class="flow-item" style="color: var(--silveriom-charcoal); background: var(--silveriom-neon); border: none;">حمایت مالی از رویداد</div>
+            </div>
+            <p style="margin-top: 16px;">این ترکیب به مجموعه امکان می‌دهد از هر رویداد، علاوه بر کارکرد ورزشی، ارزش اقتصادی بیشتری ایجاد کند.</p>
+        </section>
+
+        <section class="glass-panel">
+            <h2 class="section-title"><i data-lucide="shield-check"></i> کاهش درگیری اجرایی مجموعه</h2>
+            <p>یکی از ارزش‌های اصلی همکاری با سیلوریوم، کاهش بخشی از بار اجرایی مجموعه در حوزه تبلیغات است. سیلوریوم می‌تواند در بخش‌هایی مانند:</p>
+            
+            <div class="flow-container" style="gap: 8px; padding: 20px;">
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">معرفی رسانه</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">ارتباط با برند</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">هماهنگی</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">طراحی</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">تولید</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px;">نصب</div>
+                <i data-lucide="arrow-left" class="flow-arrow" style="width: 15px;"></i>
+                <div class="flow-item" style="font-size: 0.9rem; padding: 10px 15px; border-color: var(--silveriom-neon); color: var(--silveriom-neon);">مستندسازی</div>
+            </div>
+            
+            <p style="margin-top: 16px;">در کنار مجموعه قرار بگیرد. در نتیجه، مجموعه می‌تواند تمرکز اصلی خود را بر فعالیت ورزشی و مدیریت مشتریان خود حفظ کند.</p>
+        </section>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="ruler"></i> ایجاد استاندارد برای تبلیغات</h2>
+                <p>حضور برندها در مجموعه باید با فضای ورزشی، هویت مجموعه و تجربه ورزشکاران هماهنگ باشد.</p>
+                <p>سیلوریوم می‌تواند به ایجاد چارچوب مشخص برای نوع، اندازه، محل و شیوه اجرای تبلیغات کمک کند تا فعالیت رسانه‌ای، به جای آسیب زدن به فضای مجموعه، به ارتقای ارزش تجاری و حرفه‌ای آن کمک کند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="wallet"></i> ایجاد درآمد از ظرفیت‌های موجود</h2>
+                <p>هدف اصلی این مدل، ایجاد یک منبع درآمد جدید بدون نیاز به توسعه فیزیکی مجموعه است.</p>
+                <p>ظرفیت‌هایی که پیش از این ممکن است بدون استفاده باقی مانده باشند، می‌توانند به فرصت‌های درآمدی تبدیل شوند.</p>
+            </section>
+        </div>
+
+
+        <!-- ==================== بخش چهارم ==================== -->
+        <header class="header-title">
+            <h1>برتری‌های سیلوریوم برای اکوسیستم ورزش های خاص</h1>
+        </header>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="rocket"></i> جذب برند بدون نیاز به ایجاد تیم فروش مستقل</h2>
+                <p>سیلوریوم نقش بازوی تخصصی فروش و معرفی رسانه مجموعه را ایفا می‌کند.</p>
+                <p>مجموعه می‌تواند ظرفیت‌های خود را ارائه کند، در حالی که فرآیند شناسایی فرصت و ارتباط با برندها از طریق شبکه سیلوریوم دنبال می‌شود.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="trending-up"></i> افزایش درآمد از فضاهای موجود</h2>
+                <p>هدف، ایجاد درآمد جدید از دارایی‌های موجود مجموعه است؛ بدون اینکه الزاماً نیاز به توسعه ساختمان یا افزایش تعداد مشتریان ورزشی وجود داشته باشد.</p>
+                <p>هر فضای قابل استفاده می‌تواند به عنوان یک ظرفیت درآمدی بررسی شود.</p>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="globe"></i> معرفی مجموعه به برندهای بزرگ‌تر</h2>
+                <p>قرار گرفتن در شبکه سیلوریوم باعث می‌شود مجموعه علاوه بر مخاطبان ورزشی خود، در معرض برندهایی قرار گیرد که به دنبال حضور در ورزش‌های خاص هستند.</p>
+                <p>این موضوع می‌تواند فرصت‌هایی ایجاد کند که برای یک مجموعه به صورت مستقل دشوارتر قابل دستیابی است.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="book-open"></i> مدیاکیت اختصاصی مجموعه</h2>
+                <p>برای هر مجموعه می‌توان یک مدیاکیت کامل و به‌روز تهیه کرد که تمام فرصت‌های تبلیغاتی آن را در یک ساختار حرفه‌ای نمایش دهد. این مدیاکیت می‌تواند شامل:</p>
+                <ul class="custom-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <li>معرفی مجموعه</li>
+                    <li>تصاویر</li>
+                    <li>رسانه‌های موجود</li>
+                    <li>مشخصات رسانه‌ها</li>
+                    <li>ابعاد</li>
+                    <li>شرایط اکران</li>
+                    <li>هزینه‌ها</li>
+                    <li>رویدادهای پیش‌رو</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="file-check-2"></i> گزارش و مستندسازی اجرای برندها</h2>
+                <p>پس از اجرای تبلیغات، مستندات حضور برند در اختیار مجموعه و برند قرار می‌گیرد.</p>
+                <p>این موضوع به مجموعه کمک می‌کند سابقه فعالیت‌های تبلیغاتی خود را ثبت کرده و در همکاری‌های بعدی از آن استفاده کند.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="calendar-clock"></i> دسترسی به تقویم رویدادها</h2>
+                <p>تقویم آنلاین سیلوریوم می‌تواند به مجموعه کمک کند رویدادها را بهتر برنامه‌ریزی و ظرفیت‌های تبلیغاتی آنها را زودتر عرضه کند.</p>
+                <p>در نتیجه، فرصت جذب حامی مالی و تبلیغات پیش از برگزاری رویداد افزایش می‌یابد.</p>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="map-pin"></i> تبدیل مجموعه به یک مقصد رسانه‌ای</h2>
+                <p>در مدل سیلوریوم، ارزش یک مجموعه فقط به تعداد زمین یا امکانات آن محدود نمی‌شود. مجموعه می‌تواند به عنوان مجموعه‌ای از:</p>
+                
+                <div class="flow-container" style="gap: 8px; padding: 20px;">
+                    <div class="flow-item" style="font-size: 0.9rem; padding: 10px;">مخاطب</div>
+                    <i data-lucide="plus" class="flow-arrow" style="width: 16px;"></i>
+                    <div class="flow-item" style="font-size: 0.9rem; padding: 10px;">فضا</div>
+                    <i data-lucide="plus" class="flow-arrow" style="width: 16px;"></i>
+                    <div class="flow-item" style="font-size: 0.9rem; padding: 10px;">رسانه</div>
+                    <i data-lucide="plus" class="flow-arrow" style="width: 16px;"></i>
+                    <div class="flow-item" style="font-size: 0.9rem; padding: 10px;">رویداد</div>
+                    <i data-lucide="plus" class="flow-arrow" style="width: 16px;"></i>
+                    <div class="flow-item" style="font-size: 0.9rem; padding: 10px; border-color: var(--silveriom-neon); color: var(--silveriom-neon);">فرصت تجاری</div>
+                </div>
+
+                <p style="margin-top: 16px;">معرفی شود. این نگاه می‌تواند ارزش اقتصادی مجموعه را برای برندها افزایش دهد.</p>
+            </section>
+            
+            <section class="glass-panel" style="margin-bottom: 0;">
+                <h2 class="section-title"><i data-lucide="bar-chart-3"></i> توسعه ارزش تجاری مجموعه در طول زمان</h2>
+                <p>با افزایش تعداد برندها، رویدادها و رسانه‌های فعال، اطلاعات و سابقه تجاری مجموعه نیز افزایش پیدا می‌کند.</p>
+                <p>به این ترتیب، همکاری با سیلوریوم می‌تواند از یک فروش مقطعی فضای تبلیغاتی فراتر رفته و به بخشی از توسعه تجاری بلندمدت مجموعه تبدیل شود.</p>
+            </section>
+        </div>
+
+        <!-- جمع‌بندی نهایی (چهار ارزش اصلی) -->
+        <section class="glass-panel" style="margin-top: 60px; margin-bottom: 100px; border-color: rgba(182, 255, 0, 0.4); background: rgba(182, 255, 0, 0.02);">
+            <h2 class="section-title" style="justify-content: center; margin-bottom: 40px;">چهار ارزش اصلی برای صاحب مجموعه</h2>
+            
+            <div class="grid-4">
+                <div class="value-card">
+                    <i data-lucide="trending-up" class="lucide-icon-lg"></i>
+                    <h4>درآمد بیشتر</h4>
+                    <p style="font-size: 0.95rem;">تبدیل ظرفیت‌های موجود به منابع درآمدی جدید</p>
+                </div>
+                
+                <div class="value-card">
+                    <i data-lucide="users" class="lucide-icon-lg"></i>
+                    <h4>برندهای بیشتر</h4>
+                    <p style="font-size: 0.95rem;">دسترسی به بازار گسترده‌تری از متقاضیان تبلیغات</p>
+                </div>
+
+                <div class="value-card">
+                    <i data-lucide="handshake" class="lucide-icon-lg"></i>
+                    <h4>درگیری کمتر</h4>
+                    <p style="font-size: 0.95rem;">واگذاری بخش مهمی از فرآیند معرفی و اجرای تبلیغات</p>
+                </div>
+
+                <div class="value-card">
+                    <i data-lucide="gem" class="lucide-icon-lg"></i>
+                    <h4>ارزش بالاتر مجموعه</h4>
+                    <p style="font-size: 0.95rem;">تبدیل مجموعه از یک فضای ورزشی به یک ظرفیت تجاری</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- اسکریپت‌ها -->
+    <script>
+    // فعال‌سازی آیکون‌های Lucide
+    lucide.createIcons();
+
+    
+
+    // افکت مدرن ماوس روی کارت‌ها (Glow Hover Effect)
+    document.querySelectorAll('.glass-panel, .value-card').forEach(panel => {
+        panel.addEventListener('mousemove', e => {
+            const rect = panel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            panel.style.setProperty('--mouse-x', `${x}px`);
+            panel.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
+</body>
+</html>
