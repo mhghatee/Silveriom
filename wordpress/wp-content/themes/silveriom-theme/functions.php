@@ -48,11 +48,32 @@ function silveriom_scripts() {
     // Main Theme Stylesheet
     wp_enqueue_style('silveriom-main-style', get_stylesheet_uri(), ['silveriom-google-fonts'], $theme_version);
 
+    // Full Silveriom Design Bundle (Animations, Hero, 3D, Cards, RTL styles)
+    if (file_exists(get_template_directory() . '/assets/css/silveriom-bundle.css')) {
+        wp_enqueue_style(
+            'silveriom-bundle',
+            get_template_directory_uri() . '/assets/css/silveriom-bundle.css',
+            ['silveriom-main-style'],
+            $theme_version
+        );
+    }
+
     // Animation & 3D Libraries
     wp_enqueue_script('threejs', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', [], 'r128', true);
     wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', [], '3.12.5', true);
     wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], '3.12.5', true);
     wp_enqueue_script('lucide-icons', 'https://unpkg.com/lucide@latest', [], 'latest', true);
+
+    // Full Silveriom Interactive Script Bundle (WebGL Particles, 3D Canvas, Nav, Loader Dismiss)
+    if (file_exists(get_template_directory() . '/assets/js/silveriom-bundle.js')) {
+        wp_enqueue_script(
+            'silveriom-bundle-js',
+            get_template_directory_uri() . '/assets/js/silveriom-bundle.js',
+            ['threejs', 'gsap', 'gsap-scrolltrigger', 'lucide-icons'],
+            $theme_version,
+            true
+        );
+    }
 
     // Custom Header Scroll Script
     wp_add_inline_script('lucide-icons', '

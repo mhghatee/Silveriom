@@ -5,7 +5,10 @@
 ?>
 </main><!-- #primary -->
 
-<?php if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('footer')) : ?>
+<?php 
+$is_elementor = is_singular() && get_post_meta(get_the_ID(), '_elementor_edit_mode', true) === 'builder';
+if (!$is_elementor && (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('footer'))) : 
+?>
 <footer class="silveriom-footer" style="background:#020612; border-top:1px solid rgba(255,255,255,0.06); padding:60px 20px 40px; margin-top:80px;">
   <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:40px; text-align:right;">
     <div>

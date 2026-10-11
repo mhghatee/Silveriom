@@ -14,7 +14,10 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<?php if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header')) : ?>
+<?php 
+$is_elementor = is_singular() && get_post_meta(get_the_ID(), '_elementor_edit_mode', true) === 'builder';
+if (!$is_elementor && (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header'))) : 
+?>
 <!-- Silveriom Unified Luxury Glass Navigation -->
 <header class="luxury-nav">
   <div class="nav-container">
