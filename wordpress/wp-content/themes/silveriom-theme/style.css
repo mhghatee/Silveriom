@@ -1,0 +1,114 @@
+/*
+Theme Name: Silveriom Luxury Theme
+Theme URI: https://silveriom.ir
+Author: Silveriom Team
+Author URI: https://silveriom.ir
+Description: Exclusive Dark & Luxury Tennis & Padel Advertising Theme for Elementor. Built with full RTL support, custom typography (YekanBakh / Vazirmatn), neon accents (#CCFF00, #B6FF00), and hardware-accelerated animations.
+Version: 1.0.0
+Text Domain: silveriom
+*/
+
+:root {
+  --silveriom-dark: #020612;
+  --silveriom-surface: #0a1124;
+  --silveriom-neon: #CCFF00;
+  --silveriom-neon-alt: #B6FF00;
+  --silveriom-accent: #00E5FF;
+  --silveriom-muted: #8E9BAE;
+  --silveriom-text: #FFFFFF;
+  --silveriom-border: rgba(255, 255, 255, 0.08);
+  --silveriom-glow: rgba(204, 255, 0, 0.2);
+}
+
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('assets/fonts/YekanBakhFaNum-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('assets/fonts/YekanBakhFaNum-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('assets/fonts/YekanBakhFaNum-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--silveriom-dark);
+  color: var(--silveriom-text);
+  font-family: 'YekanBakh', 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020612;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(204, 255, 0, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CCFF00;
+}
+
+/* Luxury Glassmorphism & Neon Helper Classes */
+.silveriom-glass {
+  background: rgba(10, 17, 36, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--silveriom-border);
+}
+
+.silveriom-neon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(204, 255, 0, 0.08);
+  border: 1px solid rgba(204, 255, 0, 0.3);
+  color: var(--silveriom-neon);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.silveriom-neon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--silveriom-neon);
+  color: #020612 !important;
+  font-weight: 800;
+  padding: 12px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(204, 255, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: none;
+}
+.silveriom-neon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(204, 255, 0, 0.45);
+}
