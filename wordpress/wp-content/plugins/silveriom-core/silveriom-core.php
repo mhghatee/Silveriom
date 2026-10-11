@@ -84,7 +84,10 @@ function silveriom_render_importer_page() {
 
 // 4. Import / Create All Elementor Pages
 function silveriom_execute_full_import() {
-    $template_dir = plugin_dir_path(__FILE__) . '../../elementor-templates/';
+    $template_dir = plugin_dir_path(__FILE__) . 'templates/';
+    if (!is_dir($template_dir)) {
+        $template_dir = plugin_dir_path(__FILE__) . '../../elementor-templates/';
+    }
     
     $pages_to_build = [
         [
@@ -136,11 +139,19 @@ function silveriom_execute_full_import() {
         $existing = get_page_by_path($p['slug']);
         
         $json_file = $template_dir . $p['file'];
+        if (!file_exists($json_file)) {
+            $json_file = plugin_dir_path(__FILE__) . '../../elementor-templates/' . $p['file'];
+        }
+
         $elementor_data = '[]';
+        $post_html = '';
         if (file_exists($json_file)) {
             $raw_json = json_decode(file_get_contents($json_file), true);
             if (isset($raw_json['content'])) {
                 $elementor_data = wp_json_encode($raw_json['content']);
+                if (isset($raw_json['content'][0]['elements'][0]['elements'][0]['settings']['html'])) {
+                    $post_html = $raw_json['content'][0]['elements'][0]['elements'][0]['settings']['html'];
+                }
             }
         }
 
@@ -149,7 +160,7 @@ function silveriom_execute_full_import() {
             'post_name'    => $p['slug'],
             'post_status'  => 'publish',
             'post_type'    => 'page',
-            'post_content' => '',
+            'post_content' => $post_html,
         ];
 
         if ($existing) {
@@ -166,7 +177,7 @@ function silveriom_execute_full_import() {
             update_post_meta($page_id, '_elementor_version', '3.20.0');
             update_post_meta($page_id, '_wp_page_template', 'elementor_header_footer');
             
-            if (!empty($elementor_data)) {
+            if (!empty($elementor_data) && $elementor_data !== '[]') {
                 update_post_meta($page_id, '_elementor_data', wp_slash($elementor_data));
             }
 
@@ -177,6 +188,10 @@ function silveriom_execute_full_import() {
 
             $created_count++;
         }
+    }
+
+    if (class_exists('\Elementor\Plugin')) {
+        \Elementor\Plugin::$instance->files_manager->clear_cache();
     }
 
     return "تعداد {$created_count} صفحه اختصاصی با موفقیت در وردپرس ایجاد شده و در المنتور متصل گردیدند!";
