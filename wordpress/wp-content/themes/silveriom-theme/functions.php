@@ -62,7 +62,13 @@ function silveriom_scripts() {
     wp_enqueue_script('threejs', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', [], 'r128', true);
     wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', [], '3.12.5', true);
     wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], '3.12.5', true);
-    wp_enqueue_script('lucide-icons', 'https://unpkg.com/lucide@latest', [], 'latest', true);
+    
+    // Local Lucide Icons Library (No external CDN dependency)
+    if (file_exists(get_template_directory() . '/assets/js/lucide.min.js')) {
+        wp_enqueue_script('lucide-icons', get_template_directory_uri() . '/assets/js/lucide.min.js', [], $theme_version, true);
+    } else {
+        wp_enqueue_script('lucide-icons', 'https://unpkg.com/lucide@latest', [], 'latest', true);
+    }
 
     // Full Silveriom Interactive Script Bundle (WebGL Particles, 3D Canvas, Nav, Loader Dismiss)
     if (file_exists(get_template_directory() . '/assets/js/silveriom-bundle.js')) {
@@ -75,12 +81,19 @@ function silveriom_scripts() {
         );
     }
 
-    // Custom Header Scroll Script
+    // Custom Header Scroll & Lucide Icons Script
     wp_add_inline_script('lucide-icons', '
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.lucide) {
-                lucide.createIcons();
+        function initSilveriomIcons() {
+            if (window.lucide && typeof window.lucide.createIcons === "function") {
+                window.lucide.createIcons();
             }
+        }
+        document.addEventListener("DOMContentLoaded", initSilveriomIcons);
+        window.addEventListener("load", initSilveriomIcons);
+        setTimeout(initSilveriomIcons, 1000);
+        setTimeout(initSilveriomIcons, 3000);
+
+        document.addEventListener("DOMContentLoaded", function() {
             var nav = document.querySelector(".luxury-nav");
             if (nav) {
                 window.addEventListener("scroll", function() {

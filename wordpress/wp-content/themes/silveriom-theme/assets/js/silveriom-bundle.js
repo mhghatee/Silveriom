@@ -629,35 +629,49 @@ function submitMainReservation(e) {
 
       advanceProgress();
 
-      window.addEventListener('load', function() {
+      function finishLoading() {
+        if (isSiteFullyLoaded) return;
         isSiteFullyLoaded = true;
 
         let finishInterval = setInterval(() => {
-          currentPercent += 15;
+          currentPercent += 20;
           
           if (currentPercent >= 100) {
             currentPercent = 100;
             clearInterval(finishInterval);
-            fillEl.style.width = '100%';
-            pctEl.textContent = '100%';
+            if (fillEl) fillEl.style.width = '100%';
+            if (pctEl) pctEl.textContent = '100%';
             
-            textEl.textContent = "خوش آمدید!";
-            textEl.style.animation = "none";
-            textEl.style.opacity = "1";
-            textEl.style.color = "#dfff11";
+            if (textEl) {
+              textEl.textContent = "خوش آمدید!";
+              textEl.style.animation = "none";
+              textEl.style.opacity = "1";
+              textEl.style.color = "#dfff11";
+            }
             
             setTimeout(() => {
-              loaderWrapper.style.opacity = '0'; 
-              setTimeout(() => {
-                loaderWrapper.style.display = 'none'; 
-              }, 600); 
-            }, 100);
+              if (loaderWrapper) {
+                loaderWrapper.style.opacity = '0'; 
+                loaderWrapper.style.pointerEvents = 'none';
+                setTimeout(() => {
+                  loaderWrapper.style.display = 'none'; 
+                }, 500); 
+              }
+            }, 80);
           } else {
-            fillEl.style.width = Math.floor(currentPercent) + '%';
-            pctEl.textContent = Math.floor(currentPercent) + '%';
+            if (fillEl) fillEl.style.width = Math.floor(currentPercent) + '%';
+            if (pctEl) pctEl.textContent = Math.floor(currentPercent) + '%';
           }
         }, 15);
-            });
+      }
+
+      if (document.readyState === 'complete') {
+        finishLoading();
+      } else {
+        window.addEventListener('load', finishLoading);
+        // Fallback after 1.5s max so user is NEVER blocked by slow network resources
+        setTimeout(finishLoading, 1500);
+      }
 
     })();
   
