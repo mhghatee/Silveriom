@@ -1,5 +1,4 @@
-
-
+/* ===== Style Block 1 ===== */
 @font-face {
   font-family: "YekanBakh";
   src: url("https://silveriom.ir/fonts/YekanBakhFaNum-Regular.woff2") format("woff2"),
@@ -2023,12 +2022,7 @@ body {
   color: #CCFF00 !important;
 }
 
-
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-
+/* ===== Style Block 2 ===== */
 /* ========================================================================== */
 /* SILVERIOM MASTER PERFECT STYLES & LAYOUT OVERRIDES                         */
 /* ========================================================================== */
@@ -4706,10 +4700,7 @@ section {
   }
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 3 ===== */
 .top-bar-badge {
   background: rgba(204, 255, 0, 0.1) !important;
   border: 1px solid rgba(204, 255, 0, 0.5) !important;
@@ -4787,11 +4778,7 @@ section {
   color: #CCFF00 !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-
+/* ===== Style Block 4 ===== */
 /* EXACT MATCH CSS overrides */
 .featured-grid {
   display: grid !important;
@@ -4861,11 +4848,7 @@ section {
   z-index: 10 !important;
 }
 
-
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 5 ===== */
 .featured-actions {
   display: flex !important;
   justify-content: center !important; /* Forces items to the center */
@@ -4877,10 +4860,7 @@ section {
   margin: 0 auto !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 6 ===== */
 .featured-actions {
   display: flex !important; justify-content: center !important;
   width: 100% !important;
@@ -4895,11 +4875,7 @@ section {
   margin: 0 auto !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-
+/* ===== Style Block 7 ===== */
 /* === HERO SECTION: CENTER ALIGNMENT (matches about-us hero) === */
 #hero.hero-section {
   display: flex !important;
@@ -5000,12 +4976,8 @@ section {
   }
 }
 
-
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-  /* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
+/* ===== Style Block 8 ===== */
+/* 1. Strip horizontal padding from full-bleed wrappers so inner containers can align */
   .luxury-nav, 
   .luxury-nav.scrolled {
     padding-left: 0 !important;
@@ -5037,11 +5009,8 @@ section {
     padding-right: 0 !important;
   }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-    @media (max-width: 768px) {
+/* ===== Style Block 9 ===== */
+@media (max-width: 768px) {
       /* 1. Neutralize all dangerous minmax grids that cause horizontal explosion */
       div[style*="grid-template-columns: repeat(auto-fit, minmax("] {
         display: flex !important;
@@ -5098,12 +5067,9 @@ section {
         align-items: flex-end !important;
       }
     }
-  
 
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-    @media (max-width: 768px) {
+/* ===== Style Block 10 ===== */
+@media (max-width: 768px) {
       .hero-section, 
       .main-portfolio-page, 
       .main-contact-page,
@@ -5112,11 +5078,8 @@ section {
         padding-top: 110px !important;
       }
     }
-  
 
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 11 ===== */
 /* Navigation Dropdown */
 .nav-dropdown {
   position: relative;
@@ -5164,11 +5127,8 @@ section {
   color: #CCFF00;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
+/* ===== Style Block 12 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Vazirmatn:wght@400&display=swap');
     
     #silverium-loader {
       position: fixed;
@@ -5273,11 +5233,8 @@ section {
       0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
     }
-    
 
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 13 ===== */
 /* Navigation Dropdown */
 .nav-dropdown {
   position: relative;
@@ -5325,10 +5282,7 @@ section {
   color: #CCFF00;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 14 ===== */
 /* Hide old section */
 .impact-section { display: none !important; }
 
@@ -5526,10 +5480,7 @@ section {
   box-shadow: 0 0 8px currentColor !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 15 ===== */
 /* Exact styling for the view all button to match screenshot */
 .featured-actions .inventory-view-all-btn {
   background: #111827 !important; /* Dark solid background */
@@ -5557,10 +5508,7 @@ section {
   height: 20px !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 16 ===== */
 /* iOS/VisionOS Liquid Glass Design for Reserve Buttons */
 .reserve-trigger-btn {
     width: 100%;
@@ -5616,10 +5564,7 @@ section {
     transform: translateY(1px) scale(0.98) !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 17 ===== */
 /* Cinematic Gradient + Delicate Cartesian Grid (Liquid Glass theme) */
 body {
     background: transparent !important;
@@ -5643,10 +5588,7 @@ html {
         radial-gradient(circle at 50% 100%, rgba(204, 255, 0, 0.05) 0%, transparent 50%) 0 0 / 100% 100%;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 18 ===== */
 /* ==========================================================================
    MOBILE MENU MASTER GRID SYSTEM - SHOW ALL ARROWS V8
    ========================================================================== */
@@ -5864,10 +5806,7 @@ html {
     visibility: hidden !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 19 ===== */
 /* REDESIGNED MAP FILTER TABS - GLASS CARDS */
 .map-filter-bar {
   display: grid;
@@ -5925,10 +5864,7 @@ html {
   transform: translateY(-2px);
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 20 ===== */
 /* MAP PANEL HEIGHT FIX - Match image height */
 .map-interactive-wrapper {
   align-items: stretch !important;
@@ -5970,10 +5906,7 @@ html {
   font-size: 0.92rem !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 21 ===== */
 /* ---- MAP CARD HEIGHT = MAP IMAGE HEIGHT ---- */
 .map-canvas-box {
   flex: 1.4;
@@ -5996,11 +5929,8 @@ html {
   align-items: stretch !important;
 }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-  /* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
+/* ===== Style Block 22 ===== */
+/* 1. Make the top marquee bar NOT sticky (it scrolls away naturally) */
   .top-complex-bar {
     position: absolute !important;
     top: 0 !important;
@@ -6034,10 +5964,7 @@ html {
     }
   }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 23 ===== */
 .footer-social-pill-container { display: flex; gap: 12px; }
 .social-pill-btn {
   display: inline-flex; align-items: center; height: 45px; padding: 0 15px; border-radius: 25px; 
@@ -6056,10 +5983,7 @@ html {
 .social-pill-btn:hover .social-svg { transform: rotate(360deg); fill: #000; stroke: none; }
 .social-pill-btn:hover .social-pill-text { max-width: 100px; opacity: 1; margin-right: 12px; }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
+/* ===== Style Block 24 ===== */
 /* ===================================================================
    SILVERIOM — CANONICAL DESKTOP MENU CSS (Exact copy from inventory)
    =================================================================== */
@@ -6241,12 +6165,11 @@ html {
   .mobile-toggle { display: flex !important; flex-direction: column !important; justify-content: space-between !important; width: 28px !important; height: 18px !important; background: transparent !important; border: none !important; cursor: pointer !important; padding: 0 !important; z-index: 1050 !important; box-sizing: border-box !important; }
   .mobile-toggle span { display: block !important; width: 100% !important; height: 2.5px !important; background: #b6ff00 !important; border-radius: 4px !important; transition: all 0.3s ease !important; box-shadow: 0 0 8px rgba(182, 255, 0, 0.4) !important; }
   .luxury-nav .glass-phone-btn, .luxury-nav #open-kit-btn { display: none !important; }
-.top-complex-bar { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999999 !important; display: flex !important; opacity: 1 !important; visibility: visible !important; margin: 0 !important; transform: none !important; } #silverium-loader { top: 50px !important; height: calc(100vh - 50px) !important; } @media (max-width: 1024px) { #silverium-loader { top: 40px !important; height: calc(100vh - 40px) !important; } }
+}
+<style>.top-complex-bar { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999999 !important; display: flex !important; opacity: 1 !important; visibility: visible !important; margin: 0 !important; transform: none !important; } #silverium-loader { top: 50px !important; height: calc(100vh - 50px) !important; } @media (max-width: 1024px) { #silverium-loader { top: 40px !important; height: calc(100vh - 40px) !important; } }
 
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-  .nav-wrapper { position: relative; display: inline-block; overflow: visible !important; }
+/* ===== Style Block 25 ===== */
+.nav-wrapper { position: relative; display: inline-block; overflow: visible !important; }
   .mega-menu { opacity: 0 !important; visibility: hidden !important; transform: translateY(15px) !important; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; z-index: 99999 !important; overflow: visible !important; position: absolute !important; top: calc(100% + 16px) !important; right: 0 !important; background: #0a0f1a !important; backdrop-filter: blur(32px) !important; -webkit-backdrop-filter: blur(32px) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 28px !important; box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1) !important; }
   .nav-wrapper:hover .mega-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; }
   .nav-wrapper:hover .mega-caret { transform: rotate(180deg) !important; }
@@ -6258,11 +6181,8 @@ html {
   @keyframes icon-pulse-glow { 0% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } 50% { filter: drop-shadow(0 0 18px rgba(204,255,0,1)) scale(1.15); } 100% { filter: drop-shadow(0 0 5px rgba(204,255,0,0.5)) scale(1); } }
   .highlight-icon { animation: icon-pulse-glow 2.5s infinite ease-in-out !important; }
 
-
-/* ==================== EXTRACTED BLOCK ==================== */
-
-
-  header#main-nav.luxury-nav {
+/* ===== Style Block 26 ===== */
+header#main-nav.luxury-nav {
     z-index: 9000 !important;
   }
   header#main-nav.luxury-nav,
@@ -6298,32 +6218,25 @@ html {
     overflow: visible !important;
   }
 
-/* =========================================================
-   SILVERIOM PERFECT SPACING & WORDPRESS COMPATIBILITY FIXES
-   ========================================================= */
 
-/* 1. Header & Ticker Spacing */
-.top-complex-bar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 50px !important;
-  z-index: 1000 !important;
-}
+/* ========================================================
+   WORDPRESS & ELEMENTOR COMPATIBILITY (PIXEL-PERFECT MATCH)
+   ======================================================== */
 
-.luxury-nav {
-  position: fixed !important;
-  top: 50px !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1001 !important;
-  transition: all 0.3s ease !important;
-}
-
-.luxury-nav.scrolled {
-  top: 0 !important;
-  z-index: 1002 !important;
+/* Ensure Elementor full-width section has zero extra padding/margin */
+.elementor,
+.elementor-section,
+.elementor-section-full_width,
+.elementor-column,
+.elementor-column-gap-no,
+.elementor-widget-wrap,
+.elementor-widget,
+.elementor-widget-html,
+.elementor-widget-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  max-width: none !important;
 }
 
 /* WordPress Admin Bar Compatibility */
@@ -6348,63 +6261,3 @@ body.admin-bar .luxury-nav.scrolled {
     top: 46px !important;
   }
 }
-
-/* 2. Container System - Match index.html exactly */
-.nav-container,
-.editorial-wide-container,
-.editorial-container,
-.blueprint-container,
-.hero-smart-finder-dock,
-.hero-content {
-  width: 100% !important;
-  max-width: 1280px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  box-sizing: border-box !important;
-}
-
-/* 3. Footer Grid - Clean RTL Grid Spacing */
-.luxury-mega-footer {
-  width: 100% !important;
-  background: #01040d !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding: 5rem 0 2.5rem 0 !important;
-  box-sizing: border-box !important;
-  direction: rtl !important;
-}
-
-.footer-top-grid {
-  display: grid !important;
-  grid-template-columns: 1.6fr 1fr 1.1fr 1.4fr !important;
-  gap: 2.5rem !important;
-  width: 100% !important;
-  max-width: 1280px !important;
-  margin: 0 auto 3rem auto !important;
-  padding-left: clamp(2rem, 5vw, 4.5rem) !important;
-  padding-right: clamp(2rem, 5vw, 4.5rem) !important;
-  box-sizing: border-box !important;
-  direction: rtl !important;
-}
-
-.editorial-wide-container .footer-top-grid,
-.editorial-container .footer-top-grid {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-@media (max-width: 1024px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .footer-top-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
-  }
-}
-
