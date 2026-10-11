@@ -35,15 +35,7 @@ function silveriom_scripts() {
         null
     );
 
-    // Global Navigation Styles
-    if (file_exists(get_template_directory() . '/assets/css/global-nav.css')) {
-        wp_enqueue_style(
-            'silveriom-global-nav',
-            get_template_directory_uri() . '/assets/css/global-nav.css',
-            [],
-            $theme_version
-        );
-    }
+
 
     // Main Theme Stylesheet
     wp_enqueue_style('silveriom-main-style', get_stylesheet_uri(), ['silveriom-google-fonts'], $theme_version);
