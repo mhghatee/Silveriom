@@ -96,6 +96,21 @@ function silveriom_scripts() {
                     }
                 });
             }
+
+            // Client-side image URL auto-repair
+            function fixAllAssetUrls() {
+                var images = document.querySelectorAll("img");
+                for (var i = 0; i < images.length; i++) {
+                    var s = images[i].getAttribute("src");
+                    if (s && !s.startsWith("http") && !s.startsWith("//") && (s.startsWith("assets/") || s.startsWith("../assets/") || s.startsWith("/assets/"))) {
+                        var clean = s.replace(/^(\.\.\/|\/)?assets\//, "assets/");
+                        images[i].src = "https://silveriom.ir/" + clean;
+                    }
+                }
+            }
+            fixAllAssetUrls();
+            setTimeout(fixAllAssetUrls, 500);
+            setTimeout(fixAllAssetUrls, 1500);
         });
     ');
 }
@@ -114,3 +129,32 @@ add_filter('upload_mimes', 'silveriom_mime_types');
 add_action('elementor/page_templates/header_footer/before_content', function() {
     // Hook before Elementor content if needed
 });
+
+// Auto-rewrite relative assets (assets/ or ../assets/) to absolute live domain URLs
+function silveriom_fix_asset_urls($content) {
+    if (empty($content) || !is_string($content)) {
+        return $content;
+    }
+    // Match ../assets/
+    $content = preg_replace('/(src|href|srcset)=([\\\"\\\'\\\\]*)\.\.\/assets\//i', '$1=$2https://silveriom.ir/assets/', $content);
+    $content = preg_replace('/(url\([\\\"\\\'\\\\]*)\.\.\/assets\//i', '$1https://silveriom.ir/assets/', $content);
+    // Match /assets/ (leading slash without domain)
+    $content = preg_replace('/(src|href|srcset)=([\\\"\\\'\\\\]*)\/assets\//i', '$1=$2https://silveriom.ir/assets/', $content);
+    $content = preg_replace('/(url\([\\\"\\\'\\\\]*)\/assets\//i', '$1https://silveriom.ir/assets/', $content);
+    // Match assets/
+    $content = preg_replace('/(src|href|srcset)=([\\\"\\\'\\\\]*)assets\//i', '$1=$2https://silveriom.ir/assets/', $content);
+    $content = preg_replace('/(url\([\\\"\\\'\\\\]*)assets\//i', '$1https://silveriom.ir/assets/', $content);
+    return $content;
+}
+
+function silveriom_buffer_start() {
+    if (!is_admin()) {
+        ob_start('silveriom_fix_asset_urls');
+    }
+}
+add_action('template_redirect', 'silveriom_buffer_start', 1);
+
+add_filter('the_content', 'silveriom_fix_asset_urls', 999);
+add_filter('elementor/frontend/the_content', 'silveriom_fix_asset_urls', 999);
+add_filter('widget_text', 'silveriom_fix_asset_urls', 999);
+
