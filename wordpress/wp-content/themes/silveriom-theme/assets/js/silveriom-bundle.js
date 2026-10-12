@@ -597,7 +597,7 @@ function submitMainReservation(e) {
                           document.body.classList.contains('elementor-editor-preview') || 
                           window.location.search.indexOf('elementor') !== -1;
       
-      if (isElementor) {
+      if (isElementor || (window.silveriomLoaderConfig && window.silveriomLoaderConfig.enabled === false)) {
         loaderWrapper.style.display = 'none';
         loaderWrapper.style.opacity = '0';
         loaderWrapper.style.pointerEvents = 'none';
@@ -613,6 +613,27 @@ function submitMainReservation(e) {
 
       const mainVid = document.getElementById('silverium-main-video');
       const posterImg = document.getElementById('silverium-video-poster');
+      
+      // Apply dynamic settings if available
+      if (window.silveriomLoaderConfig) {
+        if (textEl && window.silveriomLoaderConfig.text) {
+          textEl.textContent = window.silveriomLoaderConfig.text;
+        }
+        if (posterImg && window.silveriomLoaderConfig.poster) {
+          posterImg.src = window.silveriomLoaderConfig.poster;
+        }
+        if (mainVid && window.silveriomLoaderConfig.video) {
+          const srcEl = mainVid.querySelector('source');
+          if (srcEl && srcEl.src !== window.silveriomLoaderConfig.video) {
+            srcEl.src = window.silveriomLoaderConfig.video;
+            mainVid.load();
+          }
+        }
+        if (fillEl && window.silveriomLoaderConfig.color) {
+          fillEl.style.backgroundColor = window.silveriomLoaderConfig.color;
+        }
+      }
+
       if (mainVid && posterImg) {
           mainVid.addEventListener('playing', () => {
               posterImg.style.opacity = '0';
@@ -661,10 +682,10 @@ function submitMainReservation(e) {
             if (pctEl) pctEl.textContent = '100%';
             
             if (textEl) {
-              textEl.textContent = "خوش آمدید!";
+              textEl.textContent = (window.silveriomLoaderConfig && window.silveriomLoaderConfig.welcome) ? window.silveriomLoaderConfig.welcome : "خوش آمدید!";
               textEl.style.animation = "none";
               textEl.style.opacity = "1";
-              textEl.style.color = "#dfff11";
+              textEl.style.color = (window.silveriomLoaderConfig && window.silveriomLoaderConfig.color) ? window.silveriomLoaderConfig.color : "#dfff11";
             }
             
             setTimeout(() => {

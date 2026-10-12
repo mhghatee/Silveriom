@@ -212,4 +212,39 @@ add_action('wp_head', function() {
     <?php
 }, 1);
 
+// Include Silveriom Admin Loader Settings Panel
+if (file_exists(get_template_directory() . '/inc/loader-settings.php')) {
+    require_once get_template_directory() . '/inc/loader-settings.php';
+}
+
+// Pass dynamic loader config to frontend
+add_action('wp_head', function() {
+    $enabled = get_option('silveriom_loader_enabled', '1');
+    $text = get_option('silveriom_loader_text', 'در حال ورود به زمین سیلوریوم...');
+    $welcome = get_option('silveriom_loader_welcome', 'خوش آمدید!');
+    $poster = get_option('silveriom_loader_poster', 'https://silveriom.ir/loading_poster.png');
+    $video = get_option('silveriom_loader_video', 'https://silveriom.ir/loading_video.mp4');
+    $color = get_option('silveriom_loader_color', '#CCFF00');
+    $speed = get_option('silveriom_loader_speed', 800);
+    ?>
+    <script id="silveriom-loader-config">
+        window.silveriomLoaderConfig = {
+            enabled: <?php echo ($enabled === '1') ? 'true' : 'false'; ?>,
+            text: <?php echo json_encode($text); ?>,
+            welcome: <?php echo json_encode($welcome); ?>,
+            poster: <?php echo json_encode($poster); ?>,
+            video: <?php echo json_encode($video); ?>,
+            color: <?php echo json_encode($color); ?>,
+            speed: <?php echo intval($speed); ?>
+        };
+    </script>
+    <?php if ($enabled !== '1') : ?>
+    <style id="silveriom-loader-disabled">
+        #silverium-loader { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+    </style>
+    <?php endif; ?>
+    <?php
+}, 2);
+
+
 
