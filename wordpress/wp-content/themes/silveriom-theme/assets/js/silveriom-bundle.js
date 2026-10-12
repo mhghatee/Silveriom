@@ -842,3 +842,73 @@ if(typeof lucide !== "undefined"){lucide.createIcons();}
             if (grid) grid.innerHTML = '';
         });
 })();
+
+/* ==================== DYNAMIC TICKER & HEADER OPTIONS SYNC ==================== */
+document.addEventListener("DOMContentLoaded", function() {
+    function applySilveriomDynamicSettings() {
+        if (!window.silveriomSettings) return;
+
+        // 1. Ticker Updates
+        var tickerConf = window.silveriomSettings.ticker;
+        var topBar = document.getElementById('top-complex-bar') || document.querySelector('.top-complex-bar');
+        if (topBar && tickerConf) {
+            if (tickerConf.enabled === false) {
+                topBar.style.display = 'none';
+                var nav = document.querySelector('.luxury-nav');
+                if (nav) nav.style.top = '0px';
+            } else if (tickerConf.items && tickerConf.items.length > 0) {
+                var groupHtml = '';
+                if (tickerConf.badge) {
+                    groupHtml += '<span class="top-bar-badge">' + tickerConf.badge + '</span> ';
+                }
+                tickerConf.items.forEach(function(item) {
+                    if (item.link) {
+                        groupHtml += '<a class="top-c-item" href="' + item.link + '"><strong>' + item.text + '</strong></a> ';
+                    } else {
+                        groupHtml += '<span class="top-c-item"><strong>' + item.text + '</strong></span> ';
+                    }
+                    groupHtml += '<span class="top-c-sep">•</span> ';
+                });
+
+                var groups = topBar.querySelectorAll('.marquee-group');
+                if (groups.length >= 2) {
+                    groups[0].innerHTML = groupHtml;
+                    groups[1].innerHTML = groupHtml;
+                }
+                if (tickerConf.speed) {
+                    var track = topBar.querySelector('.marquee-track');
+                    if (track) {
+                        track.style.animationDuration = tickerConf.speed + 's';
+                    }
+                }
+            }
+        }
+
+        // 2. Nav Phone & CTA Updates
+        var navConf = window.silveriomSettings.nav;
+        if (navConf) {
+            var phoneBtn = document.querySelector('.luxury-nav .glass-phone-btn');
+            if (phoneBtn && navConf.phone) {
+                var phoneSvg = phoneBtn.querySelector('svg');
+                phoneBtn.innerHTML = '';
+                if (phoneSvg) phoneBtn.appendChild(phoneSvg);
+                phoneBtn.appendChild(document.createTextNode(' ' + navConf.phone));
+                if (navConf.phoneLink) phoneBtn.href = navConf.phoneLink;
+            }
+
+            var ctaBtn = document.querySelector('.luxury-nav #open-kit-btn') || document.querySelector('.luxury-nav .luxury-btn-outline');
+            if (ctaBtn && navConf.ctaText) {
+                var ctaSvg = ctaBtn.querySelector('svg');
+                ctaBtn.innerHTML = '';
+                if (ctaSvg) ctaBtn.appendChild(ctaSvg);
+                ctaBtn.appendChild(document.createTextNode(' ' + navConf.ctaText));
+                if (navConf.ctaLink) ctaBtn.href = navConf.ctaLink;
+            }
+        }
+    }
+
+    applySilveriomDynamicSettings();
+    setTimeout(applySilveriomDynamicSettings, 300);
+    setTimeout(applySilveriomDynamicSettings, 1000);
+});
+

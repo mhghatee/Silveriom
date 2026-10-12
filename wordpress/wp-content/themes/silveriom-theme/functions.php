@@ -212,37 +212,86 @@ add_action('wp_head', function() {
     <?php
 }, 1);
 
-// Include Silveriom Admin Loader Settings Panel
-if (file_exists(get_template_directory() . '/inc/loader-settings.php')) {
-    require_once get_template_directory() . '/inc/loader-settings.php';
+// Include Silveriom Admin Theme Options Panel
+if (file_exists(get_template_directory() . '/inc/silveriom-settings.php')) {
+    require_once get_template_directory() . '/inc/silveriom-settings.php';
 }
 
-// Pass dynamic loader config to frontend
+// Pass dynamic settings to frontend
 add_action('wp_head', function() {
-    $enabled = get_option('silveriom_loader_enabled', '1');
-    $text = get_option('silveriom_loader_text', 'در حال ورود به زمین سیلوریوم...');
-    $welcome = get_option('silveriom_loader_welcome', 'خوش آمدید!');
-    $poster = get_option('silveriom_loader_poster', 'https://silveriom.ir/loading_poster.png');
-    $video = get_option('silveriom_loader_video', 'https://silveriom.ir/loading_video.mp4');
-    $color = get_option('silveriom_loader_color', '#CCFF00');
-    $speed = get_option('silveriom_loader_speed', 800);
+    // Loader
+    $loader_enabled = get_option('silveriom_loader_enabled', '1');
+    $loader_text = get_option('silveriom_loader_text', 'در حال ورود به زمین سیلوریوم...');
+    $loader_welcome = get_option('silveriom_loader_welcome', 'خوش آمدید!');
+    $loader_poster = get_option('silveriom_loader_poster', 'https://silveriom.ir/loading_poster.png');
+    $loader_video = get_option('silveriom_loader_video', 'https://silveriom.ir/loading_video.mp4');
+    $loader_color = get_option('silveriom_loader_color', '#CCFF00');
+    $loader_speed = get_option('silveriom_loader_speed', 800);
+
+    // Ticker
+    $ticker_enabled = get_option('silveriom_ticker_enabled', '1');
+    $ticker_badge = get_option('silveriom_ticker_badge', 'شبکه انحصاری پدل سیلوریوم:');
+    $ticker_raw = get_option('silveriom_ticker_content', "T10 آجودانیه (۷ پدل + ۳ تنیس) | #venues-map\nArena آزادی (۸ پدل مسابقاتی) | #venues-map\nIran Zamin شهرک غرب (۶ پدل پانورامیک) | #venues-map\nNetra لواسان (۷ پدل VIP) | #venues-map\nAsayesh مازندران (۴ پدل + ۱۲ تنیس) | #venues-map");
+    $ticker_speed = get_option('silveriom_ticker_speed', 38);
+
+    // Parse ticker lines
+    $ticker_items = [];
+    $lines = explode("\n", str_replace("\r", "", $ticker_raw));
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if (empty($line)) continue;
+        $parts = explode("|", $line);
+        $item_text = trim($parts[0]);
+        $item_link = isset($parts[1]) ? trim($parts[1]) : '';
+        $ticker_items[] = [
+            'text' => $item_text,
+            'link' => $item_link
+        ];
+    }
+
+    // Nav
+    $nav_phone = get_option('silveriom_nav_phone', '۰۲۱-۲۲۰۰۰۰۰۰');
+    $nav_phone_link = get_option('silveriom_nav_phone_link', 'tel:02122000000');
+    $nav_cta_text = get_option('silveriom_nav_cta_text', 'دریافت مدیاکیت');
+    $nav_cta_link = get_option('silveriom_nav_cta_link', '#open-kit-modal');
     ?>
-    <script id="silveriom-loader-config">
-        window.silveriomLoaderConfig = {
-            enabled: <?php echo ($enabled === '1') ? 'true' : 'false'; ?>,
-            text: <?php echo json_encode($text); ?>,
-            welcome: <?php echo json_encode($welcome); ?>,
-            poster: <?php echo json_encode($poster); ?>,
-            video: <?php echo json_encode($video); ?>,
-            color: <?php echo json_encode($color); ?>,
-            speed: <?php echo intval($speed); ?>
+    <script id="silveriom-theme-settings">
+        window.silveriomSettings = {
+            loader: {
+                enabled: <?php echo ($loader_enabled === '1') ? 'true' : 'false'; ?>,
+                text: <?php echo json_encode($loader_text); ?>,
+                welcome: <?php echo json_encode($loader_welcome); ?>,
+                poster: <?php echo json_encode($loader_poster); ?>,
+                video: <?php echo json_encode($loader_video); ?>,
+                color: <?php echo json_encode($loader_color); ?>,
+                speed: <?php echo intval($loader_speed); ?>
+            },
+            ticker: {
+                enabled: <?php echo ($ticker_enabled === '1') ? 'true' : 'false'; ?>,
+                badge: <?php echo json_encode($ticker_badge); ?>,
+                items: <?php echo json_encode($ticker_items); ?>,
+                speed: <?php echo intval($ticker_speed); ?>
+            },
+            nav: {
+                phone: <?php echo json_encode($nav_phone); ?>,
+                phoneLink: <?php echo json_encode($nav_phone_link); ?>,
+                ctaText: <?php echo json_encode($nav_cta_text); ?>,
+                ctaLink: <?php echo json_encode($nav_cta_link); ?>
+            }
         };
+        // Backwards compatibility for loader
+        window.silveriomLoaderConfig = window.silveriomSettings.loader;
     </script>
-    <?php if ($enabled !== '1') : ?>
-    <style id="silveriom-loader-disabled">
+    <style id="silveriom-dynamic-overrides">
+        <?php if ($loader_enabled !== '1') : ?>
         #silverium-loader { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+        <?php endif; ?>
+        <?php if ($ticker_enabled !== '1') : ?>
+        #top-complex-bar, .top-complex-bar { display: none !important; visibility: hidden !important; height: 0 !important; }
+        header#main-nav.luxury-nav, .luxury-nav { top: 0 !important; }
+        body.admin-bar header#main-nav.luxury-nav, body.admin-bar .luxury-nav { top: 32px !important; }
+        <?php endif; ?>
     </style>
-    <?php endif; ?>
     <?php
 }, 2);
 
