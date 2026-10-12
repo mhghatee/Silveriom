@@ -158,3 +158,58 @@ add_filter('the_content', 'silveriom_fix_asset_urls', 999);
 add_filter('elementor/frontend/the_content', 'silveriom_fix_asset_urls', 999);
 add_filter('widget_text', 'silveriom_fix_asset_urls', 999);
 
+// Detect if current request is inside Elementor Editor or Preview
+function silveriom_is_elementor_editor() {
+    if (isset($_GET['elementor-preview']) || (isset($_GET['action']) && $_GET['action'] === 'elementor')) {
+        return true;
+    }
+    if (did_action('elementor/loaded')) {
+        if (\Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Completely remove and hide loader when editing in Elementor
+add_action('wp_head', function() {
+    ?>
+    <style id="silveriom-elementor-editor-fix">
+        body.elementor-editor-active #silverium-loader,
+        body.elementor-editor-preview #silverium-loader,
+        .elementor-editor-active #silverium-loader,
+        .elementor-editor-preview #silverium-loader,
+        [data-elementor-device-mode] #silverium-loader {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            z-index: -99999 !important;
+        }
+        <?php if (silveriom_is_elementor_editor()) : ?>
+        #silverium-loader {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            z-index: -99999 !important;
+        }
+        <?php endif; ?>
+    </style>
+    <script id="silveriom-elementor-editor-script">
+        (function() {
+            if (window.location.search.indexOf("elementor") !== -1 || window.elementor || (window.parent && window.parent.elementor)) {
+                var style = document.createElement("style");
+                style.innerHTML = "#silverium-loader { display: none !important; opacity: 0 !important; pointer-events: none !important; }";
+                document.head.appendChild(style);
+                document.addEventListener("DOMContentLoaded", function() {
+                    var l = document.getElementById("silverium-loader");
+                    if (l) l.remove();
+                });
+            }
+        })();
+    </script>
+    <?php
+}, 1);
+
+

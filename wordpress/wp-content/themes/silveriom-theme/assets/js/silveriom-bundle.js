@@ -588,15 +588,29 @@ function submitMainReservation(e) {
 
 
     (function() {
+      const loaderWrapper = document.getElementById('silverium-loader');
+      if (!loaderWrapper) return;
+
+      const isElementor = (typeof window.elementor !== 'undefined') || 
+                          (window.parent && typeof window.parent.elementor !== 'undefined') || 
+                          document.body.classList.contains('elementor-editor-active') || 
+                          document.body.classList.contains('elementor-editor-preview') || 
+                          window.location.search.indexOf('elementor') !== -1;
+      
+      if (isElementor) {
+        loaderWrapper.style.display = 'none';
+        loaderWrapper.style.opacity = '0';
+        loaderWrapper.style.pointerEvents = 'none';
+        try { loaderWrapper.remove(); } catch(e) {}
+        return;
+      }
+
       let currentPercent = 0;
       let isSiteFullyLoaded = false;
-      
-      const loaderWrapper = document.getElementById('silverium-loader');
       const fillEl = document.getElementById('loader-progress-fill');
       const pctEl = document.getElementById('loader-percentage');
       const textEl = document.getElementById('loader-text');
 
-      
       const mainVid = document.getElementById('silverium-main-video');
       const posterImg = document.getElementById('silverium-video-poster');
       if (mainVid && posterImg) {
@@ -607,7 +621,11 @@ function submitMainReservation(e) {
       }
 
       function advanceProgress() {
-        if (isSiteFullyLoaded || currentPercent >= 95) return;
+        if (isSiteFullyLoaded) return;
+        if (currentPercent >= 95) {
+          setTimeout(finishLoading, 300);
+          return;
+        }
 
         let increment = 0;
         if (currentPercent < 40) {
@@ -665,12 +683,13 @@ function submitMainReservation(e) {
         }, 15);
       }
 
-      if (document.readyState === 'complete') {
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
         finishLoading();
       } else {
         window.addEventListener('load', finishLoading);
-        // Fallback after 1.5s max so user is NEVER blocked by slow network resources
-        setTimeout(finishLoading, 1500);
+        document.addEventListener('DOMContentLoaded', finishLoading);
+        // Fallback after 800ms max so user is NEVER blocked
+        setTimeout(finishLoading, 800);
       }
 
     })();

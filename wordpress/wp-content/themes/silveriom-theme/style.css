@@ -4,7 +4,7 @@ Theme URI: https://silveriom.ir
 Author: Silveriom Team
 Author URI: https://silveriom.ir
 Description: Exclusive Dark & Luxury Tennis & Padel Advertising Theme for Elementor. Built with full RTL support, custom typography (YekanBakh / Vazirmatn), neon accents (#CCFF00, #B6FF00), and hardware-accelerated animations.
-Version: 1.2.0
+Version: 1.3.0
 Text Domain: silveriom
 */
 
@@ -196,4 +196,24 @@ body.admin-bar .luxury-nav.scrolled {
     top: 86px !important;
   }
 }
+
+/* ==========================================================================
+   ELEMENTOR LIVE EDITOR & PREVIEW FIXES
+   ========================================================================== */
+body.elementor-editor-active #silverium-loader,
+body.elementor-editor-preview #silverium-loader,
+.elementor-editor-active #silverium-loader,
+.elementor-editor-preview #silverium-loader,
+[data-elementor-device-mode] #silverium-loader {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: -99999 !important;
+}
+
+.navy-readability-overlay {
+  pointer-events: none !important;
+}
+
 
